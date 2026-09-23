@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Etlob Sa7 | Demand Planning for Egyptian Brands</title>
+<meta content="Know exactly what to reorder, how much, and when. A demand forecasting and purchase planning app built for Egyptian local brands and online sellers. Sign in with your email, no installs." name="description"/>
+<link href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDMyIDMyIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzBFMjc0MyIvPgo8cmVjdCB4PSI4IiB5PSIxNyIgd2lkdGg9IjMuNiIgaGVpZ2h0PSI3IiByeD0iMS4zIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQuMiIgeT0iMTIiIHdpZHRoPSIzLjYiIGhlaWdodD0iMTIiIHJ4PSIxLjMiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9Ii44Ii8+CjxyZWN0IHg9IjIwLjQiIHk9IjgiIHdpZHRoPSIzLjYiIGhlaWdodD0iMTYiIHJ4PSIxLjMiIGZpbGw9IiM1REEyRjIiLz4KPC9zdmc+" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Public+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media=&#39;all&#39;"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Public+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
+<script async src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<style>
+:root{
+  --navy:#0E2743;--navy-2:#17375D;--navy-3:#1E4778;
+  --ink:#0F1822;--body:#3A4959;--muted:#6C7C90;--faint:#95A3B4;
+  --line:#E0E6ED;--line-2:#EDF1F6;
+  --bg:#FFFFFF;--bg-2:#F7F9FC;--bg-3:#EDF2F8;--card:#FFFFFF;
+  --accent:#1A6DD4;--accent-2:#0F5BB8;--accent-ink:#FFFFFF;--gold:#B0801F;
+  --ok:#17784A;--ok-bg:#E7F5EC;--warn:#8E6100;--warn-bg:#FCF3E1;--bad:#A82219;--bad-bg:#FCEBE9;
+  --shadow-s:0 1px 2px rgba(14,39,67,.05),0 2px 8px rgba(14,39,67,.05);
+  --shadow:0 2px 4px rgba(14,39,67,.05),0 12px 32px rgba(14,39,67,.08);
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans","IBM Plex Sans Arabic",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mx:1140px;--r:12px;
+}
+html[lang="ar"]{--serif:"IBM Plex Sans Arabic","Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --navy:#081726;--navy-2:#0D2440;--navy-3:#133155;
+  --ink:#ECF2F9;--body:#B4C3D4;--muted:#8697AC;--faint:#6E7F95;
+  --line:#1F3148;--line-2:#182639;
+  --bg:#080E18;--bg-2:#0D1624;--bg-3:#111E31;--card:#0D1624;
+  --accent:#5DA2F2;--accent-2:#79B4F7;--accent-ink:#04101E;--gold:#D6A644;
+  --ok:#63D394;--ok-bg:#0F2A1C;--warn:#DDB254;--warn-bg:#2A2110;--bad:#F08A80;--bad-bg:#2B1512;
+  --shadow-s:0 1px 2px rgba(0,0,0,.5);
+  --shadow:0 2px 4px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4);
+}}
+:root[data-theme="dark"]{
+  --navy:#081726;--navy-2:#0D2440;--navy-3:#133155;
+  --ink:#ECF2F9;--body:#B4C3D4;--muted:#8697AC;--faint:#6E7F95;
+  --line:#1F3148;--line-2:#182639;
+  --bg:#080E18;--bg-2:#0D1624;--bg-3:#111E31;--card:#0D1624;
+  --accent:#5DA2F2;--accent-2:#79B4F7;--accent-ink:#04101E;--gold:#D6A644;
+  --ok:#63D394;--ok-bg:#0F2A1C;--warn:#DDB254;--warn-bg:#2A2110;--bad:#F08A80;--bad-bg:#2B1512;
+  --shadow-s:0 1px 2px rgba(0,0,0,.5);
+  --shadow:0 2px 4px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--body);font-family:var(--sans);font-size:16.5px;
+  line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--serif);color:var(--ink);line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(2.1rem,5.4vw,3.6rem);font-weight:700;letter-spacing:-.025em}
+h2{font-size:clamp(1.65rem,3.6vw,2.5rem);font-weight:600;letter-spacing:-.015em}
+h3{font-size:1.25rem;font-weight:600}
+h4{font-size:1.02rem;font-weight:600;font-family:var(--sans)}
+p{margin:0 0 1.05em}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+strong{color:var(--ink);font-weight:600}
+.wrap{max-width:var(--mx);margin:0 auto;padding:0 24px}
+.narrow{max-width:800px;margin:0 auto}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold);margin:0 0 14px}
+.lede{font-size:clamp(1.02rem,1.8vw,1.18rem);color:var(--body)}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 90%,transparent);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:var(--mx);margin:0 auto;padding:12px 24px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0}
+.brand svg{flex:0 0 32px}
+.brand b{font-family:var(--serif);font-weight:700;color:var(--ink);font-size:1.02rem;
+  line-height:1.15;letter-spacing:-.01em}
+.brand span{display:block;font-family:var(--sans);font-size:.66rem;font-weight:600;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--faint)}
+.tabs{display:flex;gap:4px;align-items:center}
+.tab{background:none;border:none;font-family:var(--sans);font-size:.92rem;font-weight:500;
+  color:var(--body);padding:8px 13px;border-radius:7px;cursor:pointer;transition:.15s;
+  white-space:nowrap}
+.tab:hover{background:var(--bg-3);color:var(--ink)}
+.tab.on{color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);
+  font-weight:600}
+@media(max-width:1000px){.tabs{display:none}}
+.menubtn{display:none;background:none;border:1px solid var(--line);border-radius:7px;
+  padding:8px 11px;cursor:pointer;color:var(--ink)}
+@media(max-width:1000px){.menubtn{display:block}}
+.drawer{display:none;border-top:1px solid var(--line);background:var(--bg);padding:8px 24px 16px}
+.drawer.open{display:block}
+.drawer .tab{display:block;width:100%;text-align:left;padding:11px 12px;font-size:1rem}
+
+/* ---------- BUTTONS ---------- */
+.btn{display:inline-block;padding:13px 26px;border-radius:9px;font-weight:600;font-size:.95rem;
+  text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:.16s;
+  font-family:var(--sans);text-align:center}
+.btn-primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn-primary:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm{padding:9px 17px;font-size:.88rem;border-radius:8px}
+.btn-lg{padding:16px 34px;font-size:1.02rem}
+.onnavy .btn-ghost{color:#fff;border-color:rgba(255,255,255,.34)}
+.onnavy .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1);color:#fff}
+
+/* ---------- PAGES ---------- */
+.page{display:none;animation:fade .34s ease}
+.page.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+section{padding:78px 0}
+section.tight{padding:56px 0}
+.alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.head{max-width:66ch;margin:0 0 48px}
+.head.mid{margin:0 auto 48px;text-align:center}
+
+/* ---------- HERO ---------- */
+.hero{background:linear-gradient(168deg,var(--navy) 0%,var(--navy-2) 58%,var(--navy-3) 100%);
+  color:#fff;padding:92px 0 100px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-30%;right:-15%;width:70%;height:130%;
+  background:radial-gradient(ellipse at center,rgba(93,162,242,.2),transparent 62%)}
+.hero::after{content:"";position:absolute;inset:0;opacity:.35;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:46px 46px;
+  mask-image:radial-gradient(ellipse at 20% 0%,#000,transparent 72%)}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{color:#fff;max-width:16ch;margin-bottom:.4em}
+.hero .eyebrow{color:#9CC4EE}
+.hero .lede{color:#C3D6EA;max-width:54ch;margin-bottom:32px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-note{margin-top:22px;font-size:.88rem;color:#8FA9C6}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px;padding-top:30px;
+  border-top:1px solid rgba(255,255,255,.15)}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr);gap:20px}}
+.stats b{display:block;font-family:var(--serif);font-size:1.8rem;color:#fff;line-height:1.05;
+  margin-bottom:2px}
+.stats small{color:#8FA9C6;font-size:.81rem;line-height:1.45;display:block}
+
+/* ---------- GRIDS / CARDS ---------- */
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:940px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:660px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;
+  box-shadow:var(--shadow-s);transition:.18s}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.card h3{margin-bottom:8px}
+.card p{margin:0;font-size:.95rem}
+.kicker{display:inline-block;font-family:var(--serif);font-size:.82rem;font-weight:700;
+  color:var(--gold);letter-spacing:.1em;margin-bottom:14px}
+.ico{width:42px;height:42px;border-radius:10px;background:color-mix(in srgb,var(--accent) 11%,transparent);
+  display:grid;place-items:center;margin-bottom:16px;color:var(--accent)}
+
+/* ---------- PAIN ---------- */
+.pains{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:760px){.pains{grid-template-columns:1fr}}
+.pain{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 var(--r) var(--r) 0;padding:26px 28px}
+.pain b{display:block;color:var(--ink);font-size:1.06rem;margin-bottom:7px;font-family:var(--serif)}
+.pain p{margin:0;font-size:.95rem}
+.verdict{margin-top:26px;text-align:center;font-family:var(--serif);font-size:1.18rem;
+  color:var(--ink);max-width:60ch;margin-inline:auto}
+
+/* ---------- FEATURE BLOCKS ---------- */
+.feat{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;
+  margin-bottom:22px;box-shadow:var(--shadow-s)}
+.feat-h{display:flex;gap:18px;align-items:flex-start;padding:28px 30px 4px}
+.feat-n{flex:0 0 40px;height:40px;border-radius:10px;background:var(--navy);color:#fff;
+  display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:1.02rem}
+.feat-h h3{margin:0 0 4px}
+.feat-h .sub{font-size:.92rem;color:var(--muted);margin:0}
+.feat-b{padding:18px 30px 28px 88px}
+@media(max-width:640px){.feat-b{padding:18px 24px 26px}.feat-h{padding:24px 24px 4px}}
+.fr{display:grid;grid-template-columns:118px 1fr;gap:16px;padding:13px 0;
+  border-top:1px solid var(--line-2)}
+@media(max-width:560px){.fr{grid-template-columns:1fr;gap:3px}}
+.fr dt{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);padding-top:4px}
+.fr dd{margin:0;font-size:.96rem}
+.fr.use dt{color:var(--accent)}
+.fr.why dt{color:var(--gold)}
+
+/* ---------- DIAGRAM ---------- */
+.figure{background:var(--bg-3);border:1px solid var(--line);border-radius:var(--r);padding:24px;
+  margin:26px 0}
+.figure svg{display:block;width:100%;height:auto}
+.figure figcaption{font-size:.87rem;color:var(--muted);margin-top:14px;text-align:center}
+
+/* ---------- 9 BOX ---------- */
+.matrix{display:grid;grid-template-columns:auto repeat(3,1fr);gap:8px;margin:26px 0}
+@media(max-width:700px){.matrix{grid-template-columns:auto repeat(3,1fr);font-size:.8rem}}
+.mh{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);display:grid;place-items:center;text-align:center;padding:6px}
+.mrow{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);display:grid;place-items:center;padding:6px 10px;writing-mode:horizontal-tb}
+.mc{border-radius:9px;padding:14px 13px;border:1px solid var(--line);background:var(--card);
+  min-height:96px}
+.mc b{display:block;font-family:var(--serif);font-size:1.02rem;color:var(--ink);margin-bottom:4px}
+.mc span{font-size:.79rem;line-height:1.45;display:block;color:var(--body)}
+.mc.hot{background:var(--ok-bg);border-color:color-mix(in srgb,var(--ok) 34%,transparent)}
+.mc.mid{background:var(--warn-bg);border-color:color-mix(in srgb,var(--warn) 28%,transparent)}
+.mc.cold{background:var(--bad-bg);border-color:color-mix(in srgb,var(--bad) 26%,transparent)}
+
+/* ---------- TABLE ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:580px;font-size:.93rem}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--bg-3);color:var(--ink);font-weight:600;font-size:.76rem;
+  text-transform:uppercase;letter-spacing:.07em}
+tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.win{background:var(--ok-bg)}
+tr.win td{color:var(--ink);font-weight:600}
+
+/* ---------- STEPS ---------- */
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;position:relative;padding:0 0 30px 58px;margin-left:16px;
+  border-left:2px solid var(--line)}
+.steps li:last-child{border-left-color:transparent;padding-bottom:0}
+.steps li::before{content:counter(s);position:absolute;left:-17px;top:-4px;width:32px;height:32px;
+  border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;
+  font-size:.85rem;font-weight:700}
+.steps b{display:block;color:var(--ink);font-size:1.1rem;margin-bottom:5px;font-family:var(--serif)}
+.steps p{margin:0;font-size:.96rem}
+
+/* ---------- CALLOUTS ---------- */
+.box{border-radius:var(--r);padding:26px 30px;margin:28px 0;border:1px solid var(--line);
+  background:var(--bg-2)}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.box .lab{display:block;color:var(--ink);font-weight:600;margin-bottom:9px;font-size:1rem}
+.box.warn{background:var(--warn-bg);border-color:color-mix(in srgb,var(--warn) 32%,transparent)}
+.box.ok{background:var(--ok-bg);border-color:color-mix(in srgb,var(--ok) 32%,transparent)}
+.box ul{margin:0;padding-left:20px}.box li{margin-bottom:8px;font-size:.96rem}
+
+/* ---------- SHEETS ---------- */
+.sheets{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;background:var(--card)}
+@media(max-width:900px){.sheets{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.sheets{grid-template-columns:1fr}}
+.sh{padding:20px 22px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.sh b{display:block;color:var(--ink);font-size:.97rem;margin-bottom:2px}
+.sh span{font-size:.87rem;color:var(--muted);line-height:1.5}
+
+/* ---------- PRICING ---------- */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+@media(max-width:900px){.tiers{grid-template-columns:1fr;max-width:440px;margin:0 auto}}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px 28px;
+  box-shadow:var(--shadow-s);position:relative}
+.tier.best{border:2px solid var(--accent);box-shadow:var(--shadow)}
+.badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);
+  color:var(--accent-ink);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 15px;border-radius:99px;white-space:nowrap}
+.tier h3{font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.price{font-family:var(--serif);font-size:2.7rem;font-weight:700;color:var(--ink);line-height:1}
+.price small{font-family:var(--sans);font-size:.9rem;font-weight:500;color:var(--muted)}
+.who{font-size:.9rem;color:var(--muted);margin:12px 0 22px;min-height:44px}
+.feats{list-style:none;padding:0;margin:0 0 26px}
+.feats li{position:relative;padding:9px 0 9px 27px;font-size:.93rem;border-bottom:1px solid var(--line-2)}
+.feats li:last-child{border-bottom:none}
+.feats li::before{content:"";position:absolute;left:2px;top:16px;width:11px;height:6px;
+  border-left:2px solid var(--ok);border-bottom:2px solid var(--ok);transform:rotate(-45deg)}
+.tier .btn{display:block}
+
+/* ---------- FAQ ---------- */
+details{border:1px solid var(--line);border-radius:10px;background:var(--card);margin-bottom:11px;
+  overflow:hidden}
+summary{padding:18px 22px;cursor:pointer;font-weight:600;color:var(--ink);font-size:1rem;
+  list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;color:var(--accent);font-weight:400;line-height:1;flex:0 0 auto}
+details[open] summary::after{content:"\2212"}
+details .ans{padding:0 22px 20px;font-size:.95rem}
+details .ans p:last-child{margin-bottom:0}
+
+/* ---------- BAND ---------- */
+.band{background:linear-gradient(160deg,var(--navy),var(--navy-3));color:#fff;text-align:center;
+  padding:76px 0}
+.band h2{color:#fff}
+.band p{color:#C3D6EA;max-width:54ch;margin:0 auto 28px}
+.band .btn-ghost{color:#fff;border-color:rgba(255,255,255,.34)}
+.band .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+footer{background:var(--bg-2);border-top:1px solid var(--line);padding:46px 0 34px;font-size:.89rem;
+  color:var(--muted)}
+.foot{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-start}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.89rem;
+  font-family:var(--sans);padding:0}
+.foot-links button:hover{color:var(--accent)}
+.fine{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);font-size:.82rem;
+  color:var(--faint);max-width:80ch}
+
+/* ---------- CHECKOUT ---------- */
+.btn.loading{opacity:.7;pointer-events:none}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(0);
+  background:var(--ink);color:#fff;padding:13px 20px;border-radius:10px;font-size:.9rem;
+  box-shadow:var(--shadow);z-index:200;max-width:calc(100vw - 32px);opacity:0;
+  pointer-events:none;transition:opacity .18s,transform .18s}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(-6px)}
+.price-note{font-size:.82rem;color:var(--faint);margin-top:18px;text-align:center}
+.thanks{min-height:60vh;display:flex;align-items:center;justify-content:center;padding:60px 24px}
+.thanks-card{max-width:480px;text-align:center}
+.thanks-ico{width:60px;height:60px;border-radius:50%;background:var(--ok-bg);color:var(--ok);
+  display:grid;place-items:center;margin:0 auto 22px}
+/* ---------- RTL ---------- */
+html[dir="rtl"] th, html[dir="rtl"] td{text-align:right}
+html[dir="rtl"] .drawer .tab{text-align:right}
+html[dir="rtl"] .price-note{text-align:right !important}
+html[dir="rtl"] .box ul{padding-left:0;padding-right:20px}
+html[dir="rtl"] .pain{border-left:none;border-right:3px solid var(--gold)}
+html[dir="rtl"] .steps li{padding:0 58px 30px 0;margin-left:0;margin-right:16px;
+  border-left:none;border-right:2px solid var(--line)}
+html[dir="rtl"] .steps li:last-child{border-right-color:transparent}
+html[dir="rtl"] .steps li::before{left:auto;right:-17px}
+html[dir="rtl"] .feats li{padding:9px 27px 9px 0}
+html[dir="rtl"] .feats li::before{left:auto;right:2px}
+
+</style>
+</head>
+<body>
+<nav class="nav">
+<div class="nav-in">
+<a class="brand" data-go="home" href="#">
+<svg aria-hidden="true" fill="none" height="32" viewbox="0 0 32 32" width="32">
+<rect fill="var(--navy)" height="32" rx="8" width="32"></rect>
+<rect fill="#fff" height="7" opacity=".55" rx="1.3" width="3.6" x="8" y="17"></rect>
+<rect fill="#fff" height="12" opacity=".8" rx="1.3" width="3.6" x="14.2" y="12"></rect>
+<rect fill="#5DA2F2" height="16" rx="1.3" width="3.6" x="20.4" y="8"></rect>
+</svg>
+<b data-t-html="t1"></b>
+</a>
+<div class="tabs" id="tabs">
+<button class="tab on" data-go="home" data-t="t2"></button>
+<button class="tab" data-go="provide" data-t="t3"></button>
+<button class="tab" data-go="how" data-t="t4"></button>
+<button class="tab" data-go="proof" data-t="t5"></button>
+<button class="tab" data-go="pricing" data-t="t6"></button>
+<button class="tab" data-go="faq" data-t="t7"></button>
+</div>
+<div style="display:flex;gap:8px;align-items:center">
+<button class="btn btn-ghost btn-sm langbtn" id="langBtn" type="button">العربية</button>
+<a class="btn btn-primary btn-sm" data-go="pricing" data-t="t8" href="#"></a>
+<button aria-label="Menu" class="menubtn" id="menubtn">
+<svg fill="none" height="18" viewbox="0 0 18 18" width="18"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
+</button>
+</div>
+</div>
+<div class="drawer" id="drawer">
+<button class="btn btn-ghost btn-sm langbtn" id="langBtnM" type="button" style="align-self:flex-start;margin-bottom:6px">العربية</button>
+<button class="tab" data-go="home" data-t="t9"></button>
+<button class="tab" data-go="provide" data-t="t10"></button>
+<button class="tab" data-go="how" data-t="t11"></button>
+<button class="tab" data-go="proof" data-t="t12"></button>
+<button class="tab" data-go="pricing" data-t="t13"></button>
+<button class="tab" data-go="faq" data-t="t14"></button>
+</div>
+</nav>
+<!-- ============ HOME ============ -->
+<div class="page on" id="p-home">
+<header class="hero onnavy">
+<div class="wrap">
+<p class="eyebrow" data-t="t15"></p>
+<h1 data-t="t16"></h1>
+<p class="lede" data-t="t17"></p>
+<div class="hero-cta" data-t-html="t18"></div>
+<p class="hero-note" data-t="t19"></p>
+<div class="stats">
+<div data-t-html="t20"></div>
+<div data-t-html="t21"></div>
+<div data-t-html="t22"></div>
+<div data-t-html="t23"></div>
+</div>
+</div>
+</header>
+<section>
+<div class="wrap">
+<div class="head mid">
+<p class="eyebrow" data-t="t24"></p>
+<h2 data-t="t25"></h2>
+<p class="lede" data-t="t26"></p>
+</div>
+<div class="pains">
+<div class="pain">
+<b data-t="t27"></b>
+<p data-t="t28"></p>
+</div>
+<div class="pain">
+<b data-t="t29"></b>
+<p data-t="t30"></p>
+</div>
+</div>
+<p class="verdict" data-t="t31"></p>
+</div>
+</section>
+<section class="alt">
+<div class="wrap">
+<div class="head mid">
+<p class="eyebrow" data-t="t32"></p>
+<h2 data-t="t33"></h2>
+<p class="lede" data-t="t34"></p>
+</div>
+<div class="grid g2">
+<div class="card">
+<div class="ico"><svg fill="none" height="20" viewbox="0 0 20 20" width="20"><path d="M2 14l4.5-5 3.5 3L18 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path><path d="M13 4h5v5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></svg></div>
+<span class="kicker" data-t="t35"></span>
+<h3 data-t="t36"></h3>
+<p data-t="t37"></p>
+</div>
+<div class="card">
+<div class="ico"><svg fill="none" height="20" viewbox="0 0 20 20" width="20"><circle cx="10" cy="10" r="7.2" stroke="currentColor" stroke-width="1.9"></circle><path d="M10 5.6V10l3 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"></path></svg></div>
+<span class="kicker" data-t="t38"></span>
+<h3 data-t="t39"></h3>
+<p data-t="t40"></p>
+</div>
+<div class="card">
+<div class="ico"><svg fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="6.4" rx="1.2" stroke="currentColor" stroke-width="1.8" width="4" x="2.6" y="11"></rect><rect height="11.4" rx="1.2" stroke="currentColor" stroke-width="1.8" width="4" x="8" y="6"></rect><rect height="14.8" rx="1.2" stroke="currentColor" stroke-width="1.8" width="4" x="13.4" y="2.6"></rect></svg></div>
+<span class="kicker" data-t="t41"></span>
+<h3 data-t="t42"></h3>
+<p data-t="t43"></p>
+</div>
+<div class="card">
+<div class="ico"><svg fill="none" height="20" viewbox="0 0 20 20" width="20"><path d="M3.4 5.4h13.2M3.4 10h13.2M3.4 14.6h8" stroke="currentColor" stroke-linecap="round" stroke-width="1.9"></path></svg></div>
+<span class="kicker" data-t="t44"></span>
+<h3 data-t="t45"></h3>
+<p data-t="t46"></p>
+</div>
+</div>
+<p data-t-html="t47" style="text-align:center;margin-top:34px"></p>
+</div>
+</section>
+<section>
+<div class="wrap narrow">
+<div class="head mid">
+<p class="eyebrow" data-t="t48"></p>
+<h2 data-t="t49"></h2>
+</div>
+<p data-t="t50"></p>
+<p data-t="t51"></p>
+<p data-t-html="t52"></p>
+<p data-t="t53"></p>
+</div>
+</section>
+<div class="band">
+<div class="wrap">
+<h2 data-t="t54"></h2>
+<p data-t="t55"></p>
+<div data-t-html="t56" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
+</div>
+</div>
+</div>
+<!-- ============ WHAT WE PROVIDE ============ -->
+<div class="page" id="p-provide">
+<section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
+<div class="wrap">
+<div class="head">
+<p class="eyebrow" data-t="t57"></p>
+<h2 data-t="t58"></h2>
+<p class="lede" data-t="t59"></p>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap">
+<!-- 1 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t60"></div><div>
+<h3 data-t="t61"></h3>
+<p class="sub" data-t="t62"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t63"></dt><dd data-t="t64"></dd></dl>
+<dl class="fr use"><dt data-t="t65"></dt><dd data-t="t66"></dd></dl>
+<dl class="fr why"><dt data-t="t67"></dt><dd data-t="t68"></dd></dl>
+</div>
+</div>
+<!-- 2 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t69"></div><div>
+<h3 data-t="t70"></h3>
+<p class="sub" data-t="t71"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t72"></dt><dd data-t="t73"></dd></dl>
+<dl class="fr use"><dt data-t="t74"></dt><dd data-t="t75"></dd></dl>
+<dl class="fr why"><dt data-t="t76"></dt><dd data-t="t77"></dd></dl>
+</div>
+</div>
+<!-- 3 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t78"></div><div>
+<h3 data-t="t79"></h3>
+<p class="sub" data-t="t80"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t81"></dt><dd data-t="t82"></dd></dl>
+<dl class="fr use"><dt data-t="t83"></dt><dd data-t="t84"></dd></dl>
+<dl class="fr why"><dt data-t="t85"></dt><dd data-t="t86"></dd></dl>
+</div>
+</div>
+<!-- 4 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t87"></div><div>
+<h3 data-t="t88"></h3>
+<p class="sub" data-t="t89"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t90"></dt><dd data-t="t91"></dd></dl>
+<dl class="fr use"><dt data-t="t92"></dt><dd data-t="t93"></dd></dl>
+<dl class="fr why"><dt data-t="t94"></dt><dd data-t="t95"></dd></dl>
+<figure class="figure">
+<svg aria-label="Stock level over time showing reorder point and safety stock" role="img" viewbox="0 0 700 270">
+<defs><marker id="ar" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="var(--muted)"></path></marker></defs>
+<rect fill="var(--warn-bg)" height="36" stroke="none" width="600" x="60" y="196"></rect>
+<line stroke="var(--warn)" stroke-dasharray="5 4" stroke-width="1.4" x1="60" x2="660" y1="196" y2="196"></line>
+<line stroke="var(--accent)" stroke-dasharray="6 4" stroke-width="1.6" x1="60" x2="660" y1="150" y2="150"></line>
+<polyline fill="none" points="60,52 240,150 330,192 330,52 510,150 600,192 600,52 660,86" stroke="var(--ink)" stroke-linejoin="round" stroke-width="2.4"></polyline>
+<line stroke="var(--line)" stroke-width="1.6" x1="60" x2="660" y1="232" y2="232"></line>
+<line stroke="var(--line)" stroke-width="1.6" x1="60" x2="60" y1="40" y2="232"></line>
+<circle cx="240" cy="150" fill="var(--accent)" r="5.5"></circle>
+<circle cx="330" cy="192" fill="var(--ok)" r="5.5"></circle>
+<line marker-end="url(#ar)" stroke="var(--muted)" stroke-width="1.3" x1="240" x2="330" y1="216" y2="216"></line>
+<text fill="var(--muted)" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="285" y="211">lead time</text>
+<text fill="var(--accent)" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" x="248" y="141">order placed</text>
+<text fill="var(--ok)" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" x="338" y="185">goods arrive</text>
+<text dy="-6" fill="var(--accent)" font-family="Inter,sans-serif" font-size="11" text-anchor="end" x="664" y="154">reorder point</text>
+<text fill="var(--warn)" font-family="Inter,sans-serif" font-size="11" x="66" y="215">safety stock</text>
+<text dy="0" fill="var(--muted)" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" transform="rotate(-90 30 50)" x="30" y="50">stock</text>
+<text fill="var(--muted)" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="360" y="252">time</text>
+</svg>
+<figcaption data-t="t96"></figcaption>
+</figure>
+</div>
+</div>
+<!-- 5 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t97"></div><div>
+<h3 data-t="t98"></h3>
+<p class="sub" data-t="t99"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t100"></dt><dd data-t="t101"></dd></dl>
+<dl class="fr use"><dt data-t="t102"></dt><dd data-t="t103"></dd></dl>
+<dl class="fr why"><dt data-t="t104"></dt><dd data-t="t105"></dd></dl>
+</div>
+</div>
+<!-- 6 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t106"></div><div>
+<h3 data-t="t107"></h3>
+<p class="sub" data-t="t108"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t109"></dt><dd data-t="t110"></dd></dl>
+<dl class="fr use"><dt data-t="t111"></dt><dd data-t="t112"></dd></dl>
+<dl class="fr why"><dt data-t="t113"></dt><dd data-t="t114"></dd></dl>
+</div>
+</div>
+<!-- 7 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t115"></div><div>
+<h3 data-t="t116"></h3>
+<p class="sub" data-t="t117"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t118"></dt><dd data-t="t119"></dd></dl>
+<dl class="fr use"><dt data-t="t120"></dt><dd data-t="t121"></dd></dl>
+<dl class="fr why"><dt data-t="t122"></dt><dd data-t="t123"></dd></dl>
+</div>
+</div>
+<!-- 8 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t124"></div><div>
+<h3 data-t="t125"></h3>
+<p class="sub" data-t="t126"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t127"></dt><dd data-t="t128"></dd></dl>
+<dl class="fr use"><dt data-t="t129"></dt><dd data-t="t130"></dd></dl>
+<dl class="fr why"><dt data-t="t131"></dt><dd data-t="t132"></dd></dl>
+<div class="matrix" style="display:none">
+<div></div>
+<div class="mh" data-t="t133"></div><div class="mh" data-t="t134"></div><div class="mh" data-t="t135"></div>
+<div class="mrow" data-t-html="t136"></div>
+<div class="mc hot" data-t-html="t137"></div>
+<div class="mc hot" data-t-html="t138"></div>
+<div class="mc mid" data-t-html="t139"></div>
+<div class="mrow" data-t-html="t140"></div>
+<div class="mc mid" data-t-html="t141"></div>
+<div class="mc mid" data-t-html="t142"></div>
+<div class="mc cold" data-t-html="t143"></div>
+<div class="mrow" data-t-html="t144"></div>
+<div class="mc mid" data-t-html="t145"></div>
+<div class="mc cold" data-t-html="t146"></div>
+<div class="mc cold" data-t-html="t147"></div>
+</div>
+</div>
+</div>
+<!-- 9 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t148"></div><div>
+<h3 data-t="t149"></h3>
+<p class="sub" data-t="t150"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t151"></dt><dd data-t="t152"></dd></dl>
+<dl class="fr use"><dt data-t="t153"></dt><dd data-t="t154"></dd></dl>
+<dl class="fr why"><dt data-t="t155"></dt><dd data-t="t156"></dd></dl>
+</div>
+</div>
+<!-- 10 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t157"></div><div>
+<h3 data-t="t158"></h3>
+<p class="sub" data-t="t159"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t160"></dt><dd data-t="t161"></dd></dl>
+<dl class="fr use"><dt data-t="t162"></dt><dd data-t="t163"></dd></dl>
+<dl class="fr why"><dt data-t="t164"></dt><dd data-t="t165"></dd></dl>
+</div>
+</div>
+<!-- 11 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t166"></div><div>
+<h3 data-t="t167"></h3>
+<p class="sub" data-t="t168"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t169"></dt><dd data-t="t170"></dd></dl>
+<dl class="fr use"><dt data-t="t171"></dt><dd data-t="t172"></dd></dl>
+<dl class="fr why"><dt data-t="t173"></dt><dd data-t="t174"></dd></dl>
+</div>
+</div>
+<!-- 12 -->
+<div class="feat">
+<div class="feat-h"><div class="feat-n" data-t="t175"></div><div>
+<h3 data-t="t176"></h3>
+<p class="sub" data-t="t177"></p>
+</div></div>
+<div class="feat-b">
+<dl class="fr"><dt data-t="t178"></dt><dd data-t="t179"></dd></dl>
+<dl class="fr use"><dt data-t="t180"></dt><dd data-t="t181"></dd></dl>
+<dl class="fr why"><dt data-t="t182"></dt><dd data-t="t183"></dd></dl>
+</div>
+</div>
+</div>
+</section>
+<section class="alt">
+<div class="wrap">
+<div class="head mid">
+<p class="eyebrow" data-t="t184"></p>
+<h2 data-t="t185"></h2>
+<p class="lede" data-t="t186"></p>
+</div>
+<div class="sheets">
+<div class="sh" data-t-html="t187"></div>
+<div class="sh" data-t-html="t188"></div>
+<div class="sh" data-t-html="t189"></div>
+<div class="sh" data-t-html="t190"></div>
+<div class="sh" data-t-html="t191"></div>
+<div class="sh" data-t-html="t192"></div>
+<div class="sh" data-t-html="t193"></div>
+<div class="sh" data-t-html="t194"></div>
+<div class="sh" data-t-html="t195"></div>
+<div class="sh" data-t-html="t196"></div>
+<div class="sh" data-t-html="t197"></div>
+<div class="sh" data-t-html="t420"></div>
+<div class="sh" data-t-html="t421"></div>
+<div class="sh" data-t-html="t422"></div>
+<div class="sh" data-t-html="t423"></div>
+<div class="sh" data-t-html="t198"></div>
+</div>
+<p data-t-html="t199" style="text-align:center;margin-top:34px"></p>
+</div>
+</section>
+</div>
+<!-- ============ HOW IT WORKS ============ -->
+<div class="page" id="p-how">
+<section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
+<div class="wrap">
+<div class="head">
+<p class="eyebrow" data-t="t200"></p>
+<h2 data-t="t201"></h2>
+<p class="lede" data-t="t202"></p>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap narrow">
+<h3 data-t="t203" style="margin-top:0"></h3>
+<ol class="steps">
+<li><b data-t="t204"></b>
+<p data-t="t205"></p></li>
+<li><b data-t="t206"></b>
+<p data-t="t207"></p></li>
+<li><b data-t="t208"></b>
+<p data-t="t209"></p></li>
+<li><b data-t="t210"></b>
+<p data-t="t211"></p></li>
+<li><b data-t="t212"></b>
+<p data-t="t213"></p></li>
+</ol>
+<h3 data-t="t214"></h3>
+<p data-t="t215"></p>
+<h3 data-t="t216"></h3>
+<p data-t="t217"></p>
+<h3 data-t="t218"></h3>
+<p data-t="t219"></p>
+<div class="box ok">
+<span class="lab" data-t="t220"></span>
+<ul>
+<li data-t="t221"></li>
+<li data-t="t222"></li>
+<li data-t="t223"></li>
+<li data-t="t224"></li>
+</ul>
+</div>
+<div class="box warn">
+<span class="lab" data-t="t225"></span>
+<p data-t-html="t226"></p>
+<p data-t-html="t227" style="margin-bottom:0"></p>
+</div>
+</div>
+</section>
+</div>
+<!-- ============ PROOF ============ -->
+<div class="page" id="p-proof">
+<section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
+<div class="wrap">
+<div class="head">
+<p class="eyebrow" data-t="t228"></p>
+<h2 data-t="t229"></h2>
+<p class="lede" data-t="t230"></p>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap">
+<h3 data-t="t231" style="margin-top:0"></h3>
+<p data-t="t232"></p>
+<div class="tablewrap">
+<table>
+<thead><tr><th data-t="t233"></th><th class="n" data-t="t234"></th><th class="n" data-t="t235"></th>
+<th class="n" data-t="t236"></th><th class="n" data-t="t237"></th><th class="n" data-t="t238"></th>
+<th class="n" data-t="t239"></th></tr></thead>
+<tbody>
+<tr><td data-t="t240"></td><td class="n" data-t="t241"></td><td class="n" data-t="t242"></td>
+<td class="n" data-t="t243"></td><td class="n" data-t="t244"></td><td class="n" data-t="t245"></td><td class="n" data-t="t246"></td></tr>
+<tr><td data-t="t247"></td><td class="n" data-t="t248"></td><td class="n" data-t="t249"></td>
+<td class="n" data-t="t250"></td><td class="n" data-t="t251"></td><td class="n" data-t="t252"></td><td class="n" data-t="t253"></td></tr>
+<tr class="win"><td data-t="t254"></td><td class="n" data-t="t255"></td><td class="n" data-t="t256"></td>
+<td class="n" data-t="t257"></td><td class="n" data-t="t258"></td><td class="n" data-t="t259"></td><td class="n" data-t="t260"></td></tr>
+</tbody>
+</table>
+</div>
+<p data-t="t261" style="margin-top:20px;font-size:.93rem;color:var(--muted)"></p>
+<div class="box ok">
+<span class="lab" data-t="t262"></span>
+<p data-t="t263" style="margin-bottom:0"></p>
+</div>
+<h3 data-t="t264"></h3>
+<p data-t="t265"></p>
+<ul>
+<li data-t="t266"></li>
+<li data-t="t267"></li>
+<li data-t="t268"></li>
+<li data-t="t269"></li>
+</ul>
+</div>
+</section>
+<section class="alt">
+<div class="wrap narrow">
+<div class="head">
+<p class="eyebrow" data-t="t270"></p>
+<h2 data-t="t271"></h2>
+<p class="lede" data-t="t272"></p>
+</div>
+<div class="box warn">
+<ul>
+<li data-t-html="t273"></li>
+<li data-t-html="t274"></li>
+<li data-t-html="t275"></li>
+<li data-t-html="t276"></li>
+<li data-t-html="t277"></li>
+<li data-t-html="t278"></li>
+<li data-t-html="t279"></li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<!-- ============ PRICING ============ -->
+<div class="page" id="p-pricing">
+<section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
+<div class="wrap">
+<div class="head mid">
+<p class="eyebrow" data-t="t280"></p>
+<h2 data-t="t281"></h2>
+<p class="lede" data-t="t282"></p>
+<p class="price-note" data-t="t283" style="text-align:left;max-width:66ch;margin:0"></p>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap">
+<div class="tiers">
+<div class="tier">
+<h3 data-t="t284"></h3>
+<div class="price" data-t-html="t285"></div>
+<p class="who" data-t="t286"></p>
+<ul class="feats">
+<li data-t="t287"></li>
+<li data-t="t288"></li>
+<li data-t="t289"></li>
+<li data-t="t290"></li>
+<li data-t="t291"></li>
+<li data-t="t292"></li>
+</ul>
+<a class="btn btn-ghost" data-checkout="basic" data-t="t293" href="#"></a>
+</div>
+<div class="tier best">
+<span class="badge" data-t="t294"></span>
+<h3 data-t="t295"></h3>
+<div class="price" data-t-html="t296"></div>
+<p class="who" data-t="t297"></p>
+<ul class="feats">
+<li data-t="t298"></li>
+<li data-t="t299"></li>
+<li data-t="t300"></li>
+<li data-t="t301"></li>
+<li data-t="t302"></li>
+<li data-t="t303"></li>
+</ul>
+<a class="btn btn-primary" data-checkout="pro" data-t="t304" href="#"></a>
+</div>
+<div class="tier">
+<h3 data-t="t305"></h3>
+<div class="price" data-t-html="t306"></div>
+<p class="who" data-t="t307"></p>
+<ul class="feats">
+<li data-t="t308"></li>
+<li data-t="t309"></li>
+<li data-t="t310"></li>
+<li data-t="t311"></li>
+</ul>
+<a class="btn btn-ghost" data-checkout="store" data-t="t313" href="#"></a>
+</div>
+</div>
+<div class="grid g2" style="margin-top:44px">
+<div class="card"><h4 data-t="t314" style="margin-top:0"></h4>
+<p data-t="t315"></p></div>
+<div class="card"><h4 data-t="t318" style="margin-top:0"></h4>
+<p data-t="t319"></p></div>
+</div>
+</div>
+</section>
+</div>
+<!-- ============ FAQ ============ -->
+<div class="page" id="p-faq">
+<section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
+<div class="wrap">
+<div class="head mid">
+<p class="eyebrow" data-t="t320"></p>
+<h2 data-t="t321"></h2>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap narrow">
+<details open=""><summary data-t="t322"></summary>
+<div class="ans"><p data-t="t323"></p></div></details>
+<details><summary data-t="t324"></summary>
+<div class="ans"><p data-t="t325"></p></div></details>
+<details><summary data-t="t326"></summary>
+<div class="ans"><p data-t="t327"></p></div></details>
+<details><summary data-t="t328"></summary>
+<div class="ans"><p data-t="t329"></p></div></details>
+<details><summary data-t="t330"></summary>
+<div class="ans"><p data-t="t331"></p></div></details>
+<details><summary data-t="t332"></summary>
+<div class="ans"><p data-t="t333"></p></div></details>
+<details><summary data-t="t334"></summary>
+<div class="ans"><p data-t="t335"></p></div></details>
+<details><summary data-t="t336"></summary>
+<div class="ans"><p data-t="t337"></p></div></details>
+<details><summary data-t="t338"></summary>
+<div class="ans"><p data-t="t339"></p></div></details>
+<details><summary data-t="t340"></summary>
+<div class="ans"><p data-t="t341"></p></div></details>
+<details><summary data-t="t342"></summary>
+<div class="ans"><p data-t="t343"></p></div></details>
+<details><summary data-t="t344"></summary>
+<div class="ans"><p data-t="t345"></p></div></details>
+</div>
+</section>
+<div class="band">
+<div class="wrap">
+<h2 data-t="t346"></h2>
+<p data-t="t347"></p>
+<a class="btn btn-primary btn-lg" data-go="pricing" data-t="t348" href="#"></a>
+</div>
+</div>
+</div>
+<div class="page" id="p-thanks">
+<div class="thanks">
+<div class="thanks-card">
+<div class="thanks-ico"><svg fill="none" height="26" viewbox="0 0 20 20" width="26"><path d="M3.4 10.4l4.2 4.2L16.6 5.4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.1"></path></svg></div>
+<h2 data-t="t349"></h2>
+<p class="lede" data-t="t350"></p>
+<p data-t="t351" style="font-size:.9rem"></p>
+<p data-t-html="t352" style="margin-top:26px"></p>
+</div>
+</div>
+</div>
+<div class="page" id="p-privacy">
+<section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
+<div class="wrap"><div class="head mid"><p class="eyebrow" data-t="t353"></p><h2 data-t="t354"></h2>
+<p data-t="t355" style="color:var(--muted);margin-top:6px"></p></div></div>
+</section>
+<section><div class="wrap narrow">
+<h3 data-t="t356"></h3>
+<p data-t="t357"></p>
+<h3 data-t="t358"></h3>
+<p data-t="t359"></p>
+<ul>
+<li data-t-html="t360"></li>
+<li data-t-html="t361"></li>
+<li data-t-html="t362"></li>
+</ul>
+<p data-t="t363"></p>
+<h3 data-t="t364"></h3>
+<p data-t="t365"></p>
+<h3 data-t="t366"></h3>
+<p data-t="t367"></p>
+<h3 data-t="t368"></h3>
+<p data-t="t369"></p>
+<h3 data-t="t370"></h3>
+<p data-t="t371"></p>
+<h3 data-t="t372"></h3>
+<p data-t="t373"></p>
+<h3 data-t="t374"></h3>
+<p data-t="t375"></p>
+<h3 data-t="t376"></h3>
+<p data-t="t377"></p>
+<h3 data-t="t378"></h3>
+<p data-t="t379"></p>
+</div></section>
+</div>
+<div class="page" id="p-terms">
+<section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
+<div class="wrap"><div class="head mid"><p class="eyebrow" data-t="t380"></p><h2 data-t="t381"></h2>
+<p data-t="t382" style="color:var(--muted);margin-top:6px"></p></div></div>
+</section>
+<section><div class="wrap narrow">
+<h3 data-t="t383"></h3>
+<p data-t="t384"></p>
+<h3 data-t="t385"></h3>
+<p data-t="t386"></p>
+<h3 data-t="t387"></h3>
+<p data-t="t388"></p>
+<h3 data-t="t389"></h3>
+<p data-t="t390"></p>
+<h3 data-t="t391"></h3>
+<p data-t="t392"></p>
+<h3 data-t="t393"></h3>
+<p data-t="t394"></p>
+<h3 data-t="t395"></h3>
+<p data-t="t396"></p>
+<h3 data-t="t397"></h3>
+<p data-t="t398"></p>
+<h3 data-t="t399"></h3>
+<p data-t="t400"></p>
+<h3 data-t="t401"></h3>
+<p data-t="t402"></p>
+<h3 data-t="t403"></h3>
+<p data-t="t404"></p>
+<h3 data-t="t405"></h3>
+<p data-t="t406"></p>
+<h3 data-t="t407"></h3>
+<p data-t="t408"></p>
+</div></section>
+</div>
+<footer>
+<div class="wrap">
+<div class="foot">
+<div data-t-html="t409" style="max-width:32ch"></div>
+<div class="foot-links">
+<button data-go="provide" data-t="t410"></button>
+<button data-go="how" data-t="t411"></button>
+<button data-go="proof" data-t="t412"></button>
+<button data-go="pricing" data-t="t413"></button>
+<button data-go="faq" data-t="t414"></button>
+<button data-go="privacy" data-t="t415"></button>
+<button data-go="terms" data-t="t416"></button>
+</div>
+</div>
+<div class="fine" data-t="t417"></div>
+</div>
+</footer>
+<script>
+var SITE_EN = {
+  t1: 'Etlob Sa7<span>Demand planning for Egypt</span>',
+  t2: 'Home',
+  t3: 'What We Provide',
+  t4: 'How It Works',
+  t5: 'The Evidence',
+  t6: 'Pricing',
+  t7: 'FAQ',
+  t8: 'Start free trial',
+  t9: 'Home',
+  t10: 'What We Provide',
+  t11: 'How It Works',
+  t12: 'The Evidence',
+  t13: 'Pricing',
+  t14: 'FAQ',
+  t15: 'Built in Cairo for Egyptian brands',
+  t16: 'Know exactly what to reorder, and when.',
+  t17: 'Most small brands are excellent at selling and guessing at buying. This is the\n        system that removes the guess. It tells you how many units to order, from which supplier, on\n        which day, for every product you sell.',
+  t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">Start your free trial</a>\n<a class="btn btn-ghost btn-lg" data-go="provide" href="#">See what it does</a>',
+  t19: 'Runs in your browser. Arabic and English included. Priced in USD.',
+  t20: '<b>99.4%</b><small>Fill rate achieved in a two year simulation</small>',
+  t21: '<b>10 min</b><small>Your weekly routine once it is set up</small>',
+  t22: '<b>11</b><small>Connected pages. You type into four.</small>',
+  t23: '<b>2 min</b><small>To sign in. Just your email, no password to remember.</small>',
+  t24: 'The problem',
+  t25: 'You are almost certainly doing both of these at once',
+  t26: 'And most owners do not realise they are the same problem wearing two\n          different faces.',
+  t27: 'Your best seller keeps running out',
+  t28: 'You reorder when you notice the shelf looks low. By then your supplier needs three\n            weeks, and you spend those three weeks turning away the exact customers you worked\n            hardest and paid most to win.',
+  t29: 'Your worst product is holding your cash hostage',
+  t30: 'Somewhere there is stock you bought on a good feeling that has not moved in four\n            months. That is not inventory. That is money you cannot spend, sitting in a box, while\n            you cannot afford to restock the thing that actually sells.',
+  t31: 'Both are caused by the same thing: buying decisions made on instinct\n        instead of on your own numbers.',
+  t32: 'What this is',
+  t33: 'Not a stock counter. A purchasing brain.',
+  t34: 'Tracking what you already have is the input. The product is the decision at\n          the end of it.',
+  t35: '01',
+  t36: 'It forecasts demand instead of averaging it',
+  t37: 'It separates genuine seasonality from genuine randomness, so a winter product is never\n            treated as unpredictable simply for selling in winter. Then it detects whether each\n            product is growing or shrinking and projects forward, not backward.',
+  t38: '02',
+  t39: 'It makes the reorder decision for you',
+  t40: 'An exact reorder level per product, built from how fast it sells, how unpredictable it\n            is, how long your supplier takes, and how often that supplier is late. Then the cheapest\n            order size, rounded to something the supplier will actually accept.',
+  t41: '03',
+  t42: 'It shows you where your money actually is',
+  t43: 'Every product ranked by how much revenue it earns and how predictable it is, with a\n            specific instruction for each combination. Your steady top earner and your erratic top\n            earner should never be managed the same way, and now they are not.',
+  t44: '04',
+  t45: 'It hands you a purchase order you can send today',
+  t46: 'Every recommendation grouped by supplier, so you send one combined order instead of\n            messaging about one product at a time. Plus a one page dashboard showing cash tied up,\n            projected profit, and what needs action this morning.',
+  t47: '<a class="btn btn-ghost" data-go="provide" href="#">See every feature explained in detail</a>',
+  t48: 'The core idea',
+  t49: 'Ordering is a trade-off with a correct answer',
+  t50: 'Order in huge batches and you place very few orders, so the hassle and shipping cost per\n        order almost disappears. But you are now sitting on a mountain of stock, paying rent on it,\n        unable to spend that money, watching it go out of style.',
+  t51: 'Order tiny amounts constantly and you barely hold any stock at all. But you are paying the\n        full cost of placing an order every few days, and one late delivery empties you.',
+  t52: '<strong>There is exactly one order size where the two costs added together are at their\n        lowest.</strong> It is different for a 40 EGP bracelet than for a 480 EGP jacket, because\n        holding the jacket costs twelve times more per unit. Doing that calculation by feel across\n        thirty products is genuinely beyond what anyone can hold in their head.',
+  t53: 'That is the entire reason this app exists. Everything else in it is scaffolding around\n        that one calculation.',
+  t54: 'Stop guessing what to buy',
+  t55: 'Free trial on every plan. Nothing charged until it ends. Cancel in two clicks.',
+  t56: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">See pricing</a>\n<a class="btn btn-ghost btn-lg" data-go="proof" href="#">Read the evidence first</a>',
+  t57: 'What we provide',
+  t58: 'Twelve capabilities, explained honestly',
+  t59: 'For each one: what it is, how you actually use it, and why it matters to\n          your money. Where something is genuinely just convenient rather than transformative, we\n          say so.',
+  t60: '1',
+  t61: 'Seasonal separation',
+  t62: 'The single thing that separates this from every free template online',
+  t63: 'What it is',
+  t64: 'Before measuring anything, each month\'s sales are\n          divided by that month\'s seasonal index. A December that normally runs 80% above average\n          gets divided by 1.8, putting every month on a comparable footing.',
+  t65: 'How you use it',
+  t66: 'You pick one shape per product from a dropdown:\n          Winter Peak, Summer Peak, Ramadan and Eid, or Flat. That is the entire interaction. You\n          can edit the twelve numbers behind any shape if you want to, but most people never need\n          to.',
+  t67: 'Why it matters',
+  t68: 'Without this, a wool scarf selling 95 in\n          December and 3 in June looks wildly unpredictable, so the system holds a huge expensive\n          safety buffer to protect you. But a scarf is not unpredictable. It is a scarf. On our own\n          test data this one feature cut the safety stock on a seasonal product from 89 units down\n          to 17, with no loss of service. That is cash straight back into your account for\n          nothing.',
+  t69: '2',
+  t70: 'Demand forecasting with trend detection',
+  t71: 'Answers what is about to happen, not what typically happened',
+  t72: 'What it is',
+  t73: 'It compares the average of your most recent three\n          months against your earliest three and measures the slope between them, then projects that\n          forward and reapplies the season on top.',
+  t74: 'How you use it',
+  t75: 'You do nothing. You type twelve months of unit\n          sales and it appears. There is an on and off switch in Settings if you ever want to\n          disable it.',
+  t76: 'Why it matters',
+  t77: 'A flat average quietly under-orders every\n          growing product, forever. If a product is climbing by 3 units a month, an average of the\n          last twelve months is already about eighteen units behind reality by the time you use it.\n          That gap is exactly where stockouts on your rising stars come from, which are the most\n          expensive stockouts you can have.',
+  t78: '3',
+  t79: 'Safety stock that accounts for your supplier, not just your sales',
+  t80: 'The term almost every other tool leaves out',
+  t81: 'What it is',
+  t82: 'Safety stock covers two separate risks at once: your\n          sales running hotter than forecast during the wait, and your supplier arriving late. Both\n          are calculated and combined properly, per product.',
+  t83: 'How you use it',
+  t84: 'One number per supplier. If they usually take\n          21 days but you have seen 16 and you have seen 26, you enter 4. A rough rule is in the\n          file: worst delay minus best delay, divided by four.',
+  t85: 'Why it matters',
+  t86: 'Free templates only cover the sales half. That\n          means every stockout caused by a supplier being a week late is invisible to them, and in\n          Egypt that is a large share of them. It also produces a genuinely counterintuitive and\n          very useful insight: a reliable slow supplier is cheaper to stock for than an unreliable\n          fast one. Once that is a number in a sheet, it becomes leverage in a negotiation.',
+  t87: '4',
+  t88: 'Reorder point',
+  t89: 'Answers when. Not at zero, and not at a round number you invented.',
+  t90: 'What it is',
+  t91: 'A stock level per product. Reach it, place the order.\n          It equals your daily sales multiplied by your supplier\'s lead time, plus safety stock.',
+  t92: 'How you use it',
+  t93: 'You do not calculate anything. The Order\n          Decision sheet shows a coloured verdict per product: order today, order this week, stock is\n          healthy, or overstocked. Red, amber, green, blue.',
+  t94: 'Why it matters',
+  t95: 'Waiting until a product is nearly gone\n          guarantees a gap, because the supplier still needs their lead time after you notice. The\n          reorder point is the exact amount of stock that carries you through that wait and no more.\n          Ordering at the right level is worth more than ordering the right quantity.',
+  t96: 'Stock falls as you sell. It touches the reorder point, you order, and the\n            remaining stock carries you through the lead time. Safety stock is the cushion you only\n            eat into when something goes wrong.',
+  t97: '5',
+  t98: 'Economic order quantity',
+  t99: 'Answers how much, by finding the bottom of the cost curve',
+  t100: 'What it is',
+  t101: 'The order size where your ordering costs and your\n          holding costs added together are at their absolute minimum. It is a published formula from\n          1913 and it is used in factories worldwide.',
+  t102: 'How you use it',
+  t103: 'You enter two numbers once, in Settings: what\n          placing one order costs you all in, and roughly what it costs to hold 100 EGP of stock for\n          a year. Guidance for both is written into Settings. Being 20% off on these barely changes\n          the answer.',
+  t104: 'Why it matters',
+  t105: 'This is the number almost nobody calculates\n          and almost everybody gets wrong in both directions. Over-ordering freezes cash. Under-\n          ordering burns your time and shipping budget. The gap between a guessed quantity and the\n          optimal one is usually a meaningful share of your annual inventory cost.',
+  t106: '6',
+  t107: 'Supplier minimums and carton rounding',
+  t108: 'A small feature that removes a daily irritation',
+  t109: 'What it is',
+  t110: 'Every recommended quantity is automatically raised to\n          your supplier\'s minimum order and rounded up to a whole carton.',
+  t111: 'How you use it',
+  t112: 'Two numbers per supplier, entered once.',
+  t113: 'Why it matters',
+  t114: 'Honestly, this one is convenience rather than\n          transformation. But it is the difference between a tool that tells you to order 67 pieces\n          and one that tells you to order 72, which is six full boxes, which is an order you can\n          copy and send without thinking about it. Tools that ignore this get abandoned.',
+  t115: '7',
+  t116: 'Inventory position tracking',
+  t117: 'Prevents the single most expensive spreadsheet mistake',
+  t118: 'What it is',
+  t119: 'Every decision is made against stock on hand plus\n          stock already on order, never against what is physically in front of you.',
+  t120: 'How you use it',
+  t121: 'One column. When you place an order, type the\n          quantity into Stock On Order. When it arrives, move it to Stock On Hand.',
+  t122: 'Why it matters',
+  t123: 'Without it, here is what happens. You order.\n          The goods are in transit. You check the sheet next week, stock on hand is still low, so\n          you order again. Now you have double the stock and half the cash, and you will not notice\n          for three weeks. This is the most common expensive error in home made inventory\n          spreadsheets and it is entirely preventable.',
+  t124: '8',
+  t125: 'Demand graphs',
+  t126: 'See the shape of your sales, not just the number the engine outputs',
+  t127: 'What it is',
+  t128: 'Every product gets its own graph: actual sales across the last twelve\n          months plotted next to what the forecast expected. A growing trend or a seasonal swing\n          becomes something you see in one glance, instead of something buried in a column of numbers.',
+  t129: 'How you use it',
+  t130: 'Open any product from Order Decisions and its graph is right there.\n          Nothing to build or configure, it draws itself from the same sales history you already entered.',
+  t131: 'Why it matters',
+  t132: 'A number can be technically correct and still hide the story behind it.\n          A graph catches what a table cannot: a product that quietly changed shape, a spike the\n          forecast missed, a slow decline nobody noticed month to month. It is the fastest way to\n          sanity check the engine\'s own output before you act on it.',
+  t133: 'X · steady',
+  t134: 'Y · variable',
+  t135: 'Z · erratic',
+  t136: 'A<br/>top 80%',
+  t137: '<b>AX</b><span>Your engine. Automate it, push service to 99, negotiate volume pricing.</span>',
+  t138: '<b>AY</b><span>High value, swings. Review weekly, hold a fuller buffer.</span>',
+  t139: '<b>AZ</b><span>The hardest box. Order smaller and more often, keep the supplier warm.</span>',
+  t140: 'B<br/>next 15%',
+  t141: '<b>BX</b><span>Solid mid-tier. Automate the reorder and forget it.</span>',
+  t142: '<b>BY</b><span>Review monthly, moderate buffer, nothing dramatic.</span>',
+  t143: '<b>BZ</b><span>Keep minimum stock. Do not chase it.</span>',
+  t144: 'C<br/>last 5%',
+  t145: '<b>CX</b><span>Order rarely in large batches. Low service level is fine.</span>',
+  t146: '<b>CY</b><span>Quarterly review, minimal stock.</span>',
+  t147: '<b>CZ</b><span>Small money, impossible to plan. Usually worth discontinuing.</span>',
+  t148: '9',
+  t149: 'Purchase plan grouped by supplier',
+  t150: 'Turns a list of numbers into an order you can send',
+  t151: 'What it is',
+  t152: 'Every product that needs ordering, collected under the\n          supplier it comes from, with totals, payment terms, and an optional budget check.',
+  t153: 'How you use it',
+  t154: 'Open the sheet, read one block per supplier,\n          send one message. You can set a monthly purchase budget and it will warn you when the\n          recommendations exceed it and tell you to fund your class A products first.',
+  t155: 'Why it matters',
+  t156: 'Analysis that does not end in an action gets\n          abandoned within a month. This is the sheet that converts everything above it into ten\n          minutes of work on a Monday morning. The budget warning matters more than it sounds,\n          because recommendations that ignore your cash position are not recommendations.',
+  t157: '10',
+  t158: 'Health Check, the data audit layer',
+  t159: 'Because a confident wrong answer is worse than no answer',
+  t160: 'What it is',
+  t161: 'A sheet that audits your own inputs before you trust\n          any output. It checks for missing history, selling price below cost, unknown suppliers,\n          negative stock, one-off sales spikes, thin margins, and products marked as flat whose sales\n          clearly swing.',
+  t162: 'How you use it',
+  t163: 'Open it after any change. Every row shows one\n          of three verdicts: FIX THIS, REVIEW, or GOOD. Each problem row names the specific problem\n          in plain language.',
+  t164: 'Why it matters',
+  t165: 'Every forecasting tool in the world is only as\n          good as what was typed into it, and most of them will happily produce a confident,\n          beautifully formatted, completely wrong order quantity from bad data. This layer catches\n          it first. It is also the feature most likely to save you money on your first week, because\n          almost every new user has at least one data problem they did not know about.',
+  t166: '11',
+  t167: 'One page dashboard',
+  t168: 'The state of your inventory business in fifteen numbers',
+  t169: 'What it is',
+  t170: 'Cash tied up in stock right now, projected annual\n          revenue and gross profit, your total inventory operating cost, how many products need\n          action today, your ABC split, inventory turnover, average days of cover, and the value\n          currently locked in overstock.',
+  t171: 'How you use it',
+  t172: 'It updates itself. You never type into it.',
+  t173: 'Why it matters',
+  t174: 'Two numbers here are worth the subscription on\n          their own. Inventory turnover tells you how many times your stock cycles per year, and\n          under four means your cash is asleep. Value locked in overstock tells you exactly how much\n          money you could free up this month by discounting the right things.',
+  t175: '12',
+  t176: 'The guided walkthrough, and what arrives every month',
+  t177: 'You are buying an ongoing system, not a download',
+  t178: 'What it is',
+  t179: 'A separate six page tutorial that walks you through a\n          worked example, a fictional clothing brand, from an empty workspace to a finished purchase order,\n          with a full answer key so you can check you did it right. Roughly 25 minutes.',
+  t180: 'How you use it',
+  t181: 'Open it in a second tab and follow it inside the real\n          app. Every value to type is given. Every number you should end up seeing is listed.',
+  t182: 'Why it matters',
+  t183: 'Most business spreadsheets are abandoned in\n          week one because nobody explains them. Beyond that, Pro and Store already include the\n          supplier scorecard, stockout cost estimator, dead stock report, and cash flow forecast,\n          and a pricing calculator and promotion planner are still ahead. Everyone on the app gets\n          each new tool the day it ships, and your own workspace and data stay exactly where you\n          left them even if you cancel.',
+  t184: 'Also included',
+  t185: 'Fifteen connected pages',
+  t186: 'You type into four of them. The other eleven do the work.',
+  t187: '<b>Start Here</b><span>Setup order, verdict legend, and an honest list of what the app cannot do</span>',
+  t188: '<b>Dashboard</b><span>Cash, profit, turnover and today\'s action list on one page</span>',
+  t189: '<b>Settings</b><span>Ordering cost, holding rate, service level targets</span>',
+  t190: '<b>Seasons</b><span>Winter, summer, Ramadan and Eid, or flat. Editable on Pro and Store.</span>',
+  t191: '<b>Suppliers</b><span>Lead times, variation, minimums, carton sizes, payment terms</span>',
+  t192: '<b>Products</b><span>Twelve months of sales, costs, prices, stock on hand and in transit</span>',
+  t193: '<b>Demand Forecast</b><span>Deseasonalised demand, trend, variability class, forecast</span>',
+  t194: '<b>Order Decisions</b><span>Safety stock, reorder point, quantity, and a plain verdict</span>',
+  t195: '<b>Demand Graphs</b><span>Actual sales against forecast, per product, drawn automatically</span>',
+  t196: '<b>Purchase Plan</b><span>Orders grouped by supplier with totals and budget check</span>',
+  t197: '<b>Health Check</b><span>Audits your data and flags anything that would produce a wrong order</span>',
+  t420: '<b>Supplier Scorecard</b><span>Rates each supplier on reliability. Pro and Store.</span>',
+  t421: '<b>Stockout Cost Estimator</b><span>What a stockout on this product would actually cost you. Pro and Store.</span>',
+  t422: '<b>Dead Stock Report</b><span>What is not moving and how much cash it is holding hostage. Store.</span>',
+  t423: '<b>Cash Flow Forecast</b><span>What your planned orders will cost and when. Store.</span>',
+  t198: '<b>Guided Walkthrough</b><span>Separate six page tutorial with a full answer key</span>',
+  t199: '<a class="btn btn-primary" data-go="pricing" href="#">Start your free trial</a>',
+  t200: 'How it works',
+  t201: 'Set up once in an afternoon. Ten minutes a week after that.',
+  t202: 'No software to install, nothing to connect to your shop. You sign in with your\n          email and type in numbers you already have.',
+  t203: 'Setting up, about two hours once',
+  t204: 'Enter two numbers in Settings',
+  t205: 'What it costs you to place one order, all in, including your own time. And roughly what\n            it costs to hold 100 EGP of stock for a year. Both have written guidance and typical\n            Egyptian ranges on the Settings page. Rough is fine.',
+  t206: 'List your suppliers',
+  t207: 'How many days each one actually takes, how much that varies, their minimum order, their\n            carton size, and their payment terms. Five columns, one row each.',
+  t208: 'Enter your products',
+  t209: 'Twelve months of unit sales per product, cost, price, stock on hand, stock already on\n            order, your target service level, and which seasonal shape it follows. This is the only\n            part that takes real time, and it is once.',
+  t210: 'Run the Health Check',
+  t211: 'Before trusting anything. It tells you which rows have problems and exactly what is\n            wrong with them. Expect a few on your first pass. That is normal and it is the point.',
+  t212: 'Read your first order decision',
+  t213: 'Open Purchase Plan. Send the orders. That is the system working.',
+  t214: 'Every Monday, ten minutes',
+  t215: 'Count stock and update On Hand. Update On Order for anything you have paid for. Open Order\n        Decision, read the coloured verdicts, and send whatever Purchase Plan tells you to send.',
+  t216: 'Start of each month, fifteen minutes',
+  t217: 'Add last month\'s sales, shift the month columns one place to the left, update the Last Sales\n        Month setting, and re-run the Health Check.',
+  t218: 'Every quarter, half an hour',
+  t219: 'Look through the demand graphs for anything that surprised you this quarter.\n        On Store, check the Dead Stock Report and discount or discontinue whatever has stopped\n        moving. Revisit your seasonal profiles if a product changed shape.',
+  t220: 'What you need before you start',
+  t221: 'Twelve months of unit sales per product. Not revenue, units.',
+  t222: 'Your cost and selling price per product.',
+  t223: 'A rough idea of how long each supplier takes, and how much they vary.',
+  t224: 'A current stock count. Actual counted, not estimated.',
+  t225: 'Two data habits that matter more than any formula',
+  t226: '<strong>A month you were out of stock is not a month of low demand.</strong> Leave it\n          blank rather than entering 0, or you teach the system that nobody wanted it.',
+  t227: '<strong>Strip out one-off distortions before entering.</strong> A\n          viral week, a single wholesale order, an influencer drop. Left in, they will inflate your\n          orders for a full year.',
+  t228: 'The evidence',
+  t229: 'Tested against how people actually order',
+  t230: 'We would rather show you the method and the limits than make a claim you\n          cannot check.',
+  t231: 'The simulation',
+  t232: 'We simulated two years of daily trading across an eight product catalogue, thirty\n        independent runs, giving every ordering method the exact same randomly generated demand and\n        the same randomly varying supplier delays. Both learning methods re-planned every 30 days\n        using only the sales history they had actually observed by that point, exactly as a real\n        user would.',
+  t233: 'Ordering method',
+  t234: 'Fill rate',
+  t235: 'Avg stock held',
+  t236: 'Order cost',
+  t237: 'Holding cost',
+  t238: 'Lost margin',
+  t239: 'Total 2yr cost',
+  t240: 'Gut feel, reorder at two weeks cover',
+  t241: '85.1%',
+  t242: '66,545',
+  t243: '41,953',
+  t244: '32,817',
+  t245: '972,488',
+  t246: '1,047,258',
+  t247: 'A standard free spreadsheet template',
+  t248: '98.2%',
+  t249: '163,866',
+  t250: '33,402',
+  t251: '80,811',
+  t252: '84,634',
+  t253: '198,847',
+  t254: 'Etlob Sa7',
+  t255: '99.4%',
+  t256: '148,711',
+  t257: '33,460',
+  t258: '73,337',
+  t259: '35,282',
+  t260: '142,079',
+  t261: 'All figures in EGP. Total cost\n        combines ordering cost, holding cost, and the gross margin lost to stockouts. The system beat\n        gut feel in 30 runs out of 30, and beat the standard template in 29 out of 30.',
+  t262: 'The result that actually matters',
+  t263: 'Look at the fill rate and the average stock held together. Anyone\n          can raise service by simply buying more inventory, and the standard template does exactly\n          that, holding 163,866 EGP of stock to reach 98.2%. Reaching a higher 99.4% while holding\n          less stock is the part that requires the maths. That difference is the product.',
+  t264: 'How the app itself was verified',
+  t265: 'This simulation was run against the original spreadsheet model. Since then the same\n        calculation engine was rebuilt for the web app and tested again, independently, before\n        anyone could sign up:',
+  t266: 'Every formula was checked against a hand worked calculation, and against dozens of edge\n          cases: an empty workspace, a product with one month of data, zero cost, price below cost,\n          missing suppliers, negative stock, no suppliers at all, and a fully loaded catalogue.',
+  t267: 'Bad data cases were tested to confirm the Health Check actually catches problems rather\n          than silently producing confident nonsense.',
+  t268: 'Sign in, subscription access, and every page were driven end to end in a real browser\n          before launch, in both languages.',
+  t269: 'Three real issues were found and fixed this way: two of the built in season shapes did\n          not average out to a neutral 1.0 across the year, which was quietly skewing order sizes for\n          those products; a revenue-ranking edge case could leave a shop with no top tier product at\n          all; and the one-off spike check was flagging ordinary steady products. A clean interface\n          proves the buttons work. It does not prove the numbers are right, which is why this gets\n          checked separately every time something changes.',
+  t270: 'Honesty',
+  t271: 'What this system is not',
+  t272: 'Stated here rather than buried, because you will find out eventually and we\n          would rather you heard it from us.',
+  t273: '<strong>It is decision support, not a guarantee.</strong> It reduces stockouts and\n            frozen cash. It cannot predict a supplier disappearing or a shipment stuck at customs.',
+  t274: '<strong>A brand new product cannot be forecast</strong> by this or any other method on\n            earth, because there is nothing to forecast from. Order it on judgement for the first six\n            months.',
+  t275: '<strong>Under twelve months of history</strong> and seasonal adjustment switches itself\n            off automatically. Under six months for a given product, do not rely on it at all, and\n            the Health Check will tell you so.',
+  t276: '<strong>You supply the seasonal shape.</strong> The system will not guess it from one\n            year of data, because one year cannot tell a real December peak apart from one lucky\n            December. Any tool claiming otherwise is guessing and not telling you.',
+  t277: '<strong>Genuinely erratic products stay expensive.</strong> If a product\'s sales jump\n            between 10 and 90 with no pattern, the system will hold a large buffer, and that costs\n            money. That is an honest trade-off, not a fault.',
+  t278: '<strong>No accounting, no POS, no barcode scanning, no multi-location stock.</strong>\n            It is the planning brain that sits on top of however you already count stock.',
+  t279: '<strong>It is only as good as what you type in.</strong> Which is precisely why the\n            Health Check exists.',
+  t280: 'Pricing',
+  t281: 'Monthly. Cancel whenever you like.',
+  t282: 'Every plan includes the full system, both languages, the guided walkthrough,\n          and a new tool each month. Fourteen days free on Basic and Pro, five days on Store.',
+  t283: 'Prices are billed in USD. Your bank or card converts it to EGP automatically at checkout,\n          the same as any other international subscription.',
+  t284: 'Basic',
+  t285: '8 <small>USD / month</small>',
+  t286: 'A one person shop with a focused range.',
+  t287: 'Up to 10 products',
+  t288: 'Full forecasting and reorder engine',
+  t289: 'Arabic and English versions',
+  t290: 'Guided walkthrough tutorial',
+  t291: 'New tools added to the app regularly',
+  t292: 'Direct WhatsApp support',
+  t293: 'Start free trial',
+  t294: 'Most popular',
+  t295: 'Pro',
+  t296: '15 <small>USD / month</small>',
+  t297: 'A growing brand with several suppliers and a real season.',
+  t298: 'Up to 35 products',
+  t299: 'Everything in Basic',
+  t300: 'Custom seasonal profiles',
+  t301: 'Multi supplier comparison',
+  t302: 'Stockout cost estimator',
+  t303: 'Supplier scorecard',
+  t304: 'Start free trial',
+  t305: 'Store',
+  t306: '55 <small>USD / month</small>',
+  t307: 'An established shop that wants the full picture of where its cash sits.',
+  t308: 'Up to 200 products',
+  t309: 'Everything in Pro',
+  t310: 'Dead stock report',
+  t311: 'Cash flow forecast for planned orders',
+  t312: 'Direct line for questions',
+  t313: 'Start free trial',
+  t314: 'Free trial on every plan',
+  t315: 'Nothing is charged until the trial ends. If it is not for you, cancel and you are never\n            billed.',
+  t318: 'Your data stays put',
+  t319: 'Your workspace is kept even if you cancel, so everything is exactly as you left it if you come back.',
+  t320: 'Questions',
+  t321: 'Before you buy',
+  t322: 'Do I need to understand any of the maths?',
+  t323: 'No. You enter your sales history, your costs and your supplier details.\n          The system gives you plain instructions: order today, order this week, you are covered, or\n          you are overstocked. The included walkthrough explains every concept in ordinary language\n          if you want to understand what is happening underneath, and many people do after a month\n          or two.',
+  t324: 'I sell on Instagram, not a website. Does that matter?',
+  t325: 'Not at all. It does not connect to any platform. It works from your\n          sales numbers, wherever those sales happened. Instagram, WhatsApp, a physical shop, a\n          marketplace, or all four at once.',
+  t326: 'What if I only have six or eight months of history?',
+  t327: 'It still works. Seasonal adjustment switches itself off automatically and\n          the Health Check tells you clearly that results are rougher. Below six months for a given\n          product, the honest answer is that no forecasting method is reliable, and the system says\n          so rather than pretending.',
+  t328: 'Do I need to install anything?',
+  t329: 'No. It runs in your browser, on your phone or your computer, the same way\n          a website does. There is nothing to download and nothing to keep updated yourself. You do\n          need an internet connection while you use it, since your numbers are calculated on our\n          servers and saved to your account as you type.',
+  t330: 'Arabic or English?',
+  t331: 'Both are included with every plan at no extra cost. The Arabic version is\n          fully right to left and built around EGP.',
+  t332: 'How many products can it handle?',
+  t333: 'Basic covers up to 10 products and 10 suppliers, with the four built in season\n          shapes fixed as they are. Pro covers up to 35 products, Store up to 200, both with up to\n          100 suppliers and your own custom season shapes.',
+  t334: 'What exactly arrives each month?',
+  t335: 'A new or improved tool, plus any corrections. Pro and Store already include the\n          supplier scorecard, stockout cost estimator, dead stock report, and cash flow forecast.\n          A pricing and margin calculator and a promotion planner are still ahead. Everyone gets\n          each tool the day it ships. If you cancel, your workspace is kept and waiting for you if\n          you come back later.',
+  t336: 'Can I cancel easily?',
+  t337: 'Any time, from your own account, without emailing anyone. You keep access\n          until the end of the period you already paid for.',
+  t338: 'How is this different from the free templates online?',
+  t339: 'Free templates record what you already have. They do not forecast demand,\n          do not calculate safety stock from your supplier\'s actual reliability, do not separate\n          seasonality from randomness, and do not respect minimum order quantities. Those are\n          precisely the parts that change what you buy. The simulation on the Evidence page compares\n          the two directly.',
+  t340: 'Will this work for a service business or for made to order products?',
+  t341: 'Not really, and we would rather say so. This is built for businesses\n          holding physical stock they buy in and resell. If you make to order, the reorder logic does\n          not apply to your finished goods, though it can still be useful for raw materials and\n          components.',
+  t342: 'Who can see my business data?',
+  t343: 'Only you. Each account gets its own private workspace that nobody else\n          can open, including other subscribers. You sign in with a one time code sent to your own\n          email, and your account works on up to two devices at a time. Nobody at Etlob Sa7 looks at\n          your numbers as part of running the product.',
+  t344: 'What if I get stuck?',
+  t345: 'Message us directly on WhatsApp, the number is right there in the app once you are\n          signed in. The guided walkthrough tutorial included with every plan also covers most of\n          what trips people up.',
+  t346: 'Ready to stop guessing?',
+  t347: 'Free trial on every plan. Nothing charged until it ends.',
+  t348: 'See pricing',
+  t349: 'Payment received',
+  t350: 'Check your email for your sign-in link. It can take up to fifteen minutes for\n        your account to switch on, so if it is not there yet, it is on its way.',
+  t351: 'No email after fifteen minutes? Check your spam folder, or message\n        us on WhatsApp and we will sort it out by hand.',
+  t352: '<a class="btn btn-ghost" data-go="home" href="#">Back to the site</a>',
+  t353: 'Legal',
+  t354: 'Privacy policy',
+  t355: 'Last updated 19 September 2026.',
+  t356: 'What this covers',
+  t357: 'This policy explains what information Etlob Sa7 collects when you use the app or this\n    website, what it\'s used for, and what choices you have about it. "We" means Etlob Sa7.\n    "You" means anyone who signs up for or uses the app.',
+  t358: 'What we collect',
+  t359: 'Three kinds of information pass through the service:',
+  t360: '<strong>Your email address</strong>, used to send you sign-in codes and account\n        notices, and nothing else.',
+  t361: '<strong>The business data you type into the app</strong>: product names, sales\n        history, supplier details, costs and prices. This is yours. We store it so the app can\n        work, we don\'t read it, sell it, or use it for anything beyond running your account.',
+  t362: '<strong>Basic technical logs</strong>: when you signed in, which device, and whether a\n        save succeeded. Kept to troubleshoot problems and stop abuse, not to watch how you use\n        the app.',
+  t363: 'We never see or store your card number. Payment happens entirely through Paddle, our\n    payment provider; see the Payments section below.',
+  t364: 'Where it\'s stored',
+  t365: 'The app runs on Google\'s infrastructure (Google Apps Script and Google Drive). Each\n    subscriber\'s business data lives in its own private file that only their own account can\n    open, invisible to every other subscriber. This website is hosted separately, wherever we\'ve\n    deployed it.',
+  t366: 'Who can see it',
+  t367: 'Only you, by signing in with a code sent to your own email. We don\'t access individual\n    subscribers\' business data as part of normal operation. The one exception is if you contact\n    support with a problem and asking us to look is the only way to help.',
+  t368: 'Payments',
+  t369: 'Paddle.com handles all billing, as the merchant of record for this service. When you\n    subscribe, Paddle collects your payment details directly, not us. Paddle\'s own privacy policy\n    governs that part of the relationship. We receive confirmation of your subscription status\n    from Paddle (active, cancelled, payment failed), never your card details.',
+  t370: 'How long we keep it',
+  t371: 'For as long as your account exists, including after you cancel a subscription, so your\n    workspace is waiting for you if you come back. If you want your data deleted entirely, email\n    or WhatsApp us and we\'ll remove it, usually within a few days.',
+  t372: 'Cookies and tracking',
+  t373: 'This website doesn\'t run advertising trackers or sell data to third parties. Paddle\'s own\n    checkout page may set cookies necessary to process your payment; that happens on Paddle\'s\n    page, governed by their policy, not ours.',
+  t374: 'Your rights',
+  t375: 'You can ask us at any time to export a copy of your data, correct something we have wrong,\n    or delete your account and everything in it. Reach us the same way as support, below.',
+  t376: 'Changes to this policy',
+  t377: 'If this changes in any way that matters, we\'ll post the update here with a new date at the\n    top. Continuing to use the app after a change means you accept the update.',
+  t378: 'Contact',
+  t379: 'Questions about this policy, or a request about your data: reach us on WhatsApp using the\n    number on the pricing page, or by email if you have one for us.',
+  t380: 'Legal',
+  t381: 'Terms and conditions',
+  t382: 'Last updated 19 September 2026.',
+  t383: 'What you\'re signing up for',
+  t384: 'Etlob Sa7 is a subscription app that turns your sales history into demand forecasts,\n    reorder points, and purchase quantities. It\'s a decision support tool. It does not place\n    orders on your behalf, does not guarantee any sale, profit, or supplier delivery, and does\n    not replace your own judgement about your business. You make the final call on every order.',
+  t385: 'Who can use it',
+  t386: 'You need to be old enough to enter into a binding agreement where you live, and using the\n    app on behalf of a real or intended business, not as a consumer purchase.',
+  t387: 'Plans and billing',
+  t388: 'Subscriptions are billed monthly, in advance, through Paddle.com, who acts as the merchant\n    of record and handles the actual charge to your card. Prices are shown on the pricing page.\n    If a plan includes a free trial, you won\'t be charged until the trial ends, and you can cancel\n    before then without paying anything.',
+  t389: 'Cancelling',
+  t390: 'Cancel any time from your own account, no form, no phone call. You keep access until the\n    end of the period you already paid for. Your data is kept, not deleted, so if you come back\n    later everything is where you left it.',
+  t391: 'Refunds',
+  t392: 'Refund requests are reviewed individually. Message us through WhatsApp support and we\'ll get back to you.',
+  t393: 'Using the app fairly',
+  t394: 'Each account is licensed to one subscriber, for their own business. Accounts are limited\n    to two signed-in devices at a time as a practical, technical limit, not a suggestion; we may\n    suspend an account being shared or resold beyond that. You agree not to try to break, scrape,\n    reverse engineer, or resell access to the app.',
+  t395: 'Your data',
+  t396: 'The sales, supplier, and product information you type in is yours. We store it to run the\n    app and don\'t claim any ownership over it. See the Privacy Policy for exactly how it\'s\n    handled.',
+  t397: 'No guaranteed outcomes',
+  t398: 'The forecasts, reorder points, and order quantities this app produces are calculations\n    based on the data you provide. They are not financial, accounting, or legal advice, and we\n    don\'t guarantee they\'ll be right for every situation, especially where your own data is\n    incomplete, wrong, or covers too short a history to mean much yet. A supplier missing a\n    delivery date, a sudden change in demand, or a mistake in what you typed in can all make a\n    specific recommendation wrong. Review anything unusually large before you act on it.',
+  t399: 'Limitation of liability',
+  t400: 'To the extent the law where you are allows it, Etlob Sa7 isn\'t liable for lost profits,\n    lost sales, stock bought or not bought on the app\'s advice, or any other indirect loss arising\n    from using the app. Our total liability for any claim is capped at what you paid us in the\n    three months before the claim.',
+  t401: 'Ending an account',
+  t402: 'We can suspend or end an account for non-payment, abuse of the service, or a serious breach\n    of these terms. Where reasonably possible we\'ll tell you why first.',
+  t403: 'Changes to these terms',
+  t404: 'If these change in a way that matters, we\'ll post the update here with a new date.\n    Continuing to use the app afterward means you accept the update.',
+  t405: 'Governing law',
+  t406: 'These terms are governed by the laws of the Arab Republic of Egypt.',
+  t407: 'Contact',
+  t408: 'Reach us on WhatsApp using the number on the pricing page, or by email if you have one for\n    us.',
+  t409: '<strong style="color:var(--ink);display:block;margin-bottom:6px">Etlob Sa7</strong>\n        Demand forecasting and purchase planning, built in Cairo for Egyptian brands.',
+  t410: 'What we provide',
+  t411: 'How it works',
+  t412: 'Evidence',
+  t413: 'Pricing',
+  t414: 'FAQ',
+  t415: 'Privacy policy',
+  t416: 'Terms and conditions',
+  t417: '\n      Performance figures shown on the Evidence page come from a controlled simulation using\n      generated demand, not from audited customer accounts, and are presented alongside the full\n      method so they can be judged on their merits. This product is decision support for inventory\n      purchasing. It does not guarantee any business outcome.\n    ',
+};
+var SITE_AR = {
+  t1: 'اطلب صح<span>تخطيط الطلب لمصر</span>',
+  t2: 'الرئيسية',
+  t3: 'اللي بنقدمه',
+  t4: 'إزاي بيشتغل',
+  t5: 'الدليل والإثبات',
+  t6: 'الأسعار',
+  t7: 'الأسئلة الشائعة',
+  t8: 'ابدأ تجربة مجانية',
+  t9: 'الرئيسية',
+  t10: 'اللي بنقدمه',
+  t11: 'إزاي بيشتغل',
+  t12: 'الدليل والإثبات',
+  t13: 'الأسعار',
+  t14: 'الأسئلة الشائعة',
+  t15: 'اتصنع في القاهرة',
+  t16: 'اعرف بالظبط تطلب إيه، وإمتى.',
+  t17: 'أغلب المحلات الصغيرة شاطرة جدا في البيع، وبتخمن في الشراء. الأداة دي بتشيل التخمين. بتقولك تطلب كام قطعة، من أي مورد، في أنهي يوم، لكل منتج بتبيعه.',
+  t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>\n<a class="btn btn-ghost btn-lg" data-go="provide" href="#">شوف بتعمل إيه</a>',
+  t19: 'بيشتغل في المتصفح. عربي وإنجليزي مع بعض. بالدولار الأمريكي.',
+  t20: '<b>99.4%</b><small>نسبة توفر المنتج في محاكاة استمرت سنتين</small>',
+  t21: '<b>10 دقايق</b><small>روتينك الأسبوعي بعد ما تظبطه</small>',
+  t22: '<b>11</b><small>صفحة مترابطة. بتكتب في أربعة بس.</small>',
+  t23: '<b>دقيقتين</b><small>علشان تسجل دخول. الإيميل بس، من غير باسورد.</small>',
+  t24: 'المشكلة',
+  t25: 'أنت غالبا بتعمل الاتنين دول في نفس الوقت',
+  t26: 'وأغلب أصحاب المحلات مش واخدين بالهم إنهم نفس المشكلة بوشين مختلفين.',
+  t27: 'أكتر منتج بيتباع عندك بيخلص كل شوية',
+  t28: 'بتطلب لما تلاحظ إن الرف فاضي. وبعدين المورد بياخد تلات أسابيع، وتقضيها في رفض الزباين اللي أنت تعبت وصرفت أكتر عليهم علشان تكسبهم.',
+  t29: 'أسوأ منتج عندك واقف على فلوسك',
+  t30: 'في بضاعة اشتريتها بحس كويس ومش بتتحرك من أربع شهور. ده مش مخزون. ده فلوس مش قادر تصرفها، واقفة في كرتونة، وانت مش قادر تجدد المنتج اللي فعلا بيتباع.',
+  t31: 'الاتنين سببهم واحد: قرارات شراء بالإحساس مش بأرقامك.',
+  t32: 'اللي هي إيه',
+  t33: 'مش عداد مخزون. ده عقل الشراء بتاعك.',
+  t34: 'تسجيل اللي عندك ده مجرد مدخل. المنتج الحقيقي هو القرار اللي بيطلع في الآخر.',
+  t35: '01',
+  t36: 'بيتوقع الطلب مش بيعمل متوسط له',
+  t37: 'بيفصل الموسمية الحقيقية عن العشوائية الحقيقية، فمنتج الشتاء ماحدش هيحكم عليه إنه غير متوقع لمجرد إنه بيتباع في الشتاء. وبعدين بيكتشف لو المنتج في نمو أو تراجع ويتوقع لقدام، مش بيرجع للخلف.',
+  t38: '02',
+  t39: 'بياخد قرار الطلب بدالك',
+  t40: 'مستوى طلب دقيق لكل منتج، مبني على سرعة بيعه، مدى تقلبه، مدة توريد الموردين، وكل قد إيه بيتأخروا. وبعدين أفضل كمية طلب، مظبوطة على أقرب حاجة يقبلها المورد.',
+  t41: '03',
+  t42: 'بيوريك فلوسك فعلا فين',
+  t43: 'كل منتج متصنف حسب قد إيه بيجيب مبيعات وقد إيه متوقع. مع تعليمة محددة لكل تركيبة. أكتر منتج ثابت وأكتر منتج عشوائي مايتعاملش معاهم بنفس الطريقة، ودلوقتي فعلا مابيتعاملش.',
+  t44: '04',
+  t45: 'بيديك طلبية جاهزة تبعتها النهارده',
+  t46: 'كل توصية متجمعة حسب المورد، فتبعت طلبية واحدة مجمعة بدل ما تكلم كل منتج لوحده. وكمان لوحة متابعة في صفحة واحدة بتوريك الفلوس المجمدة، الربح المتوقع، واللي محتاج تتصرف فيه النهارده.',
+  t47: '<a class="btn btn-ghost" data-go="provide" href="#">شوف كل ميزة بالتفصيل</a>',
+  t48: 'الفكرة الأساسية',
+  t49: 'الطلب معادلة موازنة وليها إجابة صح',
+  t50: 'اطلب كميات ضخمة وتطلب نادر جدا، فتعب ومصاريف الشحن لكل طلبية بتقل جدا. بس هتبقى قاعد على جبل بضاعة، بتدفع إيجار مكانها، مش قادر تصرف الفلوس دي، وهي بتقدم في الموضة.',
+  t51: 'اطلب كميات صغيرة باستمرار وهتفضل تقريبا من غير مخزون خالص. بس هتدفع تكلفة الطلب كاملة كل كام يوم، وأي تأخير في التوريد هيخليك فاضي تماما.',
+  t52: '<strong>في مقاس طلب واحد بالظبط، فيه التكلفتين مع بعض بيبقوا في أقل حاجة.</strong> وده مختلف بين سوار بـ 40 جنيه وجاكت بـ 480 جنيه، لأن تخزين الجاكت بيكلف اثنا عشر ضعف للقطعة. تعمل الحساب ده بالإحساس على ثلاثين منتج فعلا فوق طاقة أي حد.',
+  t53: 'ده السبب الوحيد اللي الأداة دي موجودة علشانه. كل حاجة تانية فيها هي بس إطار حوالين الحساب ده.',
+  t54: 'بلاش تخمين اللي هتشتريه',
+  t55: 'تجربة مجانية على كل باقة. مفيش خصم لحد ما التجربة تخلص. إلغاء بضغطتين.',
+  t56: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">شوف الأسعار</a>\n<a class="btn btn-ghost btn-lg" data-go="proof" href="#">اقرأ الإثبات الأول</a>',
+  t57: 'اللي بنقدمه',
+  t58: 'اثنتا عشرة ميزة، متشرحة بصراحة',
+  t59: 'لكل ميزة: اللي هي، إزاي بتستخدمها فعلا، وليه مهمة لفلوسك. ولو حاجة فعلا مجرد راحة مش تغيير جذري، هنقولك كده.',
+  t60: '1',
+  t61: 'فصل الموسمية',
+  t62: 'الحاجة الوحيدة اللي بتفرق بين ده وأي قالب مجاني على النت',
+  t63: 'اللي هي إيه',
+  t64: 'قبل ما نقيس أي حاجة، مبيعات كل شهر بتتقسم على مؤشر الموسم بتاعه. ديسمبر اللي عادة بيبقى أعلى بـ 80% بيتقسم على 1.8، فكل الشهور بتبقى على نفس المستوى للمقارنة.',
+  t65: 'إزاي تستخدمها',
+  t66: 'تختار شكل موسم واحد لكل منتج من قايمة: ذروة الشتاء، ذروة الصيف، رمضان والعيد، أو ثابت. ده كل اللي محتاج تعمله. تقدر تعدل الاثنا عشر رقم اللي وراء أي شكل لو عايز، بس أغلب الناس مش محتاجين لده أبدا.',
+  t67: 'ليه مهمة',
+  t68: 'من غيرها، طرحة صوف بتتباع 95 في ديسمبر و3 في يونيو هتبان غير متوقعة خالص، فالنظام هيحتفظ بمخزون أمان ضخم ومكلف علشان يحميك. بس الطرحة مش غير متوقعة. هي طرحة شتاء. في بيانات الاختبار بتاعتنا، الميزة دي لوحدها قللت مخزون الأمان لمنتج موسمي من 89 قطعة لـ 17، من غير أي نقص في الخدمة. ده فلوس راجعالك من غير مجهود.',
+  t69: '2',
+  t70: 'توقع الطلب مع اكتشاف الاتجاه',
+  t71: 'بيجاوب على اللي هيحصل، مش اللي كان بيحصل عادة',
+  t72: 'اللي هي إيه',
+  t73: 'بيقارن متوسط آخر تلات شهور عندك بأول تلات شهور، ويقيس الميل بينهم، وبعدين يسقطه لقدام ويرجع يطبق الموسمية فوقه.',
+  t74: 'إزاي تستخدمها',
+  t75: 'ماتعملش حاجة. تكتب مبيعات اثنا عشر شهر وهو بيظهر لوحده. في مفتاح تشغيل وإيقاف في الإعدادات لو عايز توقفه.',
+  t76: 'ليه مهمة',
+  t77: 'المتوسط الثابت بيقلل طلب أي منتج في نمو باستمرار، للأبد. لو منتج بيزيد 3 قطع في الشهر، متوسط آخر اثنا عشر شهر بيبقى متأخر عن الواقع بحوالي تمنتاشر قطعة وقت ما تستخدمه. الفجوة دي بالظبط منين بتيجي أغلى أنواع نفاد المخزون، اللي هي نفاد المنتجات الصاعدة عندك.',
+  t78: '3',
+  t79: 'مخزون أمان بيحسب موردك مش مبيعاتك بس',
+  t80: 'المصطلح اللي كل أداة تانية بتسيبه',
+  t81: 'اللي هي إيه',
+  t82: 'مخزون الأمان بيغطي خطرين في نفس الوقت: مبيعاتك تزيد عن المتوقع وقت الانتظار، ومورد يتأخر. الاتنين بيتحسبوا ويتجمعوا صح، لكل منتج.',
+  t83: 'إزاي تستخدمها',
+  t84: 'رقم واحد لكل مورد. لو عادة بياخد 21 يوم بس شفته بياخد 16 مرة و26 مرة، تكتب 4. القاعدة التقريبية: أطول تأخير ناقص أقصر تأخير، مقسومة على أربعة.',
+  t85: 'ليه مهمة',
+  t86: 'القوالب المجانية بتغطي نص المبيعات بس. يعني أي نفاد مخزون سببه تأخير المورد أسبوع بيبقى غير مرئي خالص، وده في مصر نسبة كبيرة منهم. وكمان بتطلع نتيجة عكس المتوقع بس مفيدة جدا: مورد بطيء وموثوق فيه أرخص تخزين له من مورد سريع مش موثوق. أول ما ده يبقى رقم قدامك، بيبقى ورقة ضغط في التفاوض.',
+  t87: '4',
+  t88: 'نقطة إعادة الطلب',
+  t89: 'بتجاوب على إمتى. مش عند الصفر، ومش عند رقم اخترعته انت.',
+  t90: 'اللي هي إيه',
+  t91: 'مستوى مخزون لكل منتج. توصله، تطلب. بيساوي مبيعاتك اليومية في مدة توريد المورد، زائد مخزون الأمان.',
+  t92: 'إزاي تستخدمها',
+  t93: 'ماتحسبش حاجة. صفحة قرارات الطلب بتوريك قرار ملون لكل منتج: اطلب النهارده، اطلب الأسبوع ده، المخزون كويس، أو زيادة. أحمر، برتقالي، أخضر، أزرق.',
+  t94: 'ليه مهمة',
+  t95: 'الانتظار لحد ما المنتج يقرب يخلص بيضمنلك فجوة، لأن المورد لسه محتاج مدة التوريد بعد ما تلاحظ. نقطة إعادة الطلب هي بالظبط قد المخزون اللي هيغطيك خلال الانتظار ده، مش أكتر. تطلب في التوقيت الصح أهم من تطلب الكمية الصح.',
+  t96: 'المخزون بينزل وانت بتبيع. يوصل نقطة إعادة الطلب، تطلب، والمخزون الباقي بيغطيك طول مدة التوريد. مخزون الأمان هو الوسادة اللي بس بتستخدمها لو حاجة غلطت.',
+  t97: '5',
+  t98: 'كمية الطلب الاقتصادية',
+  t99: 'بتجاوب على قد إيه، بإنها توصل لأقل نقطة في منحنى التكلفة',
+  t100: 'اللي هي إيه',
+  t101: 'مقاس الطلب اللي تكلفة الطلب وتكلفة التخزين مع بعض بيبقوا فيه في أقل نقطة على الإطلاق. معادلة منشورة من سنة 1913 ومستخدمة في مصانع في كل العالم.',
+  t102: 'إزاي تستخدمها',
+  t103: 'تدخل رقمين مرة واحدة، في الإعدادات: تكلفة طلبية واحدة عندك بكل حاجة فيها، وتقريبا تكلفة تخزين 100 جنيه بضاعة لمدة سنة. في إرشادات لكل الاتنين مكتوبة في الإعدادات. لو غلطت 20% مش هيفرق كتير في الإجابة.',
+  t104: 'ليه مهمة',
+  t105: 'ده الرقم اللي تقريبا محدش بيحسبه وتقريبا كل الناس بتغلط فيه في الاتجاهين. الطلب الزيادة بيجمد الفلوس. الطلب الناقص بيضيع وقتك وميزانية الشحن. الفرق بين كمية متخمنة والكمية المثالية عادة نسبة مؤثرة من تكلفة مخزونك السنوية.',
+  t106: '6',
+  t107: 'أقل كمية وتقريب الكراتين',
+  t108: 'ميزة صغيرة بتشيل إزعاج يومي',
+  t109: 'اللي هي إيه',
+  t110: 'أي كمية موصى بيها بتترفع تلقائيا لأقل كمية عند موردك، وتترفع لأقرب كرتونة كاملة.',
+  t111: 'إزاي تستخدمها',
+  t112: 'رقمين لكل مورد، تدخلهم مرة واحدة.',
+  t113: 'ليه مهمة',
+  t114: 'بصراحة، دي راحة أكتر منها تغيير جذري. بس هي الفرق بين أداة بتقولك اطلب 67 قطعة، وأداة بتقولك اطلب 72، يعني ست كراتين كاملة، يعني طلبية تقدر تنسخها وتبعتها من غير ما تفكر. الأدوات اللي بتتجاهل ده بتتسيب.',
+  t115: '7',
+  t116: 'متابعة وضع المخزون',
+  t117: 'بيمنع أغلى غلطة في الجداول اليدوية',
+  t118: 'اللي هي إيه',
+  t119: 'كل قرار بيتاخد على أساس المخزون الموجود زائد اللي في الطريق بالفعل، مش على أساس اللي قدامك بس.',
+  t120: 'إزاي تستخدمها',
+  t121: 'عمود واحد. لما تطلب، تكتب الكمية في "في الطريق". لما توصل، تنقلها لـ "الموجود".',
+  t122: 'ليه مهمة',
+  t123: 'من غيرها، ده اللي بيحصل. تطلب. البضاعة في الطريق. تفتح الجدول الأسبوع اللي بعده، المخزون لسه قليل، فتطلب تاني. دلوقتي معاك ضعف المخزون ونص الفلوس، ومش هتلاحظ لمدة تلات أسابيع. دي أكتر غلطة مكلفة شائعة في جداول المخزون اليدوية وممكن تتجنبها تماما.',
+  t124: '8',
+  t125: 'الرسم البياني للطلب',
+  t126: 'تشوف شكل مبيعاتك، مش بس الرقم اللي المحرك طلعه',
+  t127: 'اللي هي إيه',
+  t128: 'كل منتج ليه رسم بياني خاص بيه: المبيعات الفعلية آخر اتناشر شهر جنب اللي كان متوقع. اتجاه في نمو أو تغير موسمي بتشوفه بنظرة واحدة، مش لازم تدوره جوه عمود أرقام.',
+  t129: 'إزاي تستخدمها',
+  t130: 'افتح أي منتج من صفحة قرارات الطلب والرسم موجود قدامك على طول. مفيش حاجة تظبطها، بيترسم لوحده من نفس تاريخ المبيعات اللي دخلته.',
+  t131: 'ليه مهمة',
+  t132: 'الرقم ممكن يكون صح فعلا وبرضه يخبي القصة اللي وراه. الرسم بيمسك حاجات الجدول مايوريهاش: منتج غير شكله من غير ما تلاحظ، قفزة التوقع فوتها، أو تراجع بطيء محدش واخد باله منه شهر بشهر. أسرع طريقة تتأكد إن المحرك نفسه ماشي صح قبل ما تتصرف بناء عليه.',
+  t133: 'X · ثابت',
+  t134: 'Y · متقلب',
+  t135: 'Z · عشوائي',
+  t136: 'A<br/>أعلى 80%',
+  t137: '<b>AX</b><span>محرك البيزنس بتاعك. مته، ارفع الخدمة لـ 99، وتفاوض على سعر الكمية.</span>',
+  t138: '<b>AY</b><span>قيمته عالية بس متقلب. راجعه أسبوعيا، واحتفظ بمخزون أمان أكبر.</span>',
+  t139: '<b>AZ</b><span>أصعب خانة. اطلب كميات أصغر وأكتر، وخلي المورد جاهز.</span>',
+  t140: 'B<br/>الـ 15% اللي بعدها',
+  t141: '<b>BX</b><span>متوسط قوي. مته إعادة الطلب وانساه.</span>',
+  t142: '<b>BY</b><span>راجعه شهريا، مخزون أمان معتدل، من غير حاجة درامية.</span>',
+  t143: '<b>BZ</b><span>خلي مخزونه أقل حاجة. ماتجريش وراه.</span>',
+  t144: 'C<br/>آخر 5%',
+  t145: '<b>CX</b><span>اطلبه نادر بكميات كبيرة. مستوى خدمة منخفض مقبول.</span>',
+  t146: '<b>CY</b><span>راجعه كل 3 شهور، بأقل مخزون.</span>',
+  t147: '<b>CZ</b><span>فلوس قليلة، مستحيل تخطط له. غالبا يستاهل الإيقاف.</span>',
+  t148: '9',
+  t149: 'خطة الشراء متجمعة حسب المورد',
+  t150: 'بتحول قائمة أرقام لطلبية تقدر تبعتها',
+  t151: 'اللي هي إيه',
+  t152: 'كل منتج محتاج طلب، متجمع تحت المورد بتاعه، مع الإجماليات، شروط الدفع، ومراجعة اختيارية للميزانية.',
+  t153: 'إزاي تستخدمها',
+  t154: 'تفتح الجدول، تقرا بلوك لكل مورد، تبعت رسالة واحدة. تقدر تحدد ميزانية شراء شهرية وهيحذرك لو التوصيات تعدتها ويقولك مول منتجات الفئة A الأول.',
+  t155: 'ليه مهمة',
+  t156: 'أي تحليل مايخلصش بقرار بيتسيب خلال شهر. ده الجدول اللي بيحول كل اللي فات لعشر دقايق شغل صبح الإتنين. تحذير الميزانية أهم مما يبدو، لأن أي توصية بتتجاهل وضع فلوسك مش توصية أصلا.',
+  t157: '10',
+  t158: 'فحص البيانات، طبقة المراجعة',
+  t159: 'لأن إجابة غلط بثقة أسوأ من مفيش إجابة',
+  t160: 'اللي هي إيه',
+  t161: 'جدول بيراجع اللي كتبته قبل ما تثق في أي مخرج. بيدور على تاريخ ناقص، سعر بيع أقل من التكلفة، موردين غير معروفين، مخزون بالسالب، قفزات بيع لمرة واحدة، هوامش ربح ضعيفة، ومنتجات متسجلة ثابتة بس مبيعاتها بتتقلب بوضوح.',
+  t162: 'إزاي تستخدمها',
+  t163: 'تفتحه بعد أي تعديل. كل صف بيوري واحد من ثلاثة أحكام: لازم يتصلح، راجعه، أو تمام. كل صف فيه مشكلة بيسمي المشكلة بالظبط بلغة واضحة.',
+  t164: 'ليه مهمة',
+  t165: 'أي أداة توقع في الدنيا مش أحسن من اللي اتكتب فيها، وأغلبها هيطلع بسعادة رقم طلب واثق ومنسق جميل وغلط تماما لو البيانات غلط. الطبقة دي بتمسكه الأول. وكمان أكتر ميزة ممكن توفرلك فلوس في أول أسبوع، لأن تقريبا كل مستخدم جديد عنده مشكلة بيانات واحدة على الأقل مش واخد باله منها.',
+  t166: '11',
+  t167: 'لوحة متابعة في صفحة واحدة',
+  t168: 'حالة بيزنس المخزون بتاعك في خمستاشر رقم',
+  t169: 'اللي هي إيه',
+  t170: 'الفلوس المجمدة في المخزون دلوقتي، المبيعات وإجمالي الربح المتوقعين سنويا، إجمالي تكلفة تشغيل مخزونك، عدد المنتجات المحتاجة تصرف النهارده، توزيع ABC، معدل دوران المخزون، متوسط أيام التغطية، والقيمة المجمدة في مخزون الزيادة.',
+  t171: 'إزاي تستخدمها',
+  t172: 'بتحدث نفسها لوحدها. ماتكتبش فيها أبدا.',
+  t173: 'ليه مهمة',
+  t174: 'رقمين هنا يستاهلوا الاشتراك لوحدهم. معدل دوران المخزون بيقولك مخزونك بيتجدد كام مرة في السنة، وأقل من أربعة معناه فلوسك نايمة. القيمة المجمدة في مخزون الزيادة بتقولك بالظبط قد إيه فلوس تقدر تحررها الشهر ده لو عملت خصم على الحاجة الصح.',
+  t175: '12',
+  t176: 'الدليل الإرشادي، واللي بييجي كل شهر',
+  t177: 'انت بتشتري نظام مستمر، مش تحميلة واحدة',
+  t178: 'اللي هي إيه',
+  t179: 'دليل منفصل من ست صفحات بياخدك خطوة بخطوة في مثال عملي، ماركة ملابس خيالية، من مساحة عمل فاضية لطلبية شراء جاهزة، مع إجابات كاملة تقدر تراجع نفسك عليها. حوالي 25 دقيقة.',
+  t180: 'إزاي تستخدمها',
+  t181: 'تفتحه في تبويب تاني وتتابعه جوه الأداة الحقيقية. كل قيمة تكتبها مذكورة. كل رقم المفروض تشوفه متسجل.',
+  t182: 'ليه مهمة',
+  t183: 'أغلب جداول البيزنس بتتسيب في أول أسبوع لأن محدش بيشرحها. غير كده، Pro وStore فيهم بالفعل تقييم الموردين، تقدير تكلفة نفاد المخزون، تقرير البضاعة الراكدة، وتوقع التدفق النقدي، وباقي جاية حاسبة تسعير وهامش ربح وتخطيط عروض. كل مستخدم بياخد الأداة الجديدة يوم ما تنزل، ومساحة عملك وبياناتك فاضلين مكانهم حتى لو ألغيت.',
+  t184: 'كمان متضمن',
+  t185: 'خمستاشر صفحة مترابطة',
+  t186: 'بتكتب في أربعة منهم. الحداشر الباقيين بيعملوا الشغل.',
+  t187: '<b>ابدأ من هنا</b><span>ترتيب الإعداد، معنى كل قرار، وقائمة صريحة باللي الأداة مش بتعمله</span>',
+  t188: '<b>لوحة المتابعة</b><span>الفلوس، الربح، معدل الدوران، وقائمة تصرفات النهارده في صفحة واحدة</span>',
+  t189: '<b>الإعدادات</b><span>تكلفة الطلب، معدل التخزين، أهداف مستوى الخدمة</span>',
+  t190: '<b>المواسم</b><span>الشتاء، الصيف، رمضان والعيد، أو ثابت. قابلة للتعديل في Pro وStore.</span>',
+  t191: '<b>الموردين</b><span>مدة التوريد، التفاوت، أقل كمية، حجم الكرتونة، شروط الدفع</span>',
+  t192: '<b>المنتجات</b><span>اثنا عشر شهر مبيعات، تكلفة، سعر، مخزون موجود وفي الطريق</span>',
+  t193: '<b>توقع الطلب</b><span>الطلب من غير موسمية، الاتجاه، فئة التقلب، التوقع</span>',
+  t194: '<b>قرارات الطلب</b><span>مخزون الأمان، نقطة إعادة الطلب، الكمية، وقرار واضح</span>',
+  t195: '<b>الرسم البياني للطلب</b><span>المبيعات الفعلية جنب التوقع، لكل منتج، بيترسم لوحده</span>',
+  t196: '<b>خطة الشراء</b><span>طلبيات متجمعة حسب المورد مع الإجمالي ومراجعة الميزانية</span>',
+  t197: '<b>فحص البيانات</b><span>بيراجع بياناتك ويعلم أي حاجة ممكن تطلّع طلبية غلط</span>',
+  t420: '<b>تقييم الموردين</b><span>بيقيّم كل مورد على مدى التزامه. Pro وStore.</span>',
+  t421: '<b>تقدير تكلفة نفاد المخزون</b><span>نفاد المنتج ده هيكلفك قد إيه فعلا. Pro وStore.</span>',
+  t422: '<b>تقرير البضاعة الراكدة</b><span>إيه اللي مش بيتحرك وقد إيه فلوس واقفة فيه. Store.</span>',
+  t423: '<b>توقع التدفق النقدي</b><span>طلبياتك المخططة هتكلفك قد إيه وامتى. Store.</span>',
+  t198: '<b>الدليل الإرشادي</b><span>دليل منفصل من ست صفحات مع إجابات كاملة</span>',
+  t199: '<a class="btn btn-primary" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>',
+  t200: 'إزاي بيشتغل',
+  t201: 'تظبطه مرة واحدة في نص يوم. عشر دقايق في الأسبوع بعد كده.',
+  t202: 'من غير تثبيت أي برنامج، ومن غير ما يترابط بمحلك. تسجل دخول بإيميلك وتكتب أرقام عندك بالفعل.',
+  t203: 'الإعداد، حوالي ساعتين مرة واحدة',
+  t204: 'ادخل رقمين في الإعدادات',
+  t205: 'تكلفة طلبية واحدة عندك بكل حاجة فيها، شامل وقتك. وتقريبا تكلفة تخزين 100 جنيه بضاعة لمدة سنة. الاتنين ليهم إرشادات مكتوبة ومدى مصري معتاد في صفحة الإعدادات. التقريب كفاية.',
+  t206: 'سجل موردينك',
+  t207: 'كل مورد بياخد كام يوم فعليا، قد إيه ده بيتفاوت، أقل كمية طلب، حجم الكرتونة، وشروط الدفع. خمس أعمدة، صف لكل مورد.',
+  t208: 'ادخل منتجاتك',
+  t209: 'اثنا عشر شهر مبيعات بالقطعة لكل منتج، التكلفة، السعر، المخزون الموجود، المخزون في الطريق، هدف مستوى الخدمة، وأي شكل موسم بيتبعه. ده الجزء الوحيد اللي بياخد وقت حقيقي، ومرة واحدة بس.',
+  t210: 'شغل فحص البيانات',
+  t211: 'قبل ما تثق في أي حاجة. بيقولك أي صفوف فيها مشاكل وإيه بالظبط الغلط فيها. توقع كام مشكلة في أول مرة. ده طبيعي وده بالظبط الهدف.',
+  t212: 'اقرا أول قرار طلب عندك',
+  t213: 'افتح خطة الشراء. ابعت الطلبيات. ده النظام شغال فعلا.',
+  t214: 'كل إتنين، عشر دقايق',
+  t215: 'اعد المخزون وحدث "الموجود". حدث "في الطريق" لأي حاجة دفعت فيها. افتح قرارات الطلب، اقرا الأحكام الملونة، وابعت اللي خطة الشراء بتقوله.',
+  t216: 'أول كل شهر، خمستاشر دقيقة',
+  t217: 'ضيف مبيعات الشهر اللي فات، ازحزح أعمدة الشهور خانة لليسار، حدث إعداد آخر شهر مبيعات، وشغل فحص البيانات تاني.',
+  t218: 'كل ربع سنة، نص ساعة',
+  t219: 'راجع الرسم البياني لأي منتج فاجأك الربع ده. في Store، افتح تقرير البضاعة الراكدة واعمل خصم أو أوقف أي حاجة بقت واقفة. راجع أشكال المواسم لو منتج غيّر شكله.',
+  t220: 'اللي محتاجه قبل ما تبدأ',
+  t221: 'اثنا عشر شهر مبيعات بالقطعة لكل منتج. مش إيراد، قطع.',
+  t222: 'تكلفتك وسعر بيعك لكل منتج.',
+  t223: 'فكرة تقريبية عن كل مورد بياخد قد إيه، وقد إيه ده بيتفاوت.',
+  t224: 'جرد مخزون حالي. معدود فعلي، مش تقديري.',
+  t225: 'عادتين في البيانات أهم من أي معادلة',
+  t226: '<strong>شهر البضاعة كانت خلصانة فيه مش معناه شهر طلب قليل.</strong> سيبه فاضي بدل ما تكتب 0، وإلا هتعلم النظام إن محدش كان عايزه.',
+  t227: '<strong>شيل أي تشويه استثنائي قبل ما تكتب.</strong> أسبوع تريند، طلبية جملة واحدة، إنفلونسر عمل بوست. لو سبتها، هتضخم طلبياتك سنة كاملة.',
+  t228: 'الإثبات',
+  t229: 'اتعمل عليه اختبار مقابل إزاي الناس فعلا بتطلب',
+  t230: 'إحنا مفضلين نوريك الطريقة والحدود بدل ما نقول كلام مش تقدر تتأكد منه.',
+  t231: 'المحاكاة',
+  t232: 'عملنا محاكاة لسنتين تداول يومي على كتالوج من تمن منتجات، ثلاثين تجربة مستقلة، وديناها لكل طريقة طلب نفس بيانات الطلب العشوائية ونفس تأخير الموردين العشوائي. الطريقتين اللي بتتعلم أعادوا التخطيط كل 30 يوم مستخدمين بس تاريخ المبيعات اللي كانوا شايفينه فعلا لحد وقتها، بالظبط زي مستخدم حقيقي.',
+  t233: 'طريقة الطلب',
+  t234: 'نسبة التوفر',
+  t235: 'متوسط المخزون المحتفظ به',
+  t236: 'تكلفة الطلب',
+  t237: 'تكلفة التخزين',
+  t238: 'ربح ضايع',
+  t239: 'إجمالي تكلفة السنتين',
+  t240: 'بالإحساس، إعادة طلب عند تغطية أسبوعين',
+  t241: '85.1%',
+  t242: '66,545',
+  t243: '41,953',
+  t244: '32,817',
+  t245: '972,488',
+  t246: '1,047,258',
+  t247: 'قالب جدول مجاني عادي',
+  t248: '98.2%',
+  t249: '163,866',
+  t250: '33,402',
+  t251: '80,811',
+  t252: '84,634',
+  t253: '198,847',
+  t254: 'اطلب صح',
+  t255: '99.4%',
+  t256: '148,711',
+  t257: '33,460',
+  t258: '73,337',
+  t259: '35,282',
+  t260: '142,079',
+  t261: 'كل الأرقام بالجنيه المصري. التكلفة الإجمالية بتجمع تكلفة الطلب، تكلفة التخزين، وهامش الربح الضايع بسبب نفاد المخزون. النظام كسب بالإحساس في 30 تجربة من 30، وكسب القالب العادي في 29 من 30.',
+  t262: 'النتيجة اللي فعلا مهمة',
+  t263: 'بص على نسبة التوفر ومتوسط المخزون المحتفظ به مع بعض. أي حد يقدر يرفع الخدمة بس بشراء مخزون أكتر، وده بالظبط اللي القالب العادي بيعمله، محتفظ بـ 163,866 جنيه بضاعة علشان يوصل 98.2%. إنك توصل لـ 99.4% أعلى مع مخزون أقل، ده الجزء اللي محتاج الحساب. الفرق ده هو المنتج.',
+  t264: 'إزاي الأداة نفسها اتأكد منها',
+  t265: 'المحاكاة دي اتعملت على نموذج الجدول الأصلي. من ساعتها نفس محرك الحساب اتبنى تاني لتطبيق الويب واتعمله اختبار تاني، بشكل مستقل، قبل ما أي حد يقدر يشترك:',
+  t266: 'كل معادلة اتراجعت مقابل حساب يدوي، ومقابل عشرات الحالات الصعبة: مساحة عمل فاضية، منتج بشهر بيانات واحد، تكلفة صفر، سعر أقل من التكلفة، موردين ناقصين، مخزون بالسالب، مفيش موردين خالص، وكتالوج كامل محمل.',
+  t267: 'اتعمل اختبار على بيانات غلط علشان نتأكد إن فحص البيانات فعلا بيمسك المشاكل بدل ما يطلع كلام واثق وغلط بهدوء.',
+  t268: 'تسجيل الدخول، صلاحية الاشتراك، وكل صفحة اتشغلوا من الأول للآخر في متصفح حقيقي قبل الإطلاق، باللغتين.',
+  t269: 'ثلاث مشاكل حقيقية اتلاقت واتصلحت كده: اتنين من أشكال المواسم الجاهزة كان متوسطهم السنوي مش واحد بالظبط، وده كان بيغير مقاسات الطلب لمنتجات معينة من غير ما حد يحس؛ حالة صعبة في ترتيب الإيراد كانت ممكن تسيب محل من غير أي منتج في الفئة العليا خالص؛ وفحص القفزة المفاجئة كان بيعلم على منتجات ثابتة عادية. واجهة نضيفة بتثبت إن الأزرار شغالة. مش بتثبت إن الأرقام صح، وده بالظبط سبب إننا بنراجع ده لوحده في كل مرة أي حاجة بتتغير.',
+  t270: 'الصراحة',
+  t271: 'اللي النظام ده مش بيعمله',
+  t272: 'بنقولها هنا بدل ما تكتشفها بنفسك، لأننا مفضلين تسمعها منا.',
+  t273: '<strong>دي دعم لقرارك، مش ضمان.</strong> بتقلل نفاد المخزون والفلوس المجمدة. بس مش هتتوقع مورد يختفي أو شحنة عالقة في الجمارك.',
+  t274: '<strong>منتج جديد خالص مايتوقعش</strong> بالطريقة دي ولا بأي طريقة تانية في الدنيا، لأن مفيش حاجة يتوقع منها. اطلبه بتقديرك أول ستة شهور.',
+  t275: '<strong>تحت اثنا عشر شهر تاريخ</strong> والتعديل الموسمي بيتقفل لوحده. تحت ستة شهور لمنتج معين، ماتعتمدش عليه خالص، وفحص البيانات هيقولك كده.',
+  t276: '<strong>انت اللي بتحدد شكل الموسم.</strong> النظام مش هيخمنه من سنة بيانات، لأن سنة واحدة مش تقدر تفرق بين ذروة ديسمبر حقيقية وديسمبر واحد كان بس حظ. أي أداة بتدعي عكس ده بتخمن ومش بتقولك.',
+  t277: '<strong>المنتجات العشوائية فعلا هتفضل مكلفة.</strong> لو مبيعات منتج بتقفز بين 10 و90 من غير نمط، النظام هيحتفظ بمخزون كبير، وده هيكلف فلوس. ده تنازل صريح، مش عيب.',
+  t278: '<strong>من غير حسابات، من غير كاشير، من غير باركود، من غير فروع متعددة.</strong> هو عقل التخطيط اللي بيشتغل فوق أي طريقة بتعد بيها مخزونك دلوقتي.',
+  t279: '<strong>هو بس بجودة اللي بتكتبه.</strong> وده بالظبط سبب وجود فحص البيانات.',
+  t280: 'الأسعار',
+  t281: 'شهريا. إلغاء وقت ما تحب.',
+  t282: 'كل باقة فيها النظام كامل، اللغتين، الدليل الإرشادي، وأداة جديدة كل شهر. أربعتاشر يوم تجربة مجانية على الأساسية وPro، وخمس أيام على Store.',
+  t283: 'الأسعار بالدولار الأمريكي. بنكك أو الكارت بيحولها للجنيه المصري تلقائيا وقت الدفع، زي أي اشتراك عالمي تاني.',
+  t284: 'الأساسية',
+  t285: '8 <small>دولار / شهر</small>',
+  t286: 'محل فرد واحد بمنتجات محدودة.',
+  t287: 'لحد 10 منتجات',
+  t288: 'محرك التوقع وإعادة الطلب كامل',
+  t289: 'نسخة عربي وإنجليزي',
+  t290: 'دليل إرشادي تعليمي',
+  t291: 'أدوات جديدة تتضاف للأداة باستمرار',
+  t292: 'دعم مباشر على واتساب',
+  t293: 'ابدأ تجربة مجانية',
+  t294: 'الأكتر طلبا',
+  t295: 'Pro',
+  t296: '15 <small>دولار / شهر</small>',
+  t297: 'ماركة في نمو، معاها موردين كتير وموسم حقيقي.',
+  t298: 'لحد 35 منتج',
+  t299: 'كل حاجة في الأساسية',
+  t300: 'أشكال موسم مخصصة',
+  t301: 'قارن الموردين',
+  t302: 'تقدير تكلفة نفاد المخزون',
+  t303: 'تقييم أداء الموردين',
+  t304: 'ابدأ تجربة مجانية',
+  t305: 'Store',
+  t306: '55 <small>دولار / شهر</small>',
+  t307: 'محل قائم عايز يشوف فلوسه واقفة فين بالظبط.',
+  t308: 'لحد 200 منتج',
+  t309: 'كل حاجة في Pro',
+  t310: 'تقرير البضاعة الراكدة',
+  t311: 'توقع التدفق النقدي للطلبيات المخططة',
+  t312: 'خط مباشر للأسئلة',
+  t313: 'ابدأ تجربة مجانية',
+  t314: 'تجربة مجانية على كل باقة',
+  t315: 'مفيش خصم لحد ما التجربة تخلص. لو مش مناسبة، الغي ومش هتتحاسب خالص.',
+  t318: 'بياناتك فاضلة مكانها',
+  t319: 'مساحة عملك بتفضل محفوظة حتى لو ألغيت، فكل حاجة زي ما سبتها بالظبط لو رجعت.',
+  t320: 'أسئلة',
+  t321: 'قبل ما تشتري',
+  t322: 'محتاج أفهم أي رياضيات؟',
+  t323: 'لأ. تدخل تاريخ مبيعاتك، تكلفتك، وبيانات موردينك. النظام بيديك تعليمات واضحة: اطلب النهارده، اطلب الأسبوع ده، انت متغطي، أو انت زيادة. الدليل الإرشادي المتضمن بيشرح كل مفهوم بلغة عادية لو عايز تفهم اللي بيحصل تحت، وناس كتير بتحب تفهم بعد شهر أو اتنين.',
+  t324: 'بابيع على إنستجرام، مش موقع. ده يفرق؟',
+  t325: 'خالص لأ. مش متربط بأي منصة. بيشتغل من أرقام مبيعاتك، أي ما كانت. إنستجرام، واتساب، محل فعلي، ماركت بليس، أو الأربعة مع بعض.',
+  t326: 'لو عندي بس ستة أو تمن شهور تاريخ؟',
+  t327: 'لسه بيشتغل. التعديل الموسمي بيتقفل لوحده وفحص البيانات بيقولك بوضوح إن النتايج أخشن. تحت ستة شهور لمنتج معين، الصراحة إن مفيش طريقة توقع موثوقة، والنظام بيقولك كده بدل ما يتظاهر.',
+  t328: 'محتاج أثبت أي برنامج؟',
+  t329: 'لأ. بيشتغل في متصفحك، على موبايلك أو الكمبيوتر، زي أي موقع. مفيش حاجة تنزلها ومفيش حاجة تحدثها بنفسك. محتاج اتصال إنترنت وانت بتستخدمه، لأن أرقامك بتتحسب على السيرفرات بتاعتنا وبتتحفظ في حسابك وانت بتكتب.',
+  t330: 'عربي ولا إنجليزي؟',
+  t331: 'الاتنين متضمنين في كل باقة من غير أي تكلفة إضافية. النسخة العربية من اليمين للشمال بالكامل ومبنية حول الجنيه المصري.',
+  t332: 'كام منتج يقدر يستوعب؟',
+  t333: 'الأساسية بتغطي لحد 10 منتجات و10 موردين، مع أشكال المواسم الأربعة الجاهزة ثابتة زي ما هي. Pro بتغطي لحد 35 منتج، وStore لحد 200، والاتنين بلحد 100 مورد وتقدر تضيف أشكال موسم خاصة بيك.',
+  t334: 'يوصلني إيه بالظبط كل شهر؟',
+  t335: 'أداة جديدة أو محسنة، زائد أي تصحيحات. Pro وStore فيهم بالفعل تقييم الموردين، تقدير تكلفة نفاد المخزون، تقرير البضاعة الراكدة، وتوقع التدفق النقدي. باقي جاية حاسبة تسعير وهامش ربح وتخطيط عروض. كل مستخدم بياخد الأداة يوم ما تنزل. لو ألغيت، مساحة عملك متحفظة وواقفاك لو رجعت بعدين.',
+  t336: 'أقدر ألغي بسهولة؟',
+  t337: 'وقت ما تحب، من حسابك، من غير ما تبعت إيميل لحد. تفضل معاك الصلاحية لحد آخر المدة اللي دفعتها بالفعل.',
+  t338: 'إيه الفرق بينه وبين القوالب المجانية على النت؟',
+  t339: 'القوالب المجانية بتسجل اللي عندك بالفعل. مش بتتوقع طلب، مش بتحسب مخزون أمان من موثوقية موردك الفعلية، مش بتفصل الموسمية عن العشوائية، ومش بتحترم أقل كمية طلب. دي بالظبط الأجزاء اللي بتغير اللي بتشتريه. المحاكاة في صفحة الدليل بتقارن الاتنين مباشرة.',
+  t340: 'هيشتغل لخدمة أو منتجات بالطلب المسبق؟',
+  t341: 'مش فعلا، ومفضلين نقولها. ده مبني لبيزنس محتفظ بمخزون فعلي بيشتريه ويبيعه. لو بتصنع بالطلب، منطق إعادة الطلب مش هيتطبق على منتجك النهائي، بس ممكن يفيدك في المواد الخام والمكونات.',
+  t342: 'مين يقدر يشوف بيانات بيزنسي؟',
+  t343: 'انت بس. كل حساب بياخد مساحة عمل خاصة بيه محدش يقدر يفتحها، حتى مشتركين تانيين. تسجل دخول برمز مؤقت بيوصلك على إيميلك، وحسابك بيشتغل على جهازين في نفس الوقت. محدش في اطلب صح بيبص على أرقامك كجزء من تشغيل الأداة.',
+  t344: 'لو تهت؟',
+  t345: 'كلمنا مباشرة على واتساب، الرقم موجود جوه الأداة بعد ما تسجل دخول. الدليل الإرشادي المتضمن مع كل باقة كمان بيغطي أغلب اللي ممكن يحيرك.',
+  t346: 'مستعد تسيب التخمين؟',
+  t347: 'تجربة مجانية على كل باقة. مفيش خصم لحد ما التجربة تخلص.',
+  t348: 'شوف الأسعار',
+  t349: 'الدفع اتم',
+  t350: 'شوف إيميلك علشان رابط تسجيل الدخول. ممكن ياخد لحد خمستاشر دقيقة علشان حسابك يتفعل، فلو لسه مش وصل، هو في الطريق.',
+  t351: 'مفيش إيميل بعد خمستاشر دقيقة؟ شوف الـ Spam، أو كلمنا على واتساب وهنظبطها يدوي.',
+  t352: '<a class="btn btn-ghost" data-go="home" href="#">ارجع للموقع</a>',
+  t353: 'قانوني',
+  t354: 'سياسة الخصوصية',
+  t355: 'آخر تحديث 19 سبتمبر 2026.',
+  t356: 'اللي السياسة دي بتغطيه',
+  t357: 'السياسة دي بتشرح إيه المعلومات اللي اطلب صح بتجمعها وانت بتستخدم الأداة أو الموقع ده، بتتستخدم في إيه، وإيه اختياراتك بخصوصها. "إحنا" يعني اطلب صح. "انت" يعني أي حد بيشترك أو بيستخدم الأداة.',
+  t358: 'اللي بنجمعه',
+  t359: 'ثلاثة أنواع معلومات بتمر بالخدمة:',
+  t360: '<strong>إيميلك</strong>، بيتستخدم علشان نبعتلك رموز تسجيل الدخول وإشعارات الحساب، ومفيش حاجة تانية.',
+  t361: '<strong>بيانات بيزنسك اللي بتكتبها في الأداة</strong>: أسماء المنتجات، تاريخ المبيعات، بيانات الموردين، التكلفة والأسعار. دي بتاعتك. بنحفظها علشان الأداة تشتغل، ومش بنقراها ولا بنبيعها ولا بنستخدمها في أي حاجة غير تشغيل حسابك.',
+  t362: '<strong>سجلات تقنية أساسية</strong>: امتى سجلت دخول، من أنهي جهاز، وهل الحفظ نجح. بنحتفظ بيها علشان نحل المشاكل ونمنع الاستغلال، مش علشان نراقب إزاي بتستخدم الأداة.',
+  t363: 'محدش بيشوف أو يحفظ رقم كارتك. الدفع بيتم بالكامل عن طريق Paddle، مزود خدمة الدفع بتاعنا، شوف قسم المدفوعات تحت.',
+  t364: 'فين بتتحفظ',
+  t365: 'الأداة بتشتغل على بنية Google (Google Apps Script وGoogle Drive). بيانات بيزنس كل مشترك بتعيش في ملف خاص بيه بس، مقفول على أي مشترك تاني. الموقع ده مستضاف منفصل، أي ما كان مكانه.',
+  t366: 'مين يقدر يشوفها',
+  t367: 'انت بس، بتسجيل الدخول برمز بيوصلك على إيميلك. محنا بنوصل لبيانات بيزنس أي مشترك كجزء من التشغيل العادي. الاستثناء الوحيد لو كلمتنا بمشكلة وكان لازم نبص علشان نساعدك.',
+  t368: 'المدفوعات',
+  t369: 'Paddle.com بتتولى كل الفوترة، بصفتها التاجر المسؤول عن الخدمة دي. لما تشترك، Paddle بتجمع بيانات دفعك مباشرة، مش إحنا. سياسة خصوصية Paddle بتحكم الجزء ده من العلاقة. إحنا بنستلم تأكيد حالة اشتراكك من Paddle (نشط، ملغي، الدفع فشل)، مش بيانات كارتك أبدا.',
+  t370: 'قد إيه بنحتفظ بيها',
+  t371: 'طول ما حسابك موجود، حتى بعد ما تلغي الاشتراك، فمساحة عملك واقفاك لو رجعت. لو عايز بياناتك تتمسح تماما، ابعتلنا إيميل أو واتساب وهنشيلها، عادة خلال كام يوم.',
+  t372: 'الكوكيز والتتبع',
+  t373: 'الموقع ده مافيهوش أي متتبعات إعلانات ومش بيبيع بيانات لأي طرف تالت. صفحة الدفع بتاعة Paddle ممكن تحط كوكيز ضرورية لمعالجة دفعتك؛ ده بيحصل على صفحة Paddle، تحت سياستهم، مش سياستنا.',
+  t374: 'حقوقك',
+  t375: 'تقدر تطلب منا في أي وقت نصدرلك نسخة من بياناتك، أو نصحح حاجة غلط عندنا، أو نمسح حسابك وكل اللي فيه. كلمنا بنفس طريقة الدعم تحت.',
+  t376: 'تغييرات على السياسة دي',
+  t377: 'لو ده اتغير بأي شكل مهم، هننشر التحديث هنا بتاريخ جديد فوق. استمرارك في استخدام الأداة بعد التغيير معناه انك موافق عليه.',
+  t378: 'تواصل',
+  t379: 'أسئلة عن السياسة دي، أو طلب بخصوص بياناتك: كلمنا على واتساب بالرقم الموجود في صفحة الأسعار، أو بالإيميل لو عندك واحد لنا.',
+  t380: 'قانوني',
+  t381: 'الشروط والأحكام',
+  t382: 'آخر تحديث 19 سبتمبر 2026.',
+  t383: 'انت بتشترك في إيه',
+  t384: 'اطلب صح أداة اشتراك بتحول تاريخ مبيعاتك لتوقعات طلب، نقاط إعادة طلب، وكميات شراء. هي أداة دعم قرار. مش بتحط طلبيات نيابة عنك، مش بتضمن أي بيع أو ربح أو توريد مورد، ومش بتحل محل حكمك على بيزنسك. القرار النهائي في أي طلبية ليك.',
+  t385: 'مين يقدر يستخدمها',
+  t386: 'لازم تكون في سن كافي تدخل بيه في اتفاق ملزم في بلدك، وتستخدم الأداة لبيزنس حقيقي أو مخطط له، مش كشراء استهلاكي شخصي.',
+  t387: 'الباقات والفوترة',
+  t388: 'الاشتراكات بتتحاسب شهريا، مقدما، عن طريق Paddle.com، اللي بتتصرف كالتاجر المسؤول وبتتولى الخصم الفعلي من كارتك. الأسعار موضحة في صفحة الأسعار. لو الباقة فيها تجربة مجانية، مش هتتحاسب لحد ما التجربة تخلص، وتقدر تلغي قبل كده من غير ما تدفع حاجة.',
+  t389: 'الإلغاء',
+  t390: 'الغي في أي وقت من حسابك، من غير استمارة، من غير مكالمة. تفضل معاك الصلاحية لحد آخر المدة اللي دفعتها بالفعل. بياناتك محفوظة، مش متمسوحة، فلو رجعت بعدين كل حاجة مكانها.',
+  t391: 'الاسترجاع',
+  t392: 'طلبات الاسترجاع بتتراجع كل واحدة لوحدها. ابعتلنا على دعم الواتساب وهنرد عليك.',
+  t393: 'استخدام الأداة بعدل',
+  t394: 'كل حساب مرخص لمشترك واحد، لبيزنسه بتاعه. الحسابات محدودة بجهازين متسجلين في نفس الوقت كحد تقني عملي، مش اقتراح؛ ممكن نوقف حساب بيتشارك أو بيتباع أكتر من كده. انت موافق انك ماتحاولش تكسر أو تسحب بيانات أو تعكس هندسة أو تبيع صلاحية الوصول للأداة.',
+  t395: 'بياناتك',
+  t396: 'بيانات المبيعات والموردين والمنتجات اللي بتكتبها بتاعتك. بنحفظها علشان نشغل الأداة ومش بنطالب بأي ملكية عليها. شوف سياسة الخصوصية علشان تعرف بالظبط إزاي بتتعامل.',
+  t397: 'من غير ضمان نتايج',
+  t398: 'التوقعات، نقاط إعادة الطلب، وكميات الطلب اللي الأداة دي بتطلعها هي حسابات مبنية على البيانات اللي انت بتوفرها. مش نصيحة مالية أو محاسبية أو قانونية، ومش بنضمن إنها هتكون صح في كل موقف، خصوصا لو بياناتك ناقصة أو غلط أو بتغطي مدة قصيرة مش كفاية. مورد بيتأخر عن موعد توريد، تغير مفاجئ في الطلب، أو غلطة في اللي كتبته، كل ده ممكن يخلي توصية معينة غلط. راجع أي كمية غير عادية قبل ما تتصرف بناء عليها.',
+  t399: 'حدود المسؤولية',
+  t400: 'لأقصى مدى يسمحه القانون في بلدك، اطلب صح مش مسؤولة عن أرباح ضايعة، مبيعات ضايعة، مخزون اتشرى أو ماتشريش بناء على نصيحة الأداة، أو أي خسارة غير مباشرة تانية من استخدام الأداة. أقصى مسؤولية عندنا لأي مطالبة محدودة بقيمة اللي دفعته لنا في التلات شهور قبل المطالبة.',
+  t401: 'إنهاء حساب',
+  t402: 'ممكن نوقف أو ننهي حساب بسبب عدم دفع، إساءة استخدام الخدمة، أو مخالفة جسيمة للشروط دي. لو ممكن بشكل معقول، هنقولك ليه الأول.',
+  t403: 'تغييرات على الشروط دي',
+  t404: 'لو ده اتغير بشكل مهم، هننشر التحديث هنا بتاريخ جديد. استمرارك في استخدام الأداة بعد كده معناه انك موافق على التحديث.',
+  t405: 'القانون الحاكم',
+  t406: 'الشروط دي محكومة بقوانين جمهورية مصر العربية.',
+  t407: 'تواصل',
+  t408: 'كلمنا على واتساب بالرقم الموجود في صفحة الأسعار، أو بالإيميل لو عندك واحد لنا.',
+  t409: '<strong style="color:var(--ink);display:block;margin-bottom:6px">اطلب صح</strong>\n        تخطيط الطلب والشراء، اتصنع في القاهرة لماركات مصرية.',
+  t410: 'اللي بنقدمه',
+  t411: 'إزاي بيشتغل',
+  t412: 'الدليل والإثبات',
+  t413: 'الأسعار',
+  t414: 'الأسئلة الشائعة',
+  t415: 'سياسة الخصوصية',
+  t416: 'الشروط والأحكام',
+  t417: '\n      الأرقام الموضحة في صفحة الدليل جاية من محاكاة متحكم فيها باستخدام طلب مولد، مش من\n      حسابات عملاء حقيقية متدققة، ومتعروضة جنب الطريقة كاملة علشان تتحكم فيها بنفسك. المنتج ده\n      دعم قرار لشراء المخزون. مش بيضمن أي نتيجة بيزنس.\n    ',
+};
+
+
+/* ---------- bilingual rendering ---------- */
+var LANG = (function () {
+  try {
+    var saved = localStorage.getItem('etlob-site-lang');
+    if (saved === 'en' || saved === 'ar') return saved;
+  } catch (e) {}
+  return (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+})();
+
+function applyLang() {
+  var dict = LANG === 'ar' ? SITE_AR : SITE_EN;
+  document.querySelectorAll('[data-t]').forEach(function (el) {
+    var k = el.getAttribute('data-t');
+    if (dict[k] != null) el.textContent = dict[k];
+  });
+  document.querySelectorAll('[data-t-html]').forEach(function (el) {
+    var k = el.getAttribute('data-t-html');
+    if (dict[k] != null) el.innerHTML = dict[k];
+  });
+  document.documentElement.lang = LANG;
+  document.documentElement.dir = LANG === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('.langbtn').forEach(function (b) {
+    b.textContent = LANG === 'ar' ? 'English' : 'العربية';
+  });
+  try { localStorage.setItem('etlob-site-lang', LANG); } catch (e) {}
+}
+
+function toggleLang() {
+  LANG = LANG === 'ar' ? 'en' : 'ar';
+  applyLang();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  var a = document.getElementById('langBtn'), b = document.getElementById('langBtnM');
+  if (a) a.addEventListener('click', toggleLang);
+  if (b) b.addEventListener('click', toggleLang);
+  applyLang();
+});
+// Paddle loads with `async`, entirely independent of page load or DOMContentLoaded,
+// so a slow or unreachable Paddle CDN can never hold up the rest of the site.
+// It is initialized lazily, the first time someone actually clicks a checkout button,
+// which in practice is always well after `async` has had time to finish either way.
+/* =========================================================================
+   CHECKOUT SETUP: fill these in once you have a Paddle account and the
+   app itself is deployed. See LAUNCH.md for the exact steps and where each
+   value comes from. Nothing below can charge a real card until you do.
+   ========================================================================= */
+var CHECKOUT_CONFIG = {
+  // "sandbox" while testing with Paddle test cards, "production" once you are live.
+  environment: "sandbox",
+  // Paddle > Developer Tools > Authentication > Client-side tokens. Starts with "test_" in
+  // sandbox or "live_" in production. This token is public by design, safe to ship in this file.
+  clientToken: "REPLACE_WITH_PADDLE_CLIENT_TOKEN",
+  // Paddle > Catalog > Products > each price's ID (looks like "pri_01...").
+  // Use the sandbox price IDs while environment is "sandbox", live ones once you flip it.
+  priceIds: {
+    basic: "REPLACE_WITH_BASIC_PRICE_ID",
+    pro:   "REPLACE_WITH_PRO_PRICE_ID",
+    store: "REPLACE_WITH_STORE_PRICE_ID"
+  },
+  // Where Paddle sends the shopper right after payment. Leave as-is unless this file moves.
+  successUrl: location.origin + location.pathname + "#thanks",
+  whatsapp: "201001234567"
+};
+
+function configured(){
+  return CHECKOUT_CONFIG.clientToken.indexOf("REPLACE") !== 0;
+}
+function priceIdFor(tier){
+  var id = CHECKOUT_CONFIG.priceIds[tier];
+  return id && id.indexOf("REPLACE") !== 0 ? id : null;
+}
+
+var toastTimer;
+function toast(msg){
+  var el = document.getElementById("toast");
+  if(!el){
+    el = document.createElement("div");
+    el.id = "toast"; el.className = "toast";
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.classList.add("on");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ el.classList.remove("on"); }, 4200);
+}
+
+
+var paddleReady = false;
+function ensurePaddleInitialized(){
+  if(paddleReady || !window.Paddle) return;
+  if(CHECKOUT_CONFIG.environment === "sandbox"){ Paddle.Environment.set("sandbox"); }
+  Paddle.Initialize({
+    token: CHECKOUT_CONFIG.clientToken,
+    eventCallback: function(e){
+      if(e && e.name === "checkout.completed"){ location.hash = "#thanks"; }
+    }
+  });
+  paddleReady = true;
+}
+function openCheckout(tier, btn){
+  if(!configured()){
+    toast("Checkout is not connected yet. See LAUNCH.md to finish setup.");
+    return;
+  }
+  if(!window.Paddle){
+    toast("Checkout could not load. Check your connection and try again.");
+    return;
+  }
+  var priceId = priceIdFor(tier);
+  if(!priceId){
+    toast("The " + tier + " plan has no price ID set yet. See LAUNCH.md.");
+    return;
+  }
+  ensurePaddleInitialized();
+  if(btn){ btn.classList.add("loading"); }
+  Paddle.Checkout.open({
+    items: [{ priceId: priceId, quantity: 1 }],
+    settings: { successUrl: CHECKOUT_CONFIG.successUrl }
+  });
+  if(btn){ setTimeout(function(){ btn.classList.remove("loading"); }, 1200); }
+}
+
+(function(){
+  var pages = ["home","provide","how","proof","pricing","faq","thanks","privacy","terms"];
+  function go(name, push){
+    if(pages.indexOf(name) === -1) name = "home";
+    pages.forEach(function(p){
+      var el = document.getElementById("p-"+p);
+      if(el) el.classList.toggle("on", p === name);
+    });
+    document.querySelectorAll(".tab").forEach(function(t){
+      t.classList.toggle("on", t.getAttribute("data-go") === name);
+    });
+    document.getElementById("drawer").classList.remove("open");
+    window.scrollTo({top:0, behavior: push ? "smooth" : "auto"});
+    if(push && location.hash !== "#"+name){ history.pushState(null,"","#"+name); }
+  }
+  document.addEventListener("click", function(e){
+    var t = e.target.closest("[data-go]");
+    if(t){ e.preventDefault(); go(t.getAttribute("data-go"), true); return; }
+    var c = e.target.closest("[data-checkout]");
+    if(c){ e.preventDefault(); openCheckout(c.getAttribute("data-checkout"), c); }
+  });
+  document.getElementById("menubtn").addEventListener("click", function(){
+    document.getElementById("drawer").classList.toggle("open");
+  });
+  window.addEventListener("popstate", function(){ go((location.hash||"#home").slice(1), false); });
+  go((location.hash||"#home").slice(1), false);
+})();
+</script>
+</body>
+</html>
