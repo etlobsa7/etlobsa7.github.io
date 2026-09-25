@@ -290,6 +290,8 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:46px 0 34
 .foot-links button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.89rem;
   font-family:var(--sans);padding:0}
 .foot-links button:hover{color:var(--accent)}
+.foot-links a{color:inherit;text-decoration:none;font:inherit}
+.foot-links a:hover{text-decoration:underline}
 .fine{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);font-size:.82rem;
   color:var(--faint);max-width:80ch}
 
@@ -580,22 +582,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <dl class="fr"><dt data-t="t127"></dt><dd data-t="t128"></dd></dl>
 <dl class="fr use"><dt data-t="t129"></dt><dd data-t="t130"></dd></dl>
 <dl class="fr why"><dt data-t="t131"></dt><dd data-t="t132"></dd></dl>
-<div class="matrix" style="display:none">
-<div></div>
-<div class="mh" data-t="t133"></div><div class="mh" data-t="t134"></div><div class="mh" data-t="t135"></div>
-<div class="mrow" data-t-html="t136"></div>
-<div class="mc hot" data-t-html="t137"></div>
-<div class="mc hot" data-t-html="t138"></div>
-<div class="mc mid" data-t-html="t139"></div>
-<div class="mrow" data-t-html="t140"></div>
-<div class="mc mid" data-t-html="t141"></div>
-<div class="mc mid" data-t-html="t142"></div>
-<div class="mc cold" data-t-html="t143"></div>
-<div class="mrow" data-t-html="t144"></div>
-<div class="mc mid" data-t-html="t145"></div>
-<div class="mc cold" data-t-html="t146"></div>
-<div class="mc cold" data-t-html="t147"></div>
-</div>
+
 </div>
 </div>
 <!-- 9 -->
@@ -995,6 +982,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <button data-go="faq" data-t="t414"></button>
 <button data-go="privacy" data-t="t415"></button>
 <button data-go="terms" data-t="t416"></button>
+<a data-t="t424" href="#" id="waFoot" rel="noopener" target="_blank"></a>
 </div>
 </div>
 <div class="fine" data-t="t417"></div>
@@ -1023,7 +1011,7 @@ var SITE_EN = {
   t19: 'Runs in your browser. Arabic and English included. Priced in USD.',
   t20: '<b>99.4%</b><small>Fill rate achieved in a two year simulation</small>',
   t21: '<b>10 min</b><small>Your weekly routine once it is set up</small>',
-  t22: '<b>11</b><small>Connected pages. You type into four.</small>',
+  t22: '<b>15</b><small>Connected pages. You type into four.</small>',
   t23: '<b>2 min</b><small>To sign in. Just your email, no password to remember.</small>',
   t24: 'The problem',
   t25: 'You are almost certainly doing both of these at once',
@@ -1094,7 +1082,7 @@ var SITE_EN = {
   t90: 'What it is',
   t91: 'A stock level per product. Reach it, place the order.\n          It equals your daily sales multiplied by your supplier\'s lead time, plus safety stock.',
   t92: 'How you use it',
-  t93: 'You do not calculate anything. The Order\n          Decision sheet shows a coloured verdict per product: order today, order this week, stock is\n          healthy, or overstocked. Red, amber, green, blue.',
+  t93: 'You do not calculate anything. The Order\n          Decisions page shows a coloured verdict per product: order today, order this week, stock is\n          healthy, or overstocked. Red, amber, green, blue. Under each one, a plain sentence explains exactly why.',
   t94: 'Why it matters',
   t95: 'Waiting until a product is nearly gone\n          guarantees a gap, because the supplier still needs their lead time after you notice. The\n          reorder point is the exact amount of stock that carries you through that wait and no more.\n          Ordering at the right level is worth more than ordering the right quantity.',
   t96: 'Stock falls as you sell. It touches the reorder point, you order, and the\n            remaining stock carries you through the lead time. Safety stock is the cushion you only\n            eat into when something goes wrong.',
@@ -1129,11 +1117,11 @@ var SITE_EN = {
   t125: 'Demand graphs',
   t126: 'See the shape of your sales, not just the number the engine outputs',
   t127: 'What it is',
-  t128: 'Every product gets its own graph: actual sales across the last twelve\n          months plotted next to what the forecast expected. A growing trend or a seasonal swing\n          becomes something you see in one glance, instead of something buried in a column of numbers.',
+  t128: 'A line graph of each product\'s actual monthly sales, with the forecast continuing as a dotted line and a mark showing when it will hit its reorder point. Products selling at a similar level share a graph, up to five each, so the lines stay readable even for a big catalogue.',
   t129: 'How you use it',
-  t130: 'Open any product from Order Decisions and its graph is right there.\n          Nothing to build or configure, it draws itself from the same sales history you already entered.',
+  t130: 'Open the Demand graphs page. Nothing to build or configure, it draws itself from the same sales history you already entered.',
   t131: 'Why it matters',
-  t132: 'A number can be technically correct and still hide the story behind it.\n          A graph catches what a table cannot: a product that quietly changed shape, a spike the\n          forecast missed, a slow decline nobody noticed month to month. It is the fastest way to\n          sanity check the engine\'s own output before you act on it.',
+  t132: 'A number can be technically correct and still hide the story behind it. A line shows it: which products are climbing, which are fading, which have a season, and which are about to need an order. Your best sellers and your dying ones are obvious at a glance.',
   t133: 'X · steady',
   t134: 'Y · variable',
   t135: 'Z · erratic',
@@ -1155,14 +1143,14 @@ var SITE_EN = {
   t151: 'What it is',
   t152: 'Every product that needs ordering, collected under the\n          supplier it comes from, with totals, payment terms, and an optional budget check.',
   t153: 'How you use it',
-  t154: 'Open the sheet, read one block per supplier,\n          send one message. You can set a monthly purchase budget and it will warn you when the\n          recommendations exceed it and tell you to fund your class A products first.',
+  t154: 'Open the page, read one block per supplier,\n          send one message. You can set a monthly purchase budget and it will warn you when the\n          recommendations exceed it and tell you to fund your class A products first.',
   t155: 'Why it matters',
-  t156: 'Analysis that does not end in an action gets\n          abandoned within a month. This is the sheet that converts everything above it into ten\n          minutes of work on a Monday morning. The budget warning matters more than it sounds,\n          because recommendations that ignore your cash position are not recommendations.',
+  t156: 'Analysis that does not end in an action gets\n          abandoned within a month. This is the page that converts everything above it into ten\n          minutes of work on a Monday morning. The budget warning matters more than it sounds,\n          because recommendations that ignore your cash position are not recommendations.',
   t157: '10',
   t158: 'Health Check, the data audit layer',
   t159: 'Because a confident wrong answer is worse than no answer',
   t160: 'What it is',
-  t161: 'A sheet that audits your own inputs before you trust\n          any output. It checks for missing history, selling price below cost, unknown suppliers,\n          negative stock, one-off sales spikes, thin margins, and products marked as flat whose sales\n          clearly swing.',
+  t161: 'A page that audits your own inputs before you trust\n          any output. It checks for missing history, selling price below cost, unknown suppliers,\n          negative stock, one-off sales spikes, thin margins, and products marked as flat whose sales\n          clearly swing.',
   t162: 'How you use it',
   t163: 'Open it after any change. Every row shows one\n          of three verdicts: FIX THIS, REVIEW, or GOOD. Each problem row names the specific problem\n          in plain language.',
   t164: 'Why it matters',
@@ -1177,17 +1165,17 @@ var SITE_EN = {
   t173: 'Why it matters',
   t174: 'Two numbers here are worth the subscription on\n          their own. Inventory turnover tells you how many times your stock cycles per year, and\n          under four means your cash is asleep. Value locked in overstock tells you exactly how much\n          money you could free up this month by discounting the right things.',
   t175: '12',
-  t176: 'The guided walkthrough, and what arrives every month',
+  t176: 'The guided walkthrough, and what comes next',
   t177: 'You are buying an ongoing system, not a download',
   t178: 'What it is',
-  t179: 'A separate six page tutorial that walks you through a\n          worked example, a fictional clothing brand, from an empty workspace to a finished purchase order,\n          with a full answer key so you can check you did it right. Roughly 25 minutes.',
+  t179: 'A worked example built into the app. One click loads a fictional clothing brand, and the walkthrough tells you exactly which number you should see on each page, from an empty shop to a finished purchase order, so you can check you did it right. About 15 minutes.',
   t180: 'How you use it',
-  t181: 'Open it in a second tab and follow it inside the real\n          app. Every value to type is given. Every number you should end up seeing is listed.',
+  t181: 'Open the Guided walkthrough page after you sign in, load the practice shop, and check each page against the answer key. When you are done, clear it and enter your own shop.',
   t182: 'Why it matters',
   t183: 'Most business spreadsheets are abandoned in\n          week one because nobody explains them. Beyond that, Pro and Store already include the\n          supplier scorecard, stockout cost estimator, dead stock report, and cash flow forecast,\n          and a pricing calculator and promotion planner are still ahead. Everyone on the app gets\n          each new tool the day it ships, and your own workspace and data stay exactly where you\n          left them even if you cancel.',
   t184: 'Also included',
   t185: 'Fifteen connected pages',
-  t186: 'You type into four of them. The other eleven do the work.',
+  t186: 'You type into four of them. The other eleven do the work, some unlocking on Pro and Store.',
   t187: '<b>Start Here</b><span>Setup order, verdict legend, and an honest list of what the app cannot do</span>',
   t188: '<b>Dashboard</b><span>Cash, profit, turnover and today\'s action list on one page</span>',
   t189: '<b>Settings</b><span>Ordering cost, holding rate, service level targets</span>',
@@ -1196,14 +1184,14 @@ var SITE_EN = {
   t192: '<b>Products</b><span>Twelve months of sales, costs, prices, stock on hand and in transit</span>',
   t193: '<b>Demand Forecast</b><span>Deseasonalised demand, trend, variability class, forecast</span>',
   t194: '<b>Order Decisions</b><span>Safety stock, reorder point, quantity, and a plain verdict</span>',
-  t195: '<b>Demand Graphs</b><span>Actual sales against forecast, per product, drawn automatically</span>',
+  t195: '<b>Demand Graphs</b><span>Real sales lines per product, the forecast, and reorder timing</span>',
   t196: '<b>Purchase Plan</b><span>Orders grouped by supplier with totals and budget check</span>',
   t197: '<b>Health Check</b><span>Audits your data and flags anything that would produce a wrong order</span>',
   t420: '<b>Supplier Scorecard</b><span>Rates each supplier on reliability. Pro and Store.</span>',
   t421: '<b>Stockout Cost Estimator</b><span>What a stockout on this product would actually cost you. Pro and Store.</span>',
   t422: '<b>Dead Stock Report</b><span>What is not moving and how much cash it is holding hostage. Store.</span>',
   t423: '<b>Cash Flow Forecast</b><span>What your planned orders will cost and when. Store.</span>',
-  t198: '<b>Guided Walkthrough</b><span>Separate six page tutorial with a full answer key</span>',
+  t198: '<b>Guided Walkthrough</b><span>Built into the app, with a full answer key</span>',
   t199: '<a class="btn btn-primary" data-go="pricing" href="#">Start your free trial</a>',
   t200: 'How it works',
   t201: 'Set up once in an afternoon. Ten minutes a week after that.',
@@ -1287,7 +1275,7 @@ var SITE_EN = {
   t279: '<strong>It is only as good as what you type in.</strong> Which is precisely why the\n            Health Check exists.',
   t280: 'Pricing',
   t281: 'Monthly. Cancel whenever you like.',
-  t282: 'Every plan includes the full system, both languages, the guided walkthrough,\n          and a new tool each month. Fourteen days free on Basic and Pro, five days on Store.',
+  t282: 'Every plan includes the full system, both languages, the guided walkthrough, and new tools as they are added. Fourteen days free on Basic and Pro, five days on Store.',
   t283: 'Prices are billed in USD. Your bank or card converts it to EGP automatically at checkout,\n          the same as any other international subscription.',
   t284: 'Basic',
   t285: '8 <small>USD / month</small>',
@@ -1337,8 +1325,8 @@ var SITE_EN = {
   t331: 'Both are included with every plan at no extra cost. The Arabic version is\n          fully right to left and built around EGP.',
   t332: 'How many products can it handle?',
   t333: 'Basic covers up to 10 products and 10 suppliers, with the four built in season\n          shapes fixed as they are. Pro covers up to 35 products, Store up to 200, both with up to\n          100 suppliers and your own custom season shapes.',
-  t334: 'What exactly arrives each month?',
-  t335: 'A new or improved tool, plus any corrections. Pro and Store already include the\n          supplier scorecard, stockout cost estimator, dead stock report, and cash flow forecast.\n          A pricing and margin calculator and a promotion planner are still ahead. Everyone gets\n          each tool the day it ships. If you cancel, your workspace is kept and waiting for you if\n          you come back later.',
+  t334: 'What new tools are coming?',
+  t335: 'New tools and improvements as they are built, plus any corrections. Pro and Store already include the\n          supplier scorecard, stockout cost estimator, dead stock report, and cash flow forecast.\n          A pricing and margin calculator and a promotion planner are still ahead. Everyone gets\n          each tool the day it ships. If you cancel, your workspace is kept and waiting for you if\n          you come back later.',
   t336: 'Can I cancel easily?',
   t337: 'Any time, from your own account, without emailing anyone. You keep access\n          until the end of the period you already paid for.',
   t338: 'How is this different from the free templates online?',
@@ -1382,7 +1370,7 @@ var SITE_EN = {
   t376: 'Changes to this policy',
   t377: 'If this changes in any way that matters, we\'ll post the update here with a new date at the\n    top. Continuing to use the app after a change means you accept the update.',
   t378: 'Contact',
-  t379: 'Questions about this policy, or a request about your data: reach us on WhatsApp using the\n    number on the pricing page, or by email if you have one for us.',
+  t379: 'Questions about this policy, or a request about your data: message us on WhatsApp at +20 109 009 9849, also linked at the bottom of every page.',
   t380: 'Legal',
   t381: 'Terms and conditions',
   t382: 'Last updated 19 September 2026.',
@@ -1411,7 +1399,7 @@ var SITE_EN = {
   t405: 'Governing law',
   t406: 'These terms are governed by the laws of the Arab Republic of Egypt.',
   t407: 'Contact',
-  t408: 'Reach us on WhatsApp using the number on the pricing page, or by email if you have one for\n    us.',
+  t408: 'Message us on WhatsApp at +20 109 009 9849, also linked at the bottom of every page.',
   t409: '<strong style="color:var(--ink);display:block;margin-bottom:6px">Etlob Sa7</strong>\n        Demand forecasting and purchase planning, built in Cairo for Egyptian brands.',
   t410: 'What we provide',
   t411: 'How it works',
@@ -1421,6 +1409,7 @@ var SITE_EN = {
   t415: 'Privacy policy',
   t416: 'Terms and conditions',
   t417: '\n      Performance figures shown on the Evidence page come from a controlled simulation using\n      generated demand, not from audited customer accounts, and are presented alongside the full\n      method so they can be judged on their merits. This product is decision support for inventory\n      purchasing. It does not guarantee any business outcome.\n    ',
+  t424: 'WhatsApp +20 109 009 9849',
 };
 var SITE_AR = {
   t1: 'اطلب صح<span>تخطيط الطلب لمصر</span>',
@@ -1444,7 +1433,7 @@ var SITE_AR = {
   t19: 'بيشتغل في المتصفح. عربي وإنجليزي مع بعض. بالدولار الأمريكي.',
   t20: '<b>99.4%</b><small>نسبة توفر المنتج في محاكاة استمرت سنتين</small>',
   t21: '<b>10 دقايق</b><small>روتينك الأسبوعي بعد ما تظبطه</small>',
-  t22: '<b>11</b><small>صفحة مترابطة. بتكتب في أربعة بس.</small>',
+  t22: '<b>15</b><small>صفحة مترابطة. بتكتب في أربعة بس.</small>',
   t23: '<b>دقيقتين</b><small>علشان تسجل دخول. الإيميل بس، من غير باسورد.</small>',
   t24: 'المشكلة',
   t25: 'أنت غالبا بتعمل الاتنين دول في نفس الوقت',
@@ -1515,7 +1504,7 @@ var SITE_AR = {
   t90: 'اللي هي إيه',
   t91: 'مستوى مخزون لكل منتج. توصله، تطلب. بيساوي مبيعاتك اليومية في مدة توريد المورد، زائد مخزون الأمان.',
   t92: 'إزاي تستخدمها',
-  t93: 'ماتحسبش حاجة. صفحة قرارات الطلب بتوريك قرار ملون لكل منتج: اطلب النهارده، اطلب الأسبوع ده، المخزون كويس، أو زيادة. أحمر، برتقالي، أخضر، أزرق.',
+  t93: 'ماتحسبش حاجة. صفحة قرارات الطلب بتوريك قرار ملون لكل منتج: اطلب النهارده، اطلب الأسبوع ده، المخزون كويس، أو زيادة. أحمر، برتقالي، أخضر، أزرق. وتحت كل واحد جملة بسيطة بتشرح السبب بالظبط.',
   t94: 'ليه مهمة',
   t95: 'الانتظار لحد ما المنتج يقرب يخلص بيضمنلك فجوة، لأن المورد لسه محتاج مدة التوريد بعد ما تلاحظ. نقطة إعادة الطلب هي بالظبط قد المخزون اللي هيغطيك خلال الانتظار ده، مش أكتر. تطلب في التوقيت الصح أهم من تطلب الكمية الصح.',
   t96: 'المخزون بينزل وانت بتبيع. يوصل نقطة إعادة الطلب، تطلب، والمخزون الباقي بيغطيك طول مدة التوريد. مخزون الأمان هو الوسادة اللي بس بتستخدمها لو حاجة غلطت.',
@@ -1550,11 +1539,11 @@ var SITE_AR = {
   t125: 'الرسم البياني للطلب',
   t126: 'تشوف شكل مبيعاتك، مش بس الرقم اللي المحرك طلعه',
   t127: 'اللي هي إيه',
-  t128: 'كل منتج ليه رسم بياني خاص بيه: المبيعات الفعلية آخر اتناشر شهر جنب اللي كان متوقع. اتجاه في نمو أو تغير موسمي بتشوفه بنظرة واحدة، مش لازم تدوره جوه عمود أرقام.',
+  t128: 'رسم بخط لمبيعات كل منتج الشهرية الفعلية، والتوقع كمل بخط متقطع، وعلامة بتوضح إمتى هيوصل نقطة إعادة الطلب. المنتجات اللي بتبيع بمستوى قريب بتتجمع في رسم واحد، لحد خمسة، علشان الخطوط تفضل واضحة حتى مع كتالوج كبير.',
   t129: 'إزاي تستخدمها',
-  t130: 'افتح أي منتج من صفحة قرارات الطلب والرسم موجود قدامك على طول. مفيش حاجة تظبطها، بيترسم لوحده من نفس تاريخ المبيعات اللي دخلته.',
+  t130: 'افتح صفحة رسوم الطلب. مفيش حاجة تبنيها أو تظبطها، بترسم نفسها من نفس تاريخ المبيعات اللي كتبته.',
   t131: 'ليه مهمة',
-  t132: 'الرقم ممكن يكون صح فعلا وبرضه يخبي القصة اللي وراه. الرسم بيمسك حاجات الجدول مايوريهاش: منتج غير شكله من غير ما تلاحظ، قفزة التوقع فوتها، أو تراجع بطيء محدش واخد باله منه شهر بشهر. أسرع طريقة تتأكد إن المحرك نفسه ماشي صح قبل ما تتصرف بناء عليه.',
+  t132: 'الرقم ممكن يكون صح ويخبي القصة اللي وراه. الخط بيوريها: أنهي منتج طالع، وأنهي بيقل، وأنهي ليه موسم، وأنهي قرب يحتاج طلب. أحسن منتجاتك والمنتجات اللي بتموت بتبان من أول نظرة.',
   t133: 'X · ثابت',
   t134: 'Y · متقلب',
   t135: 'Z · عشوائي',
@@ -1576,14 +1565,14 @@ var SITE_AR = {
   t151: 'اللي هي إيه',
   t152: 'كل منتج محتاج طلب، متجمع تحت المورد بتاعه، مع الإجماليات، شروط الدفع، ومراجعة اختيارية للميزانية.',
   t153: 'إزاي تستخدمها',
-  t154: 'تفتح الجدول، تقرا بلوك لكل مورد، تبعت رسالة واحدة. تقدر تحدد ميزانية شراء شهرية وهيحذرك لو التوصيات تعدتها ويقولك مول منتجات الفئة A الأول.',
+  t154: 'تفتح الصفحة، تقرا بلوك لكل مورد، تبعت رسالة واحدة. تقدر تحدد ميزانية شراء شهرية وهيحذرك لو التوصيات تعدتها ويقولك مول منتجات الفئة A الأول.',
   t155: 'ليه مهمة',
-  t156: 'أي تحليل مايخلصش بقرار بيتسيب خلال شهر. ده الجدول اللي بيحول كل اللي فات لعشر دقايق شغل صبح الإتنين. تحذير الميزانية أهم مما يبدو، لأن أي توصية بتتجاهل وضع فلوسك مش توصية أصلا.',
+  t156: 'أي تحليل مايخلصش بقرار بيتسيب خلال شهر. دي الصفحة اللي بيحول كل اللي فات لعشر دقايق شغل صبح الإتنين. تحذير الميزانية أهم مما يبدو، لأن أي توصية بتتجاهل وضع فلوسك مش توصية أصلا.',
   t157: '10',
   t158: 'فحص البيانات، طبقة المراجعة',
   t159: 'لأن إجابة غلط بثقة أسوأ من مفيش إجابة',
   t160: 'اللي هي إيه',
-  t161: 'جدول بيراجع اللي كتبته قبل ما تثق في أي مخرج. بيدور على تاريخ ناقص، سعر بيع أقل من التكلفة، موردين غير معروفين، مخزون بالسالب، قفزات بيع لمرة واحدة، هوامش ربح ضعيفة، ومنتجات متسجلة ثابتة بس مبيعاتها بتتقلب بوضوح.',
+  t161: 'صفحة بتراجع اللي كتبته قبل ما تثق في أي مخرج. بيدور على تاريخ ناقص، سعر بيع أقل من التكلفة، موردين غير معروفين، مخزون بالسالب، قفزات بيع لمرة واحدة، هوامش ربح ضعيفة، ومنتجات متسجلة ثابتة بس مبيعاتها بتتقلب بوضوح.',
   t162: 'إزاي تستخدمها',
   t163: 'تفتحه بعد أي تعديل. كل صف بيوري واحد من ثلاثة أحكام: لازم يتصلح، راجعه، أو تمام. كل صف فيه مشكلة بيسمي المشكلة بالظبط بلغة واضحة.',
   t164: 'ليه مهمة',
@@ -1598,17 +1587,17 @@ var SITE_AR = {
   t173: 'ليه مهمة',
   t174: 'رقمين هنا يستاهلوا الاشتراك لوحدهم. معدل دوران المخزون بيقولك مخزونك بيتجدد كام مرة في السنة، وأقل من أربعة معناه فلوسك نايمة. القيمة المجمدة في مخزون الزيادة بتقولك بالظبط قد إيه فلوس تقدر تحررها الشهر ده لو عملت خصم على الحاجة الصح.',
   t175: '12',
-  t176: 'الدليل الإرشادي، واللي بييجي كل شهر',
+  t176: 'الدليل الإرشادي، واللي جاي',
   t177: 'انت بتشتري نظام مستمر، مش تحميلة واحدة',
   t178: 'اللي هي إيه',
-  t179: 'دليل منفصل من ست صفحات بياخدك خطوة بخطوة في مثال عملي، ماركة ملابس خيالية، من مساحة عمل فاضية لطلبية شراء جاهزة، مع إجابات كاملة تقدر تراجع نفسك عليها. حوالي 25 دقيقة.',
+  t179: 'مثال عملي جوه الأداة. ضغطة واحدة بتحمّل ماركة ملابس خيالية، والدليل بيقولك بالظبط أي رقم المفروض تشوفه في كل صفحة، من محل فاضي لطلبية شراء جاهزة، علشان تتأكد إنك عملتها صح. حوالي 15 دقيقة.',
   t180: 'إزاي تستخدمها',
-  t181: 'تفتحه في تبويب تاني وتتابعه جوه الأداة الحقيقية. كل قيمة تكتبها مذكورة. كل رقم المفروض تشوفه متسجل.',
+  t181: 'افتح صفحة الدليل الإرشادي بعد ما تسجل دخول، حمّل المحل التدريبي، وراجع كل صفحة على الإجابات. لما تخلص، امسحه واكتب بيانات محلك.',
   t182: 'ليه مهمة',
   t183: 'أغلب جداول البيزنس بتتسيب في أول أسبوع لأن محدش بيشرحها. غير كده، Pro وStore فيهم بالفعل تقييم الموردين، تقدير تكلفة نفاد المخزون، تقرير البضاعة الراكدة، وتوقع التدفق النقدي، وباقي جاية حاسبة تسعير وهامش ربح وتخطيط عروض. كل مستخدم بياخد الأداة الجديدة يوم ما تنزل، ومساحة عملك وبياناتك فاضلين مكانهم حتى لو ألغيت.',
   t184: 'كمان متضمن',
   t185: 'خمستاشر صفحة مترابطة',
-  t186: 'بتكتب في أربعة منهم. الحداشر الباقيين بيعملوا الشغل.',
+  t186: 'بتكتب في أربعة منهم. الحداشر الباقيين بيعملوا الشغل، وفي منهم بيفتح في Pro وStore.',
   t187: '<b>ابدأ من هنا</b><span>ترتيب الإعداد، معنى كل قرار، وقائمة صريحة باللي الأداة مش بتعمله</span>',
   t188: '<b>لوحة المتابعة</b><span>الفلوس، الربح، معدل الدوران، وقائمة تصرفات النهارده في صفحة واحدة</span>',
   t189: '<b>الإعدادات</b><span>تكلفة الطلب، معدل التخزين، أهداف مستوى الخدمة</span>',
@@ -1617,14 +1606,14 @@ var SITE_AR = {
   t192: '<b>المنتجات</b><span>اثنا عشر شهر مبيعات، تكلفة، سعر، مخزون موجود وفي الطريق</span>',
   t193: '<b>توقع الطلب</b><span>الطلب من غير موسمية، الاتجاه، فئة التقلب، التوقع</span>',
   t194: '<b>قرارات الطلب</b><span>مخزون الأمان، نقطة إعادة الطلب، الكمية، وقرار واضح</span>',
-  t195: '<b>الرسم البياني للطلب</b><span>المبيعات الفعلية جنب التوقع، لكل منتج، بيترسم لوحده</span>',
+  t195: '<b>رسوم الطلب</b><span>خط مبيعات حقيقي لكل منتج، التوقع، ووقت إعادة الطلب</span>',
   t196: '<b>خطة الشراء</b><span>طلبيات متجمعة حسب المورد مع الإجمالي ومراجعة الميزانية</span>',
   t197: '<b>فحص البيانات</b><span>بيراجع بياناتك ويعلم أي حاجة ممكن تطلّع طلبية غلط</span>',
   t420: '<b>تقييم الموردين</b><span>بيقيّم كل مورد على مدى التزامه. Pro وStore.</span>',
   t421: '<b>تقدير تكلفة نفاد المخزون</b><span>نفاد المنتج ده هيكلفك قد إيه فعلا. Pro وStore.</span>',
   t422: '<b>تقرير البضاعة الراكدة</b><span>إيه اللي مش بيتحرك وقد إيه فلوس واقفة فيه. Store.</span>',
   t423: '<b>توقع التدفق النقدي</b><span>طلبياتك المخططة هتكلفك قد إيه وامتى. Store.</span>',
-  t198: '<b>الدليل الإرشادي</b><span>دليل منفصل من ست صفحات مع إجابات كاملة</span>',
+  t198: '<b>الدليل الإرشادي</b><span>جوه الأداة، بإجابات كاملة</span>',
   t199: '<a class="btn btn-primary" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>',
   t200: 'إزاي بيشتغل',
   t201: 'تظبطه مرة واحدة في نص يوم. عشر دقايق في الأسبوع بعد كده.',
@@ -1708,7 +1697,7 @@ var SITE_AR = {
   t279: '<strong>هو بس بجودة اللي بتكتبه.</strong> وده بالظبط سبب وجود فحص البيانات.',
   t280: 'الأسعار',
   t281: 'شهريا. إلغاء وقت ما تحب.',
-  t282: 'كل باقة فيها النظام كامل، اللغتين، الدليل الإرشادي، وأداة جديدة كل شهر. أربعتاشر يوم تجربة مجانية على الأساسية وPro، وخمس أيام على Store.',
+  t282: 'كل باقة فيها النظام كامل، اللغتين، الدليل الإرشادي، وأدوات جديدة أول ما تتضاف. أربعتاشر يوم مجانا على الأساسية وPro، وخمس أيام على Store.',
   t283: 'الأسعار بالدولار الأمريكي. بنكك أو الكارت بيحولها للجنيه المصري تلقائيا وقت الدفع، زي أي اشتراك عالمي تاني.',
   t284: 'الأساسية',
   t285: '8 <small>دولار / شهر</small>',
@@ -1758,8 +1747,8 @@ var SITE_AR = {
   t331: 'الاتنين متضمنين في كل باقة من غير أي تكلفة إضافية. النسخة العربية من اليمين للشمال بالكامل ومبنية حول الجنيه المصري.',
   t332: 'كام منتج يقدر يستوعب؟',
   t333: 'الأساسية بتغطي لحد 10 منتجات و10 موردين، مع أشكال المواسم الأربعة الجاهزة ثابتة زي ما هي. Pro بتغطي لحد 35 منتج، وStore لحد 200، والاتنين بلحد 100 مورد وتقدر تضيف أشكال موسم خاصة بيك.',
-  t334: 'يوصلني إيه بالظبط كل شهر؟',
-  t335: 'أداة جديدة أو محسنة، زائد أي تصحيحات. Pro وStore فيهم بالفعل تقييم الموردين، تقدير تكلفة نفاد المخزون، تقرير البضاعة الراكدة، وتوقع التدفق النقدي. باقي جاية حاسبة تسعير وهامش ربح وتخطيط عروض. كل مستخدم بياخد الأداة يوم ما تنزل. لو ألغيت، مساحة عملك متحفظة وواقفاك لو رجعت بعدين.',
+  t334: 'إيه الأدوات الجديدة اللي جاية؟',
+  t335: 'أدوات جديدة وتحسينات أول ما تجهز، زائد أي تصحيحات. Pro وStore فيهم بالفعل تقييم الموردين، تقدير تكلفة نفاد المخزون، تقرير البضاعة الراكدة، وتوقع التدفق النقدي. باقي جاية حاسبة تسعير وهامش ربح وتخطيط عروض. كل مستخدم بياخد الأداة يوم ما تنزل. لو ألغيت، مساحة عملك متحفظة وواقفاك لو رجعت بعدين.',
   t336: 'أقدر ألغي بسهولة؟',
   t337: 'وقت ما تحب، من حسابك، من غير ما تبعت إيميل لحد. تفضل معاك الصلاحية لحد آخر المدة اللي دفعتها بالفعل.',
   t338: 'إيه الفرق بينه وبين القوالب المجانية على النت؟',
@@ -1803,7 +1792,7 @@ var SITE_AR = {
   t376: 'تغييرات على السياسة دي',
   t377: 'لو ده اتغير بأي شكل مهم، هننشر التحديث هنا بتاريخ جديد فوق. استمرارك في استخدام الأداة بعد التغيير معناه انك موافق عليه.',
   t378: 'تواصل',
-  t379: 'أسئلة عن السياسة دي، أو طلب بخصوص بياناتك: كلمنا على واتساب بالرقم الموجود في صفحة الأسعار، أو بالإيميل لو عندك واحد لنا.',
+  t379: 'أسئلة عن السياسة دي، أو طلب بخصوص بياناتك: كلمنا على واتساب على +20 109 009 9849، والرابط موجود تحت في كل صفحة.',
   t380: 'قانوني',
   t381: 'الشروط والأحكام',
   t382: 'آخر تحديث 19 سبتمبر 2026.',
@@ -1832,7 +1821,7 @@ var SITE_AR = {
   t405: 'القانون الحاكم',
   t406: 'الشروط دي محكومة بقوانين جمهورية مصر العربية.',
   t407: 'تواصل',
-  t408: 'كلمنا على واتساب بالرقم الموجود في صفحة الأسعار، أو بالإيميل لو عندك واحد لنا.',
+  t408: 'كلمنا على واتساب على +20 109 009 9849، والرابط موجود تحت في كل صفحة.',
   t409: '<strong style="color:var(--ink);display:block;margin-bottom:6px">اطلب صح</strong>\n        تخطيط الطلب والشراء، اتصنع في القاهرة لماركات مصرية.',
   t410: 'اللي بنقدمه',
   t411: 'إزاي بيشتغل',
@@ -1842,6 +1831,7 @@ var SITE_AR = {
   t415: 'سياسة الخصوصية',
   t416: 'الشروط والأحكام',
   t417: '\n      الأرقام الموضحة في صفحة الدليل جاية من محاكاة متحكم فيها باستخدام طلب مولد، مش من\n      حسابات عملاء حقيقية متدققة، ومتعروضة جنب الطريقة كاملة علشان تتحكم فيها بنفسك. المنتج ده\n      دعم قرار لشراء المخزون. مش بيضمن أي نتيجة بيزنس.\n    ',
+  t424: 'واتساب +20 109 009 9849',
 };
 
 
@@ -1878,6 +1868,8 @@ function toggleLang() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  var wa = document.getElementById('waFoot');
+  if (wa && CHECKOUT_CONFIG.whatsapp) wa.href = 'https://wa.me/' + CHECKOUT_CONFIG.whatsapp;
   var a = document.getElementById('langBtn'), b = document.getElementById('langBtnM');
   if (a) a.addEventListener('click', toggleLang);
   if (b) b.addEventListener('click', toggleLang);
@@ -1897,17 +1889,17 @@ var CHECKOUT_CONFIG = {
   environment: "sandbox",
   // Paddle > Developer Tools > Authentication > Client-side tokens. Starts with "test_" in
   // sandbox or "live_" in production. This token is public by design, safe to ship in this file.
-  clientToken: "REPLACE_WITH_PADDLE_CLIENT_TOKEN",
+  clientToken: "test_26d968fbb62f703521d1237f896",
   // Paddle > Catalog > Products > each price's ID (looks like "pri_01...").
   // Use the sandbox price IDs while environment is "sandbox", live ones once you flip it.
   priceIds: {
-    basic: "REPLACE_WITH_BASIC_PRICE_ID",
-    pro:   "REPLACE_WITH_PRO_PRICE_ID",
-    store: "REPLACE_WITH_STORE_PRICE_ID"
+    basic: "pri_01m2x9hacn726erxxrph66399x",
+    pro:   "pri_01m2x9pv8e8sv3dwe2cndzqm3c",
+    store: "pri_01m2x9ttvp8k1trv3ggsk99n2b"
   },
   // Where Paddle sends the shopper right after payment. Leave as-is unless this file moves.
   successUrl: location.origin + location.pathname + "#thanks",
-  whatsapp: "201001234567"
+  whatsapp: "201090099849"
 };
 
 function configured(){
