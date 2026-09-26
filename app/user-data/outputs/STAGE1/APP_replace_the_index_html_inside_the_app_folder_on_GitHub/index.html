@@ -1,0 +1,2717 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%230E2743%27/%3E%3Crect x=%278%27 y=%2717%27 width=%273.6%27 height=%277%27 rx=%271.3%27 fill=%27%23fff%27 opacity=%27.55%27/%3E%3Crect x=%2714.2%27 y=%2712%27 width=%273.6%27 height=%2712%27 rx=%271.3%27 fill=%27%23fff%27 opacity=%27.8%27/%3E%3Crect x=%2720.4%27 y=%278%27 width=%273.6%27 height=%2716%27 rx=%271.3%27 fill=%27%235DA2F2%27/%3E%3C/svg%3E">
+<title>Etlob Sa7</title>
+<base target="_top">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2743; --navy-2:#163456; --navy-3:#21466F;
+  --ink:#13202F; --body:#3B4A5A; --muted:#66768A; --faint:#98A6B6;
+  --line:#DCE3EB; --line-2:#EDF1F5; --paper:#FFFFFF; --wash:#F4F6F9; --wash-2:#E9EEF4;
+  --accent:#1A6DD4; --accent-2:#1459B0; --accent-bg:#E8F1FC;
+  --crit:#B42318; --crit-bg:#FDECEA;
+  --order:#8A5100; --order-bg:#FFF0D1;
+  --ok:#157346; --ok-bg:#E2F2E9;
+  --over:#2B5EA7; --over-bg:#E6EEFA;
+  --none:#5E6B7A; --none-bg:#EDF0F3;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:Inter, "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --r:10px;
+}
+html[lang="ar"]{
+  --sans:"IBM Plex Sans Arabic", Inter, system-ui, "Segoe UI", Tahoma, Arial, sans-serif;
+  --serif:"IBM Plex Sans Arabic", Georgia, serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--wash);color:var(--body);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh}
+[hidden]{display:none !important}
+h1,h2,h3{color:var(--ink);margin:0;line-height:1.2}
+h1{font-family:var(--serif);font-size:28px;font-weight:600;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-size:20px;font-weight:600}
+h3{font-size:15px;font-weight:600}
+p{margin:0 0 .8em}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.num,.t td.num,.t th.num{text-align:end;font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.nowrap{white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+
+/* ---------- boot + login ---------- */
+.boot{min-height:100vh;display:grid;place-items:center;color:var(--muted)}
+.spinner{width:28px;height:28px;border:3px solid var(--line);border-top-color:var(--navy);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.login{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.login-brand{background:var(--navy);color:#C9D6E6;padding:48px;display:flex;flex-direction:column;justify-content:space-between}
+.login-brand h2{color:#fff;font-size:38px;line-height:1.15;max-width:17ch;margin-top:28px}
+.login-brand p{max-width:40ch;margin-top:14px}
+.login-form{display:grid;place-items:center;padding:32px}
+.login-card{width:100%;max-width:380px}
+.login-card h1{margin-bottom:8px}
+.login-card .lede{color:var(--muted);margin-bottom:22px}
+.login-card label{display:block;font-weight:600;color:var(--ink);margin-bottom:6px}
+.login-card input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:16px}
+.login-card input.code{letter-spacing:.4em;font-size:22px;text-align:center;font-variant-numeric:tabular-nums}
+.login-card .btn{width:100%;margin-top:14px;padding:12px}
+.login-links{display:flex;justify-content:space-between;gap:12px;margin-top:14px;font-size:14px}
+.linkbtn{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.msg{margin-top:16px;padding:10px 12px;border-radius:8px;font-size:14px}
+.msg.ok{background:var(--ok-bg);color:var(--ok)}
+.msg.bad{background:var(--crit-bg);color:var(--crit)}
+.msg.info{background:var(--accent-bg);color:var(--accent-2)}
+.login-foot{margin-top:28px;font-size:14px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:12px}
+@media (max-width:820px){
+  .login{grid-template-columns:1fr}
+  .login-brand{padding:24px}
+  .login-brand h2{font-size:24px;margin-top:14px}
+  .login-brand .hide-sm{display:none}
+}
+
+/* ---------- brand mark ---------- */
+.mark{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+.mark svg{flex:0 0 30px}
+.mark b{font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:-.01em}
+
+/* ---------- app shell ---------- */
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh;background:linear-gradient(90deg,var(--navy) 240px,var(--wash) 240px)}
+html[dir="rtl"] .app{background:linear-gradient(270deg,var(--navy) 240px,var(--wash) 240px)}
+.side{background:var(--navy);color:#B9C8DA;position:sticky;top:0;height:100vh;overflow-y:auto;padding:18px 12px;display:flex;flex-direction:column;gap:18px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav-label{font-size:12px;color:#7F95AF;padding:14px 10px 6px}
+.nav button{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:start;background:none;border:0;color:#C9D6E6;padding:8px 10px;border-radius:7px;cursor:pointer;font-size:14px;font-weight:500}
+.nav button:hover{background:rgba(255,255,255,.07);color:#fff}
+.nav button[aria-current="page"]{background:#fff;color:var(--navy);font-weight:600}
+.badge{font-size:11.5px;font-weight:700;min-width:20px;height:20px;padding:0 6px;border-radius:10px;display:inline-grid;place-items:center;background:rgba(255,255,255,.12);color:#fff;font-variant-numeric:tabular-nums}
+.badge.crit{background:#E5484D;color:#fff}
+.nav button[aria-current="page"] .badge{background:var(--wash-2);color:var(--navy)}
+.nav button[aria-current="page"] .badge.crit{background:var(--crit);color:#fff}
+.account{margin-top:auto;border-top:1px solid rgba(255,255,255,.1);padding:14px 10px 4px;font-size:13px}
+.account .email{color:#fff;word-break:break-all}
+.account .plan{margin:6px 0 10px}
+.account .row{display:flex;gap:8px;flex-wrap:wrap}
+.ghost{background:none;border:1px solid rgba(255,255,255,.22);color:#DDE6F1;border-radius:7px;padding:6px 10px;cursor:pointer;font-size:13px}
+.ghost:hover{border-color:#fff;color:#fff}
+
+.main{min-width:0;display:flex;flex-direction:column}
+.bar{position:sticky;top:0;z-index:5;background:rgba(244,246,249,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:10px 28px;min-height:52px}
+.bar .title{font-weight:600;color:var(--ink)}
+.status{margin-inline-start:auto;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:7px;white-space:nowrap}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block}
+.status.saving i{background:var(--accent);animation:pulse 1s ease-in-out infinite}
+.status.dirty i{background:var(--order)}
+.status.error i{background:var(--crit)}
+@keyframes pulse{50%{opacity:.3}}
+.view{padding:26px 28px 90px;max-width:1320px;width:100%}
+.page-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.page-head p{color:var(--muted);max-width:72ch;margin:6px 0 0}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.section{margin-top:28px}
+.section > h2{margin-bottom:10px}
+
+@media (max-width:900px){
+  .app{grid-template-columns:1fr;background:var(--wash) !important}
+  .side{position:sticky;top:0;z-index:10;height:auto;flex-direction:column;gap:8px;padding:10px 12px 8px}
+  .side .top{display:flex;justify-content:space-between;align-items:center}
+  .nav{flex-direction:row;overflow-x:auto;scrollbar-width:none;gap:4px;padding-bottom:2px}
+  .nav::-webkit-scrollbar{display:none}
+  .nav-label{display:none}
+  .nav button{width:auto;white-space:nowrap;flex:0 0 auto}
+  .account{display:none}
+  .bar{position:static;padding:10px 16px}
+  .view{padding:18px 16px 80px}
+  h1{font-size:23px}
+  .grid .w-name input{min-width:130px}
+  .grid .w-sel select{min-width:118px}
+  .po-total{text-align:start}
+}
+.side .top .ghost{display:none}
+@media (max-width:900px){.side .top .ghost{display:inline-block}}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:600;font-size:14px;border-radius:8px;padding:9px 14px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--navy-3)}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.primary:hover{background:var(--navy-2)}
+.btn.danger{color:var(--crit)}
+.btn.small{padding:6px 10px;font-size:13px}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+.iconbtn{background:none;border:0;color:var(--faint);cursor:pointer;padding:6px 10px;font-size:18px;line-height:1}
+.iconbtn:hover{color:var(--crit)}
+
+/* ---------- tables ---------- */
+.tbl-wrap{overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);max-height:72vh}
+table.t{border-collapse:separate;border-spacing:0;width:100%;font-size:14px}
+.t th{position:sticky;top:0;z-index:2;background:var(--wash-2);color:var(--ink);font-weight:600;text-align:start;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap;font-size:13px;vertical-align:bottom}
+.t td{padding:9px 12px;border-bottom:1px solid var(--line-2);white-space:nowrap;vertical-align:middle}
+.t tr:last-child td{border-bottom:0}
+.t td.wrap{white-space:normal;min-width:240px}
+.t .name{font-weight:600;color:var(--ink)}
+.t th .sub{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.t tfoot td{font-weight:700;color:var(--ink);background:var(--wash);border-top:1px solid var(--line)}
+
+/* input grids */
+.grid td{padding:0;border-inline-end:1px solid var(--line-2)}
+.grid th{border-inline-end:1px solid var(--line)}
+.grid input,.grid select{display:block;width:100%;border:0;background:transparent;padding:9px 10px;color:var(--ink);min-width:0;border-radius:0;font-variant-numeric:tabular-nums}
+.grid select{padding-inline-end:4px;cursor:pointer}
+.grid input:hover,.grid select:hover{background:var(--wash)}
+.grid input:focus,.grid select:focus{outline:2px solid var(--accent);outline-offset:-2px;background:#fff}
+.grid input.bad{background:var(--crit-bg);color:var(--crit)}
+.grid .stick{--vb:transparent;position:sticky;inset-inline-start:0;z-index:1;background:var(--paper);box-shadow:inset 4px 0 0 var(--vb),inset -1px 0 0 var(--line)}
+html[dir="rtl"] .grid .stick{box-shadow:inset -4px 0 0 var(--vb),inset 1px 0 0 var(--line)}
+.vb-CRITICAL{--vb:var(--crit) !important}.vb-ORDER{--vb:#D98A00 !important}.vb-OK{--vb:var(--ok) !important}.vb-OVER{--vb:var(--over) !important}
+.grid th.stick{z-index:3;background:var(--wash-2)}
+.grid .w-name input{min-width:190px;font-weight:600}
+.grid .w-sel select{min-width:150px}
+.grid .w-m input{width:62px;text-align:end}
+.grid .w-n input{width:88px;text-align:end}
+.grid .w-t input{min-width:150px}
+.grid td.v{padding:0 10px;min-width:170px}
+.grid tr.flash td{animation:flash 1.6s ease-out}
+@keyframes flash{0%{background:var(--accent-bg)}100%{background:transparent}}
+.grid th.m-sep{border-inline-start:2px solid var(--line)}
+.grid td.m-sep{border-inline-start:2px solid var(--line-2)}
+.gridnote{font-size:13px;color:var(--muted);margin:10px 2px 0}
+
+/* ---------- pills ---------- */
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex:0 0 7px}
+.v-CRITICAL{color:var(--crit);background:var(--crit-bg)}
+.v-ORDER{color:var(--order);background:var(--order-bg)}
+.v-OK{color:var(--ok);background:var(--ok-bg)}
+.v-OVER{color:var(--over);background:var(--over-bg)}
+.v-NODEMAND,.v-NOHIST{color:var(--none);background:var(--none-bg)}
+.h-FIX{color:var(--crit);background:var(--crit-bg)}
+.h-REVIEW{color:var(--order);background:var(--order-bg)}
+.h-GOOD{color:var(--ok);background:var(--ok-bg)}
+.tag{display:inline-block;font-weight:700;font-size:12.5px;padding:2px 8px;border-radius:6px;background:var(--wash-2);color:var(--ink)}
+
+/* ---------- dashboard ---------- */
+.today{background:var(--navy);color:#C9D6E6;border-radius:var(--r);padding:22px 24px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:24px;align-items:center}
+.today .big{font-family:var(--serif);font-size:54px;line-height:.9;color:#fff;font-weight:600;font-variant-numeric:tabular-nums}
+.today h2{color:#fff;font-size:21px}
+.today p{margin:4px 0 0}
+.today .btn{background:#fff;color:var(--navy);border-color:#fff}
+.today.calm .big{color:#8FE0B4}
+@media (max-width:700px){.today{grid-template-columns:auto 1fr}.today .btn{grid-column:1/-1}}
+.alert{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border-radius:var(--r);padding:12px 16px;margin-top:12px;font-size:14px}
+.alert.bad{background:var(--crit-bg);color:var(--crit)}
+.alert.warn{background:var(--order-bg);color:var(--order)}
+.alert.good{background:var(--ok-bg);color:var(--ok)}
+.alert.info{background:var(--accent-bg);color:var(--accent-2)}
+.alert b{color:inherit}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.kpi{padding:15px 18px 16px;border-inline-end:1px solid var(--line);border-bottom:1px solid var(--line);margin-inline-end:-1px;margin-bottom:-1px}
+.kpi span{display:block;font-size:13px;color:var(--muted)}
+.kpi b{display:block;font-family:var(--serif);font-size:25px;color:var(--ink);font-weight:600;line-height:1.2;margin-top:3px;font-variant-numeric:tabular-nums}
+.kpi small{display:block;font-size:12px;color:var(--faint);margin-top:3px}
+.kpi.warn b{color:var(--order)}
+.kpi.bad b{color:var(--crit)}
+.two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px}
+@media (max-width:1000px){.two{grid-template-columns:1fr}}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.stack{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--line-2);margin:12px 0 14px}
+.stack i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:10px 20px;font-size:14px}
+.legend div{display:flex;align-items:center;gap:7px}
+.split{display:flex;gap:10px;margin-top:10px}
+.split div{flex:1;background:var(--wash);border-radius:8px;padding:10px 12px}
+.split b{display:block;font-family:var(--serif);font-size:22px;color:var(--ink)}
+.split.onpage div{background:var(--paper);border:1px solid var(--line)}
+.empty{background:var(--paper);border:1px dashed var(--line);border-radius:var(--r);padding:36px 28px;text-align:center}
+.empty h2{margin-bottom:8px}
+.empty p{color:var(--muted);max-width:56ch;margin:0 auto 18px}
+.empty .actions{justify-content:center}
+
+/* ---------- settings ---------- */
+.fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.field{padding:16px 18px;border-inline-end:1px solid var(--line);border-bottom:1px solid var(--line);margin-inline-end:-1px;margin-bottom:-1px}
+.field label{display:block;font-weight:600;color:var(--ink);margin-bottom:7px}
+.field input[type=text],.field select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;font-variant-numeric:tabular-nums}
+.field input.bad{border-color:var(--crit);background:var(--crit-bg)}
+.field .help{font-size:13px;color:var(--muted);margin-top:7px}
+.unit{position:relative}
+.unit span{position:absolute;inset-inline-end:11px;top:50%;transform:translateY(-50%);color:var(--faint);font-size:13px;pointer-events:none}
+.unit input{padding-inline-end:52px !important}
+.switch{display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;color:var(--ink)}
+.switch input{appearance:none;width:40px;height:22px;border-radius:11px;background:var(--line);position:relative;cursor:pointer;flex:0 0 40px;margin:0}
+.switch input::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:inset-inline-start .15s}
+.switch input:checked{background:var(--ok)}
+.switch input:checked::after{inset-inline-start:21px}
+.routine{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.routine p{margin:4px 0 0;color:var(--muted);max-width:70ch}
+
+/* ---------- seasons ---------- */
+.profiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:16px}
+@media (max-width:520px){.profiles{grid-template-columns:1fr}}
+.prof{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.prof-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.prof-head input{font-weight:600;font-size:15px;border:1px solid var(--line);border-radius:7px;padding:6px 9px;min-width:0;flex:1}
+.prof-head h3{flex:1}
+.bars{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;align-items:end;height:74px;margin:6px 0 4px;border-bottom:1px solid var(--line);position:relative}
+.bars i{display:block;background:var(--navy-3);border-radius:3px 3px 0 0;min-height:2px}
+.bars .one{position:absolute;inset-inline:0;border-top:1px dashed var(--faint)}
+.months{display:grid;grid-template-columns:repeat(12,1fr);gap:4px}
+.months label{font-size:11px;color:var(--muted);text-align:center;display:block}
+.months input{width:100%;padding:5px 2px;border:1px solid var(--line);border-radius:6px;text-align:center;font-size:13px;font-variant-numeric:tabular-nums}
+.months input:disabled{background:var(--wash);color:var(--body);border-color:var(--line-2)}
+.prof-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+
+/* ---------- ABC matrix ---------- */
+.mx{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:6px}
+.mx .h{font-size:13px;font-weight:600;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;padding:4px 8px}
+.mx .cell.zero{opacity:.55}
+.mx .h small{display:block;font-weight:400;color:var(--muted)}
+.mx .cell{border:1px solid var(--line);border-radius:8px;padding:12px;min-height:118px;background:var(--paper)}
+.mx .cell b{font-size:15px;color:var(--ink)}
+.mx .cell .n{font-family:var(--serif);font-size:26px;color:var(--ink);float:inline-end;line-height:1}
+.mx .cell p{font-size:12.5px;margin:6px 0 0;line-height:1.45}
+.mx .hot{background:var(--ok-bg);border-color:#BFE3CE}
+.mx .mid{background:var(--order-bg);border-color:#F3D9A4}
+.mx .cold{background:var(--crit-bg);border-color:#F4C7C2}
+@media (max-width:760px){.mx .cell p{display:none}.mx .cell{min-height:70px}}
+
+/* ---------- purchase plan ---------- */
+.po{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);margin-top:16px;overflow:hidden}
+.po-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.po-head .meta{font-size:13px;color:var(--muted);margin-top:3px}
+.po-total{text-align:end}
+.po-total b{display:block;font-family:var(--serif);font-size:22px;color:var(--ink)}
+.po .t th{position:static}
+.po-foot{display:flex;justify-content:flex-end;gap:8px;padding:12px 18px;background:var(--wash);border-top:1px solid var(--line);flex-wrap:wrap}
+
+/* ---------- filters ---------- */
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer;color:var(--body)}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.chip b{font-variant-numeric:tabular-nums;margin-inline-start:4px}
+
+/* ---------- health ---------- */
+.issues{margin:0;padding:0;list-style:none}
+.issues li{display:flex;gap:8px;align-items:baseline;font-size:13.5px;padding:2px 0}
+.issues li::before{content:"";width:7px;height:7px;border-radius:50%;flex:0 0 7px;transform:translateY(-1px)}
+.issues li.error::before{background:var(--crit)}
+.issues li.warn::before{background:var(--order)}
+
+/* ---------- start here ---------- */
+.guide{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:22px}
+@media (max-width:1000px){.guide{grid-template-columns:1fr}}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:0 0 18px 44px}
+html[dir="rtl"] .steps li{padding:0 44px 18px 0}
+.steps li::before{content:counter(s);position:absolute;inset-inline-start:0;top:-1px;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.steps li b{display:block;color:var(--ink)}
+.steps li p{margin:2px 0 0;color:var(--body)}
+.plain{margin:0;padding-inline-start:18px}
+.plain li{margin-bottom:6px}
+.legend-list{display:grid;gap:8px}
+.legend-list div{display:flex;align-items:center;gap:10px;font-size:14px}
+
+/* ---------- toast + dialog ---------- */
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:11px 16px;border-radius:9px;font-size:14px;z-index:50;display:flex;gap:14px;align-items:center;max-width:calc(100vw - 32px);box-shadow:0 8px 28px rgba(14,39,67,.25)}
+.toast button{background:none;border:0;color:#8CC2FF;font-weight:700;cursor:pointer;padding:0}
+.overlay{position:fixed;inset:0;background:rgba(14,39,67,.45);display:grid;place-items:center;z-index:60;padding:16px}
+.dialog{background:var(--paper);border-radius:12px;max-width:480px;width:100%;padding:22px;box-shadow:0 20px 60px rgba(14,39,67,.3)}
+.dialog h2{margin-bottom:8px}
+.dialog p{color:var(--body)}
+.dialog textarea{width:100%;min-height:200px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:14px}
+.dialog .actions{justify-content:flex-end;margin-top:16px}
+.dialog.wide{max-width:640px}
+.cmp-t{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
+.cmp-t th{text-align:start;font-weight:600;color:var(--muted);font-size:12px;padding:6px 8px;border-bottom:1px solid var(--line)}
+.cmp-t td{padding:8px;border-bottom:1px solid var(--line-2);vertical-align:middle}
+.cmp-t tr.current td{background:var(--accent-bg)}
+.cmp-t .num{text-align:end;font-variant-numeric:tabular-nums}
+.cmp-add{display:flex;gap:8px;align-items:end;margin-top:14px;flex-wrap:wrap}
+.cmp-add label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+.cmp-add select,.cmp-add input{padding:8px 10px;border:1px solid var(--line);border-radius:7px;font-size:14px}
+.cmp-add input{width:110px}
+/* ---------- charts + reasoning ---------- */
+.chart{width:100%;min-width:620px;height:auto;display:block}
+.glegend{display:flex;flex-wrap:wrap;gap:8px 16px;margin:2px 0 10px;font-size:13px}
+.gl{display:inline-flex;align-items:center;gap:6px;color:var(--body)}
+.gl i{width:14px;height:3px;border-radius:2px;flex:0 0 14px}
+.cfrow{display:flex;align-items:center;gap:12px;padding:8px 0}
+.cflabel{flex:0 0 170px;font-size:13.5px;color:var(--body)}
+.cfbar-track{flex:1;height:20px;background:var(--wash-2);border-radius:5px;overflow:hidden}
+.cfbar{height:100%;background:var(--navy-3);border-radius:5px;min-width:2px}
+.cfval{flex:0 0 90px;text-align:end;font-variant-numeric:tabular-nums;font-weight:600;font-size:13.5px}
+.why{font-size:12.5px;color:var(--muted);font-weight:400;white-space:normal;max-width:52ch;margin-top:3px;line-height:1.45}
+.t td .why{white-space:normal}
+
+.lang{background:none;border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--ink)}
+.side .lang{border-color:rgba(255,255,255,.22);color:#DDE6F1}
+</style>
+</head>
+<body>
+
+<div id="boot" class="boot"><div><div class="spinner"></div><span data-t="boot.loading">Loading your workspace</span></div></div>
+
+<!-- ============ SIGN IN ============ -->
+<div id="login" class="login" hidden>
+  <div class="login-brand">
+    <a class="mark" href="#" onclick="return false">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#fff"/><rect x="8" y="17" width="3.6" height="7" rx="1.3" fill="#0E2743" opacity=".45"/><rect x="14.2" y="12" width="3.6" height="12" rx="1.3" fill="#0E2743" opacity=".7"/><rect x="20.4" y="8" width="3.6" height="16" rx="1.3" fill="#1A6DD4"/></svg>
+      <b class="appname">Etlob Sa7</b>
+    </a>
+    <div>
+      <h2 data-t="login.pitch">Know what to reorder, how much, and when.</h2>
+      <p class="hide-sm" data-t="login.pitch2">Your sales history in. A purchase order you can send out.</p>
+    </div>
+    <p class="small hide-sm" style="color:#7F95AF" data-t="login.private">Your numbers are private to your account.</p>
+  </div>
+  <div class="login-form">
+    <div class="login-card">
+      <h1 data-t="login.title">Sign in</h1>
+      <p class="lede" id="login-lede" data-t="login.lede">Use the email you subscribed with. We will email you a 6 digit code. No password needed.</p>
+
+      <form id="f-email" novalidate>
+        <label for="email" data-t="login.email">Email address</label>
+        <input id="email" type="email" autocomplete="email" inputmode="email" required>
+        <button class="btn primary" type="submit" data-t="login.send">Email me a code</button>
+      </form>
+
+      <form id="f-code" novalidate hidden>
+        <label for="code" data-t="login.code">6 digit code</label>
+        <input id="code" class="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required>
+        <button class="btn primary" type="submit" data-t="login.signin">Sign in</button>
+        <div class="login-links">
+          <button type="button" class="linkbtn" id="b-other" data-t="login.other">Use a different email</button>
+          <button type="button" class="linkbtn" id="b-resend" data-t="login.resend">Send a new code</button>
+        </div>
+      </form>
+
+      <div id="login-msg" class="msg" hidden></div>
+
+      <div class="login-foot">
+        <span id="login-plans"></span>
+        <button type="button" class="lang" data-act="lang">العربية</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app" class="app" hidden>
+  <aside class="side">
+    <div class="top">
+      <a class="mark" href="#" onclick="return false">
+        <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#fff"/><rect x="8" y="17" width="3.6" height="7" rx="1.3" fill="#0E2743" opacity=".45"/><rect x="14.2" y="12" width="3.6" height="12" rx="1.3" fill="#0E2743" opacity=".7"/><rect x="20.4" y="8" width="3.6" height="16" rx="1.3" fill="#1A6DD4"/></svg>
+        <b class="appname">Etlob Sa7</b>
+      </a>
+      <button class="ghost" data-act="logout" data-t="nav.signout">Sign out</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Sections"></nav>
+    <div class="account" id="account"></div>
+  </aside>
+  <div class="main">
+    <div class="bar">
+      <span class="title" id="bar-title"></span>
+      <span class="status" id="status"><i></i><span></span></span>
+      <button class="lang" data-act="lang">العربية</button>
+    </div>
+    <div class="view" id="view"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+<div id="overlay" class="overlay" hidden></div>
+<script>
+const CFG = {"appName":"Etlob Sa7","siteUrl":"https://etlobsa7.com","renewUrl":"https://etlobsa7.com/#pricing","whatsapp":"201090099849","serviceLevels":[85,90,95,97,98,99]};
+const MONTHS = {
+  en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']
+};
+const MONTHS_LONG = {
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  ar: MONTHS.ar
+};
+
+const T = {
+en: {
+  'boot.loading': 'Loading your workspace',
+  'boot.failed': 'Could not reach the server. Check your connection.',
+  'boot.retry': 'Try again',
+  'login.pitch': 'Know what to reorder, how much, and when.',
+  'login.pitch2': 'Your sales history in. A purchase order you can send out.',
+  'login.private': 'Your numbers are private to your account.',
+  'login.title': 'Sign in',
+  'login.lede': 'Use the email you subscribed with. We will email you a 6 digit code. No password needed.',
+  'login.email': 'Email address',
+  'login.send': 'Email me a code',
+  'login.code': '6 digit code',
+  'login.signin': 'Sign in',
+  'login.other': 'Use a different email',
+  'login.resend': 'Send a new code',
+  'login.sent': 'If {email} has an active subscription, a code is on its way. Check your spam folder too.',
+  'login.expired': 'You were signed out. This happens after two weeks, or when your account is opened on a third device.',
+  'login.inactive': 'This subscription is not active. Your data is saved and comes back as soon as you renew.',
+  'login.renew': 'Renew subscription',
+  'login.noplan': 'No subscription yet?',
+  'login.plans': 'See plans',
+  'err.BAD_EMAIL': 'Enter a valid email address.',
+  'err.WAIT': 'Wait a minute before asking for another code.',
+  'err.TOO_MANY': 'Too many attempts. Try again in an hour.',
+  'err.BAD_CODE': 'That code is not right. Check the latest email.',
+  'err.CODE_EXPIRED': 'That code has expired. Ask for a new one.',
+  'err.INACTIVE': 'This subscription is not active.',
+  'err.MAIL_QUOTA': 'Codes cannot be sent right now. Try again in a few hours or contact support.',
+  'err.SERVER': 'Something went wrong on our side. Try again.',
+  'err.NET': 'Connection problem. Check your internet and try again.',
+  'err.TOO_BIG': 'This workspace is too large to save.',
+  'err.conflict': 'Your data was changed on another device. Loaded the latest version.',
+
+  'nav.start': 'Start here',
+  'nav.dash': 'Dashboard',
+  'nav.g1': 'Your numbers',
+  'nav.settings': 'Settings',
+  'nav.seasons': 'Seasons',
+  'nav.suppliers': 'Suppliers',
+  'nav.products': 'Products',
+  'nav.g2': 'What to do',
+  'nav.plan': 'Purchase plan',
+  'nav.orders': 'Order decisions',
+  'nav.demand': 'Demand forecast',
+  'nav.trends': 'Demand graphs',
+  'nav.score': 'Suppliers scorecard',
+  'gr.title': 'Demand graphs',
+  'gr.lede': 'Your actual monthly sales per product. Products with similar demand share a graph, up to five each, so the lines stay readable.',
+  'gr.band': 'Busiest month between {lo} and {hi} units',
+  'gr.bandOne': 'Busiest month around {lo} units',
+  'gr.empty': 'No sales history yet',
+  'gr.emptyP': 'Type monthly sales on the Products page and the graphs draw themselves.',
+  'gr.units': 'Units sold',
+  'gr.forecast': 'Forecast',
+  'gr.reorder': 'Reorder point reached',
+  'gr.reorderNow': 'Order now',
+  'gr.legend': 'Solid line is what you sold. Dotted line is the forecast. The vertical mark is when that product hits its reorder point.',
+  'gr.now': 'Today',
+  'why.title': 'Why',
+  'why.CRITICAL': 'You have {ip} in stock and on order. That is at or below the {ss} safety buffer, so you are already exposed. At {rate} a day, {lt} days of supplier waiting needs {rop} on the shelf.',
+  'why.ORDER': 'You have {ip} in stock and on order, and the reorder point is {rop}. At {rate} a day it takes {lt} days for stock to arrive, so ordering now means it lands before the {ss} safety buffer is touched.',
+  'why.OK': 'You have {ip}, comfortably above the {rop} reorder point. At {rate} a day you have about {days} days before this needs ordering.',
+  'why.OVER': 'You have {cover} days of cover, past your {limit} day overstock limit. About {excess} units and {value} of cash are sitting still here.',
+  'why.NOHIST': 'No sales typed in yet, so there is nothing to forecast from.',
+  'why.NODEMAND': 'The forecast for next month is zero, so no order is suggested.',
+  'why.risk': 'If you do not order, you stand to lose about {v} of gross profit over the next {d} days.',
+  'k.risk': 'Profit at risk',
+  'k.riskS': 'If the red items are not ordered',
+  'sc.title': 'Suppliers scorecard',
+  'sc.lede': 'Which suppliers hold your cash, and what their unreliability actually costs you.',
+  'sc.empty': 'No suppliers with products yet',
+  'sc.emptyP': 'Add suppliers and link products to them to see this.',
+  'sc.supplier': 'Supplier',
+  'sc.products': 'Products',
+  'sc.lt': 'Lead time',
+  'sc.reliability': 'Reliability',
+  'sc.stock': 'Your cash in their stock',
+  'sc.varValue': 'Cash tied up by their lateness',
+  'sc.varValueS': 'extra buffer you hold because their timing swings',
+  'sc.orderNow': 'To order now',
+  'sc.spend': 'Yearly spend',
+  'sc.GOOD': 'Steady',
+  'sc.FAIR': 'Mixed',
+  'sc.POOR': 'Unpredictable',
+  'sc.note': 'The lateness column is real money: it is the extra safety stock you carry only because that supplier misses its own dates. Bring it to a negotiation.',
+  'sc.locked': 'The suppliers scorecard is part of Pro.',
+  'nav.health': 'Health check',
+  'nav.signout': 'Sign out',
+  'nav.support': 'WhatsApp support',
+  'plan.basic': 'Basic plan',
+  'plan.pro': 'Pro plan',
+  'plan.store': 'Store plan',
+  'plan.usage': '{n} of {max} products',
+  'plan.usageUnl': '{n} products',
+
+  'status.saved': 'All changes saved',
+  'status.saving': 'Saving',
+  'status.dirty': 'Unsaved changes',
+  'status.error': 'Not saved. Retrying',
+  'status.leave': 'You have unsaved changes.',
+
+  'egp': 'EGP',
+  'days': 'days',
+  'pcs': 'pcs',
+  'perYear': '/ year',
+  'times': '{n}x a year',
+  'none': 'None',
+  'na': '-',
+  'unnamed': 'Unnamed',
+  'choose': 'Choose',
+  'delete': 'Delete',
+  'cancel': 'Cancel',
+  'confirm': 'Confirm',
+  'undo': 'Undo',
+  'close': 'Close',
+  'copy': 'Copy',
+  'copied': 'Copied',
+  'total': 'Total',
+  'product': 'Product',
+  'supplier': 'Supplier',
+  'viewAll': 'View all',
+
+  'notice.LIMIT_PRODUCTS': 'Your plan covers {max} products. Extra rows were not saved. Upgrade for more room.',
+  'notice.LIMIT_SUPPLIERS': 'Your plan covers {max} suppliers. Extra rows were not saved.',
+  'notice.PROFILES_LOCKED': 'Custom season shapes are part of Pro.',
+  'notice.LIMIT_PROFILES': 'You can keep up to 24 season shapes.',
+  'limit.products': 'Your plan covers {max} products.',
+  'limit.up.basic': 'Pro covers 35 products, Store covers 200.',
+  'limit.up.pro': 'Store covers 200 products.',
+  'upgradePlan': 'See plans',
+  'bulk.select': 'Select',
+  'bulk.cancel': 'Cancel',
+  'bulk.all': 'Select all',
+  'bulk.none': 'Clear',
+  'bulk.count': '{n} selected',
+  'bulk.delete': 'Delete selected',
+  'bulk.confirm': 'Delete {n} products? This cannot be undone from here.',
+  'bulk.deleted': '{n} products deleted',
+  'limit.suppliers': 'Your plan covers {max} suppliers. Upgrade for more room.',
+  'upgrade': 'See Pro',
+
+  /* start */
+  'start.title': 'Start here',
+  'start.lede': 'Fill in the four pages under Your numbers, in order. Everything under What to do updates by itself every time you type.',
+  'start.s1': 'Settings',
+  'start.s1p': 'Two costs: placing one order, and holding stock for a year. Rough numbers are fine.',
+  'start.s2': 'Seasons',
+  'start.s2p': 'Check the four season shapes. Most shops never change them.',
+  'start.s3': 'Suppliers',
+  'start.s3p': 'Lead time, how late they can be, minimum order and carton size.',
+  'start.s4': 'Products',
+  'start.s4p': 'Twelve months of unit sales, cost, price, stock on hand and stock on order. You can paste straight from Excel.',
+  'start.s5': 'Health check',
+  'start.s5p': 'Fix every red row before you trust an order.',
+  'start.s6': 'Purchase plan',
+  'start.s6p': 'One order per supplier, ready to send on WhatsApp.',
+  'start.weekly': 'Every week, about 10 minutes',
+  'start.weeklyp': 'Update stock on hand and stock on order on the Products page, then open the Purchase plan and send what it lists.',
+  'start.monthly': 'At the start of each month',
+  'start.monthlyp': 'Press Start a new month on the Settings page, then type last month\'s sales into the new column.',
+  'start.habits': 'Two habits that matter more than any formula',
+  'start.h1': 'A month you were out of stock is not a month of low demand. Leave it blank instead of typing 0.',
+  'start.h2': 'Remove one-off orders before typing sales: a wholesale deal, a viral week, an influencer drop.',
+  'start.colours': 'What the verdicts mean',
+  'start.limits': 'What this does not do',
+  'start.l1': 'It cannot forecast a brand-new product. Order those on judgement for the first six months.',
+  'start.l2': 'Under 12 months of history, season and trend switch off for that product.',
+  'start.l3': 'Ramadan moves about 11 days earlier every year. Review that season shape once a year.',
+  'start.l4': 'It plans purchases. It is not accounting, a POS or a barcode system.',
+  'start.sample': 'Want to look around first?',
+  'start.samplep': 'Load a small sample shop to see every page filled in. It replaces what is in your workspace.',
+  'start.loadSample': 'Load sample shop',
+
+  /* dashboard */
+  'dash.title': 'Dashboard',
+  'dash.lede': 'Where your stock and your cash stand today.',
+  'dash.emptyT': 'Nothing to show yet',
+  'dash.emptyP': 'Add your suppliers, then your products. The dashboard fills in as soon as a product has sales history.',
+  'dash.todayN': 'products to order',
+  'dash.todayN1': 'product to order',
+  'dash.todayP': '{split}. {v} in total from {s}.',
+  'dash.today': '{n} today',
+  'dash.week': '{n} this week',
+  'dash.and': ' and ',
+  'dash.sup1': '1 supplier',
+  'dash.supN': '{n} suppliers',
+  'dash.calmT': 'Nothing to order right now',
+  'dash.calmP': 'Every product is above its reorder point.',
+  'dash.openPlan': 'Open purchase plan',
+  'dash.fix': '{n} products have data problems that can produce a wrong order.',
+  'dash.review': '{n} products are worth a second look.',
+  'dash.openHealth': 'Open health check',
+  'dash.budgetOver': 'This cycle\'s orders are {v} over your budget. Fund class A products first.',
+  'k.stock': 'Cash tied up in stock',
+  'k.stockS': 'On hand, at cost',
+  'k.onorder': 'Stock on its way',
+  'k.onorderS': 'Ordered, not yet received',
+  'k.order': 'To order now',
+  'k.orderS': 'Value of this cycle\'s purchase plan',
+  'k.rev': 'Projected revenue',
+  'k.revS': 'Next 12 months',
+  'k.profit': 'Projected gross profit',
+  'k.profitS': 'Next 12 months',
+  'k.margin': 'Gross margin',
+  'k.marginS': 'Across all products',
+  'k.turn': 'Stock turnover',
+  'k.turnS': 'Under 4 a year means cash is sitting still',
+  'k.cover': 'Average days of cover',
+  'k.coverS': 'How long current stock lasts',
+  'k.over': 'Cash locked in overstock',
+  'k.overS': 'Stock beyond your overstock limit',
+  'k.aic': 'Yearly cost of running stock',
+  'k.aicS': 'Ordering plus holding',
+  'dash.decisions': 'Verdicts across {n} products',
+  'dash.abc': 'Where revenue comes from',
+  'dash.abcA': 'A products',
+  'dash.abcB': 'B products',
+  'dash.abcC': 'C products',
+  'dash.abcP': 'A products earn about 80% of projected revenue, so watch them most closely.',
+  'dash.abcZ': '{n} of your products are erratic even with the season removed.',
+  'dash.actions': 'Order list',
+
+  /* settings */
+  'set.title': 'Settings',
+  'set.lede': 'Numbers that apply to your whole shop. Rough is fine: being 20% off barely changes the answers.',
+  'set.orderCost': 'Cost of placing one order',
+  'set.orderCostH': 'Shipping or delivery you pay, transfer fees, and your own time chasing it. Most small Egyptian shops land between 150 and 600 EGP.',
+  'set.holdRate': 'Yearly cost of holding 100 EGP of stock',
+  'set.holdRateH': 'Storage, damage, things going out of style, and money you could have used elsewhere. 20 to 35 is typical.',
+  'set.lastMonth': 'Newest month in your sales history',
+  'set.lastMonthH': 'The last full month you typed sales for. The Products page labels its columns from this.',
+  'set.overstock': 'Overstock limit',
+  'set.overstockH': 'More stock than this many days of sales is treated as overstock.',
+  'set.budget': 'Monthly purchase budget',
+  'set.budgetH': 'Optional. Leave 0 for no budget check.',
+  'set.days': 'Days per month',
+  'set.daysH': 'Used to turn monthly sales into daily sales. Leave at 30.',
+  'set.season': 'Use season shapes',
+  'set.seasonH': 'Removes normal seasonal ups and downs before measuring how unpredictable a product is.',
+  'set.trend': 'Detect growth and decline',
+  'set.trendH': 'Projects forward when a product is clearly growing or shrinking.',
+  'set.newMonth': 'Start a new month',
+  'set.newMonthP': 'Moves every product\'s sales one column to the left and opens an empty column for {m}. Then type that month\'s sales on the Products page.',
+  'set.newMonthBtn': 'Start {m}',
+  'set.newMonthConfirm': 'This drops {old} from every product and adds an empty {m} column. Continue?',
+  'set.newMonthDone': 'Ready. Type {m} sales in the highlighted column.',
+  'set.sampleConfirm': 'This replaces all your suppliers, products and settings with a sample shop. Continue?',
+
+  /* seasons */
+  'sea.title': 'Seasons',
+  'sea.lede': 'Each shape says how busy a month normally is compared with an average month. 1.5 means 50% busier, 0.5 means half as busy. Only the pattern matters: every shape is rescaled so the year averages 1.',
+  'nav.dead': 'Dead stock',
+  'nav.cash': 'Cash flow',
+  'dead.title': 'Dead stock report',
+  'dead.lede': 'Real stock that has, by its own history, essentially stopped moving. Compared against each product\'s own past, not a generic rule, so a naturally slow seller is never listed by mistake.',
+  'dead.empty': 'Nothing dead right now',
+  'dead.emptyP': 'Every product with stock on hand is still selling at something close to its usual pace.',
+  'dead.total': 'Cash frozen in dead stock',
+  'dead.idle': 'Hasn\'t sold in',
+  'dead.months': '{n} months',
+  'dead.was': 'used to sell about {n} a month',
+  'dead.action': 'Worth a discount to clear, or dropping from what you reorder.',
+  'dead.locked': 'The dead stock report is part of Store.',
+  'cash.title': 'Cash flow forecast',
+  'cash.lede': 'If you placed every order in your current purchase plan today, here is roughly when the money would actually leave, based on each supplier\'s real deposit and payment terms.',
+  'cash.empty': 'Nothing on order right now',
+  'cash.emptyP': 'Once the purchase plan has orders on it, this page lays out when they would be due.',
+  'cash.total': 'Total across the current purchase plan',
+  'cash.now': 'Due now',
+  'cash.week1': 'Due in 1 to 7 days',
+  'cash.week2': 'Due in 8 to 14 days',
+  'cash.week34': 'Due in 15 to 30 days',
+  'cash.later': 'Due after 30 days',
+  'cash.bySupplier': 'By supplier',
+  'cash.deposit': 'Deposit now',
+  'cash.balance': 'Balance',
+  'cash.balanceIn': 'due in {n} days',
+  'cash.note': 'Set each supplier\'s deposit percentage and payment days on the Suppliers page. Nothing here is guessed from the terms note, only from those two numbers.',
+  'cash.locked': 'The cash flow forecast is part of Store.',
+  'sup.deposit': 'Deposit',
+  'sup.depositS': '% paid upfront',
+  'sup.balance': 'Balance due',
+  'sup.balanceS': 'days after ordering',
+  'nav.walk': 'Guided walkthrough',
+  'wt.title': 'Guided walkthrough',
+  'wt.lede': 'A worked example you can check yourself against. Load the practice shop, then visit each page below and confirm you see the same numbers. About 15 minutes.',
+  'wt.load': 'Load the practice shop',
+  'wt.confirm': 'This replaces your current suppliers, products and settings with the practice shop. Continue?',
+  'wt.shop': 'The practice shop: Nour Basics, a small Cairo clothing brand with four products and two suppliers. Its newest sales month is August.',
+  'wt.expect': 'You should see',
+  'wt.s1': 'Settings',
+  'wt.s1p': 'Look at what was filled in for you: one order costs 300 EGP, holding 100 EGP of stock for a year costs 22, and the monthly budget is 25,000 EGP.',
+  'wt.s1e': 'Order cost 300, holding 22, budget 25,000.',
+  'wt.s2': 'Products',
+  'wt.s2p': 'Four products. Notice the Tote Bag has its first six months blank, not zero. It launched in March, and blank means no data, while zero would mean nobody wanted it.',
+  'wt.s2e': 'Basic Tee, Hooded Jacket, Eid Kaftan, Tote Bag.',
+  'wt.s3': 'Health check',
+  'wt.s3p': 'Three products are fine. The Tote Bag gets one note because it only has five months of history, so season and trend are switched off for it until it has a full year.',
+  'wt.s3e': '3 Good, 1 Review (Tote Bag).',
+  'wt.s4': 'Order decisions',
+  'wt.s4p': 'Read the reason under each product. The Basic Tee has 40 units but its reorder point is 48, so it is time to order. It is not urgent, because 40 is still well above its safety buffer of 11.',
+  'wt.s4e': 'Basic Tee: buffer 11, reorder point 48, order 200. Hooded Jacket: 8, 30, order 100. Eid Kaftan: 9, 19, order 102. Tote Bag: stock is healthy.',
+  'wt.s5': 'Demand forecast',
+  'wt.s5p': 'The Hooded Jacket looks chaotic raw, 73 in December and 15 in July. With the winter shape removed it is actually steady, class X, which is why its buffer is only 8.',
+  'wt.s5e': 'Hooded Jacket class X, Eid Kaftan class Y.',
+  'wt.s6': 'Dashboard',
+  'wt.s6p': 'All three restocking at once pushes the shop over its budget this month. That is exactly what you want to know before payday.',
+  'wt.s6e': 'Stock 8,550 EGP. To order now 49,300 EGP. Stock turnover 25.9x a year.',
+  'wt.s7': 'Purchase plan',
+  'wt.s7p': 'Two orders, one per supplier, ready to send on WhatsApp.',
+  'wt.s7e': 'Delta Textiles: 300 pieces. Cairo Print Co: 102 pieces. Over budget by 24,300 EGP.',
+  'wt.done': 'If every number matched, you understand the whole app. Now clear it and type in your own shop.',
+  'sea.locked': 'Custom season shapes are part of Pro. On your plan the four shapes below are fixed.',
+  'sea.add': 'Add a shape',
+  'sea.dup': 'Duplicate',
+  'sea.reset': 'Reset',
+  'sea.used': 'Used by {n} products',
+  'sea.newName': 'My season',
+  'sea.delConfirm': 'Delete "{name}"? Products using it will need a new shape.',
+  'sea.ramadan': 'Ramadan moves about 11 days earlier each year. Review this shape yearly.',
+
+  /* suppliers */
+  'sup.title': 'Suppliers',
+  'sup.lede': 'One row per supplier. Products pick their supplier from this list.',
+  'sup.add': 'Add supplier',
+  'sup.name': 'Supplier name',
+  'sup.lt': 'Lead time',
+  'sup.ltS': 'days, usual',
+  'sup.ltv': 'Lateness',
+  'sup.ltvS': 'days, typical swing',
+  'sup.moq': 'Minimum order',
+  'sup.moqS': 'pieces',
+  'sup.pack': 'Carton size',
+  'sup.packS': 'pieces per carton',
+  'sup.terms': 'Payment terms',
+  'sup.note': 'Lateness: if they usually take 21 days but you have seen 16 and 26, enter (26 - 16) / 4, about 3.',
+  'sup.empty': 'No suppliers yet',
+  'sup.emptyP': 'Add each supplier you buy from. It takes a minute per supplier.',
+  'sup.delConfirm': 'Delete "{name}"? {n} products use this supplier and will need a new one.',
+  'sup.deleted': 'Supplier deleted',
+  'sup.needTwo': 'Add a second supplier first to compare costs between them.',
+
+  /* products */
+  'pro.title': 'Products',
+  'pro.lede': 'Unit sales per month, oldest on the left. Leave a month blank if you were out of stock.',
+  'pro.add': 'Add product',
+  'pro.name': 'Product',
+  'pro.sup': 'Supplier',
+  'pro.season': 'Season',
+  'pro.cost': 'Unit cost',
+  'pro.price': 'Price',
+  'pro.onhand': 'On hand',
+  'pro.onorder': 'On order',
+  'pro.sl': 'Service',
+  'pro.slS': 'target',
+  'pro.verdict': 'Verdict',
+  'pro.nameS': 'what you call it',
+  'pro.verdictS': 'worked out for you',
+  'pro.supS': 'who you buy it from',
+  'pro.seasonS': 'its busy and quiet months',
+  'pro.monthS': 'units sold',
+  'pro.costS': 'what you pay',
+  'pro.priceS': 'what you sell for',
+  'pro.onhandS': 'counted today',
+  'pro.onorderS': 'already ordered',
+  'pro.monthsHead': 'Monthly unit sales, oldest first. Leave a month blank if you were out of stock.',
+  'pro.paste': 'Tip: copy a block of cells from Excel or Google Sheets and paste it into any cell. It fills right and down, and adds rows if needed.',
+  'pro.empty': 'No products yet',
+  'pro.emptyP': 'Add products one by one, or paste your sales table from Excel into the first row.',
+  'pro.needSup': 'Add at least one supplier first so each product can be linked to one.',
+  'pro.deleted': 'Product deleted',
+  'pro.pasted': 'Pasted {n} cells.',
+  'pro.compare': 'Compare suppliers',
+  'cmp.title': 'Compare suppliers for {name}',
+  'cmp.lede': 'Same demand, same formulas. Only the supplier changes between rows.',
+  'cmp.current': 'Current',
+  'cmp.cheapest': 'Cheapest yearly cost',
+  'cmp.use': 'Use this one',
+  'cmp.remove': 'Remove',
+  'cmp.add': 'Add',
+  'cmp.chooseSupplier': 'Choose a supplier to compare',
+  'cmp.costLabel': 'Their cost for this product',
+  'cmp.none': 'Only one supplier on this product so far. Add another below to compare.',
+  'cmp.addHelp': 'Add a supplier who could also sell you this product, and what they would charge for it.',
+  'cmp.allUsed': 'Every supplier you have is already in this comparison.',
+  'cmp.col.supplier': 'Supplier',
+  'cmp.col.cost': 'Cost',
+  'cmp.col.lt': 'Lead time',
+  'cmp.col.oq': 'Order qty',
+  'cmp.col.aic': 'Yearly cost',
+  'cmp.switched': 'Now sourcing from {name}.',
+  'cmp.added': 'Added to the comparison.',
+  'cmp.removed': 'Removed.',
+
+  /* verdicts */
+  'v.CRITICAL': 'Order today',
+  'v.ORDER': 'Order this week',
+  'v.OK': 'Stock is healthy',
+  'v.OVER': 'Overstocked, do not order',
+  'v.NODEMAND': 'No demand forecast',
+  'v.NOHIST': 'No sales history',
+  'vx.CRITICAL': 'Stock is at or under the safety buffer. You are already at risk of running out.',
+  'vx.ORDER': 'Stock has reached the reorder point. Order now so it arrives before the buffer is used.',
+  'vx.OK': 'Enough stock to cover the supplier\'s lead time. Nothing to do.',
+  'vx.OVER': 'More than your overstock limit. Cash is frozen here. Consider a discount.',
+  'vx.NOHIST': 'Type some monthly sales so there is something to plan from.',
+
+  /* plan */
+  'plan.title': 'Purchase plan',
+  'plan.lede': 'Everything that needs ordering, grouped by supplier. Quantities already respect minimum orders and carton sizes.',
+  'plan.empty': 'Nothing to order this cycle',
+  'plan.emptyP': 'Every product is above its reorder point. Check back after you update stock on hand.',
+  'plan.lines': '{n} products',
+  'plan.lines1': '1 product',
+  'plan.units': '{n} pieces',
+  'plan.lt': 'Lead time {n} days',
+  'plan.noSup': 'No supplier set',
+  'plan.qty': 'Order qty',
+  'plan.cartons': 'Cartons',
+  'plan.unitCost': 'Unit cost',
+  'plan.value': 'Value',
+  'plan.copy': 'Copy order message',
+  'plan.wa': 'Send on WhatsApp',
+  'plan.msgTitle': 'Order message',
+  'plan.msgHint': 'Select the text and copy it.',
+  'plan.msgHello': 'Hello {s},',
+  'plan.msgIntro': 'We would like to place this order:',
+  'plan.msgLine': '- {name}: {qty} pcs',
+  'plan.msgTotal': 'Total: {n} pcs',
+  'plan.msgThanks': 'Thank you',
+  'plan.budgetNone': 'Total to order: {v}. Set a monthly budget in Settings to get a budget check.',
+  'plan.budgetOver': 'Total {v} is {d} over your {b} budget. Fund class A products first ({a}), then the rest as cash allows.',
+  'plan.budgetWithin': 'Total {v} is within your {b} budget, with {d} to spare.',
+
+  /* orders */
+  'ord.title': 'Order decisions',
+  'ord.lede': 'The reasoning behind every verdict. Stock position is on hand plus on order, so nothing gets ordered twice.',
+  'ord.all': 'All',
+  'ord.qty': 'Order qty',
+  'ord.value': 'Order value',
+  'ord.ip': 'Stock position',
+  'ord.ss': 'Safety stock',
+  'ord.rop': 'Reorder point',
+  'ord.oq': 'Best order size',
+  'ord.oqS': 'after minimums',
+  'ord.cover': 'Days of cover',
+  'ord.sl': 'Service',
+
+  /* demand */
+  'dem.title': 'Demand forecast',
+  'dem.lede': 'Monthly demand with the season taken out, the trend, how predictable each product is, and the next three months.',
+  'dem.season': 'Season',
+  'dem.months': 'Months',
+  'dem.avg': 'Base demand',
+  'dem.avgS': 'per month, season removed',
+  'dem.trend': 'Trend',
+  'dem.trendS': 'per month',
+  'dem.cv': 'Variability',
+  'dem.class': 'Class',
+  'dem.year': 'Next 12 months',
+  'dem.off': 'season off',
+  'dem.note': 'Class X is steady (variability up to 25%), Y swings (up to 50%), Z is erratic.',
+
+  /* abc */
+  'abc.title': 'ABC-XYZ',
+  'abc.lede': 'Every product ranked twice: by revenue (A, B, C) and by predictability (X, Y, Z). Each box gets its own way of managing stock.',
+  'abc.A': 'A', 'abc.As': 'top 80% of revenue',
+  'abc.B': 'B', 'abc.Bs': 'next 15%',
+  'abc.C': 'C', 'abc.Cs': 'last 5%',
+  'abc.X': 'X, steady', 'abc.Y': 'Y, variable', 'abc.Z': 'Z, erratic',
+  'abc.rev': 'Yearly revenue',
+  'abc.share': 'Share',
+  'abc.cum': 'Running total',
+  'abc.policy': 'How to manage it',
+  'abc.classTag': 'Class {c}',
+  'pol.AX': 'Your engine. Review weekly, service 97-99%, keep safety stock tight, negotiate volume pricing.',
+  'pol.AY': 'High value but swings. Review weekly, service 97%, hold a fuller buffer.',
+  'pol.AZ': 'Hardest box. Order smaller and more often, keep the supplier on standby, consider pre-orders.',
+  'pol.BX': 'Solid mid-tier. Review monthly, service 95%, make the reorder routine.',
+  'pol.BY': 'Mid-tier with swings. Review monthly with a moderate buffer.',
+  'pol.BZ': 'Mid-tier and erratic. Keep minimum stock and do not chase it.',
+  'pol.CX': 'Low value but predictable. Order rarely, in larger batches.',
+  'pol.CY': 'Low value and variable. Review quarterly with minimal stock.',
+  'pol.CZ': 'Low value and erratic. Strong candidate to discontinue or sell to order.',
+
+  /* health */
+  'hl.title': 'Health check',
+  'hl.lede': 'Checks what you typed before you trust any order. Red rows can produce a wrong quantity.',
+  'hl.only': 'Only rows that need attention',
+  'hl.result': 'Result',
+  'hl.issues': 'What to check',
+  'hl.fine': 'Nothing to fix',
+  'hl.go': 'Edit',
+  'hl.allGood': 'Every product passed. You can trust the orders.',
+  'h.FIX': 'Fix this',
+  'h.REVIEW': 'Review',
+  'h.GOOD': 'Good',
+  'c.H_NEG': 'A month has negative sales.',
+  'c.H_NONE': 'No sales typed yet.',
+  'c.H_LT6': 'Under 6 months of sales. Do not rely on this row yet.',
+  'c.H_LT12': 'Under 12 months of history, so season and trend are off.',
+  'c.M_NOCOST': 'Unit cost is missing.',
+  'c.M_BELOW': 'Price is not above cost.',
+  'c.M_THIN': 'Margin is under 15%.',
+  'c.S_NONE': 'No supplier chosen.',
+  'c.S_MISSING': 'Its supplier was deleted.',
+  'c.S_LT0': 'Supplier lead time is 0 days.',
+  'c.K_NEG': 'Stock is negative.',
+  'c.K_OVER': 'Overstocked. Cash is frozen here.',
+  'c.K_BELOWSS': 'Already below safety stock.',
+  'c.P_NONE': 'No season shape chosen.',
+  'c.P_MISSING': 'Its season shape was deleted.',
+  'c.P_FLATSWING': 'Marked flat, but sales swing a lot. Is it seasonal?',
+  'c.F_SPIKE': 'One month is far above the rest. Remove any one-off order.',
+  'c.F_Z': 'Erratic even with the season removed. Use your judgement too.'
+},
+
+ar: {
+  'boot.loading': 'بنحمّل بياناتك',
+  'boot.failed': 'مش قادرين نوصل للسيرفر. اتأكد من الإنترنت.',
+  'boot.retry': 'حاول تاني',
+  'login.pitch': 'اعرف تطلب إيه، وقد إيه، وإمتى.',
+  'login.pitch2': 'تدخّل تاريخ مبيعاتك، وتطلع بطلبية جاهزة تبعتها.',
+  'login.private': 'أرقامك خاصة بحسابك بس.',
+  'login.title': 'تسجيل الدخول',
+  'login.lede': 'استخدم الإيميل اللي اشتركت بيه. هنبعتلك رمز من 6 أرقام. من غير باسورد.',
+  'login.email': 'الإيميل',
+  'login.send': 'ابعتلي الرمز',
+  'login.code': 'الرمز (6 أرقام)',
+  'login.signin': 'دخول',
+  'login.other': 'استخدم إيميل تاني',
+  'login.resend': 'ابعت رمز جديد',
+  'login.sent': 'لو {email} عليه اشتراك نشط، الرمز في الطريق. بص في الـ Spam كمان.',
+  'login.expired': 'اتسجل خروجك. ده بيحصل بعد أسبوعين، أو لما الحساب يتفتح على جهاز تالت.',
+  'login.inactive': 'الاشتراك ده مش نشط. بياناتك محفوظة وهترجع أول ما تجدد.',
+  'login.renew': 'جدد الاشتراك',
+  'login.noplan': 'لسه مش مشترك؟',
+  'login.plans': 'شوف الباقات',
+  'err.BAD_EMAIL': 'اكتب إيميل صحيح.',
+  'err.WAIT': 'استنى دقيقة قبل ما تطلب رمز تاني.',
+  'err.TOO_MANY': 'محاولات كتير. جرب تاني بعد ساعة.',
+  'err.BAD_CODE': 'الرمز غلط. بص على آخر إيميل وصلك.',
+  'err.CODE_EXPIRED': 'الرمز انتهى. اطلب رمز جديد.',
+  'err.INACTIVE': 'الاشتراك ده مش نشط.',
+  'err.MAIL_QUOTA': 'مش قادرين نبعت رموز دلوقتي. جرب بعد كام ساعة أو كلم الدعم.',
+  'err.SERVER': 'حصلت مشكلة عندنا. جرب تاني.',
+  'err.NET': 'مشكلة في الاتصال. اتأكد من الإنترنت وجرب تاني.',
+  'err.TOO_BIG': 'البيانات كبيرة جدا ومش هتتحفظ.',
+  'err.conflict': 'بياناتك اتعدلت من جهاز تاني. حمّلنا آخر نسخة.',
+
+  'nav.start': 'ابدأ من هنا',
+  'nav.dash': 'لوحة المتابعة',
+  'nav.g1': 'أرقامك',
+  'nav.settings': 'الإعدادات',
+  'nav.seasons': 'المواسم',
+  'nav.suppliers': 'الموردين',
+  'nav.products': 'المنتجات',
+  'nav.g2': 'تعمل إيه',
+  'nav.plan': 'خطة الشراء',
+  'nav.orders': 'قرارات الطلب',
+  'nav.demand': 'توقع الطلب',
+  'nav.trends': 'رسوم الطلب',
+  'nav.score': 'تقييم الموردين',
+  'gr.title': 'رسوم الطلب',
+  'gr.lede': 'مبيعاتك الشهرية الفعلية لكل منتج. المنتجات اللي طلبها متقارب بتتجمع في رسم واحد، لحد خمسة، علشان الخطوط تفضل واضحة.',
+  'gr.band': 'أعلى شهر بين {lo} و{hi} قطعة',
+  'gr.bandOne': 'أعلى شهر حوالي {lo} قطعة',
+  'gr.empty': 'لسه مفيش مبيعات مسجلة',
+  'gr.emptyP': 'اكتب المبيعات الشهرية في صفحة المنتجات والرسوم هترسم نفسها.',
+  'gr.units': 'القطع المباعة',
+  'gr.forecast': 'التوقع',
+  'gr.reorder': 'وقت إعادة الطلب',
+  'gr.reorderNow': 'اطلب دلوقتي',
+  'gr.legend': 'الخط المتصل هو اللي بعته. الخط المتقطع هو التوقع. العلامة الرأسية هي وقت ما المنتج يوصل نقطة إعادة الطلب.',
+  'gr.now': 'النهارده',
+  'why.title': 'ليه',
+  'why.CRITICAL': 'عندك {ip} موجود وفي الطريق. ده عند حد الأمان {ss} أو تحته، يعني انت فعلا مكشوف. بمعدل {rate} في اليوم، انتظار المورد {lt} يوم محتاج {rop} على الرف.',
+  'why.ORDER': 'عندك {ip} موجود وفي الطريق، ونقطة إعادة الطلب {rop}. بمعدل {rate} في اليوم والبضاعة بتاخد {lt} يوم توصل، الطلب دلوقتي معناه إنها هتوصل قبل ما تلمس حد الأمان {ss}.',
+  'why.OK': 'عندك {ip}، أعلى من نقطة إعادة الطلب {rop} براحة. بمعدل {rate} في اليوم فاضلك حوالي {days} يوم قبل ما ده يحتاج طلب.',
+  'why.OVER': 'عندك تغطية {cover} يوم، فوق حد المخزون الزيادة {limit} يوم. يعني حوالي {excess} قطعة و{value} فلوس واقفة هنا.',
+  'why.NOHIST': 'لسه مفيش مبيعات مكتوبة، فمفيش حاجة نتوقع منها.',
+  'why.NODEMAND': 'توقع الشهر الجاي صفر، فمفيش طلبية مقترحة.',
+  'why.risk': 'لو ماطلبتش، معرض تخسر حوالي {v} مجمل ربح خلال الـ {d} يوم الجايين.',
+  'k.risk': 'ربح معرض للضياع',
+  'k.riskS': 'لو المنتجات الحمرا ماتطلبتش',
+  'sc.title': 'تقييم الموردين',
+  'sc.lede': 'مين من الموردين ماسك فلوسك، وعدم انضباطه بيكلفك كام فعلا.',
+  'sc.empty': 'لسه مفيش موردين عليهم منتجات',
+  'sc.emptyP': 'ضيف موردين واربط بيهم منتجات علشان تشوف ده.',
+  'sc.supplier': 'المورد',
+  'sc.products': 'المنتجات',
+  'sc.lt': 'مدة التوريد',
+  'sc.reliability': 'الانضباط',
+  'sc.stock': 'فلوسك في بضاعته',
+  'sc.varValue': 'فلوس متجمدة بسبب تأخيره',
+  'sc.varValueS': 'مخزون أمان زيادة بتحتفظ بيه علشان مواعيده بتتغير',
+  'sc.orderNow': 'المطلوب دلوقتي',
+  'sc.spend': 'الصرف السنوي',
+  'sc.GOOD': 'منضبط',
+  'sc.FAIR': 'متوسط',
+  'sc.POOR': 'غير متوقع',
+  'sc.note': 'عمود التأخير ده فلوس حقيقية: هو مخزون الأمان الزيادة اللي شايله بس علشان المورد بيتأخر عن مواعيده. خد الرقم ده معاك في التفاوض.',
+  'sc.locked': 'تقييم الموردين متاح في باقة Pro.',
+  'nav.health': 'فحص البيانات',
+  'nav.signout': 'خروج',
+  'nav.support': 'الدعم على واتساب',
+  'plan.basic': 'الباقة الأساسية',
+  'plan.pro': 'باقة Pro',
+  'plan.store': 'باقة Store',
+  'plan.usage': '{n} من {max} منتج',
+  'plan.usageUnl': '{n} منتج',
+
+  'status.saved': 'كل التعديلات اتحفظت',
+  'status.saving': 'بيتحفظ',
+  'status.dirty': 'في تعديلات لسه ماتحفظتش',
+  'status.error': 'ماتحفظش. بنحاول تاني',
+  'status.leave': 'في تعديلات لسه ماتحفظتش.',
+
+  'egp': 'ج.م',
+  'days': 'يوم',
+  'pcs': 'قطعة',
+  'perYear': '/ سنة',
+  'times': '{n} مرة في السنة',
+  'none': 'لا يوجد',
+  'na': '-',
+  'unnamed': 'بدون اسم',
+  'choose': 'اختار',
+  'delete': 'مسح',
+  'cancel': 'إلغاء',
+  'confirm': 'تأكيد',
+  'undo': 'تراجع',
+  'close': 'قفل',
+  'copy': 'نسخ',
+  'copied': 'اتنسخ',
+  'total': 'الإجمالي',
+  'product': 'المنتج',
+  'supplier': 'المورد',
+  'viewAll': 'عرض الكل',
+
+  'notice.LIMIT_PRODUCTS': 'باقتك بتغطي {max} منتج. الصفوف الزيادة ماتحفظتش. رقّي باقتك علشان تاخد مساحة أكبر.',
+  'notice.LIMIT_SUPPLIERS': 'باقتك بتغطي {max} مورد. الصفوف الزيادة ماتحفظتش.',
+  'notice.PROFILES_LOCKED': 'أشكال المواسم الخاصة متاحة في باقة Pro.',
+  'notice.LIMIT_PROFILES': 'تقدر تحتفظ بـ 24 شكل موسم بحد أقصى.',
+  'limit.products': 'باقتك بتغطي {max} منتج.',
+  'limit.up.basic': 'باقة Pro بتغطي 35 منتج، وStore بتغطي 200.',
+  'limit.up.pro': 'باقة Store بتغطي 200 منتج.',
+  'upgradePlan': 'شوف الباقات',
+  'bulk.select': 'تحديد',
+  'bulk.cancel': 'إلغاء',
+  'bulk.all': 'حدد الكل',
+  'bulk.none': 'شيل التحديد',
+  'bulk.count': 'متحدد {n}',
+  'bulk.delete': 'امسح المتحدد',
+  'bulk.confirm': 'تمسح {n} منتج؟ مش هينفع ترجع فيها من هنا.',
+  'bulk.deleted': 'اتمسح {n} منتج',
+  'limit.suppliers': 'باقتك بتغطي {max} مورد. رقّي باقتك علشان تاخد مساحة أكبر.',
+  'upgrade': 'شوف Pro',
+
+  'start.title': 'ابدأ من هنا',
+  'start.lede': 'املأ الأربع صفحات اللي تحت "أرقامك" بالترتيب. كل اللي تحت "تعمل إيه" بيتحدث لوحده مع كل رقم تكتبه.',
+  'start.s1': 'الإعدادات',
+  'start.s1p': 'تكلفتين: تكلفة الطلبية الواحدة، وتكلفة تخزين البضاعة لمدة سنة. أرقام تقريبية كفاية.',
+  'start.s2': 'المواسم',
+  'start.s2p': 'راجع أشكال المواسم الأربعة. أغلب المحلات مش بتغيرها.',
+  'start.s3': 'الموردين',
+  'start.s3p': 'مدة التوريد، ممكن يتأخر قد إيه، أقل كمية، وعدد القطع في الكرتونة.',
+  'start.s4': 'المنتجات',
+  'start.s4p': 'مبيعات 12 شهر بالقطعة، التكلفة، السعر، المخزون الموجود واللي في الطريق. تقدر تعمل لصق من Excel على طول.',
+  'start.s5': 'فحص البيانات',
+  'start.s5p': 'صلّح كل صف أحمر قبل ما تعتمد على أي طلبية.',
+  'start.s6': 'خطة الشراء',
+  'start.s6p': 'طلبية واحدة لكل مورد، جاهزة تتبعت على واتساب.',
+  'start.weekly': 'كل أسبوع، حوالي 10 دقايق',
+  'start.weeklyp': 'حدّث المخزون الموجود واللي في الطريق في صفحة المنتجات، وبعدين افتح خطة الشراء وابعت اللي فيها.',
+  'start.monthly': 'أول كل شهر',
+  'start.monthlyp': 'دوس "ابدأ شهر جديد" في صفحة الإعدادات، وبعدين اكتب مبيعات الشهر اللي فات في العمود الجديد.',
+  'start.habits': 'عادتين أهم من أي معادلة',
+  'start.h1': 'الشهر اللي البضاعة كانت خلصانة فيه مش معناه إن مفيش طلب. سيبه فاضي بدل ما تكتب 0.',
+  'start.h2': 'شيل الطلبيات الاستثنائية قبل ما تكتب المبيعات: صفقة جملة، أسبوع تريند، أو إنفلونسر.',
+  'start.colours': 'معنى كل قرار',
+  'start.limits': 'حاجات الأداة مش بتعملها',
+  'start.l1': 'مش بتتوقع منتج جديد خالص. اطلبه بتقديرك أول 6 شهور.',
+  'start.l2': 'لو تاريخ المنتج أقل من 12 شهر، الموسمية والاتجاه بيتقفلوا للمنتج ده.',
+  'start.l3': 'رمضان بييجي بدري حوالي 11 يوم كل سنة. راجع شكل الموسم ده مرة في السنة.',
+  'start.l4': 'دي أداة لتخطيط الشراء. مش برنامج حسابات ولا كاشير ولا باركود.',
+  'start.sample': 'عايز تتفرج الأول؟',
+  'start.samplep': 'حمّل محل تجريبي صغير علشان تشوف كل الصفحات مليانة. ده هيستبدل البيانات اللي عندك.',
+  'start.loadSample': 'حمّل المحل التجريبي',
+
+  'dash.title': 'لوحة المتابعة',
+  'dash.lede': 'وضع مخزونك وفلوسك النهارده.',
+  'dash.emptyT': 'لسه مفيش حاجة تتعرض',
+  'dash.emptyP': 'ضيف الموردين وبعدين المنتجات. اللوحة هتتملى أول ما يبقى في مبيعات مسجلة.',
+  'dash.todayN': 'منتج محتاج طلب',
+  'dash.todayN1': 'منتج محتاج طلب',
+  'dash.todayP': '{split}. الإجمالي {v} من {s}.',
+  'dash.today': '{n} النهارده',
+  'dash.week': '{n} الأسبوع ده',
+  'dash.and': ' و',
+  'dash.sup1': 'مورد واحد',
+  'dash.supN': '{n} مورد',
+  'dash.calmT': 'مفيش حاجة تتطلب دلوقتي',
+  'dash.calmP': 'كل المنتجات فوق نقطة إعادة الطلب.',
+  'dash.openPlan': 'افتح خطة الشراء',
+  'dash.fix': 'عدد {n} منتج فيهم مشاكل في البيانات ممكن تطلّع طلبية غلط.',
+  'dash.review': 'عدد {n} منتج يستاهلوا مراجعة.',
+  'dash.openHealth': 'افتح فحص البيانات',
+  'dash.budgetOver': 'طلبيات الدورة دي أعلى من ميزانيتك بـ {v}. ابدأ بمنتجات الفئة A.',
+  'k.stock': 'فلوس في المخزون',
+  'k.stockS': 'الموجود، بسعر التكلفة',
+  'k.onorder': 'بضاعة في الطريق',
+  'k.onorderS': 'اتطلبت ولسه ماوصلتش',
+  'k.order': 'المطلوب دلوقتي',
+  'k.orderS': 'قيمة خطة الشراء الحالية',
+  'k.rev': 'المبيعات المتوقعة',
+  'k.revS': 'الـ 12 شهر الجايين',
+  'k.profit': 'مجمل الربح المتوقع',
+  'k.profitS': 'الـ 12 شهر الجايين',
+  'k.margin': 'هامش الربح',
+  'k.marginS': 'لكل المنتجات',
+  'k.turn': 'معدل دوران المخزون',
+  'k.turnS': 'أقل من 4 في السنة معناه فلوسك واقفة',
+  'k.cover': 'متوسط أيام التغطية',
+  'k.coverS': 'المخزون الحالي يكفي قد إيه',
+  'k.over': 'فلوس متجمدة في مخزون زيادة',
+  'k.overS': 'البضاعة اللي فوق حد المخزون الزيادة',
+  'k.aic': 'تكلفة المخزون في السنة',
+  'k.aicS': 'الطلب والتخزين',
+  'dash.decisions': 'القرارات لـ {n} منتج',
+  'dash.abc': 'المبيعات جاية منين',
+  'dash.abcA': 'منتجات A',
+  'dash.abcB': 'منتجات B',
+  'dash.abcC': 'منتجات C',
+  'dash.abcP': 'منتجات A بتجيب حوالي 80% من المبيعات المتوقعة، فراقبها أكتر حاجة.',
+  'dash.abcZ': 'عدد المنتجات العشوائية حتى بعد شيل الموسمية: {n}.',
+  'dash.actions': 'قائمة الطلب',
+
+  'set.title': 'الإعدادات',
+  'set.lede': 'أرقام بتنطبق على المحل كله. التقريب كفاية: غلط 20% تقريبا مش بيغير النتيجة.',
+  'set.orderCost': 'تكلفة الطلبية الواحدة',
+  'set.orderCostH': 'الشحن أو التوصيل، رسوم التحويل، ووقتك وانت بتتابعها. أغلب المحلات الصغيرة في مصر بين 150 و600 جنيه.',
+  'set.holdRate': 'تكلفة تخزين 100 جنيه بضاعة لمدة سنة',
+  'set.holdRateH': 'التخزين، التلف، الموضة اللي بتقدم، والفلوس اللي كان ممكن تستخدمها في حاجة تانية. غالبا بين 20 و35.',
+  'set.lastMonth': 'أحدث شهر في المبيعات',
+  'set.lastMonthH': 'آخر شهر كامل كتبت مبيعاته. صفحة المنتجات بتسمي أعمدتها على أساسه.',
+  'set.overstock': 'حد المخزون الزيادة',
+  'set.overstockH': 'أي مخزون يكفي أكتر من العدد ده من الأيام بيعتبر زيادة.',
+  'set.budget': 'ميزانية الشراء الشهرية',
+  'set.budgetH': 'اختياري. سيبها 0 لو مش عايز مراجعة ميزانية.',
+  'set.days': 'عدد أيام الشهر',
+  'set.daysH': 'بيستخدم لتحويل المبيعات الشهرية ليومية. سيبه 30.',
+  'set.season': 'استخدم أشكال المواسم',
+  'set.seasonH': 'بيشيل التغيرات الموسمية العادية قبل ما يقيس المنتج متقلب قد إيه.',
+  'set.trend': 'اكتشف النمو والتراجع',
+  'set.trendH': 'بيتوقع لقدام لما المنتج واضح إنه بيزيد أو بيقل.',
+  'set.newMonth': 'ابدأ شهر جديد',
+  'set.newMonthP': 'بيزحزح مبيعات كل منتج خانة واحدة ناحية الأقدم ويفتح عمود فاضي لشهر {m}. بعدها اكتب مبيعات الشهر ده في صفحة المنتجات.',
+  'set.newMonthBtn': 'ابدأ {m}',
+  'set.newMonthConfirm': 'ده هيشيل {old} من كل المنتجات ويضيف عمود فاضي لـ {m}. نكمل؟',
+  'set.newMonthDone': 'جاهز. اكتب مبيعات {m} في العمود المميز.',
+  'set.sampleConfirm': 'ده هيستبدل كل الموردين والمنتجات والإعدادات بمحل تجريبي. نكمل؟',
+
+  'sea.title': 'المواسم',
+  'sea.lede': 'كل شكل بيوضح الشهر بيكون شغال قد إيه مقارنة بشهر عادي. 1.5 يعني أعلى بـ 50%، و0.5 يعني نص المعتاد. المهم هو النمط بس: كل شكل بيتظبط علشان متوسط السنة يبقى 1.',
+  'nav.dead': 'البضاعة الراكدة',
+  'nav.cash': 'التدفق النقدي',
+  'dead.title': 'تقرير البضاعة الراكدة',
+  'dead.lede': 'بضاعة حقيقية تقريبا وقفت تتحرك، بمقارنتها بتاريخها هي، مش بقاعدة عامة، فمنتج بطيء بطبيعته ماهيظهرش هنا غلط.',
+  'dead.empty': 'مفيش بضاعة راكدة دلوقتي',
+  'dead.emptyP': 'كل منتج عنده مخزون لسه بيتباع بمعدل قريب من المعتاد.',
+  'dead.total': 'فلوس متجمدة في البضاعة الراكدة',
+  'dead.idle': 'مباعتش من',
+  'dead.months': '{n} شهر',
+  'dead.was': 'كان بيبيع حوالي {n} في الشهر',
+  'dead.action': 'يستاهل خصم يتصرف فيه، أو تشيله من طلبياتك الجاية.',
+  'dead.locked': 'تقرير البضاعة الراكدة متاح في باقة Store.',
+  'cash.title': 'توقع التدفق النقدي',
+  'cash.lede': 'لو طلبت كل حاجة في خطة الشراء الحالية النهارده، ده تقريبا إمتى الفلوس هتخرج فعلا، حسب شروط الدفع الحقيقية لكل مورد.',
+  'cash.empty': 'مفيش حاجة مطلوبة دلوقتي',
+  'cash.emptyP': 'أول ما خطة الشراء يبقى فيها طلبيات، الصفحة دي هتوضح إمتى مستحقة.',
+  'cash.total': 'الإجمالي في خطة الشراء الحالية',
+  'cash.now': 'مستحق دلوقتي',
+  'cash.week1': 'مستحق خلال 1 لـ 7 أيام',
+  'cash.week2': 'مستحق خلال 8 لـ 14 يوم',
+  'cash.week34': 'مستحق خلال 15 لـ 30 يوم',
+  'cash.later': 'مستحق بعد 30 يوم',
+  'cash.bySupplier': 'حسب المورد',
+  'cash.deposit': 'مقدم دلوقتي',
+  'cash.balance': 'الباقي',
+  'cash.balanceIn': 'مستحق خلال {n} يوم',
+  'cash.note': 'حدد نسبة المقدم وعدد أيام السداد لكل مورد في صفحة الموردين. مفيش حاجة هنا متخمنة من خانة الشروط، بس من الرقمين دول.',
+  'cash.locked': 'توقع التدفق النقدي متاح في باقة Store.',
+  'sup.deposit': 'المقدم',
+  'sup.depositS': '% بيتدفع مقدما',
+  'sup.balance': 'باقي السداد',
+  'sup.balanceS': 'يوم بعد الطلب',
+  'nav.walk': 'الدليل الإرشادي',
+  'wt.title': 'الدليل الإرشادي',
+  'wt.lede': 'مثال عملي تقدر تراجع نفسك عليه. حمّل المحل التدريبي، وبعدين افتح كل صفحة تحت واتأكد إنك شايف نفس الأرقام. حوالي 15 دقيقة.',
+  'wt.load': 'حمّل المحل التدريبي',
+  'wt.confirm': 'ده هيستبدل الموردين والمنتجات والإعدادات بتاعتك بالمحل التدريبي. نكمل؟',
+  'wt.shop': 'المحل التدريبي: نور بيزكس، ماركة ملابس صغيرة في القاهرة، أربع منتجات ومورّدين اتنين. أحدث شهر مبيعات أغسطس.',
+  'wt.expect': 'المفروض تشوف',
+  'wt.s1': 'الإعدادات',
+  'wt.s1p': 'بص على اللي اتملى لك: الطلبية بتكلف 300 جنيه، تخزين 100 جنيه بضاعة سنة بيكلف 22، والميزانية الشهرية 25,000 جنيه.',
+  'wt.s1e': 'تكلفة الطلبية 300، التخزين 22، الميزانية 25,000.',
+  'wt.s2': 'المنتجات',
+  'wt.s2p': 'أربع منتجات. لاحظ إن الشنطة القماش أول ست شهور فاضيين مش صفر. اتنزلت في مارس، والفاضي معناه مفيش بيانات، إنما الصفر معناه محدش كان عايزها.',
+  'wt.s2e': 'تيشيرت بيسك، جاكت بكابيشون، قفطان العيد، شنطة قماش.',
+  'wt.s3': 'فحص البيانات',
+  'wt.s3p': 'تلات منتجات تمام. الشنطة القماش عليها ملاحظة واحدة لأن تاريخها خمس شهور بس، فالموسمية والاتجاه متقفلين ليها لحد ما تكمل سنة.',
+  'wt.s3e': '3 تمام، و1 راجعه (الشنطة القماش).',
+  'wt.s4': 'قرارات الطلب',
+  'wt.s4p': 'اقرا السبب تحت كل منتج. التيشيرت عنده 40 قطعة ونقطة إعادة الطلب 48، فجه وقت الطلب. مش مستعجل، لأن 40 لسه أعلى بكتير من حد الأمان 11.',
+  'wt.s4e': 'التيشيرت: الأمان 11، إعادة الطلب 48، اطلب 200. الجاكت: 8، 30، اطلب 100. القفطان: 9، 19، اطلب 102. الشنطة: المخزون كويس.',
+  'wt.s5': 'توقع الطلب',
+  'wt.s5p': 'الجاكت شكله عشوائي، 73 في ديسمبر و15 في يوليو. بعد ما تشيل شكل الشتاء بيطلع ثابت فعلا، فئة X، وده سبب إن حد الأمان بتاعه 8 بس.',
+  'wt.s5e': 'الجاكت فئة X، القفطان فئة Y.',
+  'wt.s6': 'لوحة المتابعة',
+  'wt.s6p': 'التلات منتجات محتاجين طلب في نفس الوقت، فالمحل هيعدي ميزانيته الشهر ده. ده بالظبط اللي محتاج تعرفه قبل القبض.',
+  'wt.s6e': 'المخزون 8,550 جنيه. المطلوب دلوقتي 49,300 جنيه. دوران المخزون 25.9 مرة في السنة.',
+  'wt.s7': 'خطة الشراء',
+  'wt.s7p': 'طلبيتين، واحدة لكل مورد، جاهزين يتبعتوا على واتساب.',
+  'wt.s7e': 'دلتا للنسيج: 300 قطعة. القاهرة للطباعة: 102 قطعة. أعلى من الميزانية بـ 24,300 جنيه.',
+  'wt.done': 'لو كل الأرقام طلعت زي دي، يبقى فهمت الأداة كلها. امسحه واكتب بيانات محلك.',
+  'sea.locked': 'أشكال المواسم الخاصة متاحة في باقة Pro. في باقتك الأشكال الأربعة دي ثابتة.',
+  'sea.add': 'ضيف شكل',
+  'sea.dup': 'نسخة',
+  'sea.reset': 'رجّع الأصلي',
+  'sea.used': 'مستخدم في {n} منتج',
+  'sea.newName': 'موسمي',
+  'sea.delConfirm': 'تمسح "{name}"؟ المنتجات اللي عليه هتحتاج شكل جديد.',
+  'sea.ramadan': 'رمضان بييجي بدري حوالي 11 يوم كل سنة. راجع الشكل ده سنويا.',
+
+  'sup.title': 'الموردين',
+  'sup.lede': 'صف لكل مورد. المنتجات بتختار موردها من القائمة دي.',
+  'sup.add': 'ضيف مورد',
+  'sup.name': 'اسم المورد',
+  'sup.lt': 'مدة التوريد',
+  'sup.ltS': 'أيام، المعتاد',
+  'sup.ltv': 'التأخير',
+  'sup.ltvS': 'أيام، الفرق المعتاد',
+  'sup.moq': 'أقل كمية',
+  'sup.moqS': 'قطعة',
+  'sup.pack': 'الكرتونة',
+  'sup.packS': 'قطعة في الكرتونة',
+  'sup.terms': 'شروط الدفع',
+  'sup.note': 'التأخير: لو عادة بياخد 21 يوم بس شفته بياخد 16 و26، اكتب (26 - 16) / 4، يعني حوالي 3.',
+  'sup.empty': 'لسه مفيش موردين',
+  'sup.emptyP': 'ضيف كل مورد بتشتري منه. دقيقة لكل مورد.',
+  'sup.delConfirm': 'تمسح "{name}"؟ عدد المنتجات عليه {n}، وهيحتاجوا مورد جديد.',
+  'sup.deleted': 'المورد اتمسح',
+  'sup.needTwo': 'ضيف مورد ثاني الأول علشان تقارن التكلفة بينهم.',
+
+  'pro.title': 'المنتجات',
+  'pro.lede': 'المبيعات بالقطعة لكل شهر، الأقدم على اليمين. سيب الشهر فاضي لو البضاعة كانت خلصانة.',
+  'pro.add': 'ضيف منتج',
+  'pro.name': 'المنتج',
+  'pro.sup': 'المورد',
+  'pro.season': 'الموسم',
+  'pro.cost': 'تكلفة القطعة',
+  'pro.price': 'السعر',
+  'pro.onhand': 'الموجود',
+  'pro.onorder': 'في الطريق',
+  'pro.sl': 'الخدمة',
+  'pro.slS': 'الهدف',
+  'pro.verdict': 'القرار',
+  'pro.nameS': 'اسمه عندك',
+  'pro.verdictS': 'بيتحسب لك',
+  'pro.supS': 'بتشتريه من مين',
+  'pro.seasonS': 'شهوره المزحومة والهادية',
+  'pro.monthS': 'القطع المباعة',
+  'pro.costS': 'بتشتريه بكام',
+  'pro.priceS': 'بتبيعه بكام',
+  'pro.onhandS': 'المعدود النهارده',
+  'pro.onorderS': 'متطلب بالفعل',
+  'pro.monthsHead': 'المبيعات بالقطعة لكل شهر، الأقدم الأول. سيب الشهر فاضي لو البضاعة كانت خلصانة.',
+  'pro.paste': 'نصيحة: انسخ مجموعة خلايا من Excel أو Google Sheets والصقها في أي خانة. هتتملى لقدام ولتحت، وهتضيف صفوف لو محتاج.',
+  'pro.empty': 'لسه مفيش منتجات',
+  'pro.emptyP': 'ضيف المنتجات واحد واحد، أو الصق جدول المبيعات من Excel في أول صف.',
+  'pro.needSup': 'ضيف مورد واحد على الأقل الأول علشان كل منتج يترابط بمورد.',
+  'pro.deleted': 'المنتج اتمسح',
+  'pro.pasted': 'اتلصق {n} خانة.',
+  'pro.compare': 'قارن الموردين',
+  'cmp.title': 'قارن الموردين لمنتج {name}',
+  'cmp.lede': 'نفس الطلب، نفس المعادلات. الفرق الوحيد بين الصفوف هو المورد.',
+  'cmp.current': 'الحالي',
+  'cmp.cheapest': 'الأقل تكلفة في السنة',
+  'cmp.use': 'استخدم ده',
+  'cmp.remove': 'شيل',
+  'cmp.add': 'ضيف',
+  'cmp.chooseSupplier': 'اختار مورد تقارنه',
+  'cmp.costLabel': 'تكلفة المنتج عنده',
+  'cmp.none': 'لسه في مورد واحد بس لهذا المنتج. ضيف مورد تاني تحت علشان تقارن.',
+  'cmp.addHelp': 'ضيف مورد ممكن يبيعلك المنتج ده كمان، وقولنا هيطلب فيه قد إيه.',
+  'cmp.allUsed': 'كل الموردين اللي عندك متضافين في المقارنة دي بالفعل.',
+  'cmp.col.supplier': 'المورد',
+  'cmp.col.cost': 'التكلفة',
+  'cmp.col.lt': 'مدة التوريد',
+  'cmp.col.oq': 'الكمية',
+  'cmp.col.aic': 'التكلفة السنوية',
+  'cmp.switched': 'دلوقتي بتطلب من {name}.',
+  'cmp.added': 'اتضاف للمقارنة.',
+  'cmp.removed': 'اتشال.',
+
+  'v.CRITICAL': 'اطلب النهارده',
+  'v.ORDER': 'اطلب الأسبوع ده',
+  'v.OK': 'المخزون كويس',
+  'v.OVER': 'مخزون زيادة، ماتطلبش',
+  'v.NODEMAND': 'مفيش طلب متوقع',
+  'v.NOHIST': 'مفيش مبيعات مسجلة',
+  'vx.CRITICAL': 'المخزون عند حد الأمان أو تحته. انت فعلا معرض إن البضاعة تخلص.',
+  'vx.ORDER': 'المخزون وصل لنقطة إعادة الطلب. اطلب دلوقتي علشان البضاعة توصل قبل ما حد الأمان يتصرف.',
+  'vx.OK': 'المخزون يكفي مدة توريد المورد. مفيش حاجة تتعمل.',
+  'vx.OVER': 'أكتر من حد المخزون الزيادة. فلوسك متجمدة هنا. فكر في خصم.',
+  'vx.NOHIST': 'اكتب مبيعات شهرية علشان يبقى في حاجة نخطط عليها.',
+
+  'plan.title': 'خطة الشراء',
+  'plan.lede': 'كل اللي محتاج يتطلب، متقسم على الموردين. الكميات متظبطة على أقل كمية وحجم الكرتونة.',
+  'plan.empty': 'مفيش حاجة تتطلب الدورة دي',
+  'plan.emptyP': 'كل المنتجات فوق نقطة إعادة الطلب. ارجع تاني بعد ما تحدث المخزون.',
+  'plan.lines': '{n} منتج',
+  'plan.lines1': 'منتج واحد',
+  'plan.units': '{n} قطعة',
+  'plan.lt': 'مدة التوريد {n} يوم',
+  'plan.noSup': 'من غير مورد',
+  'plan.qty': 'الكمية',
+  'plan.cartons': 'كراتين',
+  'plan.unitCost': 'تكلفة القطعة',
+  'plan.value': 'القيمة',
+  'plan.copy': 'انسخ رسالة الطلب',
+  'plan.wa': 'ابعت على واتساب',
+  'plan.msgTitle': 'رسالة الطلب',
+  'plan.msgHint': 'حدد النص وانسخه.',
+  'plan.msgHello': 'أهلا {s}،',
+  'plan.msgIntro': 'حابين نطلب الطلبية دي:',
+  'plan.msgLine': '- {name}: {qty} قطعة',
+  'plan.msgTotal': 'الإجمالي: {n} قطعة',
+  'plan.msgThanks': 'شكرا',
+  'plan.budgetNone': 'إجمالي الطلب: {v}. حدد ميزانية شهرية في الإعدادات علشان نراجعها.',
+  'plan.budgetOver': 'الإجمالي {v} أعلى من ميزانيتك {b} بـ {d}. ابدأ بمنتجات الفئة A ({a})، والباقي على قد الكاش.',
+  'plan.budgetWithin': 'الإجمالي {v} جوه ميزانيتك {b}، وفاضل {d}.',
+
+  'ord.title': 'قرارات الطلب',
+  'ord.lede': 'السبب ورا كل قرار. وضع المخزون = الموجود + اللي في الطريق، علشان مفيش حاجة تتطلب مرتين.',
+  'ord.all': 'الكل',
+  'ord.qty': 'الكمية',
+  'ord.value': 'قيمة الطلب',
+  'ord.ip': 'وضع المخزون',
+  'ord.ss': 'مخزون الأمان',
+  'ord.rop': 'نقطة إعادة الطلب',
+  'ord.oq': 'أفضل كمية',
+  'ord.oqS': 'بعد أقل كمية',
+  'ord.cover': 'أيام التغطية',
+  'ord.sl': 'الخدمة',
+
+  'dem.title': 'توقع الطلب',
+  'dem.lede': 'الطلب الشهري من غير الموسمية، الاتجاه، المنتج متوقع قد إيه، والتلات شهور الجايين.',
+  'dem.season': 'الموسم',
+  'dem.months': 'الشهور',
+  'dem.avg': 'الطلب الأساسي',
+  'dem.avgS': 'في الشهر، من غير موسمية',
+  'dem.trend': 'الاتجاه',
+  'dem.trendS': 'في الشهر',
+  'dem.cv': 'التذبذب',
+  'dem.class': 'الفئة',
+  'dem.year': 'الـ 12 شهر الجايين',
+  'dem.off': 'الموسمية متقفلة',
+  'dem.note': 'الفئة X ثابتة (تذبذب لحد 25%)، Y متقلبة (لحد 50%)، Z عشوائية.',
+
+  'abc.title': 'تصنيف ABC-XYZ',
+  'abc.lede': 'كل منتج بيتصنف مرتين: بالمبيعات (A وB وC) وبقابلية التوقع (X وY وZ). كل خانة ليها طريقة إدارة.',
+  'abc.A': 'A', 'abc.As': 'أعلى 80% من المبيعات',
+  'abc.B': 'B', 'abc.Bs': 'الـ 15% اللي بعدها',
+  'abc.C': 'C', 'abc.Cs': 'آخر 5%',
+  'abc.X': 'X، ثابت', 'abc.Y': 'Y، متقلب', 'abc.Z': 'Z، عشوائي',
+  'abc.rev': 'المبيعات السنوية',
+  'abc.share': 'النسبة',
+  'abc.cum': 'التراكمي',
+  'abc.policy': 'تديره إزاي',
+  'abc.classTag': 'فئة {c}',
+  'pol.AX': 'ده محرك البيزنس. راجعه كل أسبوع، خدمة 97-99%، خلي مخزون الأمان مضبوط، واتفاوض على سعر الكمية.',
+  'pol.AY': 'قيمته عالية بس متقلب. راجعه كل أسبوع، خدمة 97%، واحتفظ بمخزون أمان أكبر.',
+  'pol.AZ': 'أصعب خانة. اطلب كميات أصغر على فترات أقرب، خلي المورد جاهز، وفكر في الحجز المسبق.',
+  'pol.BX': 'منتج متوسط ثابت. راجعه كل شهر، خدمة 95%، وخلي إعادة الطلب روتين.',
+  'pol.BY': 'متوسط ومتقلب. راجعه كل شهر بمخزون أمان معتدل.',
+  'pol.BZ': 'متوسط وعشوائي. خلي مخزونه أقل حاجة وماتجريش وراه.',
+  'pol.CX': 'قيمته قليلة بس متوقع. اطلبه على فترات بعيدة بكميات أكبر.',
+  'pol.CY': 'قيمته قليلة ومتقلب. راجعه كل 3 شهور بأقل مخزون.',
+  'pol.CZ': 'قيمته قليلة وعشوائي. مرشح قوي للإيقاف أو البيع بالطلب المسبق.',
+
+  'hl.title': 'فحص البيانات',
+  'hl.lede': 'بيراجع اللي كتبته قبل ما تعتمد على أي طلبية. الصفوف الحمرا ممكن تطلّع كمية غلط.',
+  'hl.only': 'الصفوف اللي محتاجة انتباه بس',
+  'hl.result': 'النتيجة',
+  'hl.issues': 'راجع إيه',
+  'hl.fine': 'مفيش حاجة تتصلح',
+  'hl.go': 'تعديل',
+  'hl.allGood': 'كل المنتجات عدّت الفحص. تقدر تعتمد على الطلبيات.',
+  'h.FIX': 'لازم يتصلح',
+  'h.REVIEW': 'راجعه',
+  'h.GOOD': 'تمام',
+  'c.H_NEG': 'في شهر مبيعاته بالسالب.',
+  'c.H_NONE': 'لسه مفيش مبيعات مكتوبة.',
+  'c.H_LT6': 'أقل من 6 شهور مبيعات. ماتعتمدش على الصف ده لسه.',
+  'c.H_LT12': 'التاريخ أقل من 12 شهر، فالموسمية والاتجاه متقفلين.',
+  'c.M_NOCOST': 'تكلفة القطعة مش مكتوبة.',
+  'c.M_BELOW': 'السعر مش أعلى من التكلفة.',
+  'c.M_THIN': 'هامش الربح أقل من 15%.',
+  'c.S_NONE': 'مفيش مورد متحدد.',
+  'c.S_MISSING': 'المورد بتاعه اتمسح.',
+  'c.S_LT0': 'مدة توريد المورد 0 يوم.',
+  'c.K_NEG': 'المخزون بالسالب.',
+  'c.K_OVER': 'مخزون زيادة. فلوسك متجمدة هنا.',
+  'c.K_BELOWSS': 'المخزون تحت حد الأمان فعلا.',
+  'c.P_NONE': 'مفيش شكل موسم متحدد.',
+  'c.P_MISSING': 'شكل الموسم بتاعه اتمسح.',
+  'c.P_FLATSWING': 'متسجل ثابت بس المبيعات بتتغير جامد. هل هو موسمي؟',
+  'c.F_SPIKE': 'في شهر أعلى بكتير من الباقي. شيل أي طلبية استثنائية.',
+  'c.F_Z': 'عشوائي حتى بعد شيل الموسمية. استخدم تقديرك كمان.'
+}
+};
+
+/* ================= basics ================= */
+const $ = (sel, root) => (root || document).querySelector(sel);
+const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  del(k) { try { localStorage.removeItem(k); } catch (e) {} }
+};
+const DEMO = new URLSearchParams(location.search).has('demo');
+const S = { selectMode: false, selected: new Set(), sid: DEMO ? 'demo' : store.get('es7.sid'), me: null, ws: null, res: null, rev: 0, tab: store.get('es7.tab') || 'dash',
+            dirty: false, saving: false, timer: null, retry: null, filter: 'ALL', healthOnly: true, loginEmail: '', undo: null };
+let LANG = store.get('es7.lang') || ((navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en');
+
+function t(key, vars) {
+  let s = (T[LANG] && T[LANG][key]) != null ? T[LANG][key] : (T.en[key] != null ? T.en[key] : key);
+  if (vars) Object.keys(vars).forEach(k => { s = s.split('{' + k + '}').join(vars[k]); });
+  return s;
+}
+function esc(v) {
+  return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+const NF0 = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+const NF1 = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+const NF2 = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+const n0 = v => (v == null || !isFinite(v)) ? t('na') : NF0.format(Math.round(v));
+const n1 = v => (v == null || !isFinite(v)) ? t('na') : NF1.format(v);
+const money = v => (v == null || !isFinite(v)) ? t('na') : NF0.format(Math.round(v)) + ' ' + t('egp');
+const pct = v => (v == null || !isFinite(v)) ? t('na') : Math.round(v * 100) + '%';
+const monthName = (m, long) => (long ? MONTHS_LONG : MONTHS)[LANG][((m - 1) % 12 + 12) % 12];
+const calMonth = (col, last) => (((last - 12 + col - 1) % 12) + 12) % 12 + 1;
+const newId = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
+
+function parseNum(raw) {
+  let s = String(raw == null ? '' : raw).trim();
+  if (!s) return { ok: true, v: null };
+  s = s.replace(/[\u0660-\u0669]/g, d => String(d.charCodeAt(0) - 0x0660))
+       .replace(/[\u06F0-\u06F9]/g, d => String(d.charCodeAt(0) - 0x06F0))
+       .replace(/\u066B/g, '.').replace(/[,\u066C\s]/g, '').replace(/%$/, '');
+  const v = Number(s);
+  return isFinite(v) ? { ok: true, v: v } : { ok: false, v: null };
+}
+const val = v => (v == null ? '' : String(v));
+// Keep English names readable inside Arabic pages (and the reverse).
+const bdi = v => '<bdi>' + esc(v) + '</bdi>';
+const iso = v => '\u2068' + v + '\u2069';
+const digits = v => String(v == null ? '' : v)
+  .replace(/[\u0660-\u0669]/g, d => String(d.charCodeAt(0) - 0x0660))
+  .replace(/[\u06F0-\u06F9]/g, d => String(d.charCodeAt(0) - 0x06F0))
+  .replace(/\D/g, '');
+
+/* ================= server calls ================= */
+// Talks to the Supabase server. Same functions and answers as the old Apps Script version.
+const API_URL = 'https://wqbcxyswrqxvqrehelnw.supabase.co/functions/v1/app';
+async function gs(fn, ...args) {
+  try {
+    // Demo mode runs on the same server with the real engine, but nothing is saved.
+    const payload = (DEMO && fn === 'api') ? { fn: 'demo', args: [args[1], args[2]] } : { fn, args };
+    const r = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const j = await r.json().catch(() => null);
+    return j || { error: 'SERVER' };
+  } catch (e) { console.error(e); return { error: 'NET' }; }
+}
+const call = (action, payload) => gs('api', S.sid, action, payload == null ? null : payload);
+
+/* ================= language ================= */
+function applyStatic() {
+  document.documentElement.lang = LANG;
+  document.documentElement.dir = LANG === 'ar' ? 'rtl' : 'ltr';
+  $$('[data-t]').forEach(el => { el.textContent = t(el.dataset.t); });
+  $$('[data-act="lang"]').forEach(el => { el.textContent = LANG === 'ar' ? 'English' : 'العربية'; });
+  $$('.appname').forEach(el => { el.textContent = CFG.appName; });
+  document.title = CFG.appName;
+  const plans = $('#login-plans');
+  plans.innerHTML = CFG.siteUrl ? esc(t('login.noplan')) + ' <a href="' + esc(CFG.siteUrl) + '" target="_blank" rel="noopener">' + esc(t('login.plans')) + '</a>' : '';
+}
+function setLang(l) {
+  LANG = l; store.set('es7.lang', l);
+  $('#toast').hidden = true;
+  applyStatic();
+  if (!$('#app').hidden) { renderShell(); renderTab(); setStatus(S.statusKey || 'saved'); }
+}
+
+/* ================= toast + dialog ================= */
+let toastTimer = null;
+function toast(msg, action) {
+  const el = $('#toast');
+  el.innerHTML = '<span>' + esc(msg) + '</span>' + (action ? '<button type="button">' + esc(action.label) + '</button>' : '');
+  el.hidden = false;
+  if (action) el.querySelector('button').onclick = () => { el.hidden = true; action.fn(); };
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { el.hidden = true; }, action ? 7000 : 4200);
+}
+function dialog({ title, body, ok, danger, textarea }) {
+  return new Promise(resolve => {
+    const ov = $('#overlay');
+    ov.innerHTML = '<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-t">' +
+      '<h2 id="dlg-t">' + esc(title) + '</h2>' +
+      (body ? '<p>' + esc(body) + '</p>' : '') +
+      (textarea != null ? '<textarea readonly>' + esc(textarea) + '</textarea>' : '') +
+      '<div class="actions">' +
+      (ok ? '<button class="btn" data-r="0">' + esc(t('cancel')) + '</button>' : '') +
+      '<button class="btn ' + (danger ? 'primary danger' : 'primary') + '" data-r="1">' + esc(ok || t('close')) + '</button>' +
+      '</div></div>';
+    ov.hidden = false;
+    const done = r => { ov.hidden = true; ov.innerHTML = ''; document.removeEventListener('keydown', onKey); resolve(r); };
+    const onKey = e => { if (e.key === 'Escape') done(false); };
+    document.addEventListener('keydown', onKey);
+    ov.onclick = e => { const b = e.target.closest('[data-r]'); if (b) done(b.dataset.r === '1'); else if (e.target === ov) done(false); };
+    const ta = ov.querySelector('textarea');
+    if (ta) { ta.focus(); ta.select(); } else ov.querySelector('[data-r="1"]').focus();
+  });
+}
+
+/* ================= sign in ================= */
+function show(id) { ['boot', 'login', 'app'].forEach(x => { $('#' + x).hidden = x !== id; }); }
+function loginMsg(text, kind, html) {
+  const el = $('#login-msg');
+  if (!text) { el.hidden = true; return; }
+  el.className = 'msg ' + (kind || 'info');
+  el.innerHTML = esc(text) + (html || '');
+  el.hidden = false;
+}
+function toLogin(reason) {
+  S.sid = null; store.del('es7.sid');
+  clearTimeout(S.timer); clearTimeout(S.retry); S.dirty = false;
+  show('login');
+  $('#f-email').hidden = false; $('#f-code').hidden = true;
+  if (reason === 'INACTIVE') {
+    loginMsg(t('login.inactive'), 'bad', CFG.renewUrl ? ' <a href="' + esc(CFG.renewUrl) + '" target="_blank" rel="noopener">' + esc(t('login.renew')) + '</a>' : '');
+  } else if (reason === 'EXPIRED') loginMsg(t('login.expired'), 'info');
+  else loginMsg('');
+  setTimeout(() => $('#email').focus(), 50);
+}
+async function sendCode(e) {
+  if (e) e.preventDefault();
+  const email = ($('#email').value || S.loginEmail || '').trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { loginMsg(t('err.BAD_EMAIL'), 'bad'); return; }
+  const btn = $('#f-email button');
+  btn.disabled = true;
+  const r = await gs('requestCode', email, LANG);
+  btn.disabled = false;
+  if (!r.ok) { loginMsg(t('err.' + (r.error || 'SERVER')), 'bad'); return; }
+  S.loginEmail = email;
+  $('#f-email').hidden = true; $('#f-code').hidden = false;
+  $('#code').value = '';
+  loginMsg(t('login.sent', { email: email }), 'ok');
+  setTimeout(() => $('#code').focus(), 50);
+}
+async function verify(e) {
+  if (e) e.preventDefault();
+  const code = digits($('#code').value);
+  if (code.length !== 6) { loginMsg(t('err.BAD_CODE'), 'bad'); return; }
+  const btn = $('#f-code button[type=submit]');
+  btn.disabled = true;
+  const r = await gs('verifyCode', S.loginEmail, code);
+  btn.disabled = false;
+  if (!r.ok) {
+    if (r.error === 'INACTIVE') { toLogin('INACTIVE'); return; }
+    loginMsg(t('err.' + (r.error || 'SERVER')), 'bad'); return;
+  }
+  S.sid = r.sid; store.set('es7.sid', r.sid);
+  loginMsg('');
+  boot();
+}
+
+/* ================= boot + save ================= */
+async function boot() {
+  if (!S.sid) { toLogin(); return; }
+  show('boot');
+  $('#boot').innerHTML = '<div><div class="spinner"></div><span>' + esc(t('boot.loading')) + '</span></div>';
+  const r = await call('load');
+  if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
+  if (r.error === 'INACTIVE') { toLogin('INACTIVE'); return; }
+  if (r.error) {
+    $('#boot').innerHTML = '<div style="text-align:center"><p>' + esc(t('boot.failed')) + '</p><button class="btn primary" id="b-retry">' + esc(t('boot.retry')) + '</button></div>';
+    $('#b-retry').onclick = boot;
+    return;
+  }
+  S.me = r.me; S.ws = r.ws; S.res = r.res; S.rev = r.ws.rev || 0;
+  show('app');
+  if (DEMO && !$('#demobar')) {
+    const ar = LANG === 'ar';
+    document.body.insertAdjacentHTML('afterbegin', '<div id="demobar" style="position:sticky;top:0;z-index:50;background:#0E2743;color:#fff;padding:9px 16px;font-size:14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap">' +
+      '<span>' + (ar ? 'دي نسخة تجريبية فيها كل مميزات باقة Store. مفيش حاجة بتتحفظ.' : 'This is a live demo with every Store feature. Nothing you change is saved.') + '</span>' +
+      '<a href="https://etlobsa7.com/#pricing" style="background:#fff;color:#0E2743;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600">' + (ar ? 'ابدأ تجربتك المجانية' : 'Start your free trial') + '</a></div>');
+  }
+  renderShell();
+  renderTab();
+  setStatus('saved');
+  showNotices(r.notices);
+}
+
+function setStatus(key) {
+  S.statusKey = key;
+  const el = $('#status');
+  el.className = 'status ' + key;
+  el.querySelector('span').textContent = t('status.' + key);
+}
+
+function markDirty() {
+  S.dirty = true;
+  setStatus('dirty');
+  clearTimeout(S.timer);
+  S.timer = setTimeout(save, 900);
+}
+
+async function save(extra) {
+  clearTimeout(S.timer);
+  if (S.saving) { S.again = true; return; }
+  if (!S.dirty && !extra) return;
+  S.saving = true; S.dirty = false; S.again = false;
+  setStatus('saving');
+  const payload = Object.assign({ ws: S.ws, rev: S.rev }, extra || {});
+  const r = await call('save', payload);
+  S.saving = false;
+  if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
+  if (r.error === 'INACTIVE') { toLogin('INACTIVE'); return; }
+  if (r.error === 'CONFLICT') { toast(t('err.conflict')); boot(); return; }
+  if (r.error) {
+    S.dirty = true; setStatus('error');
+    if (r.error === 'TOO_BIG') { toast(t('err.TOO_BIG')); return; }
+    clearTimeout(S.retry);
+    S.retry = setTimeout(() => save(), 6000);
+    return;
+  }
+  S.rev = r.rev;
+  S.res = r.res;
+  if (r.replaced && !S.dirty) { S.ws = r.ws; renderTab(); }
+  else refreshResults();
+  renderShell();
+  showNotices(r.notices);
+  if (S.dirty || S.again) { S.again = false; save(); }
+  else setStatus('saved');
+}
+
+function showNotices(list) {
+  (list || []).forEach(n => {
+    const max = n === 'LIMIT_SUPPLIERS' ? S.me.limits.suppliers : S.me.limits.products;
+    const extra = (n === 'LIMIT_PRODUCTS' && upsellText()) ? ' ' + upsellText() : '';
+    toast(t('notice.' + n, { max: max }) + extra,
+      CFG.siteUrl && n !== 'LIMIT_PROFILES' ? { label: t('upgradePlan'), fn: () => window.open(CFG.siteUrl, '_blank', 'noopener') } : null);
+  });
+}
+
+window.addEventListener('beforeunload', e => {
+  if (S.dirty || S.saving) { e.preventDefault(); e.returnValue = t('status.leave'); return t('status.leave'); }
+});
+
+/* ================= shell ================= */
+const TABS = [
+  { id: 'start', g: 0 }, { id: 'walk', g: 0 }, { id: 'dash', g: 0 },
+  { id: 'settings', g: 1 }, { id: 'seasons', g: 1 }, { id: 'suppliers', g: 1 }, { id: 'products', g: 1 },
+  { id: 'plan', g: 2 }, { id: 'orders', g: 2 }, { id: 'demand', g: 2 }, { id: 'trends', g: 2 },
+  { id: 'score', g: 2 }, { id: 'dead', g: 2 }, { id: 'cash', g: 2 }, { id: 'health', g: 2 }
+];
+const RESULT_TABS = ['dash', 'plan', 'orders', 'demand', 'trends', 'score', 'dead', 'cash', 'health'];
+
+function renderShell() { renderNav(); renderAccount(); }
+
+function renderNav() {
+  if (!S.res) return;
+  const d = S.res.dash;
+  const badges = {
+    products: { n: S.ws.products.length },
+    suppliers: { n: S.ws.suppliers.length },
+    plan: { n: d.decisions.CRITICAL + d.decisions.ORDER, crit: d.decisions.CRITICAL > 0 },
+    health: { n: d.fix, crit: d.fix > 0, hideZero: true }
+  };
+  let html = '', g = -1;
+  TABS.forEach(tab => {
+    if (tab.g !== g) { g = tab.g; if (g > 0) html += '<div class="nav-label">' + esc(t('nav.g' + g)) + '</div>'; }
+    const b = badges[tab.id];
+    const badge = b && !(b.hideZero && !b.n) ? '<span class="badge' + (b.crit ? ' crit' : '') + '">' + b.n + '</span>' : '';
+    html += '<button type="button" data-act="tab" data-tab="' + tab.id + '"' + (S.tab === tab.id ? ' aria-current="page"' : '') + '><span>' + esc(t('nav.' + tab.id)) + '</span>' + badge + '</button>';
+  });
+  $('#nav').innerHTML = html;
+  $('#bar-title').textContent = t('nav.' + S.tab);
+  const cur = $('#nav [aria-current="page"]');
+  if (cur && window.matchMedia('(max-width:900px)').matches) cur.scrollIntoView({ inline: 'center', block: 'nearest' });
+}
+
+function renderAccount() {
+  const lim = S.me.limits;
+  const usage = lim.products >= 500 ? t('plan.usageUnl', { n: S.ws.products.length }) : t('plan.usage', { n: S.ws.products.length, max: lim.products });
+  $('#account').innerHTML =
+    '<div class="email">' + esc(S.me.email) + '</div>' +
+    '<div class="plan">' + esc(t('plan.' + S.me.plan)) + '<br><span style="color:#7F95AF">' + esc(usage) + '</span></div>' +
+    '<div class="row">' +
+    (CFG.whatsapp ? '<a class="ghost" style="text-decoration:none" href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '') +
+    '<button class="ghost" data-act="logout">' + esc(t('nav.signout')) + '</button></div>';
+}
+
+function goTab(id, opts) {
+  if (!TABS.some(x => x.id === id)) id = 'dash';
+  S.tab = id; store.set('es7.tab', id);
+  renderNav();
+  renderTab();
+  if (!opts || !opts.keepScroll) window.scrollTo(0, 0);
+}
+
+function renderTab() {
+  const view = $('#view');
+  const wrap = view.querySelector('.tbl-wrap');
+  const keep = { y: window.scrollY, x: wrap ? wrap.scrollLeft : 0, ty: wrap ? wrap.scrollTop : 0 };
+  const fn = VIEWS[S.tab] || VIEWS.dash;
+  view.innerHTML = fn();
+  $('#bar-title').textContent = t('nav.' + S.tab);
+  return keep;
+}
+
+function refreshResults() {
+  if (RESULT_TABS.indexOf(S.tab) >= 0) {
+    const keep = renderTab();
+    window.scrollTo(0, keep.y);
+    const wrap = $('#view .tbl-wrap');
+    if (wrap) { wrap.scrollLeft = keep.x; wrap.scrollTop = keep.ty; }
+  } else if (S.tab === 'products') {
+    updateVerdicts();
+  } else if (S.tab === 'seasons') {
+    $$('[data-used]').forEach(el => { el.textContent = t('sea.used', { n: S.ws.products.filter(p => p.profileId === el.dataset.used).length }); });
+  }
+  renderAccount();
+}
+
+/* ================= shared bits ================= */
+const verdict = code => '<span class="pill v-' + code + '" title="' + esc(t('vx.' + code) === 'vx.' + code ? '' : t('vx.' + code)) + '">' + esc(t('v.' + code)) + '</span>';
+const rowById = id => S.res.rows.find(r => r.id === id);
+const supName = s => (s && s.name) ? s.name : t('unnamed');
+function profName(p) { if (!p) return ''; return p.builtin ? (LANG === 'ar' ? p.nameAr : p.name) : (p.name || t('unnamed')); }
+function head(title, lede, actions) {
+  return '<div class="page-head"><div><h1>' + esc(title) + '</h1>' + (lede ? '<p>' + esc(lede) + '</p>' : '') + '</div>' +
+    (actions ? '<div class="actions">' + actions + '</div>' : '') + '</div>';
+}
+function emptyBox(title, text, actions) {
+  return '<div class="empty"><h2>' + esc(title) + '</h2><p>' + esc(text) + '</p>' + (actions ? '<div class="actions">' + actions + '</div>' : '') + '</div>';
+}
+const btn = (label, act, attrs, cls) => '<button type="button" class="btn ' + (cls || '') + '" data-act="' + act + '"' + (attrs || '') + '>' + esc(label) + '</button>';
+const sub = key => '<span class="sub">' + esc(t(key)) + '</span>';
+const upgradeLink = () => CFG.siteUrl ? ' <a href="' + esc(CFG.siteUrl) + '" target="_blank" rel="noopener">' + esc(t('upgrade')) + '</a>' : '';
+// What the next tier up actually offers. Store is the top tier, so it gets no upsell at all.
+function upsellText() {
+  const plan = S.me.plan;
+  if (plan === 'basic') return t('limit.up.basic');
+  if (plan === 'pro') return t('limit.up.pro');
+  return '';
+}
+function limitMsg(kind) {
+  const max = kind === 'suppliers' ? S.me.limits.suppliers : S.me.limits.products;
+  const up = kind === 'suppliers' ? '' : upsellText();
+  return t(kind === 'suppliers' ? 'limit.suppliers' : 'limit.products', { max: max }) + (up ? ' ' + up : '');
+}
+const upsellLink = () => (CFG.siteUrl && upsellText())
+  ? ' <a href="' + esc(CFG.siteUrl) + '" target="_blank" rel="noopener">' + esc(t('upgradePlan')) + '</a>' : '';
+
+/* ================= VIEWS ================= */
+const VIEWS = {};
+
+/* ---------- Start here ---------- */
+VIEWS.start = () => {
+  const steps = [1, 2, 3, 4, 5, 6].map(i => {
+    const target = ['settings', 'seasons', 'suppliers', 'products', 'health', 'plan'][i - 1];
+    return '<li><b><button class="linkbtn" data-act="tab" data-tab="' + target + '">' + esc(t('start.s' + i)) + '</button></b><p>' + esc(t('start.s' + i + 'p')) + '</p></li>';
+  }).join('');
+  const legend = ['CRITICAL', 'ORDER', 'OK', 'OVER'].map(c => '<div>' + verdict(c) + '<span class="small">' + esc(t('vx.' + c)) + '</span></div>').join('');
+  return head(t('start.title'), t('start.lede')) +
+    '<div class="guide"><div>' +
+      '<div class="panel"><ol class="steps">' + steps + '</ol></div>' +
+      '<div class="panel" style="margin-top:16px"><h3>' + esc(t('start.weekly')) + '</h3><p>' + esc(t('start.weeklyp')) + '</p>' +
+      '<h3 style="margin-top:14px">' + esc(t('start.monthly')) + '</h3><p>' + esc(t('start.monthlyp')) + '</p>' +
+      '<h3 style="margin-top:14px">' + esc(t('start.habits')) + '</h3><ul class="plain"><li>' + esc(t('start.h1')) + '</li><li>' + esc(t('start.h2')) + '</li></ul></div>' +
+    '</div><div>' +
+      '<div class="panel"><h3 style="margin-bottom:10px">' + esc(t('start.colours')) + '</h3><div class="legend-list">' + legend + '</div></div>' +
+      '<div class="panel" style="margin-top:16px"><h3 style="margin-bottom:8px">' + esc(t('start.limits')) + '</h3><ul class="plain">' +
+        [1, 2, 3, 4].map(i => '<li>' + esc(t('start.l' + i)) + '</li>').join('') + '</ul></div>' +
+      '<div class="panel" style="margin-top:16px"><h3>' + esc(t('start.sample')) + '</h3><p class="muted">' + esc(t('start.samplep')) + '</p>' +
+        btn(t('start.loadSample'), 'sample') + '</div>' +
+    '</div></div>';
+};
+
+
+/* ---------- Guided walkthrough (built in, answer key locked by a test) ---------- */
+VIEWS.walk = () => {
+  const target = ['settings', 'products', 'health', 'orders', 'demand', 'dash', 'plan'];
+  const steps = target.map((tab, i) => '<li><b><button class="linkbtn" data-act="tab" data-tab="' + tab + '">' +
+    esc(t('wt.s' + (i + 1))) + '</button></b><p>' + esc(t('wt.s' + (i + 1) + 'p')) + '</p>' +
+    '<div class="alert good" style="margin-top:8px"><span><b>' + esc(t('wt.expect')) + ':</b> ' +
+    esc(t('wt.s' + (i + 1) + 'e')) + '</span></div></li>').join('');
+  return head(t('wt.title'), t('wt.lede'), btn(t('wt.load'), 'loadWalk', '', 'primary')) +
+    '<div class="alert info" style="margin-bottom:16px"><span>' + esc(t('wt.shop')) + '</span></div>' +
+    '<div class="panel"><ol class="steps">' + steps + '</ol></div>' +
+    '<p class="gridnote">' + esc(t('wt.done')) + '</p>';
+};
+
+/* ---------- Dashboard ---------- */
+VIEWS.dash = () => {
+  const d = S.res.dash;
+  const hasData = S.res.rows.some(r => r.n > 0);
+  if (!hasData) {
+    return head(t('dash.title'), t('dash.lede')) +
+      emptyBox(t('dash.emptyT'), t('dash.emptyP'),
+        btn(t('nav.suppliers'), 'tab', ' data-tab="suppliers"', 'primary') + btn(t('nav.products'), 'tab', ' data-tab="products"') + btn(t('start.loadSample'), 'sample'));
+  }
+  const need = d.decisions.CRITICAL + d.decisions.ORDER;
+  const today = need > 0
+    ? '<div class="today"><div class="big">' + need + '</div><div><h2>' + esc(need === 1 ? t('dash.todayN1') : t('dash.todayN')) + '</h2><p>' +
+        esc(t('dash.todayP', { split: todaySplit(d), v: money(d.orderValue), s: S.res.plan.length === 1 ? t('dash.sup1') : t('dash.supN', { n: S.res.plan.length }) })) + '</p></div>' +
+        btn(t('dash.openPlan'), 'tab', ' data-tab="plan"') + '</div>'
+    : '<div class="today calm"><div class="big">0</div><div><h2>' + esc(t('dash.calmT')) + '</h2><p>' + esc(t('dash.calmP')) + '</p></div></div>';
+
+  let alerts = '';
+  if (d.fix) alerts += '<div class="alert bad"><span>' + esc(t('dash.fix', { n: d.fix })) + '</span>' + btn(t('dash.openHealth'), 'tab', ' data-tab="health"', 'small') + '</div>';
+  else if (d.review) alerts += '<div class="alert warn"><span>' + esc(t('dash.review', { n: d.review })) + '</span>' + btn(t('dash.openHealth'), 'tab', ' data-tab="health"', 'small') + '</div>';
+  if (S.res.budget.status === 'OVER') alerts += '<div class="alert warn"><span>' + esc(t('dash.budgetOver', { v: money(S.res.budget.diff) })) + '</span></div>';
+
+  const turnWarn = d.turnover != null && d.turnover < 4;
+  const kpi = (k, v, cls) => '<div class="kpi ' + (cls || '') + '"><span>' + esc(t('k.' + k)) + '</span><b>' + esc(v) + '</b><small>' + esc(t('k.' + k + 'S')) + '</small></div>';
+  const kpis = '<div class="kpis">' +
+    kpi('stock', money(d.stockValue)) + kpi('onorder', money(d.onOrderValue)) + kpi('order', money(d.orderValue)) +
+    kpi('rev', money(d.revenue)) + kpi('profit', money(d.profit)) + kpi('margin', pct(d.margin)) +
+    kpi('turn', d.turnover == null ? t('na') : t('times', { n: n1(d.turnover) }), turnWarn ? 'warn' : '') +
+    kpi('cover', d.avgCover == null ? t('na') : n0(d.avgCover) + ' ' + t('days')) +
+    kpi('over', money(d.overstockValue), d.overstockValue > 0 ? 'warn' : '') +
+    kpi('risk', money(d.riskProfit || 0), (d.riskProfit || 0) > 0 ? 'bad' : '') +
+    kpi('aic', money(d.inventoryCost)) + '</div>';
+
+  const colors = { CRITICAL: 'var(--crit)', ORDER: '#D98A00', OK: 'var(--ok)', OVER: 'var(--over)', NODEMAND: '#A9B4C0', NOHIST: '#C9D1DA' };
+  const order = ['CRITICAL', 'ORDER', 'OK', 'OVER', 'NODEMAND', 'NOHIST'];
+  const stack = order.filter(c => d.decisions[c]).map(c => '<i style="width:' + (100 * d.decisions[c] / d.products) + '%;background:' + colors[c] + '"></i>').join('');
+  const legend = order.filter(c => d.decisions[c]).map(c => '<div>' + verdict(c) + '<b class="num">' + d.decisions[c] + '</b></div>').join('');
+
+  const actions = d.actions.slice(0, 12).map(a =>
+    '<tr><td class="name">' + bdi(a.name || t('unnamed')) + '</td><td>' + bdi(a.supplierName || t('plan.noSup')) + '</td><td>' + verdict(a.decision) +
+    '</td><td class="num">' + n0(a.qty) + '</td><td class="num">' + money(a.value) + '</td></tr>').join('');
+
+  return head(t('dash.title'), t('dash.lede')) + today + alerts +
+    '<div class="section">' + kpis + '</div>' +
+    '<div class="section two">' +
+      '<div class="panel"><h2>' + esc(t('dash.decisions', { n: d.products })) + '</h2><div class="stack">' + stack + '</div><div class="legend">' + legend + '</div></div>' +
+      '<div class="panel"><h2>' + esc(t('dash.abc')) + '</h2><div class="split">' +
+        '<div><b>' + d.abc.A + '</b><span class="small">' + esc(t('dash.abcA')) + '</span></div>' +
+        '<div><b>' + d.abc.B + '</b><span class="small">' + esc(t('dash.abcB')) + '</span></div>' +
+        '<div><b>' + d.abc.C + '</b><span class="small">' + esc(t('dash.abcC')) + '</span></div></div>' +
+        '<p class="small muted" style="margin-top:10px">' + esc(t('dash.abcP')) + (d.erratic ? ' ' + esc(t('dash.abcZ', { n: d.erratic })) : '') + '</p></div>' +
+    '</div>' +
+    (actions ? '<div class="section"><div class="page-head" style="margin-bottom:10px"><h2>' + esc(t('dash.actions')) + '</h2>' + btn(t('viewAll'), 'tab', ' data-tab="plan"', 'small') + '</div>' +
+      '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th>' + esc(t('supplier')) + '</th><th>' + esc(t('pro.verdict')) +
+      '</th><th class="num">' + esc(t('ord.qty')) + '</th><th class="num">' + esc(t('ord.value')) + '</th></tr></thead><tbody>' + actions + '</tbody></table></div></div>' : '');
+};
+
+function todaySplit(d) {
+  const parts = [];
+  if (d.decisions.CRITICAL) parts.push(t('dash.today', { n: d.decisions.CRITICAL }));
+  if (d.decisions.ORDER) parts.push(t('dash.week', { n: d.decisions.ORDER }));
+  return parts.join(t('dash.and'));
+}
+
+/* ---------- Settings ---------- */
+VIEWS.settings = () => {
+  const s = S.ws.settings;
+  const next = s.lastMonth % 12 + 1;
+  const numField = (key, label, help, unit) =>
+    '<div class="field"><label for="st-' + key + '">' + esc(t(label)) + '</label>' +
+    '<div class="unit"><input type="text" inputmode="decimal" id="st-' + key + '" data-scope="settings" data-f="' + key + '" value="' + esc(val(s[key])) + '"><span>' + esc(unit) + '</span></div>' +
+    '<div class="help">' + esc(t(help)) + '</div></div>';
+  const monthOpts = MONTHS_LONG[LANG].map((m, i) => '<option value="' + (i + 1) + '"' + (s.lastMonth === i + 1 ? ' selected' : '') + '>' + esc(m) + '</option>').join('');
+  const sw = (key, label, help) =>
+    '<div class="field"><label class="switch"><input type="checkbox" data-scope="settings" data-f="' + key + '"' + (s[key] ? ' checked' : '') + '><span>' + esc(t(label)) + '</span></label>' +
+    '<div class="help">' + esc(t(help)) + '</div></div>';
+  return head(t('set.title'), t('set.lede')) +
+    '<div class="fields">' +
+      numField('orderCost', 'set.orderCost', 'set.orderCostH', t('egp')) +
+      numField('holdRate', 'set.holdRate', 'set.holdRateH', t('egp')) +
+      '<div class="field"><label for="st-lastMonth">' + esc(t('set.lastMonth')) + '</label><select id="st-lastMonth" data-scope="settings" data-f="lastMonth">' + monthOpts + '</select><div class="help">' + esc(t('set.lastMonthH')) + '</div></div>' +
+      numField('overstockDays', 'set.overstock', 'set.overstockH', t('days')) +
+      numField('budget', 'set.budget', 'set.budgetH', t('egp')) +
+      numField('daysPerMonth', 'set.days', 'set.daysH', t('days')) +
+      sw('seasonOn', 'set.season', 'set.seasonH') +
+      sw('trendOn', 'set.trend', 'set.trendH') +
+    '</div>' +
+    '<div class="section routine"><div><h2>' + esc(t('set.newMonth')) + '</h2><p>' + esc(t('set.newMonthP', { m: monthName(next, true) })) + '</p></div>' +
+      btn(t('set.newMonthBtn', { m: monthName(next, true) }), 'rollMonth', '', 'primary') + '</div>';
+};
+
+/* ---------- Seasons ---------- */
+VIEWS.seasons = () => {
+  const canEdit = S.me.limits.customProfiles;
+  const cards = S.ws.profiles.map(p => {
+    const used = S.ws.products.filter(x => x.profileId === p.id).length;
+    const inputs = p.f.map((v, i) => '<div><label>' + esc(MONTHS[LANG][i]) + '</label><input type="text" inputmode="decimal" data-scope="profile" data-id="' + p.id + '" data-f="f" data-i="' + i + '" value="' + esc(val(v)) + '"' + (canEdit ? '' : ' disabled') + '></div>').join('');
+    const title = !p.builtin && canEdit
+      ? '<input type="text" dir="auto" data-scope="profile" data-id="' + p.id + '" data-f="name" value="' + esc(p.name) + '" aria-label="Name">'
+      : '<h3>' + esc(profName(p)) + '</h3>';
+    const tools = canEdit ? (
+      btn(t('sea.dup'), 'dupProfile', ' data-id="' + p.id + '"', 'small') +
+      (p.builtin ? (p.id === 'flat' ? '' : btn(t('sea.reset'), 'resetProfile', ' data-id="' + p.id + '"', 'small')) : btn(t('delete'), 'delProfile', ' data-id="' + p.id + '"', 'small danger'))
+    ) : '';
+    return '<div class="prof" data-prof="' + p.id + '"><div class="prof-head">' + title + '<div class="actions">' + tools + '</div></div>' +
+      '<div class="bars" data-bars="' + p.id + '">' + barsHtml(p.f) + '</div>' +
+      '<div class="months">' + inputs + '</div>' +
+      '<div class="prof-foot"><span class="muted" data-used="' + p.id + '">' + esc(t('sea.used', { n: used })) + '</span></div>' +
+      (p.id === 'ramadan' ? '<p class="small muted" style="margin:8px 0 0">' + esc(t('sea.ramadan')) + '</p>' : '') +
+      '</div>';
+  }).join('');
+  return head(t('sea.title'), t('sea.lede'), canEdit ? btn(t('sea.add'), 'addProfile', '', 'primary') : '') +
+    (canEdit ? '' : '<div class="alert info" style="margin-bottom:16px"><span>' + esc(t('sea.locked')) + upgradeLink() + '</span></div>') +
+    '<div class="profiles">' + cards + '</div>';
+};
+function barsHtml(f) {
+  const max = Math.max(2, ...f.map(v => Number(v) || 0));
+  return '<div class="one" style="bottom:' + (100 / max) + '%"></div>' +
+    f.map(v => '<i style="height:' + Math.max(2, 100 * (Number(v) || 0) / max) + '%"></i>').join('');
+}
+
+/* ---------- Suppliers ---------- */
+VIEWS.suppliers = () => {
+  const list = S.ws.suppliers;
+  const add = btn(t('sup.add'), 'addSupplier', '', 'primary');
+  if (!list.length) return head(t('sup.title'), t('sup.lede')) + emptyBox(t('sup.empty'), t('sup.emptyP'), add);
+  const cell = (s, f, cls, mode) => '<td class="' + cls + '"><input type="text"' + (mode ? ' inputmode="' + mode + '"' : ' dir="auto"') + ' data-scope="supplier" data-f="' + f + '" value="' + esc(val(s[f])) + '"></td>';
+  const showCash = S.me.limits.cashFlow;
+  const rows = list.map(s => '<tr data-id="' + s.id + '">' +
+    '<td class="stick w-name"><input type="text" dir="auto" data-scope="supplier" data-f="name" value="' + esc(s.name) + '" placeholder="' + esc(t('sup.name')) + '"></td>' +
+    cell(s, 'lt', 'w-n', 'decimal') + cell(s, 'ltv', 'w-n', 'decimal') + cell(s, 'moq', 'w-n', 'numeric') + cell(s, 'pack', 'w-n', 'numeric') +
+    cell(s, 'terms', 'w-t') + (showCash ? cell(s, 'depositPct', 'w-n', 'numeric') + cell(s, 'balanceDays', 'w-n', 'numeric') : '') +
+    '<td><button class="iconbtn" data-act="delSupplier" data-id="' + s.id + '" aria-label="' + esc(t('delete')) + '">&times;</button></td></tr>').join('');
+  const th = (k, sub, cls) => '<th class="' + (cls || '') + '">' + esc(t(k)) + (sub ? '<span class="sub">' + esc(t(sub)) + '</span>' : '') + '</th>';
+  return head(t('sup.title'), t('sup.lede'), add) +
+    '<div class="tbl-wrap"><table class="t grid"><thead><tr>' + th('sup.name', '', 'stick') + th('sup.lt', 'sup.ltS', 'num') + th('sup.ltv', 'sup.ltvS', 'num') +
+    th('sup.moq', 'sup.moqS', 'num') + th('sup.pack', 'sup.packS', 'num') + th('sup.terms') +
+    (showCash ? th('sup.deposit', 'sup.depositS', 'num') + th('sup.balance', 'sup.balanceS', 'num') : '') +
+    '<th></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+    '<p class="gridnote">' + esc(t('sup.note')) + '</p>' +
+    (list.length >= S.me.limits.suppliers ? '<div class="alert info"><span>' + esc(limitMsg('suppliers')) + '</span></div>' : '');
+};
+
+/* ---------- Products (the main input grid) ---------- */
+// Column order used for keyboard moves and pasting.
+const PCOLS = ['name', 'supplierId', 'profileId', 's0', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 'cost', 'price', 'onHand', 'onOrder', 'sl'];
+
+VIEWS.products = () => {
+  const ws = S.ws;
+  const last = ws.settings.lastMonth;
+  const add = btn(t('pro.add'), 'addProduct', '', 'primary');
+  let pre = '';
+  if (!ws.suppliers.length) pre = '<div class="alert info" style="margin-bottom:14px"><span>' + esc(t('pro.needSup')) + '</span>' + btn(t('sup.add'), 'tab', ' data-tab="suppliers"', 'small') + '</div>';
+  if (!ws.products.length) return head(t('pro.title'), t('pro.lede'), add) + pre + emptyBox(t('pro.empty'), t('pro.emptyP'), add);
+
+  const supOpts = sel => '<option value="">' + esc(t('choose')) + '</option>' + ws.suppliers.map(s => '<option value="' + s.id + '"' + (s.id === sel ? ' selected' : '') + '>' + esc(iso(supName(s))) + '</option>').join('');
+  const profOpts = sel => (sel ? '' : '<option value="">' + esc(t('choose')) + '</option>') + ws.profiles.map(p => '<option value="' + p.id + '"' + (p.id === sel ? ' selected' : '') + '>' + esc(iso(profName(p))) + '</option>').join('');
+  const slOpts = sel => CFG.serviceLevels.map(v => '<option value="' + v + '"' + (v === sel ? ' selected' : '') + '>' + v + '%</option>').join('');
+  const hi = S.highlightCol;
+  const canCompare = S.me.limits.altSuppliers;
+
+  const headM = Array.from({ length: 12 }, (_, i) => '<th class="num' + (i === 0 ? ' m-sep' : '') + '"' + (hi && i === 11 ? ' style="background:var(--accent-bg)"' : '') + '>' + esc(monthName(calMonth(i + 1, last))) + (i === 0 ? sub('pro.monthS') : '') + '</th>').join('');
+  const rows = ws.products.map((p, r) => {
+    let c = 0;
+    const inp = (f, cls, mode, value, extra) => '<td class="' + cls + '"><input type="text" inputmode="' + mode + '" data-scope="product" data-f="' + f + '"' + (extra || '') + ' data-r="' + r + '" data-c="' + (c++) + '" value="' + esc(value) + '"></td>';
+    const res = rowById(p.id);
+    let h = '<tr data-id="' + p.id + '">';
+    if (S.selectMode) h += '<td style="text-align:center"><input type="checkbox" data-act="selOne" data-id="' + p.id + '"' + (S.selected.has(p.id) ? ' checked' : '') + '></td>';
+    h += '<td class="stick w-name' + (res ? ' vb-' + res.decision : '') + '" data-vb="' + p.id + '"><input type="text" dir="auto" data-scope="product" data-f="name" data-r="' + r + '" data-c="' + (c++) + '" value="' + esc(p.name) + '" placeholder="' + esc(t('pro.name')) + '"></td>';
+    h += '<td class="v" data-verdict="' + p.id + '">' + (res ? verdict(res.decision) : '') + '</td>';
+    h += '<td class="w-sel"><select data-scope="product" data-f="supplierId" data-r="' + r + '" data-c="' + (c++) + '">' + supOpts(p.supplierId) + '</select></td>';
+    if (canCompare) h += '<td>' + btn(t('pro.compare'), 'openCompare', ' data-id="' + p.id + '"', 'small') + '</td>';
+    h += '<td class="w-sel"><select data-scope="product" data-f="profileId" data-r="' + r + '" data-c="' + (c++) + '">' + profOpts(p.profileId) + '</select></td>';
+    for (let i = 0; i < 12; i++) h += inp('sales', 'w-m' + (i === 0 ? ' m-sep' : ''), 'numeric', val(p.sales[i]), ' data-i="' + i + '"');
+    h += inp('cost', 'w-n m-sep', 'decimal', val(p.cost));
+    h += inp('price', 'w-n', 'decimal', val(p.price));
+    h += inp('onHand', 'w-n', 'numeric', val(p.onHand));
+    h += inp('onOrder', 'w-n', 'numeric', val(p.onOrder));
+    h += '<td class="w-sel" style="min-width:84px"><select data-scope="product" data-f="sl" data-r="' + r + '" data-c="' + (c++) + '">' + slOpts(p.sl) + '</select></td>';
+    h += '<td><button class="iconbtn" data-act="delProduct" data-id="' + p.id + '" aria-label="' + esc(t('delete')) + '">&times;</button></td></tr>';
+    return h;
+  }).join('');
+
+  const atLimit = ws.products.length >= S.me.limits.products;
+  const selN = S.selected.size;
+  const bar = S.selectMode
+    ? '<div class="alert info" id="bulkbar" style="margin-bottom:12px"><span id="bulkcount">' + esc(t('bulk.count', { n: selN })) + '</span><span class="actions">' +
+      btn(t('bulk.all'), 'selAll', '', 'small') + btn(t('bulk.none'), 'selNone', '', 'small') +
+      (selN ? btn(t('bulk.delete'), 'bulkDelete', '', 'small danger') : '') +
+      btn(t('bulk.cancel'), 'selOff', '', 'small') + '</span></div>'
+    : '';
+  const toolbar = btn(S.selectMode ? t('bulk.cancel') : t('bulk.select'), S.selectMode ? 'selOff' : 'selOn', '', 'small');
+  return head(t('pro.title'), t('pro.lede'), toolbar + add) + pre + bar +
+    '<div class="tbl-wrap"><table class="t grid" id="pgrid"><thead><tr>' +
+    (S.selectMode ? '<th style="width:38px"></th>' : '') +
+    '<th class="stick">' + esc(t('pro.name')) + sub('pro.nameS') + '</th><th>' + esc(t('pro.verdict')) + sub('pro.verdictS') +
+    '</th><th>' + esc(t('pro.sup')) + sub('pro.supS') + '</th>' + (canCompare ? '<th></th>' : '') +
+    '<th>' + esc(t('pro.season')) + sub('pro.seasonS') + '</th>' + headM +
+    '<th class="num m-sep">' + esc(t('pro.cost')) + sub('pro.costS') + '</th><th class="num">' + esc(t('pro.price')) + sub('pro.priceS') +
+    '</th><th class="num">' + esc(t('pro.onhand')) + sub('pro.onhandS') + '</th><th class="num">' + esc(t('pro.onorder')) + sub('pro.onorderS') +
+    '</th><th>' + esc(t('pro.sl')) + sub('pro.slS') + '</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+    '<p class="gridnote">' + esc(t('pro.monthsHead')) + '</p>' +
+    '<p class="gridnote">' + esc(t('pro.paste')) + '</p>' +
+    (atLimit ? '<div class="alert info"><span>' + esc(limitMsg('products')) + upsellLink() + '</span></div>' : '');
+};
+
+function updateVerdicts() {
+  $$('[data-verdict]').forEach(el => {
+    const r = rowById(el.dataset.verdict);
+    el.innerHTML = r ? verdict(r.decision) : '';
+  });
+  $$('[data-vb]').forEach(el => {
+    const r = rowById(el.dataset.vb);
+    el.className = el.className.replace(/\s?vb-[A-Z]+/g, '') + (r ? ' vb-' + r.decision : '');
+  });
+}
+
+/* ---------- Purchase plan ---------- */
+VIEWS.plan = () => {
+  const plan = S.res.plan, b = S.res.budget;
+  if (!plan.length) return head(t('plan.title'), t('plan.lede')) + emptyBox(t('plan.empty'), t('plan.emptyP'), btn(t('nav.orders'), 'tab', ' data-tab="orders"'));
+  let banner;
+  if (b.status === 'NONE') banner = '<div class="alert info"><span>' + esc(t('plan.budgetNone', { v: money(b.total) })) + '</span></div>';
+  else if (b.status === 'OVER') banner = '<div class="alert bad"><span>' + esc(t('plan.budgetOver', { v: money(b.total), d: money(b.diff), b: money(b.budget), a: money(b.classA) })) + '</span></div>';
+  else banner = '<div class="alert good"><span>' + esc(t('plan.budgetWithin', { v: money(b.total), d: money(b.diff), b: money(b.budget) })) + '</span></div>';
+
+  const cards = plan.map((g, gi) => {
+    const anyCartons = g.items.some(i => i.pack > 1);
+    const rows = g.items.map(i => '<tr><td class="name">' + bdi(i.name || t('unnamed')) + ' <span class="tag" title="' + esc(t('abc.classTag', { c: i.abc })) + '">' + esc(i.abc) + '</span></td><td>' + verdict(i.decision) +
+      '</td><td class="num">' + n0(i.qty) + '</td>' + (anyCartons ? '<td class="num">' + (i.pack > 1 ? n0(i.qty / i.pack) + ' &times; ' + n0(i.pack) : t('na')) + '</td>' : '') +
+      '<td class="num">' + money(i.cost) + '</td><td class="num">' + money(i.value) + '</td></tr>').join('');
+    const meta = [g.lines === 1 ? t('plan.lines1') : t('plan.lines', { n: g.lines }), t('plan.units', { n: n0(g.units) })];
+    if (g.lt) meta.push(t('plan.lt', { n: n0(g.lt) }));
+    const metaHtml = meta.map(esc).join(', ') + (g.terms ? ', ' + bdi(g.terms) : '');
+    return '<div class="po"><div class="po-head"><div><h2>' + (g.supplierId ? bdi(supName({ name: g.supplierName })) : esc(t('plan.noSup'))) + '</h2>' +
+      '<div class="meta">' + metaHtml + '</div></div><div class="po-total"><span class="small muted">' + esc(t('total')) + '</span><b>' + money(g.value) + '</b></div></div>' +
+      '<div style="overflow-x:auto"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th>' + esc(t('pro.verdict')) + '</th><th class="num">' + esc(t('plan.qty')) + '</th>' +
+      (anyCartons ? '<th class="num">' + esc(t('plan.cartons')) + '</th>' : '') + '<th class="num">' + esc(t('plan.unitCost')) + '</th><th class="num">' + esc(t('plan.value')) + '</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      '<div class="po-foot">' + btn(t('plan.copy'), 'copyPO', ' data-g="' + gi + '"', 'small') + btn(t('plan.wa'), 'waPO', ' data-g="' + gi + '"', 'small primary') + '</div></div>';
+  }).join('');
+  return head(t('plan.title'), t('plan.lede')) + banner + cards;
+};
+
+function poText(g) {
+  const lines = [t('plan.msgHello', { s: g.supplierName || '' }).replace(' ,', ','), '', t('plan.msgIntro'), ''];
+  g.items.forEach(i => lines.push(t('plan.msgLine', { name: i.name || t('unnamed'), qty: n0(i.qty) })));
+  lines.push('', t('plan.msgTotal', { n: n0(g.units) }), '', t('plan.msgThanks'));
+  return lines.join('\n');
+}
+
+/* ---------- Order decisions ---------- */
+VIEWS.orders = () => {
+  const rows = S.res.rows;
+  const counts = { ALL: rows.length };
+  rows.forEach(r => { counts[r.decision] = (counts[r.decision] || 0) + 1; });
+  const chips = ['ALL', 'CRITICAL', 'ORDER', 'OK', 'OVER', 'NODEMAND', 'NOHIST'].filter(c => c === 'ALL' || counts[c])
+    .map(c => '<button type="button" class="chip" data-act="filter" data-filter="' + c + '" aria-pressed="' + (S.filter === c) + '">' + esc(c === 'ALL' ? t('ord.all') : t('v.' + c)) + '<b>' + counts[c] + '</b></button>').join('');
+  const rank = { CRITICAL: 0, ORDER: 1, OVER: 2, OK: 3, NODEMAND: 4, NOHIST: 5 };
+  const list = rows.filter(r => S.filter === 'ALL' || r.decision === S.filter).slice().sort((a, b) => rank[a.decision] - rank[b.decision] || b.orderValue - a.orderValue);
+  if (!rows.length) return head(t('ord.title'), t('ord.lede')) + emptyBox(t('pro.empty'), t('pro.emptyP'), btn(t('pro.add'), 'tab', ' data-tab="products"', 'primary'));
+  const body = list.map(r => '<tr><td class="name">' + bdi(r.name || t('unnamed')) + '<div class="why">' + esc(whyText(r)) + '</div></td><td>' + bdi(r.supplierName || t('plan.noSup')) + '</td><td>' + verdict(r.decision) +
+    '</td><td class="num"><b>' + (r.qty ? n0(r.qty) : t('na')) + '</b></td><td class="num">' + (r.qty ? money(r.orderValue) : t('na')) +
+    '</td><td class="num">' + n0(r.onHand) + '</td><td class="num">' + n0(r.onOrder) + '</td><td class="num">' + n0(r.ip) +
+    '</td><td class="num">' + n0(r.ss) + '</td><td class="num">' + n0(r.rop) + '</td><td class="num">' + n0(r.oq) +
+    '</td><td class="num">' + (r.cover == null ? t('na') : n0(r.cover)) + '</td><td class="num">' + r.sl + '%</td></tr>').join('');
+  const th = (k, sub) => '<th class="num">' + esc(t(k)) + (sub ? '<span class="sub">' + esc(t(sub)) + '</span>' : '') + '</th>';
+  return head(t('ord.title'), t('ord.lede')) + '<div class="chips">' + chips + '</div>' +
+    '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th>' + esc(t('supplier')) + '</th><th>' + esc(t('pro.verdict')) + '</th>' +
+    th('ord.qty') + th('ord.value') + th('pro.onhand') + th('pro.onorder') + th('ord.ip') + th('ord.ss') + th('ord.rop') + th('ord.oq', 'ord.oqS') + th('ord.cover') + th('ord.sl') +
+    '</tr></thead><tbody>' + body + '</tbody></table></div>';
+};
+
+/* ---------- Demand ---------- */
+VIEWS.demand = () => {
+  const rows = S.res.rows;
+  if (!rows.length) return head(t('dem.title'), t('dem.lede')) + emptyBox(t('pro.empty'), t('pro.emptyP'), btn(t('pro.add'), 'tab', ' data-tab="products"', 'primary'));
+  const last = S.res.lastMonth;
+  const profMap = {}; S.ws.profiles.forEach(p => { profMap[p.id] = p; });
+  const body = rows.map(r => {
+    const tr = r.trend;
+    const trendTxt = Math.abs(tr) < 0.05 ? '0' : (tr > 0 ? '+' : '') + n1(tr);
+    return '<tr><td class="name">' + bdi(r.name || t('unnamed')) + '</td><td>' + bdi(profName(profMap[r.profileId]) || t('na')) +
+      (r.n && !r.useSeason && profMap[r.profileId] && profMap[r.profileId].id !== 'flat' ? ' <span class="small muted">(' + esc(t('dem.off')) + ')</span>' : '') +
+      '</td><td class="num">' + r.n + '</td><td class="num">' + n1(r.avgD) + '</td><td class="num" style="color:' + (tr > 0.05 ? 'var(--ok)' : tr < -0.05 ? 'var(--crit)' : 'inherit') + '">' + trendTxt +
+      '</td><td class="num">' + (r.n ? pct(r.cv) : t('na')) + '</td><td><span class="tag">' + esc(r.xyz) + '</span></td>' +
+      r.fc.map(v => '<td class="num">' + n0(v) + '</td>').join('') + '<td class="num">' + n0(r.annual) + '</td></tr>';
+  }).join('');
+  const fcHead = [1, 2, 3].map(k => '<th class="num">' + esc(monthName(calMonth(12 + k, last))) + '</th>').join('');
+  return head(t('dem.title'), t('dem.lede')) +
+    '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th>' + esc(t('dem.season')) + '</th><th class="num">' + esc(t('dem.months')) +
+    '</th><th class="num">' + esc(t('dem.avg')) + '<span class="sub">' + esc(t('dem.avgS')) + '</span></th><th class="num">' + esc(t('dem.trend')) + '<span class="sub">' + esc(t('dem.trendS')) +
+    '</span></th><th class="num">' + esc(t('dem.cv')) + '</th><th>' + esc(t('dem.class')) + '</th>' + fcHead + '<th class="num">' + esc(t('dem.year')) + '</th></tr></thead><tbody>' + body + '</tbody></table></div>' +
+    '<p class="gridnote">' + esc(t('dem.note')) + '</p>';
+};
+
+/* ---------- Demand graphs ---------- */
+// One SVG per band of similarly selling products. Drawn by hand rather than with a
+// chart library, because the app must stay a single file with no external scripts.
+function bandChart(band, last) {
+  const W = 760, H = 280, L = 52, R = 16, TOP = 14, B = 42;
+  const hist = 12, fut = 3, pts = hist + fut;
+  const plotW = W - L - R, plotH = H - TOP - B;
+
+  let max = 0;
+  band.series.forEach(s => {
+    s.sales.forEach(v => { if (v != null && v > max) max = v; });
+    s.forecast.forEach(v => { if (v > max) max = v; });
+  });
+  max = Math.max(1, Math.ceil(max * 1.15 / 5) * 5);
+
+  const x = i => L + (plotW * i) / (pts - 1);
+  const y = v => TOP + plotH - (plotH * v) / max;
+
+  let g = '';
+  // horizontal grid + y labels
+  for (let k = 0; k <= 4; k++) {
+    const v = (max / 4) * k, yy = y(v);
+    g += '<line x1="' + L + '" y1="' + yy + '" x2="' + (W - R) + '" y2="' + yy + '" stroke="var(--line-2)" stroke-width="1"/>';
+    g += '<text x="' + (L - 8) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="11" fill="var(--faint)">' + n0(v) + '</text>';
+  }
+  // month labels, every other one to avoid crowding
+  for (let i = 0; i < pts; i++) {
+    if (i % 2) continue;
+    const m = calMonth(i + 1, last);
+    g += '<text x="' + x(i) + '" y="' + (H - B + 18) + '" text-anchor="middle" font-size="11" fill="var(--faint)">' + esc(monthName(m)) + '</text>';
+  }
+  // boundary between history and forecast
+  const xNow = x(hist - 1);
+  g += '<line x1="' + xNow + '" y1="' + TOP + '" x2="' + xNow + '" y2="' + (TOP + plotH) + '" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 3"/>';
+  g += '<text x="' + xNow + '" y="' + (TOP - 3) + '" text-anchor="middle" font-size="10" fill="var(--muted)">' + esc(t('gr.now')) + '</text>';
+
+  band.series.forEach(s => {
+    // history: skip blank months instead of drawing a line down to zero
+    let d = '', started = false;
+    s.sales.forEach((v, i) => {
+      if (v == null) return;
+      d += (started ? 'L' : 'M') + x(i) + ' ' + y(v) + ' ';
+      started = true;
+    });
+    if (d) g += '<path d="' + d.trim() + '" fill="none" stroke="' + s.color + '" stroke-width="2" stroke-linejoin="round"/>';
+    s.sales.forEach((v, i) => {
+      if (v == null) return;
+      g += '<circle cx="' + x(i) + '" cy="' + y(v) + '" r="2.6" fill="' + s.color + '"><title>' + esc(s.name) + ': ' + n0(v) + '</title></circle>';
+    });
+    // forecast continues from the last real month
+    let lastI = -1;
+    s.sales.forEach((v, i) => { if (v != null) lastI = i; });
+    if (lastI >= 0) {
+      let f = 'M' + x(lastI) + ' ' + y(s.sales[lastI]) + ' ';
+      s.forecast.forEach((v, k) => { f += 'L' + x(hist + k) + ' ' + y(v) + ' '; });
+      g += '<path d="' + f.trim() + '" fill="none" stroke="' + s.color + '" stroke-width="2" stroke-dasharray="4 4" opacity=".75"/>';
+    }
+    // when this product hits its reorder point
+    const ri = s.decision === 'CRITICAL' || s.decision === 'ORDER' ? 0 : s.reorderIn;
+    if (ri != null && isFinite(ri) && ri <= fut) {
+      const rx = x(hist - 1 + ri);
+      g += '<line x1="' + rx + '" y1="' + TOP + '" x2="' + rx + '" y2="' + (TOP + plotH) + '" stroke="' + s.color + '" stroke-width="1.5" stroke-dasharray="5 4" opacity=".8"/>';
+      g += '<circle cx="' + rx + '" cy="' + TOP + '" r="3.5" fill="' + s.color + '"><title>' + esc(s.name) + ': ' +
+           esc(ri <= 0.02 ? t('gr.reorderNow') : t('gr.reorder')) + '</title></circle>';
+    }
+  });
+
+  const legend = band.series.map(s =>
+    '<span class="gl"><i style="background:' + s.color + '"></i>' + bdi(s.name || t('unnamed')) + '</span>').join('');
+
+  const lo = Math.round(band.lo), hi = Math.round(band.hi);
+  return '<div class="panel" style="margin-top:16px">' +
+    '<div class="page-head" style="margin-bottom:6px"><h3>' +
+    esc(lo === hi ? t('gr.bandOne', { lo: lo }) : t('gr.band', { lo: lo, hi: hi })) + '</h3></div>' +
+    '<div class="glegend">' + legend + '</div>' +
+    '<div style="overflow-x:auto"><svg viewBox="0 0 ' + W + ' ' + H + '" class="chart" role="img" aria-label="' +
+    esc(t('gr.units')) + '">' + g + '</svg></div></div>';
+}
+
+VIEWS.trends = () => {
+  const bands = S.res.bands || [];
+  if (!bands.length) {
+    return head(t('gr.title'), t('gr.lede')) +
+      emptyBox(t('gr.empty'), t('gr.emptyP'), btn(t('nav.products'), 'tab', ' data-tab="products"', 'primary'));
+  }
+  return head(t('gr.title'), t('gr.lede')) +
+    '<p class="gridnote" style="margin:0 0 4px">' + esc(t('gr.legend')) + '</p>' +
+    bands.map(b => bandChart(b, S.res.lastMonth)).join('');
+};
+
+/* ---------- Suppliers scorecard ---------- */
+VIEWS.score = () => {
+  if (!S.me.limits.altSuppliers) {
+    return head(t('sc.title'), t('sc.lede')) +
+      '<div class="alert info"><span>' + esc(t('sc.locked')) + upsellLink() + '</span></div>';
+  }
+  const list = (S.res.scorecard || []).filter(sc => sc.products > 0);
+  if (!list.length) {
+    return head(t('sc.title'), t('sc.lede')) +
+      emptyBox(t('sc.empty'), t('sc.emptyP'), btn(t('sup.add'), 'tab', ' data-tab="suppliers"', 'primary'));
+  }
+  const rel = { GOOD: 'v-OK', FAIR: 'v-ORDER', POOR: 'v-CRITICAL', NONE: 'v-NOHIST' };
+  const body = list.map(sc =>
+    '<tr><td class="name">' + bdi(sc.name || t('unnamed')) + '</td>' +
+    '<td class="num">' + sc.products + '</td>' +
+    '<td class="num">' + n0(sc.lt) + ' ' + esc(t('days')) + '</td>' +
+    '<td><span class="pill ' + rel[sc.reliability] + '">' + esc(t('sc.' + sc.reliability)) + '</span></td>' +
+    '<td class="num">' + money(sc.stockValue) + '</td>' +
+    '<td class="num"' + (sc.varValue > 0 ? ' style="color:var(--order);font-weight:600"' : '') + '>' + money(sc.varValue) + '</td>' +
+    '<td class="num">' + (sc.orderNowValue ? money(sc.orderNowValue) : t('na')) + '</td>' +
+    '<td class="num">' + money(sc.yearlySpend) + '</td></tr>').join('');
+  return head(t('sc.title'), t('sc.lede')) +
+    '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('sc.supplier')) + '</th><th class="num">' + esc(t('sc.products')) +
+    '</th><th class="num">' + esc(t('sc.lt')) + '</th><th>' + esc(t('sc.reliability')) + '</th><th class="num">' + esc(t('sc.stock')) +
+    '</th><th class="num">' + esc(t('sc.varValue')) + sub('sc.varValueS') + '</th><th class="num">' + esc(t('sc.orderNow')) +
+    '</th><th class="num">' + esc(t('sc.spend')) + '</th></tr></thead><tbody>' + body + '</tbody></table></div>' +
+    '<p class="gridnote">' + esc(t('sc.note')) + '</p>';
+};
+
+/* ---------- Plain-language reasoning behind a verdict ---------- */
+function whyText(r) {
+  const rate = n1(r.dDay || 0);
+  if (r.decision === 'NOHIST') return t('why.NOHIST');
+  if (r.decision === 'NODEMAND') return t('why.NODEMAND');
+  if (r.decision === 'OVER') {
+    const excess = r.dDay > 0 ? Math.max(0, r.onHand - S.ws.settings.overstockDays * r.dDay) : 0;
+    return t('why.OVER', { cover: n0(r.cover), limit: n0(S.ws.settings.overstockDays),
+                           excess: n0(excess), value: money(r.overstockValue) });
+  }
+  if (r.decision === 'OK') {
+    return t('why.OK', { ip: n0(r.ip), rop: n0(r.rop), rate: rate, days: n0(r.daysToReorder) });
+  }
+  const base = t('why.' + r.decision, { ip: n0(r.ip), ss: n0(r.ss), rop: n0(r.rop), rate: rate, lt: n0(r.lt) });
+  const risk = (r.risk && r.risk.profit > 0)
+    ? ' ' + t('why.risk', { v: money(r.risk.profit), d: n0(r.risk.days) }) : '';
+  return base + risk;
+}
+
+
+/* ---------- Dead stock report ---------- */
+VIEWS.dead = () => {
+  if (!S.me.limits.deadStock) {
+    return head(t('dead.title'), t('dead.lede')) + '<div class="alert info"><span>' + esc(t('dead.locked')) + upsellLink() + '</span></div>';
+  }
+  const list = S.res.rows.filter(r => r.isDead).slice().sort((a, b) => b.deadValue - a.deadValue);
+  if (!list.length) return head(t('dead.title'), t('dead.lede')) + emptyBox(t('dead.empty'), t('dead.emptyP'));
+  const total = list.reduce((s, r) => s + r.deadValue, 0);
+  const body = list.map(r => '<tr><td class="name">' + bdi(r.name || t('unnamed')) + '</td><td>' + bdi(r.supplierName || t('plan.noSup')) +
+    '</td><td class="num">' + n0(r.onHand) + '</td><td class="num">' + money(r.deadValue) +
+    '</td><td class="wrap">' + esc(t('dead.idle')) + ' ' + esc(t('dead.months', { n: r.monthsIdle })) +
+    (r.avgD > 0 ? ', ' + esc(t('dead.was', { n: n1(r.avgD) })) : '') + '</td></tr>').join('');
+  return head(t('dead.title'), t('dead.lede')) +
+    '<div class="kpis" style="margin-bottom:16px"><div class="kpi bad"><span>' + esc(t('dead.total')) + '</span><b>' + money(total) + '</b></div></div>' +
+    '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th>' + esc(t('supplier')) +
+    '</th><th class="num">' + esc(t('pro.onhand')) + '</th><th class="num">' + esc(t('dead.total')) +
+    '</th><th>' + esc(t('why.title')) + '</th></tr></thead><tbody>' + body + '</tbody></table></div>' +
+    '<p class="gridnote">' + esc(t('dead.action')) + '</p>';
+};
+
+/* ---------- Cash flow forecast ---------- */
+VIEWS.cash = () => {
+  if (!S.me.limits.cashFlow) {
+    return head(t('cash.title'), t('cash.lede')) + '<div class="alert info"><span>' + esc(t('cash.locked')) + upsellLink() + '</span></div>';
+  }
+  const cf = S.res.cashFlow;
+  if (!cf || !cf.lines.length) return head(t('cash.title'), t('cash.lede')) + emptyBox(t('cash.empty'), t('cash.emptyP'));
+  const bucketLabel = { now: 'cash.now', week1: 'cash.week1', week2: 'cash.week2', week34: 'cash.week34', later: 'cash.later' };
+  const maxB = Math.max(1, ...cf.buckets.map(b => b.total));
+  const bars = cf.buckets.map(b => '<div class="cfrow"><span class="cflabel">' + esc(t(bucketLabel[b.key])) + '</span>' +
+    '<div class="cfbar-track"><div class="cfbar" style="width:' + Math.max(2, 100 * b.total / maxB) + '%"></div></div>' +
+    '<span class="cfval">' + money(b.total) + '</span></div>').join('');
+  const rows = cf.lines.map(l => '<tr><td class="name">' + bdi(l.supplierName || t('unnamed')) + '</td><td class="num">' + money(l.total) +
+    '</td><td class="num">' + (l.depositDue > 0 ? money(l.depositDue) : t('na')) +
+    '</td><td class="num">' + (l.balanceDue > 0 ? money(l.balanceDue) + ' <span class="small muted">(' + esc(t('cash.balanceIn', { n: n0(l.balanceDays) })) + ')</span>' : t('na')) +
+    '</td></tr>').join('');
+  return head(t('cash.title'), t('cash.lede')) +
+    '<div class="kpis" style="margin-bottom:16px"><div class="kpi"><span>' + esc(t('cash.total')) + '</span><b>' + money(cf.total) + '</b></div></div>' +
+    '<div class="panel">' + bars + '</div>' +
+    '<div class="section"><h2>' + esc(t('cash.bySupplier')) + '</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('supplier')) +
+    '</th><th class="num">' + esc(t('total')) + '</th><th class="num">' + esc(t('cash.deposit')) + '</th><th class="num">' + esc(t('cash.balance')) +
+    '</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +
+    '<p class="gridnote">' + esc(t('cash.note')) + '</p>';
+};
+
+/* ---------- Health check ---------- */
+VIEWS.health = () => {
+  const rows = S.res.rows, d = S.res.dash;
+  if (!rows.length) return head(t('hl.title'), t('hl.lede')) + emptyBox(t('pro.empty'), t('pro.emptyP'), btn(t('pro.add'), 'tab', ' data-tab="products"', 'primary'));
+  const rank = { FIX: 0, REVIEW: 1, GOOD: 2 };
+  const list = rows.filter(r => !S.healthOnly || r.health.overall !== 'GOOD').slice().sort((a, b) => rank[a.health.overall] - rank[b.health.overall] || b.health.errors - a.health.errors);
+  const body = list.map(r => {
+    const issues = r.health.checks.filter(c => c.level !== 'ok').map(c => '<li class="' + c.level + '">' + esc(t('c.' + c.code)) + '</li>').join('');
+    return '<tr><td class="name">' + bdi(r.name || t('unnamed')) + '</td><td><span class="pill h-' + r.health.overall + '">' + esc(t('h.' + r.health.overall)) + '</span></td>' +
+      '<td class="wrap">' + (issues ? '<ul class="issues">' + issues + '</ul>' : '<span class="muted">' + esc(t('hl.fine')) + '</span>') + '</td>' +
+      '<td>' + (issues ? btn(t('hl.go'), 'gotoProduct', ' data-id="' + r.id + '"', 'small') : '') + '</td></tr>';
+  }).join('');
+  const summary = '<div class="split onpage" style="margin:0 0 14px">' +
+    '<div><b style="color:var(--crit)">' + d.fix + '</b><span class="small">' + esc(t('h.FIX')) + '</span></div>' +
+    '<div><b style="color:var(--order)">' + d.review + '</b><span class="small">' + esc(t('h.REVIEW')) + '</span></div>' +
+    '<div><b style="color:var(--ok)">' + d.good + '</b><span class="small">' + esc(t('h.GOOD')) + '</span></div></div>';
+  const toggle = '<label class="switch" style="margin-bottom:12px"><input type="checkbox" data-act="healthOnly"' + (S.healthOnly ? ' checked' : '') + '><span>' + esc(t('hl.only')) + '</span></label>';
+  return head(t('hl.title'), t('hl.lede')) + summary + toggle +
+    (list.length
+      ? '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th>' + esc(t('hl.result')) + '</th><th>' + esc(t('hl.issues')) + '</th><th></th></tr></thead><tbody>' + body + '</tbody></table></div>'
+      : '<div class="alert good"><span>' + esc(t('hl.allGood')) + '</span></div>');
+};
+
+/* ================= editing ================= */
+function onEdit(e) {
+  const el = e.target;
+  const scope = el.dataset.scope, f = el.dataset.f;
+  if (!scope || !f) return;
+  const isNum = !(f === 'name' || f === 'terms' || f === 'supplierId' || f === 'profileId');
+
+  let value;
+  if (el.type === 'checkbox') value = el.checked;
+  else if (el.tagName === 'SELECT') value = (f === 'sl' || f === 'lastMonth') ? Number(el.value) : el.value;
+  else if (isNum) {
+    const p = parseNum(el.value);
+    el.classList.toggle('bad', !p.ok);
+    if (!p.ok) return;
+    value = p.v;
+  } else value = el.value;
+
+  if (scope === 'settings') {
+    if (value === null) return;
+    S.ws.settings[f] = value;
+    if (f === 'lastMonth' && S.tab !== 'settings') renderTab();
+  } else if (scope === 'supplier') {
+    const s = S.ws.suppliers.find(x => x.id === el.closest('tr').dataset.id);
+    if (!s) return;
+    s[f] = value;
+  } else if (scope === 'product') {
+    const p = S.ws.products.find(x => x.id === el.closest('tr').dataset.id);
+    if (!p) return;
+    if (f === 'sales') p.sales[Number(el.dataset.i)] = value;
+    else p[f] = value;
+  } else if (scope === 'profile') {
+    const p = S.ws.profiles.find(x => x.id === el.dataset.id);
+    if (!p) return;
+    if (f === 'f') {
+      if (value === null || value <= 0) { el.classList.add('bad'); return; }
+      p.f[Number(el.dataset.i)] = value;
+      $('[data-bars="' + p.id + '"]').innerHTML = barsHtml(p.f);
+    } else p.name = value;
+  }
+  markDirty();
+}
+
+function cellAt(r, c) { return $('#pgrid [data-r="' + r + '"][data-c="' + c + '"]'); }
+
+function onKey(e) {
+  const el = e.target;
+  if (e.key !== 'Enter' || el.dataset.scope !== 'product' || el.dataset.r == null) return;
+  e.preventDefault();
+  const next = cellAt(Number(el.dataset.r) + (e.shiftKey ? -1 : 1), el.dataset.c);
+  if (next) next.focus();
+}
+
+function onPaste(e) {
+  const el = e.target;
+  if (el.dataset.scope !== 'product' || el.dataset.r == null) return;
+  const text = (e.clipboardData || window.clipboardData).getData('text');
+  if (!/[\t\n]/.test(text.replace(/\r?\n$/, ''))) return;   // single value: let the browser handle it
+  e.preventDefault();
+  const grid = text.replace(/\r/g, '').replace(/\n$/, '').split('\n').map(line => line.split('\t'));
+  const r0 = Number(el.dataset.r), c0 = Number(el.dataset.c);
+  const ws = S.ws, max = S.me.limits.products;
+  let cells = 0, capped = false;
+  grid.forEach((line, dr) => {
+    const r = r0 + dr;
+    if (r >= ws.products.length) {
+      if (ws.products.length >= max) { capped = true; return; }
+      ws.products.push(blankProduct());
+    }
+    const p = ws.products[r];
+    line.forEach((raw, dc) => {
+      const col = PCOLS[c0 + dc];
+      if (!col) return;
+      const v = String(raw).trim();
+      if (col === 'name') p.name = v;
+      else if (col === 'supplierId') { const s = ws.suppliers.find(x => x.name.trim().toLowerCase() === v.toLowerCase()); if (s) p.supplierId = s.id; else return; }
+      else if (col === 'profileId') { const pr = ws.profiles.find(x => [x.name, x.nameAr].some(n => n && n.trim().toLowerCase() === v.toLowerCase())); if (pr) p.profileId = pr.id; else return; }
+      else if (col === 'sl') { const n = parseNum(v).v; if (CFG.serviceLevels.indexOf(n) >= 0) p.sl = n; else return; }
+      else {
+        const pn = parseNum(v);
+        if (!pn.ok) return;
+        if (col[0] === 's' && col !== 'sl') p.sales[Number(col.slice(1))] = pn.v;
+        else p[col] = pn.v;
+      }
+      cells++;
+    });
+  });
+  renderTab();
+  renderNav();
+  toast(t('pro.pasted', { n: cells }) + (capped ? ' ' + limitMsg('products') : ''));
+  markDirty();
+}
+
+function blankProduct() {
+  return { id: newId(), name: '', supplierId: S.ws.suppliers.length === 1 ? S.ws.suppliers[0].id : '', profileId: 'flat',
+           sales: Array(12).fill(null), cost: null, price: null, onHand: 0, onOrder: 0, sl: 95 };
+}
+
+/* ================= actions ================= */
+
+/* ---------- Compare suppliers dialog ---------- */
+function compareRow(rec) {
+  return '<tr class="' + (rec.current ? 'current' : '') + '"><td>' + bdi(rec.supplierName || t('unnamed')) +
+    (rec.current ? ' <span class="tag">' + esc(t('cmp.current')) + '</span>' : '') +
+    (rec.cheapest ? ' <span class="tag" style="background:var(--ok-bg);color:var(--ok)">' + esc(t('cmp.cheapest')) + '</span>' : '') +
+    '</td><td class="num">' + money(rec.cost) + '</td><td class="num">' + n0(rec.lt) + ' ' + esc(t('days')) +
+    '</td><td class="num">' + n0(rec.oq) + '</td><td class="num">' + money(rec.aic) + '</td><td>' +
+    (rec.current ? '' : btn(t('cmp.use'), 'useSupplier', ' data-id="' + CMP_STATE.productId + '" data-sup="' + rec.supplierId + '"', 'small primary')) +
+    '</td></tr>';
+}
+
+var CMP_STATE = { productId: null };
+
+function renderCompare() {
+  const p = S.ws.products.find(x => x.id === CMP_STATE.productId);
+  if (!p) { $('#overlay').hidden = true; return; }
+  const r = rowById(p.id);
+  const rows = (r ? r.compare : []).slice();
+  const usedIds = {}; if (p.supplierId) usedIds[p.supplierId] = true;
+  p.altSuppliers.forEach(a => { usedIds[a.supplierId] = true; });
+  const options = S.ws.suppliers.filter(sp => !usedIds[sp.id]);
+  const removeRows = p.altSuppliers.map(a => {
+    const sp = S.ws.suppliers.find(x => x.id === a.supplierId);
+    return sp ? '<div class="small" style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:4px 0">' +
+      '<span>' + bdi(supName(sp)) + ' · ' + money(a.cost) + '</span>' +
+      btn(t('cmp.remove'), 'removeAltSupplier', ' data-id="' + p.id + '" data-sup="' + sp.id + '"', 'small') + '</div>' : '';
+  }).join('');
+  const addForm = options.length
+    ? '<div class="cmp-add"><div><label>' + esc(t('cmp.chooseSupplier')) + '</label>' +
+      '<select id="cmp-sup">' + options.map(sp => '<option value="' + sp.id + '">' + esc(supName(sp)) + '</option>').join('') + '</select></div>' +
+      '<div><label>' + esc(t('cmp.costLabel')) + '</label><input id="cmp-cost" type="text" inputmode="decimal" value="' + esc(val(p.cost)) + '"></div>' +
+      btn(t('cmp.add'), 'addAltSupplier', ' data-id="' + p.id + '"', 'primary small') + '</div>'
+    : '<p class="small muted" style="margin-top:14px">' + esc(t('cmp.allUsed')) + '</p>';
+
+  const ov = $('#overlay');
+  ov.innerHTML = '<div class="dialog wide" role="dialog" aria-modal="true"><h2>' + esc(t('cmp.title', { name: p.name || t('unnamed') })) + '</h2>' +
+    '<p class="small muted">' + esc(t('cmp.lede')) + '</p>' +
+    (rows.length < 2 ? '<p class="small" style="color:var(--order)">' + esc(t('cmp.none')) + '</p>' : '') +
+    (rows.length ? '<div class="tbl-wrap" style="max-height:none"><table class="cmp-t"><thead><tr><th>' + esc(t('cmp.col.supplier')) +
+      '</th><th class="num">' + esc(t('cmp.col.cost')) + '</th><th class="num">' + esc(t('cmp.col.lt')) + '</th><th class="num">' + esc(t('cmp.col.oq')) +
+      '</th><th class="num">' + esc(t('cmp.col.aic')) + '</th><th></th></tr></thead><tbody>' + rows.map(compareRow).join('') + '</tbody></table></div>' : '') +
+    (removeRows ? '<div style="margin-top:12px">' + removeRows + '</div>' : '') +
+    '<p class="small muted" style="margin-top:14px">' + esc(t('cmp.addHelp')) + '</p>' + addForm +
+    '<div class="actions"><button class="btn primary" data-r="1">' + esc(t('close')) + '</button></div></div>';
+  ov.hidden = false;
+  ov.onclick = e => { if (e.target === ov || e.target.closest('[data-r="1"]')) { ov.hidden = true; ov.innerHTML = ''; CMP_STATE.productId = null; } };
+}
+
+async function withSaveThen(fn) {
+  fn();
+  markDirty();
+  await save();
+  if (S.tab === 'products') renderTab();   // supplier/cost/altSuppliers changed under the grid
+  renderCompare();
+}
+
+const ACTIONS = {
+  tab: el => goTab(el.dataset.tab),
+  lang: () => setLang(LANG === 'ar' ? 'en' : 'ar'),
+  logout: async () => {
+    if (DEMO) { location.href = 'https://etlobsa7.com/#pricing'; return; }
+    if (S.dirty) await save();
+    await call('logout');
+    toLogin();
+  },
+  addProduct: () => {
+    if (S.ws.products.length >= S.me.limits.products) { toast(limitMsg('products')); return; }
+    S.ws.products.push(blankProduct());
+    renderTab(); renderNav(); markDirty();
+    const rows = $$('#pgrid tbody tr');
+    const input = rows[rows.length - 1].querySelector('input');
+    input.focus();
+    input.scrollIntoView({ block: 'center' });
+  },
+  selOn: () => { S.selectMode = true; S.selected.clear(); renderTab(); },
+  selOff: () => { S.selectMode = false; S.selected.clear(); renderTab(); },
+  selAll: () => { S.ws.products.forEach(p => S.selected.add(p.id)); renderTab(); },
+  selNone: () => { S.selected.clear(); renderTab(); },
+  selOne: el => {
+    const had = S.selected.size;
+    if (el.checked) S.selected.add(el.dataset.id); else S.selected.delete(el.dataset.id);
+    // Re-render only when the Delete button needs to appear or disappear, so ticking
+    // boxes stays instant and never loses your scroll position mid-selection.
+    if ((had === 0) !== (S.selected.size === 0)) { renderTab(); return; }
+    const barCount = $('#bulkcount');
+    if (barCount) barCount.textContent = t('bulk.count', { n: S.selected.size });
+  },
+  bulkDelete: async () => {
+    const n = S.selected.size;
+    if (!n) return;
+    if (!(await dialog({ title: t('bulk.delete'), body: t('bulk.confirm', { n: n }), ok: t('delete'), danger: true }))) return;
+    S.ws.products = S.ws.products.filter(p => !S.selected.has(p.id));
+    S.selected.clear();
+    S.selectMode = false;
+    renderTab(); renderNav(); markDirty();
+    toast(t('bulk.deleted', { n: n }));
+  },
+  delProduct: el => {
+    const i = S.ws.products.findIndex(p => p.id === el.dataset.id);
+    if (i < 0) return;
+    const [gone] = S.ws.products.splice(i, 1);
+    renderTab(); renderNav(); markDirty();
+    toast(t('pro.deleted'), { label: t('undo'), fn: () => { S.ws.products.splice(i, 0, gone); if (S.tab === 'products') renderTab(); renderNav(); markDirty(); } });
+  },
+  addSupplier: () => {
+    if (S.ws.suppliers.length >= S.me.limits.suppliers) { toast(limitMsg('suppliers')); return; }
+    S.ws.suppliers.push({ id: newId(), name: '', lt: 14, ltv: 3, moq: 0, pack: 1, terms: '', depositPct: 0, balanceDays: 14 });
+    renderTab(); renderNav(); markDirty();
+    const rows = $$('.grid tbody tr');
+    rows[rows.length - 1].querySelector('input').focus();
+  },
+  delSupplier: async el => {
+    const s = S.ws.suppliers.find(x => x.id === el.dataset.id);
+    if (!s) return;
+    const used = S.ws.products.filter(p => p.supplierId === s.id).length;
+    if (used && !(await dialog({ title: t('delete'), body: t('sup.delConfirm', { name: supName(s), n: used }), ok: t('delete'), danger: true }))) return;
+    S.ws.suppliers = S.ws.suppliers.filter(x => x !== s);
+    S.ws.products.forEach(p => { if (p.supplierId === s.id) p.supplierId = ''; });
+    renderTab(); renderNav(); markDirty();
+    toast(t('sup.deleted'));
+  },
+  addProfile: () => {
+    const p = { id: newId(), name: t('sea.newName'), builtin: false, f: Array(12).fill(1) };
+    S.ws.profiles.push(p);
+    renderTab(); markDirty();
+    const inp = $('[data-prof="' + p.id + '"] input');
+    if (inp) { inp.focus(); inp.select(); }
+  },
+  dupProfile: el => {
+    const src = S.ws.profiles.find(x => x.id === el.dataset.id);
+    if (!src) return;
+    S.ws.profiles.push({ id: newId(), name: profName(src) + ' 2', builtin: false, f: src.f.slice() });
+    renderTab(); markDirty();
+  },
+  resetProfile: el => {
+    const defaults = { winter: [1.55, 1.35, 1.00, 0.70, 0.50, 0.40, 0.40, 0.55, 0.90, 1.25, 1.60, 1.80],
+                       summer: [0.45, 0.50, 0.85, 1.60, 2.05, 1.85, 1.15, 0.60, 0.40, 0.35, 0.40, 0.75],
+                       ramadan: [0.85, 0.95, 1.65, 1.70, 1.00, 0.85, 0.75, 0.85, 0.90, 0.95, 1.05, 1.30] };
+    const p = S.ws.profiles.find(x => x.id === el.dataset.id);
+    if (!p || !defaults[p.id]) return;
+    p.f = defaults[p.id].slice();
+    renderTab(); markDirty();
+  },
+  delProfile: async el => {
+    const p = S.ws.profiles.find(x => x.id === el.dataset.id);
+    if (!p || p.builtin) return;
+    if (!(await dialog({ title: t('delete'), body: t('sea.delConfirm', { name: profName(p) }), ok: t('delete'), danger: true }))) return;
+    S.ws.profiles = S.ws.profiles.filter(x => x !== p);
+    S.ws.products.forEach(x => { if (x.profileId === p.id) x.profileId = ''; });
+    renderTab(); markDirty();
+  },
+  rollMonth: async () => {
+    const s = S.ws.settings;
+    const next = s.lastMonth % 12 + 1;
+    const oldest = calMonth(1, s.lastMonth);
+    if (!(await dialog({ title: t('set.newMonth'), body: t('set.newMonthConfirm', { old: monthName(oldest, true), m: monthName(next, true) }), ok: t('confirm') }))) return;
+    S.ws.products.forEach(p => { p.sales = p.sales.slice(1).concat([null]); });
+    s.lastMonth = next;
+    markDirty();
+    S.highlightCol = true;
+    goTab('products');
+    S.highlightCol = false;
+    const first = cellAt(0, 14);
+    if (first) first.focus();
+    toast(t('set.newMonthDone', { m: monthName(next, true) }));
+  },
+  loadWalk: async () => {
+    if (!(await dialog({ title: t('wt.load'), body: t('wt.confirm'), ok: t('confirm'), danger: true }))) return;
+    clearTimeout(S.timer);
+    S.dirty = false;
+    await save({ sample: 'walkthrough' });
+    goTab('walk');
+  },
+  sample: async () => {
+    if (!(await dialog({ title: t('start.loadSample'), body: t('set.sampleConfirm'), ok: t('confirm'), danger: true }))) return;
+    clearTimeout(S.timer);
+    S.dirty = false;
+    await save({ sample: true });
+    goTab('dash');
+  },
+  filter: el => { S.filter = el.dataset.filter; renderTab(); },
+  healthOnly: el => { S.healthOnly = el.checked; renderTab(); },
+  gotoProduct: el => {
+    goTab('products');
+    const tr = $('#pgrid tr[data-id="' + el.dataset.id + '"]');
+    if (tr) { tr.classList.add('flash'); tr.scrollIntoView({ block: 'center' }); const i = tr.querySelector('input'); if (i) i.focus({ preventScroll: true }); }
+  },
+  openCompare: async el => {
+    CMP_STATE.productId = el.dataset.id;
+    const p = S.ws.products.find(x => x.id === el.dataset.id);
+    if (p && S.ws.suppliers.length < 2) { toast(t('sup.needTwo')); CMP_STATE.productId = null; return; }
+    renderCompare();
+  },
+  useSupplier: el => withSaveThen(() => {
+    const p = S.ws.products.find(x => x.id === el.dataset.id);
+    if (!p) return;
+    const target = p.altSuppliers.find(a => a.supplierId === el.dataset.sup);
+    if (!target) return;
+    const oldPrimary = p.supplierId, oldCost = p.cost;
+    p.altSuppliers = p.altSuppliers.filter(a => a.supplierId !== el.dataset.sup);
+    if (oldPrimary) p.altSuppliers.push({ supplierId: oldPrimary, cost: oldCost });
+    p.supplierId = target.supplierId;
+    p.cost = target.cost;
+  }),
+  addAltSupplier: el => {
+    const sel = $('#cmp-sup'), costEl = $('#cmp-cost');
+    const supplierId = sel && sel.value;
+    const parsed = parseNum(costEl && costEl.value);
+    if (!supplierId || !parsed.ok || parsed.v == null) { toast(t('cmp.costLabel')); return; }
+    withSaveThen(() => {
+      const p = S.ws.products.find(x => x.id === el.dataset.id);
+      if (p) p.altSuppliers.push({ supplierId: supplierId, cost: parsed.v });
+    });
+  },
+  removeAltSupplier: el => withSaveThen(() => {
+    const p = S.ws.products.find(x => x.id === el.dataset.id);
+    if (p) p.altSuppliers = p.altSuppliers.filter(a => a.supplierId !== el.dataset.sup);
+  }),
+  copyPO: async el => {
+    const text = poText(S.res.plan[Number(el.dataset.g)]);
+    try { await navigator.clipboard.writeText(text); toast(t('copied')); }
+    catch (err) { dialog({ title: t('plan.msgTitle'), body: t('plan.msgHint'), textarea: text }); }
+  },
+  waPO: el => {
+    const text = poText(S.res.plan[Number(el.dataset.g)]);
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  }
+};
+
+/* ================= wiring ================= */
+function init() {
+  applyStatic();
+  $('#f-email').addEventListener('submit', sendCode);
+  $('#f-code').addEventListener('submit', verify);
+  $('#b-other').addEventListener('click', () => { $('#f-code').hidden = true; $('#f-email').hidden = false; loginMsg(''); $('#email').focus(); });
+  $('#b-resend').addEventListener('click', () => sendCode());
+  $('#code').addEventListener('input', e => { if (digits(e.target.value).length === 6) verify(); });
+
+  document.addEventListener('click', e => {
+    const el = e.target.closest('[data-act]');
+    if (!el || el.tagName === 'INPUT') return;
+    const fn = ACTIONS[el.dataset.act];
+    if (fn) { e.preventDefault(); fn(el); }
+  });
+  document.addEventListener('change', e => {
+    const el = e.target;
+    if (el.dataset && el.dataset.act && ACTIONS[el.dataset.act]) ACTIONS[el.dataset.act](el);
+  });
+  const view = $('#view');
+  view.addEventListener('input', onEdit);
+  view.addEventListener('change', e => { if (e.target.tagName === 'SELECT' || e.target.type === 'checkbox') onEdit(e); });
+  view.addEventListener('keydown', onKey);
+  view.addEventListener('paste', onPaste);
+  // Leaving a field saves right away instead of waiting.
+  view.addEventListener('focusout', () => { if (S.dirty) { clearTimeout(S.timer); S.timer = setTimeout(save, 150); } });
+
+  boot();
+}
+init();
+</script>
+</body>
+</html>
