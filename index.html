@@ -290,6 +290,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:46px 0 34
 .foot-links button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.89rem;
   font-family:var(--sans);padding:0}
 .foot-links button:hover{color:var(--accent)}
+.egp{font-size:.86rem;color:var(--muted);margin:2px 0 0}
 .foot-links a{color:inherit;text-decoration:none;font:inherit}
 .foot-links a:hover{text-decoration:underline}
 .fine{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);font-size:.82rem;
@@ -788,6 +789,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <h2 data-t="t281"></h2>
 <p class="lede" data-t="t282"></p>
 <p class="price-note" data-t="t283" style="text-align:left;max-width:66ch;margin:0"></p>
+<p style="margin-top:16px"><a class="btn btn-ghost" data-t="t425" href="/app/?demo=1"></a></p>
 </div>
 </div>
 </section>
@@ -797,6 +799,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <div class="tier">
 <h3 data-t="t284"></h3>
 <div class="price" data-t-html="t285"></div>
+<p class="egp" data-usd="8"></p>
 <p class="who" data-t="t286"></p>
 <ul class="feats">
 <li data-t="t287"></li>
@@ -812,6 +815,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <span class="badge" data-t="t294"></span>
 <h3 data-t="t295"></h3>
 <div class="price" data-t-html="t296"></div>
+<p class="egp" data-usd="15"></p>
 <p class="who" data-t="t297"></p>
 <ul class="feats">
 <li data-t="t298"></li>
@@ -826,6 +830,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <div class="tier">
 <h3 data-t="t305"></h3>
 <div class="price" data-t-html="t306"></div>
+<p class="egp" data-usd="55"></p>
 <p class="who" data-t="t307"></p>
 <ul class="feats">
 <li data-t="t308"></li>
@@ -1007,7 +1012,7 @@ var SITE_EN = {
   t15: 'Built in Cairo for Egyptian brands',
   t16: 'Know exactly what to reorder, and when.',
   t17: 'Most small brands are excellent at selling and guessing at buying. This is the\n        system that removes the guess. It tells you how many units to order, from which supplier, on\n        which day, for every product you sell.',
-  t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">Start your free trial</a>\n<a class="btn btn-ghost btn-lg" data-go="provide" href="#">See what it does</a>',
+  t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">Start your free trial</a>\n<a class="btn btn-ghost btn-lg" href="/app/?demo=1">Try the live demo</a>',
   t19: 'Runs in your browser. Arabic and English included. Priced in USD.',
   t20: '<b>99.4%</b><small>Fill rate achieved in a two year simulation</small>',
   t21: '<b>10 min</b><small>Your weekly routine once it is set up</small>',
@@ -1276,7 +1281,7 @@ var SITE_EN = {
   t280: 'Pricing',
   t281: 'Monthly. Cancel whenever you like.',
   t282: 'Every plan includes the full system, both languages, the guided walkthrough, and new tools as they are added. Fourteen days free on Basic and Pro, five days on Store.',
-  t283: 'Prices are billed in USD. Your bank or card converts it to EGP automatically at checkout,\n          the same as any other international subscription.',
+  t283: 'Prices are charged in USD. The EGP amounts are approximate at today\'s rate, and your bank converts at checkout. Customers in Egypt pay 14% VAT on top.',
   t284: 'Basic',
   t285: '8 <small>USD / month</small>',
   t286: 'A one person shop with a focused range.',
@@ -1410,8 +1415,8 @@ var SITE_EN = {
   t416: 'Terms and conditions',
   t417: '\n      Performance figures shown on the Evidence page come from a controlled simulation using\n      generated demand, not from audited customer accounts, and are presented alongside the full\n      method so they can be judged on their merits. This product is decision support for inventory\n      purchasing. It does not guarantee any business outcome.\n    ',
   t424: 'WhatsApp +20 109 009 9849',
-};
-var SITE_AR = {
+  t425: 'Try the live demo first',
+};var SITE_AR = {
   t1: 'اطلب صح<span>تخطيط الطلب لمصر</span>',
   t2: 'الرئيسية',
   t3: 'اللي بنقدمه',
@@ -1429,7 +1434,7 @@ var SITE_AR = {
   t15: 'اتصنع في القاهرة',
   t16: 'اعرف بالظبط تطلب إيه، وإمتى.',
   t17: 'أغلب المحلات الصغيرة شاطرة جدا في البيع، وبتخمن في الشراء. الأداة دي بتشيل التخمين. بتقولك تطلب كام قطعة، من أي مورد، في أنهي يوم، لكل منتج بتبيعه.',
-  t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>\n<a class="btn btn-ghost btn-lg" data-go="provide" href="#">شوف بتعمل إيه</a>',
+  t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>\n<a class="btn btn-ghost btn-lg" href="/app/?demo=1">جرب النسخة التجريبية</a>',
   t19: 'بيشتغل في المتصفح. عربي وإنجليزي مع بعض. بالدولار الأمريكي.',
   t20: '<b>99.4%</b><small>نسبة توفر المنتج في محاكاة استمرت سنتين</small>',
   t21: '<b>10 دقايق</b><small>روتينك الأسبوعي بعد ما تظبطه</small>',
@@ -1698,7 +1703,7 @@ var SITE_AR = {
   t280: 'الأسعار',
   t281: 'شهريا. إلغاء وقت ما تحب.',
   t282: 'كل باقة فيها النظام كامل، اللغتين، الدليل الإرشادي، وأدوات جديدة أول ما تتضاف. أربعتاشر يوم مجانا على الأساسية وPro، وخمس أيام على Store.',
-  t283: 'الأسعار بالدولار الأمريكي. بنكك أو الكارت بيحولها للجنيه المصري تلقائيا وقت الدفع، زي أي اشتراك عالمي تاني.',
+  t283: 'الأسعار بتتحاسب بالدولار. المبالغ بالجنيه تقريبية بسعر النهارده، والبنك بيحول وقت الدفع. العملاء في مصر بيدفعوا 14% ضريبة قيمة مضافة زيادة.',
   t284: 'الأساسية',
   t285: '8 <small>دولار / شهر</small>',
   t286: 'محل فرد واحد بمنتجات محدودة.',
@@ -1832,6 +1837,7 @@ var SITE_AR = {
   t416: 'الشروط والأحكام',
   t417: '\n      الأرقام الموضحة في صفحة الدليل جاية من محاكاة متحكم فيها باستخدام طلب مولد، مش من\n      حسابات عملاء حقيقية متدققة، ومتعروضة جنب الطريقة كاملة علشان تتحكم فيها بنفسك. المنتج ده\n      دعم قرار لشراء المخزون. مش بيضمن أي نتيجة بيزنس.\n    ',
   t424: 'واتساب +20 109 009 9849',
+  t425: 'جرب النسخة التجريبية الأول',
 };
 
 
@@ -1844,6 +1850,15 @@ var LANG = (function () {
   return (navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
 })();
 
+// Approximate EGP shown under each USD price. Update this one number when the rate moves.
+var EGP_PER_USD = 51.8;
+function renderEGP() {
+  document.querySelectorAll('.egp[data-usd]').forEach(function (el) {
+    var egp = Math.round(Number(el.getAttribute('data-usd')) * EGP_PER_USD / 5) * 5;
+    var n = egp.toLocaleString('en-US');
+    el.textContent = LANG === 'ar' ? ('حوالي ' + n + ' جنيه في الشهر، غير الضريبة') : ('About ' + n + ' EGP a month, plus VAT');
+  });
+}
 function applyLang() {
   var dict = LANG === 'ar' ? SITE_AR : SITE_EN;
   document.querySelectorAll('[data-t]').forEach(function (el) {
@@ -1860,6 +1875,7 @@ function applyLang() {
     b.textContent = LANG === 'ar' ? 'English' : 'العربية';
   });
   try { localStorage.setItem('etlob-site-lang', LANG); } catch (e) {}
+  renderEGP();
 }
 
 function toggleLang() {
