@@ -749,6 +749,63 @@ en: {
   'wt.s7p': 'Two orders, one per supplier, ready to send on WhatsApp.',
   'wt.s7e': 'Delta Textiles: 300 pieces. Cairo Print Co: 102 pieces. Over budget by 24,300 EGP.',
   'wt.done': 'If every number matched, you understand the whole app. Now clear it and type in your own shop.',
+  'nav.incoming': 'Incoming orders',
+  'nav.accuracy': 'Forecast accuracy',
+  'imp.btn': 'Import file',
+  'imp.title': 'Import products from a file',
+  'imp.lede': 'Pick which column in your file holds each piece of information. We guessed where we could.',
+  'imp.first': 'First sales month (oldest)',
+  'imp.last': 'Last sales month (newest)',
+  'imp.none': '(not in my file)',
+  'imp.preview': '{n} products ready: {u} new, {m} updating ones you already have.',
+  'imp.skipNoName': '{n} rows skipped because they have no product name.',
+  'imp.badNums': '{n} cells were not numbers, so they were left blank.',
+  'imp.unknownSup': '{n} rows name a supplier that is not on your Suppliers page, so they were left without one.',
+  'imp.overLimit': 'Your plan covers {max} products, so {n} new rows will not be imported.',
+  'imp.go': 'Import',
+  'imp.done': 'Imported {n} products. Open the Health check page next.',
+  'imp.fail': 'That file could not be read. Save it as .xlsx or .csv and try again.',
+  'imp.empty': 'The file has no product rows.',
+  'imp.tip': 'One row per product, one column per month of sales, oldest month first. Leave a month blank if you were out of stock.',
+  'ord.markSent': 'Mark as sent',
+  'ord.sentToast': 'Order recorded. Its quantities now count as on order.',
+  'ord.title': 'Incoming orders',
+  'ord.lede': 'Orders you have sent and are waiting for. Mark each one received when it arrives: stock updates by itself and the supplier gets a real delivery time.',
+  'ord.empty': 'No orders waiting',
+  'ord.emptyP': 'On the Purchase plan page, press "Mark as sent" after you send an order to a supplier.',
+  'ord.sent': 'Sent on',
+  'ord.expected': 'Expected by',
+  'ord.items': 'Items',
+  'ord.late': 'Late',
+  'ord.onTrack': 'On track',
+  'ord.receive': 'Mark received',
+  'ord.cancelOrder': 'Cancel order',
+  'ord.receivedToast': 'Received. {n} units added to stock.',
+  'ord.cancelConfirm': 'Cancel this order? Its quantities will be taken off "on order".',
+  'ord.history': 'Received orders',
+  'ord.took': 'Took',
+  'ord.promised': 'Promised',
+  'ord.days': '{n} days',
+  'ord.arrived': 'Arrived on',
+  'sc.actual': 'Real delivery',
+  'sc.actualS': 'average of orders you received',
+  'sc.onTime': 'On time',
+  'sc.useReal': 'Use real times',
+  'sc.usedReal': 'Lead time and lateness updated from {n} real deliveries.',
+  'acc.title': 'Forecast accuracy',
+  'acc.lede': 'Every month the app writes down what it expects each product to sell. When you type in what really sold, this page compares the two, so you can see how far to trust the numbers.',
+  'acc.empty': 'Nothing to compare yet',
+  'acc.emptyP': 'This fills in after your first "Start new month" in Settings, once you type that month\'s sales. Before that, there is no forecast to check.',
+  'acc.overall': 'Overall accuracy',
+  'acc.overallS': '{n} product months checked',
+  'acc.forecast': 'Forecast',
+  'acc.actual': 'Actually sold',
+  'acc.error': 'Off by',
+  'acc.acc': 'Accuracy',
+  'acc.months': 'Months checked',
+  'acc.note': 'Accuracy is 100% minus the total gap between forecast and real sales, as a share of real sales. Above 80% is strong for a small shop. Big misses usually mean a one-off event, a stockout, or a season shape that needs adjusting.',
+  'k.acc': 'Forecast accuracy',
+  'k.accS': 'forecasts versus real sales',
   'sea.locked': 'Custom season shapes are part of Pro. On your plan the four shapes below are fixed.',
   'sea.add': 'Add a shape',
   'sea.dup': 'Duplicate',
@@ -1262,6 +1319,63 @@ ar: {
   'wt.s7p': 'طلبيتين، واحدة لكل مورد، جاهزين يتبعتوا على واتساب.',
   'wt.s7e': 'دلتا للنسيج: 300 قطعة. القاهرة للطباعة: 102 قطعة. أعلى من الميزانية بـ 24,300 جنيه.',
   'wt.done': 'لو كل الأرقام طلعت زي دي، يبقى فهمت الأداة كلها. امسحه واكتب بيانات محلك.',
+  'nav.incoming': 'الطلبيات الجاية',
+  'nav.accuracy': 'دقة التوقع',
+  'imp.btn': 'استورد ملف',
+  'imp.title': 'استورد المنتجات من ملف',
+  'imp.lede': 'اختار أنهي عمود في الملف فيه كل معلومة. خمنا اللي قدرنا عليه.',
+  'imp.first': 'أول شهر مبيعات (الأقدم)',
+  'imp.last': 'آخر شهر مبيعات (الأحدث)',
+  'imp.none': '(مش موجود في الملف)',
+  'imp.preview': 'جاهز {n} منتج: {u} جديد، و{m} هيتحدث من اللي عندك.',
+  'imp.skipNoName': 'اتشال {n} صف علشان مفيهمش اسم منتج.',
+  'imp.badNums': '{n} خانة مكانتش أرقام، فاتسابت فاضية.',
+  'imp.unknownSup': '{n} صف فيهم مورد مش موجود في صفحة الموردين، فاتسابوا من غير مورد.',
+  'imp.overLimit': 'باقتك بتغطي {max} منتج، فـ {n} صف جديد مش هيتستوردوا.',
+  'imp.go': 'استورد',
+  'imp.done': 'اتستورد {n} منتج. افتح صفحة فحص البيانات بعدها.',
+  'imp.fail': 'الملف ده ماتقراش. احفظه بصيغة xlsx أو csv وجرب تاني.',
+  'imp.empty': 'الملف مفيهوش صفوف منتجات.',
+  'imp.tip': 'صف لكل منتج، وعمود لكل شهر مبيعات، الأقدم الأول. سيب الشهر فاضي لو البضاعة كانت خلصانة.',
+  'ord.markSent': 'اتبعتت',
+  'ord.sentToast': 'الطلبية اتسجلت. كمياتها بقت محسوبة في الطريق.',
+  'ord.title': 'الطلبيات الجاية',
+  'ord.lede': 'الطلبيات اللي بعتها ومستنيها. علّم كل واحدة إنها وصلت أول ما توصل: المخزون بيتحدث لوحده والمورد بيتسجله مدة توريد حقيقية.',
+  'ord.empty': 'مفيش طلبيات مستنياها',
+  'ord.emptyP': 'في صفحة خطة الشراء، دوس "اتبعتت" بعد ما تبعت الطلبية للمورد.',
+  'ord.sent': 'اتبعتت يوم',
+  'ord.expected': 'متوقعة يوم',
+  'ord.items': 'الأصناف',
+  'ord.late': 'متأخرة',
+  'ord.onTrack': 'في ميعادها',
+  'ord.receive': 'وصلت',
+  'ord.cancelOrder': 'إلغاء الطلبية',
+  'ord.receivedToast': 'وصلت. اتضاف {n} قطعة للمخزون.',
+  'ord.cancelConfirm': 'تلغي الطلبية دي؟ كمياتها هتتشال من "في الطريق".',
+  'ord.history': 'طلبيات وصلت',
+  'ord.took': 'خدت',
+  'ord.promised': 'المتفق عليه',
+  'ord.days': '{n} يوم',
+  'ord.arrived': 'وصلت يوم',
+  'sc.actual': 'التوريد الفعلي',
+  'sc.actualS': 'متوسط الطلبيات اللي وصلت',
+  'sc.onTime': 'في الميعاد',
+  'sc.useReal': 'استخدم المدد الفعلية',
+  'sc.usedReal': 'مدة التوريد والتأخير اتحدثوا من {n} توريد فعلي.',
+  'acc.title': 'دقة التوقع',
+  'acc.lede': 'كل شهر الأداة بتسجل متوقعة كل منتج يبيع قد إيه. لما تكتب اللي اتباع فعلا، الصفحة دي بتقارن الاتنين، علشان تعرف تثق في الأرقام قد إيه.',
+  'acc.empty': 'لسه مفيش حاجة نقارنها',
+  'acc.emptyP': 'الصفحة دي بتتملى بعد أول "بداية شهر جديد" من الإعدادات، أول ما تكتب مبيعات الشهر ده. قبل كده مفيش توقع نراجعه.',
+  'acc.overall': 'الدقة الإجمالية',
+  'acc.overallS': 'اتراجع {n} شهر منتج',
+  'acc.forecast': 'التوقع',
+  'acc.actual': 'اتباع فعلا',
+  'acc.error': 'الفرق',
+  'acc.acc': 'الدقة',
+  'acc.months': 'شهور اتراجعت',
+  'acc.note': 'الدقة = 100% ناقص إجمالي الفرق بين التوقع والمبيعات الحقيقية، كنسبة من المبيعات الحقيقية. فوق 80% كويس جدا لمحل صغير. الفروق الكبيرة عادة معناها حدث مرة واحدة، أو بضاعة خلصت، أو شكل موسم محتاج تعديل.',
+  'k.acc': 'دقة التوقع',
+  'k.accS': 'التوقع قصاد المبيعات الحقيقية',
   'sea.locked': 'أشكال المواسم الخاصة متاحة في باقة Pro. في باقتك الأشكال الأربعة دي ثابتة.',
   'sea.add': 'ضيف شكل',
   'sea.dup': 'نسخة',
@@ -1468,7 +1582,8 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
   del(k) { try { localStorage.removeItem(k); } catch (e) {} }
 };
-const S = { selectMode: false, selected: new Set(), sid: store.get('es7.sid'), me: null, ws: null, res: null, rev: 0, tab: store.get('es7.tab') || 'dash',
+const DEMO = new URLSearchParams(location.search).has('demo');
+const S = { selectMode: false, selected: new Set(), sid: DEMO ? 'demo' : store.get('es7.sid'), me: null, ws: null, res: null, rev: 0, tab: store.get('es7.tab') || 'dash',
             dirty: false, saving: false, timer: null, retry: null, filter: 'ALL', healthOnly: true, loginEmail: '', undo: null };
 let LANG = store.get('es7.lang') || ((navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en');
 
@@ -1514,7 +1629,9 @@ const digits = v => String(v == null ? '' : v)
 const API_URL = 'https://wqbcxyswrqxvqrehelnw.supabase.co/functions/v1/app';
 async function gs(fn, ...args) {
   try {
-    const r = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fn, args }) });
+    // Demo mode runs on the same server with the real engine, but nothing is saved.
+    const payload = (DEMO && fn === 'api') ? { fn: 'demo', args: [args[1], args[2]] } : { fn, args };
+    const r = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     const j = await r.json().catch(() => null);
     return j || { error: 'SERVER' };
   } catch (e) { console.error(e); return { error: 'NET' }; }
@@ -1637,6 +1754,12 @@ async function boot() {
   }
   S.me = r.me; S.ws = r.ws; S.res = r.res; S.rev = r.ws.rev || 0;
   show('app');
+  if (DEMO && !$('#demobar')) {
+    const ar = LANG === 'ar';
+    document.body.insertAdjacentHTML('afterbegin', '<div id="demobar" style="position:sticky;top:0;z-index:50;background:#0E2743;color:#fff;padding:9px 16px;font-size:14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap">' +
+      '<span>' + (ar ? 'دي نسخة تجريبية فيها كل مميزات باقة Store. مفيش حاجة بتتحفظ.' : 'This is a live demo with every Store feature. Nothing you change is saved.') + '</span>' +
+      '<a href="https://etlobsa7.com/#pricing" style="background:#fff;color:#0E2743;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600">' + (ar ? 'ابدأ تجربتك المجانية' : 'Start your free trial') + '</a></div>');
+  }
   renderShell();
   renderTab();
   setStatus('saved');
@@ -1704,9 +1827,9 @@ const TABS = [
   { id: 'start', g: 0 }, { id: 'walk', g: 0 }, { id: 'dash', g: 0 },
   { id: 'settings', g: 1 }, { id: 'seasons', g: 1 }, { id: 'suppliers', g: 1 }, { id: 'products', g: 1 },
   { id: 'plan', g: 2 }, { id: 'orders', g: 2 }, { id: 'demand', g: 2 }, { id: 'trends', g: 2 },
-  { id: 'score', g: 2 }, { id: 'dead', g: 2 }, { id: 'cash', g: 2 }, { id: 'health', g: 2 }
+  { id: 'incoming', g: 2 }, { id: 'score', g: 2 }, { id: 'dead', g: 2 }, { id: 'cash', g: 2 }, { id: 'accuracy', g: 2 }, { id: 'health', g: 2 }
 ];
-const RESULT_TABS = ['dash', 'plan', 'orders', 'demand', 'trends', 'score', 'dead', 'cash', 'health'];
+const RESULT_TABS = ['dash', 'plan', 'orders', 'demand', 'trends', 'incoming', 'score', 'dead', 'cash', 'accuracy', 'health'];
 
 function renderShell() { renderNav(); renderAccount(); }
 
@@ -1844,6 +1967,175 @@ VIEWS.walk = () => {
     '<p class="gridnote">' + esc(t('wt.done')) + '</p>';
 };
 
+
+/* ---------- Incoming orders ---------- */
+const isoToday = () => new Date().toISOString().slice(0, 10);
+const addDays = (iso, n) => new Date(Date.parse(iso) + n * 86400000).toISOString().slice(0, 10);
+VIEWS.incoming = () => {
+  const orders = S.ws.orders || [];
+  const open = orders.filter(o => o.status === 'sent');
+  const done = orders.filter(o => o.status === 'received').slice(-20).reverse();
+  const supLt = id => { const sp = S.ws.suppliers.find(x => x.id === id); return sp ? sp.lt : 0; };
+  if (!orders.length) return head(t('ord.title'), t('ord.lede')) + emptyBox(t('ord.empty'), t('ord.emptyP'), btn(t('nav.plan'), 'tab', ' data-tab="plan"', 'primary'));
+  const openRows = open.map(o => {
+    const exp = addDays(o.sentAt, supLt(o.supplierId));
+    const late = isoToday() > exp;
+    const units = o.lines.reduce((a, l) => a + l.qty, 0);
+    return '<tr><td class="name">' + bdi(o.supplierName || t('unnamed')) + '</td><td>' + esc(o.sentAt) + '</td><td>' + esc(exp) + ' ' +
+      '<span class="pill ' + (late ? 'v-CRITICAL' : 'v-OK') + '">' + esc(t(late ? 'ord.late' : 'ord.onTrack')) + '</span></td>' +
+      '<td class="wrap">' + o.lines.map(l => bdi(l.name) + ' &times; ' + n0(l.qty)).join(', ') + ' <span class="small muted">(' + n0(units) + ')</span></td>' +
+      '<td style="white-space:nowrap"><input type="date" class="recdate" data-id="' + o.id + '" value="' + isoToday() + '" max="' + isoToday() + '" min="' + o.sentAt + '"> ' +
+      btn(t('ord.receive'), 'receiveOrder', ' data-id="' + o.id + '"', 'small primary') + ' ' + btn(t('ord.cancelOrder'), 'cancelOrder', ' data-id="' + o.id + '"', 'small') + '</td></tr>';
+  }).join('');
+  const doneRows = done.map(o => {
+    const took = Math.round((Date.parse(o.receivedAt) - Date.parse(o.sentAt)) / 86400000), promised = supLt(o.supplierId);
+    return '<tr><td class="name">' + bdi(o.supplierName || t('unnamed')) + '</td><td>' + esc(o.sentAt) + '</td><td>' + esc(o.receivedAt) + '</td>' +
+      '<td class="num"' + (took > promised ? ' style="color:var(--crit);font-weight:600"' : '') + '>' + esc(t('ord.days', { n: took })) + '</td><td class="num">' + esc(t('ord.days', { n: promised })) + '</td></tr>';
+  }).join('');
+  return head(t('ord.title'), t('ord.lede')) +
+    (open.length ? '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('sc.supplier')) + '</th><th>' + esc(t('ord.sent')) + '</th><th>' + esc(t('ord.expected')) +
+      '</th><th>' + esc(t('ord.items')) + '</th><th>' + esc(t('ord.arrived')) + '</th></tr></thead><tbody>' + openRows + '</tbody></table></div>'
+      : emptyBox(t('ord.empty'), t('ord.emptyP'))) +
+    (done.length ? '<div class="section"><h2>' + esc(t('ord.history')) + '</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('sc.supplier')) + '</th><th>' + esc(t('ord.sent')) +
+      '</th><th>' + esc(t('ord.arrived')) + '</th><th class="num">' + esc(t('ord.took')) + '</th><th class="num">' + esc(t('ord.promised')) + '</th></tr></thead><tbody>' + doneRows + '</tbody></table></div></div>' : '');
+};
+
+/* ---------- Forecast accuracy ---------- */
+VIEWS.accuracy = () => {
+  const d = S.res.dash;
+  const rows = S.res.rows.filter(r => r.acc && r.acc.n > 0).sort((a, b) => (a.acc.accuracy || 0) - (b.acc.accuracy || 0));
+  if (!rows.length) return head(t('acc.title'), t('acc.lede')) + emptyBox(t('acc.empty'), t('acc.emptyP'), btn(t('nav.settings'), 'tab', ' data-tab="settings"', 'primary'));
+  const pct = v => v == null ? t('na') : Math.round(v * 100) + '%';
+  const body = rows.map(r => {
+    const last = r.acc.pairs[r.acc.pairs.length - 1];
+    const cls = r.acc.accuracy >= 0.8 ? 'v-OK' : (r.acc.accuracy >= 0.6 ? 'v-ORDER' : 'v-CRITICAL');
+    return '<tr><td class="name">' + bdi(r.name || t('unnamed')) + '</td><td class="num">' + n0(last.f) + '</td><td class="num">' + n0(last.a) +
+      '</td><td class="num">' + n0(Math.abs(last.a - last.f)) + '</td><td><span class="pill ' + cls + '">' + pct(r.acc.accuracy) + '</span></td><td class="num">' + r.acc.n + '</td></tr>';
+  }).join('');
+  return head(t('acc.title'), t('acc.lede')) +
+    '<div class="kpis" style="margin-bottom:16px"><div class="kpi"><span>' + esc(t('acc.overall')) + '</span><b>' + pct(d.accuracy) + '</b><small>' + esc(t('acc.overallS', { n: d.accuracyN })) + '</small></div></div>' +
+    '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th class="num">' + esc(t('acc.forecast')) + '</th><th class="num">' + esc(t('acc.actual')) +
+    '</th><th class="num">' + esc(t('acc.error')) + '</th><th>' + esc(t('acc.acc')) + '</th><th class="num">' + esc(t('acc.months')) + '</th></tr></thead><tbody>' + body + '</tbody></table></div>' +
+    '<p class="gridnote">' + esc(t('acc.note')) + '</p>';
+};
+
+/* ---------- File import with column matching ---------- */
+const IMP = {};
+const arDigits = v => String(v).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫]/g, '.').replace(/[,٬\s]/g, '');
+function impNum(v, bad) {
+  if (v === null || v === undefined || String(v).trim() === '') return null;
+  const n = Number(arDigits(v));
+  if (!isFinite(n)) { bad.n++; return null; }
+  return n;
+}
+function parseCSV(text) {
+  const first = text.split(/\r?\n/)[0] || '';
+  const delim = [',', ';', '\t'].sort((a, b) => first.split(b).length - first.split(a).length)[0];
+  const rows = []; let row = [], cell = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) { if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; }
+    else if (c === '"') q = true;
+    else if (c === delim) { row.push(cell); cell = ''; }
+    else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+    else if (c !== '\r') cell += c;
+  }
+  if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+  return rows.filter(r => r.some(x => String(x).trim() !== ''));
+}
+function loadXLSX() {
+  return new Promise((ok, no) => {
+    if (window.XLSX) return ok();
+    const sc = document.createElement('script');
+    sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+    sc.onload = () => ok(); sc.onerror = no; document.head.appendChild(sc);
+  });
+}
+async function readRows(file) {
+  if (/\.csv$|\.txt$/i.test(file.name)) return parseCSV(await file.text());
+  await loadXLSX();
+  const wb = XLSX.read(await file.arrayBuffer(), { type: 'array' });
+  return XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, raw: true, defval: '' });
+}
+const MONTH_RE = /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر|m\d|month|شهر|\d{1,2}[\/\-]\d{2,4}|\d{4}[\/\-]\d{1,2})/i;
+const GUESS = {
+  name: /name|product|item|sku|اسم|منتج|صنف/i, supplier: /supplier|vendor|مورد/i, season: /season|موسم/i,
+  cost: /cost|buy|تكلفة|شراء/i, price: /price|sell|سعر|بيع/i, onHand: /on ?hand|stock|in store|مخزون|موجود/i, onOrder: /on ?order|incoming|طريق/i
+};
+function impGuess(headers) {
+  const m = {}; const used = {};
+  ['onOrder', 'onHand', 'cost', 'supplier', 'season', 'name', 'price'].forEach(k => {
+    const i = headers.findIndex((h, j) => !used[j] && GUESS[k].test(String(h)) && !MONTH_RE.test(String(h).trim()));
+    m[k] = i; if (i >= 0) used[i] = true;
+  });
+  const monthCols = headers.map((h, j) => MONTH_RE.test(String(h).trim()) && !used[j] ? j : -1).filter(j => j >= 0);
+  m.first = monthCols.length ? monthCols[0] : -1; m.last = monthCols.length ? monthCols[monthCols.length - 1] : -1;
+  return m;
+}
+function impBuild() {
+  const { rows, map } = IMP, head = rows[0], data = rows.slice(1);
+  const bad = { n: 0 }; let noName = 0, unknownSup = 0;
+  const byName = {}; S.ws.products.forEach(p => { if (p.name) byName[p.name.trim().toLowerCase()] = p; });
+  const supByName = {}; S.ws.suppliers.forEach(sp => { if (sp.name) supByName[sp.name.trim().toLowerCase()] = sp.id; });
+  const profBy = {}; S.ws.profiles.forEach(pr => { [pr.id, pr.name, pr.nameAr].forEach(x => { if (x) profBy[String(x).trim().toLowerCase()] = pr.id; }); });
+  const items = [];
+  data.forEach(r => {
+    const name = map.name >= 0 ? String(r[map.name] || '').trim() : '';
+    if (!name) { noName++; return; }
+    const it = { name, fields: {} };
+    if (map.supplier >= 0) { const sn = String(r[map.supplier] || '').trim().toLowerCase(); if (sn) { if (supByName[sn]) it.fields.supplierId = supByName[sn]; else unknownSup++; } }
+    if (map.season >= 0) { const pn = String(r[map.season] || '').trim().toLowerCase(); if (profBy[pn]) it.fields.profileId = profBy[pn]; }
+    ['cost', 'price', 'onHand', 'onOrder'].forEach(k => { if (map[k] >= 0) { const v = impNum(r[map[k]], bad); if (v !== null) it.fields[k] = v; } });
+    if (map.first >= 0 && map.last >= map.first) {
+      let vals = []; for (let j = map.first; j <= map.last; j++) vals.push(impNum(r[j], bad));
+      vals = vals.slice(-12); while (vals.length < 12) vals.unshift(null);
+      it.fields.sales = vals;
+    }
+    it.existing = byName[name.toLowerCase()] || null;
+    items.push(it);
+  });
+  const fresh = items.filter(i => !i.existing);
+  const room = Math.max(0, S.me.limits.products - S.ws.products.length);
+  return { items, fresh: fresh.length, upd: items.length - fresh.length, room, over: Math.max(0, fresh.length - room), noName, unknownSup, bad: bad.n, head };
+}
+function impRender() {
+  const b = impBuild(), head = b.head;
+  const opts = sel => '<option value="-1">' + esc(t('imp.none')) + '</option>' + head.map((h, j) => '<option value="' + j + '"' + (j === sel ? ' selected' : '') + '>' + esc(String(h) || ('#' + (j + 1))) + '</option>').join('');
+  const field = (k, label) => '<label style="display:block;margin:6px 0">' + esc(label) + '<br><select data-imp="' + k + '" style="width:100%">' + opts(IMP.map[k]) + '</select></label>';
+  const notes = [];
+  if (b.noName) notes.push(t('imp.skipNoName', { n: b.noName }));
+  if (b.bad) notes.push(t('imp.badNums', { n: b.bad }));
+  if (b.unknownSup) notes.push(t('imp.unknownSup', { n: b.unknownSup }));
+  if (b.over) notes.push(t('imp.overLimit', { max: S.me.limits.products, n: b.over }));
+  const ov = $('#overlay');
+  ov.innerHTML = '<div class="dialog" role="dialog" aria-modal="true" style="max-width:640px;max-height:88vh;overflow:auto"><h2>' + esc(t('imp.title')) + '</h2><p>' + esc(t('imp.lede')) + '</p>' +
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px">' + field('name', t('pro.name')) + field('supplier', t('pro.sup')) + field('season', t('pro.season')) +
+    field('cost', t('pro.cost')) + field('price', t('pro.price')) + field('onHand', t('pro.onhand')) + field('onOrder', t('pro.onorder')) + '<span></span>' +
+    field('first', t('imp.first')) + field('last', t('imp.last')) + '</div>' +
+    '<div class="alert ' + (b.items.length ? 'good' : 'bad') + '" style="margin-top:10px"><span id="imp-sum">' + esc(b.items.length ? t('imp.preview', { n: b.items.length - b.over, u: b.fresh - b.over, m: b.upd }) : t('imp.empty')) + '</span></div>' +
+    (notes.length ? '<div class="alert info"><span>' + notes.map(esc).join('<br>') + '</span></div>' : '') +
+    '<p class="small muted">' + esc(t('imp.tip')) + '</p>' +
+    '<div class="actions"><button class="btn" data-imp-act="cancel">' + esc(t('cancel')) + '</button><button class="btn primary" data-imp-act="go"' + (b.items.length ? '' : ' disabled') + '>' + esc(t('imp.go')) + '</button></div></div>';
+  ov.hidden = false;
+  ov.onchange = e => { const k = e.target.dataset.imp; if (k) { IMP.map[k] = Number(e.target.value); impRender(); } };
+  ov.onclick = e => {
+    const a = e.target.closest('[data-imp-act]');
+    if ((a && a.dataset.impAct === 'cancel') || e.target === ov) { ov.hidden = true; ov.innerHTML = ''; ov.onchange = null; return; }
+    if (a && a.dataset.impAct === 'go') impApply();
+  };
+}
+function impApply() {
+  const b = impBuild(); let added = 0, room = b.room;
+  b.items.forEach(it => {
+    let p = it.existing;
+    if (!p) { if (room <= 0) return; p = blankProduct(); p.name = it.name; S.ws.products.push(p); room--; added++; }
+    Object.assign(p, it.fields);
+  });
+  const ov = $('#overlay'); ov.hidden = true; ov.innerHTML = ''; ov.onchange = null;
+  renderTab(); renderNav(); markDirty();
+  toast(t('imp.done', { n: added + b.upd }));
+}
+
 /* ---------- Dashboard ---------- */
 VIEWS.dash = () => {
   const d = S.res.dash;
@@ -1874,6 +2166,7 @@ VIEWS.dash = () => {
     kpi('cover', d.avgCover == null ? t('na') : n0(d.avgCover) + ' ' + t('days')) +
     kpi('over', money(d.overstockValue), d.overstockValue > 0 ? 'warn' : '') +
     kpi('risk', money(d.riskProfit || 0), (d.riskProfit || 0) > 0 ? 'bad' : '') +
+    (d.accuracy != null ? kpi('acc', Math.round(d.accuracy * 100) + '%', d.accuracy < 0.6 ? 'warn' : '') : '') +
     kpi('aic', money(d.inventoryCost)) + '</div>';
 
   const colors = { CRITICAL: 'var(--crit)', ORDER: '#D98A00', OK: 'var(--ok)', OVER: 'var(--over)', NODEMAND: '#A9B4C0', NOHIST: '#C9D1DA' };
@@ -2035,7 +2328,7 @@ VIEWS.products = () => {
       btn(t('bulk.cancel'), 'selOff', '', 'small') + '</span></div>'
     : '';
   const toolbar = btn(S.selectMode ? t('bulk.cancel') : t('bulk.select'), S.selectMode ? 'selOff' : 'selOn', '', 'small');
-  return head(t('pro.title'), t('pro.lede'), toolbar + add) + pre + bar +
+  return head(t('pro.title'), t('pro.lede'), btn(t('imp.btn'), 'importOpen', '', 'small') + toolbar + add) + pre + bar +
     '<div class="tbl-wrap"><table class="t grid" id="pgrid"><thead><tr>' +
     (S.selectMode ? '<th style="width:38px"></th>' : '') +
     '<th class="stick">' + esc(t('pro.name')) + sub('pro.nameS') + '</th><th>' + esc(t('pro.verdict')) + sub('pro.verdictS') +
@@ -2081,7 +2374,8 @@ VIEWS.plan = () => {
       '<div class="meta">' + metaHtml + '</div></div><div class="po-total"><span class="small muted">' + esc(t('total')) + '</span><b>' + money(g.value) + '</b></div></div>' +
       '<div style="overflow-x:auto"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th>' + esc(t('pro.verdict')) + '</th><th class="num">' + esc(t('plan.qty')) + '</th>' +
       (anyCartons ? '<th class="num">' + esc(t('plan.cartons')) + '</th>' : '') + '<th class="num">' + esc(t('plan.unitCost')) + '</th><th class="num">' + esc(t('plan.value')) + '</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-      '<div class="po-foot">' + btn(t('plan.copy'), 'copyPO', ' data-g="' + gi + '"', 'small') + btn(t('plan.wa'), 'waPO', ' data-g="' + gi + '"', 'small primary') + '</div></div>';
+      '<div class="po-foot">' + btn(t('plan.copy'), 'copyPO', ' data-g="' + gi + '"', 'small') + btn(t('plan.wa'), 'waPO', ' data-g="' + gi + '"', 'small primary') +
+      (g.supplierId ? btn(t('ord.markSent'), 'markSent', ' data-g="' + gi + '"', 'small') : '') + '</div></div>';
   }).join('');
   return head(t('plan.title'), t('plan.lede')) + banner + cards;
 };
@@ -2244,6 +2538,9 @@ VIEWS.score = () => {
     '<tr><td class="name">' + bdi(sc.name || t('unnamed')) + '</td>' +
     '<td class="num">' + sc.products + '</td>' +
     '<td class="num">' + n0(sc.lt) + ' ' + esc(t('days')) + '</td>' +
+    '<td class="num">' + (sc.actualCount ? n0(sc.actualLt) + ' ' + esc(t('days')) + ' <span class="small muted">(' + sc.actualCount + ')</span>' +
+      (sc.actualCount >= 2 ? '<div>' + btn(t('sc.useReal'), 'useReal', ' data-id="' + sc.id + '"', 'small') + '</div>' : '') : t('na')) + '</td>' +
+    '<td class="num">' + (sc.onTimePct != null ? Math.round(sc.onTimePct * 100) + '%' : t('na')) + '</td>' +
     '<td><span class="pill ' + rel[sc.reliability] + '">' + esc(t('sc.' + sc.reliability)) + '</span></td>' +
     '<td class="num">' + money(sc.stockValue) + '</td>' +
     '<td class="num"' + (sc.varValue > 0 ? ' style="color:var(--order);font-weight:600"' : '') + '>' + money(sc.varValue) + '</td>' +
@@ -2251,7 +2548,7 @@ VIEWS.score = () => {
     '<td class="num">' + money(sc.yearlySpend) + '</td></tr>').join('');
   return head(t('sc.title'), t('sc.lede')) +
     '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('sc.supplier')) + '</th><th class="num">' + esc(t('sc.products')) +
-    '</th><th class="num">' + esc(t('sc.lt')) + '</th><th>' + esc(t('sc.reliability')) + '</th><th class="num">' + esc(t('sc.stock')) +
+    '</th><th class="num">' + esc(t('sc.lt')) + '</th><th class="num">' + esc(t('sc.actual')) + sub('sc.actualS') + '</th><th class="num">' + esc(t('sc.onTime')) + '</th><th>' + esc(t('sc.reliability')) + '</th><th class="num">' + esc(t('sc.stock')) +
     '</th><th class="num">' + esc(t('sc.varValue')) + sub('sc.varValueS') + '</th><th class="num">' + esc(t('sc.orderNow')) +
     '</th><th class="num">' + esc(t('sc.spend')) + '</th></tr></thead><tbody>' + body + '</tbody></table></div>' +
     '<p class="gridnote">' + esc(t('sc.note')) + '</p>';
@@ -2504,6 +2801,7 @@ const ACTIONS = {
   tab: el => goTab(el.dataset.tab),
   lang: () => setLang(LANG === 'ar' ? 'en' : 'ar'),
   logout: async () => {
+    if (DEMO) { location.href = 'https://etlobsa7.com/#pricing'; return; }
     if (S.dirty) await save();
     await call('logout');
     toLogin();
@@ -2594,11 +2892,66 @@ const ACTIONS = {
     S.ws.products.forEach(x => { if (x.profileId === p.id) x.profileId = ''; });
     renderTab(); markDirty();
   },
+  importOpen: () => {
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept = '.xlsx,.xls,.csv,.txt';
+    inp.onchange = async () => {
+      const f = inp.files[0]; if (!f) return;
+      try {
+        const rows = await readRows(f);
+        if (!rows || rows.length < 2) { toast(t('imp.empty')); return; }
+        IMP.rows = rows.map(r => r.map(c => c == null ? '' : c)); IMP.map = impGuess(IMP.rows[0].map(String));
+        impRender();
+      } catch (err) { console.error(err); toast(t('imp.fail')); }
+    };
+    inp.click();
+  },
+  markSent: el => {
+    const g = S.res.plan[Number(el.dataset.g)];
+    if (!g || !g.supplierId) return;
+    S.ws.orders = S.ws.orders || [];
+    S.ws.orders.push({ id: newId(), supplierId: g.supplierId, supplierName: g.supplierName, status: 'sent', sentAt: isoToday(), receivedAt: '',
+      lines: g.items.map(i => ({ productId: i.id, name: i.name, qty: i.qty, cost: i.cost })) });
+    g.items.forEach(i => { const p = S.ws.products.find(x => x.id === i.id); if (p) p.onOrder = (Number(p.onOrder) || 0) + i.qty; });
+    markDirty(); toast(t('ord.sentToast')); goTab('incoming');
+  },
+  receiveOrder: el => {
+    const o = (S.ws.orders || []).find(x => x.id === el.dataset.id); if (!o) return;
+    const di = $('.recdate[data-id="' + o.id + '"]');
+    let day = di && di.value ? di.value : isoToday();
+    if (day < o.sentAt) day = o.sentAt;
+    let units = 0;
+    o.lines.forEach(l => { const p = S.ws.products.find(x => x.id === l.productId); if (!p) return;
+      p.onHand = (Number(p.onHand) || 0) + l.qty; p.onOrder = Math.max(0, (Number(p.onOrder) || 0) - l.qty); units += l.qty; });
+    o.status = 'received'; o.receivedAt = day;
+    renderTab(); markDirty(); toast(t('ord.receivedToast', { n: n0(units) }));
+  },
+  cancelOrder: async el => {
+    const o = (S.ws.orders || []).find(x => x.id === el.dataset.id); if (!o) return;
+    if (!(await dialog({ title: t('ord.cancelOrder'), body: t('ord.cancelConfirm'), ok: t('confirm'), danger: true }))) return;
+    o.lines.forEach(l => { const p = S.ws.products.find(x => x.id === l.productId); if (p) p.onOrder = Math.max(0, (Number(p.onOrder) || 0) - l.qty); });
+    S.ws.orders = S.ws.orders.filter(x => x.id !== o.id);
+    renderTab(); markDirty();
+  },
+  useReal: el => {
+    const sc = (S.res.scorecard || []).find(x => x.id === el.dataset.id);
+    const sp = S.ws.suppliers.find(x => x.id === el.dataset.id);
+    if (!sc || !sp || sc.actualCount < 2) return;
+    sp.lt = Math.round(sc.actualLt); sp.ltv = Math.round(sc.actualLtv || 0);
+    markDirty(); toast(t('sc.usedReal', { n: sc.actualCount }));
+  },
   rollMonth: async () => {
     const s = S.ws.settings;
     const next = s.lastMonth % 12 + 1;
     const oldest = calMonth(1, s.lastMonth);
     if (!(await dialog({ title: t('set.newMonth'), body: t('set.newMonthConfirm', { old: monthName(oldest, true), m: monthName(next, true) }), ok: t('confirm') }))) return;
+    // Record what the app expects each product to sell in the new month, so it can be
+    // compared with real sales once they are typed in (Forecast accuracy page).
+    S.ws.period = (Number(S.ws.period) || 0) + 1;
+    S.ws.products.forEach(p => {
+      const r = S.res.rows.find(x => x.id === p.id);
+      if (r && r.n > 0 && r.fc) p.fcHist = (p.fcHist || []).concat([{ k: S.ws.period, f: Math.round(r.fc[0] * 10) / 10 }]).slice(-24);
+    });
     S.ws.products.forEach(p => { p.sales = p.sales.slice(1).concat([null]); });
     s.lastMonth = next;
     markDirty();
