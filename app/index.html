@@ -1582,8 +1582,7 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
   del(k) { try { localStorage.removeItem(k); } catch (e) {} }
 };
-const DEMO = new URLSearchParams(location.search).has('demo');
-const S = { selectMode: false, selected: new Set(), sid: DEMO ? 'demo' : store.get('es7.sid'), me: null, ws: null, res: null, rev: 0, tab: store.get('es7.tab') || 'dash',
+const S = { selectMode: false, selected: new Set(), sid: store.get('es7.sid'), me: null, ws: null, res: null, rev: 0, tab: store.get('es7.tab') || 'dash',
             dirty: false, saving: false, timer: null, retry: null, filter: 'ALL', healthOnly: true, loginEmail: '', undo: null };
 let LANG = store.get('es7.lang') || ((navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en');
 
@@ -1629,8 +1628,7 @@ const digits = v => String(v == null ? '' : v)
 const API_URL = 'https://wqbcxyswrqxvqrehelnw.supabase.co/functions/v1/app';
 async function gs(fn, ...args) {
   try {
-    // Demo mode runs on the same server with the real engine, but nothing is saved.
-    const payload = (DEMO && fn === 'api') ? { fn: 'demo', args: [args[1], args[2]] } : { fn, args };
+    const payload = { fn, args };
     const r = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     const j = await r.json().catch(() => null);
     return j || { error: 'SERVER' };
@@ -1754,12 +1752,6 @@ async function boot() {
   }
   S.me = r.me; S.ws = r.ws; S.res = r.res; S.rev = r.ws.rev || 0;
   show('app');
-  if (DEMO && !$('#demobar')) {
-    const ar = LANG === 'ar';
-    document.body.insertAdjacentHTML('afterbegin', '<div id="demobar" style="position:sticky;top:0;z-index:50;background:#0E2743;color:#fff;padding:9px 16px;font-size:14px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap">' +
-      '<span>' + (ar ? 'دي نسخة تجريبية فيها كل مميزات باقة Store. مفيش حاجة بتتحفظ.' : 'This is a live demo with every Store feature. Nothing you change is saved.') + '</span>' +
-      '<a href="https://etlobsa7.com/#pricing" style="background:#fff;color:#0E2743;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600">' + (ar ? 'ابدأ تجربتك المجانية' : 'Start your free trial') + '</a></div>');
-  }
   renderShell();
   renderTab();
   setStatus('saved');
@@ -2801,7 +2793,6 @@ const ACTIONS = {
   tab: el => goTab(el.dataset.tab),
   lang: () => setLang(LANG === 'ar' ? 'en' : 'ar'),
   logout: async () => {
-    if (DEMO) { location.href = 'https://etlobsa7.com/#pricing'; return; }
     if (S.dirty) await save();
     await call('logout');
     toLogin();
