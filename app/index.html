@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#0E2743; --navy-2:#163456; --navy-3:#21466F;
@@ -20,12 +20,12 @@
   --ok:#157346; --ok-bg:#E2F2E9;
   --over:#2B5EA7; --over-bg:#E6EEFA;
   --none:#5E6B7A; --none-bg:#EDF0F3;
-  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
-  --sans:Inter, "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --serif:Fraunces, Georgia, "Times New Roman", serif;
+  --sans:"Public Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --r:10px;
 }
 html[lang="ar"]{
-  --sans:"IBM Plex Sans Arabic", Inter, system-ui, "Segoe UI", Tahoma, Arial, sans-serif;
+  --sans:"IBM Plex Sans Arabic", "Public Sans", system-ui, "Segoe UI", Tahoma, Arial, sans-serif;
   --serif:"IBM Plex Sans Arabic", Georgia, serif;
 }
 *{box-sizing:border-box}
@@ -348,8 +348,154 @@ html[dir="rtl"] .steps li{padding:0 44px 18px 0}
 .why{font-size:12.5px;color:var(--muted);font-weight:400;white-space:normal;max-width:52ch;margin-top:3px;line-height:1.45}
 .t td .why{white-space:normal}
 
-.lang{background:none;border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--ink)}
-.side .lang{border-color:rgba(255,255,255,.22);color:#DDE6F1}
+/* ================= black theme =================
+   Page is black. Surfaces sit one step above it. Graphs get their own light grey panel
+   (.graph) with light tokens, so the chart colours keep full contrast. */
+:root{
+  color-scheme:dark;
+  --bg:#000000;
+  --paper:#0F1114; --wash:#16191D; --wash-2:#1C2025;
+  --line:#2A2F36; --line-2:#1E2228;
+  --ink:#F3F5F8; --body:#C5CCD6; --muted:#8C96A4; --faint:#5F6975;
+  --accent:#6AA5F2; --accent-2:#9CC3F7; --accent-bg:rgba(106,165,242,.13);
+  --crit:#FF7B70; --crit-bg:rgba(255,123,112,.13);
+  --order:#F2B551; --order-bg:rgba(242,181,81,.13);
+  --ok:#55C98F; --ok-bg:rgba(85,201,143,.13);
+  --over:#8DB2FF; --over-bg:rgba(141,178,255,.13);
+  --none:#9BA5B2; --none-bg:rgba(155,165,178,.12);
+  --navy:#F3F5F8; --navy-2:#FFFFFF; --navy-3:#6AA5F2;
+  --field:#0A0C0E;
+  --r:12px;
+}
+body{background:var(--bg);font-size:15px;line-height:1.6}
+h1{font-size:30px;font-weight:600;letter-spacing:-.015em}
+h2{font-size:20px}
+::selection{background:rgba(106,165,242,.35)}
+
+/* shell */
+.app{background:var(--bg) !important}
+.side{background:var(--bg);border-inline-end:1px solid var(--line-2);padding:20px 14px}
+.nav{gap:3px}
+.nav-label{color:var(--faint);padding:18px 10px 8px;font-size:12px}
+.nav button{color:var(--body);padding:8px 11px}
+.nav button:hover{background:var(--wash);color:var(--ink)}
+.nav button[aria-current="page"]{background:var(--ink);color:#000}
+.badge{background:var(--wash-2);color:var(--ink)}
+.nav button[aria-current="page"] .badge{background:#000;color:#fff}
+.account{border-top:1px solid var(--line-2);color:var(--muted)}
+.account .email{color:var(--ink)}
+.ghost{border-color:var(--line);color:var(--body)}
+.ghost:hover{border-color:var(--muted);color:var(--ink)}
+.bar{background:rgba(0,0,0,.86);border-bottom:1px solid var(--line-2);padding:12px 32px}
+.view{padding:32px 32px 96px}
+.page-head{margin-bottom:24px}
+.section{margin-top:34px}
+.section > h2{margin-bottom:14px}
+
+/* buttons */
+.btn{background:var(--paper);border-color:var(--line);color:var(--ink);gap:8px}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:#000}
+.btn.primary:hover{background:#fff;border-color:#fff}
+.btn.primary.danger{background:var(--crit);border-color:var(--crit);color:#000}
+.btn.danger{color:var(--crit)}
+.iconbtn{color:var(--faint)}
+.actions{gap:10px}
+.lang{border-color:var(--line);color:var(--ink);background:var(--paper);padding:6px 12px}
+.lang:hover{border-color:var(--muted)}
+.side .lang{border-color:var(--line);color:var(--ink)}
+
+/* tables and input grids */
+.tbl-wrap{background:var(--paper);border-color:var(--line)}
+.t th{background:var(--wash-2);border-bottom-color:var(--line);color:var(--ink)}
+.t td{border-bottom-color:var(--line-2)}
+.t tbody tr:hover td{background:rgba(255,255,255,.025)}
+.t tfoot td{background:var(--wash);border-top-color:var(--line)}
+.grid input:hover,.grid select:hover{background:var(--wash)}
+.grid input:focus,.grid select:focus{background:var(--field)}
+.grid select option{background:var(--paper);color:var(--ink)}
+.grid .stick{background:var(--paper)}
+.grid th.stick{background:var(--wash-2)}
+.tag{background:var(--wash-2);color:var(--ink)}
+
+/* every text field and dropdown */
+.login-card input,.field input[type=text],.field select,.months input,.prof-head input,.dialog textarea,
+.cmp-add select,.cmp-add input,.overlay select,.overlay input[type=text],.overlay input[type=date],input[type=date].recdate{
+  background:var(--field);border:1px solid var(--line);color:var(--ink);border-radius:8px}
+.overlay select,.overlay input[type=text],input[type=date].recdate{padding:7px 9px}
+.months input:disabled{background:var(--wash);color:var(--muted);border-color:var(--line-2)}
+
+/* toggles: the switch and its words never touch */
+.switch,.field label.switch{display:inline-flex;align-items:center;gap:12px;margin-bottom:0}
+.switch input{background:var(--line);flex:0 0 40px}
+.switch span{line-height:1.35}
+.field .switch + .help{margin-top:10px}
+input[type=checkbox]:not(.switch input){accent-color:var(--accent);width:16px;height:16px;margin:0;vertical-align:middle}
+label > input[type=checkbox]:not(.switch input){margin-inline-end:10px}
+
+/* surfaces */
+.panel,.kpis,.fields,.routine,.prof,.po,.empty,.mx .cell{background:var(--paper);border-color:var(--line)}
+.panel{padding:22px}
+.kpi,.field{border-color:var(--line)}
+.kpi{padding:18px 20px}
+.kpi span{color:var(--muted)}
+.kpi small{color:var(--faint)}
+.split div{background:var(--wash)}
+.split.onpage div{background:var(--paper);border-color:var(--line)}
+.stack{background:var(--wash-2)}
+.po-head{border-bottom-color:var(--line)}
+.po-foot{background:var(--wash);border-top-color:var(--line);gap:10px}
+.chip{background:var(--paper);border-color:var(--line);color:var(--body);padding:6px 13px}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#000}
+.chips{gap:8px;margin-bottom:16px}
+.mx .hot{border-color:rgba(85,201,143,.35)}.mx .mid{border-color:rgba(242,181,81,.35)}.mx .cold{border-color:rgba(255,123,112,.35)}
+.today{background:var(--paper);border:1px solid var(--line);color:var(--body)}
+.today .big{color:var(--ink)}
+.today h2{color:var(--ink)}
+.today .btn{background:var(--ink);color:#000;border-color:var(--ink)}
+.today.calm .big{color:var(--ok)}
+.alert{padding:13px 18px}
+.steps li::before{background:var(--ink);color:#000}
+.spinner{border-color:var(--line);border-top-color:var(--ink)}
+
+/* toast + dialog */
+.toast{background:var(--wash-2);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.6)}
+.toast button{color:var(--accent)}
+.overlay{background:rgba(0,0,0,.72)}
+.dialog{background:var(--paper);border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.7)}
+.cmp-t th{border-bottom-color:var(--line)}
+.cmp-t td{border-bottom-color:var(--line-2)}
+
+/* ---------- graphs: light grey panel for contrast ---------- */
+.graph{
+  color-scheme:light;
+  --paper:#E4E7EB; --wash:#D9DDE2; --wash-2:#D3D8DE;
+  --line:#BFC6CF; --line-2:#CDD3DA;
+  --ink:#101820; --body:#33404D; --muted:#56626F; --faint:#6E7A87;
+  --navy-3:#21466F;
+  background:var(--paper);color:var(--body);border:1px solid #2A2F36;border-radius:var(--r)}
+.graph .gl{color:var(--body)}
+.bars{background:#E4E7EB;border-radius:8px;padding:8px 8px 0;border-bottom:0;height:86px;
+  --line:#BFC6CF;--faint:#6E7A87}
+.bars i{background:#21466F}
+.cfbar-track{background:#CDD3DA}
+.cfbar{background:#21466F}
+.cflabel{color:var(--body)}
+.cfval{color:var(--ink)}
+
+/* ---------- sign in ---------- */
+.login{background:var(--bg)}
+.login-brand{background:var(--bg);border-inline-end:1px solid var(--line-2);color:var(--body)}
+.login-brand h2{color:var(--ink);font-size:40px}
+.login-form{position:relative}
+.login-top{position:absolute;top:24px;inset-inline-end:28px}
+.login-top .lang{font-size:14px;padding:8px 14px}
+.login-card .btn{margin-top:16px}
+.login-foot{margin-top:24px}
+.msg.info{color:var(--accent-2)}
+@media (max-width:820px){.login{position:relative}.login-form{position:static}.login-top{top:18px;inset-inline-end:16px}}
+
+.lang-base{background:none;border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -367,9 +513,10 @@ html[dir="rtl"] .steps li{padding:0 44px 18px 0}
       <h2 data-t="login.pitch">Know what to reorder, how much, and when.</h2>
       <p class="hide-sm" data-t="login.pitch2">Your sales history in. A purchase order you can send out.</p>
     </div>
-    <p class="small hide-sm" style="color:#7F95AF" data-t="login.private">Your numbers are private to your account.</p>
+    <p class="small hide-sm" style="color:var(--faint)" data-t="login.private">Your numbers are private to your account.</p>
   </div>
   <div class="login-form">
+    <div class="login-top"><button type="button" class="lang" data-act="lang">العربية</button></div>
     <div class="login-card">
       <h1 data-t="login.title">Sign in</h1>
       <p class="lede" id="login-lede" data-t="login.lede">Use the email you subscribed with. We will email you a 6 digit code. No password needed.</p>
@@ -394,7 +541,6 @@ html[dir="rtl"] .steps li{padding:0 44px 18px 0}
 
       <div class="login-foot">
         <span id="login-plans"></span>
-        <button type="button" class="lang" data-act="lang">العربية</button>
       </div>
     </div>
   </div>
@@ -769,8 +915,8 @@ en: {
   'imp.tip': 'One row per product, one column per month of sales, oldest month first. Leave a month blank if you were out of stock.',
   'ord.markSent': 'Mark as sent',
   'ord.sentToast': 'Order recorded. Its quantities now count as on order.',
-  'ord.title': 'Incoming orders',
-  'ord.lede': 'Orders you have sent and are waiting for. Mark each one received when it arrives: stock updates by itself and the supplier gets a real delivery time.',
+  'inc.title': 'Incoming orders',
+  'inc.lede': 'Orders you have sent and are waiting for. Mark each one received when it arrives: stock updates by itself and the supplier gets a real delivery time.',
   'ord.empty': 'No orders waiting',
   'ord.emptyP': 'On the Purchase plan page, press "Mark as sent" after you send an order to a supplier.',
   'ord.sent': 'Sent on',
@@ -1339,8 +1485,8 @@ ar: {
   'imp.tip': 'صف لكل منتج، وعمود لكل شهر مبيعات، الأقدم الأول. سيب الشهر فاضي لو البضاعة كانت خلصانة.',
   'ord.markSent': 'اتبعتت',
   'ord.sentToast': 'الطلبية اتسجلت. كمياتها بقت محسوبة في الطريق.',
-  'ord.title': 'الطلبيات الجاية',
-  'ord.lede': 'الطلبيات اللي بعتها ومستنيها. علّم كل واحدة إنها وصلت أول ما توصل: المخزون بيتحدث لوحده والمورد بيتسجله مدة توريد حقيقية.',
+  'inc.title': 'الطلبيات الجاية',
+  'inc.lede': 'الطلبيات اللي بعتها ومستنيها. علّم كل واحدة إنها وصلت أول ما توصل: المخزون بيتحدث لوحده والمورد بيتسجله مدة توريد حقيقية.',
   'ord.empty': 'مفيش طلبيات مستنياها',
   'ord.emptyP': 'في صفحة خطة الشراء، دوس "اتبعتت" بعد ما تبعت الطلبية للمورد.',
   'ord.sent': 'اتبعتت يوم',
@@ -1852,7 +1998,7 @@ function renderAccount() {
   const usage = lim.products >= 500 ? t('plan.usageUnl', { n: S.ws.products.length }) : t('plan.usage', { n: S.ws.products.length, max: lim.products });
   $('#account').innerHTML =
     '<div class="email">' + esc(S.me.email) + '</div>' +
-    '<div class="plan">' + esc(t('plan.' + S.me.plan)) + '<br><span style="color:#7F95AF">' + esc(usage) + '</span></div>' +
+    '<div class="plan">' + esc(t('plan.' + S.me.plan)) + '<br><span style="color:var(--faint)">' + esc(usage) + '</span></div>' +
     '<div class="row">' +
     (CFG.whatsapp ? '<a class="ghost" style="text-decoration:none" href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '') +
     '<button class="ghost" data-act="logout">' + esc(t('nav.signout')) + '</button></div>';
@@ -1968,7 +2114,7 @@ VIEWS.incoming = () => {
   const open = orders.filter(o => o.status === 'sent');
   const done = orders.filter(o => o.status === 'received').slice(-20).reverse();
   const supLt = id => { const sp = S.ws.suppliers.find(x => x.id === id); return sp ? sp.lt : 0; };
-  if (!orders.length) return head(t('ord.title'), t('ord.lede')) + emptyBox(t('ord.empty'), t('ord.emptyP'), btn(t('nav.plan'), 'tab', ' data-tab="plan"', 'primary'));
+  if (!orders.length) return head(t('inc.title'), t('inc.lede')) + emptyBox(t('ord.empty'), t('ord.emptyP'), btn(t('nav.plan'), 'tab', ' data-tab="plan"', 'primary'));
   const openRows = open.map(o => {
     const exp = addDays(o.sentAt, supLt(o.supplierId));
     const late = isoToday() > exp;
@@ -1984,7 +2130,7 @@ VIEWS.incoming = () => {
     return '<tr><td class="name">' + bdi(o.supplierName || t('unnamed')) + '</td><td>' + esc(o.sentAt) + '</td><td>' + esc(o.receivedAt) + '</td>' +
       '<td class="num"' + (took > promised ? ' style="color:var(--crit);font-weight:600"' : '') + '>' + esc(t('ord.days', { n: took })) + '</td><td class="num">' + esc(t('ord.days', { n: promised })) + '</td></tr>';
   }).join('');
-  return head(t('ord.title'), t('ord.lede')) +
+  return head(t('inc.title'), t('inc.lede')) +
     (open.length ? '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('sc.supplier')) + '</th><th>' + esc(t('ord.sent')) + '</th><th>' + esc(t('ord.expected')) +
       '</th><th>' + esc(t('ord.items')) + '</th><th>' + esc(t('ord.arrived')) + '</th></tr></thead><tbody>' + openRows + '</tbody></table></div>'
       : emptyBox(t('ord.empty'), t('ord.emptyP'))) +
@@ -2495,7 +2641,7 @@ function bandChart(band, last) {
     '<span class="gl"><i style="background:' + s.color + '"></i>' + bdi(s.name || t('unnamed')) + '</span>').join('');
 
   const lo = Math.round(band.lo), hi = Math.round(band.hi);
-  return '<div class="panel" style="margin-top:16px">' +
+  return '<div class="panel graph" style="margin-top:16px">' +
     '<div class="page-head" style="margin-bottom:6px"><h3>' +
     esc(lo === hi ? t('gr.bandOne', { lo: lo }) : t('gr.band', { lo: lo, hi: hi })) + '</h3></div>' +
     '<div class="glegend">' + legend + '</div>' +
@@ -2604,7 +2750,7 @@ VIEWS.cash = () => {
     '</td></tr>').join('');
   return head(t('cash.title'), t('cash.lede')) +
     '<div class="kpis" style="margin-bottom:16px"><div class="kpi"><span>' + esc(t('cash.total')) + '</span><b>' + money(cf.total) + '</b></div></div>' +
-    '<div class="panel">' + bars + '</div>' +
+    '<div class="panel graph">' + bars + '</div>' +
     '<div class="section"><h2>' + esc(t('cash.bySupplier')) + '</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('supplier')) +
     '</th><th class="num">' + esc(t('total')) + '</th><th class="num">' + esc(t('cash.deposit')) + '</th><th class="num">' + esc(t('cash.balance')) +
     '</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +
