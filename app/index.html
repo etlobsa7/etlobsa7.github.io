@@ -348,68 +348,108 @@ html[dir="rtl"] .steps li{padding:0 44px 18px 0}
 .why{font-size:12.5px;color:var(--muted);font-weight:400;white-space:normal;max-width:52ch;margin-top:3px;line-height:1.45}
 .t td .why{white-space:normal}
 
-/* ================= black theme =================
-   Page is black. Surfaces sit one step above it. Graphs get their own light grey panel
-   (.graph) with light tokens, so the chart colours keep full contrast. */
+/* ================= black and blue =================
+   Black page, navy banner with a white rule under it, website blue for every action.
+   Graphs sit on light grey panels (.graph) so their colours stay readable. */
 :root{
   color-scheme:dark;
   --bg:#000000;
-  --paper:#0F1114; --wash:#16191D; --wash-2:#1C2025;
-  --line:#2A2F36; --line-2:#1E2228;
-  --ink:#F3F5F8; --body:#C5CCD6; --muted:#8C96A4; --faint:#5F6975;
-  --accent:#6AA5F2; --accent-2:#9CC3F7; --accent-bg:rgba(106,165,242,.13);
-  --crit:#FF7B70; --crit-bg:rgba(255,123,112,.13);
-  --order:#F2B551; --order-bg:rgba(242,181,81,.13);
-  --ok:#55C98F; --ok-bg:rgba(85,201,143,.13);
-  --over:#8DB2FF; --over-bg:rgba(141,178,255,.13);
-  --none:#9BA5B2; --none-bg:rgba(155,165,178,.12);
-  --navy:#F3F5F8; --navy-2:#FFFFFF; --navy-3:#6AA5F2;
-  --field:#0A0C0E;
-  --r:12px;
+  --paper:#0A111B; --wash:#0F1826; --wash-2:#132033;
+  --line:#1F3148; --line-2:#162336;
+  --ink:#ECF2F9; --body:#B4C3D4; --muted:#8697AC; --faint:#6E7F95;
+  --accent:#5DA2F2; --accent-2:#79B4F7; --accent-ink:#04101E; --accent-bg:rgba(93,162,242,.13);
+  --crit:#F08A80; --crit-bg:rgba(240,138,128,.13);
+  --order:#DDB254; --order-bg:rgba(221,178,84,.13);
+  --ok:#63D394; --ok-bg:rgba(99,211,148,.12);
+  --over:#8DB8F5; --over-bg:rgba(141,184,245,.13);
+  --none:#9BA9BA; --none-bg:rgba(155,169,186,.12);
+  --navy:#081726; --navy-2:#0D2440; --navy-3:#133155;
+  --field:#060B12; --rule:#FFFFFF;
+  --r:12px; --barh:64px;
 }
 body{background:var(--bg);font-size:15px;line-height:1.6}
-h1{font-size:30px;font-weight:600;letter-spacing:-.015em}
+h1{font-size:30px;font-weight:700;letter-spacing:-.02em}
 h2{font-size:20px}
-::selection{background:rgba(106,165,242,.35)}
+::selection{background:rgba(93,162,242,.35)}
+.eyebrow{display:block;font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#9CC4EE;margin:0 0 8px}
+html[lang="ar"] .eyebrow{letter-spacing:0;font-size:13px}
 
-/* shell */
-.app{background:var(--bg) !important}
-.side{background:var(--bg);border-inline-end:1px solid var(--line-2);padding:20px 14px}
+/* ---------- navy banner, shared by sign-in and the app ---------- */
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:16px;min-height:var(--barh);padding:10px 28px;
+  background:linear-gradient(100deg,var(--navy) 0%,var(--navy-2) 62%,var(--navy-3) 100%);border-bottom:2px solid var(--rule);color:#C3D6EA}
+.topbar .mark{flex:0 0 auto}
+.topbar .mark span{display:block;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA9C6;margin-top:1px}
+html[lang="ar"] .topbar .mark span{letter-spacing:0;font-size:11px}
+.topbar .mark b{display:block;line-height:1.1;font-size:18px}
+.topbar .sep{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.topbar .title{font-weight:600;color:#fff;font-size:15px}
+.topbar .status{color:#8FA9C6}
+.topbar .lang{background:transparent;border:1.5px solid rgba(255,255,255,.34);color:#fff;border-radius:9px;padding:7px 14px;font-size:14px}
+.topbar .lang:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.topbar .ghost{display:none}
+.topbar .push{margin-inline-start:auto}
+
+/* ---------- app shell ---------- */
+.app{display:grid;grid-template-columns:248px minmax(0,1fr);grid-template-rows:auto 1fr;min-height:100vh;background:var(--bg) !important}
+.app > .topbar{grid-column:1 / -1}
+.side{background:var(--bg);border-inline-end:1px solid var(--line-2);padding:18px 14px;position:sticky;top:calc(var(--barh) + 2px);height:calc(100vh - var(--barh) - 2px);overflow-y:auto;display:flex;flex-direction:column;gap:18px}
 .nav{gap:3px}
-.nav-label{color:var(--faint);padding:18px 10px 8px;font-size:12px}
-.nav button{color:var(--body);padding:8px 11px}
+.nav-label{color:#9CC4EE;padding:18px 11px 8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+html[lang="ar"] .nav-label{letter-spacing:0;font-size:12.5px}
+.nav button{color:var(--body);padding:8px 11px;border-radius:8px;position:relative;transition:background .15s,color .15s}
 .nav button:hover{background:var(--wash);color:var(--ink)}
-.nav button[aria-current="page"]{background:var(--ink);color:#000}
+.nav button[aria-current="page"]{background:var(--accent-bg);color:var(--accent);font-weight:600}
+.nav button[aria-current="page"]::before{content:"";position:absolute;inset-inline-start:0;top:8px;bottom:8px;width:3px;border-radius:2px;background:var(--accent)}
 .badge{background:var(--wash-2);color:var(--ink)}
-.nav button[aria-current="page"] .badge{background:#000;color:#fff}
+.badge.crit{background:#D9443A;color:#fff}
+.nav button[aria-current="page"] .badge{background:var(--accent);color:var(--accent-ink)}
 .account{border-top:1px solid var(--line-2);color:var(--muted)}
 .account .email{color:var(--ink)}
-.ghost{border-color:var(--line);color:var(--body)}
-.ghost:hover{border-color:var(--muted);color:var(--ink)}
-.bar{background:rgba(0,0,0,.86);border-bottom:1px solid var(--line-2);padding:12px 32px}
-.view{padding:32px 32px 96px}
-.page-head{margin-bottom:24px}
+.ghost{border:1.5px solid var(--line);color:var(--body);border-radius:8px}
+.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.main{min-width:0}
+.view{padding:28px 32px 96px}
 .section{margin-top:34px}
 .section > h2{margin-bottom:14px}
 
-/* buttons */
-.btn{background:var(--paper);border-color:var(--line);color:var(--ink);gap:8px}
-.btn:hover{border-color:var(--muted)}
-.btn.primary{background:var(--ink);border-color:var(--ink);color:#000}
-.btn.primary:hover{background:#fff;border-color:#fff}
-.btn.primary.danger{background:var(--crit);border-color:var(--crit);color:#000}
+/* ---------- page headline: navy band like the website hero ---------- */
+.view > .page-head:first-child{position:relative;overflow:hidden;align-items:center;margin-bottom:26px;padding:26px 30px;border-radius:14px;
+  background:linear-gradient(168deg,var(--navy) 0%,var(--navy-2) 58%,var(--navy-3) 100%);border:1px solid #1B3556;animation:headin .45s ease-out both}
+.view > .page-head:first-child::before{content:"";position:absolute;top:-70%;inset-inline-end:-12%;width:60%;height:240%;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(93,162,242,.22),transparent 62%)}
+.view > .page-head:first-child::after{content:"";position:absolute;inset:0;opacity:.35;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:40px 40px;mask-image:radial-gradient(ellipse at 15% 0%,#000,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 15% 0%,#000,transparent 75%)}
+.view > .page-head:first-child > *{position:relative;z-index:1}
+.view > .page-head:first-child h1{color:#fff}
+.view > .page-head:first-child p{color:#C3D6EA}
+.view > .page-head:first-child .btn:not(.primary){background:transparent;border-color:rgba(255,255,255,.34);color:#fff}
+.view > .page-head:first-child .btn:not(.primary):hover{border-color:#fff;background:rgba(255,255,255,.08)}
+@keyframes headin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.view > *:not(.page-head){animation:rise .4s ease-out both}
+.view > *:nth-child(3){animation-delay:.05s}.view > *:nth-child(4){animation-delay:.1s}.view > *:nth-child(n+5){animation-delay:.14s}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- buttons: website blue ---------- */
+.btn{background:transparent;border:1.5px solid var(--line);color:var(--ink);gap:8px;border-radius:9px;transition:background .15s,border-color .15s,color .15s,transform .15s}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:var(--accent-2);border-color:var(--accent-2);color:var(--accent-ink);transform:translateY(-1px);box-shadow:0 6px 18px rgba(93,162,242,.25)}
+.btn.primary.danger{background:var(--crit);border-color:var(--crit);color:#1A0503}
 .btn.danger{color:var(--crit)}
+.btn:active{transform:none}
 .iconbtn{color:var(--faint)}
 .actions{gap:10px}
-.lang{border-color:var(--line);color:var(--ink);background:var(--paper);padding:6px 12px}
-.lang:hover{border-color:var(--muted)}
-.side .lang{border-color:var(--line);color:var(--ink)}
+.lang{background:transparent;border:1.5px solid var(--line);color:var(--ink);border-radius:9px;padding:6px 12px}
+.lang:hover{border-color:var(--accent);color:var(--accent)}
+.linkbtn{color:var(--accent)}
 
-/* tables and input grids */
+/* ---------- tables and input grids ---------- */
 .tbl-wrap{background:var(--paper);border-color:var(--line)}
 .t th{background:var(--wash-2);border-bottom-color:var(--line);color:var(--ink)}
 .t td{border-bottom-color:var(--line-2)}
-.t tbody tr:hover td{background:rgba(255,255,255,.025)}
+.t tbody tr{transition:background .12s}
+.t tbody tr:hover td{background:rgba(93,162,242,.05)}
 .t tfoot td{background:var(--wash);border-top-color:var(--line)}
 .grid input:hover,.grid select:hover{background:var(--wash)}
 .grid input:focus,.grid select:focus{background:var(--field)}
@@ -417,83 +457,182 @@ h2{font-size:20px}
 .grid .stick{background:var(--paper)}
 .grid th.stick{background:var(--wash-2)}
 .tag{background:var(--wash-2);color:var(--ink)}
-
-/* every text field and dropdown */
 .login-card input,.field input[type=text],.field select,.months input,.prof-head input,.dialog textarea,
 .cmp-add select,.cmp-add input,.overlay select,.overlay input[type=text],.overlay input[type=date],input[type=date].recdate{
   background:var(--field);border:1px solid var(--line);color:var(--ink);border-radius:8px}
+.login-card input:focus,.field input[type=text]:focus,.field select:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px rgba(93,162,242,.2)}
 .overlay select,.overlay input[type=text],input[type=date].recdate{padding:7px 9px}
 .months input:disabled{background:var(--wash);color:var(--muted);border-color:var(--line-2)}
 
 /* toggles: the switch and its words never touch */
 .switch,.field label.switch{display:inline-flex;align-items:center;gap:12px;margin-bottom:0}
 .switch input{background:var(--line);flex:0 0 40px}
+.switch input:checked{background:var(--accent)}
 .switch span{line-height:1.35}
 .field .switch + .help{margin-top:10px}
 input[type=checkbox]:not(.switch input){accent-color:var(--accent);width:16px;height:16px;margin:0;vertical-align:middle}
 label > input[type=checkbox]:not(.switch input){margin-inline-end:10px}
 
-/* surfaces */
+/* ---------- surfaces ---------- */
 .panel,.kpis,.fields,.routine,.prof,.po,.empty,.mx .cell{background:var(--paper);border-color:var(--line)}
 .panel{padding:22px}
 .kpi,.field{border-color:var(--line)}
-.kpi{padding:18px 20px}
+.kpi{padding:18px 20px;transition:background .15s}
+.kpi:hover{background:var(--wash)}
 .kpi span{color:var(--muted)}
+.kpi b{color:var(--ink)}
 .kpi small{color:var(--faint)}
 .split div{background:var(--wash)}
 .split.onpage div{background:var(--paper);border-color:var(--line)}
 .stack{background:var(--wash-2)}
 .po-head{border-bottom-color:var(--line)}
 .po-foot{background:var(--wash);border-top-color:var(--line);gap:10px}
-.chip{background:var(--paper);border-color:var(--line);color:var(--body);padding:6px 13px}
-.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#000}
+.chip{background:transparent;border-color:var(--line);color:var(--body);padding:6px 13px}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .chips{gap:8px;margin-bottom:16px}
-.mx .hot{border-color:rgba(85,201,143,.35)}.mx .mid{border-color:rgba(242,181,81,.35)}.mx .cold{border-color:rgba(255,123,112,.35)}
-.today{background:var(--paper);border:1px solid var(--line);color:var(--body)}
-.today .big{color:var(--ink)}
-.today h2{color:var(--ink)}
-.today .btn{background:var(--ink);color:#000;border-color:var(--ink)}
-.today.calm .big{color:var(--ok)}
+.mx .hot{border-color:rgba(99,211,148,.35)}.mx .mid{border-color:rgba(221,178,84,.35)}.mx .cold{border-color:rgba(240,138,128,.35)}
+.today{position:relative;overflow:hidden;background:linear-gradient(168deg,var(--navy) 0%,var(--navy-2) 58%,var(--navy-3) 100%);border:1px solid #1B3556;color:#C3D6EA}
+.today::before{content:"";position:absolute;top:-80%;inset-inline-end:-10%;width:55%;height:260%;background:radial-gradient(ellipse at center,rgba(93,162,242,.22),transparent 62%);pointer-events:none}
+.today > *{position:relative}
+.today .big{color:#fff}
+.today h2{color:#fff}
+.today .btn{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.today .btn:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.today.calm .big{color:#8FE0B4}
 .alert{padding:13px 18px}
-.steps li::before{background:var(--ink);color:#000}
-.spinner{border-color:var(--line);border-top-color:var(--ink)}
+.alert .btn{background:transparent}
+.steps li::before{background:var(--accent);color:var(--accent-ink)}
+.spinner{border-color:var(--line);border-top-color:var(--accent)}
+.empty{border-style:dashed}
 
 /* toast + dialog */
-.toast{background:var(--wash-2);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.6)}
-.toast button{color:var(--accent)}
+.toast{background:var(--navy-2);color:#fff;border:1px solid #24466F;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+.toast button{color:var(--accent-2)}
 .overlay{background:rgba(0,0,0,.72)}
 .dialog{background:var(--paper);border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.7)}
 .cmp-t th{border-bottom-color:var(--line)}
 .cmp-t td{border-bottom-color:var(--line-2)}
+.cmp-t tr.current td{background:var(--accent-bg)}
 
 /* ---------- graphs: light grey panel for contrast ---------- */
 .graph{
   color-scheme:light;
-  --paper:#E4E7EB; --wash:#D9DDE2; --wash-2:#D3D8DE;
-  --line:#BFC6CF; --line-2:#CDD3DA;
-  --ink:#101820; --body:#33404D; --muted:#56626F; --faint:#6E7A87;
-  --navy-3:#21466F;
-  background:var(--paper);color:var(--body);border:1px solid #2A2F36;border-radius:var(--r)}
+  --paper:#E6E9EE; --wash:#DCE1E7; --wash-2:#D5DBE2;
+  --line:#C3CBD5; --line-2:#CFD6DE;
+  --ink:#0F1822; --body:#33404D; --muted:#56626F; --faint:#6E7A87;
+  --navy-3:#1E4778; --accent:#1A6DD4; --accent-ink:#fff;
+  --ok:#17784A; --ok-bg:#DDEFE4; --order:#8E6100; --order-bg:#F6EBD2; --crit:#A82219; --crit-bg:#F6DEDB; --over:#2B5EA7; --over-bg:#DDE7F6; --none:#5E6B7A; --none-bg:#E3E7EC;
+  background:var(--paper);color:var(--body);border:1px solid #2A3E57;border-radius:var(--r)}
 .graph .gl{color:var(--body)}
-.bars{background:#E4E7EB;border-radius:8px;padding:8px 8px 0;border-bottom:0;height:86px;
-  --line:#BFC6CF;--faint:#6E7A87}
-.bars i{background:#21466F}
-.cfbar-track{background:#CDD3DA}
-.cfbar{background:#21466F}
+.bars{background:#E6E9EE;border-radius:8px;padding:8px 8px 0;border-bottom:0;height:86px;--line:#C3CBD5;--faint:#6E7A87}
+.bars i{background:#1E4778}
+.cfbar-track{background:#CFD6DE}
+.cfbar{background:linear-gradient(90deg,#1A6DD4,#5DA2F2);animation:tlgrow .7s cubic-bezier(.2,.7,.2,1) both;transform-origin:left center}
+html[dir="rtl"] .cfbar{transform-origin:right center}
 .cflabel{color:var(--body)}
 .cfval{color:var(--ink)}
+.chart .ser{transition:opacity .15s}
+.chart:hover .ser{opacity:.3}
+.chart .ser:hover{opacity:1}
 
 /* ---------- sign in ---------- */
-.login{background:var(--bg)}
-.login-brand{background:var(--bg);border-inline-end:1px solid var(--line-2);color:var(--body)}
-.login-brand h2{color:var(--ink);font-size:40px}
-.login-form{position:relative}
-.login-top{position:absolute;top:24px;inset-inline-end:28px}
-.login-top .lang{font-size:14px;padding:8px 14px}
-.login-card .btn{margin-top:16px}
+.login{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);grid-template-rows:auto 1fr;min-height:100vh;background:var(--bg)}
+.login > .topbar{grid-column:1 / -1}
+.login-brand{position:relative;overflow:hidden;background:linear-gradient(168deg,var(--navy) 0%,var(--navy-2) 58%,var(--navy-3) 100%);color:#C3D6EA;
+  padding:56px 48px;display:flex;flex-direction:column;justify-content:center;gap:10px;border-inline-end:1px solid #1B3556}
+.login-brand::before{content:"";position:absolute;top:-30%;inset-inline-end:-25%;width:90%;height:130%;background:radial-gradient(ellipse at center,rgba(93,162,242,.22),transparent 62%);pointer-events:none}
+.login-brand::after{content:"";position:absolute;inset:0;opacity:.35;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:46px 46px;
+  mask-image:radial-gradient(ellipse at 20% 0%,#000,transparent 72%);-webkit-mask-image:radial-gradient(ellipse at 20% 0%,#000,transparent 72%)}
+.login-brand > *{position:relative;z-index:1}
+.login-brand h2{color:#fff;font-size:44px;line-height:1.1;letter-spacing:-.02em;margin-top:0;max-width:16ch}
+.login-brand p{color:#C3D6EA}
+.login-brand .fine{color:#8FA9C6;margin-top:18px}
+.login-form{display:grid;place-items:center;padding:40px 32px;background:var(--bg)}
+.login-card .btn{margin-top:16px;padding:13px}
+.login-card label{color:var(--ink)}
+.login-card .lede{color:var(--muted)}
 .login-foot{margin-top:24px}
 .msg.info{color:var(--accent-2)}
-@media (max-width:820px){.login{position:relative}.login-form{position:static}.login-top{top:18px;inset-inline-end:16px}}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .side{position:static;height:auto;top:auto;padding:10px 12px 8px;border-inline-end:0;border-bottom:1px solid var(--line-2)}
+  .topbar{padding:10px 16px;gap:10px}
+  .topbar .sep,.topbar .title,.topbar .mark span{display:none}
+  .topbar .ghost{display:inline-block;border-color:rgba(255,255,255,.34);color:#fff}
+  .view > .page-head:first-child{padding:20px}
+}
+@media (max-width:900px){
+  .app > *{min-width:0}
+  .side{min-width:0;max-width:100vw;overflow:hidden}
+  .side .nav{overflow-x:auto;scrollbar-width:none}
+  .topbar .status span{display:none}
+  .topbar .lang,.topbar .ghost{padding:6px 10px;font-size:13px}
+}
+@media (max-width:820px){
+  .login{grid-template-columns:1fr}
+  .login-brand{padding:28px 20px}
+  .login-brand h2{font-size:28px}
+}
+
+/* demand graphs */
+.gpanel{margin-top:16px}
+.gpanel h3{margin-bottom:6px}
+.gscroll{overflow-x:auto}
+.gpanel .chart{min-width:700px}
+.gtable{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.gtable th{text-align:start;font-weight:600;font-size:12.5px;color:var(--muted);padding:8px 12px;border-bottom:1px solid var(--line);background:#F7F9FC}
+.gtable td{padding:8px 12px;border-bottom:1px solid var(--line-2)}
+.gtable tr:last-child td{border-bottom:0}
+.gtable .num{text-align:end}
+.gtable .gl i{width:18px;height:3px}
+.gkey{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:13px;color:var(--body);margin:0 0 4px}
+.gkey span{display:inline-flex;align-items:center;gap:8px}
+.gkey i{display:inline-block}
+.gkey .k-solid{width:22px;height:0;border-top:2.5px solid var(--navy-3)}
+.gkey .k-dash{width:22px;height:0;border-top:2.5px dashed var(--navy-3)}
+.gkey .k-ring{width:12px;height:12px;border-radius:50%;border:2.5px solid var(--navy-3);background:#fff}
+.gkey .k-red{width:14px;height:14px;border-radius:50%;border:2.5px solid #A82219;background:#fff;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 8px var(--navy-3)}
+
+/* reorder timeline */
+.tl{padding:22px 24px 16px}
+.tl h3{margin-bottom:2px}
+.tl-lede{font-size:13.5px;color:var(--muted);margin:0 0 14px}
+.tl-row{display:grid;grid-template-columns:170px minmax(0,1fr) 190px;gap:18px;align-items:center;padding:9px 0;border-top:1px solid var(--line-2)}
+.tl-row:first-of-type,.tl-axisrow{border-top:0}
+.tl-axisrow{padding:0 0 6px}
+.tl-name{font-weight:600;color:var(--ink);font-size:14px;line-height:1.25}
+.tl-name small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:2px}
+.tl-axis{position:relative;height:16px;font-size:11.5px;color:var(--muted)}
+.tl-axis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+html[dir="rtl"] .tl-axis span{transform:translateX(50%)}
+.tl-axis span:first-child{transform:none;font-weight:700;color:#0E2743}
+.tl-axis span:last-child{transform:translateX(-100%)}
+html[dir="rtl"] .tl-axis span:last-child{transform:translateX(100%)}
+.tl-track{position:relative;height:10px;border-radius:5px;background:#CDD3DA;margin:0 8px}
+.tl-track i{position:absolute;top:-5px;bottom:-5px;width:1px;background:#BAC3CD}
+.tl-track i:first-child{background:#0E2743;width:2px}
+.tl-fill{position:absolute;top:0;bottom:0;inset-inline-start:0;border-radius:5px;background:linear-gradient(90deg,#1A6DD4,#5DA2F2);
+  transform-origin:left center;animation:tlgrow .7s cubic-bezier(.2,.7,.2,1) both}
+html[dir="rtl"] .tl-fill{transform-origin:right center;background:linear-gradient(270deg,#1A6DD4,#5DA2F2)}
+.tl-fill.near{background:linear-gradient(90deg,#1A6DD4,#C98A12)}
+.tl-fill.later{background:linear-gradient(90deg,#1A6DD4,#9DBEE8)}
+.tl-dot{position:absolute;top:50%;width:18px;height:18px;margin-inline-start:-9px;margin-top:-9px;border-radius:50%;background:#fff;border:3.5px solid #1A6DD4;
+  box-shadow:0 1px 3px rgba(14,39,67,.3);animation:tlpop .35s ease-out both}
+.tl-dot span{display:none}
+.tl-dot.near{border-color:#C98A12}
+.tl-dot.later{border-color:#7FA6D6;border-style:dashed}
+.tl-dot.crit{border-color:#C0392B;animation:tlpop .35s ease-out both,tlpulse 1.8s ease-out .6s infinite}
+.tl-dot.order{border-color:#D98A00;animation:tlpop .35s ease-out both,tlpulse 1.8s ease-out .6s infinite}
+.tl-empty{background:repeating-linear-gradient(90deg,#D3D8DE 0 6px,transparent 6px 12px);opacity:.8}
+.tl-when{font-size:13px;font-weight:700;color:#1A5BB0}
+.tl-when.crit{color:#A82219}.tl-when.order,.tl-when.near{color:#8E6100}
+.tl-when.later,.tl-when.over,.tl-when.idle{color:var(--muted);font-weight:600}
+@keyframes tlgrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes tlpop{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes tlpulse{0%{box-shadow:0 0 0 0 rgba(192,57,43,.45)}70%{box-shadow:0 0 0 10px rgba(192,57,43,0)}100%{box-shadow:0 0 0 0 rgba(192,57,43,0)}}
+@media (max-width:760px){.tl-row{grid-template-columns:1fr;gap:6px}.tl-axisrow{display:none}.tl-track{margin:4px 8px 2px}}
 
 .lang-base{background:none;border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--ink)}
 </style>
@@ -504,19 +643,21 @@ label > input[type=checkbox]:not(.switch input){margin-inline-end:10px}
 
 <!-- ============ SIGN IN ============ -->
 <div id="login" class="login" hidden>
-  <div class="login-brand">
+  <header class="topbar">
     <a class="mark" href="#" onclick="return false">
       <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#fff"/><rect x="8" y="17" width="3.6" height="7" rx="1.3" fill="#0E2743" opacity=".45"/><rect x="14.2" y="12" width="3.6" height="12" rx="1.3" fill="#0E2743" opacity=".7"/><rect x="20.4" y="8" width="3.6" height="16" rx="1.3" fill="#1A6DD4"/></svg>
-      <b class="appname">Etlob Sa7</b>
+      <div><b class="appname">Etlob Sa7</b><span data-t="login.tag">Demand planning for Egypt</span></div>
     </a>
-    <div>
-      <h2 data-t="login.pitch">Know what to reorder, how much, and when.</h2>
-      <p class="hide-sm" data-t="login.pitch2">Your sales history in. A purchase order you can send out.</p>
-    </div>
-    <p class="small hide-sm" style="color:var(--faint)" data-t="login.private">Your numbers are private to your account.</p>
+    <span class="push"></span>
+    <button type="button" class="lang" data-act="lang">العربية</button>
+  </header>
+  <div class="login-brand">
+    <p class="eyebrow" data-t="login.eyebrow">Your purchasing, planned</p>
+    <h2 data-t="login.pitch">Know what to reorder, how much, and when.</h2>
+    <p data-t="login.pitch2">Your sales history in. A purchase order you can send out.</p>
+    <p class="small fine hide-sm" data-t="login.private">Your numbers are private to your account.</p>
   </div>
   <div class="login-form">
-    <div class="login-top"><button type="button" class="lang" data-act="lang">العربية</button></div>
     <div class="login-card">
       <h1 data-t="login.title">Sign in</h1>
       <p class="lede" id="login-lede" data-t="login.lede">Use the email you subscribed with. We will email you a 6 digit code. No password needed.</p>
@@ -548,23 +689,23 @@ label > input[type=checkbox]:not(.switch input){margin-inline-end:10px}
 
 <!-- ============ APP ============ -->
 <div id="app" class="app" hidden>
+  <header class="topbar">
+    <a class="mark" href="#" onclick="return false">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#fff"/><rect x="8" y="17" width="3.6" height="7" rx="1.3" fill="#0E2743" opacity=".45"/><rect x="14.2" y="12" width="3.6" height="12" rx="1.3" fill="#0E2743" opacity=".7"/><rect x="20.4" y="8" width="3.6" height="16" rx="1.3" fill="#1A6DD4"/></svg>
+      <div><b class="appname">Etlob Sa7</b><span data-t="login.tag">Demand planning for Egypt</span></div>
+    </a>
+    <span class="sep"></span>
+    <span class="title" id="bar-title"></span>
+    <span class="push"></span>
+    <span class="status" id="status"><i></i><span></span></span>
+    <button class="lang" data-act="lang">العربية</button>
+    <button class="ghost" data-act="logout" data-t="nav.signout">Sign out</button>
+  </header>
   <aside class="side">
-    <div class="top">
-      <a class="mark" href="#" onclick="return false">
-        <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#fff"/><rect x="8" y="17" width="3.6" height="7" rx="1.3" fill="#0E2743" opacity=".45"/><rect x="14.2" y="12" width="3.6" height="12" rx="1.3" fill="#0E2743" opacity=".7"/><rect x="20.4" y="8" width="3.6" height="16" rx="1.3" fill="#1A6DD4"/></svg>
-        <b class="appname">Etlob Sa7</b>
-      </a>
-      <button class="ghost" data-act="logout" data-t="nav.signout">Sign out</button>
-    </div>
     <nav class="nav" id="nav" aria-label="Sections"></nav>
     <div class="account" id="account"></div>
   </aside>
   <div class="main">
-    <div class="bar">
-      <span class="title" id="bar-title"></span>
-      <span class="status" id="status"><i></i><span></span></span>
-      <button class="lang" data-act="lang">العربية</button>
-    </div>
     <div class="view" id="view"></div>
   </div>
 </div>
@@ -630,7 +771,7 @@ en: {
   'nav.trends': 'Demand graphs',
   'nav.score': 'Suppliers scorecard',
   'gr.title': 'Demand graphs',
-  'gr.lede': 'Your actual monthly sales per product. Products with similar demand share a graph, up to five each, so the lines stay readable.',
+  'gr.lede': 'Your real monthly sales per product, with the forecast for the next three months. Products that sell at a similar level share a graph, up to five each, so the lines stay readable.',
   'gr.band': 'Busiest month between {lo} and {hi} units',
   'gr.bandOne': 'Busiest month around {lo} units',
   'gr.empty': 'No sales history yet',
@@ -639,7 +780,7 @@ en: {
   'gr.forecast': 'Forecast',
   'gr.reorder': 'Reorder point reached',
   'gr.reorderNow': 'Order now',
-  'gr.legend': 'Solid line is what you sold. Dotted line is the forecast. The vertical mark is when that product hits its reorder point.',
+  'gr.legend': 'Solid line is what you sold. Dashed line is the forecast. A ring marks the day each product reaches its reorder point.',
   'gr.now': 'Today',
   'why.title': 'Why',
   'why.CRITICAL': 'You have {ip} in stock and on order. That is at or below the {ss} safety buffer, so you are already exposed. At {rate} a day, {lt} days of supplier waiting needs {rop} on the shelf.',
@@ -1154,7 +1295,30 @@ en: {
   'c.P_MISSING': 'Its season shape was deleted.',
   'c.P_FLATSWING': 'Marked flat, but sales swing a lot. Is it seasonal?',
   'c.F_SPIKE': 'One month is far above the rest. Remove any one-off order.',
-  'c.F_Z': 'Erratic even with the season removed. Use your judgement too.'
+  'c.F_Z': 'Erratic even with the season removed. Use your judgement too.',
+  'gr.history': 'Last 12 months',
+  'gr.next3': 'Next 3 months',
+  'gr.inDays': 'In {n} days',
+  'gr.dShort': '{n}d',
+  'gr.later': 'Not in the next 3 months',
+  'gr.nextMonth': 'Forecast next month',
+  'gr.nextOrder': 'Reorder',
+  'gr.kSold': 'Sold',
+  'gr.kFc': 'Forecast',
+  'gr.kRing': 'Reorder point, with days left',
+  'gr.kRed': 'Needs ordering: red today, amber this week',
+  'tl.title': 'When each product needs reordering',
+  'tl.lede': 'Every product on one line, from today to three months out. The dot is the day its stock drops to the reorder point.',
+  'tl.now': 'Today',
+  'tl.w2': '2 weeks',
+  'tl.m1': '1 month',
+  'tl.m2': '2 months',
+  'tl.m3': '3 months',
+  'tl.over': 'Overstocked, nothing to reorder',
+  'tl.none': 'Not selling lately',
+  'login.tag': 'Demand planning for Egypt',
+  'login.eyebrow': 'Your purchasing, planned',
+  'nav.g0': 'Overview',
 },
 
 ar: {
@@ -1204,7 +1368,7 @@ ar: {
   'nav.trends': 'رسوم الطلب',
   'nav.score': 'تقييم الموردين',
   'gr.title': 'رسوم الطلب',
-  'gr.lede': 'مبيعاتك الشهرية الفعلية لكل منتج. المنتجات اللي طلبها متقارب بتتجمع في رسم واحد، لحد خمسة، علشان الخطوط تفضل واضحة.',
+  'gr.lede': 'مبيعاتك الشهرية الحقيقية لكل منتج، ومعاها التوقع للـ 3 شهور الجاية. المنتجات اللي بتبيع بمستوى قريب بتتجمع في رسم واحد، لحد خمسة، علشان الخطوط تفضل واضحة.',
   'gr.band': 'أعلى شهر بين {lo} و{hi} قطعة',
   'gr.bandOne': 'أعلى شهر حوالي {lo} قطعة',
   'gr.empty': 'لسه مفيش مبيعات مسجلة',
@@ -1213,7 +1377,7 @@ ar: {
   'gr.forecast': 'التوقع',
   'gr.reorder': 'وقت إعادة الطلب',
   'gr.reorderNow': 'اطلب دلوقتي',
-  'gr.legend': 'الخط المتصل هو اللي بعته. الخط المتقطع هو التوقع. العلامة الرأسية هي وقت ما المنتج يوصل نقطة إعادة الطلب.',
+  'gr.legend': 'الخط المتصل هو اللي بعته. الخط المتقطع هو التوقع. الدايرة بتعلّم اليوم اللي كل منتج هيوصل فيه نقطة إعادة الطلب.',
   'gr.now': 'النهارده',
   'why.title': 'ليه',
   'why.CRITICAL': 'عندك {ip} موجود وفي الطريق. ده عند حد الأمان {ss} أو تحته، يعني انت فعلا مكشوف. بمعدل {rate} في اليوم، انتظار المورد {lt} يوم محتاج {rop} على الرف.',
@@ -1716,7 +1880,30 @@ ar: {
   'c.P_MISSING': 'شكل الموسم بتاعه اتمسح.',
   'c.P_FLATSWING': 'متسجل ثابت بس المبيعات بتتغير جامد. هل هو موسمي؟',
   'c.F_SPIKE': 'في شهر أعلى بكتير من الباقي. شيل أي طلبية استثنائية.',
-  'c.F_Z': 'عشوائي حتى بعد شيل الموسمية. استخدم تقديرك كمان.'
+  'c.F_Z': 'عشوائي حتى بعد شيل الموسمية. استخدم تقديرك كمان.',
+  'gr.history': 'آخر 12 شهر',
+  'gr.next3': 'الـ 3 شهور الجاية',
+  'gr.inDays': 'بعد {n} يوم',
+  'gr.dShort': '{n} يوم',
+  'gr.later': 'مش خلال الـ 3 شهور الجاية',
+  'gr.nextMonth': 'توقع الشهر الجاي',
+  'gr.nextOrder': 'إعادة الطلب',
+  'gr.kSold': 'اتباع',
+  'gr.kFc': 'التوقع',
+  'gr.kRing': 'نقطة إعادة الطلب، والأيام الباقية',
+  'gr.kRed': 'محتاج يتطلب: الأحمر النهارده، والبرتقالي الأسبوع ده',
+  'tl.title': 'إمتى كل منتج محتاج يتطلب تاني',
+  'tl.lede': 'كل المنتجات على خط واحد، من النهارده لحد 3 شهور قدام. النقطة هي اليوم اللي المخزون هيوصل فيه نقطة إعادة الطلب.',
+  'tl.now': 'النهارده',
+  'tl.w2': 'أسبوعين',
+  'tl.m1': 'شهر',
+  'tl.m2': 'شهرين',
+  'tl.m3': '3 شهور',
+  'tl.over': 'مخزون زيادة، مفيش داعي تطلب',
+  'tl.none': 'مش بيتباع الفترة دي',
+  'login.tag': 'تخطيط الطلب لمصر',
+  'login.eyebrow': 'مشترياتك، متخططة',
+  'nav.g0': 'نظرة عامة',
 }
 };
 
@@ -1998,7 +2185,7 @@ function renderAccount() {
   const usage = lim.products >= 500 ? t('plan.usageUnl', { n: S.ws.products.length }) : t('plan.usage', { n: S.ws.products.length, max: lim.products });
   $('#account').innerHTML =
     '<div class="email">' + esc(S.me.email) + '</div>' +
-    '<div class="plan">' + esc(t('plan.' + S.me.plan)) + '<br><span style="color:var(--faint)">' + esc(usage) + '</span></div>' +
+    '<div class="plan">' + esc(t('plan.' + S.me.plan)) + '<br><span style="color:var(--muted)">' + esc(usage) + '</span></div>' +
     '<div class="row">' +
     (CFG.whatsapp ? '<a class="ghost" style="text-decoration:none" href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '') +
     '<button class="ghost" data-act="logout">' + esc(t('nav.signout')) + '</button></div>';
@@ -2042,7 +2229,8 @@ const rowById = id => S.res.rows.find(r => r.id === id);
 const supName = s => (s && s.name) ? s.name : t('unnamed');
 function profName(p) { if (!p) return ''; return p.builtin ? (LANG === 'ar' ? p.nameAr : p.name) : (p.name || t('unnamed')); }
 function head(title, lede, actions) {
-  return '<div class="page-head"><div><h1>' + esc(title) + '</h1>' + (lede ? '<p>' + esc(lede) + '</p>' : '') + '</div>' +
+  const tab = TABS.find(x => x.id === S.tab), eb = tab ? t('nav.g' + tab.g) : '';
+  return '<div class="page-head"><div>' + (eb ? '<p class="eyebrow">' + esc(eb) + '</p>' : '') + '<h1>' + esc(title) + '</h1>' + (lede ? '<p>' + esc(lede) + '</p>' : '') + '</div>' +
     (actions ? '<div class="actions">' + actions + '</div>' : '') + '</div>';
 }
 function emptyBox(title, text, actions) {
@@ -2573,80 +2761,164 @@ VIEWS.demand = () => {
 /* ---------- Demand graphs ---------- */
 // One SVG per band of similarly selling products. Drawn by hand rather than with a
 // chart library, because the app must stay a single file with no external scripts.
+const GR_COLORS = ['#1A6DD4', '#B0801F', '#17784A', '#6B3FA0', '#0E8A9A'];
+function niceStep(max, n) {
+  const raw = max / n, p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / p;
+  return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
+}
 function bandChart(band, last) {
-  const W = 760, H = 280, L = 52, R = 16, TOP = 14, B = 42;
+  const W = 860, H = 300, L = 46, R = 22, TOP = 34, B = 30;
   const hist = 12, fut = 3, pts = hist + fut;
   const plotW = W - L - R, plotH = H - TOP - B;
+  const dpm = (S.ws.settings && S.ws.settings.daysPerMonth) || 30;
 
-  let max = 0;
-  band.series.forEach(s => {
-    s.sales.forEach(v => { if (v != null && v > max) max = v; });
-    s.forecast.forEach(v => { if (v > max) max = v; });
+  let peak = 0;
+  band.series.forEach(sr => {
+    sr.sales.forEach(v => { if (v != null && v > peak) peak = v; });
+    sr.forecast.forEach(v => { if (v > peak) peak = v; });
   });
-  max = Math.max(1, Math.ceil(max * 1.15 / 5) * 5);
-
-  const x = i => L + (plotW * i) / (pts - 1);
+  const step = niceStep(Math.max(1, peak), 4);
+  const max = Math.max(step, Math.ceil((peak * 1.08) / step) * step);
+  const histW = plotW * 0.6, futW = plotW - histW;
+  const x = i => i <= hist - 1 ? L + (histW * i) / (hist - 1) : L + histW + (futW * (i - hist + 1)) / fut;
   const y = v => TOP + plotH - (plotH * v) / max;
+  const xNow = x(hist - 1), xEnd = x(pts - 1);
 
   let g = '';
-  // horizontal grid + y labels
-  for (let k = 0; k <= 4; k++) {
-    const v = (max / 4) * k, yy = y(v);
-    g += '<line x1="' + L + '" y1="' + yy + '" x2="' + (W - R) + '" y2="' + yy + '" stroke="var(--line-2)" stroke-width="1"/>';
-    g += '<text x="' + (L - 8) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="11" fill="var(--faint)">' + n0(v) + '</text>';
+  // forecast zone
+  g += '<rect x="' + xNow + '" y="' + TOP + '" width="' + (xEnd - xNow + R - 6) + '" height="' + plotH + '" fill="#1A6DD4" opacity=".06"/>';
+  g += '<text x="' + L + '" y="' + (TOP - 14) + '" font-size="11" fill="#6C7C90">' + esc(t('gr.history')) + '</text>';
+  g += '<text x="' + ((xNow + xEnd) / 2 + 14) + '" y="' + (TOP - 14) + '" text-anchor="middle" font-size="11" fill="#1A6DD4" font-weight="600">' + esc(t('gr.next3')) + '</text>';
+  // grid + y labels
+  for (let v = 0; v <= max + 1e-9; v += step) {
+    const yy = y(v);
+    g += '<line x1="' + L + '" y1="' + yy + '" x2="' + (xEnd + R - 6) + '" y2="' + yy + '" stroke="' + (v === 0 ? '#B8C3CF' : '#DDE3EA') + '" stroke-width="1"/>';
+    g += '<text x="' + (L - 8) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="11" fill="#6C7C90">' + n0(v) + '</text>';
   }
-  // month labels, every other one to avoid crowding
+  // every month on the axis
   for (let i = 0; i < pts; i++) {
-    if (i % 2) continue;
     const m = calMonth(i + 1, last);
-    g += '<text x="' + x(i) + '" y="' + (H - B + 18) + '" text-anchor="middle" font-size="11" fill="var(--faint)">' + esc(monthName(m)) + '</text>';
+    g += '<text x="' + x(i) + '" y="' + (H - B + 18) + '" text-anchor="middle" font-size="10.5" fill="' + (i >= hist ? '#1A6DD4' : '#6C7C90') + '">' + esc(monthName(m)) + '</text>';
   }
-  // boundary between history and forecast
-  const xNow = x(hist - 1);
-  g += '<line x1="' + xNow + '" y1="' + TOP + '" x2="' + xNow + '" y2="' + (TOP + plotH) + '" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 3"/>';
-  g += '<text x="' + xNow + '" y="' + (TOP - 3) + '" text-anchor="middle" font-size="10" fill="var(--muted)">' + esc(t('gr.now')) + '</text>';
+  // today
+  g += '<line x1="' + xNow + '" y1="' + TOP + '" x2="' + xNow + '" y2="' + (TOP + plotH) + '" stroke="#0E2743" stroke-width="1.2" opacity=".55"/>';
+  const tw = Math.max(46, t('gr.now').length * 7 + 18);
+  g += '<rect x="' + (xNow - tw / 2) + '" y="' + (TOP - 26) + '" width="' + tw + '" height="18" rx="9" fill="#0E2743"/>';
+  g += '<text x="' + xNow + '" y="' + (TOP - 13) + '" text-anchor="middle" font-size="10.5" font-weight="600" fill="#fff">' + esc(t('gr.now')) + '</text>';
 
-  band.series.forEach(s => {
-    // history: skip blank months instead of drawing a line down to zero
-    let d = '', started = false;
-    s.sales.forEach((v, i) => {
+  const marks = [];
+  band.series.forEach((sr, si) => {
+    let sg = '';
+    (() => {
+    const col = GR_COLORS[si % GR_COLORS.length];
+    let d = '', started = false, lastI = -1;
+    sr.sales.forEach((v, i) => {
       if (v == null) return;
       d += (started ? 'L' : 'M') + x(i) + ' ' + y(v) + ' ';
-      started = true;
+      started = true; lastI = i;
     });
-    if (d) g += '<path d="' + d.trim() + '" fill="none" stroke="' + s.color + '" stroke-width="2" stroke-linejoin="round"/>';
-    s.sales.forEach((v, i) => {
+    if (d) sg += '<path d="' + d.trim() + '" fill="none" stroke="' + col + '" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>';
+    sr.sales.forEach((v, i) => {
       if (v == null) return;
-      g += '<circle cx="' + x(i) + '" cy="' + y(v) + '" r="2.6" fill="' + s.color + '"><title>' + esc(s.name) + ': ' + n0(v) + '</title></circle>';
+      sg += '<circle cx="' + x(i) + '" cy="' + y(v) + '" r="2.4" fill="' + col + '"><title>' + esc(sr.name) + ', ' + esc(monthName(calMonth(i + 1, last))) + ': ' + n0(v) + '</title></circle>';
     });
-    // forecast continues from the last real month
-    let lastI = -1;
-    s.sales.forEach((v, i) => { if (v != null) lastI = i; });
-    if (lastI >= 0) {
-      let f = 'M' + x(lastI) + ' ' + y(s.sales[lastI]) + ' ';
-      s.forecast.forEach((v, k) => { f += 'L' + x(hist + k) + ' ' + y(v) + ' '; });
-      g += '<path d="' + f.trim() + '" fill="none" stroke="' + s.color + '" stroke-width="2" stroke-dasharray="4 4" opacity=".75"/>';
+    if (lastI < 0) return;
+    const poly = [[lastI, sr.sales[lastI]]].concat(sr.forecast.map((v, k) => [hist + k, v]));
+    let f = '';
+    poly.forEach((q, k) => { f += (k ? 'L' : 'M') + x(q[0]) + ' ' + y(q[1]) + ' '; });
+    sg += '<path d="' + f.trim() + '" fill="none" stroke="' + col + '" stroke-width="2.4" stroke-dasharray="5 5" stroke-linecap="round" opacity=".85"/>';
+    const at = idx => {
+      if (idx <= poly[0][0]) return poly[0][1];
+      for (let k = 1; k < poly.length; k++) {
+        const a0 = poly[k - 1], b0 = poly[k];
+        if (idx <= b0[0]) return a0[1] + (b0[1] - a0[1]) * (idx - a0[0]) / (b0[0] - a0[0]);
+      }
+      return poly[poly.length - 1][1];
+    };
+    const now = sr.decision === 'CRITICAL' || sr.decision === 'ORDER';
+    if (!now && sr.decision !== 'OK') return; // overstocked or not selling: nothing to reorder
+    const ri = now ? 0 : sr.reorderIn;
+    if (ri == null || !isFinite(ri) || ri > fut) return;
+    const idx = hist - 1 + ri, mx = x(idx), my = y(at(idx)), days = Math.round(ri * dpm);
+    marks.push({ now, crit: sr.decision === 'CRITICAL', mx, my, col, days, name: sr.name });
+    })();
+    g += '<g class="ser">' + sg + '</g>';
+  });
+  // reorder markers go on top of every line; day labels are nudged so they never overlap
+  const boxes = marks.map(m => ({ x0: m.mx - 9, x1: m.mx + 9, y0: m.my - 9, y1: m.my + 9 }));
+  const hit = b => boxes.some(o => b.x0 < o.x1 && b.x1 > o.x0 && b.y0 < o.y1 && b.y1 > o.y0);
+  marks.forEach(m => {
+    if (m.now) return;
+    const txt = t('gr.dShort', { n: m.days }), w = txt.length * 6.8 + 6;
+    for (const dy of [-14, 22, -28, 36, -42, 50]) {
+      const b = { x0: m.mx - w / 2, x1: m.mx + w / 2, y0: m.my + dy - 11, y1: m.my + dy + 2 };
+      if (b.y0 < TOP - 2 || b.y1 > TOP + plotH) continue;
+      if (!hit(b) || dy === 50) { m.ly = m.my + dy; boxes.push(b); break; }
     }
-    // when this product hits its reorder point
-    const ri = s.decision === 'CRITICAL' || s.decision === 'ORDER' ? 0 : s.reorderIn;
-    if (ri != null && isFinite(ri) && ri <= fut) {
-      const rx = x(hist - 1 + ri);
-      g += '<line x1="' + rx + '" y1="' + TOP + '" x2="' + rx + '" y2="' + (TOP + plotH) + '" stroke="' + s.color + '" stroke-width="1.5" stroke-dasharray="5 4" opacity=".8"/>';
-      g += '<circle cx="' + rx + '" cy="' + TOP + '" r="3.5" fill="' + s.color + '"><title>' + esc(s.name) + ': ' +
-           esc(ri <= 0.02 ? t('gr.reorderNow') : t('gr.reorder')) + '</title></circle>';
+    if (m.ly == null) m.ly = m.my - 14;
+  });
+  marks.forEach(m => {
+    const tip = esc(m.name) + ': ' + esc(m.now ? t(m.crit ? 'v.CRITICAL' : 'v.ORDER') : t('gr.inDays', { n: m.days }));
+    if (m.now) {
+      g += '<circle cx="' + m.mx + '" cy="' + m.my + '" r="8" fill="#fff" stroke="' + (m.crit ? '#A82219' : '#D98A00') + '" stroke-width="2.5"><title>' + tip + '</title></circle>';
+      g += '<circle cx="' + m.mx + '" cy="' + m.my + '" r="3.2" fill="' + m.col + '"/>';
+    } else {
+      g += '<circle cx="' + m.mx + '" cy="' + m.my + '" r="6.5" fill="#fff" stroke="' + m.col + '" stroke-width="2.5"><title>' + tip + '</title></circle>';
+      g += '<text x="' + m.mx + '" y="' + m.ly + '" text-anchor="middle" font-size="11" font-weight="700" fill="' + m.col + '" stroke="#F1F4F8" stroke-width="4" paint-order="stroke">' + esc(t('gr.dShort', { n: m.days })) + '</text>';
     }
   });
 
-  const legend = band.series.map(s =>
-    '<span class="gl"><i style="background:' + s.color + '"></i>' + bdi(s.name || t('unnamed')) + '</span>').join('');
+  // table under the chart: when each product needs ordering, most urgent first
+  const rank = sr => (sr.decision === 'CRITICAL' ? -2 : sr.decision === 'ORDER' ? -1 : sr.decision === 'OK' && sr.reorderIn != null && isFinite(sr.reorderIn) ? sr.reorderIn : 999);
+  const rows = band.series.map((sr, si) => ({ sr, col: GR_COLORS[si % GR_COLORS.length] })).sort((p, q) => rank(p.sr) - rank(q.sr)).map(o => {
+    const sr = o.sr, ri = sr.reorderIn;
+    let when;
+    if (sr.decision !== 'OK') when = verdict(sr.decision);
+    else if (ri != null && isFinite(ri) && ri <= fut) when = '<span class="pill v-OK">' + esc(t('gr.inDays', { n: Math.round(ri * dpm) })) + '</span>';
+    else when = '<span class="small muted">' + esc(t('gr.later')) + '</span>';
+    return '<tr><td><span class="gl"><i style="background:' + o.col + '"></i><b style="color:var(--ink)">' + bdi(sr.name || t('unnamed')) + '</b></span></td>' +
+      '<td class="num">' + n0(sr.forecast[0]) + '</td><td>' + when + '</td></tr>';
+  }).join('');
 
   const lo = Math.round(band.lo), hi = Math.round(band.hi);
-  return '<div class="panel graph" style="margin-top:16px">' +
-    '<div class="page-head" style="margin-bottom:6px"><h3>' +
-    esc(lo === hi ? t('gr.bandOne', { lo: lo }) : t('gr.band', { lo: lo, hi: hi })) + '</h3></div>' +
-    '<div class="glegend">' + legend + '</div>' +
-    '<div style="overflow-x:auto"><svg viewBox="0 0 ' + W + ' ' + H + '" class="chart" role="img" aria-label="' +
-    esc(t('gr.units')) + '">' + g + '</svg></div></div>';
+  return '<div class="panel graph gpanel">' +
+    '<h3>' + esc(lo === hi ? t('gr.bandOne', { lo: lo }) : t('gr.band', { lo: lo, hi: hi })) + '</h3>' +
+    '<div class="gscroll"><svg viewBox="0 0 ' + W + ' ' + H + '" class="chart" direction="ltr" style="direction:ltr" role="img" aria-label="' + esc(t('gr.units')) + '">' + g + '</svg></div>' +
+    '<table class="gtable"><thead><tr><th>' + esc(t('product')) + '</th><th class="num">' + esc(t('gr.nextMonth')) + '</th><th>' + esc(t('gr.nextOrder')) + '</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+    '</div>';
+}
+
+/* reorder timeline: every product on one track, today to three months out */
+function reorderTimeline() {
+  const dpm = (S.ws.settings && S.ws.settings.daysPerMonth) || 30, span = 3 * dpm;
+  const rows = S.res.rows.filter(r => r.n > 0).map(r => {
+    let days = null, kind;
+    if (r.decision === 'CRITICAL' || r.decision === 'ORDER') { days = 0; kind = r.decision; }
+    else if (r.decision === 'OK' && r.daysToReorder != null && isFinite(r.daysToReorder)) { days = Math.max(0, r.daysToReorder); kind = days <= span ? 'SOON' : 'LATER'; }
+    else kind = r.decision;
+    return { r, days, kind };
+  }).sort((a, b) => (a.days == null ? 1e9 : a.days) - (b.days == null ? 1e9 : b.days) || (a.kind === 'CRITICAL' ? -1 : 1));
+  if (!rows.length) return '';
+  const ticks = [[0, t('tl.now')], [14, t('tl.w2')], [dpm, t('tl.m1')], [2 * dpm, t('tl.m2')], [span, t('tl.m3')]];
+  const axis = ticks.map(([d, lab]) => '<span style="inset-inline-start:' + (100 * d / span) + '%">' + esc(lab) + '</span>').join('');
+  const grid = ticks.map(([d]) => '<i style="inset-inline-start:' + (100 * d / span) + '%"></i>').join('');
+  const body = rows.map((o, i) => {
+    const r = o.r;
+    let label, cls, pct = null;
+    if (o.kind === 'CRITICAL' || o.kind === 'ORDER') { pct = 0; cls = o.kind === 'CRITICAL' ? 'crit' : 'order'; label = t(o.kind === 'CRITICAL' ? 'v.CRITICAL' : 'v.ORDER'); }
+    else if (o.kind === 'SOON') { pct = 100 * o.days / span; cls = o.days <= 14 ? 'near' : 'ok'; label = t('gr.inDays', { n: Math.round(o.days) }); }
+    else if (o.kind === 'LATER') { pct = 100; cls = 'later'; label = t('gr.later'); }
+    else if (o.kind === 'OVER') { cls = 'over'; label = t('tl.over'); }
+    else { cls = 'idle'; label = t('tl.none'); }
+    const track = pct == null ? '<div class="tl-track tl-empty">' + grid + '</div>'
+      : '<div class="tl-track">' + grid + '<b class="tl-fill ' + cls + '" style="width:' + pct + '%;animation-delay:' + (i * 60) + 'ms"></b>' +
+        '<em class="tl-dot ' + cls + '" style="inset-inline-start:' + pct + '%;animation-delay:' + (i * 60 + 250) + 'ms"><span>' + esc(label) + '</span></em></div>';
+    return '<div class="tl-row"><div class="tl-name">' + bdi(r.name || t('unnamed')) + '<small>' + bdi(r.supplierName || t('plan.noSup')) + '</small></div>' + track +
+      '<div class="tl-when ' + cls + '">' + esc(label) + '</div></div>';
+  }).join('');
+  return '<div class="panel graph tl">' +
+    '<h3>' + esc(t('tl.title')) + '</h3><p class="tl-lede">' + esc(t('tl.lede')) + '</p>' +
+    '<div class="tl-row tl-axisrow"><div></div><div class="tl-axis">' + axis + '</div><div></div></div>' + body + '</div>';
 }
 
 VIEWS.trends = () => {
@@ -2655,8 +2927,9 @@ VIEWS.trends = () => {
     return head(t('gr.title'), t('gr.lede')) +
       emptyBox(t('gr.empty'), t('gr.emptyP'), btn(t('nav.products'), 'tab', ' data-tab="products"', 'primary'));
   }
-  return head(t('gr.title'), t('gr.lede')) +
-    '<p class="gridnote" style="margin:0 0 4px">' + esc(t('gr.legend')) + '</p>' +
+  return head(t('gr.title'), t('gr.lede')) + reorderTimeline() +
+    '<div class="gkey" style="margin-top:22px"><span><i class="k-solid"></i>' + esc(t('gr.kSold')) + '</span><span><i class="k-dash"></i>' + esc(t('gr.kFc')) + '</span>' +
+    '<span><i class="k-ring"></i>' + esc(t('gr.kRing')) + '</span><span><i class="k-red"></i>' + esc(t('gr.kRed')) + '</span></div>' +
     bands.map(b => bandChart(b, S.res.lastMonth)).join('');
 };
 
