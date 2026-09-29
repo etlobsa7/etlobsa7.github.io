@@ -635,6 +635,35 @@ html[dir="rtl"] .tl-fill{transform-origin:right center;background:linear-gradien
 @media (max-width:760px){.tl-row{grid-template-columns:1fr;gap:6px}.tl-axisrow{display:none}.tl-track{margin:4px 8px 2px}}
 
 .lang-base{background:none;border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--ink)}
+
+/* ================= page switch motion =================
+   Plays only when you move to another page (goTab) or first open the app,
+   never while typing or saving, so nothing jumps under your cursor. */
+@keyframes vIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes vFade{from{opacity:0}to{opacity:1}}
+@keyframes vDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes vPop{0%{opacity:0;transform:scale(.6)}70%{transform:scale(1.08)}100%{opacity:1;transform:none}}
+#view.enter > *{animation:vIn .5s cubic-bezier(.2,.7,.2,1) both}
+#view.enter > :nth-child(2){animation-delay:.06s}
+#view.enter > :nth-child(3){animation-delay:.12s}
+#view.enter > :nth-child(4){animation-delay:.18s}
+#view.enter > :nth-child(5){animation-delay:.24s}
+#view.enter > :nth-child(6){animation-delay:.3s}
+#view.enter > :nth-child(n+7){animation-delay:.34s}
+#view.enter .kpi{animation:vIn .45s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.15s + var(--i,0) * 45ms)}
+#view.enter .today .big{animation:vPop .6s cubic-bezier(.2,.7,.2,1) .2s both}
+#view.enter .graph path.ln{stroke-dasharray:1;animation:vDraw 1.1s cubic-bezier(.4,.1,.2,1) .25s both}
+#view.enter .graph path[stroke-dasharray]{animation:vFade .6s ease 1.1s both}
+#view.enter .graph circle{animation:vFade .4s ease 1.2s both}
+#view.enter .t tbody tr{animation:vFade .35s ease both;animation-delay:calc(.2s + var(--r,0) * 25ms)}
+.nav button{transition:background .2s ease,color .2s ease,box-shadow .2s ease}
+.nav button[aria-current="page"]{animation:navPick .35s cubic-bezier(.2,.7,.2,1)}
+@keyframes navPick{from{transform:scale(.97)}to{transform:none}}
+#bar-title{display:inline-block}
+#bar-title.swap{animation:vIn .35s cubic-bezier(.2,.7,.2,1) both}
+@media (prefers-reduced-motion:reduce){
+  #view.enter *,#view.enter > *,.nav button[aria-current="page"],#bar-title.swap{animation:none !important}
+}
 </style>
 </head>
 <body>
@@ -2087,6 +2116,7 @@ async function boot() {
   show('app');
   renderShell();
   renderTab();
+  enterView();
   setStatus('saved');
   showNotices(r.notices);
 }
@@ -2191,12 +2221,45 @@ function renderAccount() {
     '<button class="ghost" data-act="logout">' + esc(t('nav.signout')) + '</button></div>';
 }
 
+
+/* ---------- page switch motion ---------- */
+const REDUCE_MOTION = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+function countUpEl(el) {
+  const txt = el.textContent, m = txt.match(/^(\D*?)(-?[\d,]*\.?\d+)(.*)$/);
+  if (!m) return;
+  const target = parseFloat(m[2].replace(/,/g, '')), dec = (m[2].split('.')[1] || '').length, comma = m[2].indexOf(',') >= 0;
+  if (!isFinite(target) || target === 0) return;
+  let t0 = null, last = txt;
+  const fmt = v => { const s2 = v.toFixed(dec); return comma ? Number(s2).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) : s2; };
+  function step(ts) {
+    if (!el.isConnected || el.textContent !== last) return;   /* re-rendered meanwhile: leave the fresh text alone */
+    if (!t0) t0 = ts;
+    const k = Math.min(1, (ts - t0) / 900), v = target * (1 - Math.pow(1 - k, 3));
+    last = k < 1 ? m[1] + fmt(v) + m[3] : txt;                 /* always ends on the exact original text */
+    el.textContent = last;
+    if (k < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+function enterView() {
+  const view = $('#view'), title = $('#bar-title');
+  if (REDUCE_MOTION || !view) return;
+  view.classList.remove('enter'); void view.offsetWidth; view.classList.add('enter');
+  view.querySelectorAll('.kpi').forEach((k, i) => k.style.setProperty('--i', i));
+  view.querySelectorAll('.t tbody tr').forEach((r, i) => { if (i < 24) r.style.setProperty('--r', i); });
+  view.querySelectorAll('.kpi b, .today .big').forEach(countUpEl);
+  if (title) { title.classList.remove('swap'); void title.offsetWidth; title.classList.add('swap'); }
+  clearTimeout(enterView.t);
+  enterView.t = setTimeout(() => { view.classList.remove('enter'); if (title) title.classList.remove('swap'); }, 2600);
+}
+
 function goTab(id, opts) {
   if (!TABS.some(x => x.id === id)) id = 'dash';
   S.tab = id; store.set('es7.tab', id);
   renderNav();
   renderTab();
   if (!opts || !opts.keepScroll) window.scrollTo(0, 0);
+  enterView();
 }
 
 function renderTab() {
@@ -2817,7 +2880,7 @@ function bandChart(band, last) {
       d += (started ? 'L' : 'M') + x(i) + ' ' + y(v) + ' ';
       started = true; lastI = i;
     });
-    if (d) sg += '<path d="' + d.trim() + '" fill="none" stroke="' + col + '" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>';
+    if (d) sg += '<path class="ln" pathLength="1" d="' + d.trim() + '" fill="none" stroke="' + col + '" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>';
     sr.sales.forEach((v, i) => {
       if (v == null) return;
       sg += '<circle cx="' + x(i) + '" cy="' + y(v) + '" r="2.4" fill="' + col + '"><title>' + esc(sr.name) + ', ' + esc(monthName(calMonth(i + 1, last))) + ': ' + n0(v) + '</title></circle>';

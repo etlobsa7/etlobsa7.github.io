@@ -84,6 +84,9 @@ strong{color:var(--ink);font-weight:600}
 .tab.on{color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);
   font-weight:600}
 @media(max-width:1000px){.tabs{display:none}}
+.tab.navlogin{color:var(--accent);margin-inline-start:6px;padding-inline-start:16px;border-inline-start:1px solid var(--line)}
+.tab.navlogin:hover{color:var(--accent-2);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.drawer .tab.navlogin{border-inline-start:0;border-top:1px solid var(--line);padding-inline-start:12px;margin-inline-start:0;margin-top:6px;padding-top:15px}
 .menubtn{display:none;background:none;border:1px solid var(--line);border-radius:7px;
   padding:8px 11px;cursor:pointer;color:var(--ink)}
 @media(max-width:1000px){.menubtn{display:block}}
@@ -341,6 +344,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <button class="tab" data-go="how" data-t="t4"></button>
 <button class="tab" data-go="proof" data-t="t5"></button>
 <button class="tab" data-go="pricing" data-t="t6"></button>
+<a class="tab navlogin" href="https://etlobsa7.com/app/"><small data-t="t463"></small><b data-t="t464"></b></a>
 <button class="tab" data-go="faq" data-t="t7"></button>
 </div>
 <div style="display:flex;gap:8px;align-items:center">
@@ -358,6 +362,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <button class="tab" data-go="how" data-t="t11"></button>
 <button class="tab" data-go="proof" data-t="t12"></button>
 <button class="tab" data-go="pricing" data-t="t13"></button>
+<a class="tab navlogin" data-t="t431" href="https://etlobsa7.com/app/"></a>
 <button class="tab" data-go="faq" data-t="t14"></button>
 </div>
 </nav>
@@ -375,6 +380,18 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <div data-t-html="t21"></div>
 <div data-t-html="t22"></div>
 <div data-t-html="t23"></div>
+</div>
+<div class="hero-visual">
+<div class="hv-card">
+<div class="hv-head"><span class="hv-pulse"></span><b data-t="t433"></b><span class="hv-tag" data-t="t432"></span></div>
+<div class="hv-row"><bdi class="hv-name">Tote bag</bdi><span class="hv-track"><i class="crit" style="--w:3%;--d:500ms"></i></span><span class="hv-when crit" data-t="t434"></span></div>
+<div class="hv-row"><bdi class="hv-name">Leather wallet</bdi><span class="hv-track"><i class="order" style="--w:14%;--d:640ms"></i></span><span class="hv-when order" data-t="t435"></span></div>
+<div class="hv-row"><bdi class="hv-name">Eid gift box</bdi><span class="hv-track"><i class="soon" style="--w:17%;--d:780ms"></i></span><span class="hv-when soon" data-t="t436"></span></div>
+<div class="hv-row"><bdi class="hv-name">Wool scarf</bdi><span class="hv-track"><i class="soon" style="--w:33%;--d:920ms"></i></span><span class="hv-when soon" data-t="t437"></span></div>
+<div class="hv-row"><bdi class="hv-name">Cotton tee</bdi><span class="hv-track"><i class="ok" style="--w:93%;--d:1060ms"></i></span><span class="hv-when ok" data-t="t438"></span></div>
+<div class="hv-foot" data-t="t440"></div>
+</div>
+<p class="hv-cap" data-t="t439"></p>
 </div>
 </div>
 </header>
@@ -440,10 +457,27 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <p class="eyebrow" data-t="t48"></p>
 <h2 data-t="t49"></h2>
 </div>
-<p data-t="t50"></p>
-<p data-t="t51"></p>
+<div class="tradeoff">
+<div class="to-card"><b data-t="t454"></b><p data-t="t50"></p></div>
+<div class="to-card"><b data-t="t455"></b><p data-t="t51"></p></div>
+</div>
+<figure class="ucurve"><svg viewBox="0 0 620 290" role="img" aria-labelledby="uc-t"><title id="uc-t">Ordering cost falls and holding cost rises as order size grows; their total is lowest at one order size.</title><line class="uc-axis" x1="60" y1="240" x2="590" y2="240"/><line class="uc-axis" x1="60" y1="240" x2="60" y2="14"/><path class="uc-l uc-ord" pathLength="1" d="M60.0 56.6 L62.9 65.3 L65.8 73.2 L68.7 80.5 L71.6 87.1 L74.4 93.3 L77.3 98.9 L80.2 104.1 L83.1 109.0 L86.0 113.5 L88.9 117.7 L91.8 121.7 L94.7 125.4 L97.6 128.8 L100.4 132.1 L103.3 135.2 L106.2 138.1 L109.1 140.8 L112.0 143.5 L114.9 145.9 L117.8 148.3 L120.7 150.5 L123.6 152.7 L126.4 154.7 L129.3 156.6 L132.2 158.5 L135.1 160.2 L138.0 161.9 L140.9 163.6 L143.8 165.1 L146.7 166.6 L149.6 168.1 L152.4 169.5 L155.3 170.8 L158.2 172.1 L161.1 173.3 L164.0 174.5 L166.9 175.6 L169.8 176.7 L172.7 177.8 L175.6 178.9 L178.4 179.9 L181.3 180.8 L184.2 181.8 L187.1 182.7 L190.0 183.6 L192.9 184.4 L195.8 185.2 L198.7 186.1 L201.6 186.8 L204.4 187.6 L207.3 188.3 L210.2 189.0 L213.1 189.7 L216.0 190.4 L218.9 191.1 L221.8 191.7 L224.7 192.4 L227.6 193.0 L230.4 193.6 L233.3 194.1 L236.2 194.7 L239.1 195.3 L242.0 195.8 L244.9 196.3 L247.8 196.8 L250.7 197.3 L253.6 197.8 L256.4 198.3 L259.3 198.8 L262.2 199.2 L265.1 199.7 L268.0 200.1 L270.9 200.6 L273.8 201.0 L276.7 201.4 L279.6 201.8 L282.4 202.2 L285.3 202.6 L288.2 202.9 L291.1 203.3 L294.0 203.7 L296.9 204.0 L299.8 204.4 L302.7 204.7 L305.6 205.1 L308.4 205.4 L311.3 205.7 L314.2 206.0 L317.1 206.3 L320.0 206.6 L322.9 206.9 L325.8 207.2 L328.7 207.5 L331.6 207.8 L334.4 208.1 L337.3 208.4 L340.2 208.6 L343.1 208.9 L346.0 209.2 L348.9 209.4 L351.8 209.7 L354.7 209.9 L357.6 210.2 L360.4 210.4 L363.3 210.7 L366.2 210.9 L369.1 211.1 L372.0 211.3 L374.9 211.6 L377.8 211.8 L380.7 212.0 L383.6 212.2 L386.4 212.4 L389.3 212.6 L392.2 212.8 L395.1 213.0 L398.0 213.2 L400.9 213.4 L403.8 213.6 L406.7 213.8 L409.6 214.0 L412.4 214.2 L415.3 214.3 L418.2 214.5 L421.1 214.7 L424.0 214.9 L426.9 215.0 L429.8 215.2 L432.7 215.4 L435.6 215.5 L438.4 215.7 L441.3 215.9 L444.2 216.0 L447.1 216.2 L450.0 216.3 L452.9 216.5 L455.8 216.6 L458.7 216.8 L461.6 216.9 L464.4 217.1 L467.3 217.2 L470.2 217.4 L473.1 217.5 L476.0 217.6 L478.9 217.8 L481.8 217.9 L484.7 218.0 L487.6 218.2 L490.4 218.3 L493.3 218.4 L496.2 218.5 L499.1 218.7 L502.0 218.8 L504.9 218.9 L507.8 219.0 L510.7 219.2 L513.6 219.3 L516.4 219.4 L519.3 219.5 L522.2 219.6 L525.1 219.7 L528.0 219.8 L530.9 220.0 L533.8 220.1 L536.7 220.2 L539.6 220.3 L542.4 220.4 L545.3 220.5 L548.2 220.6 L551.1 220.7 L554.0 220.8 L556.9 220.9 L559.8 221.0 L562.7 221.1 L565.6 221.2 L568.4 221.3 L571.3 221.4 L574.2 221.5 L577.1 221.6 L580.0 221.7"/><path class="uc-l uc-hold" pathLength="1" d="M60.0 221.7 L62.9 220.7 L65.8 219.8 L68.7 218.9 L71.6 218.0 L74.4 217.1 L77.3 216.2 L80.2 215.2 L83.1 214.3 L86.0 213.4 L88.9 212.5 L91.8 211.6 L94.7 210.7 L97.6 209.7 L100.4 208.8 L103.3 207.9 L106.2 207.0 L109.1 206.1 L112.0 205.1 L114.9 204.2 L117.8 203.3 L120.7 202.4 L123.6 201.5 L126.4 200.6 L129.3 199.6 L132.2 198.7 L135.1 197.8 L138.0 196.9 L140.9 196.0 L143.8 195.1 L146.7 194.1 L149.6 193.2 L152.4 192.3 L155.3 191.4 L158.2 190.5 L161.1 189.6 L164.0 188.6 L166.9 187.7 L169.8 186.8 L172.7 185.9 L175.6 185.0 L178.4 184.1 L181.3 183.1 L184.2 182.2 L187.1 181.3 L190.0 180.4 L192.9 179.5 L195.8 178.6 L198.7 177.6 L201.6 176.7 L204.4 175.8 L207.3 174.9 L210.2 174.0 L213.1 173.0 L216.0 172.1 L218.9 171.2 L221.8 170.3 L224.7 169.4 L227.6 168.5 L230.4 167.5 L233.3 166.6 L236.2 165.7 L239.1 164.8 L242.0 163.9 L244.9 163.0 L247.8 162.0 L250.7 161.1 L253.6 160.2 L256.4 159.3 L259.3 158.4 L262.2 157.5 L265.1 156.5 L268.0 155.6 L270.9 154.7 L273.8 153.8 L276.7 152.9 L279.6 152.0 L282.4 151.0 L285.3 150.1 L288.2 149.2 L291.1 148.3 L294.0 147.4 L296.9 146.5 L299.8 145.5 L302.7 144.6 L305.6 143.7 L308.4 142.8 L311.3 141.9 L314.2 140.9 L317.1 140.0 L320.0 139.1 L322.9 138.2 L325.8 137.3 L328.7 136.4 L331.6 135.4 L334.4 134.5 L337.3 133.6 L340.2 132.7 L343.1 131.8 L346.0 130.9 L348.9 129.9 L351.8 129.0 L354.7 128.1 L357.6 127.2 L360.4 126.3 L363.3 125.4 L366.2 124.4 L369.1 123.5 L372.0 122.6 L374.9 121.7 L377.8 120.8 L380.7 119.9 L383.6 118.9 L386.4 118.0 L389.3 117.1 L392.2 116.2 L395.1 115.3 L398.0 114.4 L400.9 113.4 L403.8 112.5 L406.7 111.6 L409.6 110.7 L412.4 109.8 L415.3 108.8 L418.2 107.9 L421.1 107.0 L424.0 106.1 L426.9 105.2 L429.8 104.3 L432.7 103.3 L435.6 102.4 L438.4 101.5 L441.3 100.6 L444.2 99.7 L447.1 98.8 L450.0 97.8 L452.9 96.9 L455.8 96.0 L458.7 95.1 L461.6 94.2 L464.4 93.3 L467.3 92.3 L470.2 91.4 L473.1 90.5 L476.0 89.6 L478.9 88.7 L481.8 87.8 L484.7 86.8 L487.6 85.9 L490.4 85.0 L493.3 84.1 L496.2 83.2 L499.1 82.3 L502.0 81.3 L504.9 80.4 L507.8 79.5 L510.7 78.6 L513.6 77.7 L516.4 76.7 L519.3 75.8 L522.2 74.9 L525.1 74.0 L528.0 73.1 L530.9 72.2 L533.8 71.2 L536.7 70.3 L539.6 69.4 L542.4 68.5 L545.3 67.6 L548.2 66.7 L551.1 65.7 L554.0 64.8 L556.9 63.9 L559.8 63.0 L562.7 62.1 L565.6 61.2 L568.4 60.2 L571.3 59.3 L574.2 58.4 L577.1 57.5 L580.0 56.6"/><path class="uc-l uc-tot" pathLength="1" d="M60.0 38.2 L62.9 46.0 L65.8 53.1 L68.7 59.4 L71.6 65.1 L74.4 70.3 L77.3 75.1 L80.2 79.4 L83.1 83.3 L86.0 86.9 L88.9 90.2 L91.8 93.2 L94.7 96.0 L97.6 98.6 L100.4 100.9 L103.3 103.1 L106.2 105.1 L109.1 106.9 L112.0 108.6 L114.9 110.2 L117.8 111.6 L120.7 112.9 L123.6 114.1 L126.4 115.2 L129.3 116.3 L132.2 117.2 L135.1 118.1 L138.0 118.8 L140.9 119.5 L143.8 120.2 L146.7 120.8 L149.6 121.3 L152.4 121.8 L155.3 122.2 L158.2 122.5 L161.1 122.9 L164.0 123.1 L166.9 123.4 L169.8 123.6 L172.7 123.7 L175.6 123.8 L178.4 123.9 L181.3 124.0 L184.2 124.0 L187.1 124.0 L190.0 123.9 L192.9 123.9 L195.8 123.8 L198.7 123.7 L201.6 123.5 L204.4 123.4 L207.3 123.2 L210.2 123.0 L213.1 122.8 L216.0 122.6 L218.9 122.3 L221.8 122.0 L224.7 121.7 L227.6 121.4 L230.4 121.1 L233.3 120.8 L236.2 120.4 L239.1 120.1 L242.0 119.7 L244.9 119.3 L247.8 118.9 L250.7 118.5 L253.6 118.0 L256.4 117.6 L259.3 117.2 L262.2 116.7 L265.1 116.2 L268.0 115.7 L270.9 115.3 L273.8 114.8 L276.7 114.3 L279.6 113.7 L282.4 113.2 L285.3 112.7 L288.2 112.1 L291.1 111.6 L294.0 111.0 L296.9 110.5 L299.8 109.9 L302.7 109.3 L305.6 108.8 L308.4 108.2 L311.3 107.6 L314.2 107.0 L317.1 106.4 L320.0 105.8 L322.9 105.1 L325.8 104.5 L328.7 103.9 L331.6 103.3 L334.4 102.6 L337.3 102.0 L340.2 101.3 L343.1 100.7 L346.0 100.0 L348.9 99.4 L351.8 98.7 L354.7 98.0 L357.6 97.4 L360.4 96.7 L363.3 96.0 L366.2 95.3 L369.1 94.6 L372.0 93.9 L374.9 93.3 L377.8 92.6 L380.7 91.8 L383.6 91.1 L386.4 90.4 L389.3 89.7 L392.2 89.0 L395.1 88.3 L398.0 87.6 L400.9 86.9 L403.8 86.1 L406.7 85.4 L409.6 84.7 L412.4 83.9 L415.3 83.2 L418.2 82.5 L421.1 81.7 L424.0 81.0 L426.9 80.2 L429.8 79.5 L432.7 78.7 L435.6 78.0 L438.4 77.2 L441.3 76.5 L444.2 75.7 L447.1 74.9 L450.0 74.2 L452.9 73.4 L455.8 72.6 L458.7 71.9 L461.6 71.1 L464.4 70.3 L467.3 69.6 L470.2 68.8 L473.1 68.0 L476.0 67.2 L478.9 66.4 L481.8 65.7 L484.7 64.9 L487.6 64.1 L490.4 63.3 L493.3 62.5 L496.2 61.7 L499.1 60.9 L502.0 60.1 L504.9 59.3 L507.8 58.5 L510.7 57.7 L513.6 56.9 L516.4 56.1 L519.3 55.3 L522.2 54.5 L525.1 53.7 L528.0 52.9 L530.9 52.1 L533.8 51.3 L536.7 50.5 L539.6 49.7 L542.4 48.9 L545.3 48.1 L548.2 47.2 L551.1 46.4 L554.0 45.6 L556.9 44.8 L559.8 44.0 L562.7 43.2 L565.6 42.3 L568.4 41.5 L571.3 40.7 L574.2 39.9 L577.1 39.1 L580.0 38.2"/><line class="uc-drop" x1="184.9" y1="124.0" x2="184.9" y2="240"/><circle class="uc-min" cx="184.9" cy="124.0" r="7"/><text class="uc-minl" x="184.9" y="106.0" text-anchor="middle" data-t="t453"></text><text class="uc-ax" x="590" y="266" text-anchor="end" data-t="t448"></text><text class="uc-ax" x="56" y="8" data-t="t449"></text></svg><figcaption class="uc-key"><span><i class="k-ord"></i><span data-t="t450"></span></span><span><i class="k-hold"></i><span data-t="t451"></span></span><span><i class="k-tot"></i><span data-t="t452"></span></span></figcaption></figure>
 <p data-t-html="t52"></p>
 <p data-t="t53"></p>
+</div>
+</section>
+<section class="honest-strip">
+<div class="wrap">
+<div class="hs-in">
+<div class="hs-head"><p class="eyebrow" data-t="t441"></p><h3 data-t="t442"></h3></div>
+<ul class="hs-list">
+<li data-t="t443"></li>
+<li data-t="t444"></li>
+<li data-t="t445"></li>
+<li data-t="t446"></li>
+</ul>
+<p class="hs-more" data-t-html="t447"></p>
+</div>
 </div>
 </section>
 <div class="band">
@@ -731,6 +765,24 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <div class="wrap">
 <h3 data-t="t231" style="margin-top:0"></h3>
 <p data-t="t232"></p>
+<div class="evbars">
+<p class="evb-title" data-t="t456"></p>
+<div class="evb-group"><h4 data-t="t457"></h4>
+<div class="evb-row"><span class="evb-lab" data-t="t240"></span><span class="evb-track"><i style="--w:85.1%;--d:0ms"></i></span><span class="evb-val" data-t="t241"></span></div>
+<div class="evb-row"><span class="evb-lab" data-t="t247"></span><span class="evb-track"><i style="--w:98.2%;--d:160ms"></i></span><span class="evb-val" data-t="t248"></span></div>
+<div class="evb-row win"><span class="evb-lab" data-t="t254"></span><span class="evb-track"><i style="--w:99.4%;--d:320ms"></i></span><span class="evb-val" data-t="t255"></span></div>
+</div>
+<div class="evb-group"><h4 data-t="t458"></h4>
+<div class="evb-row"><span class="evb-lab" data-t="t240"></span><span class="evb-track"><i style="--w:100.0%;--d:0ms"></i></span><span class="evb-val" data-t="t246"></span></div>
+<div class="evb-row"><span class="evb-lab" data-t="t247"></span><span class="evb-track"><i style="--w:19.0%;--d:160ms"></i></span><span class="evb-val" data-t="t253"></span></div>
+<div class="evb-row win"><span class="evb-lab" data-t="t254"></span><span class="evb-track"><i style="--w:13.6%;--d:320ms"></i></span><span class="evb-val" data-t="t260"></span></div>
+</div>
+<div class="evb-group"><h4 data-t="t462"></h4>
+<div class="evb-row"><span class="evb-lab" data-t="t240"></span><span class="evb-track"><i style="--w:40.6%;--d:0ms"></i></span><span class="evb-val" data-t="t242"></span></div>
+<div class="evb-row"><span class="evb-lab" data-t="t247"></span><span class="evb-track"><i style="--w:100.0%;--d:160ms"></i></span><span class="evb-val" data-t="t249"></span></div>
+<div class="evb-row win"><span class="evb-lab" data-t="t254"></span><span class="evb-track"><i style="--w:90.8%;--d:320ms"></i></span><span class="evb-val" data-t="t256"></span></div>
+</div>
+</div>
 <div class="tablewrap">
 <table>
 <thead><tr><th data-t="t233"></th><th class="n" data-t="t234"></th><th class="n" data-t="t235"></th>
@@ -752,6 +804,8 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <p data-t="t263" style="margin-bottom:0"></p>
 </div>
 <h3 data-t="t264"></h3>
+<p data-t="t459"></p>
+<details class="vnotes"><summary data-t="t460"></summary>
 <p data-t="t265"></p>
 <ul>
 <li data-t="t266"></li>
@@ -759,6 +813,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <li data-t="t268"></li>
 <li data-t="t269"></li>
 </ul>
+</details>
 </div>
 </section>
 <section class="alt">
@@ -852,6 +907,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <div class="card"><h4 data-t="t318" style="margin-top:0"></h4>
 <p data-t="t319"></p></div>
 </div>
+<p class="notinc" data-t="t461"></p>
 </div>
 </section>
 </div>
@@ -908,7 +964,8 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <h2 data-t="t349"></h2>
 <p class="lede" data-t="t350"></p>
 <p data-t="t351" style="font-size:.9rem"></p>
-<p data-t-html="t352" style="margin-top:26px"></p>
+<p style="margin-top:26px"><a class="btn btn-primary btn-lg" data-t="t431" href="https://etlobsa7.com/app/"></a></p>
+<p data-t-html="t352" style="margin-top:14px"></p>
 </div>
 </div>
 </div>
@@ -1016,7 +1073,7 @@ var SITE_EN = {
   t14: 'FAQ',
   t15: 'Built in Cairo for Egyptian brands',
   t16: 'Know exactly what to reorder, and when.',
-  t17: 'Most small brands are excellent at selling and guessing at buying. This is the\n        system that removes the guess. It tells you how many units to order, from which supplier, on\n        which day, for every product you sell.',
+  t17: 'Most small brands sell brilliantly and guess at buying. This removes the guess: how many units to order, from which supplier, on which day, for every product you sell.',
   t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">Start your free trial</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">See the app in action</a>',
   t19: 'Runs in your browser. Arabic and English included. Priced in USD.',
   t20: '<b>99.4%</b><small>Fill rate achieved in a two year simulation</small>',
@@ -1025,34 +1082,34 @@ var SITE_EN = {
   t23: '<b>2 min</b><small>To sign in. Just your email, no password to remember.</small>',
   t24: 'The problem',
   t25: 'You are almost certainly doing both of these at once',
-  t26: 'And most owners do not realise they are the same problem wearing two\n          different faces.',
+  t26: 'And most owners don\'t realise they are the same problem wearing two different faces.',
   t27: 'Your best seller keeps running out',
-  t28: 'You reorder when you notice the shelf looks low. By then your supplier needs three\n            weeks, and you spend those three weeks turning away the exact customers you worked\n            hardest and paid most to win.',
+  t28: 'You reorder when the shelf looks low. Your supplier needs three weeks, and you spend them turning away the customers you worked hardest and paid most to win.',
   t29: 'Your worst product is holding your cash hostage',
-  t30: 'Somewhere there is stock you bought on a good feeling that has not moved in four\n            months. That is not inventory. That is money you cannot spend, sitting in a box, while\n            you cannot afford to restock the thing that actually sells.',
+  t30: 'Stock you bought on a good feeling hasn\'t moved in four months. That is not inventory. It is cash stuck in a box while you can\'t afford to restock what actually sells.',
   t31: 'Both are caused by the same thing: buying decisions made on instinct\n        instead of on your own numbers.',
   t32: 'What this is',
   t33: 'Not a stock counter. A purchasing brain.',
   t34: 'Tracking what you already have is the input. The product is the decision at\n          the end of it.',
   t35: '01',
   t36: 'It forecasts demand instead of averaging it',
-  t37: 'It separates genuine seasonality from genuine randomness, so a winter product is never\n            treated as unpredictable simply for selling in winter. Then it detects whether each\n            product is growing or shrinking and projects forward, not backward.',
+  t37: 'Separates real seasonality from randomness, so a winter product is never marked unpredictable just for selling in winter. Then it spots growth or decline and projects forward, not backward.',
   t38: '02',
   t39: 'It makes the reorder decision for you',
-  t40: 'An exact reorder level per product, built from how fast it sells, how unpredictable it\n            is, how long your supplier takes, and how often that supplier is late. Then the cheapest\n            order size, rounded to something the supplier will actually accept.',
+  t40: 'An exact reorder level per product, from how fast it sells, how unpredictable it is, your supplier\'s lead time and how often they are late. Then the cheapest order size, rounded to what the supplier accepts.',
   t41: '03',
   t42: 'It shows you where your money actually is',
-  t43: 'Every product ranked by how much revenue it earns and how predictable it is, with a\n            specific instruction for each combination. Your steady top earner and your erratic top\n            earner should never be managed the same way, and now they are not.',
+  t43: 'Every product ranked by revenue and predictability, with a specific instruction for each combination. Your steady top earner and your erratic top earner are never managed the same way.',
   t44: '04',
   t45: 'It hands you a purchase order you can send today',
-  t46: 'Every recommendation grouped by supplier, so you send one combined order instead of\n            messaging about one product at a time. Plus a one page dashboard showing cash tied up,\n            projected profit, and what needs action this morning.',
+  t46: 'Recommendations grouped by supplier, so you send one combined order, not one message per product. Plus a one page dashboard: cash tied up, projected profit, and what needs action this morning.',
   t47: '<a class="btn btn-ghost" data-go="provide" href="#">See every feature explained in detail</a>',
   t48: 'The core idea',
   t49: 'Ordering is a trade-off with a correct answer',
-  t50: 'Order in huge batches and you place very few orders, so the hassle and shipping cost per\n        order almost disappears. But you are now sitting on a mountain of stock, paying rent on it,\n        unable to spend that money, watching it go out of style.',
-  t51: 'Order tiny amounts constantly and you barely hold any stock at all. But you are paying the\n        full cost of placing an order every few days, and one late delivery empties you.',
-  t52: '<strong>There is exactly one order size where the two costs added together are at their\n        lowest.</strong> It is different for a 40 EGP bracelet than for a 480 EGP jacket, because\n        holding the jacket costs twelve times more per unit. Doing that calculation by feel across\n        thirty products is genuinely beyond what anyone can hold in their head.',
-  t53: 'That is the entire reason this app exists. Everything else in it is scaffolding around\n        that one calculation.',
+  t50: 'Very few orders, so the hassle and shipping cost per order almost disappear. But you sit on a mountain of stock: paying rent on it, unable to spend that money, watching it go out of style.',
+  t51: 'You barely hold any stock. But you pay the full cost of placing an order every few days, and one late delivery empties you.',
+  t52: '<strong>Exactly one order size makes the two costs added together the lowest.</strong> It differs for a 40 EGP bracelet and a 480 EGP jacket, because holding the jacket costs twelve times more per unit. Across thirty products, nobody can work that out by feel.',
+  t53: 'That calculation is the whole reason this app exists. Everything else is scaffolding around it.',
   t54: 'Stop guessing what to buy',
   t55: 'Free trial on every plan. Nothing charged until it ends. Cancel in two clicks.',
   t56: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">See pricing</a>\n<a class="btn btn-ghost btn-lg" data-go="proof" href="#">Read the evidence first</a>',
@@ -1235,7 +1292,7 @@ var SITE_EN = {
   t229: 'Tested against how people actually order',
   t230: 'We would rather show you the method and the limits than make a claim you\n          cannot check.',
   t231: 'The simulation',
-  t232: 'We simulated two years of daily trading across an eight product catalogue, thirty\n        independent runs, giving every ordering method the exact same randomly generated demand and\n        the same randomly varying supplier delays. Both learning methods re-planned every 30 days\n        using only the sales history they had actually observed by that point, exactly as a real\n        user would.',
+  t232: 'Two years of daily trading, an eight product catalogue, thirty independent runs. Every ordering method got the exact same random demand and the same random supplier delays. Both learning methods re-planned every 30 days using only the sales they had seen so far, exactly like a real user.',
   t233: 'Ordering method',
   t234: 'Fill rate',
   t235: 'Avg stock held',
@@ -1266,7 +1323,7 @@ var SITE_EN = {
   t260: '142,079',
   t261: 'All figures in EGP. Total cost\n        combines ordering cost, holding cost, and the gross margin lost to stockouts. The system beat\n        gut feel in 30 runs out of 30, and beat the standard template in 29 out of 30.',
   t262: 'The result that actually matters',
-  t263: 'Look at the fill rate and the average stock held together. Anyone\n          can raise service by simply buying more inventory, and the standard template does exactly\n          that, holding 163,866 EGP of stock to reach 98.2%. Reaching a higher 99.4% while holding\n          less stock is the part that requires the maths. That difference is the product.',
+  t263: 'Read fill rate and stock held together. Anyone can raise service by buying more stock: the standard template held 163,866 EGP of stock to reach 98.2%. Reaching a higher 99.4% while holding less stock is the part that needs the maths. That difference is the product.',
   t264: 'How the app itself was verified',
   t265: 'This simulation was run against the original spreadsheet model. Since then the same\n        calculation engine was rebuilt for the web app and tested again, independently, before\n        anyone could sign up:',
   t266: 'Every formula was checked against a hand worked calculation, and against dozens of edge\n          cases: an empty workspace, a product with one month of data, zero cost, price below cost,\n          missing suppliers, negative stock, no suppliers at all, and a fully loaded catalogue.',
@@ -1426,6 +1483,40 @@ var SITE_EN = {
   t428: 'Import products from Excel or CSV',
   t429: 'Order tracking with real delivery times',
   t430: 'Forecast accuracy report',
+  t431: 'Already a subscriber? Log in',
+  t463: 'Already a subscriber?',
+  t464: 'Log in',
+  t432: 'Sample shop',
+  t433: 'Next reorders',
+  t434: 'Order today',
+  t435: 'This week',
+  t436: 'In 5 days',
+  t437: 'In 10 days',
+  t438: 'In 28 days',
+  t439: 'From the sample shop in the live demo.',
+  t440: '22,300 EGP to order, from 2 suppliers',
+  t441: 'Straight talk',
+  t442: 'What it won\'t do',
+  t443: 'No guarantees. It supports your decisions.',
+  t444: 'It can\'t forecast a brand new product.',
+  t445: 'No accounting, POS, barcode scanning or multi-location stock.',
+  t446: 'It is only as good as the numbers you enter.',
+  t447: '<a class="hs-link" data-go="proof" href="#">Read every limit on the Evidence page</a>',
+  t448: 'Order size',
+  t449: 'Cost',
+  t450: 'Cost of placing orders',
+  t451: 'Cost of holding stock',
+  t452: 'Both together',
+  t453: 'Cheapest order size',
+  t454: 'Order in huge batches',
+  t455: 'Order tiny amounts, constantly',
+  t456: 'At a glance',
+  t457: 'Fill rate. Higher is better.',
+  t458: 'Total two year cost, EGP. Lower is better.',
+  t459: 'Every formula checked against hand worked maths, dozens of edge cases and bad data tested, and the whole app run end to end in both languages. Three real issues found and fixed.',
+  t460: 'Read the full testing notes',
+  t461: 'Not included on any plan: accounting, POS, barcode scanning, or multi-location stock.',
+  t462: 'Average stock held, EGP. The trade-off side.',
 };var SITE_AR = {
   t1: 'اطلب صح<span>تخطيط الطلب لمصر</span>',
   t2: 'الرئيسية',
@@ -1443,7 +1534,7 @@ var SITE_EN = {
   t14: 'الأسئلة الشائعة',
   t15: 'اتصنع في القاهرة',
   t16: 'اعرف بالظبط تطلب إيه، وإمتى.',
-  t17: 'أغلب المحلات الصغيرة شاطرة جدا في البيع، وبتخمن في الشراء. الأداة دي بتشيل التخمين. بتقولك تطلب كام قطعة، من أي مورد، في أنهي يوم، لكل منتج بتبيعه.',
+  t17: 'أغلب المحلات الصغيرة شاطرة في البيع وبتخمن في الشراء. الأداة دي بتشيل التخمين: تطلب كام قطعة، من أي مورد، في أنهي يوم، لكل منتج بتبيعه.',
   t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">اتفرج على الأداة</a>',
   t19: 'بيشتغل في المتصفح. عربي وإنجليزي مع بعض. بالدولار الأمريكي.',
   t20: '<b>99.4%</b><small>نسبة توفر المنتج في محاكاة استمرت سنتين</small>',
@@ -1454,32 +1545,32 @@ var SITE_EN = {
   t25: 'أنت غالبا بتعمل الاتنين دول في نفس الوقت',
   t26: 'وأغلب أصحاب المحلات مش واخدين بالهم إنهم نفس المشكلة بوشين مختلفين.',
   t27: 'أكتر منتج بيتباع عندك بيخلص كل شوية',
-  t28: 'بتطلب لما تلاحظ إن الرف فاضي. وبعدين المورد بياخد تلات أسابيع، وتقضيها في رفض الزباين اللي أنت تعبت وصرفت أكتر عليهم علشان تكسبهم.',
+  t28: 'بتطلب لما الرف يبان فاضي. المورد بياخد تلات أسابيع، وبتقضيها بترفض الزباين اللي تعبت وصرفت عليهم أكتر علشان تكسبهم.',
   t29: 'أسوأ منتج عندك واقف على فلوسك',
-  t30: 'في بضاعة اشتريتها بحس كويس ومش بتتحرك من أربع شهور. ده مش مخزون. ده فلوس مش قادر تصرفها، واقفة في كرتونة، وانت مش قادر تجدد المنتج اللي فعلا بيتباع.',
+  t30: 'بضاعة اشتريتها بإحساس كويس ومتحركتش من أربع شهور. ده مش مخزون، دي فلوس واقفة في كرتونة وانت مش قادر تجدد اللي فعلا بيتباع.',
   t31: 'الاتنين سببهم واحد: قرارات شراء بالإحساس مش بأرقامك.',
   t32: 'اللي هي إيه',
   t33: 'مش عداد مخزون. ده عقل الشراء بتاعك.',
   t34: 'تسجيل اللي عندك ده مجرد مدخل. المنتج الحقيقي هو القرار اللي بيطلع في الآخر.',
   t35: '01',
   t36: 'بيتوقع الطلب مش بيعمل متوسط له',
-  t37: 'بيفصل الموسمية الحقيقية عن العشوائية الحقيقية، فمنتج الشتاء ماحدش هيحكم عليه إنه غير متوقع لمجرد إنه بيتباع في الشتاء. وبعدين بيكتشف لو المنتج في نمو أو تراجع ويتوقع لقدام، مش بيرجع للخلف.',
+  t37: 'بيفصل الموسمية الحقيقية عن العشوائية، فمنتج الشتاء مايتحسبش غير متوقع لمجرد إنه بيتباع في الشتاء. وبعدين بيكتشف النمو أو التراجع ويتوقع لقدام، مش لورا.',
   t38: '02',
   t39: 'بياخد قرار الطلب بدالك',
-  t40: 'مستوى طلب دقيق لكل منتج، مبني على سرعة بيعه، مدى تقلبه، مدة توريد الموردين، وكل قد إيه بيتأخروا. وبعدين أفضل كمية طلب، مظبوطة على أقرب حاجة يقبلها المورد.',
+  t40: 'مستوى طلب دقيق لكل منتج، من سرعة بيعه، تقلبه، مدة توريد المورد وكل قد إيه بيتأخر. وبعدين أرخص كمية طلب، مظبوطة على اللي المورد بيقبله.',
   t41: '03',
   t42: 'بيوريك فلوسك فعلا فين',
-  t43: 'كل منتج متصنف حسب قد إيه بيجيب مبيعات وقد إيه متوقع. مع تعليمة محددة لكل تركيبة. أكتر منتج ثابت وأكتر منتج عشوائي مايتعاملش معاهم بنفس الطريقة، ودلوقتي فعلا مابيتعاملش.',
+  t43: 'كل منتج متصنف حسب الإيراد ومدى التوقع، مع تعليمة محددة لكل تركيبة. أكتر منتج ثابت وأكتر منتج عشوائي عمرهم ما بيتداروا بنفس الطريقة.',
   t44: '04',
   t45: 'بيديك طلبية جاهزة تبعتها النهارده',
-  t46: 'كل توصية متجمعة حسب المورد، فتبعت طلبية واحدة مجمعة بدل ما تكلم كل منتج لوحده. وكمان لوحة متابعة في صفحة واحدة بتوريك الفلوس المجمدة، الربح المتوقع، واللي محتاج تتصرف فيه النهارده.',
+  t46: 'التوصيات متجمعة حسب المورد، فتبعت طلبية واحدة مجمعة بدل رسالة لكل منتج. وكمان لوحة متابعة في صفحة واحدة: الفلوس المجمدة، الربح المتوقع، واللي محتاج تتصرف فيه النهارده.',
   t47: '<a class="btn btn-ghost" data-go="provide" href="#">شوف كل ميزة بالتفصيل</a>',
   t48: 'الفكرة الأساسية',
   t49: 'الطلب معادلة موازنة وليها إجابة صح',
-  t50: 'اطلب كميات ضخمة وتطلب نادر جدا، فتعب ومصاريف الشحن لكل طلبية بتقل جدا. بس هتبقى قاعد على جبل بضاعة، بتدفع إيجار مكانها، مش قادر تصرف الفلوس دي، وهي بتقدم في الموضة.',
-  t51: 'اطلب كميات صغيرة باستمرار وهتفضل تقريبا من غير مخزون خالص. بس هتدفع تكلفة الطلب كاملة كل كام يوم، وأي تأخير في التوريد هيخليك فاضي تماما.',
-  t52: '<strong>في مقاس طلب واحد بالظبط، فيه التكلفتين مع بعض بيبقوا في أقل حاجة.</strong> وده مختلف بين سوار بـ 40 جنيه وجاكت بـ 480 جنيه، لأن تخزين الجاكت بيكلف اثنا عشر ضعف للقطعة. تعمل الحساب ده بالإحساس على ثلاثين منتج فعلا فوق طاقة أي حد.',
-  t53: 'ده السبب الوحيد اللي الأداة دي موجودة علشانه. كل حاجة تانية فيها هي بس إطار حوالين الحساب ده.',
+  t50: 'طلبيات قليلة جدا، فتعب ومصاريف الشحن لكل طلبية تقريبا بتختفي. بس هتقعد على جبل بضاعة: بتدفع إيجار مكانها، مش قادر تصرف فلوسها، وهي بتقدم في الموضة.',
+  t51: 'تقريبا من غير مخزون. بس بتدفع تكلفة الطلب كاملة كل كام يوم، وأي تأخير في التوريد يفضيك تماما.',
+  t52: '<strong>في حجم طلبية واحد بالظبط بيخلي التكلفتين مع بعض في أقل حاجة.</strong> وده مختلف بين سوار بـ 40 جنيه وجاكت بـ 480 جنيه، لأن تخزين الجاكت بيكلف اثنا عشر ضعف للقطعة. على ثلاثين منتج، مفيش حد يقدر يحسبها بالإحساس.',
+  t53: 'الحساب ده هو السبب الوحيد لوجود الأداة. كل حاجة تانية إطار حواليه.',
   t54: 'بلاش تخمين اللي هتشتريه',
   t55: 'تجربة مجانية على كل باقة. مفيش خصم لحد ما التجربة تخلص. إلغاء بضغطتين.',
   t56: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">شوف الأسعار</a>\n<a class="btn btn-ghost btn-lg" data-go="proof" href="#">اقرأ الإثبات الأول</a>',
@@ -1662,7 +1753,7 @@ var SITE_EN = {
   t229: 'اتعمل عليه اختبار مقابل إزاي الناس فعلا بتطلب',
   t230: 'إحنا مفضلين نوريك الطريقة والحدود بدل ما نقول كلام مش تقدر تتأكد منه.',
   t231: 'المحاكاة',
-  t232: 'عملنا محاكاة لسنتين تداول يومي على كتالوج من تمن منتجات، ثلاثين تجربة مستقلة، وديناها لكل طريقة طلب نفس بيانات الطلب العشوائية ونفس تأخير الموردين العشوائي. الطريقتين اللي بتتعلم أعادوا التخطيط كل 30 يوم مستخدمين بس تاريخ المبيعات اللي كانوا شايفينه فعلا لحد وقتها، بالظبط زي مستخدم حقيقي.',
+  t232: 'سنتين تداول يومي، كتالوج من تمن منتجات، ثلاثين تجربة مستقلة. كل طريقة طلب خدت نفس الطلب العشوائي بالظبط ونفس تأخير الموردين العشوائي. الطريقتين اللي بيتعلموا أعادوا التخطيط كل 30 يوم باستخدام المبيعات اللي شافوها لحد وقتها بس، بالظبط زي مستخدم حقيقي.',
   t233: 'طريقة الطلب',
   t234: 'نسبة التوفر',
   t235: 'متوسط المخزون المحتفظ به',
@@ -1693,7 +1784,7 @@ var SITE_EN = {
   t260: '142,079',
   t261: 'كل الأرقام بالجنيه المصري. التكلفة الإجمالية بتجمع تكلفة الطلب، تكلفة التخزين، وهامش الربح الضايع بسبب نفاد المخزون. النظام كسب بالإحساس في 30 تجربة من 30، وكسب القالب العادي في 29 من 30.',
   t262: 'النتيجة اللي فعلا مهمة',
-  t263: 'بص على نسبة التوفر ومتوسط المخزون المحتفظ به مع بعض. أي حد يقدر يرفع الخدمة بس بشراء مخزون أكتر، وده بالظبط اللي القالب العادي بيعمله، محتفظ بـ 163,866 جنيه بضاعة علشان يوصل 98.2%. إنك توصل لـ 99.4% أعلى مع مخزون أقل، ده الجزء اللي محتاج الحساب. الفرق ده هو المنتج.',
+  t263: 'اقرا نسبة التوفر والمخزون مع بعض. أي حد يقدر يرفع الخدمة بشراء مخزون أكتر: القالب العادي احتفظ بـ 163,866 جنيه بضاعة علشان يوصل 98.2%. إنك توصل لـ 99.4% أعلى بمخزون أقل ده الجزء اللي محتاج الحساب. الفرق ده هو المنتج.',
   t264: 'إزاي الأداة نفسها اتأكد منها',
   t265: 'المحاكاة دي اتعملت على نموذج الجدول الأصلي. من ساعتها نفس محرك الحساب اتبنى تاني لتطبيق الويب واتعمله اختبار تاني، بشكل مستقل، قبل ما أي حد يقدر يشترك:',
   t266: 'كل معادلة اتراجعت مقابل حساب يدوي، ومقابل عشرات الحالات الصعبة: مساحة عمل فاضية، منتج بشهر بيانات واحد، تكلفة صفر، سعر أقل من التكلفة، موردين ناقصين، مخزون بالسالب، مفيش موردين خالص، وكتالوج كامل محمل.',
@@ -1853,6 +1944,40 @@ var SITE_EN = {
   t428: 'استيراد المنتجات من Excel أو CSV',
   t429: 'متابعة الطلبيات بمدد التوريد الحقيقية',
   t430: 'تقرير دقة التوقع',
+  t431: 'مشترك بالفعل؟ سجل دخول',
+  t463: 'مشترك بالفعل؟',
+  t464: 'سجل دخول',
+  t432: 'محل تجريبي',
+  t433: 'الطلبات الجاية',
+  t434: 'اطلب النهارده',
+  t435: 'الأسبوع ده',
+  t436: 'بعد 5 أيام',
+  t437: 'بعد 10 أيام',
+  t438: 'بعد 28 يوم',
+  t439: 'من المحل التجريبي في العرض.',
+  t440: '22,300 جنيه تطلبهم من موردين اتنين',
+  t441: 'بصراحة',
+  t442: 'اللي مش هيعمله',
+  t443: 'مفيش ضمان. هو بيساعدك تقرر.',
+  t444: 'مايقدرش يتوقع لمنتج جديد خالص.',
+  t445: 'من غير حسابات، كاشير، باركود، أو فروع متعددة.',
+  t446: 'دقته من دقة الأرقام اللي بتدخلها.',
+  t447: '<a class="hs-link" data-go="proof" href="#">اقرا كل الحدود في صفحة الدليل</a>',
+  t448: 'حجم الطلبية',
+  t449: 'التكلفة',
+  t450: 'تكلفة الطلبيات',
+  t451: 'تكلفة التخزين',
+  t452: 'الاتنين مع بعض',
+  t453: 'أرخص حجم طلبية',
+  t454: 'اطلب كميات ضخمة',
+  t455: 'اطلب كميات صغيرة باستمرار',
+  t456: 'بنظرة سريعة',
+  t457: 'نسبة التوفر. الأعلى أحسن.',
+  t458: 'التكلفة الإجمالية لسنتين، بالجنيه. الأقل أحسن.',
+  t459: 'كل معادلة اتراجعت مقابل حساب يدوي، عشرات الحالات الصعبة والبيانات الغلط اتختبرت، والأداة كلها اتشغلت من الأول للآخر باللغتين. ثلاث مشاكل حقيقية اتلاقت واتصلحت.',
+  t460: 'اقرا تفاصيل الاختبار كاملة',
+  t461: 'مش موجود في أي باقة: حسابات، كاشير، باركود، أو فروع متعددة.',
+  t462: 'متوسط المخزون، بالجنيه. ده جانب الموازنة.',
 };
 
 
@@ -2020,6 +2145,161 @@ function openCheckout(tier, btn){
 })();
 </script>
 
+
+<style data-v2>
+/* ---------- page change ---------- */
+@keyframes pgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.js-anim .page.on{animation:pgIn .45s cubic-bezier(.2,.7,.2,1)}
+
+/* ---------- hero: two columns with the live preview card ---------- */
+@media (min-width:1000px){
+  #p-home .hero .wrap{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);column-gap:56px;align-items:start}
+  #p-home .hero .wrap > *{grid-column:1}
+  #p-home .hero .stats{grid-column:1 / -1}
+  #p-home .hero .wrap > .hero-visual{grid-column:2;grid-row:1 / span 5;align-self:center;margin-top:0}
+}
+.js-anim .hero .wrap > :nth-child(7){animation-delay:.5s}
+.hero-visual{margin-top:36px}
+.hv-card{background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);
+  border-radius:16px;padding:20px 20px 16px;box-shadow:0 30px 70px rgba(0,0,0,.35);backdrop-filter:blur(8px);color:#DCE6F2}
+.hv-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.hv-head b{color:#fff;font-size:1rem}
+.hv-tag{margin-inline-start:auto;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9FC4F3;
+  border:1px solid rgba(159,196,243,.35);border-radius:999px;padding:3px 10px}
+html[lang="ar"] .hv-tag{letter-spacing:0}
+.hv-pulse{width:9px;height:9px;border-radius:50%;background:#5DD39E;box-shadow:0 0 0 0 rgba(93,211,158,.6);animation:hvPulse 2s infinite}
+@keyframes hvPulse{70%{box-shadow:0 0 0 8px rgba(93,211,158,0)}100%{box-shadow:0 0 0 0 rgba(93,211,158,0)}}
+.hv-row{display:grid;grid-template-columns:7.5em minmax(0,1fr) 7em;align-items:center;gap:12px;padding:9px 0;border-top:1px solid rgba(255,255,255,.08)}
+.hv-name{font-size:.9rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hv-track{position:relative;height:6px;border-radius:6px;background:rgba(255,255,255,.1)}
+.hv-track i{position:absolute;inset-block:0;inset-inline-start:0;width:var(--w);border-radius:6px;min-width:6px}
+.hv-track i::after{content:"";position:absolute;inset-inline-end:-5px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;
+  background:inherit;border:2px solid #0E2743}
+.hv-track i.crit{background:#FF7B70}.hv-track i.order{background:#F2B551}.hv-track i.soon{background:#F2B551}.hv-track i.ok{background:#6AA5F2}
+.hv-when{font-size:.82rem;font-weight:600;text-align:end;white-space:nowrap}
+.hv-when.crit{color:#FF9C93}.hv-when.order,.hv-when.soon{color:#F5C570}.hv-when.ok{color:#9CC3F7}
+.hv-foot{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);font-size:.88rem;color:#fff;font-weight:600}
+.hv-cap{margin:10px 2px 0;font-size:.78rem;color:#8FA9C6}
+.js-anim .hv-track i{transform:scaleX(0);transform-origin:0 50%;animation:hvGrow .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,500ms)}
+html[dir="rtl"].js-anim .hv-track i{transform-origin:100% 50%}
+@keyframes hvGrow{to{transform:none}}
+.js-anim .hv-row{opacity:0;animation:hvRow .5s ease forwards;animation-delay:calc(var(--rd,0ms))}
+.js-anim .hv-row:nth-of-type(2){--rd:380ms}.js-anim .hv-row:nth-of-type(3){--rd:500ms}.js-anim .hv-row:nth-of-type(4){--rd:620ms}
+.js-anim .hv-row:nth-of-type(5){--rd:740ms}.js-anim .hv-row:nth-of-type(6){--rd:860ms}
+@keyframes hvRow{to{opacity:1}}
+@media (max-width:999px){.hv-row{grid-template-columns:6.5em minmax(0,1fr) 6.5em}}
+
+/* ---------- home: trade-off cards and the cost curve ---------- */
+.tradeoff{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0 8px}
+@media (max-width:700px){.tradeoff{grid-template-columns:1fr}}
+.to-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow-s);transition:transform .2s,box-shadow .2s}
+.to-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.to-card b{display:block;font-family:var(--serif);font-size:1.12rem;color:var(--ink);margin-bottom:6px}
+.to-card p{margin:0;font-size:.95rem}
+.ucurve{margin:18px 0 26px;padding:18px 18px 14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-s)}
+.ucurve svg{display:block;width:100%;height:auto;overflow:visible}
+.uc-axis{stroke:var(--line);stroke-width:1.5}
+.uc-l{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.uc-ord{stroke:#F2A33A;stroke-dasharray:.012 .012}
+.uc-hold{stroke:#8A63D2;stroke-dasharray:.012 .012}
+.uc-tot{stroke:var(--accent);stroke-width:4}
+.uc-drop{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:4 4;opacity:.6}
+.uc-min{fill:var(--accent);stroke:var(--card);stroke-width:3}
+.uc-minl{font:600 14px var(--sans);fill:var(--accent)}
+.uc-ax{font:500 12px var(--sans);fill:var(--muted)}
+.uc-key{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;margin-top:8px;font-size:.86rem;color:var(--body)}
+.uc-key > span{display:inline-flex;align-items:center;gap:8px}
+.uc-key i{display:inline-block;width:22px;height:0;border-top:3px dashed}
+.uc-key .k-ord{border-color:#F2A33A}.uc-key .k-hold{border-color:#8A63D2}.uc-key .k-tot{border-top-style:solid;border-top-width:4px;border-color:var(--accent)}
+.js-anim .ucurve .uc-tot{stroke-dasharray:1;stroke-dashoffset:1}
+.js-anim .ucurve .uc-ord,.js-anim .ucurve .uc-hold{opacity:0}
+.js-anim .ucurve .uc-min,.js-anim .ucurve .uc-minl,.js-anim .ucurve .uc-drop{opacity:0}
+.js-anim .ucurve.seen .uc-ord,.js-anim .ucurve.seen .uc-hold{animation:ucFade .6s ease .1s forwards}
+.js-anim .ucurve.seen .uc-tot{animation:ucDraw 1.3s cubic-bezier(.4,.1,.2,1) .5s forwards}
+.js-anim .ucurve.seen .uc-drop,.js-anim .ucurve.seen .uc-minl{animation:ucFade .5s ease 1.7s forwards}
+.js-anim .ucurve.seen .uc-min{transform-box:fill-box;transform-origin:center;animation:ucPop .6s cubic-bezier(.2,.7,.2,1) 1.6s forwards}
+@keyframes ucDraw{to{stroke-dashoffset:0}}
+@keyframes ucFade{to{opacity:1}}
+@keyframes ucPop{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.25)}100%{opacity:1;transform:none}}
+
+/* ---------- home: honesty strip ---------- */
+.honest-strip{padding:56px 0;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hs-in{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,2fr);gap:18px 40px;align-items:start}
+@media (max-width:800px){.hs-in{grid-template-columns:1fr}}
+.hs-head h3{margin:4px 0 0;font-size:1.5rem}
+.hs-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:600px){.hs-list{grid-template-columns:1fr}}
+.hs-list li{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;padding-inline-start:40px;font-size:.93rem;color:var(--body);margin:0}
+.hs-list li::before{content:"";position:absolute;inset-inline-start:14px;top:15px;width:16px;height:16px;border-radius:50%;background:#FDECEA;
+  background-image:linear-gradient(45deg,transparent 45%,#C4322A 45%,#C4322A 55%,transparent 55%),linear-gradient(-45deg,transparent 45%,#C4322A 45%,#C4322A 55%,transparent 55%);
+  background-size:10px 10px;background-position:center;background-repeat:no-repeat}
+.hs-more{grid-column:2;margin:4px 0 0}
+@media (max-width:800px){.hs-more{grid-column:1}}
+.hs-link{font-weight:600;color:var(--accent);text-decoration:none;border-bottom:1.5px solid color-mix(in srgb,var(--accent) 35%,transparent);transition:border-color .2s}
+.hs-link:hover{border-bottom-color:var(--accent)}
+
+/* ---------- evidence: bars at a glance ---------- */
+.evbars{margin:26px 0 30px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.evbars{grid-template-columns:1fr}}
+.evb-title{grid-column:1 / -1;margin:0;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+html[lang="ar"] .evb-title{letter-spacing:0}
+.evb-group{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow-s)}
+.evb-group h4{margin:0 0 12px;font-size:.92rem;color:var(--ink)}
+.evb-row{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"lab val" "bar bar";gap:4px 10px;margin-top:10px}
+.evb-lab{grid-area:lab;font-size:.82rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.evb-val{grid-area:val;font-size:.86rem;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.evb-track{grid-area:bar;height:8px;border-radius:8px;background:var(--bg-3);overflow:hidden}
+.evb-track i{display:block;height:100%;width:var(--w);border-radius:8px;background:#A9B6C6}
+.evb-row.win .evb-track i{background:linear-gradient(90deg,var(--accent),#5DA2F2)}
+.evb-row.win .evb-lab{color:var(--accent);font-weight:700}
+.js-anim .evb-track i{transform:scaleX(0);transform-origin:0 50%}
+html[dir="rtl"].js-anim .evb-track i{transform-origin:100% 50%}
+.js-anim .evbars.seen .evb-track i{animation:hvGrow 1s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.15s + var(--d,0ms))}
+
+/* ---------- evidence: folded testing notes, honesty list as cards ---------- */
+.vnotes{margin:14px 0 0;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.vnotes summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--accent);list-style:none}
+.vnotes summary::-webkit-details-marker{display:none}
+.vnotes summary::after{content:"+";float:inline-end;font-weight:700;transition:transform .25s}
+.vnotes[open] summary::after{transform:rotate(45deg)}
+.vnotes > :not(summary){padding:0 18px}
+.vnotes[open] > :not(summary){animation:pgIn .35s ease}
+#p-proof .box.warn ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){#p-proof .box.warn ul{grid-template-columns:1fr}}
+#p-proof .box.warn li{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:.93rem;transition:transform .2s,box-shadow .2s}
+#p-proof .box.warn li:hover{transform:translateY(-2px);box-shadow:var(--shadow-s)}
+#p-proof .box.warn li strong{color:var(--ink)}
+
+/* ---------- pricing: what is not included ---------- */
+.notinc{margin:22px auto 0;max-width:680px;text-align:center;font-size:.9rem;color:var(--muted);padding:12px 16px;border:1px dashed var(--line);border-radius:10px}
+
+/* ---------- FAQ: answers slide open ---------- */
+#p-faq details summary{transition:color .2s}
+#p-faq details summary:hover{color:var(--accent)}
+#p-faq details[open] .ans{animation:pgIn .35s ease}
+
+/* ---------- nav fits on every desktop ---------- */
+.nav-in{max-width:1320px}
+.tabs .tab{padding:8px 10px}
+.tabs .navlogin{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;padding-top:4px;padding-bottom:4px;text-decoration:none}
+.tabs .navlogin small{font-size:.72rem;font-weight:500;color:var(--muted)}
+.tabs .navlogin b{font-size:.92rem;font-weight:700;color:var(--accent)}
+@media (max-width:1320px){.tabs{display:none}.menubtn{display:block}}
+@media (max-width:600px){
+  .nav-in{padding:10px 12px;gap:8px}
+  .nav-in > div:last-child{gap:6px !important}
+  .brand{gap:8px;min-width:0}
+  .brand b{font-size:.92rem}
+  .brand span{font-size:.56rem;letter-spacing:.06em}
+  .nav-in .btn-sm{padding:8px 10px;font-size:.8rem}
+  .menubtn{padding:7px 9px}
+}
+@media (max-width:370px){.brand span{letter-spacing:0;font-size:.5rem}.brand svg{width:26px;height:26px;flex-basis:26px}.brand b{font-size:.84rem}.nav-in{padding:10px 8px;gap:4px}.brand{gap:6px}.nav-in .btn-sm{padding:7px 8px;font-size:.76rem}}
+@media (max-width:600px){#langBtn{display:none}.nav-in .btn-sm{white-space:nowrap}}
+@media (prefers-reduced-motion:reduce){
+  .page.on,.hv-pulse,.vnotes[open] > *,#p-faq details[open] .ans{animation:none !important}
+}
+</style>
 <style data-anim-layer>
 /* ===== motion layer: adds movement only, never changes or removes content ===== */
 .scrollbar{position:fixed;top:0;inset-inline-start:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);
@@ -2101,7 +2381,7 @@ html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
   var SEL = ['section .head', '.pain', '.verdict', '.card', '.feat', '.steps > *', '.tier', '.band', '.figure',
     '.tablewrap', '.box', '.win', '.price-note', '.sheets', '.fr', '.thanks-card', '.foot .wrap > *'];
   var io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    es.forEach(function (e) { if (e.isIntersecting || (e.boundingClientRect.height > 0 && e.boundingClientRect.bottom < 0)) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
   var seen = new WeakSet();
   function arm() {
@@ -2144,6 +2424,17 @@ html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
     es.forEach(function (e) { if (e.isIntersecting) { sio.unobserve(e.target); setTimeout(function () { countUp(e.target); }, 700); } });
   }, { threshold: 0.6 });
   document.querySelectorAll('.stats b').forEach(function (b) { sio.observe(b); });
+})();
+</script>
+
+<script data-v2>
+(function () {
+  /* charts play once they come into view */
+  if (!('IntersectionObserver' in window)) { document.querySelectorAll('.ucurve,.evbars').forEach(function (e) { e.classList.add('seen'); }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting || (e.boundingClientRect.height > 0 && e.boundingClientRect.bottom < 0)) { e.target.classList.add('seen'); io.unobserve(e.target); } });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.ucurve,.evbars').forEach(function (e) { io.observe(e); });
 })();
 </script>
 </body>
