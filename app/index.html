@@ -5,6 +5,7 @@
 <title>Etlob Sa7</title>
 <base target="_top">
 <meta charset="utf-8">
+<script>try{var t=localStorage.getItem("es7.theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -660,10 +661,40 @@ html[dir="rtl"] .tl-fill{transform-origin:right center;background:linear-gradien
 .nav button[aria-current="page"]{animation:navPick .35s cubic-bezier(.2,.7,.2,1)}
 @keyframes navPick{from{transform:scale(.97)}to{transform:none}}
 #bar-title{display:inline-block}
+@media (max-width:900px){#bar-title{display:none}}
 #bar-title.swap{animation:vIn .35s cubic-bezier(.2,.7,.2,1) both}
 @media (prefers-reduced-motion:reduce){
   #view.enter *,#view.enter > *,.nav button[aria-current="page"],#bar-title.swap{animation:none !important}
 }
+
+/* ================= light mode =================
+   Same layout, light page. The navy banner and its white rule stay, so the app still reads as the app. */
+html[data-theme="light"]{
+  color-scheme:light;
+  --bg:#F3F6FA;
+  --paper:#FFFFFF; --wash:#EEF3F9; --wash-2:#E4ECF5;
+  --line:#D3DDEA; --line-2:#E2E9F2;
+  --ink:#0E1B2B; --body:#33465C; --muted:#5A6C82; --faint:#7B8CA0;
+  --accent:#1A6DD4; --accent-2:#0F5BB8; --accent-ink:#FFFFFF; --accent-bg:rgba(26,109,212,.10);
+  --crit:#B42318; --crit-bg:rgba(180,35,24,.09);
+  --order:#8A5100; --order-bg:rgba(221,160,40,.14);
+  --ok:#157346; --ok-bg:rgba(21,115,70,.10);
+  --over:#1A57B8; --over-bg:rgba(26,87,184,.09);
+  --none:#5B6878; --none-bg:rgba(91,104,120,.10);
+  --field:#FFFFFF;
+}
+html[data-theme="light"] ::selection{background:rgba(26,109,212,.22)}
+html[data-theme="light"] .graph{border-color:var(--line)}
+html[data-theme="light"] .t tbody tr:hover td{background:rgba(14,39,67,.03)}
+/* theme switch: sits beside the language button */
+.themebtn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:36px;border-radius:9px;background:transparent;
+  border:1.5px solid rgba(255,255,255,.34);color:#fff;cursor:pointer;padding:0;flex:0 0 auto;transition:border-color .2s,background .2s}
+.themebtn:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.themebtn svg{width:18px;height:18px}
+.themebtn .sun{display:none}
+html[data-theme="light"] .themebtn .sun{display:block}
+html[data-theme="light"] .themebtn .moon{display:none}
+@media (max-width:900px){.themebtn{width:34px;height:32px}}
 </style>
 </head>
 <body>
@@ -678,6 +709,7 @@ html[dir="rtl"] .tl-fill{transform-origin:right center;background:linear-gradien
       <div><b class="appname">Etlob Sa7</b><span data-t="login.tag">Demand planning for Egypt</span></div>
     </a>
     <span class="push"></span>
+    <button type="button" class="themebtn" data-act="theme" aria-label="Light or dark mode" title="Light or dark mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg></button>
     <button type="button" class="lang" data-act="lang">العربية</button>
   </header>
   <div class="login-brand">
@@ -727,6 +759,7 @@ html[dir="rtl"] .tl-fill{transform-origin:right center;background:linear-gradien
     <span class="title" id="bar-title"></span>
     <span class="push"></span>
     <span class="status" id="status"><i></i><span></span></span>
+    <button type="button" class="themebtn" data-act="theme" aria-label="Light or dark mode" title="Light or dark mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg></button>
     <button class="lang" data-act="lang">العربية</button>
     <button class="ghost" data-act="logout" data-t="nav.signout">Sign out</button>
   </header>
@@ -1050,20 +1083,20 @@ en: {
   'wt.s2p': 'Four products. Notice the Tote Bag has its first six months blank, not zero. It launched in March, and blank means no data, while zero would mean nobody wanted it.',
   'wt.s2e': 'Basic Tee, Hooded Jacket, Eid Kaftan, Tote Bag.',
   'wt.s3': 'Health check',
-  'wt.s3p': 'Three products are fine. The Tote Bag gets one note because it only has five months of history, so season and trend are switched off for it until it has a full year.',
-  'wt.s3e': '3 Good, 1 Review (Tote Bag).',
+  'wt.s3p': 'Two products are fine. The Eid Kaftan gets a note because its stock is already below its safety buffer, which is why it says order today. The Tote Bag gets one note because it only has five months of history, so season and trend are switched off for it until it has a full year.',
+  'wt.s3e': '2 Good, 2 Review (Eid Kaftan, Tote Bag).',
   'wt.s4': 'Order decisions',
-  'wt.s4p': 'Read the reason under each product. The Basic Tee has 40 units but its reorder point is 48, so it is time to order. It is not urgent, because 40 is still well above its safety buffer of 11.',
-  'wt.s4e': 'Basic Tee: buffer 11, reorder point 48, order 200. Hooded Jacket: 8, 30, order 100. Eid Kaftan: 9, 19, order 102. Tote Bag: stock is healthy.',
+  'wt.s4p': 'Read the reason under each product. The Basic Tee has 40 units but its reorder point is 62, so it is time to order. It is not urgent, because 40 is still well above its safety buffer of 11.',
+  'wt.s4e': 'Basic Tee: buffer 11, reorder point 62, order 220. Hooded Jacket: 8, 39, order 110. Eid Kaftan: 11, 28, order 108 today. Tote Bag: stock is healthy.',
   'wt.s5': 'Demand forecast',
   'wt.s5p': 'The Hooded Jacket looks chaotic raw, 73 in December and 15 in July. With the winter shape removed it is actually steady, class X, which is why its buffer is only 8.',
   'wt.s5e': 'Hooded Jacket class X, Eid Kaftan class Y.',
   'wt.s6': 'Dashboard',
   'wt.s6p': 'All three restocking at once pushes the shop over its budget this month. That is exactly what you want to know before payday.',
-  'wt.s6e': 'Stock 8,550 EGP. To order now 49,300 EGP. Stock turnover 25.9x a year.',
+  'wt.s6e': 'Stock 8,550 EGP. To order now 53,600 EGP. Stock turnover 25.9x a year.',
   'wt.s7': 'Purchase plan',
   'wt.s7p': 'Two orders, one per supplier, ready to send on WhatsApp.',
-  'wt.s7e': 'Delta Textiles: 300 pieces. Cairo Print Co: 102 pieces. Over budget by 24,300 EGP.',
+  'wt.s7e': 'Delta Textiles: 330 pieces. Cairo Print Co: 108 pieces. Over budget by 28,600 EGP.',
   'wt.done': 'If every number matched, you understand the whole app. Now clear it and type in your own shop.',
   'nav.incoming': 'Incoming orders',
   'nav.accuracy': 'Forecast accuracy',
@@ -1643,20 +1676,20 @@ ar: {
   'wt.s2p': 'أربع منتجات. لاحظ إن الشنطة القماش أول ست شهور فاضيين مش صفر. اتنزلت في مارس، والفاضي معناه مفيش بيانات، إنما الصفر معناه محدش كان عايزها.',
   'wt.s2e': 'تيشيرت بيسك، جاكت بكابيشون، قفطان العيد، شنطة قماش.',
   'wt.s3': 'فحص البيانات',
-  'wt.s3p': 'تلات منتجات تمام. الشنطة القماش عليها ملاحظة واحدة لأن تاريخها خمس شهور بس، فالموسمية والاتجاه متقفلين ليها لحد ما تكمل سنة.',
-  'wt.s3e': '3 تمام، و1 راجعه (الشنطة القماش).',
+  'wt.s3p': 'منتجين تمام. القفطان عليه ملاحظة لأن مخزونه نزل تحت حد الأمان، وعلشان كده بيقولك اطلب النهارده. والشنطة عليها ملاحظة واحدة لأن عندها خمس شهور بس من التاريخ، فالموسم والاتجاه مقفولين ليها لحد ما تكمل سنة.',
+  'wt.s3e': '2 تمام، و2 راجعهم (القفطان والشنطة القماش).',
   'wt.s4': 'قرارات الطلب',
-  'wt.s4p': 'اقرا السبب تحت كل منتج. التيشيرت عنده 40 قطعة ونقطة إعادة الطلب 48، فجه وقت الطلب. مش مستعجل، لأن 40 لسه أعلى بكتير من حد الأمان 11.',
-  'wt.s4e': 'التيشيرت: الأمان 11، إعادة الطلب 48، اطلب 200. الجاكت: 8، 30، اطلب 100. القفطان: 9، 19، اطلب 102. الشنطة: المخزون كويس.',
+  'wt.s4p': 'اقرا السبب تحت كل منتج. التيشيرت عنده 40 قطعة ونقطة إعادة الطلب 62، فجه وقت الطلب. مش مستعجل، لأن 40 لسه أعلى بكتير من حد الأمان 11.',
+  'wt.s4e': 'التيشيرت: الأمان 11، إعادة الطلب 62، اطلب 220. الجاكت: 8، 39، اطلب 110. القفطان: 11، 28، اطلب 108 النهارده. الشنطة: المخزون كويس.',
   'wt.s5': 'توقع الطلب',
   'wt.s5p': 'الجاكت شكله عشوائي، 73 في ديسمبر و15 في يوليو. بعد ما تشيل شكل الشتاء بيطلع ثابت فعلا، فئة X، وده سبب إن حد الأمان بتاعه 8 بس.',
   'wt.s5e': 'الجاكت فئة X، القفطان فئة Y.',
   'wt.s6': 'لوحة المتابعة',
   'wt.s6p': 'التلات منتجات محتاجين طلب في نفس الوقت، فالمحل هيعدي ميزانيته الشهر ده. ده بالظبط اللي محتاج تعرفه قبل القبض.',
-  'wt.s6e': 'المخزون 8,550 جنيه. المطلوب دلوقتي 49,300 جنيه. دوران المخزون 25.9 مرة في السنة.',
+  'wt.s6e': 'المخزون 8,550 جنيه. المطلوب دلوقتي 53,600 جنيه. دوران المخزون 25.9 مرة في السنة.',
   'wt.s7': 'خطة الشراء',
   'wt.s7p': 'طلبيتين، واحدة لكل مورد، جاهزين يتبعتوا على واتساب.',
-  'wt.s7e': 'دلتا للنسيج: 300 قطعة. القاهرة للطباعة: 102 قطعة. أعلى من الميزانية بـ 24,300 جنيه.',
+  'wt.s7e': 'دلتا للنسيج: 330 قطعة. القاهرة للطباعة: 108 قطعة. أعلى من الميزانية بـ 28,600 جنيه.',
   'wt.done': 'لو كل الأرقام طلعت زي دي، يبقى فهمت الأداة كلها. امسحه واكتب بيانات محلك.',
   'nav.incoming': 'الطلبيات الجاية',
   'nav.accuracy': 'دقة التوقع',
@@ -3272,6 +3305,12 @@ async function withSaveThen(fn) {
 }
 
 const ACTIONS = {
+  theme: () => {
+    const light = document.documentElement.getAttribute('data-theme') !== 'light';
+    document.documentElement.setAttribute('data-theme', light ? 'light' : 'dark');
+    try { localStorage.setItem('es7.theme', light ? 'light' : 'dark'); } catch (e) {}
+    if (S.res && !$('#app').hidden) renderTab();
+  },
   tab: el => goTab(el.dataset.tab),
   lang: () => setLang(LANG === 'ar' ? 'en' : 'ar'),
   logout: async () => {
