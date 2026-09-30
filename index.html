@@ -14,35 +14,35 @@
 <script async src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <style>
 :root{
-  --navy:#0E2743;--navy-2:#17375D;--navy-3:#1E4778;
-  --ink:#0F1822;--body:#3A4959;--muted:#6C7C90;--faint:#95A3B4;
-  --line:#E0E6ED;--line-2:#EDF1F6;
-  --bg:#FFFFFF;--bg-2:#F7F9FC;--bg-3:#EDF2F8;--card:#FFFFFF;
-  --accent:#1A6DD4;--accent-2:#0F5BB8;--accent-ink:#FFFFFF;--gold:#B0801F;
+  --navy:#2C371A;--navy-2:#425D17;--navy-3:#55781E;
+  --ink:#1A1E13;--body:#3A4959;--muted:#6C7C90;--faint:#95A3B4;
+  --line:#E8EDE0;--line-2:#F3F6ED;
+  --bg:#FFFFFF;--bg-2:#F7F9FC;--bg-3:#F4F8ED;--card:#FFFFFF;
+  --accent:#8DD41A;--accent-2:#77B80F;--accent-ink:#FFFFFF;--gold:#B0801F;
   --ok:#17784A;--ok-bg:#E7F5EC;--warn:#8E6100;--warn-bg:#FCF3E1;--bad:#A82219;--bad-bg:#FCEBE9;
-  --shadow-s:0 1px 2px rgba(14,39,67,.05),0 2px 8px rgba(14,39,67,.05);
-  --shadow:0 2px 4px rgba(14,39,67,.05),0 12px 32px rgba(14,39,67,.08);
+  --shadow-s:0 1px 2px rgba(44,55,26,.05),0 2px 8px rgba(44,55,26,.05);
+  --shadow:0 2px 4px rgba(44,55,26,.05),0 12px 32px rgba(44,55,26,.08);
   --serif:"Fraunces",Georgia,"Times New Roman",serif;
   --sans:"Public Sans","IBM Plex Sans Arabic",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --mx:1140px;--r:12px;
 }
 html[lang="ar"]{--serif:"IBM Plex Sans Arabic","Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --navy:#081726;--navy-2:#0D2440;--navy-3:#133155;
-  --ink:#ECF2F9;--body:#B4C3D4;--muted:#8697AC;--faint:#6E7F95;
-  --line:#1F3148;--line-2:#182639;
-  --bg:#080E18;--bg-2:#0D1624;--bg-3:#111E31;--card:#0D1624;
-  --accent:#5DA2F2;--accent-2:#79B4F7;--accent-ink:#04101E;--gold:#D6A644;
+  --navy:#191F0F;--navy-2:#2A3518;--navy-3:#384622;
+  --ink:#F4F9EC;--body:#C8D4B4;--muted:#8697AC;--faint:#6E7F95;
+  --line:#363F28;--line-2:#2B321F;
+  --bg:#11140C;--bg-2:#1A1F12;--bg-3:#232A18;--card:#1A1F12;
+  --accent:#B9F25D;--accent-2:#C6F47C;--accent-ink:#13180A;--gold:#D6A644;
   --ok:#63D394;--ok-bg:#0F2A1C;--warn:#DDB254;--warn-bg:#2A2110;--bad:#F08A80;--bad-bg:#2B1512;
   --shadow-s:0 1px 2px rgba(0,0,0,.5);
   --shadow:0 2px 4px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4);
 }}
 :root[data-theme="dark"]{
-  --navy:#081726;--navy-2:#0D2440;--navy-3:#133155;
-  --ink:#ECF2F9;--body:#B4C3D4;--muted:#8697AC;--faint:#6E7F95;
-  --line:#1F3148;--line-2:#182639;
-  --bg:#080E18;--bg-2:#0D1624;--bg-3:#111E31;--card:#0D1624;
-  --accent:#5DA2F2;--accent-2:#79B4F7;--accent-ink:#04101E;--gold:#D6A644;
+  --navy:#191F0F;--navy-2:#2A3518;--navy-3:#384622;
+  --ink:#F4F9EC;--body:#C8D4B4;--muted:#8697AC;--faint:#6E7F95;
+  --line:#363F28;--line-2:#2B321F;
+  --bg:#11140C;--bg-2:#1A1F12;--bg-3:#232A18;--card:#1A1F12;
+  --accent:#B9F25D;--accent-2:#C6F47C;--accent-ink:#13180A;--gold:#D6A644;
   --ok:#63D394;--ok-bg:#0F2A1C;--warn:#DDB254;--warn-bg:#2A2110;--bad:#F08A80;--bad-bg:#2B1512;
   --shadow-s:0 1px 2px rgba(0,0,0,.5);
   --shadow:0 2px 4px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4);
@@ -121,23 +121,23 @@ section.tight{padding:56px 0}
 .hero{background:linear-gradient(168deg,var(--navy) 0%,var(--navy-2) 58%,var(--navy-3) 100%);
   color:#fff;padding:92px 0 100px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;top:-30%;right:-15%;width:70%;height:130%;
-  background:radial-gradient(ellipse at center,rgba(93,162,242,.2),transparent 62%)}
+  background:radial-gradient(ellipse at center,rgba(185,242,93,.2),transparent 62%)}
 .hero::after{content:"";position:absolute;inset:0;opacity:.35;
   background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:46px 46px;
   mask-image:radial-gradient(ellipse at 20% 0%,#000,transparent 72%)}
 .hero .wrap{position:relative;z-index:2}
 .hero h1{color:#fff;max-width:16ch;margin-bottom:.4em}
-.hero .eyebrow{color:#9CC4EE}
-.hero .lede{color:#C3D6EA;max-width:54ch;margin-bottom:32px}
+.hero .eyebrow{color:#CFEE9C}
+.hero .lede{color:#DBEAC3;max-width:54ch;margin-bottom:32px}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero-note{margin-top:22px;font-size:.88rem;color:#8FA9C6}
+.hero-note{margin-top:22px;font-size:.88rem;color:#B1C68F}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px;padding-top:30px;
   border-top:1px solid rgba(255,255,255,.15)}
 @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr);gap:20px}}
 .stats b{display:block;font-family:var(--serif);font-size:1.8rem;color:#fff;line-height:1.05;
   margin-bottom:2px}
-.stats small{color:#8FA9C6;font-size:.81rem;line-height:1.45;display:block}
+.stats small{color:#B1C68F;font-size:.81rem;line-height:1.45;display:block}
 
 /* ---------- GRIDS / CARDS ---------- */
 .grid{display:grid;gap:22px}
@@ -282,7 +282,7 @@ details .ans p:last-child{margin-bottom:0}
 .band{background:linear-gradient(160deg,var(--navy),var(--navy-3));color:#fff;text-align:center;
   padding:76px 0}
 .band h2{color:#fff}
-.band p{color:#C3D6EA;max-width:54ch;margin:0 auto 28px}
+.band p{color:#DBEAC3;max-width:54ch;margin:0 auto 28px}
 .band .btn-ghost{color:#fff;border-color:rgba(255,255,255,.34)}
 .band .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
 
@@ -325,6 +325,19 @@ html[dir="rtl"] .feats li{padding:9px 27px 9px 0}
 html[dir="rtl"] .feats li::before{left:auto;right:2px}
 
 </style>
+
+<style data-lime>
+/* ================= lime green: final colour set ================= */
+:root{--accent:#4D7C0F;--accent-2:#3F6212;--accent-ink:#FFFFFF;--navy:#10190A;--navy-2:#18260D;--navy-3:#223611;--lime:#A3E635;--lime-2:#BEF264;--lime-ink:#0E1A02}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#A3E635;--accent-2:#BEF264;--accent-ink:#0E1A02;--navy:#0A1006;--navy-2:#111B09;--navy-3:#18270C}}
+:root[data-theme="dark"]{--accent:#A3E635;--accent-2:#BEF264;--accent-ink:#0E1A02;--navy:#0A1006;--navy-2:#111B09;--navy-3:#18270C}
+.btn-primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+.btn-primary:hover{background:var(--lime-2);border-color:var(--lime-2);color:var(--lime-ink)}
+.btn-primary:hover{box-shadow:0 10px 26px rgba(120,170,20,.35)}
+.scrollbar{background:linear-gradient(90deg,#65A30D,#A3E635)}
+.evb-row.win .evb-track i,.pbar i,.hv-track i.ok{background:linear-gradient(90deg,#65A30D,#A3E635)}
+.hero .eyebrow,.band .eyebrow{color:#BEF264}
+</style>
 </head>
 <body>
 <nav class="nav">
@@ -334,7 +347,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <rect fill="var(--navy)" height="32" rx="8" width="32"></rect>
 <rect fill="#fff" height="7" opacity=".55" rx="1.3" width="3.6" x="8" y="17"></rect>
 <rect fill="#fff" height="12" opacity=".8" rx="1.3" width="3.6" x="14.2" y="12"></rect>
-<rect fill="#5DA2F2" height="16" rx="1.3" width="3.6" x="20.4" y="8"></rect>
+<rect fill="#B9F25D" height="16" rx="1.3" width="3.6" x="20.4" y="8"></rect>
 </svg>
 <b data-t-html="t1"></b>
 </a>
@@ -387,7 +400,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <div class="hv-row"><bdi class="hv-name">Tote bag</bdi><span class="hv-track"><i class="crit" style="--w:3%;--d:500ms"></i></span><span class="hv-when crit" data-t="t434"></span></div>
 <div class="hv-row"><bdi class="hv-name">Leather wallet</bdi><span class="hv-track"><i class="order" style="--w:6%;--d:640ms"></i></span><span class="hv-when order" data-t="t435"></span></div>
 <div class="hv-row"><bdi class="hv-name">Eid gift box</bdi><span class="hv-track"><i class="order" style="--w:6%;--d:780ms"></i></span><span class="hv-when order" data-t="t435"></span></div>
-<div class="hv-row"><bdi class="hv-name">Wool scarf</bdi><span class="hv-track"><i class="soon" style="--w:13%;--d:920ms"></i></span><span class="hv-when soon" data-t="t437"></span></div>
+<div class="hv-row"><bdi class="hv-name">Wool scarf</bdi><span class="hv-track"><i class="soon" style="--w:17%;--d:920ms"></i></span><span class="hv-when soon" data-t="t437"></span></div>
 <div class="hv-row"><bdi class="hv-name">Cotton tee</bdi><span class="hv-track"><i class="ok" style="--w:68%;--d:1060ms"></i></span><span class="hv-when ok" data-t="t438"></span></div>
 <div class="hv-foot" data-t="t440"></div>
 </div>
@@ -502,51 +515,20 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <section>
 <div class="wrap">
 <!-- 1 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t60"></div><div>
-<h3 data-t="t61"></h3>
-<p class="sub" data-t="t62"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t63"></dt><dd data-t="t64"></dd></dl>
-<dl class="fr use"><dt data-t="t65"></dt><dd data-t="t66"></dd></dl>
-<dl class="fr why"><dt data-t="t67"></dt><dd data-t="t68"></dd></dl>
+<div class="pgrid">
+<div class="pcard" data-t-html="t493"></div>
+<div class="pcard" data-t-html="t494"></div>
+<div class="pcard" data-t-html="t495"></div>
+<div class="pcard" data-t-html="t496"></div>
+<div class="pcard" data-t-html="t497"></div>
+<div class="pcard" data-t-html="t498"></div>
+<div class="pcard" data-t-html="t499"></div>
+<div class="pcard" data-t-html="t500"></div>
+<div class="pcard" data-t-html="t501"></div>
+<div class="pcard" data-t-html="t502"></div>
+<div class="pcard" data-t-html="t503"></div>
+<div class="pcard" data-t-html="t504"></div>
 </div>
-</div>
-<!-- 2 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t69"></div><div>
-<h3 data-t="t70"></h3>
-<p class="sub" data-t="t71"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t72"></dt><dd data-t="t73"></dd></dl>
-<dl class="fr use"><dt data-t="t74"></dt><dd data-t="t75"></dd></dl>
-<dl class="fr why"><dt data-t="t76"></dt><dd data-t="t77"></dd></dl>
-</div>
-</div>
-<!-- 3 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t78"></div><div>
-<h3 data-t="t79"></h3>
-<p class="sub" data-t="t80"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t81"></dt><dd data-t="t82"></dd></dl>
-<dl class="fr use"><dt data-t="t83"></dt><dd data-t="t84"></dd></dl>
-<dl class="fr why"><dt data-t="t85"></dt><dd data-t="t86"></dd></dl>
-</div>
-</div>
-<!-- 4 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t87"></div><div>
-<h3 data-t="t88"></h3>
-<p class="sub" data-t="t89"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t90"></dt><dd data-t="t91"></dd></dl>
-<dl class="fr use"><dt data-t="t92"></dt><dd data-t="t93"></dd></dl>
-<dl class="fr why"><dt data-t="t94"></dt><dd data-t="t95"></dd></dl>
 <figure class="figure">
 <svg aria-label="Stock level over time showing reorder point and safety stock" role="img" viewbox="0 0 700 270">
 <defs><marker id="ar" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="var(--muted)"></path></marker></defs>
@@ -569,105 +551,6 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 </svg>
 <figcaption data-t="t96"></figcaption>
 </figure>
-</div>
-</div>
-<!-- 5 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t97"></div><div>
-<h3 data-t="t98"></h3>
-<p class="sub" data-t="t99"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t100"></dt><dd data-t="t101"></dd></dl>
-<dl class="fr use"><dt data-t="t102"></dt><dd data-t="t103"></dd></dl>
-<dl class="fr why"><dt data-t="t104"></dt><dd data-t="t105"></dd></dl>
-</div>
-</div>
-<!-- 6 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t106"></div><div>
-<h3 data-t="t107"></h3>
-<p class="sub" data-t="t108"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t109"></dt><dd data-t="t110"></dd></dl>
-<dl class="fr use"><dt data-t="t111"></dt><dd data-t="t112"></dd></dl>
-<dl class="fr why"><dt data-t="t113"></dt><dd data-t="t114"></dd></dl>
-</div>
-</div>
-<!-- 7 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t115"></div><div>
-<h3 data-t="t116"></h3>
-<p class="sub" data-t="t117"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t118"></dt><dd data-t="t119"></dd></dl>
-<dl class="fr use"><dt data-t="t120"></dt><dd data-t="t121"></dd></dl>
-<dl class="fr why"><dt data-t="t122"></dt><dd data-t="t123"></dd></dl>
-</div>
-</div>
-<!-- 8 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t124"></div><div>
-<h3 data-t="t125"></h3>
-<p class="sub" data-t="t126"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t127"></dt><dd data-t="t128"></dd></dl>
-<dl class="fr use"><dt data-t="t129"></dt><dd data-t="t130"></dd></dl>
-<dl class="fr why"><dt data-t="t131"></dt><dd data-t="t132"></dd></dl>
-
-</div>
-</div>
-<!-- 9 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t148"></div><div>
-<h3 data-t="t149"></h3>
-<p class="sub" data-t="t150"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t151"></dt><dd data-t="t152"></dd></dl>
-<dl class="fr use"><dt data-t="t153"></dt><dd data-t="t154"></dd></dl>
-<dl class="fr why"><dt data-t="t155"></dt><dd data-t="t156"></dd></dl>
-</div>
-</div>
-<!-- 10 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t157"></div><div>
-<h3 data-t="t158"></h3>
-<p class="sub" data-t="t159"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t160"></dt><dd data-t="t161"></dd></dl>
-<dl class="fr use"><dt data-t="t162"></dt><dd data-t="t163"></dd></dl>
-<dl class="fr why"><dt data-t="t164"></dt><dd data-t="t165"></dd></dl>
-</div>
-</div>
-<!-- 11 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t166"></div><div>
-<h3 data-t="t167"></h3>
-<p class="sub" data-t="t168"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t169"></dt><dd data-t="t170"></dd></dl>
-<dl class="fr use"><dt data-t="t171"></dt><dd data-t="t172"></dd></dl>
-<dl class="fr why"><dt data-t="t173"></dt><dd data-t="t174"></dd></dl>
-</div>
-</div>
-<!-- 12 -->
-<div class="feat">
-<div class="feat-h"><div class="feat-n" data-t="t175"></div><div>
-<h3 data-t="t176"></h3>
-<p class="sub" data-t="t177"></p>
-</div></div>
-<div class="feat-b">
-<dl class="fr"><dt data-t="t178"></dt><dd data-t="t179"></dd></dl>
-<dl class="fr use"><dt data-t="t180"></dt><dd data-t="t181"></dd></dl>
-<dl class="fr why"><dt data-t="t182"></dt><dd data-t="t183"></dd></dl>
-</div>
-</div>
 </div>
 </section>
 <section class="alt">
@@ -756,6 +639,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <h2 data-t="t466"></h2>
 <p data-t="t467"></p>
 </div>
+<figure class="realchart"><figcaption class="rc-cap" data-t="t517"></figcaption><svg viewBox="0 0 780 290" role="img" aria-labelledby="rc-t"><title id="rc-t" data-t="t517"></title><line class="rc-grid" x1="70" x2="760" y1="250.0" y2="250.0"/><text class="rc-y" x="62" y="254.0" text-anchor="end">1,800</text><line class="rc-grid" x1="70" x2="760" y1="176.7" y2="176.7"/><text class="rc-y" x="62" y="180.7" text-anchor="end">2,100</text><line class="rc-grid" x1="70" x2="760" y1="103.3" y2="103.3"/><text class="rc-y" x="62" y="107.3" text-anchor="end">2,400</text><line class="rc-grid" x1="70" x2="760" y1="30.0" y2="30.0"/><text class="rc-y" x="62" y="34.0" text-anchor="end">2,700</text><text class="rc-x" x="70.0" y="272" text-anchor="middle" data-t="t505"></text><text class="rc-x" x="132.7" y="272" text-anchor="middle" data-t="t506"></text><text class="rc-x" x="195.5" y="272" text-anchor="middle" data-t="t507"></text><text class="rc-x" x="258.2" y="272" text-anchor="middle" data-t="t508"></text><text class="rc-x" x="320.9" y="272" text-anchor="middle" data-t="t509"></text><text class="rc-x" x="383.6" y="272" text-anchor="middle" data-t="t510"></text><text class="rc-x" x="446.4" y="272" text-anchor="middle" data-t="t511"></text><text class="rc-x" x="509.1" y="272" text-anchor="middle" data-t="t512"></text><text class="rc-x" x="571.8" y="272" text-anchor="middle" data-t="t513"></text><text class="rc-x" x="634.5" y="272" text-anchor="middle" data-t="t514"></text><text class="rc-x" x="697.3" y="272" text-anchor="middle" data-t="t515"></text><text class="rc-x" x="760.0" y="272" text-anchor="middle" data-t="t516"></text><path class="rc-l rc-act" d="M70.0 162.7 L132.7 203.8 L195.5 175.9 L258.2 144.4 L320.9 118.7 L383.6 135.1 L446.4 101.4 L509.1 58.8 L571.8 107.0 L634.5 96.7 L697.3 135.8 L760.0 145.1"/><path class="rc-l rc-year" d="M70.0 198.2 L132.7 200.4 L195.5 145.1 L258.2 125.8 L320.9 102.8 L383.6 93.6 L446.4 83.8 L509.1 66.2 L571.8 93.6 L634.5 81.6 L697.3 122.2 L760.0 156.1"/><path class="rc-l rc-mon" d="M70.0 198.2 L132.7 192.3 L195.5 143.2 L258.2 129.7 L320.9 117.3 L383.6 111.2 L446.4 106.3 L509.1 90.1 L571.8 110.7 L634.5 89.6 L697.3 129.0 L760.0 169.3"/><circle class="rc-d-act" cx="70.0" cy="162.7" r="3.4"/><circle class="rc-d-act" cx="132.7" cy="203.8" r="3.4"/><circle class="rc-d-act" cx="195.5" cy="175.9" r="3.4"/><circle class="rc-d-act" cx="258.2" cy="144.4" r="3.4"/><circle class="rc-d-act" cx="320.9" cy="118.7" r="3.4"/><circle class="rc-d-act" cx="383.6" cy="135.1" r="3.4"/><circle class="rc-d-act" cx="446.4" cy="101.4" r="3.4"/><circle class="rc-d-act" cx="509.1" cy="58.8" r="3.4"/><circle class="rc-d-act" cx="571.8" cy="107.0" r="3.4"/><circle class="rc-d-act" cx="634.5" cy="96.7" r="3.4"/><circle class="rc-d-act" cx="697.3" cy="135.8" r="3.4"/><circle class="rc-d-act" cx="760.0" cy="145.1" r="3.4"/><circle class="rc-d-mon" cx="70.0" cy="198.2" r="3.4"/><circle class="rc-d-mon" cx="132.7" cy="192.3" r="3.4"/><circle class="rc-d-mon" cx="195.5" cy="143.2" r="3.4"/><circle class="rc-d-mon" cx="258.2" cy="129.7" r="3.4"/><circle class="rc-d-mon" cx="320.9" cy="117.3" r="3.4"/><circle class="rc-d-mon" cx="383.6" cy="111.2" r="3.4"/><circle class="rc-d-mon" cx="446.4" cy="106.3" r="3.4"/><circle class="rc-d-mon" cx="509.1" cy="90.1" r="3.4"/><circle class="rc-d-mon" cx="571.8" cy="110.7" r="3.4"/><circle class="rc-d-mon" cx="634.5" cy="89.6" r="3.4"/><circle class="rc-d-mon" cx="697.3" cy="129.0" r="3.4"/><circle class="rc-d-mon" cx="760.0" cy="169.3" r="3.4"/></svg><div class="rc-key"><span><i class="k-act"></i><span data-t="t518"></span></span><span><i class="k-year"></i><span data-t="t519"></span></span><span><i class="k-mon"></i><span data-t="t520"></span></span></div></figure>
 <div class="ptablewrap"><table class="ptab">
 <thead><tr><th data-t="t468"></th><th data-t="t469"></th><th data-t="t470"></th><th data-t="t471"></th></tr></thead>
 <tbody>
@@ -1110,7 +994,7 @@ var SITE_EN = {
   t17: 'Most small brands sell brilliantly and guess at buying. This removes the guess: how many units to order, from which supplier, on which day, for every product you sell.',
   t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">Start your free trial</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">See the app in action</a>',
   t19: 'Runs in your browser. Arabic and English included. Priced in USD.',
-  t20: '<b>99.4%</b><small>Fill rate achieved in a two year simulation</small>',
+  t20: '<b>96.7%</b><span>2015 forecast accuracy on a real store, made from 2013 and 2014 only</span>',
   t21: '<b>10 min</b><small>Your weekly routine once it is set up</small>',
   t22: '<b>17</b><small>Connected pages. You type into four.</small>',
   t23: '<b>2 min</b><small>To sign in. Just your email, no password to remember.</small>',
@@ -1148,8 +1032,8 @@ var SITE_EN = {
   t55: 'Free trial on every plan. Nothing charged until it ends. Cancel in two clicks.',
   t56: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">See pricing</a>\n<a class="btn btn-ghost btn-lg" data-go="proof" href="#">Read the evidence first</a>',
   t57: 'What we provide',
-  t58: 'Twelve capabilities, explained honestly',
-  t59: 'For each one: what it is, how you actually use it, and why it matters to\n          your money. Where something is genuinely just convenient rather than transformative, we\n          say so.',
+  t58: 'Everything you need to buy stock with confidence',
+  t59: 'You fill in four pages. Everything else is worked out for you, in Arabic or English.',
   t60: '1',
   t61: 'Seasonal separation',
   t62: 'The single thing that separates this from every free template online',
@@ -1186,7 +1070,7 @@ var SITE_EN = {
   t93: 'You do not calculate anything. The Order\n          Decisions page shows a coloured verdict per product: order today, order this week, stock is\n          healthy, or overstocked. Red, amber, green, blue. Under each one, a plain sentence explains exactly why.',
   t94: 'Why it matters',
   t95: 'Waiting until a product is nearly gone\n          guarantees a gap, because the supplier still needs their lead time after you notice. The\n          reorder point is the exact amount of stock that carries you through that wait and no more.\n          Ordering at the right level is worth more than ordering the right quantity.',
-  t96: 'Stock falls as you sell. It touches the reorder point, you order, and the\n            remaining stock carries you through the lead time. Safety stock is the cushion you only\n            eat into when something goes wrong.',
+  t96: 'Stock falls as you sell. At the reorder point you order, and what is left carries you until the delivery arrives. Safety stock is the cushion for bad weeks.',
   t97: '5',
   t98: 'Economic order quantity',
   t99: 'Answers how much, by finding the bottom of the cost curve',
@@ -1283,7 +1167,7 @@ var SITE_EN = {
   t190: '<b>Seasons</b><span>Winter, summer, Ramadan and Eid, or flat. Editable on Pro and Store.</span>',
   t191: '<b>Suppliers</b><span>Lead times, variation, minimums, carton sizes, payment terms</span>',
   t192: '<b>Products</b><span>Twelve months of sales, costs, prices, stock on hand and in transit</span>',
-  t193: '<b>Demand Forecast</b><span>Deseasonalised demand, trend, variability class, forecast</span>',
+  t193: '<b>Demand Forecast</b><span>Demand with the season removed, recent direction, variability class, forecast</span>',
   t194: '<b>Order Decisions</b><span>Safety stock, reorder point, quantity, and a plain verdict</span>',
   t195: '<b>Demand Graphs</b><span>Real sales lines per product, the forecast, and reorder timing</span>',
   t196: '<b>Purchase Plan</b><span>Orders grouped by supplier with totals and budget check</span>',
@@ -1520,43 +1404,71 @@ var SITE_EN = {
   t431: 'Already a subscriber? Log in',
   t463: 'Already a subscriber?',
   t464: 'Log in',
-  t465: 'Proof, feature by feature',
-  t466: 'What the app predicted, and what actually happened',
-  t467: 'The real app, unchanged, run through all of 2024 forty times. Every Sunday the owner checked it and ordered exactly what it said. Then each prediction was compared with what really happened.',
+  t520: 'App, next month, updated each month',
+  t519: 'App, whole year forecast made in December 2014',
+  t518: 'What the store really sold',
+  t517: 'Units sold per month, 40 products, 2015',
+  t516: 'Dec',
+  t515: 'Nov',
+  t514: 'Oct',
+  t513: 'Sep',
+  t512: 'Aug',
+  t511: 'Jul',
+  t510: 'Jun',
+  t509: 'May',
+  t508: 'Apr',
+  t507: 'Mar',
+  t506: 'Feb',
+  t505: 'Jan',
+  t504: '<b>Dead stock and cash flow<em>Store</em></b><span>Finds products that stopped selling, and shows when the money for your orders actually leaves.</span>',
+  t503: '<b>Supplier scorecard and comparison<em>Pro, Store</em></b><span>Rates each supplier\'s reliability and shows which is cheapest for a product over a year, price included.</span>',
+  t502: '<b>One page dashboard</b><span>Cash tied up in stock, profit ahead, turnover, and what needs action today.</span>',
+  t501: '<b>Health check</b><span>Catches data mistakes, like a price below cost or negative stock, before they cause a wrong order.</span>',
+  t500: '<b>Incoming orders</b><span>Mark orders sent and received; stock updates itself and each supplier\'s real delivery time is learned.</span>',
+  t499: '<b>Purchase plan by supplier</b><span>One ready order per supplier, with totals and a budget check, sent to WhatsApp in one tap.</span>',
+  t498: '<b>No double orders</b><span>Every decision counts stock already on its way, so you never reorder what is in transit.</span>',
+  t497: '<b>Best order size</b><span>The quantity that keeps ordering and storage costs lowest, rounded to your supplier\'s minimum and carton.</span>',
+  t496: '<b>Reorder point</b><span>The exact stock level to order at, so new stock lands before you run out.</span>',
+  t495: '<b>Safety stock for sales and suppliers</b><span>A buffer per product sized for both busier weeks and late suppliers.</span>',
+  t494: '<b>Follows recent sales</b><span>Leans on your last three months, so the forecast keeps up when a product speeds up or slows down.</span>',
+  t493: '<b>Season-aware forecasts</b><span>Removes each product\'s normal seasonal swing, then forecasts the next three months and the whole year.</span>',
+  t465: 'Proof on real data',
+  t466: 'A real store\'s 2015, forecast from 2013 and 2014 only',
+  t467: 'We took real daily sales from a Walmart store in California, from the public M5 dataset: 40 hobby and household products, 2013 to 2015. The app saw only 2013 and 2014, then planned 2015. Here is what it predicted next to what the store really sold.',
   t468: 'Feature',
-  t469: 'What the app predicted',
-  t470: 'What actually happened',
+  t469: 'App predicted',
+  t470: 'Actually happened',
   t471: 'Accuracy',
-  t472: '<strong>Where it falls short, plainly.</strong> Four results are weak. Days of cover ran 74.7% accurate. The profit at risk figure now overstates losses about 4 times, because the larger safety buffer prevents most of the losses it warns about. Growth or decline calls were right only 40.2% of the time. And the yearly cost of running stock came in 9.3% under what it really cost, because the extra buffer costs more to hold than the formula expects. We publish these because a tool that handles your cash should show where it is weak.',
-  t473: 'How it was tested: demand for eight products followed real US retail sales for 2022 to 2024 (US Census Bureau), scaled to a small shop selling 25 to 120 a month with everyday randomness, plus one product that stops selling and one slow steady seller. Suppliers delivered early or late at random, and the owner typed a wrong guess for two of their delivery times. Results are averages of 40 simulated years, not audited customer accounts.',
-  t474: '<td class="pf">Demand forecast, next month</td><td>Units each product will sell</td><td>Units customers really wanted</td><td class="pacc"><b>85.6%</b><span class="pbar"><i style="--w:85.6%"></i></span></td>',
-  t475: '<td class="pf">Revenue for the year</td><td>2,734,400 EGP</td><td>2,688,200 EGP</td><td class="pacc"><b>98.3%</b><span class="pbar"><i style="--w:98.3%"></i></span></td>',
-  t476: '<td class="pf">Gross profit for the year</td><td>1,480,100 EGP</td><td>1,447,600 EGP</td><td class="pacc"><b>97.8%</b><span class="pbar"><i style="--w:97.8%"></i></span></td>',
-  t477: '<td class="pf">Yearly cost of running stock</td><td>49,400 EGP</td><td>54,400 EGP</td><td class="pacc"><b>90.7%</b><span class="pbar"><i style="--w:90.7%"></i></span></td>',
-  t478: '<td class="pf">When each product needs reordering</td><td>The day stock reaches its reorder point</td><td>The day it really did</td><td class="pacc"><b>78.9% within a week</b><span class="pbar"><i style="--w:78.9%"></i></span></td>',
-  t479: '<td class="pf">Days of cover</td><td>How long current stock will last</td><td>How long it really lasted</td><td class="pacc lo"><b>74.7%</b><span class="pbar"><i style="--w:74.7%"></i></span></td>',
-  t480: '<td class="pf">"Stock is healthy" calls</td><td>No need to order this week</td><td>Stock really lasted until a delivery could arrive</td><td class="pacc"><b>99.7%</b><span class="pbar"><i style="--w:99.7%"></i></span></td>',
-  t481: '<td class="pf">Safety stock promise</td><td>95% of order cycles without running out</td><td>95.8% of cycles; 99.7% of all customer demand served</td><td class="pacc"><b>95.8% (target 95%)</b><span class="pbar"><i style="--w:95.8%"></i></span></td>',
-  t482: '<td class="pf">Profit at risk</td><td>1,400 EGP</td><td>400 EGP</td><td class="pacc lo"><b>Overstates about 4x</b><span class="pbar"><i style="--w:25.1%"></i></span></td>',
-  t483: '<td class="pf">Supplier delivery times, learned</td><td>Learned from recorded deliveries</td><td>Each supplier\'s real average</td><td class="pacc"><b>96.7% (owner\'s guess: 85.2%)</b><span class="pbar"><i style="--w:96.7%"></i></span></td>',
-  t484: '<td class="pf">Dead stock report</td><td>Products that stopped selling</td><td>Products that really stopped</td><td class="pacc"><b>100%, no false alarms</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t485: '<td class="pf">Revenue ranking A, B, C</td><td>Each product\'s class, from last year</td><td>Its class on real 2024 revenue</td><td class="pacc"><b>89.2%</b><span class="pbar"><i style="--w:89.2%"></i></span></td>',
-  t486: '<td class="pf">Predictability X, Y, Z</td><td>Each product\'s class, from last year</td><td>Its class on real 2024 sales</td><td class="pacc"><b>83.7%</b><span class="pbar"><i style="--w:83.7%"></i></span></td>',
-  t487: '<td class="pf">Cheaper supplier pick</td><td>Which supplier costs less over a year</td><td>Which really cost less</td><td class="pacc"><b>85.3%</b><span class="pbar"><i style="--w:85.3%"></i></span></td>',
-  t488: '<td class="pf">Cash flow forecast</td><td>Payments due, and when</td><td>Payments actually made</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t489: '<td class="pf">Minimum order and carton rounding</td><td>Every suggested order line</td><td>Checked against each supplier\'s rules</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t490: '<td class="pf">Health check</td><td>11 planted data mistakes</td><td>10 caught, 0 false alarms</td><td class="pacc"><b>91%</b><span class="pbar"><i style="--w:90.9%"></i></span></td>',
-  t491: '<td class="pf">Forecast accuracy page</td><td>The app\'s own accuracy score</td><td>An independent recount</td><td class="pacc"><b>100% match</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t492: '<td class="pf">Growth or decline direction</td><td>Up or down next year</td><td>The real direction</td><td class="pacc lo"><b>40.2%</b><span class="pbar"><i style="--w:40.2%"></i></span></td>',
+  t472: '<strong>Where it falls short, plainly.</strong> Real sales are lumpier than any model. Six results are weak: Keeping a product in stock through every order cycle: 88.6% against a 95% target; days of cover 65.7%; profit at risk 55.1%; yearly running cost 72.1%; predictability class 50%; dead stock flags right 66.7% of the time. Product by product, the forecast only matches a simple three month average. We publish all of it because a tool that handles your cash should show where it is weak.',
+  t473: 'Data: real daily sales from Walmart store CA_3, public M5 dataset. The data has no suppliers or product costs, so three suppliers with random delays and a cost of 55% of shelf price are assumed. The owner checks the app every Sunday and orders exactly what it says. Averages of 40 runs.',
+  t474: '<td class="pf">Whole year forecast, made in Dec 2014</td><td>27,862 units</td><td>27,386 units</td><td class="pacc"><b>96.7%</b><span class="pbar"><i style="--w:96.7%"></i></span></td>',
+  t475: '<td class="pf">Store sales, month by month</td><td>Next month, updated monthly</td><td>Real monthly sales</td><td class="pacc"><b>97% (same month last year: 94.9%)</b><span class="pbar"><i style="--w:97.0%"></i></span></td>',
+  t476: '<td class="pf">Each product, month by month</td><td>Next month for each of 40 products</td><td>What each really sold</td><td class="pacc"><b>77% (3 month average: 77.1%)</b><span class="pbar"><i style="--w:77.0%"></i></span></td>',
+  t477: '<td class="pf">Revenue for 2015</td><td>146,300 USD</td><td>138,100 USD</td><td class="pacc"><b>94.1%</b><span class="pbar"><i style="--w:94.1%"></i></span></td>',
+  t478: '<td class="pf">Gross profit for 2015</td><td>65,900 USD</td><td>62,100 USD</td><td class="pacc"><b>93.9%</b><span class="pbar"><i style="--w:93.9%"></i></span></td>',
+  t479: '<td class="pf">Customers served from stock</td><td>Order what the app says</td><td>Share of real demand served</td><td class="pacc"><b>99.9%</b><span class="pbar"><i style="--w:99.9%"></i></span></td>',
+  t480: '<td class="pf">"Stock is healthy" calls</td><td>No need to order this week</td><td>Stock lasted until a delivery could arrive</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t481: '<td class="pf">When each product needs reordering</td><td>The day stock reaches its reorder point</td><td>The day it really did</td><td class="pacc"><b>93.6% within a week</b><span class="pbar"><i style="--w:93.6%"></i></span></td>',
+  t482: '<td class="pf">Safety stock promise</td><td>95% of order cycles without running out</td><td>88.6% of cycles</td><td class="pacc lo"><b>88.6% (target 95%)</b><span class="pbar"><i style="--w:88.6%"></i></span></td>',
+  t483: '<td class="pf">Days of cover</td><td>How long current stock will last</td><td>How long it really lasted</td><td class="pacc lo"><b>65.7%</b><span class="pbar"><i style="--w:65.7%"></i></span></td>',
+  t484: '<td class="pf">Profit at risk</td><td>300 USD</td><td>545 USD</td><td class="pacc lo"><b>55.1%</b><span class="pbar"><i style="--w:55.1%"></i></span></td>',
+  t485: '<td class="pf">Yearly cost of running stock</td><td>24,300 USD</td><td>33,700 USD</td><td class="pacc lo"><b>72.1%</b><span class="pbar"><i style="--w:72.1%"></i></span></td>',
+  t486: '<td class="pf">Supplier delivery times, learned</td><td>Learned from recorded deliveries</td><td>Each supplier\'s real average</td><td class="pacc"><b>95.5% (owner\'s guess: 85.2%)</b><span class="pbar"><i style="--w:95.5%"></i></span></td>',
+  t487: '<td class="pf">Cheaper supplier pick</td><td>Which supplier costs less over a year</td><td>Which really cost less</td><td class="pacc"><b>97.9%</b><span class="pbar"><i style="--w:97.9%"></i></span></td>',
+  t488: '<td class="pf">Revenue ranking A, B, C</td><td>Class from 2014</td><td>Class on real 2015 revenue</td><td class="pacc"><b>71.7%</b><span class="pbar"><i style="--w:71.7%"></i></span></td>',
+  t489: '<td class="pf">Predictability X, Y, Z</td><td>Class from 2014</td><td>Class on real 2015 sales</td><td class="pacc lo"><b>50%</b><span class="pbar"><i style="--w:50.0%"></i></span></td>',
+  t490: '<td class="pf">Growing or shrinking</td><td>Direction from 2014</td><td>Real direction in 2015</td><td class="pacc"><b>75%</b><span class="pbar"><i style="--w:75.0%"></i></span></td>',
+  t491: '<td class="pf">Dead stock flags</td><td>Product has stopped selling</td><td>It stayed stopped</td><td class="pacc lo"><b>66.7%</b><span class="pbar"><i style="--w:66.7%"></i></span></td>',
+  t492: '<td class="pf">Cash flow and carton rounding</td><td>Payments due, and order sizes</td><td>Payments made, supplier rules</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
   t432: 'Sample shop',
   t433: 'Next reorders',
   t434: 'Order today',
   t435: 'This week',
   t436: 'In 5 days',
-  t437: 'In 4 days',
+  t437: 'In 5 days',
   t438: 'In 20 days',
   t439: 'From the sample shop in the live demo.',
-  t440: '32,030 EGP to order, from 2 suppliers',
+  t440: '32,345 EGP to order, from 2 suppliers',
   t441: 'Straight talk',
   t442: 'What it won\'t do',
   t443: 'No guarantees. It supports your decisions.',
@@ -1599,7 +1511,7 @@ var SITE_EN = {
   t17: 'أغلب المحلات الصغيرة شاطرة في البيع وبتخمن في الشراء. الأداة دي بتشيل التخمين: تطلب كام قطعة، من أي مورد، في أنهي يوم، لكل منتج بتبيعه.',
   t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">اتفرج على الأداة</a>',
   t19: 'بيشتغل في المتصفح. عربي وإنجليزي مع بعض. بالدولار الأمريكي.',
-  t20: '<b>99.4%</b><small>نسبة توفر المنتج في محاكاة استمرت سنتين</small>',
+  t20: '<b>96.7%</b><span>دقة توقع 2015 لمحل حقيقي، معمول من بيانات 2013 و2014 بس</span>',
   t21: '<b>10 دقايق</b><small>روتينك الأسبوعي بعد ما تظبطه</small>',
   t22: '<b>17</b><small>صفحة مترابطة. بتكتب في أربعة بس.</small>',
   t23: '<b>دقيقتين</b><small>علشان تسجل دخول. الإيميل بس، من غير باسورد.</small>',
@@ -1637,8 +1549,8 @@ var SITE_EN = {
   t55: 'تجربة مجانية على كل باقة. مفيش خصم لحد ما التجربة تخلص. إلغاء بضغطتين.',
   t56: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">شوف الأسعار</a>\n<a class="btn btn-ghost btn-lg" data-go="proof" href="#">اقرأ الإثبات الأول</a>',
   t57: 'اللي بنقدمه',
-  t58: 'اثنتا عشرة ميزة، متشرحة بصراحة',
-  t59: 'لكل ميزة: اللي هي، إزاي بتستخدمها فعلا، وليه مهمة لفلوسك. ولو حاجة فعلا مجرد راحة مش تغيير جذري، هنقولك كده.',
+  t58: 'كل اللي محتاجه علشان تشتري بضاعة وانت متطمن',
+  t59: 'بتملى أربع صفحات بس. وكل الباقي بيتحسب لوحده، بالعربي أو بالإنجليزي.',
   t60: '1',
   t61: 'فصل الموسمية',
   t62: 'الحاجة الوحيدة اللي بتفرق بين ده وأي قالب مجاني على النت',
@@ -1675,7 +1587,7 @@ var SITE_EN = {
   t93: 'ماتحسبش حاجة. صفحة قرارات الطلب بتوريك قرار ملون لكل منتج: اطلب النهارده، اطلب الأسبوع ده، المخزون كويس، أو زيادة. أحمر، برتقالي، أخضر، أزرق. وتحت كل واحد جملة بسيطة بتشرح السبب بالظبط.',
   t94: 'ليه مهمة',
   t95: 'الانتظار لحد ما المنتج يقرب يخلص بيضمنلك فجوة، لأن المورد لسه محتاج مدة التوريد بعد ما تلاحظ. نقطة إعادة الطلب هي بالظبط قد المخزون اللي هيغطيك خلال الانتظار ده، مش أكتر. تطلب في التوقيت الصح أهم من تطلب الكمية الصح.',
-  t96: 'المخزون بينزل وانت بتبيع. يوصل نقطة إعادة الطلب، تطلب، والمخزون الباقي بيغطيك طول مدة التوريد. مخزون الأمان هو الوسادة اللي بس بتستخدمها لو حاجة غلطت.',
+  t96: 'المخزون بيقل مع البيع. عند نقطة إعادة الطلب بتطلب، واللي فاضل بيكفيك لحد ما التوريد يوصل. مخزون الأمان هو الاحتياطي للأسابيع الصعبة.',
   t97: '5',
   t98: 'كمية الطلب الاقتصادية',
   t99: 'بتجاوب على قد إيه، بإنها توصل لأقل نقطة في منحنى التكلفة',
@@ -1772,7 +1684,7 @@ var SITE_EN = {
   t190: '<b>المواسم</b><span>الشتاء، الصيف، رمضان والعيد، أو ثابت. قابلة للتعديل في Pro وStore.</span>',
   t191: '<b>الموردين</b><span>مدة التوريد، التفاوت، أقل كمية، حجم الكرتونة، شروط الدفع</span>',
   t192: '<b>المنتجات</b><span>اثنا عشر شهر مبيعات، تكلفة، سعر، مخزون موجود وفي الطريق</span>',
-  t193: '<b>توقع الطلب</b><span>الطلب من غير موسمية، الاتجاه، فئة التقلب، التوقع</span>',
+  t193: '<b>توقع الطلب</b><span>الطلب من غير الموسم، اتجاهه الأخير، مدى ثباته، والتوقع</span>',
   t194: '<b>قرارات الطلب</b><span>مخزون الأمان، نقطة إعادة الطلب، الكمية، وقرار واضح</span>',
   t195: '<b>رسوم الطلب</b><span>خط مبيعات حقيقي لكل منتج، التوقع، ووقت إعادة الطلب</span>',
   t196: '<b>خطة الشراء</b><span>طلبيات متجمعة حسب المورد مع الإجمالي ومراجعة الميزانية</span>',
@@ -2009,43 +1921,71 @@ var SITE_EN = {
   t431: 'مشترك بالفعل؟ سجل دخول',
   t463: 'مشترك بالفعل؟',
   t464: 'سجل دخول',
-  t465: 'الدليل، ميزة ميزة',
-  t466: 'الأداة توقعت إيه، وإيه اللي حصل فعلا',
-  t467: 'الأداة الحقيقية، من غير أي تعديل، اتشغلت على سنة 2024 كلها أربعين مرة. كل يوم أحد، صاحب المحل بيراجعها ويطلب بالظبط اللي قالته. وبعدين كل توقع اتقارن باللي حصل فعلا.',
+  t520: 'الأداة، الشهر الجاي، بيتحدث كل شهر',
+  t519: 'الأداة، توقع السنة كلها معمول في ديسمبر 2014',
+  t518: 'اللي المحل باعه فعلا',
+  t517: 'القطع المباعة في الشهر، 40 منتج، 2015',
+  t516: 'ديسمبر',
+  t515: 'نوفمبر',
+  t514: 'أكتوبر',
+  t513: 'سبتمبر',
+  t512: 'أغسطس',
+  t511: 'يوليو',
+  t510: 'يونيو',
+  t509: 'مايو',
+  t508: 'أبريل',
+  t507: 'مارس',
+  t506: 'فبراير',
+  t505: 'يناير',
+  t504: '<b>البضاعة الراكدة والتدفق النقدي<em>Store</em></b><span>بيطلع المنتجات اللي وقفت بيع، ويوريك إمتى فلوس طلبياتك هتخرج فعلا.</span>',
+  t503: '<b>تقييم ومقارنة الموردين<em>Pro, Store</em></b><span>بيقيّم التزام كل مورد، ويوريك مين الأرخص لكل منتج على مدار السنة، شامل سعر الشراء.</span>',
+  t502: '<b>لوحة متابعة في صفحة واحدة</b><span>الفلوس المجمدة في البضاعة، الربح الجاي، دوران المخزون، واللي محتاج تتصرف فيه النهارده.</span>',
+  t501: '<b>فحص البيانات</b><span>بيمسك غلطات البيانات، زي سعر أقل من التكلفة أو مخزون بالسالب، قبل ما تعمل طلبية غلط.</span>',
+  t500: '<b>الطلبيات الجاية</b><span>علّم الطلبية إنها اتبعتت ووصلت؛ المخزون بيتحدث لوحده ومدة توريد كل مورد الحقيقية بتتسجل.</span>',
+  t499: '<b>خطة شراء لكل مورد</b><span>طلبية جاهزة لكل مورد، بالإجمالي ومراجعة الميزانية، وتتبعت على واتساب بضغطة.</span>',
+  t498: '<b>مفيش طلب مرتين</b><span>كل قرار بيحسب البضاعة اللي في الطريق، فعمرك ما هتطلب حاجة لسه جاية.</span>',
+  t497: '<b>أحسن كمية طلب</b><span>الكمية اللي بتخلي تكلفة الطلب والتخزين أقل حاجة، ومتقربة لأقل طلبية وللكرتونة عند المورد.</span>',
+  t496: '<b>نقطة إعادة الطلب</b><span>مستوى المخزون اللي تطلب عنده بالظبط، علشان البضاعة الجديدة توصل قبل ما اللي عندك يخلص.</span>',
+  t495: '<b>مخزون أمان للبيع وللموردين</b><span>احتياطي لكل منتج محسوب للأسابيع الزحمة وللموردين المتأخرين مع بعض.</span>',
+  t494: '<b>بيمشي مع مبيعاتك الأخيرة</b><span>بيعتمد على آخر تلات شهور، فالتوقع بيلحق المنتج لما بيعه يسرع أو يهدى.</span>',
+  t493: '<b>توقعات فاهمة الموسم</b><span>بيشيل الطلوع والنزول الموسمي العادي لكل منتج، وبعدين يتوقع التلات شهور الجاية والسنة كلها.</span>',
+  t465: 'الدليل على بيانات حقيقية',
+  t466: 'سنة 2015 لمحل حقيقي، متوقعة من 2013 و2014 بس',
+  t467: 'خدنا مبيعات يومية حقيقية من فرع وول مارت في كاليفورنيا، من بيانات M5 المفتوحة: 40 منتج هوايات وأدوات منزلية، من 2013 لـ 2015. الأداة شافت 2013 و2014 بس، وبعدين خططت لـ 2015. ده اللي توقعته جنب اللي المحل باعه فعلا.',
   t468: 'الميزة',
   t469: 'الأداة توقعت',
   t470: 'اللي حصل فعلا',
   t471: 'الدقة',
-  t472: '<strong>فين بتقصر، بصراحة.</strong> أربع نتايج ضعيفة. أيام التغطية كانت دقيقة 74.7%. رقم الربح المعرض للخطر بقى بيبالغ في الخسارة حوالي 4 مرات، لأن مخزون الأمان الأكبر بيمنع أغلب الخسارة اللي بيحذر منها. وتوقع النمو أو التراجع كان صح 40.2% بس من المرات. وتكلفة تشغيل المخزون في السنة طلعت أقل من الحقيقة بـ 9.3%، لأن المخزون الإضافي بيكلف تخزين أكتر من اللي المعادلة متوقعاه. بننشر ده لأن أداة بتتعامل مع فلوسك لازم تقولك فين نقط ضعفها.',
-  t473: 'اتختبرت إزاي: الطلب على تمن منتجات مشي على مبيعات التجزئة الأمريكية الحقيقية من 2022 لـ 2024 (مكتب الإحصاء الأمريكي)، متصغرة لمحل صغير بيبيع من 25 لـ 120 في الشهر مع العشوائية اليومية العادية، ومعاهم منتج بيوقف بيع ومنتج بطيء بس ثابت. الموردين كانوا بيسلموا بدري أو متأخر بشكل عشوائي، وصاحب المحل كتب تخمين غلط لمدة توريد اتنين منهم. النتايج متوسط 40 سنة محاكاة، مش حسابات عملاء مراجعة.',
-  t474: '<td class="pf">توقع الطلب، الشهر الجاي</td><td>القطع اللي كل منتج هيبيعها</td><td>القطع اللي الزباين طلبوها فعلا</td><td class="pacc"><b>85.6%</b><span class="pbar"><i style="--w:85.6%"></i></span></td>',
-  t475: '<td class="pf">إيراد السنة</td><td>2,734,400 جنيه</td><td>2,688,200 جنيه</td><td class="pacc"><b>98.3%</b><span class="pbar"><i style="--w:98.3%"></i></span></td>',
-  t476: '<td class="pf">إجمالي ربح السنة</td><td>1,480,100 جنيه</td><td>1,447,600 جنيه</td><td class="pacc"><b>97.8%</b><span class="pbar"><i style="--w:97.8%"></i></span></td>',
-  t477: '<td class="pf">تكلفة تشغيل المخزون في السنة</td><td>49,400 جنيه</td><td>54,400 جنيه</td><td class="pacc"><b>90.7%</b><span class="pbar"><i style="--w:90.7%"></i></span></td>',
-  t478: '<td class="pf">إمتى كل منتج محتاج يتطلب</td><td>اليوم اللي المخزون يوصل فيه لنقطة الطلب</td><td>اليوم اللي وصلها فعلا</td><td class="pacc"><b>78.9% في حدود أسبوع</b><span class="pbar"><i style="--w:78.9%"></i></span></td>',
-  t479: '<td class="pf">أيام التغطية</td><td>المخزون الحالي هيكفي قد إيه</td><td>كفى قد إيه فعلا</td><td class="pacc lo"><b>74.7%</b><span class="pbar"><i style="--w:74.7%"></i></span></td>',
-  t480: '<td class="pf">قرار "المخزون كويس"</td><td>مش محتاج تطلب الأسبوع ده</td><td>المخزون كفى فعلا لحد ما توريد يلحق يوصل</td><td class="pacc"><b>99.7%</b><span class="pbar"><i style="--w:99.7%"></i></span></td>',
-  t481: '<td class="pf">وعد مخزون الأمان</td><td>95% من دورات الطلب من غير ما المخزون يخلص</td><td>95.8% من الدورات، و99.7% من طلب الزباين اتلبى</td><td class="pacc"><b>95.8% (الهدف 95%)</b><span class="pbar"><i style="--w:95.8%"></i></span></td>',
-  t482: '<td class="pf">الربح المعرض للخطر</td><td>1,400 جنيه</td><td>400 جنيه</td><td class="pacc lo"><b>بيبالغ حوالي 4 مرات</b><span class="pbar"><i style="--w:25.1%"></i></span></td>',
-  t483: '<td class="pf">مدة توريد الموردين، متعلمة</td><td>متعلمة من التوريدات المسجلة</td><td>المتوسط الحقيقي لكل مورد</td><td class="pacc"><b>96.7% (تخمين صاحب المحل: 85.2%)</b><span class="pbar"><i style="--w:96.7%"></i></span></td>',
-  t484: '<td class="pf">تقرير البضاعة الراكدة</td><td>المنتجات اللي وقفت بيع</td><td>المنتجات اللي وقفت فعلا</td><td class="pacc"><b>100%، من غير إنذار غلط</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t485: '<td class="pf">ترتيب الإيراد A وB وC</td><td>فئة كل منتج من السنة اللي فاتت</td><td>فئته على إيراد 2024 الحقيقي</td><td class="pacc"><b>89.2%</b><span class="pbar"><i style="--w:89.2%"></i></span></td>',
-  t486: '<td class="pf">ثبات البيع X وY وZ</td><td>فئة كل منتج من السنة اللي فاتت</td><td>فئته على مبيعات 2024 الحقيقية</td><td class="pacc"><b>83.7%</b><span class="pbar"><i style="--w:83.7%"></i></span></td>',
-  t487: '<td class="pf">اختيار المورد الأرخص</td><td>أنهي مورد أرخص على مدار السنة</td><td>أنهي واحد كان أرخص فعلا</td><td class="pacc"><b>85.3%</b><span class="pbar"><i style="--w:85.3%"></i></span></td>',
-  t488: '<td class="pf">توقع التدفق النقدي</td><td>المدفوعات المستحقة وإمتى</td><td>المدفوعات اللي اتدفعت فعلا</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t489: '<td class="pf">التقريب لأقل طلبية وللكرتونة</td><td>كل سطر طلب مقترح</td><td>اتراجع على شروط كل مورد</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t490: '<td class="pf">فحص البيانات</td><td>11 غلطة مزروعة في البيانات</td><td>10 اتمسكوا، ومفيش إنذار غلط</td><td class="pacc"><b>91%</b><span class="pbar"><i style="--w:90.9%"></i></span></td>',
-  t491: '<td class="pf">صفحة دقة التوقع</td><td>درجة الدقة اللي الأداة بتحسبها</td><td>إعادة حساب مستقلة</td><td class="pacc"><b>تطابق 100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t492: '<td class="pf">اتجاه النمو أو التراجع</td><td>طالع ولا نازل السنة الجاية</td><td>الاتجاه الحقيقي</td><td class="pacc lo"><b>40.2%</b><span class="pbar"><i style="--w:40.2%"></i></span></td>',
+  t472: '<strong>فين بتقصر، بصراحة.</strong> المبيعات الحقيقية متقطعة أكتر من أي نموذج. ست نتايج ضعيفة: بقاء المنتج متوفر في كل دورة طلب: 88.6% والهدف 95%؛ أيام التغطية 65.7%؛ الربح المعرض للخطر 55.1%؛ تكلفة التشغيل السنوية 72.1%؛ فئة الثبات 50%؛ تنبيهات الراكد صح 66.7% من المرات. على مستوى كل منتج، التوقع بيساوي متوسط تلات شهور بسيط بس. بننشر ده كله لأن أداة بتتعامل مع فلوسك لازم تقولك فين نقط ضعفها.',
+  t473: 'البيانات: مبيعات يومية حقيقية من فرع وول مارت CA_3، من بيانات M5 المفتوحة. البيانات مفيهاش موردين ولا تكلفة المنتجات، فافترضنا تلات موردين بتأخير عشوائي وتكلفة 55% من سعر البيع. صاحب المحل بيراجع الأداة كل يوم أحد ويطلب اللي بتقوله بالظبط. متوسط 40 تجربة.',
+  t474: '<td class="pf">توقع السنة كلها، معمول في ديسمبر 2014</td><td>27,862 قطعة</td><td>27,386 قطعة</td><td class="pacc"><b>96.7%</b><span class="pbar"><i style="--w:96.7%"></i></span></td>',
+  t475: '<td class="pf">مبيعات المحل، شهر بشهر</td><td>الشهر الجاي، بيتحدث كل شهر</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>97% (نفس الشهر السنة اللي فاتت: 94.9%)</b><span class="pbar"><i style="--w:97.0%"></i></span></td>',
+  t476: '<td class="pf">كل منتج، شهر بشهر</td><td>الشهر الجاي لكل منتج من الـ 40</td><td>اللي كل واحد باعه فعلا</td><td class="pacc"><b>77% (متوسط 3 شهور: 77.1%)</b><span class="pbar"><i style="--w:77.0%"></i></span></td>',
+  t477: '<td class="pf">إيراد 2015</td><td>146,300 دولار</td><td>138,100 دولار</td><td class="pacc"><b>94.1%</b><span class="pbar"><i style="--w:94.1%"></i></span></td>',
+  t478: '<td class="pf">إجمالي ربح 2015</td><td>65,900 دولار</td><td>62,100 دولار</td><td class="pacc"><b>93.9%</b><span class="pbar"><i style="--w:93.9%"></i></span></td>',
+  t479: '<td class="pf">الزباين اللي اتخدموا من المخزون</td><td>اطلب اللي الأداة بتقوله</td><td>نسبة الطلب الحقيقي اللي اتلبى</td><td class="pacc"><b>99.9%</b><span class="pbar"><i style="--w:99.9%"></i></span></td>',
+  t480: '<td class="pf">قرار "المخزون كويس"</td><td>مش محتاج تطلب الأسبوع ده</td><td>المخزون كفى لحد ما توريد يلحق يوصل</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t481: '<td class="pf">إمتى كل منتج محتاج يتطلب</td><td>اليوم اللي المخزون يوصل فيه لنقطة الطلب</td><td>اليوم اللي وصلها فعلا</td><td class="pacc"><b>93.6% في حدود أسبوع</b><span class="pbar"><i style="--w:93.6%"></i></span></td>',
+  t482: '<td class="pf">وعد مخزون الأمان</td><td>95% من دورات الطلب من غير ما المخزون يخلص</td><td>88.6% من الدورات</td><td class="pacc lo"><b>88.6% (الهدف 95%)</b><span class="pbar"><i style="--w:88.6%"></i></span></td>',
+  t483: '<td class="pf">أيام التغطية</td><td>المخزون الحالي هيكفي قد إيه</td><td>كفى قد إيه فعلا</td><td class="pacc lo"><b>65.7%</b><span class="pbar"><i style="--w:65.7%"></i></span></td>',
+  t484: '<td class="pf">الربح المعرض للخطر</td><td>300 دولار</td><td>545 دولار</td><td class="pacc lo"><b>55.1%</b><span class="pbar"><i style="--w:55.1%"></i></span></td>',
+  t485: '<td class="pf">تكلفة تشغيل المخزون في السنة</td><td>24,300 دولار</td><td>33,700 دولار</td><td class="pacc lo"><b>72.1%</b><span class="pbar"><i style="--w:72.1%"></i></span></td>',
+  t486: '<td class="pf">مدة توريد الموردين، متعلمة</td><td>متعلمة من التوريدات المسجلة</td><td>المتوسط الحقيقي لكل مورد</td><td class="pacc"><b>95.5% (تخمين صاحب المحل: 85.2%)</b><span class="pbar"><i style="--w:95.5%"></i></span></td>',
+  t487: '<td class="pf">اختيار المورد الأرخص</td><td>أنهي مورد أرخص على مدار السنة</td><td>أنهي واحد كان أرخص فعلا</td><td class="pacc"><b>97.9%</b><span class="pbar"><i style="--w:97.9%"></i></span></td>',
+  t488: '<td class="pf">ترتيب الإيراد A وB وC</td><td>الفئة من 2014</td><td>الفئة على إيراد 2015 الحقيقي</td><td class="pacc"><b>71.7%</b><span class="pbar"><i style="--w:71.7%"></i></span></td>',
+  t489: '<td class="pf">ثبات البيع X وY وZ</td><td>الفئة من 2014</td><td>الفئة على مبيعات 2015 الحقيقية</td><td class="pacc lo"><b>50%</b><span class="pbar"><i style="--w:50.0%"></i></span></td>',
+  t490: '<td class="pf">بيكبر ولا بيقل</td><td>الاتجاه من 2014</td><td>الاتجاه الحقيقي في 2015</td><td class="pacc"><b>75%</b><span class="pbar"><i style="--w:75.0%"></i></span></td>',
+  t491: '<td class="pf">تنبيه البضاعة الراكدة</td><td>المنتج وقف بيع</td><td>فضل واقف فعلا</td><td class="pacc lo"><b>66.7%</b><span class="pbar"><i style="--w:66.7%"></i></span></td>',
+  t492: '<td class="pf">التدفق النقدي والتقريب للكرتونة</td><td>المدفوعات وأحجام الطلب</td><td>المدفوعات الفعلية وشروط المورد</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
   t432: 'محل تجريبي',
   t433: 'الطلبات الجاية',
   t434: 'اطلب النهارده',
   t435: 'الأسبوع ده',
   t436: 'بعد 5 أيام',
-  t437: 'بعد 4 أيام',
+  t437: 'بعد 5 أيام',
   t438: 'بعد 20 يوم',
   t439: 'من المحل التجريبي في العرض.',
-  t440: '32,030 جنيه تطلبهم من موردين اتنين',
+  t440: '32,345 جنيه تطلبهم من موردين اتنين',
   t441: 'بصراحة',
   t442: 'اللي مش هيعمله',
   t443: 'مفيش ضمان. هو بيساعدك تقرر.',
@@ -2251,11 +2191,11 @@ function openCheckout(tier, btn){
 .js-anim .hero .wrap > :nth-child(7){animation-delay:.5s}
 .hero-visual{margin-top:36px}
 .hv-card{background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);
-  border-radius:16px;padding:20px 20px 16px;box-shadow:0 30px 70px rgba(0,0,0,.35);backdrop-filter:blur(8px);color:#DCE6F2}
+  border-radius:16px;padding:20px 20px 16px;box-shadow:0 30px 70px rgba(0,0,0,.35);backdrop-filter:blur(8px);color:#EAF2DC}
 .hv-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .hv-head b{color:#fff;font-size:1rem}
-.hv-tag{margin-inline-start:auto;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9FC4F3;
-  border:1px solid rgba(159,196,243,.35);border-radius:999px;padding:3px 10px}
+.hv-tag{margin-inline-start:auto;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#D3F39F;
+  border:1px solid rgba(211,243,159,.35);border-radius:999px;padding:3px 10px}
 html[lang="ar"] .hv-tag{letter-spacing:0}
 .hv-pulse{width:9px;height:9px;border-radius:50%;background:#5DD39E;box-shadow:0 0 0 0 rgba(93,211,158,.6);animation:hvPulse 2s infinite}
 @keyframes hvPulse{70%{box-shadow:0 0 0 8px rgba(93,211,158,0)}100%{box-shadow:0 0 0 0 rgba(93,211,158,0)}}
@@ -2264,12 +2204,12 @@ html[lang="ar"] .hv-tag{letter-spacing:0}
 .hv-track{position:relative;height:6px;border-radius:6px;background:rgba(255,255,255,.1)}
 .hv-track i{position:absolute;inset-block:0;inset-inline-start:0;width:var(--w);border-radius:6px;min-width:6px}
 .hv-track i::after{content:"";position:absolute;inset-inline-end:-5px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;
-  background:inherit;border:2px solid #0E2743}
-.hv-track i.crit{background:#FF7B70}.hv-track i.order{background:#F2B551}.hv-track i.soon{background:#F2B551}.hv-track i.ok{background:#6AA5F2}
+  background:inherit;border:2px solid #2C371A}
+.hv-track i.crit{background:#FF7B70}.hv-track i.order{background:#F2B551}.hv-track i.soon{background:#F2B551}.hv-track i.ok{background:#BEF26A}
 .hv-when{font-size:.82rem;font-weight:600;text-align:end;white-space:nowrap}
-.hv-when.crit{color:#FF9C93}.hv-when.order,.hv-when.soon{color:#F5C570}.hv-when.ok{color:#9CC3F7}
+.hv-when.crit{color:#FF9C93}.hv-when.order,.hv-when.soon{color:#F5C570}.hv-when.ok{color:#D4F79C}
 .hv-foot{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);font-size:.88rem;color:#fff;font-weight:600}
-.hv-cap{margin:10px 2px 0;font-size:.78rem;color:#8FA9C6}
+.hv-cap{margin:10px 2px 0;font-size:.78rem;color:#B1C68F}
 .js-anim .hv-track i{transform:scaleX(0);transform-origin:0 50%;animation:hvGrow .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,500ms)}
 html[dir="rtl"].js-anim .hv-track i{transform-origin:100% 50%}
 @keyframes hvGrow{to{transform:none}}
@@ -2340,7 +2280,7 @@ html[lang="ar"] .evb-title{letter-spacing:0}
 .evb-val{grid-area:val;font-size:.86rem;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
 .evb-track{grid-area:bar;height:8px;border-radius:8px;background:var(--bg-3);overflow:hidden}
 .evb-track i{display:block;height:100%;width:var(--w);border-radius:8px;background:#A9B6C6}
-.evb-row.win .evb-track i{background:linear-gradient(90deg,var(--accent),#5DA2F2)}
+.evb-row.win .evb-track i{background:linear-gradient(90deg,var(--accent),#B9F25D)}
 .evb-row.win .evb-lab{color:var(--accent);font-weight:700}
 .js-anim .evb-track i{transform:scaleX(0);transform-origin:0 50%}
 html[dir="rtl"].js-anim .evb-track i{transform-origin:100% 50%}
@@ -2407,7 +2347,7 @@ html[lang="ar"] .ptab th{letter-spacing:0;font-size:.82rem}
 .ptab .pacc b{display:block;color:var(--ink);font-variant-numeric:tabular-nums}
 .ptab .pacc.lo b{color:#B25E09}
 .pbar{display:block;height:6px;border-radius:6px;background:var(--bg-3);margin-top:6px;overflow:hidden}
-.pbar i{display:block;height:100%;width:var(--w);border-radius:6px;background:linear-gradient(90deg,var(--accent),#5DA2F2)}
+.pbar i{display:block;height:100%;width:var(--w);border-radius:6px;background:linear-gradient(90deg,var(--accent),#B9F25D)}
 .pacc.lo .pbar i{background:#E3A04F}
 .pnote{margin:22px 0 0;padding:16px 18px;border-radius:10px;border:1px solid #F1D3A8;background:#FFF8EE;color:#6B4406;font-size:.93rem}
 .pmethod{margin:14px 0 0;font-size:.85rem;color:var(--muted)}
@@ -2416,10 +2356,41 @@ html[dir="rtl"].js-anim .proofsec .pbar i{transform-origin:100% 50%}
 .js-anim .proofsec.seen .pbar i{animation:hvGrow 1s cubic-bezier(.2,.7,.2,1) forwards}
 @media (prefers-color-scheme:dark){.pnote{background:rgba(227,160,79,.1);border-color:rgba(227,160,79,.35);color:#F2C98E}.ptab .pacc.lo b{color:#F2B551}}
 </style>
+
+<style data-final>
+/* What we provide: short cards */
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:8px 0 28px}
+@media (max-width:980px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.pgrid{grid-template-columns:1fr}}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow-s);transition:transform .2s,box-shadow .2s,border-color .2s}
+.pcard:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.pcard b{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:var(--serif);font-size:1.08rem;color:var(--ink);margin-bottom:6px}
+.pcard b em{font-style:normal;font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:2px 8px;border-radius:999px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.pcard span{display:block;font-size:.93rem;color:var(--body);line-height:1.55}
+/* real store chart */
+.realchart{margin:26px 0 8px;padding:18px 18px 12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-s)}
+.rc-cap{font-weight:600;color:var(--ink);margin:0 0 8px}
+.realchart svg{display:block;width:100%;height:auto}
+.rc-grid{stroke:var(--line);stroke-width:1}
+.rc-y,.rc-x{font:500 12px var(--sans);fill:var(--muted)}
+.rc-l{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.rc-act{stroke:var(--ink);stroke-width:2.4}
+.rc-year{stroke:#65A30D;stroke-dasharray:7 6}
+.rc-mon{stroke:#84CC16}
+.rc-d-act{fill:var(--ink)}.rc-d-mon{fill:#84CC16}
+.rc-key{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:10px;font-size:.86rem;color:var(--body)}
+.rc-key > span{display:inline-flex;align-items:center;gap:8px}
+.rc-key i{display:inline-block;width:24px;border-top:3px solid}
+.rc-key .k-act{border-color:var(--ink)}.rc-key .k-year{border-color:#65A30D;border-top-style:dashed}.rc-key .k-mon{border-color:#84CC16}
+.js-anim .realchart .rc-l{stroke-dasharray:2000;stroke-dashoffset:2000}
+.js-anim .realchart.seen .rc-l{animation:rcDraw 1.6s cubic-bezier(.4,.1,.2,1) forwards}
+.js-anim .realchart.seen .rc-year{stroke-dasharray:7 6;stroke-dashoffset:0;animation:none;opacity:0;animation:ucFade .8s ease .9s forwards}
+@keyframes rcDraw{to{stroke-dashoffset:0}}
+</style>
 <style data-anim-layer>
 /* ===== motion layer: adds movement only, never changes or removes content ===== */
 .scrollbar{position:fixed;top:0;inset-inline-start:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);
-  background:linear-gradient(90deg,#1A6DD4,#5DA2F2);z-index:200;pointer-events:none}
+  background:linear-gradient(90deg,#8DD41A,#B9F25D);z-index:200;pointer-events:none}
 html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
 
 /* reveal on scroll. Hidden only once the script has confirmed it is running */
@@ -2447,22 +2418,22 @@ html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
 /* buttons: lift, glow and a light sweep on the main actions */
 .btn{transition:transform .18s,box-shadow .18s,background .18s,border-color .18s,color .18s}
 .btn-primary{position:relative;overflow:hidden;isolation:isolate}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(26,109,212,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(141,212,26,.35)}
 .btn-primary::after{content:"";position:absolute;top:0;bottom:0;width:45%;inset-inline-start:-70%;z-index:-1;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg)}
 .btn-primary:hover::after{animation:sweep .8s ease}
 .hero .btn-primary{animation:ctaPulse 2.8s ease-in-out 1.6s infinite}
 .hero .btn-primary::after{animation:sweep 1.1s ease 1.4s 1}
 @keyframes sweep{to{inset-inline-start:130%}}
-@keyframes ctaPulse{0%,100%{box-shadow:0 0 0 0 rgba(93,162,242,.45)}50%{box-shadow:0 0 0 10px rgba(93,162,242,0)}}
+@keyframes ctaPulse{0%,100%{box-shadow:0 0 0 0 rgba(185,242,93,.45)}50%{box-shadow:0 0 0 10px rgba(185,242,93,0)}}
 .btn-ghost:hover{transform:translateY(-2px)}
 
 /* cards and blocks respond to the pointer */
 .feat,.pain,.tier,.box,.band{transition:transform .2s,box-shadow .2s,border-color .2s}
-.feat:hover,.pain:hover,.box:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(14,39,67,.12)}
-.tier:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(14,39,67,.18)}
+.feat:hover,.pain:hover,.box:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(44,55,26,.12)}
+.tier:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(44,55,26,.18)}
 .tier.best .badge{animation:badgeGlow 2.4s ease-in-out infinite}
-@keyframes badgeGlow{0%,100%{box-shadow:0 0 0 0 rgba(26,109,212,.35)}50%{box-shadow:0 0 0 6px rgba(26,109,212,0)}}
+@keyframes badgeGlow{0%,100%{box-shadow:0 0 0 0 rgba(141,212,26,.35)}50%{box-shadow:0 0 0 6px rgba(141,212,26,0)}}
 .ico{transition:transform .25s}
 .card:hover .ico{transform:rotate(-6deg) scale(1.08)}
 
@@ -2546,11 +2517,11 @@ html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
 <script data-v2>
 (function () {
   /* charts play once they come into view */
-  if (!('IntersectionObserver' in window)) { document.querySelectorAll('.ucurve,.evbars,.proofsec').forEach(function (e) { e.classList.add('seen'); }); return; }
+  if (!('IntersectionObserver' in window)) { document.querySelectorAll('.ucurve,.evbars,.proofsec,.realchart').forEach(function (e) { e.classList.add('seen'); }); return; }
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting || (e.boundingClientRect.height > 0 && e.boundingClientRect.bottom < 0)) { e.target.classList.add('seen'); io.unobserve(e.target); } });
   }, { threshold: 0.3 });
-  document.querySelectorAll('.ucurve,.evbars,.proofsec').forEach(function (e) { io.observe(e); });
+  document.querySelectorAll('.ucurve,.evbars,.proofsec,.realchart').forEach(function (e) { io.observe(e); });
 })();
 </script>
 </body>
