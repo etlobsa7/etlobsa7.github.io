@@ -769,6 +769,9 @@ body{line-height:1.6}
 .dialog{padding:28px}
 .dialog h2{margin-bottom:8px}
 .cmp-t td,.cmp-t th{padding:11px 12px}
+
+.plantag{display:inline-block;margin-inline-start:8px;padding:1px 7px;border-radius:999px;font-size:.66rem;font-weight:700;letter-spacing:.03em;background:var(--pop-bg);color:var(--pop);vertical-align:middle}
+.kpi.locked b{color:var(--pop);font-size:1.05rem}
 </style>
 </head>
 <body>
@@ -861,6 +864,10 @@ const MONTHS_LONG = {
 
 const T = {
 en: {
+  'plan.tagStore': 'Store',
+  'plan.tagPro': 'Pro',
+  'plan.store': 'Store plan',
+  'gr.locked': 'Demand graphs and the reorder timeline are part of Store.',
   'boot.loading': 'Loading your workspace',
   'boot.failed': 'Could not reach the server. Check your connection.',
   'boot.retry': 'Try again',
@@ -1458,6 +1465,10 @@ en: {
 },
 
 ar: {
+  'plan.tagStore': 'Store',
+  'plan.tagPro': 'Pro',
+  'plan.store': 'باقة Store',
+  'gr.locked': 'رسوم الطلب وجدول مواعيد إعادة الطلب متاحين في باقة Store.',
   'boot.loading': 'بنحمّل بياناتك',
   'boot.failed': 'مش قادرين نوصل للسيرفر. اتأكد من الإنترنت.',
   'boot.retry': 'حاول تاني',
@@ -2295,6 +2306,8 @@ const RESULT_TABS = ['dash', 'plan', 'orders', 'demand', 'trends', 'incoming', '
 
 function renderShell() { renderNav(); renderAccount(); }
 
+const PLAN_NEED = { score: ['scorecard', 'plan.tagPro'], trends: ['graphs', 'plan.tagStore'], dead: ['deadStock', 'plan.tagStore'], cash: ['cashFlow', 'plan.tagStore'] };
+function lockTag(id) { const n = PLAN_NEED[id]; return n && S.me && S.me.limits && !S.me.limits[n[0]] ? '<span class="plantag">' + esc(t(n[1])) + '</span>' : ''; }
 function renderNav() {
   if (!S.res) return;
   const d = S.res.dash;
@@ -2309,7 +2322,7 @@ function renderNav() {
     if (tab.g !== g) { g = tab.g; if (g > 0) html += '<div class="nav-label">' + esc(t('nav.g' + g)) + '</div>'; }
     const b = badges[tab.id];
     const badge = b && !(b.hideZero && !b.n) ? '<span class="badge' + (b.crit ? ' crit' : '') + '">' + b.n + '</span>' : '';
-    html += '<button type="button" data-act="tab" data-tab="' + tab.id + '"' + (S.tab === tab.id ? ' aria-current="page"' : '') + '><span>' + esc(t('nav.' + tab.id)) + '</span>' + badge + '</button>';
+    html += '<button type="button" data-act="tab" data-tab="' + tab.id + '"' + (S.tab === tab.id ? ' aria-current="page"' : '') + '><span>' + esc(t('nav.' + tab.id)) + lockTag(tab.id) + '</span>' + badge + '</button>';
   });
   $('#nav').innerHTML = html;
   $('#bar-title').textContent = t('nav.' + S.tab);
@@ -2661,7 +2674,7 @@ VIEWS.dash = () => {
     kpi('turn', d.turnover == null ? t('na') : t('times', { n: n1(d.turnover) }), turnWarn ? 'warn' : '') +
     kpi('cover', d.avgCover == null ? t('na') : n0(d.avgCover) + ' ' + t('days')) +
     kpi('over', money(d.overstockValue), d.overstockValue > 0 ? 'warn' : '') +
-    kpi('risk', money(d.riskProfit || 0), (d.riskProfit || 0) > 0 ? 'bad' : '') +
+    (S.me.limits.stockoutCost ? kpi('risk', money(d.riskProfit || 0), (d.riskProfit || 0) > 0 ? 'bad' : '') : kpi('risk', t('plan.store'), 'locked')) +
     (d.accuracy != null ? kpi('acc', Math.round(d.accuracy * 100) + '%', d.accuracy < 0.6 ? 'warn' : '') : '') +
     kpi('aic', money(d.inventoryCost)) + '</div>';
 
@@ -3092,6 +3105,9 @@ function reorderTimeline() {
 }
 
 VIEWS.trends = () => {
+  if (!S.me.limits.graphs) {
+    return head(t('gr.title'), t('gr.lede')) + '<div class="alert info"><span>' + esc(t('gr.locked')) + upsellLink() + '</span></div>';
+  }
   const bands = S.res.bands || [];
   if (!bands.length) {
     return head(t('gr.title'), t('gr.lede')) +
@@ -3105,7 +3121,7 @@ VIEWS.trends = () => {
 
 /* ---------- Suppliers scorecard ---------- */
 VIEWS.score = () => {
-  if (!S.me.limits.altSuppliers) {
+  if (!S.me.limits.scorecard) {
     return head(t('sc.title'), t('sc.lede')) +
       '<div class="alert info"><span>' + esc(t('sc.locked')) + upsellLink() + '</span></div>';
   }
@@ -3149,7 +3165,7 @@ function whyText(r) {
     return t('why.OK', { ip: n0(r.ip), rop: n0(r.rop), rate: rate, days: n0(r.daysToReorder) });
   }
   const base = t('why.' + r.decision, { ip: n0(r.ip), ss: n0(r.ss), rop: n0(r.rop), rate: rate, lt: n0(r.lt) });
-  const risk = (r.risk && r.risk.profit > 0)
+  const risk = (S.me.limits.stockoutCost && r.risk && r.risk.profit > 0)
     ? ' ' + t('why.risk', { v: money(r.risk.profit), d: n0(r.risk.days) }) : '';
   return base + risk;
 }
