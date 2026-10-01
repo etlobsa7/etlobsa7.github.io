@@ -14,35 +14,35 @@
 <script async src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <style>
 :root{
-  --navy:#2C371A;--navy-2:#425D17;--navy-3:#55781E;
-  --ink:#1A1E13;--body:#3A4959;--muted:#6C7C90;--faint:#95A3B4;
-  --line:#E8EDE0;--line-2:#F3F6ED;
-  --bg:#FFFFFF;--bg-2:#F7F9FC;--bg-3:#F4F8ED;--card:#FFFFFF;
-  --accent:#8DD41A;--accent-2:#77B80F;--accent-ink:#FFFFFF;--gold:#B0801F;
+  --navy:#20312F;--navy-2:#175D56;--navy-3:#1E786F;
+  --ink:#151C1B;--body:#3A4959;--muted:#6C7C90;--faint:#95A3B4;
+  --line:#E0EDEC;--line-2:#EDF6F5;
+  --bg:#FFFFFF;--bg-2:#F7F9FC;--bg-3:#EDF8F7;--card:#FFFFFF;
+  --accent:#1AD4C1;--accent-2:#14B3A3;--accent-ink:#FFFFFF;--gold:#B0801F;
   --ok:#17784A;--ok-bg:#E7F5EC;--warn:#8E6100;--warn-bg:#FCF3E1;--bad:#A82219;--bad-bg:#FCEBE9;
-  --shadow-s:0 1px 2px rgba(44,55,26,.05),0 2px 8px rgba(44,55,26,.05);
-  --shadow:0 2px 4px rgba(44,55,26,.05),0 12px 32px rgba(44,55,26,.08);
+  --shadow-s:0 1px 2px rgba(32,49,47,.05),0 2px 8px rgba(32,49,47,.05);
+  --shadow:0 2px 4px rgba(32,49,47,.05),0 12px 32px rgba(32,49,47,.08);
   --serif:"Fraunces",Georgia,"Times New Roman",serif;
   --sans:"Public Sans","IBM Plex Sans Arabic",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --mx:1140px;--r:12px;
 }
 html[lang="ar"]{--serif:"IBM Plex Sans Arabic","Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --navy:#191F0F;--navy-2:#2A3518;--navy-3:#384622;
-  --ink:#F4F9EC;--body:#C8D4B4;--muted:#8697AC;--faint:#6E7F95;
-  --line:#363F28;--line-2:#2B321F;
-  --bg:#11140C;--bg-2:#1A1F12;--bg-3:#232A18;--card:#1A1F12;
-  --accent:#B9F25D;--accent-2:#C6F47C;--accent-ink:#13180A;--gold:#D6A644;
+  --navy:#121C1B;--navy-2:#1E2F2D;--navy-3:#293F3D;
+  --ink:#ECF9F8;--body:#B4D4D1;--muted:#8697AC;--faint:#6E7F95;
+  --line:#2D3A39;--line-2:#232E2D;
+  --bg:#0E1212;--bg-2:#151C1C;--bg-3:#1C2625;--card:#151C1C;
+  --accent:#61EEE0;--accent-2:#7FF1E5;--accent-ink:#0D1514;--gold:#D6A644;
   --ok:#63D394;--ok-bg:#0F2A1C;--warn:#DDB254;--warn-bg:#2A2110;--bad:#F08A80;--bad-bg:#2B1512;
   --shadow-s:0 1px 2px rgba(0,0,0,.5);
   --shadow:0 2px 4px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4);
 }}
 :root[data-theme="dark"]{
-  --navy:#191F0F;--navy-2:#2A3518;--navy-3:#384622;
-  --ink:#F4F9EC;--body:#C8D4B4;--muted:#8697AC;--faint:#6E7F95;
-  --line:#363F28;--line-2:#2B321F;
-  --bg:#11140C;--bg-2:#1A1F12;--bg-3:#232A18;--card:#1A1F12;
-  --accent:#B9F25D;--accent-2:#C6F47C;--accent-ink:#13180A;--gold:#D6A644;
+  --navy:#121C1B;--navy-2:#1E2F2D;--navy-3:#293F3D;
+  --ink:#ECF9F8;--body:#B4D4D1;--muted:#8697AC;--faint:#6E7F95;
+  --line:#2D3A39;--line-2:#232E2D;
+  --bg:#0E1212;--bg-2:#151C1C;--bg-3:#1C2625;--card:#151C1C;
+  --accent:#61EEE0;--accent-2:#7FF1E5;--accent-ink:#0D1514;--gold:#D6A644;
   --ok:#63D394;--ok-bg:#0F2A1C;--warn:#DDB254;--warn-bg:#2A2110;--bad:#F08A80;--bad-bg:#2B1512;
   --shadow-s:0 1px 2px rgba(0,0,0,.5);
   --shadow:0 2px 4px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4);
@@ -121,23 +121,23 @@ section.tight{padding:56px 0}
 .hero{background:linear-gradient(168deg,var(--navy) 0%,var(--navy-2) 58%,var(--navy-3) 100%);
   color:#fff;padding:92px 0 100px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;top:-30%;right:-15%;width:70%;height:130%;
-  background:radial-gradient(ellipse at center,rgba(185,242,93,.2),transparent 62%)}
+  background:radial-gradient(ellipse at center,rgba(97,238,224,.2),transparent 62%)}
 .hero::after{content:"";position:absolute;inset:0;opacity:.35;
   background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:46px 46px;
   mask-image:radial-gradient(ellipse at 20% 0%,#000,transparent 72%)}
 .hero .wrap{position:relative;z-index:2}
 .hero h1{color:#fff;max-width:16ch;margin-bottom:.4em}
-.hero .eyebrow{color:#CFEE9C}
-.hero .lede{color:#DBEAC3;max-width:54ch;margin-bottom:32px}
+.hero .eyebrow{color:#9CEEE6}
+.hero .lede{color:#C3EAE6;max-width:54ch;margin-bottom:32px}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero-note{margin-top:22px;font-size:.88rem;color:#B1C68F}
+.hero-note{margin-top:22px;font-size:.88rem;color:#8FC6C0}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px;padding-top:30px;
   border-top:1px solid rgba(255,255,255,.15)}
 @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr);gap:20px}}
 .stats b{display:block;font-family:var(--serif);font-size:1.8rem;color:#fff;line-height:1.05;
   margin-bottom:2px}
-.stats small{color:#B1C68F;font-size:.81rem;line-height:1.45;display:block}
+.stats small{color:#8FC6C0;font-size:.81rem;line-height:1.45;display:block}
 
 /* ---------- GRIDS / CARDS ---------- */
 .grid{display:grid;gap:22px}
@@ -282,7 +282,7 @@ details .ans p:last-child{margin-bottom:0}
 .band{background:linear-gradient(160deg,var(--navy),var(--navy-3));color:#fff;text-align:center;
   padding:76px 0}
 .band h2{color:#fff}
-.band p{color:#DBEAC3;max-width:54ch;margin:0 auto 28px}
+.band p{color:#C3EAE6;max-width:54ch;margin:0 auto 28px}
 .band .btn-ghost{color:#fff;border-color:rgba(255,255,255,.34)}
 .band .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
 
@@ -328,15 +328,66 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 
 <style data-lime>
 /* ================= lime green: final colour set ================= */
-:root{--accent:#4D7C0F;--accent-2:#3F6212;--accent-ink:#FFFFFF;--navy:#10190A;--navy-2:#18260D;--navy-3:#223611;--lime:#A3E635;--lime-2:#BEF264;--lime-ink:#0E1A02}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#A3E635;--accent-2:#BEF264;--accent-ink:#0E1A02;--navy:#0A1006;--navy-2:#111B09;--navy-3:#18270C}}
-:root[data-theme="dark"]{--accent:#A3E635;--accent-2:#BEF264;--accent-ink:#0E1A02;--navy:#0A1006;--navy-2:#111B09;--navy-3:#18270C}
+:root{--accent:#0F7C71;--accent-2:#12625A;--accent-ink:#FFFFFF;--navy:#0D1615;--navy-2:#12211F;--navy-3:#182F2C;--lime:#35E6D4;--lime-2:#68EEE1;--lime-ink:#071513}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#35E6D4;--accent-2:#68EEE1;--accent-ink:#071513;--navy:#080E0D;--navy-2:#0D1716;--navy-3:#112220}}
+:root[data-theme="dark"]{--accent:#35E6D4;--accent-2:#68EEE1;--accent-ink:#071513;--navy:#080E0D;--navy-2:#0D1716;--navy-3:#112220}
 .btn-primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
 .btn-primary:hover{background:var(--lime-2);border-color:var(--lime-2);color:var(--lime-ink)}
-.btn-primary:hover{box-shadow:0 10px 26px rgba(120,170,20,.35)}
-.scrollbar{background:linear-gradient(90deg,#65A30D,#A3E635)}
-.evb-row.win .evb-track i,.pbar i,.hv-track i.ok{background:linear-gradient(90deg,#65A30D,#A3E635)}
-.hero .eyebrow,.band .eyebrow{color:#BEF264}
+.btn-primary:hover{box-shadow:0 10px 26px rgba(20,170,155,.35)}
+.scrollbar{background:linear-gradient(90deg,#129E90,#35E6D4)}
+.evb-row.win .evb-track i,.pbar i,.hv-track i.ok{background:linear-gradient(90deg,#129E90,#35E6D4)}
+.hero .eyebrow,.band .eyebrow{color:#68EEE1}
+</style>
+
+<style data-teal>
+/* ================= teal and amber: final colour set ================= */
+:root{--accent:#0F766E;--accent-2:#115E59;--accent-ink:#FFFFFF;--navy:#072327;--navy-2:#0B2E33;--navy-3:#0F3A40;--lime:#2DD4BF;--lime-2:#5EEAD4;--lime-ink:#042F2E;--pop:#B45309;--pop-2:#D97706}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#5EEAD4;--accent-2:#99F6E4;--accent-ink:#042F2E;--navy:#04191B;--navy-2:#072327;--navy-3:#0B2E33;--pop:#FBBF24;--pop-2:#FCD34D}}
+:root[data-theme="dark"]{--accent:#5EEAD4;--accent-2:#99F6E4;--accent-ink:#042F2E;--navy:#04191B;--navy-2:#072327;--navy-3:#0B2E33;--pop:#FBBF24;--pop-2:#FCD34D}
+.btn-primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+.btn-primary:hover{background:var(--lime-2);border-color:var(--lime-2);color:var(--lime-ink);box-shadow:0 10px 26px rgba(20,184,166,.35)}
+.scrollbar{background:linear-gradient(90deg,#0D9488,#2DD4BF,#FBBF24)}
+.eyebrow{color:var(--pop)}
+.hero .eyebrow,.band .eyebrow,.rx-hero .eyebrow{color:#FBBF24}
+.stats b{color:#5EEAD4}
+.tier.best{border-color:var(--lime);box-shadow:0 18px 44px rgba(20,184,166,.18)}
+.tier.best .badge{background:#FBBF24;color:#3B2600}
+.tier .price b,.tier .price{color:var(--ink)}
+.pacc b{color:var(--accent)}
+.evb-row.win .evb-track i,.pbar i,.hv-track i.ok{background:linear-gradient(90deg,#0D9488,#2DD4BF)}
+/* the real example page */
+.rx-hero{position:relative;overflow:hidden;padding:84px 0 64px;background:radial-gradient(1200px 500px at 85% 0%,rgba(45,212,191,.18),transparent 60%),linear-gradient(160deg,#04191B,#072327 60%,#0B2E33);color:#D7EEEC}
+.rx-hero h1{color:#fff;max-width:860px;font-size:clamp(2rem,4.2vw,3.1rem);line-height:1.12;margin:10px 0 16px}
+.rx-hero .lede{color:#B9D9D6;max-width:760px}
+.rx-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:34px}
+@media (max-width:900px){.rx-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rx-stat{background:rgba(255,255,255,.06);border:1px solid rgba(94,234,212,.25);border-radius:14px;padding:18px 18px 16px}
+.rx-stat b{display:block;font-family:var(--serif);font-size:2.1rem;line-height:1;color:#5EEAD4;margin-bottom:8px}
+.rx-stat:first-child b{color:#FBBF24}
+.rx-stat span{font-size:.88rem;color:#CFE6E3;line-height:1.45}
+.rx-teaser{padding:46px 0}
+.rx-tin{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:26px 28px;border-radius:16px;
+  background:linear-gradient(135deg,#072327,#0B2E33);border:1px solid rgba(94,234,212,.3);color:#D7EEEC}
+.rx-tin h3{color:#fff;margin:4px 0 6px}.rx-tin p{margin:0}
+.rx-card{display:block;text-decoration:none;color:#D7EEEC;border-radius:18px;padding:20px 22px 18px;background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.04));
+  border:1px solid rgba(94,234,212,.3);box-shadow:0 30px 70px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s,border-color .2s}
+.rx-card:hover{transform:translateY(-3px);border-color:#5EEAD4;box-shadow:0 34px 80px rgba(0,0,0,.45)}
+.rx-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.rx-pill{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3B2600;background:#FBBF24;border-radius:999px;padding:4px 10px}
+html[lang="ar"] .rx-pill{letter-spacing:0}
+.rx-big{font-family:var(--serif);font-size:2.6rem;line-height:1;color:#5EEAD4}
+.rx-cap{margin:8px 0 6px;font-size:.88rem;color:#B9D9D6}
+.rx-mini{display:block;width:100%;height:auto;margin:6px 0 4px}
+.rx-act{fill:none;stroke:#E6F4F2;stroke-width:2.4;stroke-linejoin:round}
+.rx-fc{fill:none;stroke:#2DD4BF;stroke-width:2.6;stroke-dasharray:6 5;stroke-linejoin:round}
+.rx-key{display:flex;gap:16px;font-size:.8rem;color:#B9D9D6;margin-top:4px}
+.rx-key > span{display:inline-flex;align-items:center;gap:6px}
+.rx-key i{display:inline-block;width:18px;border-top:2.5px solid}
+.rx-key .k1{border-color:#E6F4F2}.rx-key .k2{border-color:#2DD4BF;border-top-style:dashed}
+.rx-go{display:inline-block;margin-top:12px;font-weight:700;color:#FBBF24}
+.js-anim .rx-mini path{stroke-dashoffset:0}
+.realchart .rc-year{stroke:#0D9488}.realchart .rc-mon{stroke:#2DD4BF}.rc-d-mon{fill:#2DD4BF}
+.rc-key .k-year{border-color:#0D9488}.rc-key .k-mon{border-color:#2DD4BF}
 </style>
 </head>
 <body>
@@ -347,18 +398,14 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <rect fill="var(--navy)" height="32" rx="8" width="32"></rect>
 <rect fill="#fff" height="7" opacity=".55" rx="1.3" width="3.6" x="8" y="17"></rect>
 <rect fill="#fff" height="12" opacity=".8" rx="1.3" width="3.6" x="14.2" y="12"></rect>
-<rect fill="#B9F25D" height="16" rx="1.3" width="3.6" x="20.4" y="8"></rect>
+<rect fill="#61EEE0" height="16" rx="1.3" width="3.6" x="20.4" y="8"></rect>
 </svg>
 <b data-t-html="t1"></b>
 </a>
 <div class="tabs" id="tabs">
-<button class="tab on" data-go="home" data-t="t2"></button>
-<button class="tab" data-go="provide" data-t="t3"></button>
-<button class="tab" data-go="how" data-t="t4"></button>
-<button class="tab" data-go="proof" data-t="t5"></button>
-<button class="tab" data-go="pricing" data-t="t6"></button>
+<button class="tab" data-go="how" data-t="t547"></button>
+<a class="tab" href="/demo/" data-t="t536"></a>
 <a class="tab navlogin" href="https://etlobsa7.com/app/"><small data-t="t463"></small><b data-t="t464"></b></a>
-<button class="tab" data-go="faq" data-t="t7"></button>
 </div>
 <div style="display:flex;gap:8px;align-items:center">
 <button class="btn btn-ghost btn-sm langbtn" id="langBtn" type="button">العربية</button>
@@ -370,15 +417,59 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 </div>
 <div class="drawer" id="drawer">
 <button class="btn btn-ghost btn-sm langbtn" id="langBtnM" type="button" style="align-self:flex-start;margin-bottom:6px">العربية</button>
-<button class="tab" data-go="home" data-t="t9"></button>
-<button class="tab" data-go="provide" data-t="t10"></button>
-<button class="tab" data-go="how" data-t="t11"></button>
-<button class="tab" data-go="proof" data-t="t12"></button>
-<button class="tab" data-go="pricing" data-t="t13"></button>
+<button class="tab" data-go="how" data-t="t547"></button>
+<a class="tab" href="/demo/" data-t="t536"></a>
 <a class="tab navlogin" data-t="t431" href="https://etlobsa7.com/app/"></a>
-<button class="tab" data-go="faq" data-t="t14"></button>
+<a class="btn btn-primary" data-go="pricing" data-t="t8" href="#" style="margin-top:8px"></a>
 </div>
 </nav>
+<div class="pop" id="pop-results" hidden><div class="pop-card wide" role="dialog" aria-modal="true"><button class="pop-x" type="button" data-pop-close aria-label="Close">&times;</button><h3 data-t="t466"></h3><div class="ptablewrap"><table class="ptab">
+<thead><tr><th data-t="t468"></th><th data-t="t469"></th><th data-t="t470"></th><th data-t="t471"></th></tr></thead>
+<tbody>
+<tr data-t-html="t474"></tr>
+<tr data-t-html="t475"></tr>
+<tr data-t-html="t476"></tr>
+<tr data-t-html="t477"></tr>
+<tr data-t-html="t478"></tr>
+<tr data-t-html="t479"></tr>
+<tr data-t-html="t480"></tr>
+<tr data-t-html="t481"></tr>
+<tr data-t-html="t482"></tr>
+<tr data-t-html="t483"></tr>
+<tr data-t-html="t484"></tr>
+<tr data-t-html="t485"></tr>
+<tr data-t-html="t486"></tr>
+<tr data-t-html="t487"></tr>
+<tr data-t-html="t488"></tr>
+<tr data-t-html="t489"></tr>
+<tr data-t-html="t490"></tr>
+<tr data-t-html="t491"></tr>
+<tr data-t-html="t492"></tr>
+</tbody></table></div></div></div>
+<div class="pop" id="pop-pages" hidden><div class="pop-card wide" role="dialog" aria-modal="true"><button class="pop-x" type="button" data-pop-close aria-label="Close">&times;</button><h3 data-t="t185"></h3><div class="sheets">
+<div class="sh" data-t-html="t187"></div>
+<div class="sh" data-t-html="t188"></div>
+<div class="sh" data-t-html="t189"></div>
+<div class="sh" data-t-html="t190"></div>
+<div class="sh" data-t-html="t191"></div>
+<div class="sh" data-t-html="t192"></div>
+<div class="sh" data-t-html="t193"></div>
+<div class="sh" data-t-html="t194"></div>
+<div class="sh" data-t-html="t195"></div>
+<div class="sh" data-t-html="t196"></div>
+<div class="sh" data-t-html="t197"></div>
+<div class="sh" data-t-html="t420"></div>
+<div class="sh" data-t-html="t421"></div>
+<div class="sh" data-t-html="t422"></div>
+<div class="sh" data-t-html="t423"></div>
+<div class="sh" data-t-html="t198"></div>
+<div class="sh" data-t-html="t426"></div>
+<div class="sh" data-t-html="t427"></div>
+</div>
+</div></div>
+<div class="pop" id="pop-card" hidden><div class="pop-card" role="dialog" aria-modal="true"><button class="pop-x" type="button" data-pop-close aria-label="Close">&times;</button><div class="pop-body"></div></div></div>
+<nav class="dots" id="dots" aria-label="Sections"><a href="#" data-dot="top"><span data-t="t537"></span></a><a href="#" data-dot="s-example"><span data-t="t538"></span></a><a href="#" data-dot="s-problem"><span data-t="t539"></span></a><a href="#" data-dot="s-what"><span data-t="t540"></span></a><a href="#" data-dot="s-pricing"><span data-t="t541"></span></a><a href="#" data-dot="s-faq"><span data-t="t542"></span></a></nav>
+<a class="float-cta" id="floatCta" data-go="pricing" href="#" data-t="t8"></a>
 <!-- ============ HOME ============ -->
 <div class="page on" id="p-home">
 <header class="hero onnavy">
@@ -395,20 +486,51 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <div data-t-html="t23"></div>
 </div>
 <div class="hero-visual">
-<div class="hv-card">
-<div class="hv-head"><span class="hv-pulse"></span><b data-t="t433"></b><span class="hv-tag" data-t="t432"></span></div>
-<div class="hv-row"><bdi class="hv-name">Tote bag</bdi><span class="hv-track"><i class="crit" style="--w:3%;--d:500ms"></i></span><span class="hv-when crit" data-t="t434"></span></div>
-<div class="hv-row"><bdi class="hv-name">Leather wallet</bdi><span class="hv-track"><i class="order" style="--w:6%;--d:640ms"></i></span><span class="hv-when order" data-t="t435"></span></div>
-<div class="hv-row"><bdi class="hv-name">Eid gift box</bdi><span class="hv-track"><i class="order" style="--w:6%;--d:780ms"></i></span><span class="hv-when order" data-t="t435"></span></div>
-<div class="hv-row"><bdi class="hv-name">Wool scarf</bdi><span class="hv-track"><i class="soon" style="--w:17%;--d:920ms"></i></span><span class="hv-when soon" data-t="t437"></span></div>
-<div class="hv-row"><bdi class="hv-name">Cotton tee</bdi><span class="hv-track"><i class="ok" style="--w:68%;--d:1060ms"></i></span><span class="hv-when ok" data-t="t438"></span></div>
-<div class="hv-foot" data-t="t440"></div>
-</div>
-<p class="hv-cap" data-t="t439"></p>
+<a class="rx-card" data-go="proof" href="#">
+<div class="rx-top"><span class="rx-pill" data-t="t532"></span><span class="rx-big">96.7%</span></div>
+<p class="rx-cap" data-t="t533"></p>
+<svg viewBox="0 0 360 130" class="rx-mini" aria-hidden="true"><path class="rx-act" d="M8.0 76.4 L39.3 96.9 L70.5 83.0 L101.8 67.2 L133.1 54.4 L164.4 62.6 L195.6 45.7 L226.9 24.4 L258.2 48.5 L289.5 43.4 L320.7 62.9 L352.0 67.6"/><path class="rx-fc" d="M8.0 94.3 L39.3 95.6 L70.5 68.1 L101.8 58.3 L133.1 46.7 L164.4 42.0 L195.6 37.3 L226.9 28.6 L258.2 42.3 L289.5 36.2 L320.7 56.3 L352.0 73.3"/></svg>
+<div class="rx-key"><span><i class="k1"></i><span data-t="t534"></span></span><span><i class="k2"></i><span data-t="t535"></span></span></div>
+<span class="rx-go" data-t="t529"></span>
+</a>
 </div>
 </div>
 </header>
-<section>
+<div class="scrollsec" id="s-example">
+<section class="rx-hero"><div class="wrap"><p class="eyebrow" data-t="t521"></p><h1 data-t="t522"></h1><p class="lede" data-t="t523"></p><div class="rx-stats"><div class="rx-stat" data-t-html="t524"></div><div class="rx-stat" data-t-html="t525"></div><div class="rx-stat" data-t-html="t526"></div><div class="rx-stat" data-t-html="t527"></div></div></div></section>
+<section class="proofsec">
+<div class="wrap">
+<div class="head"><h2 data-t="t466"></h2></div>
+<figure class="realchart"><figcaption class="rc-cap" data-t="t517"></figcaption><svg viewBox="0 0 780 290" role="img" aria-labelledby="rc-t"><title id="rc-t" data-t="t517"></title><line class="rc-grid" x1="70" x2="760" y1="250.0" y2="250.0"/><text class="rc-y" x="62" y="254.0" text-anchor="end">1,800</text><line class="rc-grid" x1="70" x2="760" y1="176.7" y2="176.7"/><text class="rc-y" x="62" y="180.7" text-anchor="end">2,100</text><line class="rc-grid" x1="70" x2="760" y1="103.3" y2="103.3"/><text class="rc-y" x="62" y="107.3" text-anchor="end">2,400</text><line class="rc-grid" x1="70" x2="760" y1="30.0" y2="30.0"/><text class="rc-y" x="62" y="34.0" text-anchor="end">2,700</text><text class="rc-x" x="70.0" y="272" text-anchor="middle" data-t="t505"></text><text class="rc-x" x="132.7" y="272" text-anchor="middle" data-t="t506"></text><text class="rc-x" x="195.5" y="272" text-anchor="middle" data-t="t507"></text><text class="rc-x" x="258.2" y="272" text-anchor="middle" data-t="t508"></text><text class="rc-x" x="320.9" y="272" text-anchor="middle" data-t="t509"></text><text class="rc-x" x="383.6" y="272" text-anchor="middle" data-t="t510"></text><text class="rc-x" x="446.4" y="272" text-anchor="middle" data-t="t511"></text><text class="rc-x" x="509.1" y="272" text-anchor="middle" data-t="t512"></text><text class="rc-x" x="571.8" y="272" text-anchor="middle" data-t="t513"></text><text class="rc-x" x="634.5" y="272" text-anchor="middle" data-t="t514"></text><text class="rc-x" x="697.3" y="272" text-anchor="middle" data-t="t515"></text><text class="rc-x" x="760.0" y="272" text-anchor="middle" data-t="t516"></text><path class="rc-l rc-act" d="M70.0 162.7 L132.7 203.8 L195.5 175.9 L258.2 144.4 L320.9 118.7 L383.6 135.1 L446.4 101.4 L509.1 58.8 L571.8 107.0 L634.5 96.7 L697.3 135.8 L760.0 145.1"/><path class="rc-l rc-year" d="M70.0 198.7 L132.7 201.1 L195.5 146.1 L258.2 126.6 L320.9 103.3 L383.6 94.0 L446.4 84.5 L509.1 67.2 L571.8 94.5 L634.5 82.3 L697.3 122.6 L760.0 156.6"/><path class="rc-l rc-mon" d="M70.0 198.7 L132.7 191.1 L195.5 142.9 L258.2 138.8 L320.9 117.5 L383.6 108.0 L446.4 111.6 L509.1 90.4 L571.8 102.6 L634.5 92.1 L697.3 133.6 L760.0 169.6"/><circle class="rc-d-act" cx="70.0" cy="162.7" r="3.4"/><circle class="rc-d-act" cx="132.7" cy="203.8" r="3.4"/><circle class="rc-d-act" cx="195.5" cy="175.9" r="3.4"/><circle class="rc-d-act" cx="258.2" cy="144.4" r="3.4"/><circle class="rc-d-act" cx="320.9" cy="118.7" r="3.4"/><circle class="rc-d-act" cx="383.6" cy="135.1" r="3.4"/><circle class="rc-d-act" cx="446.4" cy="101.4" r="3.4"/><circle class="rc-d-act" cx="509.1" cy="58.8" r="3.4"/><circle class="rc-d-act" cx="571.8" cy="107.0" r="3.4"/><circle class="rc-d-act" cx="634.5" cy="96.7" r="3.4"/><circle class="rc-d-act" cx="697.3" cy="135.8" r="3.4"/><circle class="rc-d-act" cx="760.0" cy="145.1" r="3.4"/><circle class="rc-d-mon" cx="70.0" cy="198.7" r="3.4"/><circle class="rc-d-mon" cx="132.7" cy="191.1" r="3.4"/><circle class="rc-d-mon" cx="195.5" cy="142.9" r="3.4"/><circle class="rc-d-mon" cx="258.2" cy="138.8" r="3.4"/><circle class="rc-d-mon" cx="320.9" cy="117.5" r="3.4"/><circle class="rc-d-mon" cx="383.6" cy="108.0" r="3.4"/><circle class="rc-d-mon" cx="446.4" cy="111.6" r="3.4"/><circle class="rc-d-mon" cx="509.1" cy="90.4" r="3.4"/><circle class="rc-d-mon" cx="571.8" cy="102.6" r="3.4"/><circle class="rc-d-mon" cx="634.5" cy="92.1" r="3.4"/><circle class="rc-d-mon" cx="697.3" cy="133.6" r="3.4"/><circle class="rc-d-mon" cx="760.0" cy="169.6" r="3.4"/></svg><div class="rc-key"><span><i class="k-act"></i><span data-t="t518"></span></span><span><i class="k-year"></i><span data-t="t519"></span></span><span><i class="k-mon"></i><span data-t="t520"></span></span></div></figure>
+<p class="rx-more"><button type="button" class="btn btn-primary" data-pop="pop-results" data-t="t543"></button></p>
+<p class="pnote" data-t-html="t472"></p>
+<p class="pmethod" data-t="t473"></p>
+<p class="pmethod" data-t-html="t528"></p>
+</div>
+</section>
+<section class="alt">
+<div class="wrap narrow">
+<div class="head">
+<p class="eyebrow" data-t="t270"></p>
+<h2 data-t="t271"></h2>
+<p class="lede" data-t="t272"></p>
+</div>
+<div class="box warn">
+<ul>
+<li data-t-html="t273"></li>
+<li data-t-html="t274"></li>
+<li data-t-html="t275"></li>
+<li data-t-html="t276"></li>
+<li data-t-html="t277"></li>
+<li data-t-html="t278"></li>
+<li data-t-html="t279"></li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+
+<section id="s-problem">
 <div class="wrap">
 <div class="head mid">
 <p class="eyebrow" data-t="t24"></p>
@@ -428,7 +550,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <p class="verdict" data-t="t31"></p>
 </div>
 </section>
-<section class="alt">
+<section id="s-what" class="alt">
 <div class="wrap">
 <div class="head mid">
 <p class="eyebrow" data-t="t32"></p>
@@ -464,7 +586,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <p data-t-html="t47" style="text-align:center;margin-top:34px"></p>
 </div>
 </section>
-<section>
+<section id="s-idea">
 <div class="wrap narrow">
 <div class="head mid">
 <p class="eyebrow" data-t="t48"></p>
@@ -479,30 +601,8 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <p data-t="t53"></p>
 </div>
 </section>
-<section class="honest-strip">
-<div class="wrap">
-<div class="hs-in">
-<div class="hs-head"><p class="eyebrow" data-t="t441"></p><h3 data-t="t442"></h3></div>
-<ul class="hs-list">
-<li data-t="t443"></li>
-<li data-t="t444"></li>
-<li data-t="t445"></li>
-<li data-t="t446"></li>
-</ul>
-<p class="hs-more" data-t-html="t447"></p>
-</div>
-</div>
-</section>
-<div class="band">
-<div class="wrap">
-<h2 data-t="t54"></h2>
-<p data-t="t55"></p>
-<div data-t-html="t56" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
-</div>
-</div>
-</div>
-<!-- ============ WHAT WE PROVIDE ============ -->
-<div class="page" id="p-provide">
+
+<div class="scrollsec" id="s-provide">
 <section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
 <div class="wrap">
 <div class="head">
@@ -515,6 +615,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <section>
 <div class="wrap">
 <!-- 1 -->
+<p class="tap-hint" data-t="t546"></p>
 <div class="pgrid">
 <div class="pcard" data-t-html="t493"></div>
 <div class="pcard" data-t-html="t494"></div>
@@ -560,203 +661,12 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 <h2 data-t="t185"></h2>
 <p class="lede" data-t="t186"></p>
 </div>
-<div class="sheets">
-<div class="sh" data-t-html="t187"></div>
-<div class="sh" data-t-html="t188"></div>
-<div class="sh" data-t-html="t189"></div>
-<div class="sh" data-t-html="t190"></div>
-<div class="sh" data-t-html="t191"></div>
-<div class="sh" data-t-html="t192"></div>
-<div class="sh" data-t-html="t193"></div>
-<div class="sh" data-t-html="t194"></div>
-<div class="sh" data-t-html="t195"></div>
-<div class="sh" data-t-html="t196"></div>
-<div class="sh" data-t-html="t197"></div>
-<div class="sh" data-t-html="t420"></div>
-<div class="sh" data-t-html="t421"></div>
-<div class="sh" data-t-html="t422"></div>
-<div class="sh" data-t-html="t423"></div>
-<div class="sh" data-t-html="t198"></div>
-<div class="sh" data-t-html="t426"></div>
-<div class="sh" data-t-html="t427"></div>
-</div>
+<p class="rx-more"><button type="button" class="btn btn-ghost" data-pop="pop-pages" data-t="t544"></button></p>
 <p data-t-html="t199" style="text-align:center;margin-top:34px"></p>
 </div>
 </section>
 </div>
-<!-- ============ HOW IT WORKS ============ -->
-<div class="page" id="p-how">
-<section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
-<div class="wrap">
-<div class="head">
-<p class="eyebrow" data-t="t200"></p>
-<h2 data-t="t201"></h2>
-<p class="lede" data-t="t202"></p>
-</div>
-</div>
-</section>
-<section>
-<div class="wrap narrow">
-<h3 data-t="t203" style="margin-top:0"></h3>
-<ol class="steps">
-<li><b data-t="t204"></b>
-<p data-t="t205"></p></li>
-<li><b data-t="t206"></b>
-<p data-t="t207"></p></li>
-<li><b data-t="t208"></b>
-<p data-t="t209"></p></li>
-<li><b data-t="t210"></b>
-<p data-t="t211"></p></li>
-<li><b data-t="t212"></b>
-<p data-t="t213"></p></li>
-</ol>
-<h3 data-t="t214"></h3>
-<p data-t="t215"></p>
-<h3 data-t="t216"></h3>
-<p data-t="t217"></p>
-<h3 data-t="t218"></h3>
-<p data-t="t219"></p>
-<div class="box ok">
-<span class="lab" data-t="t220"></span>
-<ul>
-<li data-t="t221"></li>
-<li data-t="t222"></li>
-<li data-t="t223"></li>
-<li data-t="t224"></li>
-</ul>
-</div>
-<div class="box warn">
-<span class="lab" data-t="t225"></span>
-<p data-t-html="t226"></p>
-<p data-t-html="t227" style="margin-bottom:0"></p>
-</div>
-</div>
-</section>
-<section class="proofsec">
-<div class="wrap">
-<div class="head">
-<p class="eyebrow" data-t="t465"></p>
-<h2 data-t="t466"></h2>
-<p data-t="t467"></p>
-</div>
-<figure class="realchart"><figcaption class="rc-cap" data-t="t517"></figcaption><svg viewBox="0 0 780 290" role="img" aria-labelledby="rc-t"><title id="rc-t" data-t="t517"></title><line class="rc-grid" x1="70" x2="760" y1="250.0" y2="250.0"/><text class="rc-y" x="62" y="254.0" text-anchor="end">1,800</text><line class="rc-grid" x1="70" x2="760" y1="176.7" y2="176.7"/><text class="rc-y" x="62" y="180.7" text-anchor="end">2,100</text><line class="rc-grid" x1="70" x2="760" y1="103.3" y2="103.3"/><text class="rc-y" x="62" y="107.3" text-anchor="end">2,400</text><line class="rc-grid" x1="70" x2="760" y1="30.0" y2="30.0"/><text class="rc-y" x="62" y="34.0" text-anchor="end">2,700</text><text class="rc-x" x="70.0" y="272" text-anchor="middle" data-t="t505"></text><text class="rc-x" x="132.7" y="272" text-anchor="middle" data-t="t506"></text><text class="rc-x" x="195.5" y="272" text-anchor="middle" data-t="t507"></text><text class="rc-x" x="258.2" y="272" text-anchor="middle" data-t="t508"></text><text class="rc-x" x="320.9" y="272" text-anchor="middle" data-t="t509"></text><text class="rc-x" x="383.6" y="272" text-anchor="middle" data-t="t510"></text><text class="rc-x" x="446.4" y="272" text-anchor="middle" data-t="t511"></text><text class="rc-x" x="509.1" y="272" text-anchor="middle" data-t="t512"></text><text class="rc-x" x="571.8" y="272" text-anchor="middle" data-t="t513"></text><text class="rc-x" x="634.5" y="272" text-anchor="middle" data-t="t514"></text><text class="rc-x" x="697.3" y="272" text-anchor="middle" data-t="t515"></text><text class="rc-x" x="760.0" y="272" text-anchor="middle" data-t="t516"></text><path class="rc-l rc-act" d="M70.0 162.7 L132.7 203.8 L195.5 175.9 L258.2 144.4 L320.9 118.7 L383.6 135.1 L446.4 101.4 L509.1 58.8 L571.8 107.0 L634.5 96.7 L697.3 135.8 L760.0 145.1"/><path class="rc-l rc-year" d="M70.0 198.2 L132.7 200.4 L195.5 145.1 L258.2 125.8 L320.9 102.8 L383.6 93.6 L446.4 83.8 L509.1 66.2 L571.8 93.6 L634.5 81.6 L697.3 122.2 L760.0 156.1"/><path class="rc-l rc-mon" d="M70.0 198.2 L132.7 192.3 L195.5 143.2 L258.2 129.7 L320.9 117.3 L383.6 111.2 L446.4 106.3 L509.1 90.1 L571.8 110.7 L634.5 89.6 L697.3 129.0 L760.0 169.3"/><circle class="rc-d-act" cx="70.0" cy="162.7" r="3.4"/><circle class="rc-d-act" cx="132.7" cy="203.8" r="3.4"/><circle class="rc-d-act" cx="195.5" cy="175.9" r="3.4"/><circle class="rc-d-act" cx="258.2" cy="144.4" r="3.4"/><circle class="rc-d-act" cx="320.9" cy="118.7" r="3.4"/><circle class="rc-d-act" cx="383.6" cy="135.1" r="3.4"/><circle class="rc-d-act" cx="446.4" cy="101.4" r="3.4"/><circle class="rc-d-act" cx="509.1" cy="58.8" r="3.4"/><circle class="rc-d-act" cx="571.8" cy="107.0" r="3.4"/><circle class="rc-d-act" cx="634.5" cy="96.7" r="3.4"/><circle class="rc-d-act" cx="697.3" cy="135.8" r="3.4"/><circle class="rc-d-act" cx="760.0" cy="145.1" r="3.4"/><circle class="rc-d-mon" cx="70.0" cy="198.2" r="3.4"/><circle class="rc-d-mon" cx="132.7" cy="192.3" r="3.4"/><circle class="rc-d-mon" cx="195.5" cy="143.2" r="3.4"/><circle class="rc-d-mon" cx="258.2" cy="129.7" r="3.4"/><circle class="rc-d-mon" cx="320.9" cy="117.3" r="3.4"/><circle class="rc-d-mon" cx="383.6" cy="111.2" r="3.4"/><circle class="rc-d-mon" cx="446.4" cy="106.3" r="3.4"/><circle class="rc-d-mon" cx="509.1" cy="90.1" r="3.4"/><circle class="rc-d-mon" cx="571.8" cy="110.7" r="3.4"/><circle class="rc-d-mon" cx="634.5" cy="89.6" r="3.4"/><circle class="rc-d-mon" cx="697.3" cy="129.0" r="3.4"/><circle class="rc-d-mon" cx="760.0" cy="169.3" r="3.4"/></svg><div class="rc-key"><span><i class="k-act"></i><span data-t="t518"></span></span><span><i class="k-year"></i><span data-t="t519"></span></span><span><i class="k-mon"></i><span data-t="t520"></span></span></div></figure>
-<div class="ptablewrap"><table class="ptab">
-<thead><tr><th data-t="t468"></th><th data-t="t469"></th><th data-t="t470"></th><th data-t="t471"></th></tr></thead>
-<tbody>
-<tr data-t-html="t474"></tr>
-<tr data-t-html="t475"></tr>
-<tr data-t-html="t476"></tr>
-<tr data-t-html="t477"></tr>
-<tr data-t-html="t478"></tr>
-<tr data-t-html="t479"></tr>
-<tr data-t-html="t480"></tr>
-<tr data-t-html="t481"></tr>
-<tr data-t-html="t482"></tr>
-<tr data-t-html="t483"></tr>
-<tr data-t-html="t484"></tr>
-<tr data-t-html="t485"></tr>
-<tr data-t-html="t486"></tr>
-<tr data-t-html="t487"></tr>
-<tr data-t-html="t488"></tr>
-<tr data-t-html="t489"></tr>
-<tr data-t-html="t490"></tr>
-<tr data-t-html="t491"></tr>
-<tr data-t-html="t492"></tr>
-</tbody></table></div>
-<p class="pnote" data-t-html="t472"></p>
-<p class="pmethod" data-t="t473"></p>
-</div>
-</section>
-</div>
-<!-- ============ PROOF ============ -->
-<div class="page" id="p-proof">
-<section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
-<div class="wrap">
-<div class="head">
-<p class="eyebrow" data-t="t228"></p>
-<h2 data-t="t229"></h2>
-<p class="lede" data-t="t230"></p>
-</div>
-</div>
-</section>
-<section>
-<div class="wrap">
-<h3 data-t="t231" style="margin-top:0"></h3>
-<p data-t="t232"></p>
-<div class="evbars">
-<p class="evb-title" data-t="t456"></p>
-<div class="evb-group"><h4 data-t="t457"></h4>
-<div class="evb-row"><span class="evb-lab" data-t="t240"></span><span class="evb-track"><i style="--w:85.1%;--d:0ms"></i></span><span class="evb-val" data-t="t241"></span></div>
-<div class="evb-row"><span class="evb-lab" data-t="t247"></span><span class="evb-track"><i style="--w:98.2%;--d:160ms"></i></span><span class="evb-val" data-t="t248"></span></div>
-<div class="evb-row win"><span class="evb-lab" data-t="t254"></span><span class="evb-track"><i style="--w:99.4%;--d:320ms"></i></span><span class="evb-val" data-t="t255"></span></div>
-</div>
-<div class="evb-group"><h4 data-t="t458"></h4>
-<div class="evb-row"><span class="evb-lab" data-t="t240"></span><span class="evb-track"><i style="--w:100.0%;--d:0ms"></i></span><span class="evb-val" data-t="t246"></span></div>
-<div class="evb-row"><span class="evb-lab" data-t="t247"></span><span class="evb-track"><i style="--w:19.0%;--d:160ms"></i></span><span class="evb-val" data-t="t253"></span></div>
-<div class="evb-row win"><span class="evb-lab" data-t="t254"></span><span class="evb-track"><i style="--w:13.6%;--d:320ms"></i></span><span class="evb-val" data-t="t260"></span></div>
-</div>
-<div class="evb-group"><h4 data-t="t462"></h4>
-<div class="evb-row"><span class="evb-lab" data-t="t240"></span><span class="evb-track"><i style="--w:40.6%;--d:0ms"></i></span><span class="evb-val" data-t="t242"></span></div>
-<div class="evb-row"><span class="evb-lab" data-t="t247"></span><span class="evb-track"><i style="--w:100.0%;--d:160ms"></i></span><span class="evb-val" data-t="t249"></span></div>
-<div class="evb-row win"><span class="evb-lab" data-t="t254"></span><span class="evb-track"><i style="--w:90.8%;--d:320ms"></i></span><span class="evb-val" data-t="t256"></span></div>
-</div>
-</div>
-<div class="tablewrap">
-<table>
-<thead><tr><th data-t="t233"></th><th class="n" data-t="t234"></th><th class="n" data-t="t235"></th>
-<th class="n" data-t="t236"></th><th class="n" data-t="t237"></th><th class="n" data-t="t238"></th>
-<th class="n" data-t="t239"></th></tr></thead>
-<tbody>
-<tr><td data-t="t240"></td><td class="n" data-t="t241"></td><td class="n" data-t="t242"></td>
-<td class="n" data-t="t243"></td><td class="n" data-t="t244"></td><td class="n" data-t="t245"></td><td class="n" data-t="t246"></td></tr>
-<tr><td data-t="t247"></td><td class="n" data-t="t248"></td><td class="n" data-t="t249"></td>
-<td class="n" data-t="t250"></td><td class="n" data-t="t251"></td><td class="n" data-t="t252"></td><td class="n" data-t="t253"></td></tr>
-<tr class="win"><td data-t="t254"></td><td class="n" data-t="t255"></td><td class="n" data-t="t256"></td>
-<td class="n" data-t="t257"></td><td class="n" data-t="t258"></td><td class="n" data-t="t259"></td><td class="n" data-t="t260"></td></tr>
-</tbody>
-</table>
-</div>
-<p data-t="t261" style="margin-top:20px;font-size:.93rem;color:var(--muted)"></p>
-<div class="box ok">
-<span class="lab" data-t="t262"></span>
-<p data-t="t263" style="margin-bottom:0"></p>
-</div>
-<h3 data-t="t264"></h3>
-<p data-t="t459"></p>
-<details class="vnotes"><summary data-t="t460"></summary>
-<p data-t="t265"></p>
-<ul>
-<li data-t="t266"></li>
-<li data-t="t267"></li>
-<li data-t="t268"></li>
-<li data-t="t269"></li>
-</ul>
-</details>
-</div>
-</section>
-<section class="alt">
-<div class="wrap narrow">
-<div class="head">
-<p class="eyebrow" data-t="t270"></p>
-<h2 data-t="t271"></h2>
-<p class="lede" data-t="t272"></p>
-</div>
-<div class="box warn">
-<ul>
-<li data-t-html="t273"></li>
-<li data-t-html="t274"></li>
-<li data-t-html="t275"></li>
-<li data-t-html="t276"></li>
-<li data-t-html="t277"></li>
-<li data-t-html="t278"></li>
-<li data-t-html="t279"></li>
-</ul>
-</div>
-</div>
-</section>
-</div>
-<!-- ============ PRICING ============ -->
-<div class="page" id="p-pricing">
+<div class="scrollsec" id="s-pricing">
 <section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
 <div class="wrap">
 <div class="head mid">
@@ -829,8 +739,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 </div>
 </section>
 </div>
-<!-- ============ FAQ ============ -->
-<div class="page" id="p-faq">
+<div class="scrollsec" id="s-faq">
 <section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
 <div class="wrap">
 <div class="head mid">
@@ -875,6 +784,72 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 </div>
 </div>
 </div>
+<div class="band">
+<div class="wrap">
+<h2 data-t="t54"></h2>
+<p data-t="t55"></p>
+<div data-t-html="t56" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
+</div>
+</div>
+</div>
+<!-- ============ WHAT WE PROVIDE ============ -->
+
+<!-- ============ HOW IT WORKS ============ -->
+<div class="page" id="p-how">
+<section class="tight" style="background:var(--bg-2);border-bottom:1px solid var(--line)">
+<div class="wrap">
+<div class="head">
+<p class="eyebrow" data-t="t200"></p>
+<h2 data-t="t201"></h2>
+<p class="lede" data-t="t202"></p>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap narrow">
+<h3 data-t="t203" style="margin-top:0"></h3>
+<ol class="steps">
+<li><b data-t="t204"></b>
+<p data-t="t205"></p></li>
+<li><b data-t="t206"></b>
+<p data-t="t207"></p></li>
+<li><b data-t="t208"></b>
+<p data-t="t209"></p></li>
+<li><b data-t="t210"></b>
+<p data-t="t211"></p></li>
+<li><b data-t="t212"></b>
+<p data-t="t213"></p></li>
+</ol>
+<h3 data-t="t214"></h3>
+<p data-t="t215"></p>
+<h3 data-t="t216"></h3>
+<p data-t="t217"></p>
+<h3 data-t="t218"></h3>
+<p data-t="t219"></p>
+<div class="box ok">
+<span class="lab" data-t="t220"></span>
+<ul>
+<li data-t="t221"></li>
+<li data-t="t222"></li>
+<li data-t="t223"></li>
+<li data-t="t224"></li>
+</ul>
+</div>
+<div class="box warn">
+<span class="lab" data-t="t225"></span>
+<p data-t-html="t226"></p>
+<p data-t-html="t227" style="margin-bottom:0"></p>
+</div>
+</div>
+</section>
+<section class="rx-teaser"><div class="wrap"><div class="rx-tin"><div><p class="eyebrow" data-t="t521"></p><h3 data-t="t529"></h3><p data-t="t530"></p></div><p data-t-html="t531"></p></div></div></section>
+</div>
+<!-- ============ PROOF ============ -->
+
+<!-- ============ PRICING ============ -->
+
+<!-- ============ FAQ ============ -->
+
 <div class="page" id="p-thanks">
 <div class="thanks">
 <div class="thanks-card">
@@ -979,14 +954,14 @@ var SITE_EN = {
   t2: 'Home',
   t3: 'What We Provide',
   t4: 'How It Works',
-  t5: 'The Evidence',
+  t5: 'A real example',
   t6: 'Pricing',
   t7: 'FAQ',
   t8: 'Start free trial',
   t9: 'Home',
   t10: 'What We Provide',
   t11: 'How It Works',
-  t12: 'The Evidence',
+  t12: 'A real example',
   t13: 'Pricing',
   t14: 'FAQ',
   t15: 'Built in Cairo for Egyptian brands',
@@ -994,7 +969,7 @@ var SITE_EN = {
   t17: 'Most small brands sell brilliantly and guess at buying. This removes the guess: how many units to order, from which supplier, on which day, for every product you sell.',
   t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">Start your free trial</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">See the app in action</a>',
   t19: 'Runs in your browser. Arabic and English included. Priced in USD.',
-  t20: '<b>96.7%</b><span>2015 forecast accuracy on a real store, made from 2013 and 2014 only</span>',
+  t20: '<b>96.7%</b><span>2015 forecast accuracy on a real Walmart store, made from 2013 and 2014 only</span>',
   t21: '<b>10 min</b><small>Your weekly routine once it is set up</small>',
   t22: '<b>17</b><small>Connected pages. You type into four.</small>',
   t23: '<b>2 min</b><small>To sign in. Just your email, no password to remember.</small>',
@@ -1388,7 +1363,7 @@ var SITE_EN = {
   t409: '<strong style="color:var(--ink);display:block;margin-bottom:6px">Etlob Sa7</strong>\n        Demand forecasting and purchase planning, built in Cairo for Egyptian brands.',
   t410: 'What we provide',
   t411: 'How it works',
-  t412: 'Evidence',
+  t412: 'A real example',
   t413: 'Pricing',
   t414: 'FAQ',
   t415: 'Privacy policy',
@@ -1404,6 +1379,33 @@ var SITE_EN = {
   t431: 'Already a subscriber? Log in',
   t463: 'Already a subscriber?',
   t464: 'Log in',
+  t547: 'How it works',
+  t546: 'Tap any card for a closer look',
+  t545: 'Close',
+  t544: 'See all 17 pages',
+  t543: 'See all 19 results',
+  t542: 'Questions',
+  t541: 'Pricing',
+  t540: 'What you get',
+  t539: 'The problem',
+  t538: 'A real example',
+  t537: 'Top',
+  t536: 'Demo',
+  t535: 'App forecast',
+  t534: 'What really sold',
+  t533: 'Forecast for 2015, made from 2013 and 2014 only',
+  t532: 'Real store, real year',
+  t531: '<a class="btn btn-primary" data-go="proof" href="#">See the real example</a>',
+  t530: 'We gave the app two real years of a Walmart store\'s sales and it predicted the third: 96.7% accurate for the whole year.',
+  t529: 'See it work on a real store',
+  t528: 'Source: <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">M5 Forecasting dataset</a> (Makridakis, Spiliotis and Assimakopoulos, University of Nicosia, with data from Walmart), store CA_3. Not affiliated with or endorsed by Walmart.',
+  t527: '<b>100%</b><span>"No need to order" calls that were safe</span>',
+  t526: '<b>94.1%</b><span>Reorder dates right to within a week</span>',
+  t525: '<b>99.9%</b><span>Of real customer demand served from stock</span>',
+  t524: '<b>96.7%</b><span>Whole year forecast for the store, made in December 2014</span>',
+  t523: 'Real daily sales from a Walmart store in California, from the public M5 dataset: 40 hobby and household products. The app saw only 2013 and 2014, then planned 2015. Every number here compares what it predicted with what really happened.',
+  t522: 'We gave the app a real store\'s past. It predicted the next year.',
+  t521: 'A real example',
   t520: 'App, next month, updated each month',
   t519: 'App, whole year forecast made in December 2014',
   t518: 'What the store really sold',
@@ -1439,27 +1441,27 @@ var SITE_EN = {
   t469: 'App predicted',
   t470: 'Actually happened',
   t471: 'Accuracy',
-  t472: '<strong>Where it falls short, plainly.</strong> Real sales are lumpier than any model. Six results are weak: Keeping a product in stock through every order cycle: 88.6% against a 95% target; days of cover 65.7%; profit at risk 55.1%; yearly running cost 72.1%; predictability class 50%; dead stock flags right 66.7% of the time. Product by product, the forecast only matches a simple three month average. We publish all of it because a tool that handles your cash should show where it is weak.',
-  t473: 'Data: real daily sales from Walmart store CA_3, public M5 dataset. The data has no suppliers or product costs, so three suppliers with random delays and a cost of 55% of shelf price are assumed. The owner checks the app every Sunday and orders exactly what it says. Averages of 40 runs.',
-  t474: '<td class="pf">Whole year forecast, made in Dec 2014</td><td>27,862 units</td><td>27,386 units</td><td class="pacc"><b>96.7%</b><span class="pbar"><i style="--w:96.7%"></i></span></td>',
-  t475: '<td class="pf">Store sales, month by month</td><td>Next month, updated monthly</td><td>Real monthly sales</td><td class="pacc"><b>97% (same month last year: 94.9%)</b><span class="pbar"><i style="--w:97.0%"></i></span></td>',
-  t476: '<td class="pf">Each product, month by month</td><td>Next month for each of 40 products</td><td>What each really sold</td><td class="pacc"><b>77% (3 month average: 77.1%)</b><span class="pbar"><i style="--w:77.0%"></i></span></td>',
-  t477: '<td class="pf">Revenue for 2015</td><td>146,300 USD</td><td>138,100 USD</td><td class="pacc"><b>94.1%</b><span class="pbar"><i style="--w:94.1%"></i></span></td>',
-  t478: '<td class="pf">Gross profit for 2015</td><td>65,900 USD</td><td>62,100 USD</td><td class="pacc"><b>93.9%</b><span class="pbar"><i style="--w:93.9%"></i></span></td>',
-  t479: '<td class="pf">Customers served from stock</td><td>Order what the app says</td><td>Share of real demand served</td><td class="pacc"><b>99.9%</b><span class="pbar"><i style="--w:99.9%"></i></span></td>',
-  t480: '<td class="pf">"Stock is healthy" calls</td><td>No need to order this week</td><td>Stock lasted until a delivery could arrive</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t481: '<td class="pf">When each product needs reordering</td><td>The day stock reaches its reorder point</td><td>The day it really did</td><td class="pacc"><b>93.6% within a week</b><span class="pbar"><i style="--w:93.6%"></i></span></td>',
-  t482: '<td class="pf">Safety stock promise</td><td>95% of order cycles without running out</td><td>88.6% of cycles</td><td class="pacc lo"><b>88.6% (target 95%)</b><span class="pbar"><i style="--w:88.6%"></i></span></td>',
-  t483: '<td class="pf">Days of cover</td><td>How long current stock will last</td><td>How long it really lasted</td><td class="pacc lo"><b>65.7%</b><span class="pbar"><i style="--w:65.7%"></i></span></td>',
-  t484: '<td class="pf">Profit at risk</td><td>300 USD</td><td>545 USD</td><td class="pacc lo"><b>55.1%</b><span class="pbar"><i style="--w:55.1%"></i></span></td>',
-  t485: '<td class="pf">Yearly cost of running stock</td><td>24,300 USD</td><td>33,700 USD</td><td class="pacc lo"><b>72.1%</b><span class="pbar"><i style="--w:72.1%"></i></span></td>',
-  t486: '<td class="pf">Supplier delivery times, learned</td><td>Learned from recorded deliveries</td><td>Each supplier\'s real average</td><td class="pacc"><b>95.5% (owner\'s guess: 85.2%)</b><span class="pbar"><i style="--w:95.5%"></i></span></td>',
-  t487: '<td class="pf">Cheaper supplier pick</td><td>Which supplier costs less over a year</td><td>Which really cost less</td><td class="pacc"><b>97.9%</b><span class="pbar"><i style="--w:97.9%"></i></span></td>',
-  t488: '<td class="pf">Revenue ranking A, B, C</td><td>Class from 2014</td><td>Class on real 2015 revenue</td><td class="pacc"><b>71.7%</b><span class="pbar"><i style="--w:71.7%"></i></span></td>',
-  t489: '<td class="pf">Predictability X, Y, Z</td><td>Class from 2014</td><td>Class on real 2015 sales</td><td class="pacc lo"><b>50%</b><span class="pbar"><i style="--w:50.0%"></i></span></td>',
-  t490: '<td class="pf">Growing or shrinking</td><td>Direction from 2014</td><td>Real direction in 2015</td><td class="pacc"><b>75%</b><span class="pbar"><i style="--w:75.0%"></i></span></td>',
-  t491: '<td class="pf">Dead stock flags</td><td>Product has stopped selling</td><td>It stayed stopped</td><td class="pacc lo"><b>66.7%</b><span class="pbar"><i style="--w:66.7%"></i></span></td>',
-  t492: '<td class="pf">Cash flow and carton rounding</td><td>Payments due, and order sizes</td><td>Payments made, supplier rules</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t472: '<strong>Where it falls short, plainly.</strong> Real single-product sales are lumpy: product by product, the forecast is 78.4%, level with a simple three month average. Four results stay under 80%: product forecast 78.4%, revenue ranking 76.1%, predictability class 72.5%, and days of cover 66.3%. We show them because a tool that handles your cash should show where it is weak.',
+  t473: 'Method: the app was given 2013 and 2014 only. The data has no suppliers or product costs, so three suppliers with random delays and a cost of 55% of shelf price are assumed. The owner checks the app every Sunday and orders exactly what it says. Averages of 40 runs. Results are in US dollars.',
+  t474: '<td class="pf">Whole year forecast, made Dec 2014</td><td>27,828 units</td><td>27,386 units</td><td class="pacc"><b>96.7%</b><span class="pbar"><i style="--w:96.7%"></i></span></td>',
+  t475: '<td class="pf">Store sales, month by month</td><td>Next month, updated monthly</td><td>Real monthly sales</td><td class="pacc"><b>97.1% (same month last year: 94.9%)</b><span class="pbar"><i style="--w:97.1%"></i></span></td>',
+  t476: '<td class="pf">Customers served from stock</td><td>Order what the app says</td><td>Share of real demand served</td><td class="pacc"><b>99.9%</b><span class="pbar"><i style="--w:99.9%"></i></span></td>',
+  t477: '<td class="pf">"Stock is healthy" calls</td><td>No need to order this week</td><td>Stock lasted until a delivery could arrive</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t478: '<td class="pf">When each product needs reordering</td><td>The day stock reaches its reorder point</td><td>The day it really did</td><td class="pacc"><b>94.1% within a week</b><span class="pbar"><i style="--w:94.1%"></i></span></td>',
+  t479: '<td class="pf">Yearly cost of running stock</td><td>32,800 USD</td><td>34,000 USD</td><td class="pacc"><b>96.6%</b><span class="pbar"><i style="--w:96.6%"></i></span></td>',
+  t480: '<td class="pf">Profit at risk</td><td>374 USD</td><td>346 USD</td><td class="pacc"><b>91.8%</b><span class="pbar"><i style="--w:91.8%"></i></span></td>',
+  t481: '<td class="pf">Cheaper supplier pick</td><td>Which supplier costs less over a year</td><td>Which really cost less</td><td class="pacc"><b>97.7%</b><span class="pbar"><i style="--w:97.7%"></i></span></td>',
+  t482: '<td class="pf">Supplier delivery times, learned</td><td>Learned from recorded deliveries</td><td>Each supplier\'s real average</td><td class="pacc"><b>95.5% (guess: 85.2%)</b><span class="pbar"><i style="--w:95.5%"></i></span></td>',
+  t483: '<td class="pf">Dead stock flags</td><td>Product has stopped selling</td><td>It stayed stopped</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t484: '<td class="pf">Revenue for 2015</td><td>147,400 USD</td><td>138,100 USD</td><td class="pacc"><b>93.3%</b><span class="pbar"><i style="--w:93.3%"></i></span></td>',
+  t485: '<td class="pf">Gross profit for 2015</td><td>66,300 USD</td><td>62,100 USD</td><td class="pacc"><b>93.2%</b><span class="pbar"><i style="--w:93.2%"></i></span></td>',
+  t486: '<td class="pf">Safety stock promise</td><td>95% of order cycles without running out</td><td>89.4% of cycles</td><td class="pacc"><b>89.4% (target 95%)</b><span class="pbar"><i style="--w:89.4%"></i></span></td>',
+  t487: '<td class="pf">Cash flow and carton rounding</td><td>Payments due, and order sizes</td><td>Payments made, supplier rules</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t488: '<td class="pf">Each product, month by month</td><td>Next month for each of 40 products</td><td>What each really sold</td><td class="pacc lo"><b>78.4% (3 month average: 77.1%)</b><span class="pbar"><i style="--w:78.4%"></i></span></td>',
+  t489: '<td class="pf">Revenue ranking A, B, C</td><td>Class from 2014</td><td>Class on real 2015 revenue</td><td class="pacc lo"><b>76.1%</b><span class="pbar"><i style="--w:76.1%"></i></span></td>',
+  t490: '<td class="pf">Predictability X, Y, Z</td><td>Class from 2014</td><td>Class on real 2015 sales</td><td class="pacc lo"><b>72.5%</b><span class="pbar"><i style="--w:72.5%"></i></span></td>',
+  t491: '<td class="pf">Days of cover</td><td>How long current stock will last</td><td>How long it really lasted</td><td class="pacc lo"><b>66.3%</b><span class="pbar"><i style="--w:66.3%"></i></span></td>',
+  t492: '<td class="pf">Growing or shrinking</td><td>Direction from 2014</td><td>Real direction in 2015</td><td class="pacc lo"><b>75%</b><span class="pbar"><i style="--w:75.0%"></i></span></td>',
   t432: 'Sample shop',
   t433: 'Next reorders',
   t434: 'Order today',
@@ -1496,14 +1498,14 @@ var SITE_EN = {
   t2: 'الرئيسية',
   t3: 'اللي بنقدمه',
   t4: 'إزاي بيشتغل',
-  t5: 'الدليل والإثبات',
+  t5: 'مثال حقيقي',
   t6: 'الأسعار',
   t7: 'الأسئلة الشائعة',
   t8: 'ابدأ تجربة مجانية',
   t9: 'الرئيسية',
   t10: 'اللي بنقدمه',
   t11: 'إزاي بيشتغل',
-  t12: 'الدليل والإثبات',
+  t12: 'مثال حقيقي',
   t13: 'الأسعار',
   t14: 'الأسئلة الشائعة',
   t15: 'اتصنع في القاهرة',
@@ -1511,7 +1513,7 @@ var SITE_EN = {
   t17: 'أغلب المحلات الصغيرة شاطرة في البيع وبتخمن في الشراء. الأداة دي بتشيل التخمين: تطلب كام قطعة، من أي مورد، في أنهي يوم، لكل منتج بتبيعه.',
   t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">اتفرج على الأداة</a>',
   t19: 'بيشتغل في المتصفح. عربي وإنجليزي مع بعض. بالدولار الأمريكي.',
-  t20: '<b>96.7%</b><span>دقة توقع 2015 لمحل حقيقي، معمول من بيانات 2013 و2014 بس</span>',
+  t20: '<b>96.7%</b><span>دقة توقع 2015 لفرع وول مارت حقيقي، معمول من بيانات 2013 و2014 بس</span>',
   t21: '<b>10 دقايق</b><small>روتينك الأسبوعي بعد ما تظبطه</small>',
   t22: '<b>17</b><small>صفحة مترابطة. بتكتب في أربعة بس.</small>',
   t23: '<b>دقيقتين</b><small>علشان تسجل دخول. الإيميل بس، من غير باسورد.</small>',
@@ -1905,7 +1907,7 @@ var SITE_EN = {
   t409: '<strong style="color:var(--ink);display:block;margin-bottom:6px">اطلب صح</strong>\n        تخطيط الطلب والشراء، اتصنع في القاهرة لماركات مصرية.',
   t410: 'اللي بنقدمه',
   t411: 'إزاي بيشتغل',
-  t412: 'الدليل والإثبات',
+  t412: 'مثال حقيقي',
   t413: 'الأسعار',
   t414: 'الأسئلة الشائعة',
   t415: 'سياسة الخصوصية',
@@ -1921,6 +1923,33 @@ var SITE_EN = {
   t431: 'مشترك بالفعل؟ سجل دخول',
   t463: 'مشترك بالفعل؟',
   t464: 'سجل دخول',
+  t547: 'إزاي بيشتغل',
+  t546: 'دوس على أي كارت تشوفه أوضح',
+  t545: 'اقفل',
+  t544: 'شوف الـ 17 صفحة كلهم',
+  t543: 'شوف الـ 19 نتيجة كلها',
+  t542: 'الأسئلة',
+  t541: 'الأسعار',
+  t540: 'اللي بتاخده',
+  t539: 'المشكلة',
+  t538: 'مثال حقيقي',
+  t537: 'الأول',
+  t536: 'العرض',
+  t535: 'توقع الأداة',
+  t534: 'اللي اتباع فعلا',
+  t533: 'توقع 2015، معمول من 2013 و2014 بس',
+  t532: 'محل حقيقي، سنة حقيقية',
+  t531: '<a class="btn btn-primary" data-go="proof" href="#">شوف المثال الحقيقي</a>',
+  t530: 'إدينا الأداة سنتين مبيعات حقيقية من فرع وول مارت، وهي توقعت التالتة: دقة 96.7% للسنة كلها.',
+  t529: 'شوفها شغالة على محل حقيقي',
+  t528: 'المصدر: <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">بيانات M5 للتوقع</a> (مكريداكيس وزملاؤه، جامعة نيقوسيا، ببيانات من وول مارت)، فرع CA_3. مش تابعين لوول مارت ولا معتمدين منها.',
+  t527: '<b>100%</b><span>من قرارات "مش محتاج تطلب" كانت في أمان</span>',
+  t526: '<b>94.1%</b><span>مواعيد إعادة الطلب صح في حدود أسبوع</span>',
+  t525: '<b>99.9%</b><span>من طلب الزباين الحقيقي اتلبى من المخزون</span>',
+  t524: '<b>96.7%</b><span>توقع السنة كلها للمحل، معمول في ديسمبر 2014</span>',
+  t523: 'مبيعات يومية حقيقية من فرع وول مارت في كاليفورنيا، من بيانات M5 المفتوحة: 40 منتج هوايات وأدوات منزلية. الأداة شافت 2013 و2014 بس، وبعدين خططت لـ 2015. كل رقم هنا بيقارن اللي توقعته باللي حصل فعلا.',
+  t522: 'إدينا الأداة ماضي محل حقيقي. وهي توقعت السنة اللي بعدها.',
+  t521: 'مثال حقيقي',
   t520: 'الأداة، الشهر الجاي، بيتحدث كل شهر',
   t519: 'الأداة، توقع السنة كلها معمول في ديسمبر 2014',
   t518: 'اللي المحل باعه فعلا',
@@ -1956,27 +1985,27 @@ var SITE_EN = {
   t469: 'الأداة توقعت',
   t470: 'اللي حصل فعلا',
   t471: 'الدقة',
-  t472: '<strong>فين بتقصر، بصراحة.</strong> المبيعات الحقيقية متقطعة أكتر من أي نموذج. ست نتايج ضعيفة: بقاء المنتج متوفر في كل دورة طلب: 88.6% والهدف 95%؛ أيام التغطية 65.7%؛ الربح المعرض للخطر 55.1%؛ تكلفة التشغيل السنوية 72.1%؛ فئة الثبات 50%؛ تنبيهات الراكد صح 66.7% من المرات. على مستوى كل منتج، التوقع بيساوي متوسط تلات شهور بسيط بس. بننشر ده كله لأن أداة بتتعامل مع فلوسك لازم تقولك فين نقط ضعفها.',
-  t473: 'البيانات: مبيعات يومية حقيقية من فرع وول مارت CA_3، من بيانات M5 المفتوحة. البيانات مفيهاش موردين ولا تكلفة المنتجات، فافترضنا تلات موردين بتأخير عشوائي وتكلفة 55% من سعر البيع. صاحب المحل بيراجع الأداة كل يوم أحد ويطلب اللي بتقوله بالظبط. متوسط 40 تجربة.',
-  t474: '<td class="pf">توقع السنة كلها، معمول في ديسمبر 2014</td><td>27,862 قطعة</td><td>27,386 قطعة</td><td class="pacc"><b>96.7%</b><span class="pbar"><i style="--w:96.7%"></i></span></td>',
-  t475: '<td class="pf">مبيعات المحل، شهر بشهر</td><td>الشهر الجاي، بيتحدث كل شهر</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>97% (نفس الشهر السنة اللي فاتت: 94.9%)</b><span class="pbar"><i style="--w:97.0%"></i></span></td>',
-  t476: '<td class="pf">كل منتج، شهر بشهر</td><td>الشهر الجاي لكل منتج من الـ 40</td><td>اللي كل واحد باعه فعلا</td><td class="pacc"><b>77% (متوسط 3 شهور: 77.1%)</b><span class="pbar"><i style="--w:77.0%"></i></span></td>',
-  t477: '<td class="pf">إيراد 2015</td><td>146,300 دولار</td><td>138,100 دولار</td><td class="pacc"><b>94.1%</b><span class="pbar"><i style="--w:94.1%"></i></span></td>',
-  t478: '<td class="pf">إجمالي ربح 2015</td><td>65,900 دولار</td><td>62,100 دولار</td><td class="pacc"><b>93.9%</b><span class="pbar"><i style="--w:93.9%"></i></span></td>',
-  t479: '<td class="pf">الزباين اللي اتخدموا من المخزون</td><td>اطلب اللي الأداة بتقوله</td><td>نسبة الطلب الحقيقي اللي اتلبى</td><td class="pacc"><b>99.9%</b><span class="pbar"><i style="--w:99.9%"></i></span></td>',
-  t480: '<td class="pf">قرار "المخزون كويس"</td><td>مش محتاج تطلب الأسبوع ده</td><td>المخزون كفى لحد ما توريد يلحق يوصل</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t481: '<td class="pf">إمتى كل منتج محتاج يتطلب</td><td>اليوم اللي المخزون يوصل فيه لنقطة الطلب</td><td>اليوم اللي وصلها فعلا</td><td class="pacc"><b>93.6% في حدود أسبوع</b><span class="pbar"><i style="--w:93.6%"></i></span></td>',
-  t482: '<td class="pf">وعد مخزون الأمان</td><td>95% من دورات الطلب من غير ما المخزون يخلص</td><td>88.6% من الدورات</td><td class="pacc lo"><b>88.6% (الهدف 95%)</b><span class="pbar"><i style="--w:88.6%"></i></span></td>',
-  t483: '<td class="pf">أيام التغطية</td><td>المخزون الحالي هيكفي قد إيه</td><td>كفى قد إيه فعلا</td><td class="pacc lo"><b>65.7%</b><span class="pbar"><i style="--w:65.7%"></i></span></td>',
-  t484: '<td class="pf">الربح المعرض للخطر</td><td>300 دولار</td><td>545 دولار</td><td class="pacc lo"><b>55.1%</b><span class="pbar"><i style="--w:55.1%"></i></span></td>',
-  t485: '<td class="pf">تكلفة تشغيل المخزون في السنة</td><td>24,300 دولار</td><td>33,700 دولار</td><td class="pacc lo"><b>72.1%</b><span class="pbar"><i style="--w:72.1%"></i></span></td>',
-  t486: '<td class="pf">مدة توريد الموردين، متعلمة</td><td>متعلمة من التوريدات المسجلة</td><td>المتوسط الحقيقي لكل مورد</td><td class="pacc"><b>95.5% (تخمين صاحب المحل: 85.2%)</b><span class="pbar"><i style="--w:95.5%"></i></span></td>',
-  t487: '<td class="pf">اختيار المورد الأرخص</td><td>أنهي مورد أرخص على مدار السنة</td><td>أنهي واحد كان أرخص فعلا</td><td class="pacc"><b>97.9%</b><span class="pbar"><i style="--w:97.9%"></i></span></td>',
-  t488: '<td class="pf">ترتيب الإيراد A وB وC</td><td>الفئة من 2014</td><td>الفئة على إيراد 2015 الحقيقي</td><td class="pacc"><b>71.7%</b><span class="pbar"><i style="--w:71.7%"></i></span></td>',
-  t489: '<td class="pf">ثبات البيع X وY وZ</td><td>الفئة من 2014</td><td>الفئة على مبيعات 2015 الحقيقية</td><td class="pacc lo"><b>50%</b><span class="pbar"><i style="--w:50.0%"></i></span></td>',
-  t490: '<td class="pf">بيكبر ولا بيقل</td><td>الاتجاه من 2014</td><td>الاتجاه الحقيقي في 2015</td><td class="pacc"><b>75%</b><span class="pbar"><i style="--w:75.0%"></i></span></td>',
-  t491: '<td class="pf">تنبيه البضاعة الراكدة</td><td>المنتج وقف بيع</td><td>فضل واقف فعلا</td><td class="pacc lo"><b>66.7%</b><span class="pbar"><i style="--w:66.7%"></i></span></td>',
-  t492: '<td class="pf">التدفق النقدي والتقريب للكرتونة</td><td>المدفوعات وأحجام الطلب</td><td>المدفوعات الفعلية وشروط المورد</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t472: '<strong>فين بتقصر، بصراحة.</strong> مبيعات المنتج الواحد الحقيقية متقطعة: على مستوى كل منتج التوقع 78.4%، زي متوسط تلات شهور بسيط. أربع نتايج لسه تحت 80%: توقع المنتج 78.4%، ترتيب الإيراد 76.1%، فئة الثبات 72.5%، وأيام التغطية 66.3%. بنوريهم لأن أداة بتتعامل مع فلوسك لازم تقولك فين نقط ضعفها.',
+  t473: 'الطريقة: الأداة خدت بيانات 2013 و2014 بس. البيانات مفيهاش موردين ولا تكلفة، فافترضنا تلات موردين بتأخير عشوائي وتكلفة 55% من سعر البيع. صاحب المحل بيراجع الأداة كل يوم أحد ويطلب اللي بتقوله بالظبط. متوسط 40 تجربة. النتايج بالدولار الأمريكي.',
+  t474: '<td class="pf">توقع السنة كلها، معمول في ديسمبر 2014</td><td>27,828 قطعة</td><td>27,386 قطعة</td><td class="pacc"><b>96.7%</b><span class="pbar"><i style="--w:96.7%"></i></span></td>',
+  t475: '<td class="pf">مبيعات المحل، شهر بشهر</td><td>الشهر الجاي، بيتحدث كل شهر</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>97.1% (نفس الشهر السنة اللي فاتت: 94.9%)</b><span class="pbar"><i style="--w:97.1%"></i></span></td>',
+  t476: '<td class="pf">الزباين اللي اتخدموا من المخزون</td><td>اطلب اللي الأداة بتقوله</td><td>نسبة الطلب الحقيقي اللي اتلبى</td><td class="pacc"><b>99.9%</b><span class="pbar"><i style="--w:99.9%"></i></span></td>',
+  t477: '<td class="pf">قرار "المخزون كويس"</td><td>مش محتاج تطلب الأسبوع ده</td><td>المخزون كفى لحد ما توريد يلحق يوصل</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t478: '<td class="pf">إمتى كل منتج محتاج يتطلب</td><td>اليوم اللي المخزون يوصل فيه لنقطة الطلب</td><td>اليوم اللي وصلها فعلا</td><td class="pacc"><b>94.1% في حدود أسبوع</b><span class="pbar"><i style="--w:94.1%"></i></span></td>',
+  t479: '<td class="pf">تكلفة تشغيل المخزون في السنة</td><td>32,800 دولار</td><td>34,000 دولار</td><td class="pacc"><b>96.6%</b><span class="pbar"><i style="--w:96.6%"></i></span></td>',
+  t480: '<td class="pf">الربح المعرض للخطر</td><td>374 دولار</td><td>346 دولار</td><td class="pacc"><b>91.8%</b><span class="pbar"><i style="--w:91.8%"></i></span></td>',
+  t481: '<td class="pf">اختيار المورد الأرخص</td><td>أنهي مورد أرخص على مدار السنة</td><td>أنهي واحد كان أرخص فعلا</td><td class="pacc"><b>97.7%</b><span class="pbar"><i style="--w:97.7%"></i></span></td>',
+  t482: '<td class="pf">مدة توريد الموردين، متعلمة</td><td>متعلمة من التوريدات المسجلة</td><td>المتوسط الحقيقي لكل مورد</td><td class="pacc"><b>95.5% (التخمين: 85.2%)</b><span class="pbar"><i style="--w:95.5%"></i></span></td>',
+  t483: '<td class="pf">تنبيه البضاعة الراكدة</td><td>المنتج وقف بيع</td><td>فضل واقف فعلا</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t484: '<td class="pf">إيراد 2015</td><td>147,400 دولار</td><td>138,100 دولار</td><td class="pacc"><b>93.3%</b><span class="pbar"><i style="--w:93.3%"></i></span></td>',
+  t485: '<td class="pf">إجمالي ربح 2015</td><td>66,300 دولار</td><td>62,100 دولار</td><td class="pacc"><b>93.2%</b><span class="pbar"><i style="--w:93.2%"></i></span></td>',
+  t486: '<td class="pf">وعد مخزون الأمان</td><td>95% من دورات الطلب من غير ما المخزون يخلص</td><td>89.4% من الدورات</td><td class="pacc"><b>89.4% (الهدف 95%)</b><span class="pbar"><i style="--w:89.4%"></i></span></td>',
+  t487: '<td class="pf">التدفق النقدي والتقريب للكرتونة</td><td>المدفوعات وأحجام الطلب</td><td>المدفوعات الفعلية وشروط المورد</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t488: '<td class="pf">كل منتج، شهر بشهر</td><td>الشهر الجاي لكل منتج من الـ 40</td><td>اللي كل واحد باعه فعلا</td><td class="pacc lo"><b>78.4% (متوسط 3 شهور: 77.1%)</b><span class="pbar"><i style="--w:78.4%"></i></span></td>',
+  t489: '<td class="pf">ترتيب الإيراد A وB وC</td><td>الفئة من 2014</td><td>الفئة على إيراد 2015 الحقيقي</td><td class="pacc lo"><b>76.1%</b><span class="pbar"><i style="--w:76.1%"></i></span></td>',
+  t490: '<td class="pf">ثبات البيع X وY وZ</td><td>الفئة من 2014</td><td>الفئة على مبيعات 2015 الحقيقية</td><td class="pacc lo"><b>72.5%</b><span class="pbar"><i style="--w:72.5%"></i></span></td>',
+  t491: '<td class="pf">أيام التغطية</td><td>المخزون الحالي هيكفي قد إيه</td><td>كفى قد إيه فعلا</td><td class="pacc lo"><b>66.3%</b><span class="pbar"><i style="--w:66.3%"></i></span></td>',
+  t492: '<td class="pf">بيكبر ولا بيقل</td><td>الاتجاه من 2014</td><td>الاتجاه الحقيقي في 2015</td><td class="pacc lo"><b>75%</b><span class="pbar"><i style="--w:75.0%"></i></span></td>',
   t432: 'محل تجريبي',
   t433: 'الطلبات الجاية',
   t434: 'اطلب النهارده',
@@ -2147,18 +2176,19 @@ function openCheckout(tier, btn){
 }
 
 (function(){
-  var pages = ["home","provide","how","proof","pricing","faq","thanks","privacy","terms"];
+  var pages = ["home","how","thanks","privacy","terms"];
+  var inHome = {provide:"s-provide", proof:"s-example", example:"s-example", pricing:"s-pricing", faq:"s-faq", problem:"s-problem"};
   function go(name, push){
-    if(pages.indexOf(name) === -1) name = "home";
-    pages.forEach(function(p){
-      var el = document.getElementById("p-"+p);
-      if(el) el.classList.toggle("on", p === name);
-    });
-    document.querySelectorAll(".tab").forEach(function(t){
-      t.classList.toggle("on", t.getAttribute("data-go") === name);
-    });
+    var sec = inHome[name], page = sec ? "home" : (pages.indexOf(name) === -1 ? "home" : name);
+    pages.forEach(function(p){ var el = document.getElementById("p-"+p); if(el) el.classList.toggle("on", p === page); });
+    document.querySelectorAll(".tab").forEach(function(t){ t.classList.toggle("on", t.getAttribute("data-go") === name); });
     document.getElementById("drawer").classList.remove("open");
-    window.scrollTo({top:0, behavior: push ? "smooth" : "auto"});
+    document.body.classList.toggle("on-home", page === "home");
+    if(sec){
+      var el = document.getElementById(sec);
+      var to = function(){ var y = el.getBoundingClientRect().top + window.scrollY - 70; window.scrollTo({top:y, behavior: push ? "smooth" : "auto"}); };
+      requestAnimationFrame(function(){ requestAnimationFrame(to); });
+    } else { window.scrollTo({top:0, behavior: push ? "smooth" : "auto"}); }
     if(push && location.hash !== "#"+name){ history.pushState(null,"","#"+name); }
   }
   document.addEventListener("click", function(e){
@@ -2172,6 +2202,9 @@ function openCheckout(tier, btn){
   });
   window.addEventListener("popstate", function(){ go((location.hash||"#home").slice(1), false); });
   go((location.hash||"#home").slice(1), false);
+  /* a link straight to a section (like #pricing from the app) re-aims once fonts and text have settled */
+  var first=(location.hash||"").slice(1);
+  if(inHome[first]){ var again=function(){ go(first,false); }; window.addEventListener("load",function(){ setTimeout(again,150); setTimeout(again,900); }); }
 })();
 </script>
 
@@ -2191,11 +2224,11 @@ function openCheckout(tier, btn){
 .js-anim .hero .wrap > :nth-child(7){animation-delay:.5s}
 .hero-visual{margin-top:36px}
 .hv-card{background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);
-  border-radius:16px;padding:20px 20px 16px;box-shadow:0 30px 70px rgba(0,0,0,.35);backdrop-filter:blur(8px);color:#EAF2DC}
+  border-radius:16px;padding:20px 20px 16px;box-shadow:0 30px 70px rgba(0,0,0,.35);backdrop-filter:blur(8px);color:#DCF2F0}
 .hv-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .hv-head b{color:#fff;font-size:1rem}
-.hv-tag{margin-inline-start:auto;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#D3F39F;
-  border:1px solid rgba(211,243,159,.35);border-radius:999px;padding:3px 10px}
+.hv-tag{margin-inline-start:auto;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9FF3EB;
+  border:1px solid rgba(159,243,235,.35);border-radius:999px;padding:3px 10px}
 html[lang="ar"] .hv-tag{letter-spacing:0}
 .hv-pulse{width:9px;height:9px;border-radius:50%;background:#5DD39E;box-shadow:0 0 0 0 rgba(93,211,158,.6);animation:hvPulse 2s infinite}
 @keyframes hvPulse{70%{box-shadow:0 0 0 8px rgba(93,211,158,0)}100%{box-shadow:0 0 0 0 rgba(93,211,158,0)}}
@@ -2204,12 +2237,12 @@ html[lang="ar"] .hv-tag{letter-spacing:0}
 .hv-track{position:relative;height:6px;border-radius:6px;background:rgba(255,255,255,.1)}
 .hv-track i{position:absolute;inset-block:0;inset-inline-start:0;width:var(--w);border-radius:6px;min-width:6px}
 .hv-track i::after{content:"";position:absolute;inset-inline-end:-5px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;
-  background:inherit;border:2px solid #2C371A}
-.hv-track i.crit{background:#FF7B70}.hv-track i.order{background:#F2B551}.hv-track i.soon{background:#F2B551}.hv-track i.ok{background:#BEF26A}
+  background:inherit;border:2px solid #20312F}
+.hv-track i.crit{background:#FF7B70}.hv-track i.order{background:#F2B551}.hv-track i.soon{background:#F2B551}.hv-track i.ok{background:#6DEFE2}
 .hv-when{font-size:.82rem;font-weight:600;text-align:end;white-space:nowrap}
-.hv-when.crit{color:#FF9C93}.hv-when.order,.hv-when.soon{color:#F5C570}.hv-when.ok{color:#D4F79C}
+.hv-when.crit{color:#FF9C93}.hv-when.order,.hv-when.soon{color:#F5C570}.hv-when.ok{color:#9FF4EC}
 .hv-foot{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);font-size:.88rem;color:#fff;font-weight:600}
-.hv-cap{margin:10px 2px 0;font-size:.78rem;color:#B1C68F}
+.hv-cap{margin:10px 2px 0;font-size:.78rem;color:#8FC6C0}
 .js-anim .hv-track i{transform:scaleX(0);transform-origin:0 50%;animation:hvGrow .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,500ms)}
 html[dir="rtl"].js-anim .hv-track i{transform-origin:100% 50%}
 @keyframes hvGrow{to{transform:none}}
@@ -2280,7 +2313,7 @@ html[lang="ar"] .evb-title{letter-spacing:0}
 .evb-val{grid-area:val;font-size:.86rem;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
 .evb-track{grid-area:bar;height:8px;border-radius:8px;background:var(--bg-3);overflow:hidden}
 .evb-track i{display:block;height:100%;width:var(--w);border-radius:8px;background:#A9B6C6}
-.evb-row.win .evb-track i{background:linear-gradient(90deg,var(--accent),#B9F25D)}
+.evb-row.win .evb-track i{background:linear-gradient(90deg,var(--accent),#61EEE0)}
 .evb-row.win .evb-lab{color:var(--accent);font-weight:700}
 .js-anim .evb-track i{transform:scaleX(0);transform-origin:0 50%}
 html[dir="rtl"].js-anim .evb-track i{transform-origin:100% 50%}
@@ -2347,7 +2380,7 @@ html[lang="ar"] .ptab th{letter-spacing:0;font-size:.82rem}
 .ptab .pacc b{display:block;color:var(--ink);font-variant-numeric:tabular-nums}
 .ptab .pacc.lo b{color:#B25E09}
 .pbar{display:block;height:6px;border-radius:6px;background:var(--bg-3);margin-top:6px;overflow:hidden}
-.pbar i{display:block;height:100%;width:var(--w);border-radius:6px;background:linear-gradient(90deg,var(--accent),#B9F25D)}
+.pbar i{display:block;height:100%;width:var(--w);border-radius:6px;background:linear-gradient(90deg,var(--accent),#61EEE0)}
 .pacc.lo .pbar i{background:#E3A04F}
 .pnote{margin:22px 0 0;padding:16px 18px;border-radius:10px;border:1px solid #F1D3A8;background:#FFF8EE;color:#6B4406;font-size:.93rem}
 .pmethod{margin:14px 0 0;font-size:.85rem;color:var(--muted)}
@@ -2375,22 +2408,89 @@ html[dir="rtl"].js-anim .proofsec .pbar i{transform-origin:100% 50%}
 .rc-y,.rc-x{font:500 12px var(--sans);fill:var(--muted)}
 .rc-l{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
 .rc-act{stroke:var(--ink);stroke-width:2.4}
-.rc-year{stroke:#65A30D;stroke-dasharray:7 6}
-.rc-mon{stroke:#84CC16}
-.rc-d-act{fill:var(--ink)}.rc-d-mon{fill:#84CC16}
+.rc-year{stroke:#129E90;stroke-dasharray:7 6}
+.rc-mon{stroke:#17CBB9}
+.rc-d-act{fill:var(--ink)}.rc-d-mon{fill:#17CBB9}
 .rc-key{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:10px;font-size:.86rem;color:var(--body)}
 .rc-key > span{display:inline-flex;align-items:center;gap:8px}
 .rc-key i{display:inline-block;width:24px;border-top:3px solid}
-.rc-key .k-act{border-color:var(--ink)}.rc-key .k-year{border-color:#65A30D;border-top-style:dashed}.rc-key .k-mon{border-color:#84CC16}
+.rc-key .k-act{border-color:var(--ink)}.rc-key .k-year{border-color:#129E90;border-top-style:dashed}.rc-key .k-mon{border-color:#17CBB9}
 .js-anim .realchart .rc-l{stroke-dasharray:2000;stroke-dashoffset:2000}
 .js-anim .realchart.seen .rc-l{animation:rcDraw 1.6s cubic-bezier(.4,.1,.2,1) forwards}
 .js-anim .realchart.seen .rc-year{stroke-dasharray:7 6;stroke-dashoffset:0;animation:none;opacity:0;animation:ucFade .8s ease .9s forwards}
 @keyframes rcDraw{to{stroke-dashoffset:0}}
 </style>
+
+<style data-scroll-site>
+/* ===== one scrolling page ===== */
+.scrollsec{position:relative;overflow-x:clip}
+#p-home > section,#p-home > header,#p-home > .scrollsec,#p-home > div{overflow-x:clip}
+.scrollsec > section:first-child{scroll-margin-top:70px}
+.rx-more{text-align:center;margin:22px 0 0}
+.tap-hint{margin:0 0 12px;font-size:.84rem;color:var(--muted);text-align:center}
+.pcard{cursor:pointer}
+/* section dots */
+.dots{position:fixed;inset-inline-end:18px;top:50%;transform:translateY(-50%);z-index:60;display:none;flex-direction:column;gap:12px}
+body.on-home .dots{display:flex}
+@media (max-width:1100px){body.on-home .dots{display:none}}
+.dots a{position:relative;display:block;width:11px;height:11px;border-radius:50%;border:2px solid color-mix(in srgb,var(--accent) 60%,transparent);background:transparent;transition:transform .25s,background .25s}
+.dots a.on{background:var(--accent);transform:scale(1.35)}
+.dots a span{position:absolute;inset-inline-end:20px;top:50%;transform:translateY(-50%) translateX(6px);white-space:nowrap;font-size:.78rem;font-weight:600;
+  padding:4px 9px;border-radius:7px;background:var(--navy);color:#E6F4F2;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.dots a:hover span,.dots a:focus-visible span{opacity:1;transform:translateY(-50%)}
+/* floating call to action */
+.float-cta{position:fixed;inset-inline-end:22px;bottom:22px;z-index:70;padding:13px 20px;border-radius:999px;font-weight:700;text-decoration:none;
+  background:var(--lime);color:var(--lime-ink);box-shadow:0 14px 34px rgba(13,148,136,.4);transform:translateY(120%) scale(.9);opacity:0;transition:transform .45s cubic-bezier(.2,.9,.3,1.3),opacity .3s}
+.float-cta.show{transform:none;opacity:1}
+.float-cta:hover{background:var(--lime-2)}
+/* pop-ups */
+.pop{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(2,16,18,.55);backdrop-filter:blur(6px);opacity:0;transition:opacity .25s}
+.pop[hidden]{display:none}
+.pop.open{opacity:1}
+.pop-card{position:relative;width:min(560px,100%);max-height:86vh;overflow:auto;background:var(--card);color:var(--body);border:1px solid var(--line);border-radius:18px;
+  padding:28px 26px 24px;box-shadow:0 40px 90px rgba(0,0,0,.4);transform:translateY(24px) scale(.94);transition:transform .38s cubic-bezier(.2,.9,.3,1.25)}
+.pop-card.wide{width:min(1000px,100%)}
+.pop.open .pop-card{transform:none}
+.pop-card h3{margin:0 40px 14px 0;color:var(--ink)}
+html[dir="rtl"] .pop-card h3{margin:0 0 14px 40px}
+.pop-x{position:absolute;top:12px;inset-inline-end:12px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:1.3rem;line-height:1;cursor:pointer}
+.pop-x:hover{border-color:var(--accent);color:var(--accent)}
+.pop-body b{display:flex;gap:10px;align-items:center;font-family:var(--serif);font-size:1.5rem;color:var(--ink);margin-bottom:10px}
+.pop-body b em{font-style:normal;font-family:var(--sans);font-size:.75rem;padding:3px 9px;border-radius:999px;background:#FBBF24;color:#3B2600}
+.pop-body span{display:block;font-size:1.05rem;line-height:1.65}
+.pop .ptablewrap{margin-top:6px}
+.pop .sheets{margin-top:4px}
+/* the Walmart example pops in */
+.js-anim #s-example .rx-hero h1{clip-path:inset(0 100% 0 0);transition:clip-path 1.1s cubic-bezier(.7,0,.2,1) .15s}
+html[dir="rtl"].js-anim #s-example .rx-hero h1{clip-path:inset(0 0 0 100%)}
+.js-anim #s-example.popped .rx-hero h1{clip-path:inset(0 0 0 0)}
+.js-anim #s-example .rx-stat{opacity:0;transform:translateY(40px) scale(.7) rotate(-2deg)}
+.js-anim #s-example.popped .rx-stat{animation:popIn .7s cubic-bezier(.2,1.3,.4,1) forwards}
+.js-anim #s-example.popped .rx-stat:nth-child(2){animation-delay:.12s}.js-anim #s-example.popped .rx-stat:nth-child(3){animation-delay:.24s}.js-anim #s-example.popped .rx-stat:nth-child(4){animation-delay:.36s}
+@keyframes popIn{to{opacity:1;transform:none}}
+.js-anim #s-example .realchart{opacity:0;transform:perspective(1200px) rotateX(14deg) scale(.86);filter:blur(10px);transition:opacity .9s,transform 1.1s cubic-bezier(.2,.9,.3,1.1),filter .9s}
+.js-anim #s-example .realchart.seen{opacity:1;transform:none;filter:none}
+.rx-hero::after{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent,rgba(45,212,191,.10),transparent 30%);animation:spin 18s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(1turn)}}
+.rx-hero .wrap{position:relative;z-index:1}
+/* problem cards slide in from the sides */
+.js-anim #s-problem .pain.rv:nth-child(odd){translate:-60px 0}
+.js-anim #s-problem .pain.rv:nth-child(even){translate:60px 0}
+.js-anim #s-problem .pain.rv.in{translate:0 0}
+/* tilt */
+.tilt{transform-style:preserve-3d;transition:transform .15s ease-out}
+/* hero glow follows the mouse */
+.hero{--mx:70%;--my:30%}
+.hero::before{background:radial-gradient(600px circle at var(--mx) var(--my),rgba(45,212,191,.22),transparent 60%) !important}
+@media (prefers-reduced-motion:reduce){
+  .js-anim #s-example .rx-hero h1,.js-anim #s-example .rx-stat,.js-anim #s-example .realchart{clip-path:none!important;opacity:1!important;transform:none!important;filter:none!important;animation:none!important}
+  .rx-hero::after{animation:none}.float-cta,.pop,.pop-card{transition:none}
+}
+</style>
 <style data-anim-layer>
 /* ===== motion layer: adds movement only, never changes or removes content ===== */
 .scrollbar{position:fixed;top:0;inset-inline-start:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);
-  background:linear-gradient(90deg,#8DD41A,#B9F25D);z-index:200;pointer-events:none}
+  background:linear-gradient(90deg,#1AD4C1,#61EEE0);z-index:200;pointer-events:none}
 html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
 
 /* reveal on scroll. Hidden only once the script has confirmed it is running */
@@ -2418,22 +2518,22 @@ html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
 /* buttons: lift, glow and a light sweep on the main actions */
 .btn{transition:transform .18s,box-shadow .18s,background .18s,border-color .18s,color .18s}
 .btn-primary{position:relative;overflow:hidden;isolation:isolate}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(141,212,26,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(26,212,193,.35)}
 .btn-primary::after{content:"";position:absolute;top:0;bottom:0;width:45%;inset-inline-start:-70%;z-index:-1;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg)}
 .btn-primary:hover::after{animation:sweep .8s ease}
 .hero .btn-primary{animation:ctaPulse 2.8s ease-in-out 1.6s infinite}
 .hero .btn-primary::after{animation:sweep 1.1s ease 1.4s 1}
 @keyframes sweep{to{inset-inline-start:130%}}
-@keyframes ctaPulse{0%,100%{box-shadow:0 0 0 0 rgba(185,242,93,.45)}50%{box-shadow:0 0 0 10px rgba(185,242,93,0)}}
+@keyframes ctaPulse{0%,100%{box-shadow:0 0 0 0 rgba(97,238,224,.45)}50%{box-shadow:0 0 0 10px rgba(97,238,224,0)}}
 .btn-ghost:hover{transform:translateY(-2px)}
 
 /* cards and blocks respond to the pointer */
 .feat,.pain,.tier,.box,.band{transition:transform .2s,box-shadow .2s,border-color .2s}
-.feat:hover,.pain:hover,.box:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(44,55,26,.12)}
-.tier:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(44,55,26,.18)}
+.feat:hover,.pain:hover,.box:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(32,49,47,.12)}
+.tier:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(32,49,47,.18)}
 .tier.best .badge{animation:badgeGlow 2.4s ease-in-out infinite}
-@keyframes badgeGlow{0%,100%{box-shadow:0 0 0 0 rgba(141,212,26,.35)}50%{box-shadow:0 0 0 6px rgba(141,212,26,0)}}
+@keyframes badgeGlow{0%,100%{box-shadow:0 0 0 0 rgba(26,212,193,.35)}50%{box-shadow:0 0 0 6px rgba(26,212,193,0)}}
 .ico{transition:transform .25s}
 .card:hover .ico{transform:rotate(-6deg) scale(1.08)}
 
@@ -2522,6 +2622,70 @@ html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
     es.forEach(function (e) { if (e.isIntersecting || (e.boundingClientRect.height > 0 && e.boundingClientRect.bottom < 0)) { e.target.classList.add('seen'); io.unobserve(e.target); } });
   }, { threshold: 0.3 });
   document.querySelectorAll('.ucurve,.evbars,.proofsec,.realchart').forEach(function (e) { io.observe(e); });
+})();
+</script>
+
+<script data-scroll-site>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* pop-ups */
+  var lastFocus = null;
+  function openPop(id, fill) {
+    var p = document.getElementById(id); if (!p) return;
+    if (fill) fill(p);
+    lastFocus = document.activeElement; p.hidden = false; document.body.style.overflow = 'hidden';
+    requestAnimationFrame(function () { p.classList.add('open'); var x = p.querySelector('.pop-x'); if (x) x.focus(); });
+  }
+  function closePop(p) {
+    p.classList.remove('open'); document.body.style.overflow = '';
+    setTimeout(function () { p.hidden = true; }, reduce ? 0 : 260); if (lastFocus) lastFocus.focus();
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-pop]'); if (b) { e.preventDefault(); openPop(b.getAttribute('data-pop')); return; }
+    var c = e.target.closest('.pcard'); if (c) { openPop('pop-card', function (p) { p.querySelector('.pop-body').innerHTML = c.innerHTML; }); return; }
+    var x = e.target.closest('[data-pop-close]'); if (x) { closePop(x.closest('.pop')); return; }
+    if (e.target.classList && e.target.classList.contains('pop')) closePop(e.target);
+    var d = e.target.closest('[data-dot]');
+    if (d) { e.preventDefault(); var id = d.getAttribute('data-dot'); var el = id === 'top' ? null : document.getElementById(id);
+      window.scrollTo({ top: el ? el.getBoundingClientRect().top + window.scrollY - 70 : 0, behavior: 'smooth' }); }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') document.querySelectorAll('.pop.open').forEach(closePop); });
+  /* section dots and the floating button follow the scroll */
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#dots a')), cta = document.getElementById('floatCta');
+  function onScroll() {
+    var home = document.getElementById('p-home'); if (!home || !home.classList.contains('on')) { cta.classList.remove('show'); return; }
+    var y = window.scrollY + window.innerHeight * 0.35, cur = 'top';
+    dots.forEach(function (a) { var id = a.getAttribute('data-dot'); var el = document.getElementById(id); if (el && el.getBoundingClientRect().top + window.scrollY <= y) cur = id; });
+    dots.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-dot') === cur); });
+    var pr = document.getElementById('s-pricing'), hero = document.querySelector('#p-home .hero');
+    var pastHero = hero && hero.getBoundingClientRect().bottom < 0, atPricing = pr && pr.getBoundingClientRect().top < window.innerHeight && pr.getBoundingClientRect().bottom > 0;
+    cta.classList.toggle('show', !!pastHero && !atPricing);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll); setTimeout(onScroll, 200);
+  if (reduce || !('IntersectionObserver' in window)) { var ex = document.getElementById('s-example'); if (ex) ex.classList.add('popped'); return; }
+  /* the Walmart example pops in, numbers count up */
+  function countUp(el) {
+    var t = el.textContent, m = t.match(/^(\D*)([\d.,]+)(.*)$/); if (!m) return;
+    var target = parseFloat(m[2].replace(/,/g, '')), dec = (m[2].split('.')[1] || '').length, t0 = null, last = t;
+    function step(ts) { if (el.textContent !== last) return; if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / 1400), v = target * (1 - Math.pow(1 - k, 3));
+      last = k < 1 ? m[1] + v.toFixed(dec) + m[3] : t; el.textContent = last; if (k < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  var ex = document.getElementById('s-example');
+  if (ex) new IntersectionObserver(function (es, ob) { es.forEach(function (e) { if (e.isIntersecting) { ex.classList.add('popped');
+      ex.querySelectorAll('.rx-stat b').forEach(function (b, i) { setTimeout(function () { countUp(b); }, 250 + i * 120); }); ob.disconnect(); } }); }, { threshold: 0.2 }).observe(ex.querySelector('.rx-hero') || ex);
+  /* tilt on cards */
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.pcard,.tier,.rx-stat,.rx-card,.to-card,.pain').forEach(function (c) {
+      c.classList.add('tilt');
+      c.addEventListener('mousemove', function (e) { var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        c.style.transform = 'perspective(800px) rotateY(' + (x * 7) + 'deg) rotateX(' + (-y * 7) + 'deg) translateY(-3px)'; });
+      c.addEventListener('mouseleave', function () { c.style.transform = ''; });
+    });
+    var hero = document.querySelector('#p-home .hero');
+    if (hero) hero.addEventListener('mousemove', function (e) { var r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%'); hero.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%'); });
+  }
 })();
 </script>
 </body>
