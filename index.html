@@ -514,6 +514,26 @@ html[lang="ar"] .rx-pill{letter-spacing:0}
 </div>
 </div>
 </header>
+<section class="shelf3d" id="s-shelf">
+<div class="sh-sticky">
+<canvas id="shelfCanvas" aria-hidden="true"></canvas>
+<div class="sh-ui">
+<p class="eyebrow" data-t="t630"></p>
+<h2 class="sh-title" data-t="t631"></h2>
+<div class="sh-steps">
+<p class="sh-step" data-step="0" data-t="t632"></p>
+<p class="sh-step" data-step="1" data-t="t633"></p>
+<p class="sh-step" data-step="2" data-t="t634"></p>
+<p class="sh-step" data-step="3" data-t="t635"></p>
+</div>
+<div class="sh-meter"><span data-t="t636"></span><b id="shStock">36</b></div>
+<div class="sh-legend"><span><i class="lg-rop"></i><span data-t="t639"></span></span><span><i class="lg-ss"></i><span data-t="t638"></span></span></div>
+</div>
+<div class="sh-tag" id="shTag" data-t="t637"></div>
+<div class="sh-progress"><i id="shProg"></i></div>
+</div>
+</section>
+
 <div class="scrollsec" id="s-example">
 <section class="rx-hero"><div class="wrap"><p class="eyebrow" data-t="t521"></p><h1 data-t="t522"></h1><p class="lede" data-t="t523"></p><div class="rx-stats"><div class="rx-stat" data-t-html="t524"></div><div class="rx-stat" data-t-html="t525"></div><div class="rx-stat" data-t-html="t526"></div><div class="rx-stat" data-t-html="t527"></div></div></div></section>
 <section class="proofsec">
@@ -1415,6 +1435,16 @@ var SITE_EN = {
   t431: 'Already a subscriber? Log in',
   t463: 'Already a subscriber?',
   t464: 'Log in',
+  t639: 'Reorder point',
+  t638: 'Safety stock',
+  t637: 'Order today',
+  t636: 'Units on the shelf',
+  t635: 'The delivery lands while the safety stock is untouched. Never empty, never overstocked.',
+  t634: 'The app says order today. The supplier needs two weeks.',
+  t633: 'Stock falls toward the reorder point, the glowing line.',
+  t632: 'Your shelf is full. Customers start buying.',
+  t631: 'A month of reordering, done right',
+  t630: 'Scroll to restock the shelf',
   t626: 'Real public data, named sources',
   t625: '40 simulated years',
   t624: '82.5% month by month in a falling year',
@@ -2001,6 +2031,16 @@ var SITE_EN = {
   t431: 'مشترك بالفعل؟ سجل دخول',
   t463: 'مشترك بالفعل؟',
   t464: 'سجل دخول',
+  t639: 'نقطة إعادة الطلب',
+  t638: 'مخزون الأمان',
+  t637: 'اطلب النهارده',
+  t636: 'القطع على الرف',
+  t635: 'التوريد بيوصل ومخزون الأمان لسه زي ما هو. عمر الرف ما يفضى، وعمره ما يتكدس.',
+  t634: 'الأداة بتقولك اطلب النهارده. المورد محتاج أسبوعين.',
+  t633: 'المخزون بينزل ناحية نقطة إعادة الطلب، الخط المنور.',
+  t632: 'الرف مليان. الزباين بدأوا يشتروا.',
+  t631: 'شهر كامل من إعادة الطلب، مظبوط',
+  t630: 'اعمل سكرول وشوف الرف بيتملى',
   t626: 'بيانات حقيقية مفتوحة، ومصادر معروفة',
   t625: '40 سنة محاكاة',
   t624: '82.5% شهر بشهر في سنة نازلة',
@@ -2620,7 +2660,8 @@ html[dir="rtl"].js-anim #s-example .rx-hero h1{clip-path:inset(0 0 0 100%)}
 .ag-card{position:relative;padding:22px 22px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-s)}
 .ag-card::before{content:"\2713";position:absolute;top:16px;inset-inline-end:16px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
   background:var(--lime);color:var(--lime-ink);font-weight:800;transform:scale(0) rotate(-90deg);transition:transform .5s cubic-bezier(.2,1.6,.4,1)}
-.ag-card.done::before{transform:none}
+.ag-card.done::before,.again.go .ag-card::before{transform:none}
+.again.go .ag-card:nth-child(1)::before{transition-delay:.7s}.again.go .ag-card:nth-child(2)::before{transition-delay:1s}.again.go .ag-card:nth-child(3)::before{transition-delay:1.3s}
 .ag-card b{display:block;font-family:var(--serif);font-size:2.3rem;line-height:1;color:var(--accent);margin-bottom:8px}
 .ag-card span{font-size:.92rem;color:var(--body)}
 .again-case{padding:28px;border-radius:20px;background:linear-gradient(160deg,#04191B,#072327 60%,#0B2E33);color:#D7EEEC}
@@ -2674,6 +2715,42 @@ html[dir="rtl"] .tk-track{animation-direction:reverse}
   .tk-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}
   .wr .ww{opacity:1!important}#s-example .rx-hero{clip-path:none}#p-home .hero::before,#p-home .hero .hero-visual{transform:none}
 }
+</style>
+
+<style data-shelf3d>
+.shelf3d{position:relative;height:340vh;background:radial-gradient(1000px 600px at 70% 40%,rgba(45,212,191,.12),transparent 60%),linear-gradient(180deg,#04191B,#061F22 50%,#04191B)}
+.sh-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+.sh-sticky::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(4,25,27,.94) 0%,rgba(4,25,27,.72) 34%,rgba(4,25,27,0) 58%)}
+html[dir="rtl"] .sh-sticky::after{background:linear-gradient(270deg,rgba(4,25,27,.94) 0%,rgba(4,25,27,.72) 34%,rgba(4,25,27,0) 58%)}
+@media (max-width:760px){.sh-sticky::after,html[dir="rtl"] .sh-sticky::after{background:linear-gradient(180deg,rgba(4,25,27,.95) 0%,rgba(4,25,27,.8) 42%,rgba(4,25,27,0) 62%)}}
+#shelfCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sh-ui{position:relative;z-index:2;max-width:var(--mx,1140px);margin:0 auto;padding:clamp(80px,12vh,130px) 24px 0;pointer-events:none;color:#D7EEEC}
+.sh-ui .eyebrow{color:#FBBF24}
+.sh-title{color:#fff;font-size:clamp(1.8rem,3.6vw,2.8rem);max-width:520px;margin:8px 0 18px;line-height:1.12}
+.sh-steps{position:relative;max-width:420px;min-height:90px}
+.sh-step{position:absolute;inset:0 auto auto 0;margin:0;font-size:1.12rem;line-height:1.55;color:#CFE6E3;opacity:0;transform:translateY(16px);transition:opacity .45s,transform .45s}
+html[dir="rtl"] .sh-step{inset:0 0 auto auto}
+.sh-step.on{opacity:1;transform:none}
+.sh-meter{display:inline-flex;align-items:baseline;gap:12px;margin-top:6px;padding:10px 16px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(94,234,212,.3)}
+.sh-meter span{font-size:.85rem;color:#B9D9D6}
+.sh-meter b{font-family:var(--serif);font-size:2.2rem;line-height:1;color:#5EEAD4;transition:color .3s}
+.sh-meter.low b{color:#FBBF24}
+.sh-legend{display:flex;gap:18px;margin-top:14px;font-size:.84rem;color:#B9D9D6}
+.sh-legend > span{display:inline-flex;align-items:center;gap:8px}
+.sh-legend i{display:inline-block;width:22px;height:4px;border-radius:3px}
+.sh-legend .lg-rop{background:#2DD4BF;box-shadow:0 0 10px #2DD4BF}.sh-legend .lg-ss{background:#FBBF24;height:10px;width:14px}
+.sh-tag{position:absolute;z-index:3;top:46%;inset-inline-end:clamp(20px,9vw,140px);padding:12px 20px;border-radius:999px;background:#FBBF24;color:#3B2600;font-weight:800;font-size:1.05rem;
+  box-shadow:0 14px 40px rgba(251,191,36,.45);opacity:0;transform:scale(.4) rotate(-8deg);transition:opacity .3s,transform .5s cubic-bezier(.2,1.6,.4,1)}
+.sh-tag.on{opacity:1;transform:none}
+.sh-progress{position:absolute;z-index:3;left:24px;right:24px;bottom:22px;height:3px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden}
+.sh-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#0D9488,#2DD4BF,#FBBF24)}
+@media (max-width:700px){.sh-ui{padding-top:84px}.sh-steps{min-height:110px}.sh-tag{top:auto;bottom:150px}}
+/* readable fallback when 3D is unavailable or motion is reduced */
+.shelf3d.flat{height:auto;padding:70px 0}
+.shelf3d.flat .sh-sticky{position:relative;height:auto}
+.shelf3d.flat #shelfCanvas,.shelf3d.flat .sh-tag,.shelf3d.flat .sh-progress,.shelf3d.flat .sh-meter{display:none}
+.shelf3d.flat .sh-step{position:relative;opacity:1;transform:none;margin-bottom:10px}
+.shelf3d.flat .sh-steps{min-height:0}
 </style>
 <style data-anim-layer>
 /* ===== motion layer: adds movement only, never changes or removes content ===== */
@@ -2937,6 +3014,101 @@ html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
   document.addEventListener('click', function (e) { if (e.target.closest('#langBtn,#langBtnM')) setTimeout(function () { sizeH(); onScroll(); }, 120); });
   setTimeout(function () { sizeH(); frame(); }, 300);
   window.addEventListener('load', function () { sizeH(); frame(); });
+})();
+</script>
+
+<script data-shelf3d>
+(function () {
+  var sec = document.getElementById('s-shelf'); if (!sec) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function webgl() { try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl'))); } catch (e) { return false; } }
+  function flat() { sec.classList.add('flat'); }
+  if (reduce || !webgl()) { flat(); return; }
+  var steps = sec.querySelectorAll('.sh-step'), tag = document.getElementById('shTag'), meter = document.getElementById('shStock'), prog = document.getElementById('shProg');
+  steps[0].classList.add('on');
+  var started = false;
+  function load() {
+    if (started) return; started = true;
+    var sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    sc.onload = init; sc.onerror = flat; document.head.appendChild(sc);
+  }
+  new IntersectionObserver(function (es, ob) { es.forEach(function (e) { if (e.isIntersecting) { load(); ob.disconnect(); } }); }, { rootMargin: '900px 0px' }).observe(sec);
+  function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
+  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function init() {
+    var T = window.THREE; if (!T) { flat(); return; }
+    var canvas = document.getElementById('shelfCanvas');
+    var renderer; try { renderer = new T.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true }); } catch (e) { flat(); return; }
+    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+    var scene = new T.Scene(); scene.fog = new T.Fog(0x04191B, 14, 30);
+    var cam = new T.PerspectiveCamera(38, 1, 0.1, 100);
+    scene.add(new T.AmbientLight(0xbfeee8, 0.55));
+    var key = new T.DirectionalLight(0xffffff, 0.9); key.position.set(5, 9, 7); scene.add(key);
+    var rim = new T.PointLight(0x2DD4BF, 1.2, 30); rim.position.set(-6, 5, -4); scene.add(rim);
+    var root = new T.Group(); scene.add(root);
+    /* floor and shelf frame */
+    var floor = new T.Mesh(new T.PlaneGeometry(40, 40), new T.MeshStandardMaterial({ color: 0x072327, roughness: .95 }));
+    floor.rotation.x = -Math.PI / 2; root.add(floor);
+    var grid = new T.GridHelper(40, 40, 0x0F3A40, 0x0B2E33); grid.position.y = .01; root.add(grid);
+    var metal = new T.MeshStandardMaterial({ color: 0x9FB8B5, metalness: .6, roughness: .35 });
+    var W = 7.2, D = 2.4, levels = [0.15, 1.45, 2.75], top = 4.05;
+    [[-W / 2, -D / 2], [W / 2, -D / 2], [-W / 2, D / 2], [W / 2, D / 2]].forEach(function (pp) { var post = new T.Mesh(new T.BoxGeometry(.12, top, .12), metal); post.position.set(pp[0], top / 2, pp[1]); root.add(post); });
+    levels.concat([top]).forEach(function (y) { var board = new T.Mesh(new T.BoxGeometry(W + .2, .08, D + .2), new T.MeshStandardMaterial({ color: 0x1B3A3E, metalness: .3, roughness: .6 })); board.position.set(0, y, 0); root.add(board); });
+    /* 36 boxes: bottom level is safety stock (amber), never sold */
+    var teal = new T.MeshStandardMaterial({ color: 0x2DD4BF, roughness: .45, metalness: .05 }), amber = new T.MeshStandardMaterial({ color: 0xFBBF24, roughness: .5 });
+    var geo = new T.BoxGeometry(.98, .98, .98), boxes = [];
+    levels.slice().reverse().forEach(function (y, li) {       /* top level first, so it is sold first */
+      for (var row = 0; row < 2; row++) for (var c = 0; c < 6; c++) {
+        var safety = li === 2, m = new T.Mesh(geo, safety ? amber : teal);
+        var home = new T.Vector3(-W / 2 + .6 + c * 1.2, y + .04 + .49, (row ? -.6 : .6));
+        m.position.copy(home); m.userData = { home: home, safety: safety, k: boxes.length }; root.add(m); boxes.push(m);
+        var e = new T.LineSegments(new T.EdgesGeometry(geo), new T.LineBasicMaterial({ color: safety ? 0x7A4E00 : 0x0B4F4A })); m.add(e);
+      }
+    });
+    /* glowing reorder point line, at the height where 20 units remain */
+    var ropY = levels[1] + .55;
+    var rop = new T.Mesh(new T.BoxGeometry(W + 1.2, .05, D + 1.2), new T.MeshBasicMaterial({ color: 0x2DD4BF, transparent: true, opacity: .35 }));
+    rop.position.set(0, ropY, 0); root.add(rop);
+    var sellOrder = boxes.filter(function (b) { return !b.userData.safety; });   /* 24 sellable, top level first */
+    function size() { var w = sec.clientWidth, h = window.innerHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
+    function frame() {
+      var r = sec.getBoundingClientRect(), total = sec.offsetHeight - window.innerHeight;
+      var p = clamp(-r.top / Math.max(1, total), 0, 1);
+      prog.style.width = (p * 100).toFixed(1) + '%';
+      /* stock: 36 full, sold down to 14 by p=.6 (order placed at 20 units), delivery refills by p=.85 */
+      var sold = p < .12 ? 0 : p < .6 ? Math.round(22 * (p - .12) / .48) : 22;
+      var refill = p < .62 ? 0 : clamp((p - .62) / .23, 0, 1);
+      var stock = 36 - sold + Math.round(22 * refill);
+      sellOrder.forEach(function (b, i) {
+        var gone = i < sold, back = gone && i >= 22 - Math.round(22 * refill), h = b.userData.home;
+        if (!gone || back) {
+          var drop = 0;
+          if (back) { var idx = 22 - 1 - i, t = clamp(refill * 22 - idx, 0, 1); drop = (1 - ease(t)) * 7; }
+          b.visible = true; b.position.set(h.x, h.y + drop, h.z); b.scale.setScalar(1); b.rotation.set(0, drop * .15, 0);
+        } else {
+          b.visible = false;
+        }
+      });
+      meter.textContent = stock; meter.parentNode.classList.toggle('low', stock <= 20 && refill < 1);
+      tag.classList.toggle('on', p > .38 && p < .7);
+      rop.material.opacity = (stock <= 20 && refill < 1) ? .55 + .25 * Math.sin(Date.now() / 160) : .3;
+      var st = p < .2 ? 0 : p < .38 ? 1 : p < .62 ? 2 : 3;
+      steps.forEach(function (el, i) { el.classList.toggle('on', i === st); });
+      /* camera: swoop in, then slowly circle once the shelf is full again */
+      var a = ease(clamp(p / .25, 0, 1)), orbit = (p - .5) * .9, narrow = sec.clientWidth < 760, rtl = document.documentElement.dir === 'rtl';
+      var radius = (narrow ? 19 : 20) - (narrow ? 4 : 3.2) * a, height = 7.8 - 2.6 * a;
+      var side = narrow ? 0 : (rtl ? 3.4 : -3.4);   /* desktop: shelf sits beside the text, not behind it */
+      cam.position.set(Math.sin(orbit) * radius + side, height, Math.cos(orbit) * radius);
+      cam.lookAt(side, narrow ? 3.6 : 1.9, 0);
+      renderer.render(scene, cam);
+    }
+    var ticking = false;
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; var r = sec.getBoundingClientRect(); if (r.bottom > 0 && r.top < window.innerHeight) frame(); }); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () { size(); frame(); });
+    setInterval(function () { var r = sec.getBoundingClientRect(); if (r.bottom > 0 && r.top < window.innerHeight && meter.parentNode.classList.contains('low')) frame(); }, 120);
+    size(); frame(); sec.classList.add('live');
+  }
 })();
 </script>
 </body>
