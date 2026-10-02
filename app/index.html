@@ -1405,7 +1405,7 @@ en: {
   'pro.monthsHead': 'Monthly unit sales, oldest first. Leave a month blank if you were out of stock. Switch to earlier years above: with two years of history the app learns your seasons itself.',
   'pro.paste': 'Tip: copy a block of cells from Excel or Google Sheets and paste it into any cell. It fills right and down, and adds rows if needed.',
   'pro.empty': 'No products yet',
-  'pro.emptyP': 'Add products one by one, or paste your sales table from Excel into the first row.',
+  'pro.emptyP': 'Add products one by one, or bring in your Excel or CSV sales table with Import file.',
   'pro.needSup': 'Add at least one supplier first so each product can be linked to one.',
   'pro.deleted': 'Product deleted',
   'pro.pasted': 'Pasted {n} cells.',
@@ -2029,7 +2029,7 @@ ar: {
   'pro.monthsHead': 'المبيعات بالقطعة لكل شهر، الأقدم الأول. سيب الشهر فاضي لو البضاعة كانت خلصانة. اختار السنين اللي قبل كده من فوق: لو فيه سنتين، الأداة بتتعلم مواسمك لوحدها.',
   'pro.paste': 'نصيحة: انسخ مجموعة خلايا من Excel أو Google Sheets والصقها في أي خانة. هتتملى لقدام ولتحت، وهتضيف صفوف لو محتاج.',
   'pro.empty': 'لسه مفيش منتجات',
-  'pro.emptyP': 'ضيف المنتجات واحد واحد، أو الصق جدول المبيعات من Excel في أول صف.',
+  'pro.emptyP': 'ضيف المنتجات واحد واحد، أو هات جدول المبيعات من Excel أو CSV بزرار «استورد ملف».',
   'pro.needSup': 'ضيف مورد واحد على الأقل الأول علشان كل منتج يترابط بمورد.',
   'pro.deleted': 'المنتج اتمسح',
   'pro.pasted': 'اتلصق {n} خانة.',
@@ -2803,7 +2803,7 @@ function impRender() {
   ov.onchange = e => { const k = e.target.dataset.imp; if (k) { IMP.map[k] = Number(e.target.value); impRender(); } };
   ov.onclick = e => {
     const a = e.target.closest('[data-imp-act]');
-    if ((a && a.dataset.impAct === 'cancel') || e.target === ov) { ov.hidden = true; ov.innerHTML = ''; ov.onchange = null; return; }
+    if ((a && a.dataset.impAct === 'cancel') || e.target === ov) { ov.hidden = true; ov.innerHTML = ''; ov.onchange = null; ov.onclick = null; return; }
     if (a && a.dataset.impAct === 'go') impApply();
   };
 }
@@ -2814,7 +2814,7 @@ function impApply() {
     if (!p) { if (room <= 0) return; p = blankProduct(); p.name = it.name; S.ws.products.push(p); room--; added++; }
     Object.assign(p, it.fields);
   });
-  const ov = $('#overlay'); ov.hidden = true; ov.innerHTML = ''; ov.onchange = null;
+  const ov = $('#overlay'); ov.hidden = true; ov.innerHTML = ''; ov.onchange = null; ov.onclick = null;
   renderTab(); renderNav(); markDirty();
   toast(t('imp.done', { n: added + b.upd }));
 }
@@ -2972,7 +2972,8 @@ VIEWS.products = () => {
   const add = btn(t('pro.add'), 'addProduct', '', 'primary');
   let pre = '';
   if (!ws.suppliers.length) pre = '<div class="alert info" style="margin-bottom:14px"><span>' + esc(t('pro.needSup')) + '</span>' + btn(t('sup.add'), 'tab', ' data-tab="suppliers"', 'small') + '</div>';
-  if (!ws.products.length) return head(t('pro.title'), t('pro.lede'), add) + pre + emptyBox(t('pro.empty'), t('pro.emptyP'), add);
+  const imp0 = btn(t('imp.btn'), 'importOpen');
+  if (!ws.products.length) return head(t('pro.title'), t('pro.lede'), imp0 + add) + pre + emptyBox(t('pro.empty'), t('pro.emptyP'), add + imp0);
 
   const supOpts = sel => '<option value="">' + esc(t('choose')) + '</option>' + ws.suppliers.map(s => '<option value="' + s.id + '"' + (s.id === sel ? ' selected' : '') + '>' + esc(iso(supName(s))) + '</option>').join('');
   const profOpts = sel => (sel ? '' : '<option value="">' + esc(t('choose')) + '</option>') + ws.profiles.map(p => '<option value="' + p.id + '"' + (p.id === sel ? ' selected' : '') + '>' + esc(iso(profName(p))) + '</option>').join('');
@@ -3564,7 +3565,7 @@ function onPaste(e) {
 
 function blankProduct() {
   return { id: newId(), name: '', supplierId: S.ws.suppliers.length === 1 ? S.ws.suppliers[0].id : '', profileId: 'flat',
-           sales: Array(12).fill(null), older: Array(24).fill(null), cost: null, price: null, onHand: 0, onOrder: 0, sl: 95 };
+           sales: Array(12).fill(null), older: Array(24).fill(null), cost: null, price: null, onHand: 0, onOrder: 0, sl: 95, altSuppliers: [], fcHist: [] };
 }
 
 /* ================= actions ================= */
@@ -3587,6 +3588,7 @@ function renderCompare() {
   if (!p) { $('#overlay').hidden = true; return; }
   const r = rowById(p.id);
   const rows = (r ? r.compare : []).slice();
+  if (!Array.isArray(p.altSuppliers)) p.altSuppliers = [];
   const usedIds = {}; if (p.supplierId) usedIds[p.supplierId] = true;
   p.altSuppliers.forEach(a => { usedIds[a.supplierId] = true; });
   const options = S.ws.suppliers.filter(sp => !usedIds[sp.id]);
@@ -3614,7 +3616,11 @@ function renderCompare() {
     '<p class="small muted" style="margin-top:14px">' + esc(t('cmp.addHelp')) + '</p>' + addForm +
     '<div class="actions"><button class="btn primary" data-r="1">' + esc(t('close')) + '</button></div></div>';
   ov.hidden = false;
-  ov.onclick = e => { if (e.target === ov || e.target.closest('[data-r="1"]')) { ov.hidden = true; ov.innerHTML = ''; CMP_STATE.productId = null; } };
+  const close = () => { ov.hidden = true; ov.innerHTML = ''; ov.onclick = null; CMP_STATE.productId = null; document.removeEventListener('keydown', CMP_STATE.onKey); };
+  ov.onclick = e => { if (e.target === ov || e.target.closest('[data-r="1"]')) close(); };
+  document.removeEventListener('keydown', CMP_STATE.onKey);
+  CMP_STATE.onKey = e => { if (e.key === 'Escape' && !ov.hidden) close(); };
+  document.addEventListener('keydown', CMP_STATE.onKey);
 }
 
 async function withSaveThen(fn) {
