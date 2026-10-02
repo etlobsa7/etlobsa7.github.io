@@ -881,6 +881,52 @@ html[data-theme="light"] .page-head .eyebrow,.login-brand .eyebrow,.today .eyebr
 .gchip.all{border-style:dashed;color:var(--accent)}
 .gchips-hint{font-size:12px;color:var(--muted);margin:0 0 6px}
 .gtable .gl i{width:22px;height:6px;border-radius:3px}
+
+/* ---------- plans and billing ---------- */
+.tplans{display:grid;gap:8px;margin:0 0 18px}
+.tplans .tplan{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:2px 12px;margin:0;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer;font-weight:400;color:var(--body);transition:border-color .15s,background .15s}
+.tplan:hover{border-color:var(--accent)}
+.login-card .tplan input,.tplan input{width:18px;height:18px;margin:0;padding:0;accent-color:var(--accent);grid-row:span 2}
+.tplan b{color:var(--ink);font-size:15px;font-weight:700}
+.tplan .tp-price{font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:end}
+.tplan .tp-note{grid-column:2 / -1;font-size:13px;line-height:1.45;color:var(--muted)}
+.tplans .tplan.on{border-color:var(--accent);background:var(--accent-bg)}
+#billing{scroll-margin-top:200px}
+@media (max-width:900px){ #billing{scroll-margin-top:90px} }
+.tp-cur{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-inline-start:8px;vertical-align:1px}
+html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
+.bill-card{max-width:460px}
+.bill-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bill-fields label{display:block;font-weight:600;color:var(--ink);margin-bottom:6px;font-size:14px}
+.bill-fields input{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);font-size:16px}
+.bill-fields input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px rgba(209,168,126,.2)}
+.bill-sum{margin-top:14px;font-size:14px;line-height:1.55;color:var(--body)}
+.bill-fine{font-size:13px;line-height:1.5;color:var(--muted);margin-top:12px}
+.bill-pay{width:100%;margin-top:14px;padding:13px}
+.bill-pay[disabled]{opacity:.55;cursor:default;transform:none !important;box-shadow:none !important}
+.bill-off{margin:4px 0 0}
+.bill-off .btn{width:100%;margin-top:12px;justify-content:center;text-decoration:none}
+.bill-links{display:flex;justify-content:space-between;gap:12px;margin-top:18px;font-size:14px}
+.bill-links a{color:var(--accent)}
+.testmode{display:inline-block;font-size:12px;font-weight:700;color:var(--order);background:var(--order-bg);border-radius:6px;padding:4px 9px;margin:0 0 12px}
+.bill-panel{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bill-panel p{margin:0;max-width:62ch;color:var(--body)}
+.bill-panel.bad{border-color:var(--crit);background:var(--crit-bg)}
+.bill-panel.bad p{color:var(--crit)}
+.bill-panel .actions{display:flex;gap:10px;flex-wrap:wrap}
+.bill-choose{margin-top:14px;max-width:620px}
+.bill-choose .tplans{margin-top:0}
+.planbar{display:flex;align-items:center;justify-content:center;gap:10px 16px;flex-wrap:wrap;padding:9px 20px;background:var(--accent-bg);color:var(--ink);font-size:14px;border-bottom:1px solid var(--line-2)}
+.planbar.bad{background:var(--crit-bg);color:var(--crit)}
+.planbar .btn{padding:5px 12px;font-size:13px}
+.acct-plan{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;text-align:inherit}
+.acct-plan:hover{color:var(--accent)}
+@media (max-width:560px){
+  .bill-fields{grid-template-columns:1fr} .planbar{justify-content:space-between;padding:8px 14px} .bill-panel .actions{width:100%}
+  .tplans .tplan{grid-template-columns:auto minmax(0,1fr);padding:11px 12px}
+  .tplans .tplan .tp-price{grid-column:2;text-align:start;font-weight:600}
+  .bill-choose{padding:14px}
+}
 </style>
 </head>
 <body>
@@ -906,13 +952,14 @@ html[data-theme="light"] .page-head .eyebrow,.login-brand .eyebrow,.today .eyebr
   </div>
   <div class="login-form">
     <div class="login-card">
-      <h1 data-t="login.title">Sign in</h1>
-      <p class="lede" id="login-lede" data-t="login.lede">Use the email you subscribed with. We will email you a 6 digit code. No password needed.</p>
+      <h1 id="login-title">Sign in</h1>
+      <p class="lede" id="login-lede"></p>
 
       <form id="f-email" novalidate>
+        <div class="tplans" id="trial-plans" hidden></div>
         <label for="email" data-t="login.email">Email address</label>
         <input id="email" type="email" autocomplete="email" inputmode="email" required>
-        <button class="btn primary" type="submit" data-t="login.send">Email me a code</button>
+        <button class="btn primary" type="submit" id="b-send">Email me a code</button>
       </form>
 
       <form id="f-code" novalidate hidden>
@@ -931,6 +978,28 @@ html[data-theme="light"] .page-head .eyebrow,.login-brand .eyebrow,.today .eyebr
         <span id="login-plans"></span>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ============ PLAN NEEDED ============ -->
+<div id="paywall" class="login" hidden>
+  <header class="topbar">
+    <a class="mark" href="#" onclick="return false">
+      <svg class="gstar" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M14.0 2.7 L18.8 11.6 L28.1 10.9 L22.1 17.9 L26.0 27.2 L16.8 22.5 L9.6 28.9 L10.5 19.5 L2.2 14.4 L11.8 12.5Z" fill="#D9AE5C" stroke="#D9AE5C" stroke-width="2.2" stroke-linejoin="round"/><path class="gs-stitch" d="M14.0 2.7 L18.8 11.6 L28.1 10.9 L22.1 17.9 L26.0 27.2 L16.8 22.5 L9.6 28.9 L10.5 19.5 L2.2 14.4 L11.8 12.5Z" fill="none" stroke="#2A1F17" stroke-width="1.4" stroke-dasharray="1.5 1.3" stroke-linejoin="round" opacity=".55" transform="translate(16 16.8) scale(.74) translate(-16 -16.8)" vector-effect="non-scaling-stroke"/></svg>
+      <div><b class="appname">Etlob Sa7</b><span data-t="login.tag">Demand planning for Egypt</span></div>
+    </a>
+    <span class="push"></span>
+    <button type="button" class="themebtn" data-act="theme" aria-label="Light or dark mode" title="Light or dark mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg></button>
+    <button type="button" class="lang" data-act="lang">العربية</button>
+    <button type="button" class="lang" data-act="logout" data-t="nav.signout">Sign out</button>
+  </header>
+  <div class="login-brand">
+    <p class="eyebrow" data-t="bill.eyebrow">Your data is saved</p>
+    <h2 data-t="bill.pitch">Pick a plan and carry on where you left off.</h2>
+    <p data-t="bill.pitch2">Monthly, in Egyptian pounds. Stop renewal any time.</p>
+  </div>
+  <div class="login-form">
+    <div class="login-card bill-card" id="bill-card"></div>
   </div>
 </div>
 
@@ -955,6 +1024,7 @@ html[data-theme="light"] .page-head .eyebrow,.login-brand .eyebrow,.today .eyebr
     <div class="account" id="account"></div>
   </aside>
   <div class="main">
+    <div class="planbar" id="planbar" hidden></div>
     <div class="view" id="view"></div>
   </div>
 </div>
@@ -962,7 +1032,7 @@ html[data-theme="light"] .page-head .eyebrow,.login-brand .eyebrow,.today .eyebr
 <div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
 <div id="overlay" class="overlay" hidden></div>
 <script>
-const CFG = {"appName":"Etlob Sa7","siteUrl":"https://etlobsa7.com","renewUrl":"https://etlobsa7.com/#pricing","whatsapp":"201090099849","serviceLevels":[85,90,95,97,98,99]};
+const CFG = {"appName":"Etlob Sa7","siteUrl":"https://etlobsa7.com","whatsapp":"201090099849","prices":{"basic":1295,"pro":2850,"store":5440},"trialDays":{"basic":14,"pro":14,"store":5},"serviceLevels":[85,90,95,97,98,99]};
 const MONTHS = {
   en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']
@@ -985,25 +1055,95 @@ en: {
   'login.pitch2': 'Your sales history in. A purchase order you can send out.',
   'login.private': 'Your numbers are private to your account.',
   'login.title': 'Sign in',
-  'login.lede': 'Use the email you subscribed with. We will email you a 6 digit code. No password needed.',
+  'login.lede': 'Enter your email and we will send you a 6 digit code. No password needed.',
   'login.email': 'Email address',
   'login.send': 'Email me a code',
   'login.code': '6 digit code',
   'login.signin': 'Sign in',
   'login.other': 'Use a different email',
   'login.resend': 'Send a new code',
-  'login.sent': 'If {email} has an active subscription, a code is on its way. Check your spam folder too.',
+  'login.sent': 'If {email} has an account, a code is on its way. Check your spam folder too.',
   'login.expired': 'You were signed out. This happens after two weeks without opening the app, or when your account is opened on a third device.',
-  'login.inactive': 'This subscription is not active. Your data is saved and comes back as soon as you renew.',
-  'login.renew': 'Renew subscription',
-  'login.noplan': 'No subscription yet?',
-  'login.plans': 'See plans',
+  'login.titleTrial': 'Start your free trial',
+  'login.ledeTrial': 'No card needed. Pick a plan to try, then enter your email and we will send you a 6 digit code.',
+  'login.sendTrial': 'Start free trial',
+  'login.newHere': 'New here?',
+  'login.startTrial': 'Start a free trial',
+  'login.haveAcct': 'Already have an account?',
+  'login.signinLink': 'Sign in',
+  'login.sentTrial': 'We sent a code to {email}. Check your spam folder too.',
+  'login.trialDays': '{n} days free',
+  'login.then': 'Then {price} a month.',
+  'err.BUSY': 'A lot of people are signing up right now. Try again in a few minutes.',
+  'err.BLOCKED': 'This account is closed. Message us on WhatsApp if you think this is a mistake.',
+  'err.BILLING_OFF': 'Card payments are not switched on yet. Message us on WhatsApp and we will set up your plan.',
+  'err.BAD_NAME': 'Enter your full name.',
+  'err.BAD_PHONE': 'Enter your mobile number, for example 01012345678.',
+  'err.PAY_FAILED': 'We could not reach the payment company. Try again in a minute.',
+  'err.ALREADY': 'You are already on this plan.',
+  'err.COMP': 'Your plan was set up by our team. Message us on WhatsApp to change it.',
+  'err.NO_SUBSCRIPTION': 'We could not find your monthly renewal. Message us on WhatsApp and we will sort it out.',
+  'err.ENDED': 'This plan has already ended. Choose a plan to start again.',
+  'bill.eyebrow': 'Your data is saved',
+  'bill.pitch': 'Pick a plan and carry on where you left off.',
+  'bill.pitch2': 'Monthly, in Egyptian pounds. Stop renewal any time.',
+  'bill.title': 'Plan and billing',
+  'bill.hTrialOver': 'Your free trial has ended',
+  'bill.hExpired': 'Your plan has ended',
+  'bill.hNone': 'Choose a plan',
+  'bill.ledeKept': 'Everything you entered is saved. Choose a plan to open the app again.',
+  'bill.ledeFailed': 'Your last monthly payment did not go through, so the app is paused. Everything you entered is saved.',
+  'bill.feat.basic': 'Up to 10 products. The full forecasting and reorder engine.',
+  'bill.feat.pro': 'Up to 50 products. Adds your own seasons, supplier compare, scorecard and cash flow.',
+  'bill.feat.store': 'Up to 200 products. Adds demand graphs, profit at risk and dead stock.',
+  'bill.current': 'Your plan',
+  'bill.perMonth': '{price} a month',
+  'bill.name': 'Full name',
+  'bill.phone': 'Mobile number',
+  'bill.sumNew': 'You pay {price} now. The next payment of {price} is on {date}.',
+  'bill.sumTrial': 'Your free days are kept.',
+  'bill.sumCredit': 'Days already paid on your current plan are added on.',
+  'bill.sumKeep': 'Renewal turns back on. Nothing is charged today; the next payment is on {date}.',
+  'bill.sumSame': 'This is your plan.',
+  'bill.pay': 'Pay {price}',
+  'bill.keep': 'Keep my plan',
+  'bill.secure': 'You pay by card on Paymob\'s secure page. We never see your card number. Stop renewal any time in Settings.',
+  'bill.going': 'Taking you to the secure payment page.',
+  'bill.test': 'Test mode: use a Paymob test card. No real money moves.',
+  'bill.off': 'Card payments are switching on very soon. Until then, message us on WhatsApp and we will set up your plan by hand.',
+  'bill.wa': 'Message us on WhatsApp',
+  'bill.stTrial': 'Free trial of the {plan} until {date} ({left}).',
+  'bill.stActive': '{plan}: {price} a month. Next payment on {date}.',
+  'bill.stPaid': '{plan}, paid until {date}.',
+  'bill.stCanceling': '{plan} until {date}. Renewal is off, so nothing more will be charged.',
+  'bill.stPastDue': 'We could not take this month\'s payment for the {plan}. We will try again, and the app stays open until {date}.',
+  'bill.stComp': '{plan}, set up by our team. Message us on WhatsApp to change it.',
+  'bill.left': '{n} days left',
+  'bill.left1': '1 day left',
+  'bill.left0': 'last day',
+  'bill.choosePlan': 'Choose a plan',
+  'bill.change': 'Change plan',
+  'bill.cancel': 'Stop renewal',
+  'bill.cancelQ': 'Stop renewal?',
+  'bill.cancelP': 'Nothing more will be charged. The {plan} stays on until {date}, and your data stays saved.',
+  'bill.cancelled': 'Renewal stopped. Your plan stays on until {date}.',
+  'bill.resumed': 'Renewal is back on.',
+  'bill.retryCard': 'Pay with another card',
+  'bill.lastFailed': 'Your last payment attempt did not go through. You can try again, or use another card.',
+  'bill.confirming': 'Confirming your payment',
+  'bill.paid': 'Payment received. Your {plan} is on.',
+  'bill.notPaid': 'The payment did not go through, so nothing was charged. You can try again.',
+  'bill.slow': 'The bank has not confirmed your payment yet. It usually takes a minute: open the app again shortly.',
+  'bill.barTrial': 'Free trial: {left}.',
+  'bill.barCanceling': 'Your plan ends on {date}.',
+  'bill.barPastDue': 'We could not take this month\'s payment.',
+  'plan.trialTag': 'free trial',
   'err.BAD_EMAIL': 'Enter a valid email address.',
   'err.WAIT': 'Wait a minute before asking for another code.',
   'err.TOO_MANY': 'Too many attempts. Ask for a new code, or wait up to an hour if that is refused too.',
   'err.BAD_CODE': 'That code is not right. Check the latest email.',
   'err.CODE_EXPIRED': 'That code has expired. Ask for a new one.',
-  'err.INACTIVE': 'This subscription is not active.',
+  'err.INACTIVE': 'We could not find an account for this email. Start a free trial instead.',
   'err.MAIL_QUOTA': 'Codes cannot be sent right now. Try again in a few hours or contact support.',
   'err.SERVER': 'Something went wrong on our side. Try again.',
   'err.NET': 'Connection problem. Check your internet and try again.',
@@ -1615,25 +1755,95 @@ ar: {
   'login.pitch2': 'تدخّل تاريخ مبيعاتك، وتطلع بطلبية جاهزة تبعتها.',
   'login.private': 'أرقامك خاصة بحسابك بس.',
   'login.title': 'تسجيل الدخول',
-  'login.lede': 'استخدم الإيميل اللي اشتركت بيه. هنبعتلك رمز من 6 أرقام. من غير باسورد.',
+  'login.lede': 'اكتب إيميلك وهنبعتلك رمز من 6 أرقام. من غير باسورد.',
   'login.email': 'الإيميل',
   'login.send': 'ابعتلي الرمز',
   'login.code': 'الرمز (6 أرقام)',
   'login.signin': 'دخول',
   'login.other': 'استخدم إيميل تاني',
   'login.resend': 'ابعت رمز جديد',
-  'login.sent': 'لو {email} عليه اشتراك نشط، الرمز في الطريق. بص في الـ Spam كمان.',
+  'login.sent': 'لو {email} ليه حساب، الرمز في الطريق. بص في الـ Spam كمان.',
   'login.expired': 'اتسجل خروجك. ده بيحصل بعد أسبوعين من غير ما تفتح الأداة، أو لما الحساب يتفتح على جهاز تالت.',
-  'login.inactive': 'الاشتراك ده مش نشط. بياناتك محفوظة وهترجع أول ما تجدد.',
-  'login.renew': 'جدد الاشتراك',
-  'login.noplan': 'لسه مش مشترك؟',
-  'login.plans': 'شوف الباقات',
+  'login.titleTrial': 'ابدأ تجربتك المجانية',
+  'login.ledeTrial': 'من غير كارت. اختار الباقة اللي عايز تجربها، واكتب إيميلك وهنبعتلك رمز من 6 أرقام.',
+  'login.sendTrial': 'ابدأ التجربة المجانية',
+  'login.newHere': 'أول مرة؟',
+  'login.startTrial': 'ابدأ تجربة مجانية',
+  'login.haveAcct': 'عندك حساب؟',
+  'login.signinLink': 'سجل دخول',
+  'login.sentTrial': 'بعتنا رمز على {email}. بص في الـ Spam كمان.',
+  'login.trialDays': '{n} يوم مجانا',
+  'login.then': 'وبعدها {price} في الشهر.',
+  'err.BUSY': 'في ناس كتير بتسجل دلوقتي. جرب تاني بعد دقايق.',
+  'err.BLOCKED': 'الحساب ده مقفول. ابعتلنا على واتساب لو شايف إن في غلط.',
+  'err.BILLING_OFF': 'الدفع بالكارت لسه ماشتغلش. ابعتلنا على واتساب وإحنا نفعّلك الباقة.',
+  'err.BAD_NAME': 'اكتب اسمك بالكامل.',
+  'err.BAD_PHONE': 'اكتب رقم موبايلك، زي 01012345678.',
+  'err.PAY_FAILED': 'مقدرناش نوصل لشركة الدفع. جرب تاني بعد دقيقة.',
+  'err.ALREADY': 'إنت مشترك في الباقة دي بالفعل.',
+  'err.COMP': 'باقتك متظبطة من فريقنا. ابعتلنا على واتساب لو عايز تغيرها.',
+  'err.NO_SUBSCRIPTION': 'مالقيناش التجديد الشهري بتاعك. ابعتلنا على واتساب وإحنا نظبطه.',
+  'err.ENDED': 'الباقة دي خلصت خلاص. اختار باقة علشان تبدأ تاني.',
+  'bill.eyebrow': 'بياناتك محفوظة',
+  'bill.pitch': 'اختار باقة وكمل من مكان ما وقفت.',
+  'bill.pitch2': 'اشتراك شهري بالجنيه المصري. توقف التجديد في أي وقت.',
+  'bill.title': 'الباقة والدفع',
+  'bill.hTrialOver': 'التجربة المجانية خلصت',
+  'bill.hExpired': 'باقتك خلصت',
+  'bill.hNone': 'اختار باقة',
+  'bill.ledeKept': 'كل اللي دخلته محفوظ. اختار باقة علشان البرنامج يفتح تاني.',
+  'bill.ledeFailed': 'آخر دفعة شهرية ماتمتش، فالبرنامج واقف مؤقتا. كل اللي دخلته محفوظ.',
+  'bill.feat.basic': 'لحد 10 منتجات. محرك التوقع وإعادة الطلب كامل.',
+  'bill.feat.pro': 'لحد 50 منتج. ومعاه أشكال موسم بتاعتك، مقارنة الموردين، تقييمهم، والتدفق النقدي.',
+  'bill.feat.store': 'لحد 200 منتج. ومعاه رسوم الطلب، الربح المعرض للخطر، والبضاعة الراكدة.',
+  'bill.current': 'باقتك',
+  'bill.perMonth': '{price} في الشهر',
+  'bill.name': 'الاسم بالكامل',
+  'bill.phone': 'رقم الموبايل',
+  'bill.sumNew': 'هتدفع {price} دلوقتي. الدفعة الجاية {price} يوم {date}.',
+  'bill.sumTrial': 'أيام التجربة المجانية اللي فاضلة محسوبة ليك.',
+  'bill.sumCredit': 'الأيام اللي دفعتها على باقتك الحالية بتتضاف.',
+  'bill.sumKeep': 'التجديد هيرجع يشتغل. مفيش دفع النهارده، والدفعة الجاية يوم {date}.',
+  'bill.sumSame': 'دي باقتك الحالية.',
+  'bill.pay': 'ادفع {price}',
+  'bill.keep': 'خليني على باقتي',
+  'bill.secure': 'الدفع بالكارت على صفحة Paymob الآمنة. إحنا مابنشوفش رقم كارتك. توقف التجديد في أي وقت من الإعدادات.',
+  'bill.going': 'بنوديك لصفحة الدفع الآمنة.',
+  'bill.test': 'وضع تجريبي: استخدم كارت تجريبي من Paymob. مفيش فلوس حقيقية بتتحرك.',
+  'bill.off': 'الدفع بالكارت هيشتغل قريب جدا. لحد كده، ابعتلنا على واتساب وإحنا نفعّلك الباقة بإيدينا.',
+  'bill.wa': 'ابعتلنا على واتساب',
+  'bill.stTrial': 'تجربة مجانية: {plan} لحد {date} ({left}).',
+  'bill.stActive': '{plan}: {price} في الشهر. الدفعة الجاية يوم {date}.',
+  'bill.stPaid': '{plan}، مدفوعة لحد {date}.',
+  'bill.stCanceling': '{plan} لحد {date}. التجديد متوقف، فمش هيتخصم حاجة تاني.',
+  'bill.stPastDue': 'مقدرناش ناخد دفعة الشهر ده لـ{plan}. هنحاول تاني، والبرنامج هيفضل فاتح لحد {date}.',
+  'bill.stComp': '{plan}، متظبطة من فريقنا. ابعتلنا على واتساب لو عايز تغيرها.',
+  'bill.left': 'فاضل {n} يوم',
+  'bill.left1': 'فاضل يوم واحد',
+  'bill.left0': 'آخر يوم',
+  'bill.choosePlan': 'اختار باقة',
+  'bill.change': 'غير الباقة',
+  'bill.cancel': 'وقف التجديد',
+  'bill.cancelQ': 'توقف التجديد؟',
+  'bill.cancelP': 'مش هيتخصم حاجة تاني. {plan} هتفضل شغالة لحد {date}، وبياناتك هتفضل محفوظة.',
+  'bill.cancelled': 'التجديد اتوقف. باقتك شغالة لحد {date}.',
+  'bill.resumed': 'التجديد رجع يشتغل.',
+  'bill.retryCard': 'ادفع بكارت تاني',
+  'bill.lastFailed': 'آخر محاولة دفع ماتمتش. تقدر تجرب تاني أو تستخدم كارت تاني.',
+  'bill.confirming': 'بنأكد الدفع بتاعك',
+  'bill.paid': 'وصلنا الدفع. {plan} شغالة.',
+  'bill.notPaid': 'الدفع ماتمش، فمفيش أي خصم. تقدر تجرب تاني.',
+  'bill.slow': 'البنك لسه ماأكدش الدفع. عادة بياخد دقيقة: افتح البرنامج تاني كمان شوية.',
+  'bill.barTrial': 'تجربة مجانية: {left}.',
+  'bill.barCanceling': 'باقتك هتخلص يوم {date}.',
+  'bill.barPastDue': 'مقدرناش ناخد دفعة الشهر ده.',
+  'plan.trialTag': 'تجربة مجانية',
   'err.BAD_EMAIL': 'اكتب إيميل صحيح.',
   'err.WAIT': 'استنى دقيقة قبل ما تطلب رمز تاني.',
   'err.TOO_MANY': 'محاولات كتير. اطلب كود جديد، ولو اترفض استنى لحد ساعة.',
   'err.BAD_CODE': 'الرمز غلط. بص على آخر إيميل وصلك.',
   'err.CODE_EXPIRED': 'الرمز انتهى. اطلب رمز جديد.',
-  'err.INACTIVE': 'الاشتراك ده مش نشط.',
+  'err.INACTIVE': 'مالقيناش حساب بالإيميل ده. ابدأ تجربة مجانية بداله.',
   'err.MAIL_QUOTA': 'مش قادرين نبعت رموز دلوقتي. جرب بعد كام ساعة أو كلم الدعم.',
   'err.SERVER': 'حصلت مشكلة عندنا. جرب تاني.',
   'err.NET': 'مشكلة في الاتصال. اتأكد من الإنترنت وجرب تاني.',
@@ -2231,7 +2441,8 @@ const store = {
   del(k) { try { localStorage.removeItem(k); } catch (e) {} }
 };
 const S = { selectMode: false, selected: new Set(), sid: store.get('es7.sid'), me: null, ws: null, res: null, rev: 0, tab: store.get('es7.tab') || 'dash',
-            dirty: false, saving: false, timer: null, retry: null, filter: 'ALL', healthOnly: true, loginEmail: '', undo: null };
+            dirty: false, saving: false, timer: null, retry: null, filter: 'ALL', healthOnly: true, loginEmail: '', undo: null,
+            loginMode: 'signin', trialPick: 'pro', bill: null, billPick: null, billForm: null, billOpen: false, payReturn: null, payConfirmed: false };
 let LANG = store.get('es7.lang') || ((navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en');
 
 function t(key, vars) {
@@ -2292,14 +2503,14 @@ function applyStatic() {
   $$('[data-act="lang"]').forEach(el => { el.textContent = LANG === 'ar' ? 'English' : 'العربية'; });
   $$('.appname').forEach(el => { el.textContent = CFG.appName; });
   document.title = CFG.appName;
-  const plans = $('#login-plans');
-  plans.innerHTML = CFG.siteUrl ? esc(t('login.noplan')) + ' <a href="' + esc(CFG.siteUrl) + '" target="_blank" rel="noopener">' + esc(t('login.plans')) + '</a>' : '';
+  renderLoginMode();
 }
 function setLang(l) {
   LANG = l; store.set('es7.lang', l);
   $('#toast').hidden = true;
   applyStatic();
   if (!$('#app').hidden) { renderShell(); renderTab(); setStatus(S.statusKey || 'saved'); }
+  if (!$('#paywall').hidden) renderBilling();
 }
 
 /* ================= toast + dialog ================= */
@@ -2334,7 +2545,7 @@ function dialog({ title, body, ok, danger, textarea }) {
 }
 
 /* ================= sign in ================= */
-function show(id) { ['boot', 'login', 'app'].forEach(x => { $('#' + x).hidden = x !== id; }); }
+function show(id) { ['boot', 'login', 'paywall', 'app'].forEach(x => { $('#' + x).hidden = x !== id; }); }
 function loginMsg(text, kind, html) {
   const el = $('#login-msg');
   if (!text) { el.hidden = true; return; }
@@ -2347,11 +2558,29 @@ function toLogin(reason) {
   clearTimeout(S.timer); clearTimeout(S.retry); S.dirty = false;
   show('login');
   $('#f-email').hidden = false; $('#f-code').hidden = true;
-  if (reason === 'INACTIVE') {
-    loginMsg(t('login.inactive'), 'bad', CFG.renewUrl ? ' <a href="' + esc(CFG.renewUrl) + '" target="_blank" rel="noopener">' + esc(t('login.renew')) + '</a>' : '');
-  } else if (reason === 'EXPIRED') loginMsg(t('login.expired'), 'info');
+  renderLoginMode();
+  if (reason === 'EXPIRED') loginMsg(t('login.expired'), 'info');
   else loginMsg('');
   setTimeout(() => $('#email').focus(), 50);
+}
+// Two ways in: sign in, or start a free trial (pick a plan, no card needed).
+function planOption(p, pick, name, side, note, cur) {
+  return '<label class="tplan' + (p === pick ? ' on' : '') + '"><input type="radio" name="' + name + '" value="' + p + '" data-act="' + name + '"' + (p === pick ? ' checked' : '') + '>' +
+    '<b>' + esc(t('plan.' + p)) + (cur ? '<span class="tp-cur">' + esc(t('bill.current')) + '</span>' : '') + '</b>' +
+    '<span class="tp-price">' + esc(side) + '</span><span class="tp-note">' + esc(note) + '</span></label>';
+}
+function renderLoginMode() {
+  const trial = S.loginMode === 'trial';
+  $('#login-title').textContent = t(trial ? 'login.titleTrial' : 'login.title');
+  $('#login-lede').textContent = t(trial ? 'login.ledeTrial' : 'login.lede');
+  $('#b-send').textContent = t(trial ? 'login.sendTrial' : 'login.send');
+  const box = $('#trial-plans');
+  box.hidden = !trial;
+  box.innerHTML = trial ? ['basic', 'pro', 'store'].map(p => planOption(p, S.trialPick, 'trialPick', t('login.trialDays', { n: CFG.trialDays[p] }),
+    t('login.then', { price: money(CFG.prices[p]) }) + ' ' + t('bill.feat.' + p))).join('') : '';
+  $('#login-plans').innerHTML = trial
+    ? esc(t('login.haveAcct')) + ' <button type="button" class="linkbtn" data-act="loginMode" data-m="signin">' + esc(t('login.signinLink')) + '</button>'
+    : esc(t('login.newHere')) + ' <button type="button" class="linkbtn" data-act="loginMode" data-m="trial">' + esc(t('login.startTrial')) + '</button>';
 }
 async function sendCode(e) {
   if (e) e.preventDefault();
@@ -2359,13 +2588,14 @@ async function sendCode(e) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { loginMsg(t('err.BAD_EMAIL'), 'bad'); return; }
   const btn = $('#f-email button');
   btn.disabled = true;
-  const r = await gs('requestCode', email, LANG);
+  const trial = S.loginMode === 'trial';
+  const r = await gs('requestCode', email, LANG, trial ? S.trialPick : '');
   btn.disabled = false;
   if (!r.ok) { loginMsg(t('err.' + (r.error || 'SERVER')), 'bad'); return; }
   S.loginEmail = email;
   $('#f-email').hidden = true; $('#f-code').hidden = false;
   $('#code').value = '';
-  loginMsg(t('login.sent', { email: email }), 'ok');
+  loginMsg(t(trial ? 'login.sentTrial' : 'login.sent', { email: email }), 'ok');
   setTimeout(() => $('#code').focus(), 50);
 }
 async function verify(e) {
@@ -2376,10 +2606,7 @@ async function verify(e) {
   btn.disabled = true;
   const r = await gs('verifyCode', S.loginEmail, code);
   btn.disabled = false;
-  if (!r.ok) {
-    if (r.error === 'INACTIVE') { toLogin('INACTIVE'); return; }
-    loginMsg(t('err.' + (r.error || 'SERVER')), 'bad'); return;
-  }
+  if (!r.ok) { loginMsg(t('err.' + (r.error || 'SERVER')), 'bad'); return; }
   S.sid = r.sid; store.set('es7.sid', r.sid);
   loginMsg('');
   boot();
@@ -2390,21 +2617,23 @@ async function boot() {
   if (!S.sid) { toLogin(); return; }
   show('boot');
   $('#boot').innerHTML = '<div><div class="spinner"></div><span>' + esc(t('boot.loading')) + '</span></div>';
+  if (S.payReturn === 'ok') await confirmReturn();
   const r = await call('load');
   if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
-  if (r.error === 'INACTIVE') { toLogin('INACTIVE'); return; }
+  if (r.error === 'INACTIVE') { toBilling(r.billing); return; }
   if (r.error) {
     $('#boot').innerHTML = '<div style="text-align:center"><p>' + esc(t('boot.failed')) + '</p><button class="btn primary" id="b-retry">' + esc(t('boot.retry')) + '</button></div>';
     $('#b-retry').onclick = boot;
     return;
   }
-  S.me = r.me; S.ws = r.ws; S.res = r.res; S.rev = r.ws.rev || 0;
+  S.me = r.me; S.ws = r.ws; S.res = r.res; S.rev = r.ws.rev || 0; S.bill = r.me.billing || null;
   show('app');
   renderShell();
   renderTab();
   enterView();
   setStatus('saved');
   showNotices(r.notices);
+  payNotice();
 }
 
 function setStatus(key) {
@@ -2431,7 +2660,7 @@ async function save(extra) {
   const r = await call('save', payload);
   S.saving = false;
   if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
-  if (r.error === 'INACTIVE') { toLogin('INACTIVE'); return; }
+  if (r.error === 'INACTIVE') { toBilling(r.billing); return; }
   if (r.error === 'CONFLICT') { toast(t('err.conflict')); boot(); return; }
   if (r.error) {
     S.dirty = true; setStatus('error');
@@ -2455,8 +2684,160 @@ function showNotices(list) {
     const max = n === 'LIMIT_SUPPLIERS' ? S.me.limits.suppliers : S.me.limits.products;
     const extra = (n === 'LIMIT_PRODUCTS' && upsellText()) ? ' ' + upsellText() : '';
     toast(t('notice.' + n, { max: max }) + extra,
-      CFG.siteUrl && n !== 'LIMIT_PROFILES' ? { label: t('upgradePlan'), fn: () => window.open(CFG.siteUrl, '_blank', 'noopener') } : null);
+      n !== 'LIMIT_PROFILES' && S.me.plan !== 'store' ? { label: t('upgradePlan'), fn: () => openBilling() } : null);
   });
+}
+
+/* ================= plan and billing ================= */
+const fmtDate = v => {
+  if (v == null || v === '') return '';
+  const d = new Date(typeof v === 'string' && v.length === 10 ? v + 'T12:00:00Z' : v);
+  return d.getUTCDate() + ' ' + MONTHS_LONG[LANG][d.getUTCMonth()] + ' ' + d.getUTCFullYear();
+};
+function leftText(iso) {
+  const n = Math.round((Date.parse(iso) - Date.now()) / 86400000);
+  return n <= 0 ? t('bill.left0') : n === 1 ? t('bill.left1') : t('bill.left', { n: n });
+}
+function saveForm() {
+  const n = $('#b-name'), p = $('#b-phone');
+  if (n && p) S.billForm = { name: n.value, phone: p.value };
+}
+function billMsg(text, kind) {
+  const el = $('#bill-msg');
+  if (!el) { if (text) toast(text); return; }
+  el.className = 'msg ' + (kind || 'info');
+  el.textContent = text || '';
+  el.hidden = !text;
+}
+function billSummary(b, pick) {
+  if (pick === b.plan && b.state === 'canceling') return esc(t('bill.sumKeep', { date: fmtDate(b.paidUntil) }));
+  if (pick === b.plan && b.state === 'active') return esc(t('bill.sumSame'));
+  let s = t('bill.sumNew', { price: money(b.prices[pick]), date: fmtDate(b.startsOn[pick]) });
+  if (b.state === 'trial') s += ' ' + t('bill.sumTrial');
+  else if ((b.state === 'active' || b.state === 'canceling') && pick !== b.plan) s += ' ' + t('bill.sumCredit');
+  return esc(s);
+}
+const payLabel = (b, pick) => pick === b.plan && b.state === 'canceling' ? t('bill.keep') : t('bill.pay', { price: money(b.prices[pick]) });
+const payDisabled = (b, pick) => pick === b.plan && b.state === 'active';
+// The plan picker, used on the payment screen and in Settings.
+function chooserHtml(b) {
+  if (!b.ready) return '<div class="bill-off"><p>' + esc(t('bill.off')) + '</p>' +
+    (CFG.whatsapp ? '<a class="btn primary" href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('bill.wa')) + '</a>' : '') + '</div>';
+  const pick = b.prices[S.billPick] ? S.billPick : b.plan;
+  const live = ['active', 'canceling', 'past_due'].includes(b.state);
+  const f = S.billForm || { name: b.name, phone: b.phone };
+  return '<div class="tplans">' + ['basic', 'pro', 'store'].map(p => planOption(p, pick, 'billPick', t('bill.perMonth', { price: money(b.prices[p]) }), t('bill.feat.' + p), live && p === b.plan)).join('') + '</div>' +
+    '<div class="bill-fields"><div><label for="b-name">' + esc(t('bill.name')) + '</label><input id="b-name" type="text" autocomplete="name" maxlength="60" value="' + esc(f.name || '') + '"></div>' +
+    '<div><label for="b-phone">' + esc(t('bill.phone')) + '</label><input id="b-phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" dir="ltr" placeholder="01XXXXXXXXX" value="' + esc(f.phone || '') + '"></div></div>' +
+    '<p class="bill-sum" id="bill-sum">' + billSummary(b, pick) + '</p>' +
+    '<button type="button" class="btn primary bill-pay" id="bill-pay" data-act="billPay"' + (payDisabled(b, pick) ? ' disabled' : '') + '>' + esc(payLabel(b, pick)) + '</button>' +
+    '<div id="bill-msg" class="msg" hidden></div>' +
+    '<p class="bill-fine">' + esc(t('bill.secure')) + '</p>';
+}
+// No live trial or plan: the shop signs in to this screen, picks a plan and pays. Their data waits.
+function toBilling(b) {
+  if (!b) { toLogin(); return; }
+  clearTimeout(S.timer); clearTimeout(S.retry); S.dirty = false;
+  S.bill = b;
+  if (!S.billPick || !b.prices[S.billPick]) S.billPick = b.plan;
+  show('paywall');
+  renderBilling();
+}
+function renderBilling() {
+  const b = S.bill;
+  if (!b) return;
+  saveForm();
+  const h = b.state === 'trial_over' ? 'bill.hTrialOver' : b.state === 'expired' ? 'bill.hExpired' : 'bill.hNone';
+  let msg = '';
+  if (S.payReturn === 'fail') msg = '<div class="msg bad">' + esc(t('bill.notPaid')) + '</div>';
+  else if (S.payReturn === 'ok') msg = '<div class="msg info">' + esc(t('bill.slow')) + '</div>';
+  else if (b.pending && b.pending.failed) msg = '<div class="msg bad">' + esc(t('bill.lastFailed')) + '</div>';
+  S.payReturn = null;
+  $('#bill-card').innerHTML = (b.testMode && b.ready ? '<p class="testmode">' + esc(t('bill.test')) + '</p>' : '') +
+    '<h1>' + esc(t(h)) + '</h1><p class="lede">' + esc(t(b.failedRenewal ? 'bill.ledeFailed' : 'bill.ledeKept')) + '</p>' + msg +
+    '<div style="margin-top:18px">' + chooserHtml(b) + '</div>' +
+    '<div class="bill-links">' + (CFG.whatsapp ? '<a href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '<span></span>') +
+    '<button type="button" class="linkbtn" data-act="logout">' + esc(t('nav.signout')) + '</button></div>';
+}
+// Settings, Plan and billing.
+function billingSection() {
+  const b = S.bill;
+  if (!b) return '';
+  const P = t('plan.' + b.plan), open = S.billOpen && b.state !== 'comp';
+  let line = '', acts = '', bad = false;
+  if (b.state === 'trial') {
+    line = t('bill.stTrial', { plan: P, date: fmtDate(b.trialEndsAt), left: leftText(b.trialEndsAt) });
+    acts = open ? '' : btn(t('bill.choosePlan'), 'billOpen', '', 'primary');
+  } else if (b.state === 'active') {
+    line = b.renews ? t('bill.stActive', { plan: P, price: money(b.prices[b.plan]), date: fmtDate(b.paidUntil) }) : t('bill.stPaid', { plan: P, date: fmtDate(b.paidUntil) });
+    acts = (open ? '' : btn(t('bill.change'), 'billOpen')) + (b.canCancel ? btn(t('bill.cancel'), 'billCancel', '', 'danger') : '');
+  } else if (b.state === 'canceling') {
+    line = t('bill.stCanceling', { plan: P, date: fmtDate(b.paidUntil) });
+    acts = (b.canResume ? btn(t('bill.keep'), 'billResume', '', 'primary') : '') + (open ? '' : btn(t('bill.change'), 'billOpen'));
+  } else if (b.state === 'past_due') {
+    bad = true;
+    line = t('bill.stPastDue', { plan: P, date: fmtDate(Date.parse(b.paidUntil) + 3 * 86400000) });
+    acts = (open ? '' : btn(t('bill.retryCard'), 'billOpen', ' data-plan="' + esc(b.plan) + '"', 'primary')) + (b.canCancel ? btn(t('bill.cancel'), 'billCancel', '', 'danger') : '');
+  } else if (b.state === 'comp') {
+    line = t('bill.stComp', { plan: P });
+    acts = CFG.whatsapp ? '<a class="btn" href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '';
+  }
+  return '<div class="section" id="billing"><h2>' + esc(t('bill.title')) + '</h2>' +
+    (b.testMode && b.ready && b.state !== 'comp' ? '<p class="testmode">' + esc(t('bill.test')) + '</p>' : '') +
+    '<div class="panel bill-panel' + (bad ? ' bad' : '') + '"><p>' + esc(line) + '</p>' + (acts ? '<div class="actions">' + acts + '</div>' : '') + '</div>' +
+    (b.pending && b.pending.failed ? '<div class="alert bad"><span>' + esc(t('bill.lastFailed')) + '</span></div>' : '') +
+    (open ? '<div class="panel bill-choose">' + chooserHtml(b) + '</div>' : '') + '</div>';
+}
+// A slim line above every page while the trial runs, renewal is off, or a payment failed.
+function renderPlanBar() {
+  const bar = $('#planbar'), b = S.bill;
+  if (!bar) return;
+  let txt = '', act = '', bad = false;
+  if (b && b.state === 'trial') { txt = t('bill.barTrial', { left: leftText(b.trialEndsAt) }); act = btn(t('bill.choosePlan'), 'billOpen', '', 'primary'); }
+  else if (b && b.state === 'canceling') { txt = t('bill.barCanceling', { date: fmtDate(b.paidUntil) }); act = b.canResume ? btn(t('bill.keep'), 'billResume', '', 'primary') : ''; }
+  else if (b && b.state === 'past_due') { bad = true; txt = t('bill.barPastDue'); act = btn(t('bill.retryCard'), 'billOpen', ' data-plan="' + esc(b.plan) + '"', 'primary'); }
+  bar.hidden = !txt;
+  bar.className = 'planbar' + (bad ? ' bad' : '');
+  bar.innerHTML = txt ? '<span>' + esc(txt) + '</span>' + act : '';
+}
+const scrollToBilling = () => { const el = $('#billing'); if (el) el.scrollIntoView({ block: 'start', behavior: REDUCE_MOTION ? 'auto' : 'smooth' }); };
+// Opens Settings at Plan and billing with the picker showing, then refreshes it from the server.
+async function openBilling(plan) {
+  S.billOpen = true;
+  if (plan && CFG.prices[plan]) S.billPick = plan;
+  else if (!S.billPick && S.bill) S.billPick = S.bill.plan;
+  saveForm();
+  if (S.tab !== 'settings') goTab('settings'); else renderTab();
+  scrollToBilling();
+  const r = await call('billing');
+  if (!r.ok || !r.billing) return;
+  if (!r.billing.access || (S.me && r.billing.plan !== S.me.plan)) { boot(); return; }
+  S.bill = r.billing;
+  renderPlanBar();
+  if (S.tab === 'settings' && !$('#app').hidden) { saveForm(); renderTab(); }
+}
+function afterBillingChange(msg) {
+  if (msg) toast(msg);
+  if ($('#app').hidden) return;
+  renderAccount();
+  if (S.tab === 'settings') { saveForm(); renderTab(); }
+}
+// Back from Paymob's page: give the bank a few seconds to confirm before deciding what to show.
+async function confirmReturn() {
+  $('#boot').innerHTML = '<div><div class="spinner"></div><span>' + esc(t('bill.confirming')) + '</span></div>';
+  for (let i = 0; i < 6; i++) {
+    const r = await call('billing');
+    if (!r.ok || !r.billing) return;
+    if (!r.billing.pending) { S.payConfirmed = true; return; }
+    if (r.billing.pending.failed) { S.payReturn = 'fail'; return; }
+    await new Promise(res => setTimeout(res, 2500));
+  }
+}
+function payNotice() {
+  const ret = S.payReturn;
+  S.payReturn = null;
+  if (ret === 'fail') toast(t('bill.notPaid'));
+  else if (ret === 'ok') toast(S.payConfirmed && S.bill && S.bill.access ? t('bill.paid', { plan: t('plan.' + S.bill.plan) }) : t('bill.slow'));
 }
 
 window.addEventListener('beforeunload', e => {
@@ -2504,15 +2885,18 @@ function renderNav() {
 function renderAccount() {
   const lim = S.me.limits;
   const usage = lim.products >= 500 ? t('plan.usageUnl', { n: S.ws.products.length }) : t('plan.usage', { n: S.ws.products.length, max: lim.products });
+  const planTxt = t('plan.' + S.me.plan) + (S.bill && S.bill.state === 'trial' ? ' · ' + t('plan.trialTag') : '');
+  const planBtn = '<button type="button" class="acct-plan" data-act="billOpen">' + esc(planTxt) + '</button>';
   $('#account').innerHTML =
     '<div class="email">' + esc(S.me.email) + '</div>' +
-    '<div class="plan">' + esc(t('plan.' + S.me.plan)) + '<br><span style="color:var(--muted)">' + esc(usage) + '</span></div>' +
+    '<div class="plan">' + planBtn + '<br><span style="color:var(--muted)">' + esc(usage) + '</span></div>' +
     '<div class="row">' +
     (CFG.whatsapp ? '<a class="ghost" style="text-decoration:none" href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '') +
     '<button class="ghost" data-act="logout">' + esc(t('nav.signout')) + '</button></div>';
   const mini = $('#acct-mini');
-  if (mini) mini.innerHTML = '<span>' + esc(S.me.email) + '</span><span>' + esc(t('plan.' + S.me.plan)) + ' · ' + esc(usage) + '</span>' +
+  if (mini) mini.innerHTML = '<span>' + esc(S.me.email) + '</span><span>' + planBtn + ' · ' + esc(usage) + '</span>' +
     (CFG.whatsapp ? '<a class="ghost" href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '');
+  renderPlanBar();
 }
 
 
@@ -2595,7 +2979,7 @@ function emptyBox(title, text, actions) {
 }
 const btn = (label, act, attrs, cls) => '<button type="button" class="btn ' + (cls || '') + '" data-act="' + act + '"' + (attrs || '') + '>' + esc(label) + '</button>';
 const sub = key => '<span class="sub">' + esc(t(key)) + '</span>';
-const upgradeLink = () => CFG.siteUrl ? ' <a href="' + esc(CFG.siteUrl) + '" target="_blank" rel="noopener">' + esc(t('upgrade')) + '</a>' : '';
+const upgradeLink = () => ' <a href="#" data-act="billOpen" data-plan="pro">' + esc(t('upgrade')) + '</a>';
 // What the next tier up actually offers. Store is the top tier, so it gets no upsell at all.
 function upsellText() {
   const plan = S.me.plan;
@@ -2608,8 +2992,9 @@ function limitMsg(kind) {
   const up = kind === 'suppliers' ? '' : upsellText();
   return t(kind === 'suppliers' ? 'limit.suppliers' : 'limit.products', { max: max }) + (up ? ' ' + up : '');
 }
-const upsellLink = () => (CFG.siteUrl && upsellText())
-  ? ' <a href="' + esc(CFG.siteUrl) + '" target="_blank" rel="noopener">' + esc(t('upgradePlan')) + '</a>' : '';
+// need: the plan that unlocks the feature (default: one step up).
+const upsellLink = need => upsellText()
+  ? ' <a href="#" data-act="billOpen" data-plan="' + (need || (S.me.plan === 'basic' ? 'pro' : 'store')) + '">' + esc(t('upgradePlan')) + '</a>' : '';
 
 /* ================= VIEWS ================= */
 const VIEWS = {};
@@ -2908,7 +3293,8 @@ VIEWS.settings = () => {
       sw('trendOn', 'set.trend', 'set.trendH') +
     '</div>' +
     '<div class="section routine"><div><h2>' + esc(t('set.newMonth')) + '</h2><p>' + esc(t('set.newMonthP', { m: monthName(next, true) })) + '</p></div>' +
-      btn(t('set.newMonthBtn', { m: monthName(next, true) }), 'rollMonth', '', 'primary') + '</div>';
+      btn(t('set.newMonthBtn', { m: monthName(next, true) }), 'rollMonth', '', 'primary') + '</div>' +
+    billingSection();
 };
 
 /* ---------- Seasons ---------- */
@@ -3334,7 +3720,7 @@ function reorderTimeline() {
 
 VIEWS.trends = () => {
   if (!S.me.limits.graphs) {
-    return head(t('gr.title'), t('gr.lede')) + '<div class="alert info"><span>' + esc(t('gr.locked')) + upsellLink() + '</span></div>';
+    return head(t('gr.title'), t('gr.lede')) + '<div class="alert info"><span>' + esc(t('gr.locked')) + upsellLink('store') + '</span></div>';
   }
   const bands = S.res.bands || [];
   if (!bands.length) {
@@ -3351,7 +3737,7 @@ VIEWS.trends = () => {
 VIEWS.score = () => {
   if (!S.me.limits.scorecard) {
     return head(t('sc.title'), t('sc.lede')) +
-      '<div class="alert info"><span>' + esc(t('sc.locked')) + upsellLink() + '</span></div>';
+      '<div class="alert info"><span>' + esc(t('sc.locked')) + upsellLink('pro') + '</span></div>';
   }
   const list = (S.res.scorecard || []).filter(sc => sc.products > 0);
   if (!list.length) {
@@ -3402,7 +3788,7 @@ function whyText(r) {
 /* ---------- Dead stock report ---------- */
 VIEWS.dead = () => {
   if (!S.me.limits.deadStock) {
-    return head(t('dead.title'), t('dead.lede')) + '<div class="alert info"><span>' + esc(t('dead.locked')) + upsellLink() + '</span></div>';
+    return head(t('dead.title'), t('dead.lede')) + '<div class="alert info"><span>' + esc(t('dead.locked')) + upsellLink('store') + '</span></div>';
   }
   const list = S.res.rows.filter(r => r.isDead).slice().sort((a, b) => b.deadValue - a.deadValue);
   if (!list.length) return head(t('dead.title'), t('dead.lede')) + emptyBox(t('dead.empty'), t('dead.emptyP'));
@@ -3422,7 +3808,7 @@ VIEWS.dead = () => {
 /* ---------- Cash flow forecast ---------- */
 VIEWS.cash = () => {
   if (!S.me.limits.cashFlow) {
-    return head(t('cash.title'), t('cash.lede')) + '<div class="alert info"><span>' + esc(t('cash.locked')) + upsellLink() + '</span></div>';
+    return head(t('cash.title'), t('cash.lede')) + '<div class="alert info"><span>' + esc(t('cash.locked')) + upsellLink('pro') + '</span></div>';
   }
   const cf = S.res.cashFlow;
   if (!cf || !cf.lines.length) return head(t('cash.title'), t('cash.lede')) + emptyBox(t('cash.empty'), t('cash.emptyP'));
@@ -3641,6 +4027,54 @@ const ACTIONS = {
   },
   tab: el => goTab(el.dataset.tab),
   lang: () => setLang(LANG === 'ar' ? 'en' : 'ar'),
+  loginMode: el => {
+    S.loginMode = el.dataset.m === 'trial' ? 'trial' : 'signin';
+    $('#f-code').hidden = true; $('#f-email').hidden = false;
+    loginMsg(''); renderLoginMode(); $('#email').focus();
+  },
+  trialPick: el => {
+    S.trialPick = el.value;
+    $$('#trial-plans .tplan').forEach(x => x.classList.toggle('on', x.querySelector('input').checked));
+  },
+  billOpen: el => openBilling(el && el.dataset ? el.dataset.plan : null),
+  billPick: el => {
+    S.billPick = el.value;
+    $$('.tplan input[name="billPick"]').forEach(x => x.closest('.tplan').classList.toggle('on', x.checked));
+    const b = S.bill, sum = $('#bill-sum'), pay = $('#bill-pay');
+    if (sum) sum.innerHTML = billSummary(b, S.billPick);
+    if (pay) { pay.textContent = payLabel(b, S.billPick); pay.disabled = payDisabled(b, S.billPick); }
+    billMsg('');
+  },
+  billPay: async el => {
+    const b = S.bill, plan = b.prices[S.billPick] ? S.billPick : b.plan;
+    saveForm();
+    if (plan === b.plan && b.state === 'canceling') { ACTIONS.billResume(); return; }
+    el.disabled = true;
+    billMsg(t('bill.going'), 'info');
+    const r = await gs('api', S.sid, 'checkout', { plan: plan, name: S.billForm.name, phone: S.billForm.phone }, LANG);
+    if (r.ok && r.url) { location.href = r.url; return; }
+    el.disabled = false;
+    if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
+    if (r.ok && r.billing) { S.bill = r.billing; S.billOpen = false; afterBillingChange(t('bill.resumed')); return; }
+    billMsg(t('err.' + (r.error || 'SERVER')), 'bad');
+  },
+  billCancel: async () => {
+    const b = S.bill;
+    const ok = await dialog({ title: t('bill.cancelQ'), body: t('bill.cancelP', { plan: t('plan.' + b.plan), date: fmtDate(b.paidUntil) }), ok: t('bill.cancel'), danger: true });
+    if (!ok) return;
+    const r = await call('cancel');
+    if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
+    if (!r.ok) { toast(t('err.' + (r.error || 'SERVER'))); return; }
+    S.bill = r.billing;
+    afterBillingChange(t('bill.cancelled', { date: fmtDate(r.billing.paidUntil) }));
+  },
+  billResume: async () => {
+    const r = await call('resume');
+    if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
+    if (!r.ok) { toast(t('err.' + (r.error || 'SERVER'))); return; }
+    S.bill = r.billing; S.billOpen = false;
+    afterBillingChange(t('bill.resumed'));
+  },
   logout: async () => {
     if (S.dirty) await save();
     await call('logout');
@@ -3874,12 +4308,18 @@ const ACTIONS = {
 
 /* ================= wiring ================= */
 function init() {
+  // ?start=pro from the website opens the free trial sign-up; Paymob sends people back with ?success=...&order=...
+  const qs = new URLSearchParams(location.search);
+  if (qs.has('start')) { S.loginMode = 'trial'; if (CFG.prices[qs.get('start')]) S.trialPick = qs.get('start'); }
+  if (qs.has('success') && (qs.has('order') || qs.has('id'))) S.payReturn = qs.get('success') === 'true' ? 'ok' : 'fail';
+  if (location.search) history.replaceState(null, '', location.pathname + location.hash);
   applyStatic();
   $('#f-email').addEventListener('submit', sendCode);
   $('#f-code').addEventListener('submit', verify);
   $('#b-other').addEventListener('click', () => { $('#f-code').hidden = true; $('#f-email').hidden = false; loginMsg(''); $('#email').focus(); });
   $('#b-resend').addEventListener('click', () => sendCode());
   $('#code').addEventListener('input', e => { if (digits(e.target.value).length === 6) verify(); });
+  document.addEventListener('input', e => { if (e.target.id === 'b-name' || e.target.id === 'b-phone') saveForm(); });
 
   document.addEventListener('click', e => {
     const el = e.target.closest('[data-act]');
