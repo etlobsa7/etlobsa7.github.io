@@ -840,17 +840,23 @@ html[data-theme="light"] .page-head .eyebrow,.login-brand .eyebrow,.today .eyebr
 
 /* ---------- menu across the top instead of down the left ---------- */
 .acct-mini{display:none}
-.nav-br{display:none}
+.nav-row,.nav-items{display:contents}
+.nav-sub{display:none}
 @media (min-width:901px){
   .app{grid-template-columns:minmax(0,1fr) !important;grid-template-rows:auto auto 1fr}
   .side{position:sticky;top:calc(var(--barh) + 2px);z-index:20;height:auto;overflow:visible;display:block;
     padding:8px 28px;border-inline-end:0;border-bottom:1px solid var(--line-2);background:var(--bg);box-shadow:0 6px 14px -12px rgba(0,0,0,.35)}
-  .side .nav{display:flex !important;flex-direction:row !important;flex-wrap:wrap;align-items:center;gap:2px 2px;min-width:0}
-  .side .nav > *{width:auto !important;flex:0 0 auto}
-  .side .nav .nav-br{display:block;flex-basis:100%;height:0}
+  .side .nav{display:grid !important;grid-template-columns:max-content minmax(0,1fr);gap:4px 14px;align-items:start;min-width:0}
   .side .nav[hidden]{display:none !important}
+  .side .nav-row{display:contents}
+  .side .nav-items{display:flex;flex-wrap:wrap;align-items:center;gap:2px}
+  .side .nav-items > *{width:auto !important;flex:0 0 auto}
   .side .nav .badge{margin-inline-start:0 !important}
-  .side .nav-label{padding:0 4px 0 14px;font-size:10px;color:var(--muted)}
+  .side .nav-label{padding:9px 10px 0 0;font-size:10.5px;color:var(--accent);font-weight:700;white-space:nowrap}
+  .side .nav-row + .nav-row > *{padding-top:6px;border-top:1px dashed var(--line-2)}
+  .side .nav-row + .nav-row > .nav-label{padding-top:15px}
+  .side .nav-sub{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 4px 0 18px}
+  html[lang="ar"] .side .nav-sub{letter-spacing:0;font-size:11.5px}
   .side .nav button{display:inline-flex !important;align-items:center;justify-content:flex-start;gap:6px;padding:6px 9px;white-space:nowrap;font-size:13.5px}
   .side .nav button[aria-current="page"]::before{inset-inline-start:9px;inset-inline-end:9px;top:auto;bottom:0;width:auto;height:2px}
   .side .account{display:none}
@@ -861,9 +867,20 @@ html[data-theme="light"] .page-head .eyebrow,.login-brand .eyebrow,.today .eyebr
   .main > .view{margin-inline:auto}
 }
 @media (min-width:901px) and (max-width:1320px){ .acct-mini{display:none} }
-@media (min-width:901px) and (max-width:1200px){ .side{padding:6px 16px} .side .nav button{padding:5px 6px;font-size:12.5px} .side .nav-label{padding-inline-start:8px} }
+@media (min-width:901px) and (max-width:1200px){ .side{padding:6px 16px} .side .nav button{padding:5px 6px;font-size:12.5px} }
 .topbar .ghost{white-space:nowrap}
 @media (max-width:480px){ .topbar{gap:8px;padding:10px 12px} .topbar .status{display:none} .topbar .mark b{font-size:20px} .topbar .lang,.topbar .ghost{padding:5px 8px;font-size:12px} .topbar .themebtn{width:32px;height:32px} }
+
+/* demand graph colour key: product chips that hide or show a line */
+.gchips{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 4px}
+.gchip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-size:13px;font-weight:600;line-height:1.2;cursor:pointer;transition:opacity .15s,border-color .15s}
+.gchip i{width:22px;height:6px;border-radius:3px;flex:0 0 22px}
+.gchip:hover{border-color:var(--accent)}
+.gchip.off{opacity:.45;text-decoration:line-through}
+.gchip.off i{background:var(--line) !important}
+.gchip.all{border-style:dashed;color:var(--accent)}
+.gchips-hint{font-size:12px;color:var(--muted);margin:0 0 6px}
+.gtable .gl i{width:22px;height:6px;border-radius:3px}
 </style>
 </head>
 <body>
@@ -995,12 +1012,13 @@ en: {
 
   'nav.start': 'Start here',
   'nav.dash': 'Dashboard',
-  'nav.g1': 'Your numbers',
+  'nav.g1': 'Inputs (your numbers)',
+  'nav.g3': 'Help',
   'nav.settings': 'Settings',
   'nav.seasons': 'Seasons',
   'nav.suppliers': 'Suppliers',
   'nav.products': 'Products',
-  'nav.g2': 'What to do',
+  'nav.g2': 'Results / What to do now',
   'nav.plan': 'Purchase plan',
   'nav.orders': 'Order decisions',
   'nav.demand': 'Demand forecast',
@@ -1016,6 +1034,8 @@ en: {
   'gr.forecast': 'Forecast',
   'gr.reorder': 'Reorder point reached',
   'gr.reorderNow': 'Order now',
+  'gr.chipsHint': 'Tap a product to hide or show its line. The chart zooms in on the lines you keep.',
+  'gr.showAll': 'Show all',
   'gr.legend': 'Solid line is what you sold. Dashed line is the forecast. A ring marks the day each product reaches its reorder point.',
   'gr.now': 'Today',
   'why.title': 'Why',
@@ -1103,7 +1123,7 @@ en: {
 
   /* start */
   'start.title': 'Start here',
-  'start.lede': 'Fill in the four pages under Your numbers, in order. Everything under What to do updates by itself every time you type.',
+  'start.lede': 'Fill in the four pages under Inputs (your numbers), in order. Everything under Results / What to do now updates by itself every time you type.',
   'start.s1': 'Settings',
   'start.s1p': 'Two costs: placing one order, and holding stock for a year. Rough numbers are fine.',
   'start.s2': 'Seasons',
@@ -1220,7 +1240,7 @@ en: {
   'dead.total': 'Cash frozen in dead stock',
   'dead.idle': 'Hasn\'t sold in',
   'dead.months': '{n} months',
-  'dead.was': 'used to sell about {n} a month',
+  'dead.was': 'averaged about {n} a month over the last 12 months',
   'dead.action': 'Worth a discount to clear, or dropping from what you reorder.',
   'dead.locked': 'The dead stock report is part of Store.',
   'cash.title': 'Cash flow forecast',
@@ -1622,12 +1642,13 @@ ar: {
 
   'nav.start': 'ابدأ من هنا',
   'nav.dash': 'لوحة المتابعة',
-  'nav.g1': 'أرقامك',
+  'nav.g1': 'المدخلات (أرقامك)',
+  'nav.g3': 'مساعدة',
   'nav.settings': 'الإعدادات',
   'nav.seasons': 'المواسم',
   'nav.suppliers': 'الموردين',
   'nav.products': 'المنتجات',
-  'nav.g2': 'تعمل إيه',
+  'nav.g2': 'النتائج / تعمل إيه دلوقتي',
   'nav.plan': 'خطة الشراء',
   'nav.orders': 'قرارات الطلب',
   'nav.demand': 'توقع الطلب',
@@ -1643,6 +1664,8 @@ ar: {
   'gr.forecast': 'التوقع',
   'gr.reorder': 'وقت إعادة الطلب',
   'gr.reorderNow': 'اطلب دلوقتي',
+  'gr.chipsHint': 'دوس على منتج علشان تخفي خطه أو تظهره. الرسم بيكبّر على الخطوط اللي فاضلة.',
+  'gr.showAll': 'اظهر الكل',
   'gr.legend': 'الخط المتصل هو اللي بعته. الخط المتقطع هو التوقع. الدايرة بتعلّم اليوم اللي كل منتج هيوصل فيه نقطة إعادة الطلب.',
   'gr.now': 'النهارده',
   'why.title': 'ليه',
@@ -1729,7 +1752,7 @@ ar: {
   'upgrade': 'شوف Pro',
 
   'start.title': 'ابدأ من هنا',
-  'start.lede': 'املأ الأربع صفحات اللي تحت "أرقامك" بالترتيب. كل اللي تحت "تعمل إيه" بيتحدث لوحده مع كل رقم تكتبه.',
+  'start.lede': 'املأ الأربع صفحات اللي تحت "المدخلات (أرقامك)" بالترتيب. كل اللي تحت "النتائج / تعمل إيه دلوقتي" بيتحدث لوحده مع كل رقم تكتبه.',
   'start.s1': 'الإعدادات',
   'start.s1p': 'تكلفتين: تكلفة الطلبية الواحدة، وتكلفة تخزين البضاعة لمدة سنة. أرقام تقريبية كفاية.',
   'start.s2': 'المواسم',
@@ -1843,7 +1866,7 @@ ar: {
   'dead.total': 'فلوس متجمدة في البضاعة الراكدة',
   'dead.idle': 'مباعتش من',
   'dead.months': '{n} شهر',
-  'dead.was': 'كان بيبيع حوالي {n} في الشهر',
+  'dead.was': 'متوسطه حوالي {n} في الشهر على آخر 12 شهر',
   'dead.action': 'يستاهل خصم يتصرف فيه، أو تشيله من طلبياتك الجاية.',
   'dead.locked': 'تقرير البضاعة الراكدة متاح في باقة Store.',
   'cash.title': 'توقع التدفق النقدي',
@@ -2442,9 +2465,9 @@ window.addEventListener('beforeunload', e => {
 
 /* ================= shell ================= */
 const TABS = [
-  { id: 'start', g: 0 }, { id: 'walk', g: 0 }, { id: 'dash', g: 0 },
   { id: 'settings', g: 1 }, { id: 'seasons', g: 1 }, { id: 'suppliers', g: 1 }, { id: 'products', g: 1 },
-  { id: 'plan', g: 2 }, { id: 'orders', g: 2 }, { id: 'demand', g: 2 }, { id: 'trends', g: 2 },
+  { id: 'start', g: 3 }, { id: 'walk', g: 3 },
+  { id: 'dash', g: 2 }, { id: 'plan', g: 2 }, { id: 'orders', g: 2 }, { id: 'demand', g: 2 }, { id: 'trends', g: 2 },
   { id: 'incoming', g: 2 }, { id: 'score', g: 2 }, { id: 'dead', g: 2 }, { id: 'cash', g: 2 }, { id: 'accuracy', g: 2 }, { id: 'health', g: 2 }
 ];
 const RESULT_TABS = ['dash', 'plan', 'orders', 'demand', 'trends', 'incoming', 'score', 'dead', 'cash', 'accuracy', 'health'];
@@ -2462,14 +2485,17 @@ function renderNav() {
     plan: { n: d.decisions.CRITICAL + d.decisions.ORDER, crit: d.decisions.CRITICAL > 0 },
     health: { n: d.fix, crit: d.fix > 0, hideZero: true }
   };
-  let html = '', g = -1;
-  TABS.forEach(tab => {
-    if (tab.g !== g) { g = tab.g; if (g > 0) html += (g > 1 ? '<span class="nav-br"></span>' : '') + '<div class="nav-label">' + esc(t('nav.g' + g)) + '</div>'; }
+  const btn = tab => {
     const b = badges[tab.id];
     const badge = b && !(b.hideZero && !b.n) ? '<span class="badge' + (b.crit ? ' crit' : '') + '">' + b.n + '</span>' : '';
-    html += '<button type="button" data-act="tab" data-tab="' + tab.id + '"' + (S.tab === tab.id ? ' aria-current="page"' : '') + '><span>' + esc(t('nav.' + tab.id)) + lockTag(tab.id) + '</span>' + badge + '</button>';
-  });
-  $('#nav').innerHTML = html;
+    return '<button type="button" data-act="tab" data-tab="' + tab.id + '"' + (S.tab === tab.id ? ' aria-current="page"' : '') + '><span>' + esc(t('nav.' + tab.id)) + lockTag(tab.id) + '</span>' + badge + '</button>';
+  };
+  const group = g => TABS.filter(x => x.g === g).map(btn).join('');
+  // Two titled rows: what you type in, then what the app works out for you.
+  $('#nav').innerHTML =
+    '<div class="nav-row"><div class="nav-label">' + esc(t('nav.g1')) + '</div><div class="nav-items">' + group(1) +
+      '<span class="nav-sub">' + esc(t('nav.g3')) + '</span>' + group(3) + '</div></div>' +
+    '<div class="nav-row"><div class="nav-label">' + esc(t('nav.g2')) + '</div><div class="nav-items">' + group(2) + '</div></div>';
   $('#bar-title').textContent = t('nav.' + S.tab);
   const cur = $('#nav [aria-current="page"]');
   if (cur && window.matchMedia('(max-width:900px)').matches) cur.scrollIntoView({ inline: 'center', block: 'nearest' });
@@ -3132,7 +3158,9 @@ VIEWS.demand = () => {
 /* ---------- Demand graphs ---------- */
 // One SVG per band of similarly selling products. Drawn by hand rather than with a
 // chart library, because the app must stay a single file with no external scripts.
-const GR_COLORS = ['#AF773F', '#B0801F', '#65482A', '#6D5A85', '#7C542C'];
+// Five clearly different hues (not five browns). The graph panel stays light in both themes, so one strong set works for both.
+const GR_COLORS = ['#1F6FB2', '#D9730D', '#2E8B57', '#9A3FB5', '#0F8C8C'];
+const grHidden = new Set();
 function niceStep(max, n) {
   const raw = max / n, p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / p;
   return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
@@ -3143,8 +3171,10 @@ function bandChart(band, last) {
   const plotW = W - L - R, plotH = H - TOP - B;
   const dpm = (S.ws.settings && S.ws.settings.daysPerMonth) || 30;
 
+  const shown = band.series.filter(sr => !grHidden.has(sr.id));
+  const vis = shown.length ? shown : band.series;
   let peak = 0;
-  band.series.forEach(sr => {
+  vis.forEach(sr => {
     sr.sales.forEach(v => { if (v != null && v > peak) peak = v; });
     sr.forecast.forEach(v => { if (v > peak) peak = v; });
   });
@@ -3179,6 +3209,7 @@ function bandChart(band, last) {
 
   const marks = [];
   band.series.forEach((sr, si) => {
+    if (vis.indexOf(sr) < 0) return;
     let sg = '';
     (() => {
     const col = GR_COLORS[si % GR_COLORS.length];
@@ -3188,16 +3219,16 @@ function bandChart(band, last) {
       d += (started ? 'L' : 'M') + x(i) + ' ' + y(v) + ' ';
       started = true; lastI = i;
     });
-    if (d) sg += '<path class="ln" pathLength="1" d="' + d.trim() + '" fill="none" stroke="' + col + '" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>';
+    if (d) sg += '<path class="ln" pathLength="1" d="' + d.trim() + '" fill="none" stroke="' + col + '" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>';
     sr.sales.forEach((v, i) => {
       if (v == null) return;
-      sg += '<circle cx="' + x(i) + '" cy="' + y(v) + '" r="2.4" fill="' + col + '"><title>' + esc(sr.name) + ', ' + esc(monthName(calMonth(i + 1, last))) + ': ' + n0(v) + '</title></circle>';
+      sg += '<circle cx="' + x(i) + '" cy="' + y(v) + '" r="3" fill="' + col + '"><title>' + esc(sr.name) + ', ' + esc(monthName(calMonth(i + 1, last))) + ': ' + n0(v) + '</title></circle>';
     });
     if (lastI < 0) return;
     const poly = [[lastI, sr.sales[lastI]]].concat(sr.forecast.map((v, k) => [hist + k, v]));
     let f = '';
     poly.forEach((q, k) => { f += (k ? 'L' : 'M') + x(q[0]) + ' ' + y(q[1]) + ' '; });
-    sg += '<path d="' + f.trim() + '" fill="none" stroke="' + col + '" stroke-width="2.4" stroke-dasharray="5 5" stroke-linecap="round" opacity=".85"/>';
+    sg += '<path d="' + f.trim() + '" fill="none" stroke="' + col + '" stroke-width="2.8" stroke-dasharray="6 5" stroke-linecap="round"/>';
     const at = idx => {
       if (idx <= poly[0][0]) return poly[0][1];
       for (let k = 1; k < poly.length; k++) {
@@ -3252,8 +3283,15 @@ function bandChart(band, last) {
   }).join('');
 
   const lo = Math.round(band.lo), hi = Math.round(band.hi);
+  // colour key: one chip per product; tapping hides or shows its line and the scale zooms to what is left
+  const chips = band.series.map((sr, si) => {
+    const off = vis.indexOf(sr) < 0;
+    return '<button type="button" class="gchip' + (off ? ' off' : '') + '" data-act="grToggle" data-id="' + esc(sr.id) + '" aria-pressed="' + (!off) + '">' +
+      '<i style="background:' + GR_COLORS[si % GR_COLORS.length] + '"></i>' + bdi(sr.name || t('unnamed')) + '</button>';
+  }).join('') + (shown.length < band.series.length ? '<button type="button" class="gchip all" data-act="grAll" data-ids="' + esc(band.series.map(x => x.id).join(',')) + '">' + esc(t('gr.showAll')) + '</button>' : '');
   return '<div class="panel graph gpanel">' +
     '<h3>' + esc(lo === hi ? t('gr.bandOne', { lo: lo }) : t('gr.band', { lo: lo, hi: hi })) + '</h3>' +
+    '<div class="gchips">' + chips + '</div><p class="gchips-hint">' + esc(t('gr.chipsHint')) + '</p>' +
     '<div class="gscroll"><svg viewBox="0 0 ' + W + ' ' + H + '" class="chart" direction="ltr" style="direction:ltr" role="img" aria-label="' + esc(t('gr.units')) + '">' + g + '</svg></div>' +
     '<table class="gtable"><thead><tr><th>' + esc(t('product')) + '</th><th class="num">' + esc(t('gr.nextMonth')) + '</th><th>' + esc(t('gr.nextOrder')) + '</th></tr></thead><tbody>' + rows + '</tbody></table>' +
     '</div>';
@@ -3736,6 +3774,8 @@ const ACTIONS = {
     markDirty(); toast(t('sc.usedReal', { n: sc.actualCount }));
   },
   histYear: el => { S.histYear = Number(el.dataset.y) || 0; renderTab(); },
+  grToggle: el => { const id = el.dataset.id; if (grHidden.has(id)) grHidden.delete(id); else grHidden.add(id); renderTab(); },
+  grAll: el => { (el.dataset.ids || '').split(',').forEach(id => grHidden.delete(id)); renderTab(); },
   rollMonth: async () => {
     const s = S.ws.settings;
     const next = s.lastMonth % 12 + 1;
