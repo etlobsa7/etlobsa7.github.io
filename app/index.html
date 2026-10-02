@@ -837,6 +837,33 @@ html[data-theme="light"] .kpi b{color:var(--accent)}
 @keyframes starTurn{to{transform:rotate(1turn)}}
 html[data-theme="light"] .page-head .eyebrow,.login-brand .eyebrow,.today .eyebrow{color:#E2BC6E}
 @media (prefers-reduced-motion:reduce){.mark .gstar,.mark:hover .gstar,.mark:hover .gs-stitch,.today::after{animation:none}.spinner{animation-duration:3s}}
+
+/* ---------- menu across the top instead of down the left ---------- */
+.acct-mini{display:none}
+.nav-br{display:none}
+@media (min-width:901px){
+  .app{grid-template-columns:minmax(0,1fr) !important;grid-template-rows:auto auto 1fr}
+  .side{position:sticky;top:calc(var(--barh) + 2px);z-index:20;height:auto;overflow:visible;display:block;
+    padding:8px 28px;border-inline-end:0;border-bottom:1px solid var(--line-2);background:var(--bg);box-shadow:0 6px 14px -12px rgba(0,0,0,.35)}
+  .side .nav{display:flex !important;flex-direction:row !important;flex-wrap:wrap;align-items:center;gap:2px 2px;min-width:0}
+  .side .nav > *{width:auto !important;flex:0 0 auto}
+  .side .nav .nav-br{display:block;flex-basis:100%;height:0}
+  .side .nav[hidden]{display:none !important}
+  .side .nav .badge{margin-inline-start:0 !important}
+  .side .nav-label{padding:0 4px 0 14px;font-size:10px;color:var(--muted)}
+  .side .nav button{display:inline-flex !important;align-items:center;justify-content:flex-start;gap:6px;padding:6px 9px;white-space:nowrap;font-size:13.5px}
+  .side .nav button[aria-current="page"]::before{inset-inline-start:9px;inset-inline-end:9px;top:auto;bottom:0;width:auto;height:2px}
+  .side .account{display:none}
+  .topbar .ghost{display:inline-block;border-color:rgba(255,255,255,.34);color:#fff;padding:6px 12px;font-size:13px}
+  .acct-mini{display:flex;flex-direction:column;align-items:flex-end;font-size:11.5px;line-height:1.35;color:#BBAB9A;margin-inline-end:4px}
+  .acct-mini span:first-child{color:#E2D6CB}
+  .acct-mini .ghost{display:none}
+  .main > .view{margin-inline:auto}
+}
+@media (min-width:901px) and (max-width:1320px){ .acct-mini{display:none} }
+@media (min-width:901px) and (max-width:1200px){ .side{padding:6px 16px} .side .nav button{padding:5px 6px;font-size:12.5px} .side .nav-label{padding-inline-start:8px} }
+.topbar .ghost{white-space:nowrap}
+@media (max-width:480px){ .topbar{gap:8px;padding:10px 12px} .topbar .status{display:none} .topbar .mark b{font-size:20px} .topbar .lang,.topbar .ghost{padding:5px 8px;font-size:12px} .topbar .themebtn{width:32px;height:32px} }
 </style>
 </head>
 <body>
@@ -900,6 +927,7 @@ html[data-theme="light"] .page-head .eyebrow,.login-brand .eyebrow,.today .eyebr
     <span class="sep"></span>
     <span class="title" id="bar-title"></span>
     <span class="push"></span>
+    <span class="acct-mini" id="acct-mini"></span>
     <span class="status" id="status"><i></i><span></span></span>
     <button type="button" class="themebtn" data-act="theme" aria-label="Light or dark mode" title="Light or dark mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg></button>
     <button class="lang" data-act="lang">العربية</button>
@@ -948,14 +976,14 @@ en: {
   'login.other': 'Use a different email',
   'login.resend': 'Send a new code',
   'login.sent': 'If {email} has an active subscription, a code is on its way. Check your spam folder too.',
-  'login.expired': 'You were signed out. This happens after two weeks, or when your account is opened on a third device.',
+  'login.expired': 'You were signed out. This happens after two weeks without opening the app, or when your account is opened on a third device.',
   'login.inactive': 'This subscription is not active. Your data is saved and comes back as soon as you renew.',
   'login.renew': 'Renew subscription',
   'login.noplan': 'No subscription yet?',
   'login.plans': 'See plans',
   'err.BAD_EMAIL': 'Enter a valid email address.',
   'err.WAIT': 'Wait a minute before asking for another code.',
-  'err.TOO_MANY': 'Too many attempts. Try again in an hour.',
+  'err.TOO_MANY': 'Too many attempts. Ask for a new code, or wait up to an hour if that is refused too.',
   'err.BAD_CODE': 'That code is not right. Check the latest email.',
   'err.CODE_EXPIRED': 'That code has expired. Ask for a new one.',
   'err.INACTIVE': 'This subscription is not active.',
@@ -991,8 +1019,8 @@ en: {
   'gr.legend': 'Solid line is what you sold. Dashed line is the forecast. A ring marks the day each product reaches its reorder point.',
   'gr.now': 'Today',
   'why.title': 'Why',
-  'why.CRITICAL': 'You have {ip} in stock and on order. That is at or below the {ss} safety buffer, so you are already exposed. At {rate} a day, {lt} days of supplier waiting needs {rop} on the shelf.',
-  'why.ORDER': 'You have {ip} in stock and on order, and the reorder point is {rop}. At {rate} a day it takes {lt} days for stock to arrive, so ordering now means it lands before the {ss} safety buffer is touched.',
+  'why.CRITICAL': 'You have {ip} in stock and on order. That is at or below the {ss} safety buffer, so you are already exposed. At {rate} a day, {lt} days of supplier waiting plus a week until your next check needs {rop} on the shelf.',
+  'why.ORDER': 'You have {ip} in stock and on order, and the reorder point is {rop}. At {rate} a day, stock takes {lt} days to arrive and your next check is a week away, so ordering now means it lands before the {ss} safety buffer is touched.',
   'why.OK': 'You have {ip}, comfortably above the {rop} reorder point. At {rate} a day you have about {days} days before this needs ordering.',
   'why.OVER': 'You have {cover} days of cover, past your {limit} day overstock limit. About {excess} units and {value} of cash are sitting still here.',
   'why.NOHIST': 'No sales typed in yet, so there is nothing to forecast from.',
@@ -1059,7 +1087,7 @@ en: {
   'notice.PROFILES_LOCKED': 'Custom season shapes are part of Pro.',
   'notice.LIMIT_PROFILES': 'You can keep up to 24 season shapes.',
   'limit.products': 'Your plan covers {max} products.',
-  'limit.up.basic': 'Pro covers 35 products, Store covers 200.',
+  'limit.up.basic': 'Pro covers 50 products, Store covers 200.',
   'limit.up.pro': 'Store covers 200 products.',
   'upgradePlan': 'See plans',
   'bulk.select': 'Select',
@@ -1083,7 +1111,7 @@ en: {
   'start.s3': 'Suppliers',
   'start.s3p': 'Lead time, how late they can be, minimum order and carton size.',
   'start.s4': 'Products',
-  'start.s4p': 'Twelve months of unit sales, cost, price, stock on hand and stock on order. You can paste straight from Excel.',
+  'start.s4p': 'At least 12 months of unit sales (two years or more lets the app learn your seasons), cost, price, stock on hand and stock on order. You can paste straight from Excel.',
   'start.s5': 'Health check',
   'start.s5p': 'Fix every red row before you trust an order.',
   'start.s6': 'Purchase plan',
@@ -1098,7 +1126,7 @@ en: {
   'start.colours': 'What the verdicts mean',
   'start.limits': 'What this does not do',
   'start.l1': 'It cannot forecast a brand-new product. Order those on judgement for the first six months.',
-  'start.l2': 'Under 12 months of history, season and trend switch off for that product.',
+  'start.l2': 'Under 12 months of history, the season shape and the trend figure switch off for that product. With two years of history it learns the season from your own sales.',
   'start.l3': 'Ramadan moves about 11 days earlier every year. Review that season shape once a year.',
   'start.l4': 'It plans purchases. It is not accounting, a POS or a barcode system.',
   'start.sample': 'Want to look around first?',
@@ -1138,7 +1166,7 @@ en: {
   'k.margin': 'Gross margin',
   'k.marginS': 'Across all products',
   'k.turn': 'Stock turnover',
-  'k.turnS': 'Under 4 a year means cash is sitting still',
+  'k.turnS': 'A common rule of thumb: under 4 a year means cash is sitting still',
   'k.cover': 'Average days of cover',
   'k.coverS': 'How long current stock lasts',
   'k.over': 'Cash locked in overstock',
@@ -1172,7 +1200,7 @@ en: {
   'set.season': 'Use season shapes',
   'set.seasonH': 'Removes normal seasonal ups and downs before measuring how unpredictable a product is.',
   'set.trend': 'Follow recent sales',
-  'set.trendH': 'Leans the forecast on the last three months, so it keeps up when a product speeds up or slows down.',
+  'set.trendH': 'Leans the forecast on your most recent months, the latest counting most, so it keeps up when a product speeds up or slows down.',
   'set.newMonth': 'Start a new month',
   'set.newMonthP': 'Moves every product\'s sales one column to the left and opens an empty column for {m}. Then type that month\'s sales on the Products page.',
   'set.newMonthBtn': 'Start {m}',
@@ -1186,7 +1214,7 @@ en: {
   'nav.dead': 'Dead stock',
   'nav.cash': 'Cash flow',
   'dead.title': 'Dead stock report',
-  'dead.lede': 'Real stock that has, by its own history, essentially stopped moving. Compared against each product\'s own past, not a generic rule, so a naturally slow seller is never listed by mistake.',
+  'dead.lede': 'Real stock that has, by its own history, essentially stopped moving: each of its last five months sold a fifth of its usual pace or less. It is compared with each product\'s own past, not a generic rule, so a product is not listed just for being a slow seller.',
   'dead.empty': 'Nothing dead right now',
   'dead.emptyP': 'Every product with stock on hand is still selling at something close to its usual pace.',
   'dead.total': 'Cash frozen in dead stock',
@@ -1229,20 +1257,20 @@ en: {
   'wt.s2p': 'Four products. Notice the Tote Bag has its first six months blank, not zero. It launched in March, and blank means no data, while zero would mean nobody wanted it.',
   'wt.s2e': 'Basic Tee, Hooded Jacket, Eid Kaftan, Tote Bag.',
   'wt.s3': 'Health check',
-  'wt.s3p': 'Two products are fine. The Eid Kaftan gets a note because its stock is already below its safety buffer, which is why it says order today. The Tote Bag gets one note because it only has five months of history, so season and trend are switched off for it until it has a full year.',
+  'wt.s3p': 'Two products are fine. The Eid Kaftan gets two notes: its stock is already below its safety buffer, which is why it says order today, and last year its sales only partly followed the Ramadan shape, so the app applies that shape only partly. The Tote Bag gets one note because it only has six months of history, so season and trend are switched off for it until it has a full year.',
   'wt.s3e': '2 Good, 2 Review (Eid Kaftan, Tote Bag).',
   'wt.s4': 'Order decisions',
-  'wt.s4p': 'Read the reason under each product. The Basic Tee has 40 units but its reorder point is 63, so it is time to order. It is not urgent, because 40 is still well above its safety buffer of 12.',
-  'wt.s4e': 'Basic Tee: buffer 12, reorder point 63, order 220. Hooded Jacket: 8, 39, order 110. Eid Kaftan: 16, 34, order 114 today. Tote Bag: stock is healthy.',
+  'wt.s4p': 'Read the reason under each product. The Basic Tee has 40 units but its reorder point is 62, so it is time to order. It is not urgent, because 40 is still well above its safety buffer of 12.',
+  'wt.s4e': 'Basic Tee: buffer 12, reorder point 62, order 220. Hooded Jacket: 9, 39, order 110. Eid Kaftan: 13, 30, order 108 today. Tote Bag: stock is healthy.',
   'wt.s5': 'Demand forecast',
-  'wt.s5p': 'The Hooded Jacket looks chaotic raw, 73 in December and 15 in July. With the winter shape removed it is actually steady, class X, which is why its buffer is only 8.',
+  'wt.s5p': 'The Hooded Jacket looks chaotic raw, 73 in December and 15 in July. With the winter shape removed it is actually steady, class X, which is why its buffer is only 9.',
   'wt.s5e': 'Hooded Jacket class X, Eid Kaftan class X.',
   'wt.s6': 'Dashboard',
   'wt.s6p': 'All three restocking at once pushes the shop over its budget this month. That is exactly what you want to know before payday.',
-  'wt.s6e': 'Stock 8,550 EGP. To order now 54,500 EGP. Stock turnover 26.2x a year.',
+  'wt.s6e': 'Stock 8,550 EGP. To order now 53,600 EGP. Stock turnover 24.6x a year.',
   'wt.s7': 'Purchase plan',
   'wt.s7p': 'Two orders, one per supplier, ready to send on WhatsApp.',
-  'wt.s7e': 'Delta Textiles: 330 pieces. Cairo Print Co: 114 pieces. Over budget by 29,500 EGP.',
+  'wt.s7e': 'Delta Textiles: 330 pieces. Cairo Print Co: 108 pieces. Over budget by 28,600 EGP.',
   'wt.done': 'If every number matched, you understand the whole app. Now clear it and type in your own shop.',
   'nav.incoming': 'Incoming orders',
   'nav.accuracy': 'Forecast accuracy',
@@ -1324,7 +1352,7 @@ en: {
   'sup.pack': 'Carton size',
   'sup.packS': 'pieces per carton',
   'sup.terms': 'Payment terms',
-  'sup.note': 'Lateness: if they usually take 21 days but you have seen 16 and 26, enter (26 - 16) / 4, about 3.',
+  'sup.note': 'Lateness: if they usually take 21 days but you have seen 16 and 26, enter (26 - 16) / 4, which is 2.5.',
   'sup.empty': 'No suppliers yet',
   'sup.emptyP': 'Add each supplier you buy from. It takes a minute per supplier.',
   'sup.delConfirm': 'Delete "{name}"? {n} products use this supplier and will need a new one.',
@@ -1439,7 +1467,7 @@ en: {
 
   /* demand */
   'dem.title': 'Demand forecast',
-  'dem.lede': 'Monthly demand with the season taken out, the trend, how predictable each product is, and the next three months.',
+  'dem.lede': 'Monthly demand with the season taken out, the trend, how predictable each product is, the next three months, and the next 12 for the whole shop.',
   'dem.season': 'Season',
   'dem.months': 'Months',
   'dem.avg': 'Base demand',
@@ -1575,14 +1603,14 @@ ar: {
   'login.other': 'استخدم إيميل تاني',
   'login.resend': 'ابعت رمز جديد',
   'login.sent': 'لو {email} عليه اشتراك نشط، الرمز في الطريق. بص في الـ Spam كمان.',
-  'login.expired': 'اتسجل خروجك. ده بيحصل بعد أسبوعين، أو لما الحساب يتفتح على جهاز تالت.',
+  'login.expired': 'اتسجل خروجك. ده بيحصل بعد أسبوعين من غير ما تفتح الأداة، أو لما الحساب يتفتح على جهاز تالت.',
   'login.inactive': 'الاشتراك ده مش نشط. بياناتك محفوظة وهترجع أول ما تجدد.',
   'login.renew': 'جدد الاشتراك',
   'login.noplan': 'لسه مش مشترك؟',
   'login.plans': 'شوف الباقات',
   'err.BAD_EMAIL': 'اكتب إيميل صحيح.',
   'err.WAIT': 'استنى دقيقة قبل ما تطلب رمز تاني.',
-  'err.TOO_MANY': 'محاولات كتير. جرب تاني بعد ساعة.',
+  'err.TOO_MANY': 'محاولات كتير. اطلب كود جديد، ولو اترفض استنى لحد ساعة.',
   'err.BAD_CODE': 'الرمز غلط. بص على آخر إيميل وصلك.',
   'err.CODE_EXPIRED': 'الرمز انتهى. اطلب رمز جديد.',
   'err.INACTIVE': 'الاشتراك ده مش نشط.',
@@ -1618,8 +1646,8 @@ ar: {
   'gr.legend': 'الخط المتصل هو اللي بعته. الخط المتقطع هو التوقع. الدايرة بتعلّم اليوم اللي كل منتج هيوصل فيه نقطة إعادة الطلب.',
   'gr.now': 'النهارده',
   'why.title': 'ليه',
-  'why.CRITICAL': 'عندك {ip} موجود وفي الطريق. ده عند حد الأمان {ss} أو تحته، يعني انت فعلا مكشوف. بمعدل {rate} في اليوم، انتظار المورد {lt} يوم محتاج {rop} على الرف.',
-  'why.ORDER': 'عندك {ip} موجود وفي الطريق، ونقطة إعادة الطلب {rop}. بمعدل {rate} في اليوم والبضاعة بتاخد {lt} يوم توصل، الطلب دلوقتي معناه إنها هتوصل قبل ما تلمس حد الأمان {ss}.',
+  'why.CRITICAL': 'عندك {ip} موجود وفي الطريق. ده عند حد الأمان {ss} أو تحته، يعني انت فعلا مكشوف. بمعدل {rate} في اليوم، انتظار المورد {lt} يوم وأسبوع لحد مراجعتك الجاية محتاجين {rop} على الرف.',
+  'why.ORDER': 'عندك {ip} موجود وفي الطريق، ونقطة إعادة الطلب {rop}. بمعدل {rate} في اليوم، البضاعة بتاخد {lt} يوم توصل ومراجعتك الجاية بعد أسبوع، فالطلب دلوقتي معناه إنها هتوصل قبل ما تلمس حد الأمان {ss}.',
   'why.OK': 'عندك {ip}، أعلى من نقطة إعادة الطلب {rop} براحة. بمعدل {rate} في اليوم فاضلك حوالي {days} يوم قبل ما ده يحتاج طلب.',
   'why.OVER': 'عندك تغطية {cover} يوم، فوق حد المخزون الزيادة {limit} يوم. يعني حوالي {excess} قطعة و{value} فلوس واقفة هنا.',
   'why.NOHIST': 'لسه مفيش مبيعات مكتوبة، فمفيش حاجة نتوقع منها.',
@@ -1686,7 +1714,7 @@ ar: {
   'notice.PROFILES_LOCKED': 'أشكال المواسم الخاصة متاحة في باقة Pro.',
   'notice.LIMIT_PROFILES': 'تقدر تحتفظ بـ 24 شكل موسم بحد أقصى.',
   'limit.products': 'باقتك بتغطي {max} منتج.',
-  'limit.up.basic': 'باقة Pro بتغطي 35 منتج، وStore بتغطي 200.',
+  'limit.up.basic': 'باقة Pro بتغطي 50 منتج، وStore بتغطي 200.',
   'limit.up.pro': 'باقة Store بتغطي 200 منتج.',
   'upgradePlan': 'شوف الباقات',
   'bulk.select': 'تحديد',
@@ -1709,7 +1737,7 @@ ar: {
   'start.s3': 'الموردين',
   'start.s3p': 'مدة التوريد، ممكن يتأخر قد إيه، أقل كمية، وعدد القطع في الكرتونة.',
   'start.s4': 'المنتجات',
-  'start.s4p': 'مبيعات 12 شهر بالقطعة، التكلفة، السعر، المخزون الموجود واللي في الطريق. تقدر تعمل لصق من Excel على طول.',
+  'start.s4p': 'مبيعات 12 شهر على الأقل بالقطعة (سنتين أو أكتر بيخلوا الأداة تتعلم مواسمك)، التكلفة، السعر، المخزون الموجود واللي في الطريق. تقدر تعمل لصق من Excel على طول.',
   'start.s5': 'فحص البيانات',
   'start.s5p': 'صلّح كل صف أحمر قبل ما تعتمد على أي طلبية.',
   'start.s6': 'خطة الشراء',
@@ -1724,7 +1752,7 @@ ar: {
   'start.colours': 'معنى كل قرار',
   'start.limits': 'حاجات الأداة مش بتعملها',
   'start.l1': 'مش بتتوقع منتج جديد خالص. اطلبه بتقديرك أول 6 شهور.',
-  'start.l2': 'لو تاريخ المنتج أقل من 12 شهر، الموسمية والاتجاه بيتقفلوا للمنتج ده.',
+  'start.l2': 'لو تاريخ المنتج أقل من 12 شهر، شكل الموسم ورقم الاتجاه بيتقفلوا للمنتج ده. ولو عنده سنتين، الأداة بتتعلم الموسم من مبيعاتك انت.',
   'start.l3': 'رمضان بييجي بدري حوالي 11 يوم كل سنة. راجع شكل الموسم ده مرة في السنة.',
   'start.l4': 'دي أداة لتخطيط الشراء. مش برنامج حسابات ولا كاشير ولا باركود.',
   'start.sample': 'عايز تتفرج الأول؟',
@@ -1763,7 +1791,7 @@ ar: {
   'k.margin': 'هامش الربح',
   'k.marginS': 'لكل المنتجات',
   'k.turn': 'معدل دوران المخزون',
-  'k.turnS': 'أقل من 4 في السنة معناه فلوسك واقفة',
+  'k.turnS': 'قاعدة شائعة: أقل من 4 في السنة معناه فلوسك واقفة',
   'k.cover': 'متوسط أيام التغطية',
   'k.coverS': 'المخزون الحالي يكفي قد إيه',
   'k.over': 'فلوس متجمدة في مخزون زيادة',
@@ -1796,7 +1824,7 @@ ar: {
   'set.season': 'استخدم أشكال المواسم',
   'set.seasonH': 'بيشيل التغيرات الموسمية العادية قبل ما يقيس المنتج متقلب قد إيه.',
   'set.trend': 'امشي مع المبيعات الأخيرة',
-  'set.trendH': 'بيخلي التوقع يعتمد على آخر تلات شهور، فيلحق المنتج لما بيعه يسرع أو يهدى.',
+  'set.trendH': 'بيخلي التوقع يعتمد أكتر على آخر شهورك، وآخر شهر ليه الوزن الأكبر، فيلحق المنتج لما بيعه يسرع أو يهدى.',
   'set.newMonth': 'ابدأ شهر جديد',
   'set.newMonthP': 'بيزحزح مبيعات كل منتج خانة واحدة ناحية الأقدم ويفتح عمود فاضي لشهر {m}. بعدها اكتب مبيعات الشهر ده في صفحة المنتجات.',
   'set.newMonthBtn': 'ابدأ {m}',
@@ -1809,7 +1837,7 @@ ar: {
   'nav.dead': 'البضاعة الراكدة',
   'nav.cash': 'التدفق النقدي',
   'dead.title': 'تقرير البضاعة الراكدة',
-  'dead.lede': 'بضاعة حقيقية تقريبا وقفت تتحرك، بمقارنتها بتاريخها هي، مش بقاعدة عامة، فمنتج بطيء بطبيعته ماهيظهرش هنا غلط.',
+  'dead.lede': 'بضاعة حقيقية تقريبا وقفت تتحرك بمقارنتها بتاريخها هي: كل شهر من آخر خمس شهور اتباع فيه خُمس معدلها المعتاد أو أقل. المقارنة بتاريخ كل منتج مش بقاعدة عامة، فالمنتج مابيظهرش هنا لمجرد إنه بطيء بطبيعته.',
   'dead.empty': 'مفيش بضاعة راكدة دلوقتي',
   'dead.emptyP': 'كل منتج عنده مخزون لسه بيتباع بمعدل قريب من المعتاد.',
   'dead.total': 'فلوس متجمدة في البضاعة الراكدة',
@@ -1852,20 +1880,20 @@ ar: {
   'wt.s2p': 'أربع منتجات. لاحظ إن الشنطة القماش أول ست شهور فاضيين مش صفر. اتنزلت في مارس، والفاضي معناه مفيش بيانات، إنما الصفر معناه محدش كان عايزها.',
   'wt.s2e': 'تيشيرت بيسك، جاكت بكابيشون، قفطان العيد، شنطة قماش.',
   'wt.s3': 'فحص البيانات',
-  'wt.s3p': 'منتجين تمام. القفطان عليه ملاحظة لأن مخزونه نزل تحت حد الأمان، وعلشان كده بيقولك اطلب النهارده. والشنطة عليها ملاحظة واحدة لأن عندها خمس شهور بس من التاريخ، فالموسم والاتجاه مقفولين ليها لحد ما تكمل سنة.',
+  'wt.s3p': 'منتجين تمام. القفطان عليه ملاحظتين: مخزونه نزل تحت حد الأمان، وعلشان كده بيقولك اطلب النهارده، ومبيعاته السنة اللي فاتت ماشيتش على شكل رمضان غير جزئيا، فالأداة بتطبق الشكل ده جزئيا بس. والشنطة عليها ملاحظة واحدة لأن عندها ست شهور بس من التاريخ، فالموسم والاتجاه مقفولين ليها لحد ما تكمل سنة.',
   'wt.s3e': '2 تمام، و2 راجعهم (القفطان والشنطة القماش).',
   'wt.s4': 'قرارات الطلب',
-  'wt.s4p': 'اقرا السبب تحت كل منتج. التيشيرت عنده 40 قطعة ونقطة إعادة الطلب 63، فجه وقت الطلب. مش مستعجل، لأن 40 لسه أعلى بكتير من حد الأمان 12.',
-  'wt.s4e': 'التيشيرت: الأمان 12، إعادة الطلب 63، اطلب 220. الجاكت: 8، 39، اطلب 110. القفطان: 16، 34، اطلب 114 النهارده. الشنطة: المخزون كويس.',
+  'wt.s4p': 'اقرا السبب تحت كل منتج. التيشيرت عنده 40 قطعة ونقطة إعادة الطلب 62، فجه وقت الطلب. مش مستعجل، لأن 40 لسه أعلى بكتير من حد الأمان 12.',
+  'wt.s4e': 'التيشيرت: الأمان 12، إعادة الطلب 62، اطلب 220. الجاكت: 9، 39، اطلب 110. القفطان: 13، 30، اطلب 108 النهارده. الشنطة: المخزون كويس.',
   'wt.s5': 'توقع الطلب',
-  'wt.s5p': 'الجاكت شكله عشوائي، 73 في ديسمبر و15 في يوليو. بعد ما تشيل شكل الشتاء بيطلع ثابت فعلا، فئة X، وده سبب إن حد الأمان بتاعه 8 بس.',
+  'wt.s5p': 'الجاكت شكله عشوائي، 73 في ديسمبر و15 في يوليو. بعد ما تشيل شكل الشتاء بيطلع ثابت فعلا، فئة X، وده سبب إن حد الأمان بتاعه 9 بس.',
   'wt.s5e': 'الجاكت فئة X، والقفطان فئة X.',
   'wt.s6': 'لوحة المتابعة',
   'wt.s6p': 'التلات منتجات محتاجين طلب في نفس الوقت، فالمحل هيعدي ميزانيته الشهر ده. ده بالظبط اللي محتاج تعرفه قبل القبض.',
-  'wt.s6e': 'المخزون 8,550 جنيه. المطلوب دلوقتي 54,500 جنيه. دوران المخزون 26.2 مرة في السنة.',
+  'wt.s6e': 'المخزون 8,550 جنيه. المطلوب دلوقتي 53,600 جنيه. دوران المخزون 24.6 مرة في السنة.',
   'wt.s7': 'خطة الشراء',
   'wt.s7p': 'طلبيتين، واحدة لكل مورد، جاهزين يتبعتوا على واتساب.',
-  'wt.s7e': 'دلتا للنسيج: 330 قطعة. القاهرة للطباعة: 114 قطعة. أعلى من الميزانية بـ 29,500 جنيه.',
+  'wt.s7e': 'دلتا للنسيج: 330 قطعة. القاهرة للطباعة: 108 قطعة. أعلى من الميزانية بـ 28,600 جنيه.',
   'wt.done': 'لو كل الأرقام طلعت زي دي، يبقى فهمت الأداة كلها. امسحه واكتب بيانات محلك.',
   'nav.incoming': 'الطلبيات الجاية',
   'nav.accuracy': 'دقة التوقع',
@@ -1946,7 +1974,7 @@ ar: {
   'sup.pack': 'الكرتونة',
   'sup.packS': 'قطعة في الكرتونة',
   'sup.terms': 'شروط الدفع',
-  'sup.note': 'التأخير: لو عادة بياخد 21 يوم بس شفته بياخد 16 و26، اكتب (26 - 16) / 4، يعني حوالي 3.',
+  'sup.note': 'التأخير: لو عادة بياخد 21 يوم بس شفته بياخد 16 و26، اكتب (26 - 16) / 4، يعني 2.5.',
   'sup.empty': 'لسه مفيش موردين',
   'sup.emptyP': 'ضيف كل مورد بتشتري منه. دقيقة لكل مورد.',
   'sup.delConfirm': 'تمسح "{name}"؟ عدد المنتجات عليه {n}، وهيحتاجوا مورد جديد.',
@@ -2056,7 +2084,7 @@ ar: {
   'ord.sl': 'الخدمة',
 
   'dem.title': 'توقع الطلب',
-  'dem.lede': 'الطلب الشهري من غير الموسمية، الاتجاه، المنتج متوقع قد إيه، والتلات شهور الجايين.',
+  'dem.lede': 'الطلب الشهري من غير الموسمية، الاتجاه، المنتج متوقع قد إيه، التلات شهور الجايين، والـ 12 شهر الجايين للمحل كله.',
   'dem.season': 'الموسم',
   'dem.months': 'الشهور',
   'dem.avg': 'الطلب الأساسي',
@@ -2436,7 +2464,7 @@ function renderNav() {
   };
   let html = '', g = -1;
   TABS.forEach(tab => {
-    if (tab.g !== g) { g = tab.g; if (g > 0) html += '<div class="nav-label">' + esc(t('nav.g' + g)) + '</div>'; }
+    if (tab.g !== g) { g = tab.g; if (g > 0) html += (g > 1 ? '<span class="nav-br"></span>' : '') + '<div class="nav-label">' + esc(t('nav.g' + g)) + '</div>'; }
     const b = badges[tab.id];
     const badge = b && !(b.hideZero && !b.n) ? '<span class="badge' + (b.crit ? ' crit' : '') + '">' + b.n + '</span>' : '';
     html += '<button type="button" data-act="tab" data-tab="' + tab.id + '"' + (S.tab === tab.id ? ' aria-current="page"' : '') + '><span>' + esc(t('nav.' + tab.id)) + lockTag(tab.id) + '</span>' + badge + '</button>';
@@ -2456,6 +2484,9 @@ function renderAccount() {
     '<div class="row">' +
     (CFG.whatsapp ? '<a class="ghost" style="text-decoration:none" href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '') +
     '<button class="ghost" data-act="logout">' + esc(t('nav.signout')) + '</button></div>';
+  const mini = $('#acct-mini');
+  if (mini) mini.innerHTML = '<span>' + esc(S.me.email) + '</span><span>' + esc(t('plan.' + S.me.plan)) + ' · ' + esc(usage) + '</span>' +
+    (CFG.whatsapp ? '<a class="ghost" href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '');
 }
 
 
