@@ -5,7 +5,7 @@
 <title>Etlob Sa7</title>
 <base target="_top">
 <meta charset="utf-8">
-<script>try{var t=localStorage.getItem("es7.theme");document.documentElement.setAttribute("data-theme",(t==="light"||t==="dark")?t:"light");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("es7.theme");document.documentElement.setAttribute("data-theme",(t==="light"||t==="dark")?t:"dark");}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1514,7 +1514,7 @@ en: {
   'learn.monthsV': '{n} months',
   'learn.monthsS': 'Kept and used as you add months. From 24 months it learns seasons from your own sales.',
   'learn.season': 'Products with a season found',
-  'learn.seasonS': 'Out of {n} with two years of history. A season is used only when your years agree on it.',
+  'learn.seasonS': 'Out of {n} with two years of history. It leans on a season only as much as your years agree on it.',
   'learn.seasonNone': 'Needs two years',
   'learn.seasonNoneS': 'Add last year\'s sales on the Products page to let it learn your seasons.',
   'learn.lead': 'Delivery times learned',
@@ -2134,7 +2134,7 @@ ar: {
   'learn.monthsV': '{n} شهر',
   'learn.monthsS': 'بيتحفظ ويتستخدم كل ما تضيف شهور. من 24 شهر بتتعلم المواسم من مبيعاتك انت.',
   'learn.season': 'منتجات لقت لها موسم',
-  'learn.seasonS': 'من {n} ليهم تاريخ سنتين. الموسم بيتستخدم بس لو سنينك متفقة عليه.',
+  'learn.seasonS': 'من {n} ليهم تاريخ سنتين. بتعتمد على الموسم على قد ما سنينك متفقة عليه.',
   'learn.seasonNone': 'محتاجة سنتين',
   'learn.seasonNoneS': 'ضيف مبيعات السنة اللي فاتت في صفحة المنتجات علشان تتعلم مواسمك.',
   'learn.lead': 'مدد توريد اتعلمتها',
@@ -2863,6 +2863,7 @@ VIEWS.dash = () => {
 
   return head(t('dash.title'), t('dash.lede')) + today + alerts +
     '<div class="section">' + kpis + '</div>' +
+    '<div class="section">' + learnedPanel() + '</div>' +
     '<div class="section two">' +
       '<div class="panel"><h2>' + esc(t('dash.decisions', { n: d.products })) + '</h2><div class="stack">' + stack + '</div><div class="legend">' + legend + '</div></div>' +
       '<div class="panel"><h2>' + esc(t('dash.abc')) + '</h2><div class="split">' +
