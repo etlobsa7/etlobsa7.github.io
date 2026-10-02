@@ -471,7 +471,7 @@ html[lang="ar"] .brand b{font-size:1.1rem;letter-spacing:0;font-weight:700}
 .rx-stat:first-child b{color:var(--cream)}
 .rx-go{color:#E2BC6E}
 .tier.best{border-color:var(--suede);box-shadow:0 18px 44px rgba(107,69,38,.18)}
-.again-case .realchart{background:#FFFCF6}
+.again-case .realchart{background:var(--card);border-color:color-mix(in srgb,var(--line) 70%,#E2BC6E)}
 .pnote{background:#FBF0DC;border-color:#E8CFA3;color:#5E3F12}
 .scrollbar,.sh-progress i,.hs-bar i{background:linear-gradient(90deg,#8A6142,#C99A45,#E2BC6E)}
 ::selection{background:rgba(201,154,69,.35)}
@@ -2763,7 +2763,7 @@ html[dir="rtl"].js-anim #s-example .rx-hero h1{clip-path:inset(0 0 0 100%)}
 .again-case{padding:28px;border-radius:20px;background:linear-gradient(160deg,#18120D,#241A13 60%,#30241A);color:#EBE4D5}
 .again-case h3{color:#fff;margin:0 0 8px;font-size:1.5rem}
 .again-case > p{color:#D3C9BF}
-.again-case .realchart{background:#fff}
+.again-case .realchart{background:var(--card)}
 .again-case .pnote{background:rgba(205,157,54,.1);border-color:rgba(205,157,54,.35);color:#E6CF9C}
 .again-case .pmethod{color:#BCB0A3}.again-case .pmethod a{color:#CEA47A}
 .again-case strong{color:#FBF3E4}
@@ -3197,7 +3197,7 @@ html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
       var stock = 36 - sold + Math.round(22 * refill);
       sellOrder.forEach(function (b, i) {
         var h = b.userData.home, back = i >= 22 - Math.round(22 * refill) && i < sold;
-        var out = clamp(soldF - i + .5, 0, 1);                 /* 0 on the shelf, 1 gone to a customer */
+        var out = clamp(soldF - i, 0, 1);                 /* 0 on the shelf, 1 gone to a customer */
         if (back) {
           var idx = 22 - 1 - i, t = clamp(refill * 22 - idx, 0, 1), drop = (1 - ease(t)) * 7;
           b.visible = true; b.position.set(h.x, h.y + drop, h.z); b.scale.setScalar(1); b.rotation.set(0, drop * .15, 0);
