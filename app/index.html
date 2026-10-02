@@ -1176,7 +1176,7 @@ en: {
   'set.newMonth': 'Start a new month',
   'set.newMonthP': 'Moves every product\'s sales one column to the left and opens an empty column for {m}. Then type that month\'s sales on the Products page.',
   'set.newMonthBtn': 'Start {m}',
-  'set.newMonthConfirm': 'This drops {old} from every product and adds an empty {m} column. Continue?',
+  'set.newMonthConfirm': 'This moves {old} into your sales history, where the app keeps learning from it, and adds an empty {m} column. Continue?',
   'set.newMonthDone': 'Ready. Type {m} sales in the highlighted column.',
   'set.sampleConfirm': 'This replaces all your suppliers, products and settings with a sample shop. Continue?',
 
@@ -1210,7 +1210,7 @@ en: {
   'cash.balance': 'Balance',
   'cash.balanceIn': 'due in {n} days',
   'cash.note': 'Set each supplier\'s deposit percentage and payment days on the Suppliers page. Nothing here is guessed from the terms note, only from those two numbers.',
-  'cash.locked': 'The cash flow forecast is part of Store.',
+  'cash.locked': 'The cash flow forecast is part of Pro and Store.',
   'sup.deposit': 'Deposit',
   'sup.depositS': '% paid upfront',
   'sup.balance': 'Balance due',
@@ -1261,7 +1261,7 @@ en: {
   'imp.done': 'Imported {n} products. Open the Health check page next.',
   'imp.fail': 'That file could not be read. Save it as .xlsx or .csv and try again.',
   'imp.empty': 'The file has no product rows.',
-  'imp.tip': 'One row per product, one column per month of sales, oldest month first. Leave a month blank if you were out of stock.',
+  'imp.tip': 'One row per product, one column per month of sales, oldest month first, up to 36 months. With two years or more, the app learns each product\'s season from your own sales. Leave a month blank if you were out of stock.',
   'ord.markSent': 'Mark as sent',
   'ord.sentToast': 'Order recorded. Its quantities now count as on order.',
   'inc.title': 'Incoming orders',
@@ -1354,7 +1354,7 @@ en: {
   'pro.priceS': 'what you sell for',
   'pro.onhandS': 'counted today',
   'pro.onorderS': 'already ordered',
-  'pro.monthsHead': 'Monthly unit sales, oldest first. Leave a month blank if you were out of stock.',
+  'pro.monthsHead': 'Monthly unit sales, oldest first. Leave a month blank if you were out of stock. Switch to earlier years above: with two years of history the app learns your seasons itself.',
   'pro.paste': 'Tip: copy a block of cells from Excel or Google Sheets and paste it into any cell. It fills right and down, and adds rows if needed.',
   'pro.empty': 'No products yet',
   'pro.emptyP': 'Add products one by one, or paste your sales table from Excel into the first row.',
@@ -1451,6 +1451,31 @@ en: {
   'dem.year': 'Next 12 months',
   'dem.off': 'season off',
   'dem.note': 'Class X is steady (variability up to 25%), Y swings (up to 50%), Z is erratic.',
+  'pro.yNow': 'Last 12 months',
+  'pro.y1': 'Year before',
+  'pro.y2': '2 years before',
+  'pro.yHint': 'Earlier years are optional. Two years of history lets the app learn each product\'s season and gives tighter ranges.',
+  'dem.shop': 'Your whole shop: last 12 months and the next 12',
+  'dem.kHist': 'What you sold',
+  'dem.kFc': 'Forecast',
+  'dem.kRange': 'Expected range: about 8 months in 10 land inside it',
+  'dem.learned': 'learned from your sales',
+  'dem.profile': 'your chosen shape',
+  'learn.title': 'What the app has learned about your shop',
+  'learn.months': 'Sales history it uses',
+  'learn.monthsV': '{n} months',
+  'learn.monthsS': 'Kept and used as you add months. From 24 months it learns seasons from your own sales.',
+  'learn.season': 'Products with a season found',
+  'learn.seasonS': 'Out of {n} with two years of history. A season is used only when your years agree on it.',
+  'learn.seasonNone': 'Needs two years',
+  'learn.seasonNoneS': 'Add last year\'s sales on the Products page to let it learn your seasons.',
+  'learn.lead': 'Delivery times learned',
+  'learn.leadS': 'From the orders you marked received. Used for reorder points.',
+  'learn.leadNone': 'Mark orders received on Incoming orders and it learns each supplier\'s real delivery time.',
+  'learn.acc': 'Forecast accuracy so far',
+  'learn.accS': 'Measured on {n} product months you have entered since.',
+  'learn.accNone': 'Starts after your first new month.',
+  'learn.leadLine': '{s}: {a} days (you typed {b})',
 
   /* abc */
   'abc.title': 'ABC-XYZ',
@@ -1775,7 +1800,7 @@ ar: {
   'set.newMonth': 'ابدأ شهر جديد',
   'set.newMonthP': 'بيزحزح مبيعات كل منتج خانة واحدة ناحية الأقدم ويفتح عمود فاضي لشهر {m}. بعدها اكتب مبيعات الشهر ده في صفحة المنتجات.',
   'set.newMonthBtn': 'ابدأ {m}',
-  'set.newMonthConfirm': 'ده هيشيل {old} من كل المنتجات ويضيف عمود فاضي لـ {m}. نكمل؟',
+  'set.newMonthConfirm': 'ده هينقل {old} لتاريخ مبيعاتك، والأداة هتفضل تتعلم منه، وهيضيف عمود فاضي لـ {m}. نكمل؟',
   'set.newMonthDone': 'جاهز. اكتب مبيعات {m} في العمود المميز.',
   'set.sampleConfirm': 'ده هيستبدل كل الموردين والمنتجات والإعدادات بمحل تجريبي. نكمل؟',
 
@@ -1808,7 +1833,7 @@ ar: {
   'cash.balance': 'الباقي',
   'cash.balanceIn': 'مستحق خلال {n} يوم',
   'cash.note': 'حدد نسبة المقدم وعدد أيام السداد لكل مورد في صفحة الموردين. مفيش حاجة هنا متخمنة من خانة الشروط، بس من الرقمين دول.',
-  'cash.locked': 'توقع التدفق النقدي متاح في باقة Store.',
+  'cash.locked': 'توقع التدفق النقدي متاح في باقتي Pro وStore.',
   'sup.deposit': 'المقدم',
   'sup.depositS': '% بيتدفع مقدما',
   'sup.balance': 'باقي السداد',
@@ -1859,7 +1884,7 @@ ar: {
   'imp.done': 'اتستورد {n} منتج. افتح صفحة فحص البيانات بعدها.',
   'imp.fail': 'الملف ده ماتقراش. احفظه بصيغة xlsx أو csv وجرب تاني.',
   'imp.empty': 'الملف مفيهوش صفوف منتجات.',
-  'imp.tip': 'صف لكل منتج، وعمود لكل شهر مبيعات، الأقدم الأول. سيب الشهر فاضي لو البضاعة كانت خلصانة.',
+  'imp.tip': 'صف لكل منتج، وعمود لكل شهر مبيعات، الأقدم الأول، لحد 36 شهر. لو فيه سنتين أو أكتر، الأداة بتتعلم موسم كل منتج من مبيعاتك انت. سيب الشهر فاضي لو البضاعة كانت خلصانة.',
   'ord.markSent': 'اتبعتت',
   'ord.sentToast': 'الطلبية اتسجلت. كمياتها بقت محسوبة في الطريق.',
   'inc.title': 'الطلبيات الجاية',
@@ -1950,7 +1975,7 @@ ar: {
   'pro.priceS': 'بتبيعه بكام',
   'pro.onhandS': 'المعدود النهارده',
   'pro.onorderS': 'متطلب بالفعل',
-  'pro.monthsHead': 'المبيعات بالقطعة لكل شهر، الأقدم الأول. سيب الشهر فاضي لو البضاعة كانت خلصانة.',
+  'pro.monthsHead': 'المبيعات بالقطعة لكل شهر، الأقدم الأول. سيب الشهر فاضي لو البضاعة كانت خلصانة. اختار السنين اللي قبل كده من فوق: لو فيه سنتين، الأداة بتتعلم مواسمك لوحدها.',
   'pro.paste': 'نصيحة: انسخ مجموعة خلايا من Excel أو Google Sheets والصقها في أي خانة. هتتملى لقدام ولتحت، وهتضيف صفوف لو محتاج.',
   'pro.empty': 'لسه مفيش منتجات',
   'pro.emptyP': 'ضيف المنتجات واحد واحد، أو الصق جدول المبيعات من Excel في أول صف.',
@@ -2043,6 +2068,31 @@ ar: {
   'dem.year': 'الـ 12 شهر الجايين',
   'dem.off': 'الموسمية متقفلة',
   'dem.note': 'الفئة X ثابتة (تذبذب لحد 25%)، Y متقلبة (لحد 50%)، Z عشوائية.',
+  'pro.yNow': 'آخر 12 شهر',
+  'pro.y1': 'السنة اللي قبلها',
+  'pro.y2': 'من سنتين',
+  'pro.yHint': 'السنين اللي قبل كده اختيارية. تاريخ سنتين بيخلي الأداة تتعلم موسم كل منتج وتدي مدى أدق.',
+  'dem.shop': 'المحل كله: آخر 12 شهر والـ 12 الجايين',
+  'dem.kHist': 'اللي بعته',
+  'dem.kFc': 'التوقع',
+  'dem.kRange': 'المدى المتوقع: حوالي 8 شهور من 10 بتيجي جواه',
+  'dem.learned': 'متعلم من مبيعاتك',
+  'dem.profile': 'الشكل اللي اخترته',
+  'learn.title': 'الأداة اتعلمت إيه عن محلك',
+  'learn.months': 'تاريخ المبيعات اللي بتستخدمه',
+  'learn.monthsV': '{n} شهر',
+  'learn.monthsS': 'بيتحفظ ويتستخدم كل ما تضيف شهور. من 24 شهر بتتعلم المواسم من مبيعاتك انت.',
+  'learn.season': 'منتجات لقت لها موسم',
+  'learn.seasonS': 'من {n} ليهم تاريخ سنتين. الموسم بيتستخدم بس لو سنينك متفقة عليه.',
+  'learn.seasonNone': 'محتاجة سنتين',
+  'learn.seasonNoneS': 'ضيف مبيعات السنة اللي فاتت في صفحة المنتجات علشان تتعلم مواسمك.',
+  'learn.lead': 'مدد توريد اتعلمتها',
+  'learn.leadS': 'من الطلبات اللي علمت عليها إنها وصلت. بتتستخدم في نقطة إعادة الطلب.',
+  'learn.leadNone': 'علم على الطلبات إنها وصلت في صفحة الطلبات الجاية، وهي هتتعلم مدة توريد كل مورد الحقيقية.',
+  'learn.acc': 'دقة التوقع لحد دلوقتي',
+  'learn.accS': 'متقاسة على {n} شهر منتج دخلتهم بعد كده.',
+  'learn.accNone': 'بتبدأ بعد أول شهر جديد.',
+  'learn.leadLine': '{s}: {a} يوم (انت كتبت {b})',
 
   'abc.title': 'تصنيف ABC-XYZ',
   'abc.lede': 'كل منتج بيتصنف مرتين: بالمبيعات (A وB وC) وبقابلية التوقع (X وY وZ). كل خانة ليها طريقة إدارة.',
@@ -2373,7 +2423,7 @@ const RESULT_TABS = ['dash', 'plan', 'orders', 'demand', 'trends', 'incoming', '
 
 function renderShell() { renderNav(); renderAccount(); }
 
-const PLAN_NEED = { score: ['scorecard', 'plan.tagPro'], trends: ['graphs', 'plan.tagStore'], dead: ['deadStock', 'plan.tagStore'], cash: ['cashFlow', 'plan.tagStore'] };
+const PLAN_NEED = { score: ['scorecard', 'plan.tagPro'], trends: ['graphs', 'plan.tagStore'], dead: ['deadStock', 'plan.tagStore'], cash: ['cashFlow', 'plan.tagPro'] };
 function lockTag(id) { const n = PLAN_NEED[id]; return n && S.me && S.me.limits && !S.me.limits[n[0]] ? '<span class="plantag">' + esc(t(n[1])) + '</span>' : ''; }
 function renderNav() {
   if (!S.res) return;
@@ -2664,8 +2714,8 @@ function impBuild() {
     ['cost', 'price', 'onHand', 'onOrder'].forEach(k => { if (map[k] >= 0) { const v = impNum(r[map[k]], bad); if (v !== null) it.fields[k] = v; } });
     if (map.first >= 0 && map.last >= map.first) {
       let vals = []; for (let j = map.first; j <= map.last; j++) vals.push(impNum(r[j], bad));
-      vals = vals.slice(-12); while (vals.length < 12) vals.unshift(null);
-      it.fields.sales = vals;
+      vals = vals.slice(-36); while (vals.length < 36) vals.unshift(null);
+      it.fields.sales = vals.slice(24); it.fields.older = vals.slice(0, 24);
     }
     it.existing = byName[name.toLowerCase()] || null;
     items.push(it);
@@ -2873,7 +2923,9 @@ VIEWS.products = () => {
   const hi = S.highlightCol;
   const canCompare = S.me.limits.altSuppliers;
 
-  const headM = Array.from({ length: 12 }, (_, i) => '<th class="num' + (i === 0 ? ' m-sep' : '') + '"' + (hi && i === 11 ? ' style="background:var(--accent-bg)"' : '') + '>' + esc(monthName(calMonth(i + 1, last))) + (i === 0 ? sub('pro.monthS') : '') + '</th>').join('');
+  const yr = S.histYear || 0;   // 0 = last 12 months, 1 = the year before, 2 = two years before
+  const headM = Array.from({ length: 12 }, (_, i) => '<th class="num' + (i === 0 ? ' m-sep' : '') + '"' + (hi && i === 11 && !yr ? ' style="background:var(--accent-bg)"' : '') + '>' + esc(monthName(calMonth(i + 1, last))) + (i === 0 ? sub(yr ? (yr === 1 ? 'pro.y1' : 'pro.y2') : 'pro.monthS') : '') + '</th>').join('');
+  const yearBar = '<div class="chips" role="group" aria-label="' + esc(t('pro.monthsHead')) + '">' + [0, 1, 2].map(y => '<button type="button" class="btn small' + (y === yr ? ' primary' : '') + '" data-act="histYear" data-y="' + y + '" aria-pressed="' + (y === yr) + '">' + esc(t(y ? (y === 1 ? 'pro.y1' : 'pro.y2') : 'pro.yNow')) + '</button>').join('') + '<span class="small muted" style="align-self:center">' + esc(t('pro.yHint')) + '</span></div>';
   const rows = ws.products.map((p, r) => {
     let c = 0;
     const inp = (f, cls, mode, value, extra) => '<td class="' + cls + '"><input type="text" inputmode="' + mode + '" data-scope="product" data-f="' + f + '"' + (extra || '') + ' data-r="' + r + '" data-c="' + (c++) + '" value="' + esc(value) + '"></td>';
@@ -2885,7 +2937,8 @@ VIEWS.products = () => {
     h += '<td class="w-sel"><select data-scope="product" data-f="supplierId" data-r="' + r + '" data-c="' + (c++) + '">' + supOpts(p.supplierId) + '</select></td>';
     if (canCompare) h += '<td>' + btn(t('pro.compare'), 'openCompare', ' data-id="' + p.id + '"', 'small') + '</td>';
     h += '<td class="w-sel"><select data-scope="product" data-f="profileId" data-r="' + r + '" data-c="' + (c++) + '">' + profOpts(p.profileId) + '</select></td>';
-    for (let i = 0; i < 12; i++) h += inp('sales', 'w-m' + (i === 0 ? ' m-sep' : ''), 'numeric', val(p.sales[i]), ' data-i="' + i + '"');
+    for (let i = 0; i < 12; i++) h += yr ? inp('older', 'w-m' + (i === 0 ? ' m-sep' : ''), 'numeric', val((p.older || [])[24 - 12 * yr + i]), ' data-i="' + (24 - 12 * yr + i) + '"')
+      : inp('sales', 'w-m' + (i === 0 ? ' m-sep' : ''), 'numeric', val(p.sales[i]), ' data-i="' + i + '"');
     h += inp('cost', 'w-n m-sep', 'decimal', val(p.cost));
     h += inp('price', 'w-n', 'decimal', val(p.price));
     h += inp('onHand', 'w-n', 'numeric', val(p.onHand));
@@ -2904,7 +2957,7 @@ VIEWS.products = () => {
       btn(t('bulk.cancel'), 'selOff', '', 'small') + '</span></div>'
     : '';
   const toolbar = btn(S.selectMode ? t('bulk.cancel') : t('bulk.select'), S.selectMode ? 'selOff' : 'selOn', '', 'small');
-  return head(t('pro.title'), t('pro.lede'), btn(t('imp.btn'), 'importOpen', '', 'small') + toolbar + add) + pre + bar +
+  return head(t('pro.title'), t('pro.lede'), btn(t('imp.btn'), 'importOpen', '', 'small') + toolbar + add) + pre + bar + yearBar +
     '<div class="tbl-wrap"><table class="t grid" id="pgrid"><thead><tr>' +
     (S.selectMode ? '<th style="width:38px"></th>' : '') +
     '<th class="stick">' + esc(t('pro.name')) + sub('pro.nameS') + '</th><th>' + esc(t('pro.verdict')) + sub('pro.verdictS') +
@@ -2986,6 +3039,42 @@ VIEWS.orders = () => {
 };
 
 /* ---------- Demand ---------- */
+/* the whole shop: last 12 months, the next 12, and the expected range */
+function shopChart() {
+  const d = S.res.dash; if (!d || !d.fcPath || !d.histPath) return '';
+  const last = S.res.lastMonth, hist = d.histPath, fc = d.fcPath, lo = d.fcLo, hi = d.fcHi;
+  const all = hist.filter(v => v != null).concat(hi); const top = Math.max.apply(null, all.concat([1])) * 1.08;
+  const W = 760, H = 230, L = 52, R = 12, T = 12, B = 30, X = i => L + i * (W - L - R) / 23, Y = v => T + (H - T - B) * (1 - v / top);
+  const line = (vals, off) => vals.map((v, i) => v == null ? null : X(i + off).toFixed(1) + ' ' + Y(v).toFixed(1)).filter(Boolean).map((p, i) => (i ? 'L' : 'M') + p).join(' ');
+  const band = 'M' + hi.map((v, i) => X(i + 12).toFixed(1) + ' ' + Y(v).toFixed(1)).join(' L') + ' L' + lo.map((v, i) => X(23 - i).toFixed(1) + ' ' + Y(lo[11 - i]).toFixed(1)).join(' L') + 'Z';
+  const lastHist = hist[11] != null ? 'M' + X(11).toFixed(1) + ' ' + Y(hist[11]).toFixed(1) + ' L' + X(12).toFixed(1) + ' ' + Y(fc[0]).toFixed(1) : '';
+  let g = '';
+  for (let k = 0; k <= 4; k++) { const v = top * k / 4; g += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(v).toFixed(1) + '" y2="' + Y(v).toFixed(1) + '" stroke="var(--line)"/><text x="' + (L - 6) + '" y="' + (Y(v) + 4).toFixed(1) + '" text-anchor="end" font-size="11" fill="var(--muted)">' + esc(n0(v)) + '</text>'; }
+  for (let i = 0; i < 24; i += 2) { const m = i < 12 ? calMonth(i + 1, last) : d.fcMonths[i - 12]; g += '<text x="' + X(i).toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle" font-size="11" fill="var(--muted)">' + esc(monthName(m)) + '</text>'; }
+  g += '<line x1="' + X(11.5).toFixed(1) + '" x2="' + X(11.5).toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '" stroke="var(--line)" stroke-dasharray="3 4"/>';
+  g += '<path d="' + band + '" fill="var(--accent-bg)" stroke="none"/>';
+  g += '<path d="' + line(hist, 0) + '" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linejoin="round"/>';
+  g += '<path d="' + lastHist + '" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-dasharray="2 4"/>';
+  g += '<path d="' + line(fc, 12) + '" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linejoin="round"/>';
+  const key = (sw, txt) => '<span style="display:inline-flex;align-items:center;gap:6px;margin-inline-end:16px">' + sw + esc(txt) + '</span>';
+  return '<div class="panel" style="margin-bottom:18px"><h2 style="margin-bottom:8px">' + esc(t('dem.shop')) + '</h2>' +
+    '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block" role="img" aria-label="' + esc(t('dem.shop')) + '">' + g + '</svg>' +
+    '<div class="small" style="margin-top:6px">' + key('<i style="width:18px;border-top:2.4px solid var(--ink)"></i>', t('dem.kHist')) + key('<i style="width:18px;border-top:2.6px solid var(--accent)"></i>', t('dem.kFc')) +
+    key('<i style="width:18px;height:10px;background:var(--accent-bg)"></i>', t('dem.kRange')) + '</div></div>';
+}
+/* what the app has learned from this shop's own data */
+function learnedPanel() {
+  const L = S.res.dash && S.res.dash.learn; if (!L) return '';
+  const d = S.res.dash, twoYear = L.learnedProducts;
+  const kpi = (title, val, small) => '<div class="kpi"><span>' + esc(title) + '</span><b>' + esc(val) + '</b><small>' + esc(small) + '</small></div>';
+  const leads = (L.leads || []).map(x => t('learn.leadLine', { s: x.name || t('unnamed'), a: n0(x.learned), b: n0(x.typed) }));
+  return '<h2 style="margin:6px 0 10px">' + esc(t('learn.title')) + '</h2><div class="kpis" style="margin-bottom:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">' +
+    kpi(t('learn.months'), t('learn.monthsV', { n: L.months }), t('learn.monthsS')) +
+    (twoYear ? kpi(t('learn.season'), L.seasonalProducts + ' / ' + twoYear, t('learn.seasonS', { n: twoYear })) : kpi(t('learn.season'), t('learn.seasonNone'), t('learn.seasonNoneS'))) +
+    (leads.length ? kpi(t('learn.lead'), String(leads.length), leads.join(' · ')) : kpi(t('learn.lead'), '0', t('learn.leadNone'))) +
+    (d.accuracyN ? kpi(t('learn.acc'), Math.round(d.accuracy * 100) + '%', t('learn.accS', { n: d.accuracyN })) : kpi(t('learn.acc'), t('na'), t('learn.accNone'))) +
+    '</div>';
+}
 VIEWS.demand = () => {
   const rows = S.res.rows;
   if (!rows.length) return head(t('dem.title'), t('dem.lede')) + emptyBox(t('pro.empty'), t('pro.emptyP'), btn(t('pro.add'), 'tab', ' data-tab="products"', 'primary'));
@@ -2995,13 +3084,14 @@ VIEWS.demand = () => {
     const tr = r.trend;
     const trendTxt = Math.abs(tr) < 0.05 ? '0' : (tr > 0 ? '+' : '') + n1(tr);
     return '<tr><td class="name">' + bdi(r.name || t('unnamed')) + '</td><td>' + bdi(profName(profMap[r.profileId]) || t('na')) +
+      (r.seasonSource === 'learned' ? ' <span class="small muted">(' + esc(t('dem.learned')) + ', ' + Math.round((r.seasonStrength || 0) * 100) + '%)</span>' : '') +
       (r.n && !r.useSeason && profMap[r.profileId] && profMap[r.profileId].id !== 'flat' ? ' <span class="small muted">(' + esc(t('dem.off')) + ')</span>' : '') +
       '</td><td class="num">' + r.n + '</td><td class="num">' + n1(r.avgD) + '</td><td class="num" style="color:' + (tr > 0.05 ? 'var(--ok)' : tr < -0.05 ? 'var(--crit)' : 'inherit') + '">' + trendTxt +
       '</td><td class="num">' + (r.n ? pct(r.cv) : t('na')) + '</td><td><span class="tag">' + esc(r.xyz) + '</span></td>' +
       r.fc.map(v => '<td class="num">' + n0(v) + '</td>').join('') + '<td class="num">' + n0(r.annual) + '</td></tr>';
   }).join('');
   const fcHead = [1, 2, 3].map(k => '<th class="num">' + esc(monthName(calMonth(12 + k, last))) + '</th>').join('');
-  return head(t('dem.title'), t('dem.lede')) +
+  return head(t('dem.title'), t('dem.lede')) + shopChart() + learnedPanel() +
     '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th>' + esc(t('dem.season')) + '</th><th class="num">' + esc(t('dem.months')) +
     '</th><th class="num">' + esc(t('dem.avg')) + '<span class="sub">' + esc(t('dem.avgS')) + '</span></th><th class="num">' + esc(t('dem.trend')) + '<span class="sub">' + esc(t('dem.trendS')) +
     '</span></th><th class="num">' + esc(t('dem.cv')) + '</th><th>' + esc(t('dem.class')) + '</th>' + fcHead + '<th class="num">' + esc(t('dem.year')) + '</th></tr></thead><tbody>' + body + '</tbody></table></div>' +
@@ -3335,6 +3425,7 @@ function onEdit(e) {
     const p = S.ws.products.find(x => x.id === el.closest('tr').dataset.id);
     if (!p) return;
     if (f === 'sales') p.sales[Number(el.dataset.i)] = value;
+    else if (f === 'older') { p.older = Array.isArray(p.older) && p.older.length === 24 ? p.older : Array(24).fill(null); p.older[Number(el.dataset.i)] = value; }
     else p[f] = value;
   } else if (scope === 'profile') {
     const p = S.ws.profiles.find(x => x.id === el.dataset.id);
@@ -3386,7 +3477,11 @@ function onPaste(e) {
       else {
         const pn = parseNum(v);
         if (!pn.ok) return;
-        if (col[0] === 's' && col !== 'sl') p.sales[Number(col.slice(1))] = pn.v;
+        if (col[0] === 's' && col !== 'sl') {
+          const yr = S.histYear || 0, k = Number(col.slice(1));
+          if (yr) { p.older = Array.isArray(p.older) && p.older.length === 24 ? p.older : Array(24).fill(null); p.older[24 - 12 * yr + k] = pn.v; }
+          else p.sales[k] = pn.v;
+        }
         else p[col] = pn.v;
       }
       cells++;
@@ -3400,7 +3495,7 @@ function onPaste(e) {
 
 function blankProduct() {
   return { id: newId(), name: '', supplierId: S.ws.suppliers.length === 1 ? S.ws.suppliers[0].id : '', profileId: 'flat',
-           sales: Array(12).fill(null), cost: null, price: null, onHand: 0, onOrder: 0, sl: 95 };
+           sales: Array(12).fill(null), older: Array(24).fill(null), cost: null, price: null, onHand: 0, onOrder: 0, sl: 95 };
 }
 
 /* ================= actions ================= */
@@ -3609,6 +3704,7 @@ const ACTIONS = {
     sp.lt = Math.round(sc.actualLt); sp.ltv = Math.round(sc.actualLtv || 0);
     markDirty(); toast(t('sc.usedReal', { n: sc.actualCount }));
   },
+  histYear: el => { S.histYear = Number(el.dataset.y) || 0; renderTab(); },
   rollMonth: async () => {
     const s = S.ws.settings;
     const next = s.lastMonth % 12 + 1;
@@ -3621,7 +3717,11 @@ const ACTIONS = {
       const r = S.res.rows.find(x => x.id === p.id);
       if (r && r.n > 0 && r.fc) p.fcHist = (p.fcHist || []).concat([{ k: S.ws.period, f: Math.round(r.fc[0] * 10) / 10 }]).slice(-24);
     });
-    S.ws.products.forEach(p => { p.sales = p.sales.slice(1).concat([null]); });
+    S.ws.products.forEach(p => {
+      const older = Array.isArray(p.older) && p.older.length === 24 ? p.older : Array(24).fill(null);
+      p.older = older.slice(1).concat([p.sales[0]]);
+      p.sales = p.sales.slice(1).concat([null]);
+    });
     s.lastMonth = next;
     markDirty();
     S.highlightCol = true;
