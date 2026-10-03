@@ -350,6 +350,7 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 
 .again-case.st-tools{margin-top:40px}
 .st-tools .rx-stat b{white-space:nowrap;font-size:clamp(1.15rem,4.6vw,2.4rem)}
+.steps + h3{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
 </style>
 
 <style data-lime>
@@ -3325,11 +3326,11 @@ html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
     h.setAttribute('data-split', h.textContent);
   }
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var cards = sec.querySelectorAll('.ag-card'), cs = sec.querySelector('.again-case');
+  var cards = sec.querySelectorAll('.ag-card'), css = sec.querySelectorAll('.again-case');
   function tick() { cards.forEach(function (c, i) { setTimeout(function () { c.classList.add('done'); }, reduce ? 0 : 700 + i * 300); }); }
-  if (reduce || !('IntersectionObserver' in window)) { sec.classList.add('go'); cs.classList.add('go'); tick(); return; }
+  if (reduce || !('IntersectionObserver' in window)) { sec.classList.add('go'); css.forEach(function (cs) { cs.classList.add('go'); }); tick(); return; }
   new IntersectionObserver(function (es, ob) { es.forEach(function (e) { if (e.isIntersecting) { sec.classList.add('go'); tick(); ob.disconnect(); } }); }, { threshold: 0.15 }).observe(h);
-  new IntersectionObserver(function (es, ob) { es.forEach(function (e) { if (e.isIntersecting) { cs.classList.add('go'); ob.disconnect(); } }); }, { threshold: 0.15 }).observe(cs.querySelector('h3'));
+  css.forEach(function (cs) { new IntersectionObserver(function (es, ob) { es.forEach(function (e) { if (e.isIntersecting) { cs.classList.add('go'); ob.disconnect(); } }); }, { threshold: 0.15 }).observe(cs.querySelector('h3')); });
   var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('seen'); io.unobserve(e.target); } }); }, { threshold: 0.3 });
   var c2 = sec.querySelector('.realchart'); if (c2) io.observe(c2);
 })();
