@@ -929,6 +929,43 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
 }
 #paywall.guest .topbar [data-act="logout"]{display:none}
 .guest-for{margin:-8px 0 0;color:var(--muted)}
+/* Ordered stock form and Upcoming orders list */
+.os-form{margin-bottom:22px}
+.os-form h2{margin-bottom:12px}
+.os-form label{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:600;color:var(--ink)}
+.os-form select,.os-form input{padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit;font-size:15px;min-width:0}
+.os-top{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px;margin-bottom:14px}
+.os-lines{display:flex;flex-direction:column;gap:10px;margin-bottom:8px}
+.os-line{display:grid;grid-template-columns:minmax(0,1fr) 120px 36px;gap:10px;align-items:end}
+.os-acts{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+#os-msg{margin-top:10px}
+.up-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+.up-list{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--r)}
+.up-item{display:grid;grid-template-columns:170px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line-2)}
+.up-item:last-child{border-bottom:0}
+.up-when{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.up-when small,.up-amt small{color:var(--muted);font-size:12.5px}
+.up-what b{display:block;color:var(--ink)}
+.up-what span{font-size:13.5px;color:var(--body)}
+.up-amt{text-align:end}
+.up-amt b{display:block;color:var(--ink);font-variant-numeric:tabular-nums}
+@media (max-width:760px){
+  .up-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .up-kpis .kpi b{font-size:22px;line-height:1.25}
+  .t.up-cards thead{display:none}
+  .t.up-cards,.t.up-cards tbody,.t.up-cards tr,.t.up-cards td{display:block}
+  .t.up-cards tr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 10px;padding:12px 14px;border-bottom:1px solid var(--line-2)}
+  .t.up-cards tr:last-child{border-bottom:0}
+  .t.up-cards td{padding:0;border:0;text-align:start;white-space:normal}
+  .t.up-cards td.name,.t.up-cards td.c-v,.t.up-cards td.c-items,.t.up-cards td.c-acts{grid-column:1 / -1}
+  .t.os-open tr{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .t.up-cards td.c-acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center;white-space:normal!important}
+  .t.up-cards td[data-l]::before{content:attr(data-l);display:block;font-size:11px;color:var(--muted);font-weight:400}
+  .up-item{grid-template-columns:minmax(0,1fr) auto;gap:8px 12px}
+  .up-when{grid-column:1 / -1;flex-direction:row;align-items:center;gap:8px}
+  .os-top{grid-template-columns:1fr}
+  .os-line{grid-template-columns:minmax(0,1fr) 90px 32px}
+}
 /* Order decisions: one block per product, reasoning across the full width under its numbers */
 .t.ord .cs{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:2px;white-space:nowrap}
 .t.ord td.c-name{white-space:normal;min-width:150px}
@@ -1481,7 +1518,8 @@ en: {
   'wt.s7p': 'Two orders, one per supplier, ready to send on WhatsApp.',
   'wt.s7e': 'Delta Textiles: 330 pieces. Cairo Print Co: 108 pieces. Over budget by 28,600 EGP.',
   'wt.done': 'If every number matched, you understand the whole app. Now clear it and type in your own shop.',
-  'nav.incoming': 'Incoming orders',
+  'nav.incoming': 'Upcoming orders',
+  'nav.ordered': 'Ordered stock',
   'nav.accuracy': 'Forecast accuracy',
   'imp.btn': 'Import file',
   'imp.title': 'Import products from a file',
@@ -1501,8 +1539,28 @@ en: {
   'imp.tip': 'One row per product, one column per month of sales, oldest month first, up to 36 months. With two years or more, the app learns each product\'s season from your own sales. Leave a month blank if you were out of stock.',
   'ord.markSent': 'Mark as sent',
   'ord.sentToast': 'Order recorded. Its quantities now count as on order.',
-  'inc.title': 'Incoming orders',
-  'inc.lede': 'Orders you have sent and are waiting for. Mark each one received when it arrives: stock updates by itself and the supplier gets a real delivery time.',
+  'inc.title': 'Upcoming orders',
+  'inc.lede': 'What is on its way, in the order it should arrive, and how each supplier really does on delivery time.',
+  'up.k1': 'Orders on the way', 'up.k1s': 'Waiting to arrive',
+  'up.k2': 'Units coming', 'up.k2s': 'Across all open orders',
+  'up.k3': 'Value on the way', 'up.k3s': 'At your cost price',
+  'up.k4': 'Next arrival', 'up.k4s': 'Expected date', 'up.k4late': '{n} late',
+  'up.today': 'Due today', 'up.tomorrow': 'Tomorrow', 'up.inDays': 'In {n} days', 'up.lateBy': 'Late by {n} days', 'up.late1': 'Late by 1 day',
+  'up.manage': 'Update in Ordered stock',
+  'up.cmp': 'Supplier delivery times', 'up.cmpLede': 'From orders marked received. Took is the real time from sending the order to it arriving.',
+  'up.orders': 'Orders received', 'up.avgTook': 'Average took', 'up.onTime': 'On time',
+  'up.keeps': 'Keeps its promise', 'up.lateAvg': 'About {n} days late on average', 'up.early': 'Usually early',
+  'up.empty': 'Nothing on the way', 'up.emptyP': 'Add the orders you have placed in Ordered stock, or press Mark as sent on the Purchase plan.',
+  'up.noneOpen': 'No orders are on the way right now.',
+  'os.title': 'Ordered stock',
+  'os.lede': 'Type in each order you have placed that has not arrived yet. Its quantities count as on order, so nothing gets ordered twice. When it arrives, mark it received: stock goes up and the supplier\'s real delivery time is recorded.',
+  'os.add': 'Add an order', 'os.new': 'New order', 'os.supplier': 'Supplier', 'os.sentOn': 'Ordered on', 'os.product': 'Product', 'os.qty': 'Quantity',
+  'os.addLine': 'Add another product', 'os.save': 'Save order', 'os.discard': 'Discard',
+  'os.needSup': 'Pick the supplier.', 'os.needLines': 'Add at least one product with a quantity.',
+  'os.needData': 'Add your suppliers and products first, then the orders you placed with them.',
+  'os.saved': 'Order saved. {n} units now count as on order.',
+  'os.open': 'Waiting to arrive', 'os.empty': 'No orders waiting', 'os.emptyP': 'Press Add an order to type in an order you placed. Orders you mark as sent on the Purchase plan show up here too.',
+  'os.note': 'Products you type an order for here should not also have that quantity typed under On order on the Products page.',
   'ord.empty': 'No orders waiting',
   'ord.emptyP': 'On the Purchase plan page, press "Mark as sent" after you send an order to a supplier.',
   'ord.sent': 'Sent on',
@@ -1714,7 +1772,7 @@ en: {
   'learn.seasonNoneS': 'Add last year\'s sales on the Products page to let it learn your seasons.',
   'learn.lead': 'Delivery times learned',
   'learn.leadS': 'From the orders you marked received. Used for reorder points.',
-  'learn.leadNone': 'Mark orders received on Incoming orders and it learns each supplier\'s real delivery time.',
+  'learn.leadNone': 'Mark orders received on Ordered stock and it learns each supplier\'s real delivery time.',
   'learn.acc': 'Forecast accuracy so far',
   'learn.accS': 'Measured on {n} product months you have entered since.',
   'learn.accNone': 'Starts after your first new month.',
@@ -2206,6 +2264,7 @@ ar: {
   'wt.s7e': 'دلتا للنسيج: 330 قطعة. القاهرة للطباعة: 108 قطعة. أعلى من الميزانية بـ 28,600 جنيه.',
   'wt.done': 'لو كل الأرقام طلعت زي دي، يبقى فهمت الأداة كلها. امسحه واكتب بيانات محلك.',
   'nav.incoming': 'الطلبيات الجاية',
+  'nav.ordered': 'البضاعة المطلوبة',
   'nav.accuracy': 'دقة التوقع',
   'imp.btn': 'استورد ملف',
   'imp.title': 'استورد المنتجات من ملف',
@@ -2226,7 +2285,27 @@ ar: {
   'ord.markSent': 'اتبعتت',
   'ord.sentToast': 'الطلبية اتسجلت. كمياتها بقت محسوبة في الطريق.',
   'inc.title': 'الطلبيات الجاية',
-  'inc.lede': 'الطلبيات اللي بعتها ومستنيها. علّم كل واحدة إنها وصلت أول ما توصل: المخزون بيتحدث لوحده والمورد بيتسجله مدة توريد حقيقية.',
+  'inc.lede': 'اللي جاي في الطريق، بترتيب وصوله، وكل مورد بيلتزم بمدة التوريد قد إيه في الحقيقة.',
+  'up.k1': 'طلبيات في الطريق', 'up.k1s': 'مستنية توصل',
+  'up.k2': 'قطع جاية', 'up.k2s': 'في كل الطلبيات المفتوحة',
+  'up.k3': 'قيمة اللي في الطريق', 'up.k3s': 'بسعر التكلفة',
+  'up.k4': 'أقرب وصول', 'up.k4s': 'التاريخ المتوقع', 'up.k4late': '{n} متأخرة',
+  'up.today': 'المفروض النهارده', 'up.tomorrow': 'بكرة', 'up.inDays': 'بعد {n} يوم', 'up.lateBy': 'متأخرة {n} يوم', 'up.late1': 'متأخرة يوم',
+  'up.manage': 'عدّل في البضاعة المطلوبة',
+  'up.cmp': 'مدد توريد الموردين', 'up.cmpLede': 'من الطلبيات اللي اتعلّمت إنها وصلت. "خدت" هي المدة الحقيقية من بعت الطلبية لحد وصولها.',
+  'up.orders': 'طلبيات وصلت', 'up.avgTook': 'متوسط اللي خدته', 'up.onTime': 'في الميعاد',
+  'up.keeps': 'ملتزم بالميعاد', 'up.lateAvg': 'متأخر حوالي {n} يوم في المتوسط', 'up.early': 'غالبا بيوصل بدري',
+  'up.empty': 'مفيش حاجة في الطريق', 'up.emptyP': 'ضيف الطلبيات اللي طلبتها في البضاعة المطلوبة، أو دوس "اتبعتت" في خطة الشراء.',
+  'up.noneOpen': 'مفيش طلبيات في الطريق دلوقتي.',
+  'os.title': 'البضاعة المطلوبة',
+  'os.lede': 'اكتب كل طلبية طلبتها ولسه ماوصلتش. كمياتها بتتحسب في الطريق، علشان مفيش حاجة تتطلب مرتين. أول ما توصل علّمها إنها وصلت: المخزون بيزيد ومدة توريد المورد الحقيقية بتتسجل.',
+  'os.add': 'ضيف طلبية', 'os.new': 'طلبية جديدة', 'os.supplier': 'المورد', 'os.sentOn': 'اتطلبت يوم', 'os.product': 'المنتج', 'os.qty': 'الكمية',
+  'os.addLine': 'ضيف منتج كمان', 'os.save': 'احفظ الطلبية', 'os.discard': 'إلغاء',
+  'os.needSup': 'اختار المورد.', 'os.needLines': 'ضيف منتج واحد على الأقل بكمية.',
+  'os.needData': 'ضيف الموردين والمنتجات الأول، وبعدين الطلبيات اللي طلبتها منهم.',
+  'os.saved': 'الطلبية اتحفظت. {n} قطعة بقت محسوبة في الطريق.',
+  'os.open': 'مستنية توصل', 'os.empty': 'مفيش طلبيات مستنياها', 'os.emptyP': 'دوس "ضيف طلبية" علشان تكتب طلبية طلبتها. الطلبيات اللي بتعلّمها "اتبعتت" في خطة الشراء بتظهر هنا كمان.',
+  'os.note': 'المنتجات اللي بتكتب لها طلبية هنا ماتكتبش نفس الكمية تاني في خانة "في الطريق" في صفحة المنتجات.',
   'ord.empty': 'مفيش طلبيات مستنياها',
   'ord.emptyP': 'في صفحة خطة الشراء، دوس "اتبعتت" بعد ما تبعت الطلبية للمورد.',
   'ord.sent': 'اتبعتت يوم',
@@ -2432,7 +2511,7 @@ ar: {
   'learn.seasonNoneS': 'ضيف مبيعات السنة اللي فاتت في صفحة المنتجات علشان تتعلم مواسمك.',
   'learn.lead': 'مدد توريد اتعلمتها',
   'learn.leadS': 'من الطلبات اللي علمت عليها إنها وصلت. بتتستخدم في نقطة إعادة الطلب.',
-  'learn.leadNone': 'علم على الطلبات إنها وصلت في صفحة الطلبات الجاية، وهي هتتعلم مدة توريد كل مورد الحقيقية.',
+  'learn.leadNone': 'علم على الطلبات إنها وصلت في صفحة البضاعة المطلوبة، وهي هتتعلم مدة توريد كل مورد الحقيقية.',
   'learn.acc': 'دقة التوقع لحد دلوقتي',
   'learn.accS': 'متقاسة على {n} شهر منتج دخلتهم بعد كده.',
   'learn.accNone': 'بتبدأ بعد أول شهر جديد.',
@@ -3004,7 +3083,7 @@ window.addEventListener('beforeunload', e => {
 
 /* ================= shell ================= */
 const TABS = [
-  { id: 'settings', g: 1 }, { id: 'seasons', g: 1 }, { id: 'suppliers', g: 1 }, { id: 'products', g: 1 },
+  { id: 'settings', g: 1 }, { id: 'seasons', g: 1 }, { id: 'suppliers', g: 1 }, { id: 'products', g: 1 }, { id: 'ordered', g: 1 },
   { id: 'start', g: 3 }, { id: 'walk', g: 3 },
   { id: 'dash', g: 2 }, { id: 'plan', g: 2 }, { id: 'orders', g: 2 }, { id: 'demand', g: 2 }, { id: 'trends', g: 2 },
   { id: 'incoming', g: 2 }, { id: 'score', g: 2 }, { id: 'dead', g: 2 }, { id: 'cash', g: 2 }, { id: 'accuracy', g: 2 }, { id: 'health', g: 2 }
@@ -3021,6 +3100,7 @@ function renderNav() {
   const badges = {
     products: { n: S.ws.products.length },
     suppliers: { n: S.ws.suppliers.length },
+    ordered: { n: (S.ws.orders || []).filter(o => o.status === 'sent').length, hideZero: true },
     plan: { n: d.decisions.CRITICAL + d.decisions.ORDER, crit: d.decisions.CRITICAL > 0 },
     health: { n: d.fix, crit: d.fix > 0, hideZero: true }
   };
@@ -3194,36 +3274,95 @@ VIEWS.walk = () => {
 };
 
 
-/* ---------- Incoming orders ---------- */
+/* ---------- Ordered stock (input) and Upcoming orders (results) ---------- */
 const isoToday = () => new Date().toISOString().slice(0, 10);
 const addDays = (iso, n) => new Date(Date.parse(iso) + n * 86400000).toISOString().slice(0, 10);
-VIEWS.incoming = () => {
-  const orders = S.ws.orders || [];
-  const open = orders.filter(o => o.status === 'sent');
-  const done = orders.filter(o => o.status === 'received').slice(-20).reverse();
-  const supLt = id => { const sp = S.ws.suppliers.find(x => x.id === id); return sp ? sp.lt : 0; };
-  if (!orders.length) return head(t('inc.title'), t('inc.lede')) + emptyBox(t('ord.empty'), t('ord.emptyP'), btn(t('nav.plan'), 'tab', ' data-tab="plan"', 'primary'));
-  const openRows = open.map(o => {
-    const exp = addDays(o.sentAt, supLt(o.supplierId));
-    const late = isoToday() > exp;
-    const units = o.lines.reduce((a, l) => a + l.qty, 0);
-    return '<tr><td class="name">' + bdi(o.supplierName || t('unnamed')) + '</td><td>' + esc(o.sentAt) + '</td><td>' + esc(exp) + ' ' +
-      '<span class="pill ' + (late ? 'v-CRITICAL' : 'v-OK') + '">' + esc(t(late ? 'ord.late' : 'ord.onTrack')) + '</span></td>' +
-      '<td class="wrap">' + o.lines.map(l => bdi(l.name) + ' &times; ' + n0(l.qty)).join(', ') + ' <span class="small muted">(' + n0(units) + ')</span></td>' +
-      '<td style="white-space:nowrap"><input type="date" class="recdate" data-id="' + o.id + '" value="' + isoToday() + '" max="' + isoToday() + '" min="' + o.sentAt + '"> ' +
+const supLt = id => { const sp = S.ws.suppliers.find(x => x.id === id); return sp ? Number(sp.lt) || 0 : 0; };
+const orderUnits = o => o.lines.reduce((a, l) => a + (Number(l.qty) || 0), 0);
+const orderValue = o => o.lines.reduce((a, l) => a + (Number(l.qty) || 0) * (Number(l.cost) || 0), 0);
+const dayDiff = (a, b) => Math.round((Date.parse(a) - Date.parse(b)) / 86400000);
+// When an open order should arrive, and a short label for it: due, late or how many days to go.
+function arrival(o) {
+  const exp = addDays(o.sentAt, supLt(o.supplierId)), d = dayDiff(exp, isoToday());
+  const label = d < 0 ? (d === -1 ? t('up.late1') : t('up.lateBy', { n: -d })) : d === 0 ? t('up.today') : d === 1 ? t('up.tomorrow') : t('up.inDays', { n: d });
+  return { exp: exp, d: d, label: label, cls: d < 0 ? 'v-CRITICAL' : d <= 3 ? 'v-ORDER' : 'v-OK' };
+}
+const itemsText = o => o.lines.map(l => bdi(l.name || t('unnamed')) + ' &times; ' + n0(l.qty)).join(', ');
+
+VIEWS.ordered = () => {
+  const ws = S.ws, open = (ws.orders || []).filter(o => o.status === 'sent').slice().sort((a, b) => arrival(a).exp < arrival(b).exp ? -1 : 1);
+  const add = btn(t('os.add'), 'osNew', '', 'primary');
+  if (!ws.suppliers.length || !ws.products.length)
+    return head(t('os.title'), t('os.lede')) + emptyBox(t('os.empty'), t('os.needData'), btn(t('nav.suppliers'), 'tab', ' data-tab="suppliers"', 'primary') + btn(t('nav.products'), 'tab', ' data-tab="products"'));
+  let form = '';
+  const D = S.draft;
+  if (D) {
+    const supOpts = '<option value="">' + esc(t('choose')) + '</option>' + ws.suppliers.map(sp => '<option value="' + sp.id + '"' + (sp.id === D.supplierId ? ' selected' : '') + '>' + esc(iso(supName(sp))) + '</option>').join('');
+    // That supplier's products first, then the rest.
+    const prods = ws.products.slice().sort((a, b) => (b.supplierId === D.supplierId) - (a.supplierId === D.supplierId));
+    const prodOpts = sel => '<option value="">' + esc(t('choose')) + '</option>' + prods.map(p => '<option value="' + p.id + '"' + (p.id === sel ? ' selected' : '') + '>' + esc(iso(p.name || t('unnamed'))) + '</option>').join('');
+    form = '<div class="panel os-form"><h2>' + esc(t('os.new')) + '</h2>' +
+      '<div class="os-top"><label><span>' + esc(t('os.supplier')) + '</span><select data-draft="supplierId">' + supOpts + '</select></label>' +
+      '<label><span>' + esc(t('os.sentOn')) + '</span><input type="date" data-draft="sentAt" value="' + esc(D.sentAt) + '" max="' + isoToday() + '"></label></div>' +
+      '<div class="os-lines">' + D.lines.map((l, k) => '<div class="os-line"><label><span>' + esc(t('os.product')) + '</span><select data-draft="productId" data-k="' + k + '">' + prodOpts(l.productId) + '</select></label>' +
+        '<label class="os-q"><span>' + esc(t('os.qty')) + '</span><input type="text" inputmode="numeric" data-draft="qty" data-k="' + k + '" value="' + esc(val(l.qty)) + '"></label>' +
+        (D.lines.length > 1 ? '<button type="button" class="iconbtn" data-act="osDelLine" data-k="' + k + '" aria-label="' + esc(t('delete')) + '">&times;</button>' : '<span></span>') + '</div>').join('') + '</div>' +
+      '<button type="button" class="linkbtn" data-act="osAddLine">+ ' + esc(t('os.addLine')) + '</button>' +
+      '<div id="os-msg" class="msg bad" hidden></div>' +
+      '<div class="os-acts">' + btn(t('os.save'), 'osSave', '', 'primary') + btn(t('os.discard'), 'osDiscard') + '</div></div>';
+  }
+  const rows = open.map(o => {
+    const a = arrival(o);
+    return '<tr><td class="name">' + bdi(o.supplierName || t('unnamed')) + '</td><td data-l="' + esc(t('os.sentOn')) + '">' + esc(o.sentAt) + '</td><td data-l="' + esc(t('ord.expected')) + '">' + esc(a.exp) + ' <span class="pill ' + a.cls + '">' + esc(a.label) + '</span></td>' +
+      '<td class="wrap c-items" data-l="' + esc(t('ord.items')) + '">' + itemsText(o) + ' <span class="small muted">(' + n0(orderUnits(o)) + ')</span></td>' +
+      '<td class="c-acts" style="white-space:nowrap"><input type="date" class="recdate" data-id="' + o.id + '" value="' + isoToday() + '" max="' + isoToday() + '" min="' + o.sentAt + '"> ' +
       btn(t('ord.receive'), 'receiveOrder', ' data-id="' + o.id + '"', 'small primary') + ' ' + btn(t('ord.cancelOrder'), 'cancelOrder', ' data-id="' + o.id + '"', 'small') + '</td></tr>';
   }).join('');
-  const doneRows = done.map(o => {
-    const took = Math.round((Date.parse(o.receivedAt) - Date.parse(o.sentAt)) / 86400000), promised = supLt(o.supplierId);
-    return '<tr><td class="name">' + bdi(o.supplierName || t('unnamed')) + '</td><td>' + esc(o.sentAt) + '</td><td>' + esc(o.receivedAt) + '</td>' +
-      '<td class="num"' + (took > promised ? ' style="color:var(--crit);font-weight:600"' : '') + '>' + esc(t('ord.days', { n: took })) + '</td><td class="num">' + esc(t('ord.days', { n: promised })) + '</td></tr>';
-  }).join('');
-  return head(t('inc.title'), t('inc.lede')) +
-    (open.length ? '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('sc.supplier')) + '</th><th>' + esc(t('ord.sent')) + '</th><th>' + esc(t('ord.expected')) +
-      '</th><th>' + esc(t('ord.items')) + '</th><th>' + esc(t('ord.arrived')) + '</th></tr></thead><tbody>' + openRows + '</tbody></table></div>'
-      : emptyBox(t('ord.empty'), t('ord.emptyP'))) +
-    (done.length ? '<div class="section"><h2>' + esc(t('ord.history')) + '</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('sc.supplier')) + '</th><th>' + esc(t('ord.sent')) +
-      '</th><th>' + esc(t('ord.arrived')) + '</th><th class="num">' + esc(t('ord.took')) + '</th><th class="num">' + esc(t('ord.promised')) + '</th></tr></thead><tbody>' + doneRows + '</tbody></table></div></div>' : '');
+  return head(t('os.title'), t('os.lede'), D ? '' : add) + form +
+    (open.length ? '<div class="section"><h2>' + esc(t('os.open')) + '</h2><div class="tbl-wrap"><table class="t up-cards os-open"><thead><tr><th>' + esc(t('sc.supplier')) + '</th><th>' + esc(t('os.sentOn')) + '</th><th>' + esc(t('ord.expected')) +
+      '</th><th>' + esc(t('ord.items')) + '</th><th>' + esc(t('ord.arrived')) + '</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="gridnote">' + esc(t('os.note')) + '</p></div>'
+      : (D ? '' : emptyBox(t('os.empty'), t('os.emptyP'), add)));
+};
+
+VIEWS.incoming = () => {
+  const orders = S.ws.orders || [];
+  const open = orders.filter(o => o.status === 'sent').map(o => Object.assign({ a: arrival(o) }, o)).sort((x, y) => x.a.exp < y.a.exp ? -1 : x.a.exp > y.a.exp ? 1 : 0);
+  const done = orders.filter(o => o.status === 'received' && o.receivedAt);
+  const manage = btn(t('up.manage'), 'tab', ' data-tab="ordered"');
+  if (!open.length && !done.length) return head(t('inc.title'), t('inc.lede')) + emptyBox(t('up.empty'), t('up.emptyP'), btn(t('nav.ordered'), 'tab', ' data-tab="ordered"', 'primary') + btn(t('nav.plan'), 'tab', ' data-tab="plan"'));
+  const kpi = (title, v, small, cls) => '<div class="kpi' + (cls ? ' ' + cls : '') + '"><span>' + esc(title) + '</span><b>' + esc(v) + '</b><small>' + esc(small) + '</small></div>';
+  const late = open.filter(o => o.a.d < 0).length;
+  const kpis = '<div class="kpis up-kpis">' + kpi(t('up.k1'), n0(open.length), t('up.k1s')) + kpi(t('up.k2'), n0(open.reduce((a, o) => a + orderUnits(o), 0)), t('up.k2s')) +
+    kpi(t('up.k3'), money(open.reduce((a, o) => a + orderValue(o), 0)), t('up.k3s')) +
+    kpi(t('up.k4'), open.length ? fmtDate(open[0].a.exp) : t('na'), late ? t('up.k4late', { n: late }) : t('up.k4s'), late ? 'bad' : '') + '</div>';
+  // What arrives next: soonest first, late ones at the top.
+  const list = open.length ? '<div class="up-list">' + open.map(o => '<div class="up-item"><div class="up-when"><span class="pill ' + o.a.cls + '">' + esc(o.a.label) + '</span><small>' + esc(fmtDate(o.a.exp)) + '</small></div>' +
+    '<div class="up-what"><b>' + bdi(o.supplierName || t('unnamed')) + '</b><span>' + itemsText(o) + '</span></div>' +
+    '<div class="up-amt"><b>' + n0(orderUnits(o)) + '</b><small>' + esc(money(orderValue(o))) + '</small></div></div>').join('') + '</div>'
+    : '<p class="muted">' + esc(t('up.noneOpen')) + '</p>';
+  // Each supplier: promised time against what really happened.
+  let cmp = '';
+  if (done.length) {
+    const by = {};
+    done.forEach(o => { const k = o.supplierId || o.supplierName; (by[k] = by[k] || { name: o.supplierName, id: o.supplierId, took: [] }).took.push(dayDiff(o.receivedAt, o.sentAt)); });
+    const sumRows = Object.keys(by).map(k => {
+      const g = by[k], promised = supLt(g.id), avg = g.took.reduce((a, x) => a + x, 0) / g.took.length, onTime = g.took.filter(x => x <= promised).length / g.took.length;
+      const gap = Math.round(avg - promised);
+      const v = gap > 0 ? '<span class="pill v-CRITICAL">' + esc(t('up.lateAvg', { n: gap })) + '</span>' : gap < 0 ? '<span class="pill v-OK">' + esc(t('up.early')) + '</span>' : '<span class="pill v-OK">' + esc(t('up.keeps')) + '</span>';
+      return { late: gap, html: '<tr><td class="name">' + bdi(g.name || t('unnamed')) + '</td><td class="num" data-l="' + esc(t('up.orders')) + '">' + n0(g.took.length) + '</td><td class="num" data-l="' + esc(t('ord.promised')) + '">' + esc(t('ord.days', { n: n0(promised) })) + '</td><td class="num" data-l="' + esc(t('up.avgTook')) + '"' + (gap > 0 ? ' style="color:var(--crit);font-weight:600"' : '') + '>' + esc(t('ord.days', { n: n1(avg).replace(/\.0$/, '') })) + '</td><td class="num" data-l="' + esc(t('up.onTime')) + '">' + Math.round(onTime * 100) + '%</td><td class="c-v">' + v + '</td></tr>' };
+    }).sort((a, b) => b.late - a.late).map(r => r.html).join('');
+    const doneRows = done.slice().sort((a, b) => a.receivedAt < b.receivedAt ? 1 : -1).slice(0, 20).map(o => {
+      const took = dayDiff(o.receivedAt, o.sentAt), promised = supLt(o.supplierId);
+      return '<tr><td class="name">' + bdi(o.supplierName || t('unnamed')) + '</td><td data-l="' + esc(t('ord.sent')) + '">' + esc(o.sentAt) + '</td><td data-l="' + esc(t('ord.arrived')) + '">' + esc(o.receivedAt) + '</td>' +
+        '<td class="num" data-l="' + esc(t('ord.took')) + '"' + (took > promised ? ' style="color:var(--crit);font-weight:600"' : '') + '>' + esc(t('ord.days', { n: took })) + '</td><td class="num" data-l="' + esc(t('ord.promised')) + '">' + esc(t('ord.days', { n: promised })) + '</td></tr>';
+    }).join('');
+    cmp = '<div class="section"><h2>' + esc(t('up.cmp')) + '</h2><p class="muted" style="margin:-8px 0 12px">' + esc(t('up.cmpLede')) + '</p>' +
+      '<div class="tbl-wrap"><table class="t up-cards"><thead><tr><th>' + esc(t('sc.supplier')) + '</th><th class="num">' + esc(t('up.orders')) + '</th><th class="num">' + esc(t('ord.promised')) + '</th><th class="num">' + esc(t('up.avgTook')) +
+      '</th><th class="num">' + esc(t('up.onTime')) + '</th><th></th></tr></thead><tbody>' + sumRows + '</tbody></table></div></div>' +
+      '<div class="section"><h2>' + esc(t('ord.history')) + '</h2><div class="tbl-wrap"><table class="t up-cards"><thead><tr><th>' + esc(t('sc.supplier')) + '</th><th>' + esc(t('ord.sent')) +
+      '</th><th>' + esc(t('ord.arrived')) + '</th><th class="num">' + esc(t('ord.took')) + '</th><th class="num">' + esc(t('ord.promised')) + '</th></tr></thead><tbody>' + doneRows + '</tbody></table></div></div>';
+  }
+  return head(t('inc.title'), t('inc.lede'), manage) + kpis + '<div class="section">' + list + '</div>' + cmp;
 };
 
 /* ---------- Forecast accuracy ---------- */
@@ -4021,6 +4160,12 @@ VIEWS.health = () => {
 /* ================= editing ================= */
 function onEdit(e) {
   const el = e.target;
+  if (el.dataset.draft && S.draft) { // the new-order form on Ordered stock: kept aside until saved
+    const k = el.dataset.k, f = el.dataset.draft;
+    if (k != null) S.draft.lines[Number(k)][f] = el.value; else S.draft[f] = el.value;
+    if (f === 'supplierId' && e.type === 'change') renderTab(); // that supplier's products move to the top
+    return;
+  }
   const scope = el.dataset.scope, f = el.dataset.f;
   if (!scope || !f) return;
   const isNum = !(f === 'name' || f === 'terms' || f === 'supplierId' || f === 'profileId');
@@ -4370,7 +4515,31 @@ const ACTIONS = {
     S.ws.orders.push({ id: newId(), supplierId: g.supplierId, supplierName: g.supplierName, status: 'sent', sentAt: isoToday(), receivedAt: '',
       lines: g.items.map(i => ({ productId: i.id, name: i.name, qty: i.qty, cost: i.cost })) });
     g.items.forEach(i => { const p = S.ws.products.find(x => x.id === i.id); if (p) p.onOrder = (Number(p.onOrder) || 0) + i.qty; });
-    markDirty(); toast(t('ord.sentToast')); goTab('incoming');
+    markDirty(); toast(t('ord.sentToast')); goTab('ordered');
+  },
+  osNew: () => { S.draft = { supplierId: '', sentAt: isoToday(), lines: [{ productId: '', qty: '' }] }; renderTab(); const f = $('.os-form select'); if (f) f.focus(); },
+  osDiscard: () => { S.draft = null; renderTab(); },
+  osAddLine: () => { S.draft.lines.push({ productId: '', qty: '' }); renderTab(); const l = $$('.os-line select'); if (l.length) l[l.length - 1].focus(); },
+  osDelLine: el => { S.draft.lines.splice(Number(el.dataset.k), 1); renderTab(); },
+  osSave: () => {
+    const D = S.draft, msg = $('#os-msg');
+    const say = k => { msg.textContent = t(k); msg.hidden = false; };
+    const sp = S.ws.suppliers.find(x => x.id === D.supplierId);
+    if (!sp) { say('os.needSup'); return; }
+    const lines = [];
+    D.lines.forEach(l => {
+      const p = S.ws.products.find(x => x.id === l.productId), q = parseNum(l.qty);
+      if (!p || !q.ok || !(q.v > 0)) return;
+      const same = lines.find(x => x.productId === p.id);
+      if (same) same.qty += Math.round(q.v); else lines.push({ productId: p.id, name: p.name, qty: Math.round(q.v), cost: Number(p.cost) || 0 });
+    });
+    if (!lines.length) { say('os.needLines'); return; }
+    const day = D.sentAt && D.sentAt <= isoToday() ? D.sentAt : isoToday();
+    S.ws.orders = S.ws.orders || [];
+    S.ws.orders.push({ id: newId(), supplierId: sp.id, supplierName: sp.name, status: 'sent', sentAt: day, receivedAt: '', lines: lines });
+    lines.forEach(l => { const p = S.ws.products.find(x => x.id === l.productId); p.onOrder = (Number(p.onOrder) || 0) + l.qty; });
+    S.draft = null;
+    renderTab(); markDirty(); toast(t('os.saved', { n: n0(lines.reduce((a, l) => a + l.qty, 0)) }));
   },
   receiveOrder: el => {
     const o = (S.ws.orders || []).find(x => x.id === el.dataset.id); if (!o) return;
