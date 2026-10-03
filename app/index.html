@@ -927,6 +927,33 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
   .tplans .tplan .tp-price{grid-column:2;text-align:start;font-weight:600}
   .bill-choose{padding:14px}
 }
+#paywall.guest .topbar [data-act="logout"]{display:none}
+.guest-for{margin:-8px 0 0;color:var(--muted)}
+/* Order decisions: one block per product, reasoning across the full width under its numbers */
+.t.ord .cs{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:2px;white-space:nowrap}
+.t.ord td.c-name{white-space:normal;min-width:150px}
+.t.ord th{white-space:normal;min-width:84px}
+.t.ord th:first-child{min-width:150px}
+@media (max-width:1240px){.t.ord th,.t.ord td{padding-inline:10px}}
+.t.ord td.c-name .name{display:block}
+.t.ord tbody.oi tr.r1 td{border-bottom:0;padding-bottom:4px;vertical-align:top}
+.t.ord tbody.oi tr.r2 td{padding-top:0;padding-bottom:14px;border-bottom:1px solid var(--line-2)}
+.t.ord tbody.oi:last-child tr.r2 td{border-bottom:0}
+.t.ord .why{max-width:110ch;margin-top:0}
+.t.ord tbody tr:hover td{background:transparent}
+.t.ord tbody.oi:hover tr td{background:rgba(209,168,126,.05)}
+@media (max-width:760px){
+  .t.ord thead{display:none}
+  .t.ord,.t.ord tbody,.t.ord tr,.t.ord td{display:block}
+  .t.ord tbody.oi{padding:14px 14px 12px;border-bottom:1px solid var(--line-2)}
+  .t.ord tbody.oi:last-child{border-bottom:0}
+  .t.ord tr.r1{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 12px}
+  .t.ord tr.r1 td{padding:0;text-align:start;white-space:normal}
+  .t.ord td.c-name{grid-column:1 / 3;min-width:0}
+  .t.ord td.c-vd{justify-self:end}
+  .t.ord td[data-l]::before{content:attr(data-l);display:block;font-size:11px;color:var(--muted);margin-bottom:1px}
+  .t.ord tr.r2 td{padding:10px 0 0;border:0}
+}
 </style>
 </head>
 <body>
@@ -1065,8 +1092,17 @@ en: {
   'login.sent': 'If {email} has an account, a code is on its way. Check your spam folder too.',
   'login.expired': 'You were signed out. This happens after two weeks without opening the app, or when your account is opened on a third device.',
   'login.titleTrial': 'Start your free trial',
-  'login.ledeTrial': 'Pick a plan and enter your email; we will send you a 6 digit code. Then add your card: nothing is charged until the trial ends, and you can cancel before then.',
-  'login.sendTrial': 'Start free trial',
+  'login.ledeTrial': 'Pick a plan and enter your email. Next you add your card on Paymob: nothing is charged until the trial ends, and you can cancel before then. Then you sign in.',
+  'login.sendTrial': 'Continue to card details',
+  'login.checking': 'Checking your payment with Paymob...',
+  'login.paidOk': 'Card saved. Your free {plan} trial runs until {date}, then {price} a month. Send yourself a code to sign in.',
+  'login.paidFix': 'Typed the wrong email on the card page? Correct it above, then send the code.',
+  'login.waitPay': 'Paymob has not confirmed your card yet. You can sign in with {email}: the app opens as soon as it does.',
+  'bill.guestFor': 'Account email: {email}',
+  'bill.guestChange': 'Change',
+  'bill.back': 'Back',
+  'err.HAS_ACCOUNT': 'This email already has an account, so its free trial is used. Sign in with it below.',
+  'err.NOT_FOUND': 'We could not find that payment. Sign in with the email you paid with.',
   'login.newHere': 'New here?',
   'login.startTrial': 'Start a free trial',
   'login.haveAcct': 'Already have an account?',
@@ -1635,6 +1671,12 @@ en: {
   'ord.rop': 'Reorder point',
   'ord.oq': 'Best order size',
   'ord.oqS': 'after minimums',
+  'ord.orderH': 'Order now',
+  'ord.orderS': 'pieces, value',
+  'ord.ipS': 'on hand + on order',
+  'ord.ipN': '{a} + {b} coming',
+  'ord.ropS': 'safety stock under it',
+  'ord.ssN': 'safety {n}',
   'ord.cover': 'Days of cover',
   'ord.sl': 'Service',
 
@@ -1778,8 +1820,17 @@ ar: {
   'login.sent': 'لو {email} ليه حساب، الرمز في الطريق. بص في الـ Spam كمان.',
   'login.expired': 'اتسجل خروجك. ده بيحصل بعد أسبوعين من غير ما تفتح الأداة، أو لما الحساب يتفتح على جهاز تالت.',
   'login.titleTrial': 'ابدأ تجربتك المجانية',
-  'login.ledeTrial': 'اختار الباقة واكتب إيميلك وهنبعتلك رمز من 6 أرقام. بعدها ضيف كارتك: مفيش أي خصم لحد ما التجربة تخلص، وتقدر تلغي قبلها.',
-  'login.sendTrial': 'ابدأ التجربة المجانية',
+  'login.ledeTrial': 'اختار الباقة واكتب إيميلك. بعدها تضيف كارتك على Paymob: مفيش أي خصم لحد ما التجربة تخلص، وتقدر تلغي قبلها. وبعدين تسجل دخول.',
+  'login.sendTrial': 'كمّل لبيانات الكارت',
+  'login.checking': 'بنتأكد من الدفع مع Paymob...',
+  'login.paidOk': 'الكارت اتسجل. تجربتك المجانية لباقة {plan} شغالة لحد {date}، وبعدها {price} في الشهر. ابعت لنفسك رمز علشان تدخل.',
+  'login.paidFix': 'كتبت إيميل غلط في صفحة الكارت؟ صححه فوق وبعدين ابعت الرمز.',
+  'login.waitPay': 'Paymob لسه ماأكدتش الكارت. تقدر تسجل دخول بـ {email}، والبرنامج هيفتح أول ما يتأكد.',
+  'bill.guestFor': 'إيميل الحساب: {email}',
+  'bill.guestChange': 'تغيير',
+  'bill.back': 'رجوع',
+  'err.HAS_ACCOUNT': 'الإيميل ده عليه حساب بالفعل، فالتجربة المجانية بتاعته اتستخدمت. سجل دخول بيه تحت.',
+  'err.NOT_FOUND': 'مالقيناش الدفع ده. سجل دخول بالإيميل اللي دفعت بيه.',
   'login.newHere': 'أول مرة؟',
   'login.startTrial': 'ابدأ تجربة مجانية',
   'login.haveAcct': 'عندك حساب؟',
@@ -2339,6 +2390,12 @@ ar: {
   'ord.rop': 'نقطة إعادة الطلب',
   'ord.oq': 'أفضل كمية',
   'ord.oqS': 'بعد أقل كمية',
+  'ord.orderH': 'اطلب دلوقتي',
+  'ord.orderS': 'قطع، قيمة',
+  'ord.ipS': 'الموجود + اللي في الطريق',
+  'ord.ipN': '{a} + {b} جاي',
+  'ord.ropS': 'ومخزون الأمان تحته',
+  'ord.ssN': 'أمان {n}',
   'ord.cover': 'أيام التغطية',
   'ord.sl': 'الخدمة',
 
@@ -2468,7 +2525,7 @@ const store = {
 };
 const S = { selectMode: false, selected: new Set(), sid: store.get('es7.sid'), me: null, ws: null, res: null, rev: 0, tab: store.get('es7.tab') || 'dash',
             dirty: false, saving: false, timer: null, retry: null, filter: 'ALL', healthOnly: true, loginEmail: '', undo: null,
-            loginMode: 'signin', trialPick: 'pro', bill: null, billPick: null, billForm: null, billOpen: false, payReturn: null, payConfirmed: false };
+            loginMode: 'signin', trialPick: 'pro', guest: null, pend: null, paid: null, bill: null, billPick: null, billForm: null, billOpen: false, payReturn: null, payConfirmed: false };
 let LANG = store.get('es7.lang') || ((navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en');
 
 function t(key, vars) {
@@ -2612,10 +2669,17 @@ async function sendCode(e) {
   if (e) e.preventDefault();
   const email = ($('#email').value || S.loginEmail || '').trim();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { loginMsg(t('err.BAD_EMAIL'), 'bad'); return; }
+  const trial = S.loginMode === 'trial';
+  if (trial) { S.loginEmail = email; toGuestCard(email); return; } // new shops add their card before anything else
   const btn = $('#f-email button');
   btn.disabled = true;
-  const trial = S.loginMode === 'trial';
-  const r = await gs('requestCode', email, LANG, trial ? S.trialPick : '');
+  // Back from Paymob with a typo in the email: move the new account to the corrected one before sending the code.
+  if (S.paid && S.pend && !S.paid.signedInBefore && email.toLowerCase() !== S.paid.email) {
+    const f = await gs('fixTrialEmail', S.pend.ref, email);
+    if (!f.ok) { btn.disabled = false; loginMsg(t('err.' + (f.error || 'SERVER')), 'bad'); return; }
+    S.paid.email = f.email; S.pend.email = f.email; store.set('es7.pending', JSON.stringify(S.pend));
+  }
+  const r = await gs('requestCode', email, LANG, '');
   btn.disabled = false;
   if (!r.ok) { loginMsg(t('err.' + (r.error || 'SERVER')), 'bad'); return; }
   S.loginEmail = email;
@@ -2634,12 +2698,14 @@ async function verify(e) {
   btn.disabled = false;
   if (!r.ok) { loginMsg(t('err.' + (r.error || 'SERVER')), 'bad'); return; }
   S.sid = r.sid; store.set('es7.sid', r.sid);
+  if (S.pend) { store.del('es7.pending'); S.pend = null; S.paid = null; }
   loginMsg('');
   boot();
 }
 
 /* ================= boot + save ================= */
 async function boot() {
+  if (!S.sid && S.pend) { guestReturn(); return; }
   if (!S.sid) { toLogin(); return; }
   show('boot');
   $('#boot').innerHTML = '<div><div class="spinner"></div><span>' + esc(t('boot.loading')) + '</span></div>';
@@ -2653,6 +2719,7 @@ async function boot() {
     return;
   }
   S.me = r.me; S.ws = r.ws; S.res = r.res; S.rev = r.ws.rev || 0; S.bill = r.me.billing || null;
+  if (S.pend) { store.del('es7.pending'); S.pend = null; S.paid = null; }
   show('app');
   renderShell();
   renderTab();
@@ -2761,6 +2828,60 @@ function chooserHtml(b) {
     '<div id="bill-msg" class="msg" hidden></div>' +
     '<p class="bill-fine">' + esc(t('bill.secure')) + '</p>';
 }
+/* ---- new shops: plan and email, then the card on Paymob, then sign in with that email ---- */
+function readPending() {
+  try {
+    const p = JSON.parse(store.get('es7.pending') || 'null');
+    return p && /^es7_[a-f0-9]{24}$/.test(p.ref) && Date.now() - (p.at || 0) < 2 * 86400000 ? p : null;
+  } catch (e) { return null; }
+}
+function toSignIn(email, msg, kind) {
+  S.guest = null; $('#paywall').classList.remove('guest');
+  S.loginMode = 'signin';
+  toLogin();
+  $('#email').value = email || '';
+  if (msg) loginMsg(msg, kind || 'info');
+}
+async function toGuestCard(email) {
+  S.guest = { email: email };
+  S.billPick = S.trialPick; S.billForm = null;
+  try { const f = JSON.parse(store.get('es7.ckForm') || 'null'); if (f) S.billForm = { name: f.name || '', phone: f.phone || '' }; } catch (e) {}
+  $('#paywall').classList.add('guest');
+  show('paywall');
+  $('#bill-card').innerHTML = '<div class="spinner" style="margin:40px auto"></div>';
+  const info = await gs('trialInfo');
+  const startsOn = {};
+  Object.keys(CFG.trialDays).forEach(p => { startsOn[p] = new Date(Date.now() + CFG.trialDays[p] * 86400000).toISOString().slice(0, 10); });
+  S.bill = { ready: info.ok ? info.ready : true, testMode: !!info.testMode, prices: info.prices || CFG.prices, trialDays: info.trialDays || CFG.trialDays, startsOn: startsOn,
+    trialOffer: true, state: 'none', plan: S.trialPick, checkEGP: info.checkEGP || 1, name: '', phone: '' };
+  renderBilling();
+}
+// Paymob sent the shop back here (or it came back later). Ask the server how that payment went, using the
+// reference this browser kept, then show sign-in with the email it paid with.
+async function guestReturn() {
+  const p = S.pend;
+  toSignIn(p.email || '', S.payReturn ? t('login.checking') : '', 'info');
+  let r;
+  for (let i = 0; ; i++) {
+    r = await gs('trialStatus', p.ref);
+    if (!r.ok || r.state !== 'open' || !S.payReturn || i >= 7) break;
+    await new Promise(res => setTimeout(res, 2500));
+  }
+  const back = S.payReturn; S.payReturn = null;
+  if (!r.ok) {
+    if (r.error === 'NOT_FOUND') { store.del('es7.pending'); S.pend = null; }
+    loginMsg(back ? t('err.' + (r.error || 'SERVER')) : '', 'bad');
+    return;
+  }
+  $('#email').value = r.email;
+  if (r.state === 'paid') {
+    S.paid = { email: r.email, signedInBefore: r.signedInBefore };
+    loginMsg(t('login.paidOk', { plan: t('plan.' + r.plan), date: fmtDate(r.firstCharge), price: money(r.price) }) + (r.signedInBefore ? '' : ' ' + t('login.paidFix')), 'ok');
+    return;
+  }
+  if (r.state === 'failed' && back) { S.trialPick = r.plan; await toGuestCard(r.email); billMsg(t('bill.notPaid'), 'bad'); return; }
+  loginMsg(back ? t('login.waitPay', { email: r.email }) : '', 'info');
+}
 // No live trial or plan: the shop signs in to this screen, picks a plan and pays. Their data waits.
 function toBilling(b) {
   if (!b) { toLogin(); return; }
@@ -2787,9 +2908,10 @@ function renderBilling() {
   S.payReturn = null;
   $('#bill-card').innerHTML = (b.testMode && b.ready ? '<p class="testmode">' + esc(t('bill.test')) + '</p>' : '') +
     '<h1>' + esc(t(h)) + '</h1><p class="lede">' + esc(t(fresh ? 'bill.ledeTrial' : b.failedRenewal ? 'bill.ledeFailed' : 'bill.ledeKept')) + '</p>' + msg +
+    (S.guest ? '<p class="small guest-for">' + esc(t('bill.guestFor', { email: S.guest.email })) + ' <button type="button" class="linkbtn" data-act="guestBack">' + esc(t('bill.guestChange')) + '</button></p>' : '') +
     '<div style="margin-top:18px">' + chooserHtml(b) + '</div>' +
     '<div class="bill-links">' + (CFG.whatsapp ? '<a href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '<span></span>') +
-    '<button type="button" class="linkbtn" data-act="logout">' + esc(t('nav.signout')) + '</button></div>';
+    (S.guest ? '<button type="button" class="linkbtn" data-act="guestBack">' + esc(t('bill.back')) + '</button>' : '<button type="button" class="linkbtn" data-act="logout">' + esc(t('nav.signout')) + '</button>') + '</div>';
 }
 // Settings, Plan and billing.
 function billingSection() {
@@ -3507,16 +3629,23 @@ VIEWS.orders = () => {
   const rank = { CRITICAL: 0, ORDER: 1, OVER: 2, OK: 3, NODEMAND: 4, NOHIST: 5 };
   const list = rows.filter(r => S.filter === 'ALL' || r.decision === S.filter).slice().sort((a, b) => rank[a.decision] - rank[b.decision] || b.orderValue - a.orderValue);
   if (!rows.length) return head(t('ord.title'), t('ord.lede')) + emptyBox(t('pro.empty'), t('pro.emptyP'), btn(t('pro.add'), 'tab', ' data-tab="products"', 'primary'));
-  const body = list.map(r => '<tr><td class="name">' + bdi(r.name || t('unnamed')) + '<div class="why">' + esc(whyText(r)) + '</div></td><td>' + bdi(r.supplierName || t('plan.noSup')) + '</td><td>' + verdict(r.decision) +
-    '</td><td class="num"><b>' + (r.qty ? n0(r.qty) : t('na')) + '</b></td><td class="num">' + (r.qty ? money(r.orderValue) : t('na')) +
-    '</td><td class="num">' + n0(r.onHand) + '</td><td class="num">' + n0(r.onOrder) + '</td><td class="num">' + n0(r.ip) +
-    '</td><td class="num">' + n0(r.ss) + '</td><td class="num">' + n0(r.rop) + '</td><td class="num">' + n0(r.oq) +
-    '</td><td class="num">' + (r.cover == null ? t('na') : n0(r.cover)) + '</td><td class="num">' + r.sl + '%</td></tr>').join('');
+  // One product per block: the numbers on one line, related ones stacked in the same cell, and the reasoning
+  // underneath across the full width, so nothing needs a sideways scroll.
+  const cell = (label, main, sub, cls) => '<td class="num' + (cls ? ' ' + cls : '') + '" data-l="' + esc(label) + '">' + main + (sub ? '<span class="cs">' + esc(sub) + '</span>' : '') + '</td>';
+  const body = list.map(r => '<tbody class="oi"><tr class="r1"><td class="c-name"><span class="name">' + bdi(r.name || t('unnamed')) + '</span><span class="cs">' + bdi(r.supplierName || t('plan.noSup')) + '</span></td>' +
+    '<td class="c-vd">' + verdict(r.decision) + '</td>' +
+    cell(t('ord.orderH'), '<b>' + (r.qty ? n0(r.qty) : t('na')) + '</b>', r.qty ? money(r.orderValue) : '') +
+    cell(t('ord.ip'), n0(r.ip), t('ord.ipN', { a: n0(r.onHand), b: n0(r.onOrder) })) +
+    cell(t('ord.rop'), n0(r.rop), t('ord.ssN', { n: n0(r.ss) })) +
+    cell(t('ord.oq'), n0(r.oq), '') +
+    cell(t('ord.cover'), r.cover == null ? t('na') : n0(r.cover), '') +
+    cell(t('ord.sl'), r.sl + '%', '') +
+    '</tr><tr class="r2"><td colspan="8"><div class="why">' + esc(whyText(r)) + '</div></td></tr></tbody>').join('');
   const th = (k, sub) => '<th class="num">' + esc(t(k)) + (sub ? '<span class="sub">' + esc(t(sub)) + '</span>' : '') + '</th>';
   return head(t('ord.title'), t('ord.lede')) + '<div class="chips">' + chips + '</div>' +
-    '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th>' + esc(t('supplier')) + '</th><th>' + esc(t('pro.verdict')) + '</th>' +
-    th('ord.qty') + th('ord.value') + th('pro.onhand') + th('pro.onorder') + th('ord.ip') + th('ord.ss') + th('ord.rop') + th('ord.oq', 'ord.oqS') + th('ord.cover') + th('ord.sl') +
-    '</tr></thead><tbody>' + body + '</tbody></table></div>';
+    '<div class="tbl-wrap"><table class="t ord"><thead><tr><th>' + esc(t('product')) + '<span class="sub">' + esc(t('supplier')) + '</span></th><th>' + esc(t('pro.verdict')) + '</th>' +
+    th('ord.orderH', 'ord.orderS') + th('ord.ip', 'ord.ipS') + th('ord.rop', 'ord.ropS') + th('ord.oq', 'ord.oqS') + th('ord.cover') + th('ord.sl') +
+    '</tr></thead>' + body + '</table></div>';
 };
 
 /* ---------- Demand ---------- */
@@ -4073,6 +4202,11 @@ const ACTIONS = {
     $$('#trial-plans .tplan').forEach(x => x.classList.toggle('on', x.querySelector('input').checked));
   },
   billOpen: el => openBilling(el && el.dataset ? el.dataset.plan : null),
+  guestBack: () => {
+    saveForm();
+    S.trialPick = S.billPick || S.trialPick; S.guest = null; $('#paywall').classList.remove('guest');
+    S.loginMode = 'trial'; toLogin(); $('#email').value = S.loginEmail || '';
+  },
   billPick: el => {
     S.billPick = el.value;
     $$('.tplan input[name="billPick"]').forEach(x => x.closest('.tplan').classList.toggle('on', x.checked));
@@ -4084,6 +4218,19 @@ const ACTIONS = {
   billPay: async el => {
     const b = S.bill, plan = b.prices[S.billPick] ? S.billPick : b.plan;
     saveForm();
+    if (S.guest) {
+      el.disabled = true;
+      billMsg(t('bill.going'), 'info');
+      const email = S.guest.email, f = S.billForm || {};
+      store.set('es7.ckForm', JSON.stringify({ plan: plan, email: email, name: f.name, phone: f.phone }));
+      const g = await gs('startTrial', { plan: plan, email: email, name: f.name, phone: f.phone }, LANG);
+      if (g.ok && g.url && g.ref) { store.set('es7.pending', JSON.stringify({ ref: g.ref, email: email.toLowerCase(), plan: plan, at: Date.now() })); location.href = g.url; return; }
+      el.disabled = false;
+      if (g.error === 'HAS_ACCOUNT') { toSignIn(email, t('err.HAS_ACCOUNT'), 'info'); return; }
+      if (g.error === 'BILLING_OFF') { S.bill.ready = false; renderBilling(); return; }
+      billMsg(t('err.' + (g.error || 'SERVER')), 'bad');
+      return;
+    }
     if (plan === b.plan && /_canceling$/.test(b.state)) { ACTIONS.billResume(); return; }
     el.disabled = true;
     billMsg(t('bill.going'), 'info');
@@ -4348,8 +4495,15 @@ function init() {
   const qs = new URLSearchParams(location.search);
   if (qs.has('start')) { S.loginMode = 'trial'; if (CFG.prices[qs.get('start')]) S.trialPick = qs.get('start'); }
   if (qs.has('success') && (qs.has('order') || qs.has('id'))) S.payReturn = qs.get('success') === 'true' ? 'ok' : 'fail';
+  // A new shop's payment: this browser kept its reference when it opened the card page.
+  S.pend = qs.has('start') ? null : readPending();
+  const mo = qs.get('merchant_order_id') || '';
+  if (S.payReturn && /^es7_[a-f0-9]{24}$/.test(mo) && (!S.pend || S.pend.ref !== mo)) S.pend = { ref: mo, email: '', at: Date.now() };
+  const fromSite = store.get('es7.signinEmail'); // "Sign in" on the website's checkout passes the typed email along
+  if (fromSite) { store.del('es7.signinEmail'); S.loginEmail = fromSite; }
   if (location.search) history.replaceState(null, '', location.pathname + location.hash);
   applyStatic();
+  if (S.loginEmail) $('#email').value = S.loginEmail;
   $('#f-email').addEventListener('submit', sendCode);
   $('#f-code').addEventListener('submit', verify);
   $('#b-other').addEventListener('click', () => { $('#f-code').hidden = true; $('#f-email').hidden = false; loginMsg(''); $('#email').focus(); });
