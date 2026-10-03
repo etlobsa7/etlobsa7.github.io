@@ -772,6 +772,10 @@ body{line-height:1.6}
 
 .plantag{display:inline-block;margin-inline-start:8px;padding:1px 7px;border-radius:999px;font-size:.66rem;font-weight:700;letter-spacing:.03em;background:var(--pop-bg);color:var(--pop);vertical-align:middle}
 .kpi.locked b{color:var(--pop);font-size:1.05rem}
+.kpi span.plantag{display:inline-block;margin:0 0 0 6px}
+.plantag{border-radius:4px!important}
+.st-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}@media (max-width:720px){.st-tools{grid-template-columns:1fr}}
+.st-card h3{margin:0 0 10px;font-size:1rem}.st-card .st-big{display:block;font-size:1.35rem;margin-bottom:4px}.st-card p{margin:0 0 12px}
 .bpst{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.78rem;font-weight:600;white-space:nowrap}
 .bp-full{background:var(--ok-bg,rgba(47,111,106,.14));color:var(--ok)}.bp-part{background:rgba(192,138,46,.16);color:var(--order,#9A6A12)}.bp-later{background:var(--wash-2);color:var(--muted)}
 .upsell-card{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:0 0 16px;background:var(--panel)}
@@ -1239,6 +1243,19 @@ en: {
   'bill.feat.basic': 'Up to 15 products. The full forecasting and reorder engine.',
   'bill.feat.pro': 'Up to 50 products. Adds your own seasons, supplier compare, scorecard and cash flow.',
   'bill.feat.store': 'Up to 200 products. Adds the budget plan for when cash is short, the cash needed for the next 3 months, demand graphs, profit at risk and dead stock.',
+  'st.title': 'Your Store tools this week',
+  'st.bp': 'Budget plan',
+  'st.bpBuy': 'Buy {s} of your {b} cash',
+  'st.bpProt': 'Protects {p} of the {r} profit at risk this week',
+  'st.bpProtNone': 'Nothing at risk this week',
+  'st.bpProtAll': 'Protects all {p} of profit at risk this week',
+  'st.bpOpen': 'Open the budget plan',
+  'st.bpFits': 'This week\'s orders fit within your {b} of cash',
+  'st.bpNone': 'Enter the cash you have for orders, and the budget plan shows what to buy when it falls short',
+  'st.cp': 'Cash needed for stock, next 3 months',
+  'st.cpNext': 'Next month ({m}): {v}',
+  'st.cpOpen': 'Open the cash plan',
+  'st.setCash': 'Enter your cash',
   'bp.status': 'This week',
   'k.cashmS': 'If you order what the app suggests',
   'k.cashm': 'Cash for stock, next month',
@@ -2084,6 +2101,19 @@ ar: {
   'bill.feat.basic': 'لحد 15 منتج. محرك التوقع وإعادة الطلب كامل.',
   'bill.feat.pro': 'لحد 50 منتج. ومعاه أشكال موسم بتاعتك، مقارنة الموردين، تقييمهم، والتدفق النقدي.',
   'bill.feat.store': 'لحد 200 منتج. ومعاه خطة الميزانية لما الكاش يقل، فلوس الـ 3 شهور الجاية، رسوم الطلب، الربح المعرض للخطر، والبضاعة الراكدة.',
+  'st.title': 'أدوات Store بتاعتك الأسبوع ده',
+  'st.bp': 'خطة الميزانية',
+  'st.bpBuy': 'اشتري بـ {s} من الكاش المتاح {b}',
+  'st.bpProt': 'بتحمي {p} من {r} ربح معرض للخطر الأسبوع ده',
+  'st.bpProtNone': 'مفيش ربح معرض للخطر الأسبوع ده',
+  'st.bpProtAll': 'بتحمي كل الـ {p} ربح المعرض للخطر الأسبوع ده',
+  'st.bpOpen': 'افتح خطة الميزانية',
+  'st.bpFits': 'طلبات الأسبوع ده جوه الكاش المتاح {b}',
+  'st.bpNone': 'اكتب الكاش المتاح للطلبات، وخطة الميزانية هتقولك تشتري إيه لما ميكفيش',
+  'st.cp': 'فلوس البضاعة، الـ 3 شهور الجاية',
+  'st.cpNext': 'الشهر الجاي ({m}): {v}',
+  'st.cpOpen': 'افتح خطة الكاش',
+  'st.setCash': 'اكتب الكاش',
   'bp.status': 'الأسبوع ده',
   'k.cashmS': 'لو طلبت اللي الأداة بتقترحه',
   'k.cashm': 'فلوس البضاعة، الشهر الجاي',
@@ -3874,6 +3904,21 @@ function trialValue() {
     (PLAN_RANK[fit] < PLAN_RANK[b.plan] ? '<p class="small">' + esc(t('tv.fit', { n: n, plan: t('plan.' + fit), price: money(priceFor(b, fit, int)), per: t('bill.per.' + int) })) + '</p>' : '') +
     '<p class="small muted">' + esc(t('tv.first', { date: fmtDate(b.paidUntil) })) + '</p>' + btn(t('bill.manage'), 'billOpen', '', 'small') + '</div>';
 }
+// Store shops see their two cash tools at the top of the dashboard.
+function storeTools() {
+  if (!S.me.limits.budgetPlan && !S.me.limits.cashPlan) return '';
+  const bp = S.res.budgetPlan, cp = S.res.cashPlan, b = S.res.budget, r100 = v => Math.round(v / 100) * 100;
+  let one;
+  if (bp) one = '<b class="st-big">' + esc(t('st.bpBuy', { s: money(bp.spend), b: money(bp.budget) })) + '</b><p class="small muted">' +
+    esc(!(bp.riskAll > 0.5) ? t('st.bpProtNone') : Math.round(bp.protectedProfit) >= Math.round(bp.riskAll) ? t('st.bpProtAll', { p: money(bp.riskAll) }) : t('st.bpProt', { p: money(bp.protectedProfit), r: money(bp.riskAll) })) + '</p>' + btn(t('st.bpOpen'), 'tab', ' data-tab="plan"', 'small primary');
+  else if (b.status === 'NONE' || !(b.budget > 0)) one = '<p class="small muted">' + esc(t('st.bpNone')) + '</p>' + btn(t('st.setCash'), 'tab', ' data-tab="settings"', 'small');
+  else one = '<p>' + esc(t('st.bpFits', { b: money(b.budget) })) + '</p>' + btn(t('st.bpOpen'), 'tab', ' data-tab="plan"', 'small');
+  const two = cp ? '<b class="st-big">' + money(r100(cp.spend[0] + cp.spend[1] + cp.spend[2])) + '</b><p class="small muted">' +
+    esc(t('st.cpNext', { m: monthName(cp.months[0], true), v: money(r100(cp.spend[0])) })) + '</p>' + btn(t('st.cpOpen'), 'tab', ' data-tab="cash"', 'small primary') : '';
+  return '<div class="section"><h2>' + esc(t('st.title')) + '</h2><div class="st-tools">' +
+    '<div class="panel st-card"><h3>' + esc(t('st.bp')) + '</h3>' + one + '</div>' +
+    (two ? '<div class="panel st-card"><h3>' + esc(t('st.cp')) + '</h3>' + two + '</div>' : '') + '</div></div>';
+}
 VIEWS.dash = () => {
   const d = S.res.dash;
   const hasData = S.res.rows.some(r => r.n > 0);
@@ -3918,7 +3963,7 @@ VIEWS.dash = () => {
     '<tr><td class="name">' + bdi(a.name || t('unnamed')) + '</td><td>' + bdi(a.supplierName || t('plan.noSup')) + '</td><td>' + verdict(a.decision) +
     '</td><td class="num">' + n0(a.qty) + '</td><td class="num">' + money(a.value) + '</td></tr>').join('');
 
-  return head(t('dash.title'), t('dash.lede')) + trialValue() + checklist() + today + alerts +
+  return head(t('dash.title'), t('dash.lede')) + trialValue() + checklist() + today + alerts + storeTools() +
     '<div class="section">' + kpis + '</div>' +
     '<div class="section">' + learnedPanel() + '</div>' +
     '<div class="section two">' +
