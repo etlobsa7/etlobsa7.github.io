@@ -7,6 +7,34 @@
 <title>Etlob Sa7 | Demand Planning for Egyptian Brands</title>
 <meta content="Know exactly what to reorder, how much, and when. A demand forecasting and purchase planning app built for Egyptian local brands and online sellers. Sign in with your email, no installs." name="description"/>
 <link href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDMyIDMyIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI4IiBmaWxsPSIjMkExRjE3Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYgMTYuNCkgc2NhbGUoLjgyKSB0cmFuc2xhdGUoLTE2IC0xNi44KSI+PHBhdGggZD0iTTE0LjAgMi43IEwxOC44IDExLjYgTDI4LjEgMTAuOSBMMjIuMSAxNy45IEwyNi4wIDI3LjIgTDE2LjggMjIuNSBMOS42IDI4LjkgTDEwLjUgMTkuNSBMMi4yIDE0LjQgTDExLjggMTIuNVoiIGZpbGw9IiNEOUFFNUMiIHN0cm9rZT0iI0Q5QUU1QyIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjwvc3ZnPg==" rel="icon" type="image/svg+xml"/>
+<link rel="canonical" href="https://etlobsa7.com/">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Etlob Sa7">
+<meta property="og:url" content="https://etlobsa7.com/">
+<meta property="og:title" content="Etlob Sa7: know what to reorder, how much, and when">
+<meta property="og:description" content="Demand forecasting and purchase planning for Egyptian brands and online sellers, in Arabic and English. Free trial: 14 days on Basic and Pro.">
+<meta property="og:image" content="https://etlobsa7.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Etlob Sa7: demand planning for Egyptian brands">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2A1F17">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://etlobsa7.com/#org","name":"Etlob Sa7","url":"https://etlobsa7.com/","logo":"https://etlobsa7.com/assets/apple-touch-icon.png","address":{"@type":"PostalAddress","addressLocality":"Cairo","addressCountry":"EG"},"contactPoint":{"@type":"ContactPoint","contactType":"customer support","telephone":"+201090099849","availableLanguage":["Arabic","English"]}},
+{"@type":"SoftwareApplication","name":"Etlob Sa7","url":"https://etlobsa7.com/","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","inLanguage":["ar","en"],"publisher":{"@id":"https://etlobsa7.com/#org"},
+"description":"Demand forecasting and purchase planning for Egyptian brands and online sellers: what to reorder, how much, and when.",
+"offers":[
+{"@type":"Offer","name":"Basic, monthly","price":"1295","priceCurrency":"EGP"},
+{"@type":"Offer","name":"Pro, monthly","price":"2850","priceCurrency":"EGP"},
+{"@type":"Offer","name":"Store, monthly","price":"5440","priceCurrency":"EGP"},
+{"@type":"Offer","name":"Basic, yearly","price":"12950","priceCurrency":"EGP"},
+{"@type":"Offer","name":"Pro, yearly","price":"28500","priceCurrency":"EGP"},
+{"@type":"Offer","name":"Store, yearly","price":"54400","priceCurrency":"EGP"}]}]}
+</script>
 <link href="/assets/fonts/fonts.css" rel="stylesheet">
 <style>
 :root{
@@ -476,6 +504,26 @@ html[lang="ar"] .brand b{font-size:1.1rem;letter-spacing:0;font-weight:700}
 body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::after{mix-blend-mode:screen;opacity:.035}}
+.pricebar{display:grid;gap:14px;justify-items:center;margin:0 auto 34px;max-width:760px;text-align:center}
+.pricebar .founding{margin:0;padding:10px 14px;border-inline-start:3px solid var(--accent);background:var(--bg-3);border-radius:6px;font-size:14.5px;line-height:1.5;color:var(--ink);text-align:start}
+.pint{display:inline-flex;padding:3px;border:1.5px solid var(--line);border-radius:10px;background:var(--card)}
+.pint button{font:inherit;font-weight:700;font-size:14.5px;border:0;background:none;color:var(--body);padding:8px 16px;border-radius:7px;cursor:pointer}
+.pint button small{font-size:12px;font-weight:700;color:var(--accent)}
+.pint button[aria-checked="true"]{background:var(--accent);color:var(--accent-ink)}
+.pint button[aria-checked="true"] small{color:inherit;opacity:.9}
+.pint button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pfind{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 12px;font-size:14.5px}
+.pfind label{font-weight:700;color:var(--ink)}
+.pfind input{width:110px;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;font:inherit;background:var(--card);color:var(--ink)}
+.pfind-out{flex-basis:100%;margin:0;color:var(--body);min-height:1.5em}
+.tier.fit{outline:2px solid var(--accent);outline-offset:3px}
+.peq{margin:-6px 0 8px;font-size:13.5px;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.float-wa{position:fixed;inset-inline-start:22px;bottom:22px;z-index:70;width:50px;height:50px;display:grid;place-items:center;border-radius:12px;background:#1F7A4D;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.float-wa:hover{background:#17633e}
+.float-wa:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media (max-width:560px){.float-wa{inset-inline-start:14px;bottom:14px;width:46px;height:46px}.pint button{padding:8px 12px}}
+@media print{.float-wa{display:none}}
 </style>
 </head>
 <body>
@@ -571,11 +619,14 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <tr data-t-html="t579"></tr>
 <tr data-t-html="t580"></tr>
 <tr data-t-html="t581"></tr>
-<tr data-t-html="t582"></tr><tr data-t-html="t645"></tr>
+<tr data-t-html="t582"></tr>
+<tr data-t-html="t655"></tr>
+<tr data-t-html="t654"></tr><tr data-t-html="t645"></tr>
 </tbody></table></div><p class="pmethod popnote" data-t="t653"></p></div></div>
 <div class="pop" id="pop-card" hidden><div class="pop-card" role="dialog" aria-modal="true"><button class="pop-x" type="button" data-pop-close aria-label="Close">&times;</button><div class="pop-body"></div></div></div>
 <nav class="dots" id="dots" aria-label="Sections"><a href="#" data-dot="top"><span data-t="t537"></span></a><a href="#" data-dot="s-example"><span data-t="t538"></span></a><a href="#" data-dot="s-again"><span data-t="t560"></span></a><a href="#" data-dot="s-problem"><span data-t="t539"></span></a><a href="#" data-dot="s-what"><span data-t="t540"></span></a><a href="#" data-dot="s-pricing"><span data-t="t541"></span></a><a href="#" data-dot="s-faq"><span data-t="t542"></span></a></nav>
-<a class="float-cta" id="floatCta" data-go="pricing" href="#" data-t="t8"></a>
+<aside aria-label="Etlob Sa7"><a class="float-cta" id="floatCta" data-go="pricing" href="#" data-t="t8"></a>
+<a class="float-wa" id="floatWa" href="https://wa.me/201090099849" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.4-.3z"/></svg><span class="sr" data-t="t683"></span></a></aside>
 <!-- ============ HOME ============ -->
 <main id="main" tabindex="-1">
 <div class="page on" id="p-home">
@@ -594,9 +645,9 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 </div>
 <div class="hero-visual">
 <a class="rx-card" data-go="proof" href="#">
-<div class="rx-top"><span class="rx-pill" data-t="t532"></span><span class="rx-big">95.9%</span></div>
+<div class="rx-top"><span class="rx-pill" data-t="t532"></span><span class="rx-big">95.3%</span></div>
 <p class="rx-cap" data-t="t533"></p>
-<svg viewBox="0 0 360 130" class="rx-mini" aria-hidden="true"><path class="rx-band" d="M8.0 98.6 L39.3 110.1 L70.5 95.1 L101.8 99.9 L133.1 96.7 L164.4 103.4 L195.6 99.2 L226.9 98.8 L258.2 102.8 L289.5 98.7 L320.7 107.4 L352.0 109.7 L352.0 38.1 L320.7 37.2 L289.5 27.0 L258.2 36.0 L226.9 33.1 L195.6 36.7 L164.4 45.8 L133.1 39.6 L101.8 47.3 L70.5 44.3 L39.3 67.8 L8.0 56.4 Z"/><path class="rx-act" d="M8.0 88.8 L39.3 65.0 L70.5 67.7 L101.8 64.7 L133.1 49.7 L164.4 72.5 L195.6 53.2 L226.9 32.1 L258.2 59.8 L289.5 58.9 L320.7 78.2 L352.0 86.3"/><path class="rx-fc" d="M8.0 77.5 L39.3 88.9 L70.5 69.7 L101.8 73.6 L133.1 68.1 L164.4 74.6 L195.6 68.0 L226.9 65.9 L258.2 69.4 L289.5 62.8 L320.7 72.3 L352.0 73.9"/></svg>
+<svg viewBox="0 0 360 130" class="rx-mini" aria-hidden="true"><path class="rx-band" d="M8.0 98.3 L39.3 109.8 L70.5 94.6 L101.8 99.4 L133.1 96.0 L164.4 102.7 L195.6 98.4 L226.9 97.9 L258.2 101.9 L289.5 97.7 L320.7 106.4 L352.0 108.6 L352.0 41.2 L320.7 40.3 L289.5 30.1 L258.2 39.0 L226.9 36.0 L195.6 39.6 L164.4 48.4 L133.1 42.3 L101.8 49.9 L70.5 46.8 L39.3 69.9 L8.0 58.6 Z"/><path class="rx-act" d="M8.0 88.8 L39.3 65.0 L70.5 67.7 L101.8 64.7 L133.1 49.7 L164.4 72.5 L195.6 53.2 L226.9 32.1 L258.2 59.8 L289.5 58.9 L320.7 78.2 L352.0 86.3"/><path class="rx-fc" d="M8.0 78.4 L39.3 89.8 L70.5 70.7 L101.8 74.6 L133.1 69.2 L164.4 75.6 L195.6 69.0 L226.9 67.0 L258.2 70.4 L289.5 63.9 L320.7 73.3 L352.0 74.9"/></svg>
 <div class="rx-key"><span><i class="k1"></i><span data-t="t534"></span></span><span><i class="k2"></i><span data-t="t535"></span></span><span><i class="k3"></i><span data-t="t643"></span></span></div>
 <span class="rx-go" data-t="t529"></span>
 </a>
@@ -629,7 +680,7 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <div class="wrap">
 <div class="head"><h2 data-t="t466"></h2></div>
 <p class="pnote whynote" data-t-html="t646"></p>
-<figure class="realchart"><figcaption class="rc-cap" data-t="t517"></figcaption><svg viewBox="0 0 780 290" role="img" aria-labelledby="rc-t"><title id="rc-t" data-t="t517"></title><line class="rc-grid" x1="70" x2="760" y1="250.0" y2="250.0"/><text class="rc-y" x="62" y="254.0" text-anchor="end">2,600</text><line class="rc-grid" x1="70" x2="760" y1="176.7" y2="176.7"/><text class="rc-y" x="62" y="180.7" text-anchor="end">3,200</text><line class="rc-grid" x1="70" x2="760" y1="103.3" y2="103.3"/><text class="rc-y" x="62" y="107.3" text-anchor="end">3,800</text><line class="rc-grid" x1="70" x2="760" y1="30.0" y2="30.0"/><text class="rc-y" x="62" y="34.0" text-anchor="end">4,400</text><text class="rc-x" x="70.0" y="272" text-anchor="middle" data-t="t505"></text><text class="rc-x" x="132.7" y="272" text-anchor="middle" data-t="t506"></text><text class="rc-x" x="195.5" y="272" text-anchor="middle" data-t="t507"></text><text class="rc-x" x="258.2" y="272" text-anchor="middle" data-t="t508"></text><text class="rc-x" x="320.9" y="272" text-anchor="middle" data-t="t509"></text><text class="rc-x" x="383.6" y="272" text-anchor="middle" data-t="t510"></text><text class="rc-x" x="446.4" y="272" text-anchor="middle" data-t="t511"></text><text class="rc-x" x="509.1" y="272" text-anchor="middle" data-t="t512"></text><text class="rc-x" x="571.8" y="272" text-anchor="middle" data-t="t513"></text><text class="rc-x" x="634.5" y="272" text-anchor="middle" data-t="t514"></text><text class="rc-x" x="697.3" y="272" text-anchor="middle" data-t="t515"></text><text class="rc-x" x="760.0" y="272" text-anchor="middle" data-t="t516"></text><path class="rc-band" d="M70.0 214.7 L132.7 242.9 L195.5 206.2 L258.2 217.9 L320.9 210.1 L383.6 226.5 L446.4 216.3 L509.1 215.3 L571.8 225.2 L634.5 215.1 L697.3 236.4 L760.0 242.0 L760.0 67.0 L697.3 64.8 L634.5 39.7 L571.8 61.8 L509.1 54.6 L446.4 63.5 L383.6 85.7 L320.9 70.5 L258.2 89.5 L195.5 82.1 L132.7 139.4 L70.0 111.6 Z"/><path class="rc-l rc-act" d="M70.0 191.0 L132.7 132.5 L195.5 139.1 L258.2 131.9 L320.9 95.3 L383.6 151.0 L446.4 103.8 L509.1 52.2 L571.8 120.0 L634.5 117.9 L697.3 164.9 L760.0 184.7"/><path class="rc-l rc-year" d="M70.0 163.1 L132.7 191.1 L195.5 144.1 L258.2 153.7 L320.9 140.3 L383.6 156.1 L446.4 139.9 L509.1 134.9 L571.8 143.5 L634.5 127.4 L697.3 150.6 L760.0 154.5"/><path class="rc-l rc-mon" d="M70.0 161.4 L132.7 203.7 L195.5 130.7 L258.2 147.3 L320.9 131.3 L383.6 128.0 L446.4 125.0 L509.1 115.8 L571.8 101.2 L634.5 90.6 L697.3 122.4 L760.0 134.1"/><circle class="rc-d-act" cx="70.0" cy="191.0" r="3.4"/><circle class="rc-d-act" cx="132.7" cy="132.5" r="3.4"/><circle class="rc-d-act" cx="195.5" cy="139.1" r="3.4"/><circle class="rc-d-act" cx="258.2" cy="131.9" r="3.4"/><circle class="rc-d-act" cx="320.9" cy="95.3" r="3.4"/><circle class="rc-d-act" cx="383.6" cy="151.0" r="3.4"/><circle class="rc-d-act" cx="446.4" cy="103.8" r="3.4"/><circle class="rc-d-act" cx="509.1" cy="52.2" r="3.4"/><circle class="rc-d-act" cx="571.8" cy="120.0" r="3.4"/><circle class="rc-d-act" cx="634.5" cy="117.9" r="3.4"/><circle class="rc-d-act" cx="697.3" cy="164.9" r="3.4"/><circle class="rc-d-act" cx="760.0" cy="184.7" r="3.4"/><circle class="rc-d-mon" cx="70.0" cy="161.4" r="3.4"/><circle class="rc-d-mon" cx="132.7" cy="203.7" r="3.4"/><circle class="rc-d-mon" cx="195.5" cy="130.7" r="3.4"/><circle class="rc-d-mon" cx="258.2" cy="147.3" r="3.4"/><circle class="rc-d-mon" cx="320.9" cy="131.3" r="3.4"/><circle class="rc-d-mon" cx="383.6" cy="128.0" r="3.4"/><circle class="rc-d-mon" cx="446.4" cy="125.0" r="3.4"/><circle class="rc-d-mon" cx="509.1" cy="115.8" r="3.4"/><circle class="rc-d-mon" cx="571.8" cy="101.2" r="3.4"/><circle class="rc-d-mon" cx="634.5" cy="90.6" r="3.4"/><circle class="rc-d-mon" cx="697.3" cy="122.4" r="3.4"/><circle class="rc-d-mon" cx="760.0" cy="134.1" r="3.4"/></svg><div class="rc-key"><span><i class="k-act"></i><span data-t="t518"></span></span><span><i class="k-year"></i><span data-t="t519"></span></span><span><i class="k-mon"></i><span data-t="t520"></span></span><span><i class="k-band"></i><span data-t="t642"></span></span></div></figure>
+<figure class="realchart"><figcaption class="rc-cap" data-t="t517"></figcaption><svg viewBox="0 0 780 290" role="img" aria-labelledby="rc-t"><title id="rc-t" data-t="t517"></title><line class="rc-grid" x1="70" x2="760" y1="250.0" y2="250.0"/><text class="rc-y" x="62" y="254.0" text-anchor="end">2,600</text><line class="rc-grid" x1="70" x2="760" y1="176.7" y2="176.7"/><text class="rc-y" x="62" y="180.7" text-anchor="end">3,200</text><line class="rc-grid" x1="70" x2="760" y1="103.3" y2="103.3"/><text class="rc-y" x="62" y="107.3" text-anchor="end">3,800</text><line class="rc-grid" x1="70" x2="760" y1="30.0" y2="30.0"/><text class="rc-y" x="62" y="34.0" text-anchor="end">4,400</text><text class="rc-x" x="70.0" y="272" text-anchor="middle" data-t="t505"></text><text class="rc-x" x="132.7" y="272" text-anchor="middle" data-t="t506"></text><text class="rc-x" x="195.5" y="272" text-anchor="middle" data-t="t507"></text><text class="rc-x" x="258.2" y="272" text-anchor="middle" data-t="t508"></text><text class="rc-x" x="320.9" y="272" text-anchor="middle" data-t="t509"></text><text class="rc-x" x="383.6" y="272" text-anchor="middle" data-t="t510"></text><text class="rc-x" x="446.4" y="272" text-anchor="middle" data-t="t511"></text><text class="rc-x" x="509.1" y="272" text-anchor="middle" data-t="t512"></text><text class="rc-x" x="571.8" y="272" text-anchor="middle" data-t="t513"></text><text class="rc-x" x="634.5" y="272" text-anchor="middle" data-t="t514"></text><text class="rc-x" x="697.3" y="272" text-anchor="middle" data-t="t515"></text><text class="rc-x" x="760.0" y="272" text-anchor="middle" data-t="t516"></text><path class="rc-band" d="M70.0 214.1 L132.7 242.1 L195.5 205.1 L258.2 216.6 L320.9 208.6 L383.6 224.8 L446.4 214.3 L509.1 213.2 L571.8 222.9 L634.5 212.6 L697.3 233.8 L760.0 239.4 L760.0 74.5 L697.3 72.3 L634.5 47.4 L571.8 69.1 L509.1 61.8 L446.4 70.5 L383.6 92.2 L320.9 77.1 L258.2 95.7 L195.5 88.2 L132.7 144.7 L70.0 116.9 Z"/><path class="rc-l rc-act" d="M70.0 191.0 L132.7 132.5 L195.5 139.1 L258.2 131.9 L320.9 95.3 L383.6 151.0 L446.4 103.8 L509.1 52.2 L571.8 120.0 L634.5 117.9 L697.3 164.9 L760.0 184.7"/><path class="rc-l rc-year" d="M70.0 165.5 L132.7 193.4 L195.5 146.6 L258.2 156.2 L320.9 142.8 L383.6 158.5 L446.4 142.4 L509.1 137.5 L571.8 146.0 L634.5 130.0 L697.3 153.1 L760.0 156.9"/><path class="rc-l rc-mon" d="M70.0 163.9 L132.7 204.9 L195.5 131.4 L258.2 147.8 L320.9 132.9 L383.6 128.7 L446.4 125.5 L509.1 116.0 L571.8 102.1 L634.5 91.1 L697.3 122.6 L760.0 134.1"/><circle class="rc-d-act" cx="70.0" cy="191.0" r="3.4"/><circle class="rc-d-act" cx="132.7" cy="132.5" r="3.4"/><circle class="rc-d-act" cx="195.5" cy="139.1" r="3.4"/><circle class="rc-d-act" cx="258.2" cy="131.9" r="3.4"/><circle class="rc-d-act" cx="320.9" cy="95.3" r="3.4"/><circle class="rc-d-act" cx="383.6" cy="151.0" r="3.4"/><circle class="rc-d-act" cx="446.4" cy="103.8" r="3.4"/><circle class="rc-d-act" cx="509.1" cy="52.2" r="3.4"/><circle class="rc-d-act" cx="571.8" cy="120.0" r="3.4"/><circle class="rc-d-act" cx="634.5" cy="117.9" r="3.4"/><circle class="rc-d-act" cx="697.3" cy="164.9" r="3.4"/><circle class="rc-d-act" cx="760.0" cy="184.7" r="3.4"/><circle class="rc-d-mon" cx="70.0" cy="163.9" r="3.4"/><circle class="rc-d-mon" cx="132.7" cy="204.9" r="3.4"/><circle class="rc-d-mon" cx="195.5" cy="131.4" r="3.4"/><circle class="rc-d-mon" cx="258.2" cy="147.8" r="3.4"/><circle class="rc-d-mon" cx="320.9" cy="132.9" r="3.4"/><circle class="rc-d-mon" cx="383.6" cy="128.7" r="3.4"/><circle class="rc-d-mon" cx="446.4" cy="125.5" r="3.4"/><circle class="rc-d-mon" cx="509.1" cy="116.0" r="3.4"/><circle class="rc-d-mon" cx="571.8" cy="102.1" r="3.4"/><circle class="rc-d-mon" cx="634.5" cy="91.1" r="3.4"/><circle class="rc-d-mon" cx="697.3" cy="122.6" r="3.4"/><circle class="rc-d-mon" cx="760.0" cy="134.1" r="3.4"/></svg><div class="rc-key"><span><i class="k-act"></i><span data-t="t518"></span></span><span><i class="k-year"></i><span data-t="t519"></span></span><span><i class="k-mon"></i><span data-t="t520"></span></span><span><i class="k-band"></i><span data-t="t642"></span></span></div></figure>
 <p class="rx-more"><button type="button" class="btn btn-primary" data-pop="pop-results" data-t="t543"></button></p>
 <p class="pnote" data-t-html="t472"></p>
 <p class="pmethod" data-t-html="t528"></p>
@@ -663,7 +714,7 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <div class="again-tests"><p class="eyebrow" data-t="t560"></p><div class="ag-grid"><div class="ag-card" data-t-html="t561"></div><div class="ag-card" data-t-html="t562"></div></div></div>
 <div class="again-case"><h3 data-t="t552"></h3><p data-t="t553"></p>
 <div class="rx-stats ag-stats"><div class="rx-stat" data-t-html="t554"></div><div class="rx-stat" data-t-html="t555"></div><div class="rx-stat" data-t-html="t556"></div><div class="rx-stat" data-t-html="t557"></div></div>
-<figure class="realchart rc2"><figcaption class="rc-cap" data-t="t566"></figcaption><svg viewBox="0 0 780 290" role="img"><title data-t="t566"></title><line class="rc-grid" x1="70" x2="760" y1="250.0" y2="250.0"/><text class="rc-y" x="62" y="254.0" text-anchor="end">1,000</text><line class="rc-grid" x1="70" x2="760" y1="176.7" y2="176.7"/><text class="rc-y" x="62" y="180.7" text-anchor="end">1,250</text><line class="rc-grid" x1="70" x2="760" y1="103.3" y2="103.3"/><text class="rc-y" x="62" y="107.3" text-anchor="end">1,500</text><line class="rc-grid" x1="70" x2="760" y1="30.0" y2="30.0"/><text class="rc-y" x="62" y="34.0" text-anchor="end">1,750</text><text class="rc-x" x="70.0" y="272" text-anchor="middle" data-t="t505"></text><text class="rc-x" x="132.7" y="272" text-anchor="middle" data-t="t506"></text><text class="rc-x" x="195.5" y="272" text-anchor="middle" data-t="t507"></text><text class="rc-x" x="258.2" y="272" text-anchor="middle" data-t="t508"></text><text class="rc-x" x="320.9" y="272" text-anchor="middle" data-t="t509"></text><text class="rc-x" x="383.6" y="272" text-anchor="middle" data-t="t510"></text><text class="rc-x" x="446.4" y="272" text-anchor="middle" data-t="t511"></text><text class="rc-x" x="509.1" y="272" text-anchor="middle" data-t="t512"></text><text class="rc-x" x="571.8" y="272" text-anchor="middle" data-t="t513"></text><text class="rc-x" x="634.5" y="272" text-anchor="middle" data-t="t514"></text><text class="rc-x" x="697.3" y="272" text-anchor="middle" data-t="t515"></text><text class="rc-x" x="760.0" y="272" text-anchor="middle" data-t="t516"></text><path class="rc-band" d="M70.0 185.4 L132.7 222.9 L195.5 196.1 L258.2 212.9 L320.9 206.2 L383.6 219.3 L446.4 212.9 L509.1 216.8 L571.8 231.2 L634.5 222.8 L697.3 228.3 L760.0 216.3 L760.0 43.1 L697.3 67.7 L634.5 65.7 L571.8 84.6 L509.1 70.2 L446.4 71.3 L383.6 87.5 L320.9 76.6 L258.2 93.3 L195.5 78.5 L132.7 122.3 L70.0 82.2 Z"/><path class="rc-l rc-act" d="M70.0 123.6 L132.7 154.7 L195.5 111.0 L258.2 152.3 L320.9 141.8 L383.6 136.2 L446.4 152.9 L509.1 159.9 L571.8 163.2 L634.5 150.6 L697.3 166.7 L760.0 200.4"/><path class="rc-l rc-year" d="M70.0 133.8 L132.7 172.6 L195.5 137.3 L258.2 153.1 L320.9 141.4 L383.6 153.4 L446.4 142.1 L509.1 143.5 L571.8 157.9 L634.5 144.2 L697.3 148.0 L760.0 129.7"/><path class="rc-l rc-mon" d="M70.0 134.9 L132.7 171.7 L195.5 134.3 L258.2 145.7 L320.9 141.0 L383.6 153.1 L446.4 134.0 L509.1 143.7 L571.8 168.1 L634.5 149.7 L697.3 156.6 L760.0 142.2"/><circle class="rc-d-act" cx="70.0" cy="123.6" r="3.4"/><circle class="rc-d-act" cx="132.7" cy="154.7" r="3.4"/><circle class="rc-d-act" cx="195.5" cy="111.0" r="3.4"/><circle class="rc-d-act" cx="258.2" cy="152.3" r="3.4"/><circle class="rc-d-act" cx="320.9" cy="141.8" r="3.4"/><circle class="rc-d-act" cx="383.6" cy="136.2" r="3.4"/><circle class="rc-d-act" cx="446.4" cy="152.9" r="3.4"/><circle class="rc-d-act" cx="509.1" cy="159.9" r="3.4"/><circle class="rc-d-act" cx="571.8" cy="163.2" r="3.4"/><circle class="rc-d-act" cx="634.5" cy="150.6" r="3.4"/><circle class="rc-d-act" cx="697.3" cy="166.7" r="3.4"/><circle class="rc-d-act" cx="760.0" cy="200.4" r="3.4"/><circle class="rc-d-mon" cx="70.0" cy="134.9" r="3.4"/><circle class="rc-d-mon" cx="132.7" cy="171.7" r="3.4"/><circle class="rc-d-mon" cx="195.5" cy="134.3" r="3.4"/><circle class="rc-d-mon" cx="258.2" cy="145.7" r="3.4"/><circle class="rc-d-mon" cx="320.9" cy="141.0" r="3.4"/><circle class="rc-d-mon" cx="383.6" cy="153.1" r="3.4"/><circle class="rc-d-mon" cx="446.4" cy="134.0" r="3.4"/><circle class="rc-d-mon" cx="509.1" cy="143.7" r="3.4"/><circle class="rc-d-mon" cx="571.8" cy="168.1" r="3.4"/><circle class="rc-d-mon" cx="634.5" cy="149.7" r="3.4"/><circle class="rc-d-mon" cx="697.3" cy="156.6" r="3.4"/><circle class="rc-d-mon" cx="760.0" cy="142.2" r="3.4"/></svg><div class="rc-key"><span><i class="k-act"></i><span data-t="t518"></span></span><span><i class="k-year"></i><span data-t="t641"></span></span><span><i class="k-mon"></i><span data-t="t520"></span></span><span><i class="k-band"></i><span data-t="t642"></span></span></div></figure>
+<figure class="realchart rc2"><figcaption class="rc-cap" data-t="t566"></figcaption><svg viewBox="0 0 780 290" role="img"><title data-t="t566"></title><line class="rc-grid" x1="70" x2="760" y1="250.0" y2="250.0"/><text class="rc-y" x="62" y="254.0" text-anchor="end">1,200</text><line class="rc-grid" x1="70" x2="760" y1="176.7" y2="176.7"/><text class="rc-y" x="62" y="180.7" text-anchor="end">1,800</text><line class="rc-grid" x1="70" x2="760" y1="103.3" y2="103.3"/><text class="rc-y" x="62" y="107.3" text-anchor="end">2,400</text><line class="rc-grid" x1="70" x2="760" y1="30.0" y2="30.0"/><text class="rc-y" x="62" y="34.0" text-anchor="end">3,000</text><text class="rc-x" x="70.0" y="272" text-anchor="middle" data-t="t505"></text><text class="rc-x" x="132.7" y="272" text-anchor="middle" data-t="t506"></text><text class="rc-x" x="195.5" y="272" text-anchor="middle" data-t="t507"></text><text class="rc-x" x="258.2" y="272" text-anchor="middle" data-t="t508"></text><text class="rc-x" x="320.9" y="272" text-anchor="middle" data-t="t509"></text><text class="rc-x" x="383.6" y="272" text-anchor="middle" data-t="t510"></text><text class="rc-x" x="446.4" y="272" text-anchor="middle" data-t="t511"></text><text class="rc-x" x="509.1" y="272" text-anchor="middle" data-t="t512"></text><text class="rc-x" x="571.8" y="272" text-anchor="middle" data-t="t513"></text><text class="rc-x" x="634.5" y="272" text-anchor="middle" data-t="t514"></text><text class="rc-x" x="697.3" y="272" text-anchor="middle" data-t="t515"></text><text class="rc-x" x="760.0" y="272" text-anchor="middle" data-t="t516"></text><path class="rc-band" d="M70.0 222.3 L132.7 229.8 L195.5 206.6 L258.2 215.0 L320.9 199.6 L383.6 193.7 L446.4 181.2 L509.1 184.9 L571.8 197.0 L634.5 191.5 L697.3 210.2 L760.0 232.8 L760.0 95.1 L697.3 60.1 L634.5 33.4 L571.8 50.3 L509.1 36.7 L446.4 38.2 L383.6 66.3 L320.9 83.3 L258.2 114.5 L195.5 108.9 L132.7 150.6 L70.0 146.8 Z"/><path class="rc-l rc-act" d="M70.0 154.5 L132.7 133.4 L195.5 128.1 L258.2 136.9 L320.9 123.0 L383.6 132.3 L446.4 83.2 L509.1 80.4 L571.8 99.2 L634.5 100.3 L697.3 146.7 L760.0 140.9"/><path class="rc-l rc-year" d="M70.0 184.6 L132.7 190.2 L195.5 157.8 L258.2 164.7 L320.9 141.5 L383.6 130.0 L446.4 109.7 L509.1 110.8 L571.8 123.7 L634.5 112.5 L697.3 135.2 L760.0 163.9"/><path class="rc-l rc-mon" d="M70.0 168.0 L132.7 170.0 L195.5 128.9 L258.2 136.5 L320.9 127.0 L383.6 133.3 L446.4 122.4 L509.1 103.4 L571.8 105.0 L634.5 92.2 L697.3 112.5 L760.0 127.0"/><circle class="rc-d-act" cx="70.0" cy="154.5" r="3.4"/><circle class="rc-d-act" cx="132.7" cy="133.4" r="3.4"/><circle class="rc-d-act" cx="195.5" cy="128.1" r="3.4"/><circle class="rc-d-act" cx="258.2" cy="136.9" r="3.4"/><circle class="rc-d-act" cx="320.9" cy="123.0" r="3.4"/><circle class="rc-d-act" cx="383.6" cy="132.3" r="3.4"/><circle class="rc-d-act" cx="446.4" cy="83.2" r="3.4"/><circle class="rc-d-act" cx="509.1" cy="80.4" r="3.4"/><circle class="rc-d-act" cx="571.8" cy="99.2" r="3.4"/><circle class="rc-d-act" cx="634.5" cy="100.3" r="3.4"/><circle class="rc-d-act" cx="697.3" cy="146.7" r="3.4"/><circle class="rc-d-act" cx="760.0" cy="140.9" r="3.4"/><circle class="rc-d-mon" cx="70.0" cy="168.0" r="3.4"/><circle class="rc-d-mon" cx="132.7" cy="170.0" r="3.4"/><circle class="rc-d-mon" cx="195.5" cy="128.9" r="3.4"/><circle class="rc-d-mon" cx="258.2" cy="136.5" r="3.4"/><circle class="rc-d-mon" cx="320.9" cy="127.0" r="3.4"/><circle class="rc-d-mon" cx="383.6" cy="133.3" r="3.4"/><circle class="rc-d-mon" cx="446.4" cy="122.4" r="3.4"/><circle class="rc-d-mon" cx="509.1" cy="103.4" r="3.4"/><circle class="rc-d-mon" cx="571.8" cy="105.0" r="3.4"/><circle class="rc-d-mon" cx="634.5" cy="92.2" r="3.4"/><circle class="rc-d-mon" cx="697.3" cy="112.5" r="3.4"/><circle class="rc-d-mon" cx="760.0" cy="127.0" r="3.4"/></svg><div class="rc-key"><span><i class="k-act"></i><span data-t="t518"></span></span><span><i class="k-year"></i><span data-t="t641"></span></span><span><i class="k-mon"></i><span data-t="t520"></span></span><span><i class="k-band"></i><span data-t="t642"></span></span></div></figure>
 <p class="pnote" data-t-html="t558"></p>
 <p class="rx-more"><button type="button" class="btn btn-primary" data-pop="pop-results2" data-t="t564"></button></p>
 <p class="pmethod" data-t-html="t559"></p>
@@ -834,10 +885,20 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 </section>
 <section>
 <div class="wrap">
+<div class="pricebar">
+<p class="founding" id="founding" hidden></p>
+<div class="pint" role="radiogroup" aria-labelledby="pint-l"><span class="sr" id="pint-l" data-t="t665"></span>
+<button type="button" role="radio" aria-checked="true" data-int="month" data-t="t656"></button>
+<button type="button" role="radio" aria-checked="false" data-int="year"><span data-t="t657"></span> <small data-t="t658"></small></button>
+</div>
+<div class="pfind"><label for="pfind-n" data-t="t666"></label><input id="pfind-n" type="number" inputmode="numeric" min="1" max="100000" placeholder="20">
+<p class="pfind-out" id="pfind-out" aria-live="polite" data-t="t667"></p></div>
+</div>
 <div class="tiers">
 <div class="tier">
 <h3 data-t="t284"></h3>
-<div class="price" data-t-html="t285"></div>
+<div class="price" data-t-html="t285" data-m="t285" data-y="t659"></div>
+<p class="peq" data-t="t662" hidden></p>
 <p class="who" data-t="t286"></p>
 <ul class="feats">
 <li data-t="t287"></li>
@@ -850,12 +911,13 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <li data-t="t291"></li>
 <li data-t="t292"></li>
 </ul>
-<a class="btn btn-ghost" data-t="t293" href="https://etlobsa7.com/app/?start=basic" data-trial="basic"></a>
+<a class="btn btn-ghost" data-t="t293" href="https://etlobsa7.com/app/?start=basic" data-trial="basic" data-plan-tier="basic"></a>
 </div>
 <div class="tier best">
 <span class="badge" data-t="t294"></span>
 <h3 data-t="t295"></h3>
-<div class="price" data-t-html="t296"></div>
+<div class="price" data-t-html="t296" data-m="t296" data-y="t660"></div>
+<p class="peq" data-t="t663" hidden></p>
 <p class="who" data-t="t297"></p>
 <ul class="feats">
 <li data-t="t298"></li>
@@ -866,11 +928,12 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <li data-t="t311"></li>
 <li data-t="t303"></li>
 </ul>
-<a class="btn btn-primary" data-t="t304" href="https://etlobsa7.com/app/?start=pro" data-trial="pro"></a>
+<a class="btn btn-primary" data-t="t304" href="https://etlobsa7.com/app/?start=pro" data-trial="pro" data-plan-tier="pro"></a>
 </div>
 <div class="tier">
 <h3 data-t="t305"></h3>
-<div class="price" data-t-html="t306"></div>
+<div class="price" data-t-html="t306" data-m="t306" data-y="t661"></div>
+<p class="peq" data-t="t664" hidden></p>
 <p class="who" data-t="t307"></p>
 <ul class="feats">
 <li data-t="t308"></li>
@@ -879,12 +942,14 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <li data-t="t548"></li>
 <li data-t="t549"></li>
 </ul>
-<a class="btn btn-ghost" data-t="t313" href="https://etlobsa7.com/app/?start=store" data-trial="store"></a>
+<a class="btn btn-ghost" data-t="t313" href="https://etlobsa7.com/app/?start=store" data-trial="store" data-plan-tier="store"></a>
 </div>
 </div>
-<div class="grid g2" style="margin-top:44px">
+<div class="grid g3" style="margin-top:44px">
 <div class="card"><h4 data-t="t314" style="margin-top:0"></h4>
 <p data-t="t315"></p></div>
+<div class="card"><h4 data-t="t673" style="margin-top:0"></h4>
+<p data-t="t674"></p></div>
 <div class="card"><h4 data-t="t318" style="margin-top:0"></h4>
 <p data-t="t319"></p></div>
 </div>
@@ -919,6 +984,14 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <div class="ans"><p data-t="t335"></p></div></details>
 <details><summary data-t="t336"></summary>
 <div class="ans"><p data-t="t337"></p></div></details>
+<details><summary data-t="t675"></summary>
+<div class="ans"><p data-t="t676"></p></div></details>
+<details><summary data-t="t677"></summary>
+<div class="ans"><p data-t="t678"></p></div></details>
+<details><summary data-t="t679"></summary>
+<div class="ans"><p data-t="t680"></p></div></details>
+<details><summary data-t="t681"></summary>
+<div class="ans"><p data-t="t682"></p></div></details>
 <details><summary data-t="t338"></summary>
 <div class="ans"><p data-t="t339"></p></div></details>
 <details><summary data-t="t340"></summary>
@@ -1178,7 +1251,7 @@ var SITE_EN = {
   t17: 'Many small brands sell well and guess at buying. This removes the guess: how many units to order, from which supplier, on which day, for every product you sell.',
   t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">Start your free trial</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">See the app in action</a>',
   t19: 'Runs in your browser. Arabic and English included. Priced in Egyptian pounds.',
-  t20: '<b>95.9%</b><span>2015 forecast accuracy on a real Walmart store, made from 2013 and 2014 only</span>',
+  t20: '<b>95.3%</b><span>2015 forecast accuracy on a real Walmart store, made from 2013 and 2014 only</span>',
   t21: '<b>~10 min</b><small>A typical weekly check once it is set up</small>',
   t22: '<b>18</b><small>Connected pages. You type into five.</small>',
   t23: '<b>2 min</b><small>To sign in. Just your email, no password to remember.</small>',
@@ -1443,13 +1516,13 @@ var SITE_EN = {
   t278: '<strong>No accounting, POS, barcode scanning or multi-location stock.</strong> It plans; you keep counting stock your usual way.',
   t279: '<strong>It is only as good as what you type in.</strong> That is why the Health Check exists.',
   t280: 'Pricing',
-  t281: 'Monthly. Cancel whenever you like.',
+  t281: 'Monthly or yearly. Stop renewal whenever you like.',
   t282: 'Every plan includes the full system, both languages, the guided walkthrough, and new tools as they are added. Fourteen days free on Basic and Pro, five days on Store.',
-  t283: 'Prices are in Egyptian pounds and are what you pay each month, by card through Paymob.',
+  t283: 'Prices are in Egyptian pounds, paid by card through Paymob. A yearly plan costs ten months: two months free.',
   t284: 'Basic',
   t285: '1,295 <small>EGP / month</small>',
   t286: 'A one person shop with a focused range.',
-  t287: 'Up to 10 products',
+  t287: 'Up to 15 products',
   t288: 'Full forecasting and reorder engine',
   t289: 'Arabic and English versions',
   t290: 'Guided walkthrough tutorial',
@@ -1493,11 +1566,11 @@ var SITE_EN = {
   t330: 'Arabic or English?',
   t331: 'Both are included with every plan at no extra cost. The Arabic version is\n          fully right to left and built around EGP.',
   t332: 'How many products can it handle?',
-  t333: 'Basic covers up to 10 products and 10 suppliers, with the four built in season\n          shapes fixed as they are. Pro covers up to 50 products, Store up to 200, both with up to\n          100 suppliers and your own custom season shapes.',
+  t333: 'Basic covers up to 15 products and 10 suppliers, with the four built in season shapes fixed as they are. Pro covers up to 50 products, Store up to 200, both with up to 100 suppliers and your own custom season shapes.',
   t334: 'What new tools are coming?',
   t335: 'New tools and improvements as they are built, plus any corrections. Pro adds custom season shapes, supplier comparison, the supplier scorecard and the cash flow forecast; Store adds demand graphs with the reorder timeline, profit at risk and the dead stock report. Everyone gets each tool in their plan the day it ships. If you cancel, your workspace is kept and waiting for you if you come back later.',
   t336: 'Can I cancel easily?',
-  t337: 'Yes, any time: in the app, open Settings, then Plan and billing, and press Stop renewal. Nothing more is charged, and you keep access until the end of the month you paid for. Or message us on WhatsApp and we do it for you.',
+  t337: 'Yes, any time: in the app, open Settings, then Plan and billing, and press Stop renewal. Nothing more is charged, and you keep access until the end of the month or year you paid for. After that the app pauses and your data stays saved. Or message us on WhatsApp and we do it for you.',
   t338: 'How is this different from the free templates online?',
   t339: 'Free templates record what you already have. They do not forecast demand, do not calculate safety stock from your supplier\'s actual reliability, do not separate seasonality from randomness, and do not respect minimum order quantities. Those are precisely the parts that change what you buy. The real store tests on this page show how the app does on actual sales.',
   t340: 'Will this work for a service business or for made to order products?',
@@ -1542,56 +1615,87 @@ var SITE_EN = {
   t632: 'Your shelf is full. Customers start buying.',
   t631: 'A month of reordering, done right',
   t630: 'Scroll to restock the shelf',
-  t641: 'App, whole year forecast made in December 2013',
+  t641: 'App, whole year forecast made in December 2014',
   t640: 'The same formulas were also checked on all ten M5 stores, two years each (20 store-years), so they are not tuned to the two stores shown.',
   t642: 'Range the app gave in advance (built so about 8 in 10 months land inside)',
   t643: 'Expected range',
   t644: '<td class="pf">Expected range, each month of 2015</td><td>Low and high for each month, made Dec 2014</td><td>Real monthly sales</td><td class="pacc"><b>10 of 12 months inside</b><span class="pbar"><i style="--w:83.3%"></i></span></td>',
-  t645: '<td class="pf">Expected range, each month of 2014</td><td>Low and high for each month, made Dec 2013</td><td>Real monthly sales</td><td class="pacc"><b>12 of 12 months inside</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t646: '<strong>Why the lines do not match month by month.</strong> This store\'s monthly ups and downs did not repeat from one year to the next, and no forecast can predict a bump that never happened before. Prices barely moved (under 1%), and the data does not record promotions, events or weather. What the app did: it came within 4.1% of the real year, and 10 of 12 real months landed inside its range. In a shop whose busy months repeat, such as Ramadan, Eid, school season or winter, it learns that pattern and follows it.',
+  t645: '<td class="pf">Expected range, each month of 2015</td><td>Low and high for each month, made Dec 2014</td><td>Real monthly sales</td><td class="pacc"><b>11 of 12 months inside</b><span class="pbar"><i style="--w:91.7%"></i></span></td>',
+  t646: '<strong>Why the lines do not match month by month.</strong> This store\'s monthly ups and downs did not repeat from one year to the next, and no forecast can predict a bump that never happened before. Prices barely moved (under 1%), and the data does not record promotions, events or weather. What the app did: it came within 4.7% of the real year, and 10 of 12 real months landed inside its range. In a shop whose busy months repeat, such as Ramadan, Eid, school season or winter, it learns that pattern and follows it.',
   t647: 'It learns your shop',
   t648: 'It learns from your own shop as you use it.',
   t649: '<b>Your seasons</b><span>Give it two years of sales and it finds each product\'s own busy and quiet months, and leans on it only as much as your two years agree.</span>',
   t650: '<b>Your suppliers\' real delivery times</b><span>Mark orders received and it learns how long each supplier really takes, then uses that in every reorder point.</span>',
   t651: '<b>How right it has been</b><span>Each new month you enter is checked against what it forecast, so you see its real accuracy on your own shop.</span>',
   t652: 'On every plan. You can see what it has learned on the dashboard.',
-  t653: 'Method: the same as test 1. The app was given 2012 and 2013 only, then used week by week through 2014, with 40 hobby and household products picked at random, three assumed suppliers (7, 14 and 21 days, with random delays) and a cost of 55% of shelf price. Averages of 40 runs. Results are in US dollars.',
+  t653: 'Method: the same as test 1. The app was given 2013 and 2014 only, then used week by week through 2015, with 40 hobby and household products picked at random (fixed seed) from those that sold in every month of 2013 and 2014, three assumed suppliers (7, 14 and 21 days, with random delays) and a cost of 55% of shelf price. Averages of 40 runs, each run scored on its own. Results are in US dollars.',
+  t655: '<td class="pf">Gross profit for 2015</td><td>41,700 USD</td><td>40,900 USD</td><td class="pacc"><b>98.1%</b><span class="pbar"><i style="--w:98.1%"></i></span></td>',
+  t684: 'Hi, I have a question about Etlob Sa7.',
+  t683: 'Chat with us on WhatsApp',
+  t682: 'Every Sunday morning, an email with what to order this week, what is coming up, and what the app has learned about your shop, made from your saved data. Turn it off in Settings or from the link in the email.',
+  t681: 'What is the Sunday summary?',
+  t680: 'Yes. After a 14-day trial we email you 7 days before the first payment, with a link to stop renewal online. Store\'s 5-day trial is reminded the day after it starts. Yearly plans get an email 7 days before each renewal.',
+  t679: 'Will you remind me before charging my card?',
+  t678: 'The first 30 shops to make a payment keep the price they started on for as long as they stay subscribed, even if our prices go up later. If a plan runs out, the founding price ends with it. The pricing section shows how many places are left.',
+  t677: 'What is the founding offer?',
+  t676: 'Yes. Pay for ten months and get twelve: Basic 12,950, Pro 28,500 and Store 54,400 EGP a year. The free trial is the same, and we email you 7 days before each yearly renewal.',
+  t675: 'Is there a yearly plan?',
+  t674: 'After a 14-day trial we email you 7 days before the first payment, with a link to stop it online. Store\'s 5-day trial gets its reminder the day after it starts, and yearly plans get one 7 days before each renewal.',
+  t673: 'A reminder before any charge',
+  t672: 'Founding offer: the first 30 shops to pay keep today\'s price for as long as they stay subscribed. {n} of 30 places left.',
+  t671: 'More than 200 products: message us on WhatsApp and we will tell you honestly whether it suits you.',
+  t670: 'The Store plan fits: it covers up to 200 products.',
+  t669: 'The Pro plan fits: it covers up to 50 products.',
+  t668: 'The Basic plan fits: it covers up to 15 products.',
+  t667: 'Type a number to see which plan fits.',
+  t666: 'How many products do you sell?',
+  t665: 'Billing period',
+  t664: 'Same as 4,533 EGP a month',
+  t663: 'Same as 2,375 EGP a month',
+  t662: 'Same as 1,079 EGP a month',
+  t661: '54,400 <small>EGP / year</small>',
+  t660: '28,500 <small>EGP / year</small>',
+  t659: '12,950 <small>EGP / year</small>',
+  t658: '2 months free',
+  t657: 'Yearly',
+  t656: 'Monthly',
+  t654: '<td class="pf">Profit at risk</td><td>273 USD</td><td>314 USD</td><td class="pacc"><b>87.1% (each run scored on its own)</b><span class="pbar"><i style="--w:87.1%"></i></span></td>',
   t626: 'Real public data, named sources',
   t625: '20 store-years tested',
-  t624: '98.8% whole year forecast',
-  t623: 'Walmart, store WI_1, Wisconsin',
+  t624: '92.0% whole year forecast',
+  t623: 'Walmart, store WI_2, Wisconsin',
   t622: '99.8% of customers served',
-  t621: '95.9% whole year forecast',
+  t621: '95.3% whole year forecast',
   t620: 'Walmart, store CA_3, California',
-  t582: '<td class="pf">Revenue for 2014</td><td>73,400 USD</td><td>70,300 USD</td><td class="pacc"><b>95.7%</b><span class="pbar"><i style="--w:95.7%"></i></span></td>',
-  t581: '<td class="pf">Days of cover</td><td>How long current stock will last</td><td>How long it really lasted</td><td class="pacc"><b>82.8%</b><span class="pbar"><i style="--w:82.8%"></i></span></td>',
-  t580: '<td class="pf">When each product needs reordering</td><td>The week stock reaches its reorder point, up to 2 weeks ahead</td><td>The week it really did</td><td class="pacc"><b>95.3% within a week (3 to 4 weeks ahead: 80.2%)</b><span class="pbar"><i style="--w:95.3%"></i></span></td>',
-  t579: '<td class="pf">Each product, month by month</td><td>Next month for each of 40 products</td><td>What each really sold</td><td class="pacc lo"><b>77.9% (3 month average: 76.3%)</b><span class="pbar"><i style="--w:77.9%"></i></span></td>',
-  t578: '<td class="pf">Whole year forecast, made Dec 2013</td><td>16,237 units</td><td>16,046 units</td><td class="pacc"><b>98.8%</b><span class="pbar"><i style="--w:98.8%"></i></span></td>',
-  t577: '<td class="pf">Revenue ranking A, B, C</td><td>Class from 2013</td><td>Class on real 2014 revenue</td><td class="pacc lo"><b>77.5%</b><span class="pbar"><i style="--w:77.5%"></i></span></td>',
-  t576: '<td class="pf">Predictability X, Y, Z</td><td>Class from 2013</td><td>Class on real 2014 sales</td><td class="pacc lo"><b>55% exact, 97.5% within one class</b><span class="pbar"><i style="--w:55.0%"></i></span></td>',
-  t575: '<td class="pf">Safety stock promise</td><td>95% of order cycles without running out</td><td>97.6% of cycles</td><td class="pacc"><b>Kept: 97.6% (target 95%)</b><span class="pbar"><i style="--w:97.6%"></i></span></td>',
+  t582: '<td class="pf">Revenue for 2015</td><td>92,700 USD</td><td>91,000 USD</td><td class="pacc"><b>98.1%</b><span class="pbar"><i style="--w:98.1%"></i></span></td>',
+  t581: '<td class="pf">Days of cover</td><td>How long current stock will last</td><td>How long it really lasted</td><td class="pacc"><b>83.5%</b><span class="pbar"><i style="--w:83.5%"></i></span></td>',
+  t580: '<td class="pf">When each product needs reordering</td><td>The week stock reaches its reorder point, up to 2 weeks ahead</td><td>The week it really did</td><td class="pacc"><b>93.5% within a week (3 to 4 weeks ahead: 76.3%)</b><span class="pbar"><i style="--w:93.5%"></i></span></td>',
+  t579: '<td class="pf">Each product, month by month</td><td>Next month for each of 40 products</td><td>What each really sold</td><td class="pacc"><b>80.9% (3 month average: 79.9%)</b><span class="pbar"><i style="--w:80.9%"></i></span></td>',
+  t578: '<td class="pf">Whole year forecast, made Dec 2014</td><td>24,836 units</td><td>27,009 units</td><td class="pacc"><b>92.0%</b><span class="pbar"><i style="--w:92.0%"></i></span></td>',
+  t577: '<td class="pf">Revenue ranking A, B, C</td><td>Class from 2014</td><td>Class on real 2015 revenue</td><td class="pacc"><b>85%</b><span class="pbar"><i style="--w:85.0%"></i></span></td>',
+  t576: '<td class="pf">Predictability X, Y, Z</td><td>Class from 2014</td><td>Class on real 2015 sales</td><td class="pacc lo"><b>42.5% exact, 100% within one class</b><span class="pbar"><i style="--w:42.5%"></i></span></td>',
+  t575: '<td class="pf">Safety stock promise</td><td>95% of order cycles without running out</td><td>95.7% of cycles</td><td class="pacc"><b>Kept: 95.7% (target 95%)</b><span class="pbar"><i style="--w:95.7%"></i></span></td>',
   t574: '<td class="pf">Cash flow and carton rounding</td><td>Payments due, and order sizes</td><td>Payments made, supplier rules</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t573: '<td class="pf">Yearly cost of running stock</td><td>4,800 USD</td><td>4,200 USD</td><td class="pacc"><b>85.6%</b><span class="pbar"><i style="--w:85.6%"></i></span></td>',
+  t573: '<td class="pf">Yearly cost of running stock</td><td>5,100 USD</td><td>4,600 USD</td><td class="pacc"><b>88.6%</b><span class="pbar"><i style="--w:88.6%"></i></span></td>',
   t572: '<td class="pf">Cheaper supplier pick</td><td>Which supplier costs less over a year</td><td>Which really cost less</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t571: '<td class="pf">Supplier delivery times, learned</td><td>Learned from recorded deliveries</td><td>Each supplier\'s real average</td><td class="pacc"><b>96.2%</b><span class="pbar"><i style="--w:96.2%"></i></span></td>',
-  t570: '<td class="pf">Dead stock flags</td><td>Product has stopped selling</td><td>No product stopped selling in 2014</td><td class="pacc"><b>No false alarms</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t569: '<td class="pf">"Stock is healthy" calls</td><td>No need to order this week</td><td>Stock lasted until a delivery could arrive</td><td class="pacc"><b>99.4%</b><span class="pbar"><i style="--w:99.4%"></i></span></td>',
-  t568: '<td class="pf">Customers served from stock</td><td>Order what the app says</td><td>Share of real demand served</td><td class="pacc"><b>99.9%</b><span class="pbar"><i style="--w:99.9%"></i></span></td>',
-  t567: '<td class="pf">Store sales, month by month</td><td>Next month, updated monthly</td><td>Real monthly sales</td><td class="pacc"><b>96.1% (same month last year: 94.4%)</b><span class="pbar"><i style="--w:96.1%"></i></span></td>',
-  t566: 'Units sold per month, 40 products, 2014',
-  t565: 'Test 2: Walmart store WI_1, Wisconsin, full results',
+  t571: '<td class="pf">Supplier delivery times, learned</td><td>Learned from recorded deliveries</td><td>Each supplier\'s real average</td><td class="pacc"><b>96.4%</b><span class="pbar"><i style="--w:96.4%"></i></span></td>',
+  t570: '<td class="pf">Dead stock flags</td><td>Product has stopped selling</td><td>One product stopped in October; the app waits for five quiet months, so it was not flagged within 2015</td><td class="pacc"><b>No false alarms</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t569: '<td class="pf">"Stock is healthy" calls</td><td>No need to order this week</td><td>Stock lasted until a delivery could arrive</td><td class="pacc"><b>99.1%</b><span class="pbar"><i style="--w:99.1%"></i></span></td>',
+  t568: '<td class="pf">Customers served from stock</td><td>Order what the app says</td><td>Share of real demand served</td><td class="pacc"><b>99.8%</b><span class="pbar"><i style="--w:99.8%"></i></span></td>',
+  t567: '<td class="pf">Store sales, month by month</td><td>Next month, updated monthly</td><td>Real monthly sales</td><td class="pacc"><b>94.5% (same month last year: 93.8%)</b><span class="pbar"><i style="--w:94.5%"></i></span></td>',
+  t566: 'Units sold per month, 40 products, 2015',
+  t565: 'Test 2: Walmart store WI_2, Wisconsin, full results',
   t564: 'See all results for test 2',
-  t562: '<b>98.8%</b><span>Walmart store, Wisconsin, 2014: whole year forecast</span>',
-  t561: '<b>95.9%</b><span>Walmart store, California, 2015: whole year forecast</span>',
+  t562: '<b>92.0%</b><span>Walmart store, Wisconsin, 2015: whole year forecast</span>',
+  t561: '<b>95.3%</b><span>Walmart store, California, 2015: whole year forecast</span>',
   t560: 'Every test so far',
-  t559: 'Source: <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">M5 Forecasting dataset</a>, store WI_1 (Makridakis, Spiliotis and Assimakopoulos, <a href="https://doi.org/10.1016/j.ijforecast.2021.11.013" target="_blank" rel="noopener">International Journal of Forecasting, 2022</a>), via the <a href="https://github.com/Nixtla/m5-forecasts" target="_blank" rel="noopener">Nixtla public mirror</a>. Same method as test 1. Not affiliated with or endorsed by Walmart.',
-  t558: '<strong>Plainly:</strong> four results stay under 80%: each product month by month 77.9% (3 month average: 76.3%), the revenue ranking 77.5%, the predictability class 55% exact (97.5% within one class), and growing or shrinking 55%. The December drop was in neither earlier year, so the app did not see it coming, but it stayed inside the range. Profit at risk: real losses were about 120 USD against about 160 predicted, amounts too small to score fairly; across all 20 store-years it was 91.9% right.',
-  t557: '<b>99.4%</b><span>"No need to order" calls that were safe</span>',
-  t556: '<b>95.3%</b><span>Reorder week right to within a week, two weeks ahead</span>',
-  t555: '<b>99.9%</b><span>Of real customer demand served from stock</span>',
-  t554: '<b>98.8%</b><span>Whole year forecast for the store, made in December 2013</span>',
-  t553: 'Real daily sales of 40 hobby and household products from Walmart store WI_1 in Wisconsin: same public dataset, but a different store, state, climate and year. The app saw only 2012 and 2013, then planned 2014, exactly as in test 1.',
+  t559: 'Source: M5 Forecasting Accuracy competition data, store WI_2 (Wisconsin): Makridakis, Spiliotis and Assimakopoulos, University of Nicosia (M Open Forecasting Center), with data provided by Walmart; Kaggle, 2020, <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">kaggle.com/c/m5-forecasting-accuracy</a>. Method paper: <a href="https://doi.org/10.1016/j.ijforecast.2021.11.013" target="_blank" rel="noopener">International Journal of Forecasting, 2022</a>. Copy used: the <a href="https://github.com/Nixtla/m5-forecasts" target="_blank" rel="noopener">Nixtla public mirror</a>. Used under the Kaggle competition rules: only results are shown here, never the raw data. Same method as test 1. Not affiliated with or endorsed by Walmart.',
+  t558: '<strong>Plainly:</strong> two results stay under 80%: the predictability class (42.5% exact, never more than one class off) and growing or shrinking (55%). This store\'s sales fell 20.5% from 2013 to 2014, then rose 5.2% in 2015. The app planned from the lower, more recent level, so its whole year forecast came in 8% under the real year, but 11 of 12 months still landed inside its range and 99.8% of real demand was served from stock. Profit at risk was 87.1% right here, and 90.2% across all 20 store-years.',
+  t557: '<b>99.1%</b><span>"No need to order" calls that were safe</span>',
+  t556: '<b>93.5%</b><span>Reorder week right to within a week, two weeks ahead</span>',
+  t555: '<b>99.8%</b><span>Of real customer demand served from stock</span>',
+  t554: '<b>92.0%</b><span>Whole year forecast for the store, made in December 2014</span>',
+  t553: 'Real daily sales of 40 hobby and household products from Walmart store WI_2 in Wisconsin: same public dataset and years, but a different store, state and climate. The app saw only 2013 and 2014, then planned 2015, exactly as in test 1.',
   t552: 'Test 2: a Walmart store in Wisconsin',
   t551: 'A different store, a different state, a different year.',
   t550: 'We tested it again.',
@@ -1614,13 +1718,13 @@ var SITE_EN = {
   t533: 'Forecast for 2015, made from 2013 and 2014 only',
   t532: 'Real store, real year',
   t531: '<a class="btn btn-primary" data-go="proof" href="#">See the real example</a>',
-  t530: 'We gave the app two real years of a Walmart store\'s sales and it predicted the third: 95.9% accurate for the whole year, and 10 of 12 months landed inside the range it gave in advance.',
+  t530: 'We gave the app two real years of a Walmart store\'s sales and it predicted the third: 95.3% accurate for the whole year, and 10 of 12 months landed inside the range it gave in advance.',
   t529: 'See it work on a real store',
-  t528: 'Source: <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">M5 Forecasting dataset</a>, Walmart daily unit sales and prices, store CA_3 (Makridakis, Spiliotis and Assimakopoulos, University of Nicosia; <a href="https://doi.org/10.1016/j.ijforecast.2021.11.013" target="_blank" rel="noopener">International Journal of Forecasting, 2022</a>). Copy used: the <a href="https://github.com/Nixtla/m5-forecasts" target="_blank" rel="noopener">Nixtla public mirror</a>. Not affiliated with or endorsed by Walmart.',
+  t528: 'Source: M5 Forecasting Accuracy competition data, store CA_3 (California): Makridakis, Spiliotis and Assimakopoulos, University of Nicosia (M Open Forecasting Center), with data provided by Walmart; Kaggle, 2020, <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">kaggle.com/c/m5-forecasting-accuracy</a>. Method paper: <a href="https://doi.org/10.1016/j.ijforecast.2021.11.013" target="_blank" rel="noopener">International Journal of Forecasting, 2022</a>. Copy used: the <a href="https://github.com/Nixtla/m5-forecasts" target="_blank" rel="noopener">Nixtla public mirror</a>. Used under the Kaggle competition rules: only results are shown here, never the raw data. Not affiliated with or endorsed by Walmart.',
   t527: '<b>99.3%</b><span>"No need to order" calls that were safe</span>',
-  t526: '<b>94.6%</b><span>Reorder week right to within a week, two weeks ahead</span>',
+  t526: '<b>96.1%</b><span>Reorder week right to within a week, two weeks ahead</span>',
   t525: '<b>99.8%</b><span>Of real customer demand served from stock</span>',
-  t524: '<b>95.9%</b><span>Whole year forecast for the store, made in December 2014</span>',
+  t524: '<b>95.3%</b><span>Whole year forecast for the store, made in December 2014</span>',
   t523: 'Real daily sales from a Walmart store in California, from the public M5 dataset: 40 hobby and household products. The app saw only 2013 and 2014, then planned 2015. Every number here compares what it predicted with what really happened.',
   t522: 'We gave the app a real store\'s past. It predicted the next year.',
   t521: 'A real example',
@@ -1659,26 +1763,26 @@ var SITE_EN = {
   t469: 'App predicted',
   t470: 'Actually happened',
   t471: 'Accuracy',
-  t472: '<strong>Where it falls short.</strong> Two results stay under 80%: the predictability class (72.5% exact, never more than one class off) and whether a product grows or shrinks next year (57.5%, close to a coin toss, so the app shows it as last year\'s direction, not a promise). Each product month by month is 80.3%, about the same as a three month average (79.0%), because single products sell in lumps. For the whole store month by month, repeating last year did slightly better here (93.4% against 92.2%); in Wisconsin the app did better (96.1% against 94.4%), and across all 20 store-years too (92.8% against 85.1%).',
+  t472: '<strong>Where it falls short.</strong> Two results stay under 80%: the predictability class (72.5% exact, never more than one class off) and whether a product grows or shrinks next year (57.5%, close to a coin toss, so the app shows it as last year\'s direction, not a promise). Each product month by month is 80.3%, about the same as a three month average (79.0%), because single products sell in lumps. For the whole store month by month, repeating last year did slightly better here (93.4% against 92.2%); in Wisconsin the app did better (94.5% against 93.8%), and across all 20 store-years too (92.8% against 85.1%).',
   t473: 'Method: the app was given 2013 and 2014 only, then used week by week through 2015. The 40 products were picked at random (fixed seed) from hobby and household products that sold in every month of 2013 and 2014. The data has no suppliers or product costs, so three suppliers (7, 14 and 21 days, with random delays) and a cost of 55% of shelf price are assumed. The app learns each product\'s season from its own two years and the whole shop\'s, and leans on it only as much as the two years agree; with less than two years it falls back to the closest built-in season shape. The owner checks the app every Sunday and orders exactly what it says. Averages of 40 runs, each run scored on its own. Results are in US dollars.',
-  t474: '<td class="pf">Whole year forecast, made Dec 2014</td><td>41,024 units</td><td>42,782 units</td><td class="pacc"><b>95.9%</b><span class="pbar"><i style="--w:95.9%"></i></span></td>',
+  t474: '<td class="pf">Whole year forecast, made Dec 2014</td><td>40,782 units</td><td>42,782 units</td><td class="pacc"><b>95.3%</b><span class="pbar"><i style="--w:95.3%"></i></span></td>',
   t475: '<td class="pf">Store sales, month by month</td><td>Next month, updated monthly</td><td>Real monthly sales</td><td class="pacc"><b>92.2% (same month last year: 93.4%)</b><span class="pbar"><i style="--w:92.2%"></i></span></td>',
   t476: '<td class="pf">Customers served from stock</td><td>Order what the app says</td><td>Share of real demand served</td><td class="pacc"><b>99.8%</b><span class="pbar"><i style="--w:99.8%"></i></span></td>',
   t477: '<td class="pf">"Stock is healthy" calls</td><td>No need to order this week</td><td>Stock lasted until a delivery could arrive</td><td class="pacc"><b>99.3%</b><span class="pbar"><i style="--w:99.3%"></i></span></td>',
-  t478: '<td class="pf">When each product needs reordering</td><td>The week stock reaches its reorder point, up to 2 weeks ahead</td><td>The week it really did</td><td class="pacc"><b>94.6% within a week (3 to 4 weeks ahead: 86.5%)</b><span class="pbar"><i style="--w:94.6%"></i></span></td>',
-  t479: '<td class="pf">Yearly cost of running stock</td><td>6,600 USD</td><td>6,000 USD</td><td class="pacc"><b>90.6%</b><span class="pbar"><i style="--w:90.6%"></i></span></td>',
-  t480: '<td class="pf">Profit at risk</td><td>792 USD</td><td>855 USD</td><td class="pacc"><b>82.5% (each run scored on its own)</b><span class="pbar"><i style="--w:82.5%"></i></span></td>',
+  t478: '<td class="pf">When each product needs reordering</td><td>The week stock reaches its reorder point, up to 2 weeks ahead</td><td>The week it really did</td><td class="pacc"><b>96.1% within a week (3 to 4 weeks ahead: 85.9%)</b><span class="pbar"><i style="--w:96.1%"></i></span></td>',
+  t479: '<td class="pf">Yearly cost of running stock</td><td>6,600 USD</td><td>6,000 USD</td><td class="pacc"><b>90.8%</b><span class="pbar"><i style="--w:90.8%"></i></span></td>',
+  t480: '<td class="pf">Profit at risk</td><td>784 USD</td><td>857 USD</td><td class="pacc"><b>80.9% (each run scored on its own)</b><span class="pbar"><i style="--w:80.9%"></i></span></td>',
   t481: '<td class="pf">Cheaper supplier pick</td><td>Which supplier costs less over a year</td><td>Which really cost less</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t482: '<td class="pf">Supplier delivery times, learned</td><td>Learned from recorded deliveries</td><td>Each supplier\'s real average</td><td class="pacc"><b>96.7%</b><span class="pbar"><i style="--w:96.7%"></i></span></td>',
+  t482: '<td class="pf">Supplier delivery times, learned</td><td>Learned from recorded deliveries</td><td>Each supplier\'s real average</td><td class="pacc"><b>96.6%</b><span class="pbar"><i style="--w:96.6%"></i></span></td>',
   t483: '<td class="pf">Dead stock flags</td><td>Product has stopped selling</td><td>It stayed stopped</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t484: '<td class="pf">Revenue for 2015</td><td>144,900 USD</td><td>156,600 USD</td><td class="pacc"><b>92.5%</b><span class="pbar"><i style="--w:92.5%"></i></span></td>',
-  t485: '<td class="pf">Gross profit for 2015</td><td>65,200 USD</td><td>70,500 USD</td><td class="pacc"><b>92.5%</b><span class="pbar"><i style="--w:92.5%"></i></span></td>',
-  t486: '<td class="pf">Safety stock promise</td><td>95% of order cycles without running out</td><td>97.1% of cycles</td><td class="pacc"><b>Kept: 97.1% (target 95%)</b><span class="pbar"><i style="--w:97.1%"></i></span></td>',
+  t484: '<td class="pf">Revenue for 2015</td><td>144,400 USD</td><td>156,600 USD</td><td class="pacc"><b>92.2%</b><span class="pbar"><i style="--w:92.2%"></i></span></td>',
+  t485: '<td class="pf">Gross profit for 2015</td><td>65,000 USD</td><td>70,500 USD</td><td class="pacc"><b>92.2%</b><span class="pbar"><i style="--w:92.2%"></i></span></td>',
+  t486: '<td class="pf">Safety stock promise</td><td>95% of order cycles without running out</td><td>97.2% of cycles</td><td class="pacc"><b>Kept: 97.2% (target 95%)</b><span class="pbar"><i style="--w:97.2%"></i></span></td>',
   t487: '<td class="pf">Cash flow and carton rounding</td><td>Payments due, and order sizes</td><td>Payments made, supplier rules</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
   t488: '<td class="pf">Each product, month by month</td><td>Next month for each of 40 products</td><td>What each really sold</td><td class="pacc"><b>80.3% (3 month average: 79.0%)</b><span class="pbar"><i style="--w:80.3%"></i></span></td>',
   t489: '<td class="pf">Revenue ranking A, B, C</td><td>Class from 2014</td><td>Class on real 2015 revenue</td><td class="pacc"><b>82.5%</b><span class="pbar"><i style="--w:82.5%"></i></span></td>',
   t490: '<td class="pf">Predictability X, Y, Z</td><td>Class from 2014</td><td>Class on real 2015 sales</td><td class="pacc lo"><b>72.5% exact, 100% within one class</b><span class="pbar"><i style="--w:72.5%"></i></span></td>',
-  t491: '<td class="pf">Days of cover</td><td>How long current stock will last</td><td>How long it really lasted</td><td class="pacc"><b>83.1%</b><span class="pbar"><i style="--w:83.1%"></i></span></td>',
+  t491: '<td class="pf">Days of cover</td><td>How long current stock will last</td><td>How long it really lasted</td><td class="pacc"><b>83.2%</b><span class="pbar"><i style="--w:83.2%"></i></span></td>',
   t492: '<td class="pf">Growing or shrinking</td><td>Direction from 2014</td><td>Real direction in 2015</td><td class="pacc lo"><b>57.5%</b><span class="pbar"><i style="--w:57.5%"></i></span></td>',
   t432: 'Sample shop',
   t433: 'Next reorders',
@@ -1718,12 +1822,12 @@ var SITE_EN = {
   lg_privacy_1: "Etlob Sa7 (\"we\", \"us\") runs the website etlobsa7.com and the Etlob Sa7 app. This policy explains what personal information we collect, why, who helps us process it, how long we keep it, and the choices you have. Our business details are at the end of this page.",
   lg_privacy_2: "What we collect, and why",
   lg_privacy_3: "We only collect what the service needs to work:",
-  lg_privacy_4: "<li><strong>Your email address</strong>: to create your account, send your sign-in codes, and send notices about your trial and payments.</li><li><strong>Your name and mobile number</strong>: entered when you add a card. Paymob, our payment company, needs them to process card payments. We keep them to fill in the payment form for you next time.</li><li><strong>Plan and billing records</strong>: your plan, trial and paid-until dates, Paymob order, transaction and subscription numbers, amounts, and whether each payment worked. We need these to give you access and to keep proper billing records.</li><li><strong>The business data you type into the app</strong>: products, sales history, suppliers, costs, prices and orders. It is yours. We use it only to run the app for you.</li><li><strong>Security records</strong>: when a sign-in code was sent, when you signed in and how many times, and payment events, linked to your email. Sign-in codes and session keys are stored only as one-way scrambled values (hashes), never in readable form. We use these records to keep accounts safe, stop abuse and fix problems.</li><li><strong>Standard server logs</strong>: like most websites, our hosting providers record technical details of each request, such as IP address, time and browser type, for security and to keep the service running.</li>",
+  lg_privacy_4: "<li><strong>Your email address</strong>: to create your account, send your sign-in codes, send notices about your trial and payments (including reminders before a charge), and, unless you turn it off, a Sunday summary of your own shop's numbers. Turn the summary off in the app's Settings or from the link in each one.</li><li><strong>Your preferences</strong>: the language you use the app in, so our emails match it; whether the Sunday summary is on; and, if you stop renewal and choose to tell us, the reason you picked and any note you wrote.</li><li><strong>Your name and mobile number</strong>: entered when you add a card. Paymob, our payment company, needs them to process card payments. We keep them to fill in the payment form for you next time.</li><li><strong>Plan and billing records</strong>: your plan, trial and paid-until dates, Paymob order, transaction and subscription numbers, amounts, and whether each payment worked. We need these to give you access and to keep proper billing records.</li><li><strong>The business data you type into the app</strong>: products, sales history, suppliers, costs, prices and orders. It is yours. We use it only to run the app for you.</li><li><strong>Security records</strong>: when a sign-in code was sent, when you signed in and how many times, and payment events, linked to your email. Sign-in codes and session keys are stored only as one-way scrambled values (hashes), never in readable form. We use these records to keep accounts safe, stop abuse and fix problems.</li><li><strong>Standard server logs</strong>: like most websites, our hosting providers record technical details of each request, such as IP address, time and browser type, for security and to keep the service running.</li>",
   lg_privacy_5: "We do not collect your card number (you type it on Paymob's page, not ours), your location, or your contacts. We do not use analytics, advertising or tracking tools, and we do not sell or rent personal data.",
   lg_privacy_6: "Why we are allowed to use it",
   lg_privacy_7: "We use your information to provide the service you sign up for, with the consent you give when you start a trial or a plan, to keep the service secure, and to meet legal and accounting duties. We aim to handle personal data in line with Egypt's Personal Data Protection Law (Law No. 151 of 2020).",
   lg_privacy_8: "Who processes it for us",
-  lg_privacy_9: "<li><strong>Supabase</strong>: our database and app server, in its Frankfurt, Germany data centre (Amazon Web Services, eu-central-1). Your business data, account and billing records are stored here.</li><li><strong>Paymob</strong>: our card payment company in Egypt. It receives your name, email and mobile number with each payment, and keeps your card on file for the monthly renewal under its own privacy policy.</li><li><strong>Resend</strong>: sends our sign-in and account emails. It receives your email address and the message, and may process them in the United States.</li><li><strong>GitHub Pages</strong>: hosts this website and the app's page files, and keeps standard server logs. GitHub is based in the United States.</li><li><strong>WhatsApp</strong> (Meta): only if you choose to message us there.</li>",
+  lg_privacy_9: "<li><strong>Supabase</strong>: our database and app server, in its Frankfurt, Germany data centre (Amazon Web Services, eu-central-1). Your business data, account and billing records are stored here.</li><li><strong>Paymob</strong>: our card payment company in Egypt. It receives your name, email and mobile number with each payment, and keeps your card on file for renewals under its own privacy policy.</li><li><strong>Resend</strong>: sends our sign-in and account emails. It receives your email address and the message, and may process them in the United States.</li><li><strong>GitHub Pages</strong>: hosts this website and the app's page files, and keeps standard server logs. GitHub is based in the United States.</li><li><strong>WhatsApp</strong> (Meta): only if you choose to message us there.</li>",
   lg_privacy_10: "This means your information is stored and processed outside Egypt, in Germany and the United States. We use well known providers that protect data with encryption and access controls, and we share only what each one needs.",
   lg_privacy_11: "Who can see your business data",
   lg_privacy_12: "Only you, by signing in with a code sent to your own email. The database refuses direct access: only the app's own server can read it, and it returns a workspace only to its signed-in owner. We do not look at your business data, except when you ask us for help and looking is the only way to give it.",
@@ -1742,7 +1846,7 @@ var SITE_EN = {
   lg_privacy_25: "Changes to this policy",
   lg_privacy_26: "If we change this policy in a way that matters, we will post the new version here with a new date, and tell subscribers by email before the change applies to them.",
   lg_privacy_27: "Business details",
-  lg_privacy_28: "<li><strong>Trading name:</strong> Etlob Sa7</li><li><strong>What we sell:</strong> a monthly subscription to an online demand planning and purchasing app, for businesses</li><li><strong>Based in:</strong> Cairo, Egypt</li><li><strong>Contact:</strong> WhatsApp +20 109 009 9849</li><li><strong>Website:</strong> etlobsa7.com</li>",
+  lg_privacy_28: "<li><strong>Trading name:</strong> Etlob Sa7</li><li><strong>What we sell:</strong> a monthly or yearly subscription to an online demand planning and purchasing app, for businesses</li><li><strong>Based in:</strong> Cairo, Egypt</li><li><strong>Contact:</strong> WhatsApp +20 109 009 9849</li><li><strong>Website:</strong> etlobsa7.com</li>",
   lg_terms_eb: "Legal",
   lg_terms_h: "Terms and conditions",
   lg_terms_d: "Last updated 3 October 2026.",
@@ -1754,9 +1858,9 @@ var SITE_EN = {
   lg_terms_5: "Your account",
   lg_terms_6: "You sign in with a one-time code sent to your email, so keep your email account secure. One account is for one subscriber's own business and works on up to two devices at a time. You are responsible for what happens in your account and for the accuracy of the data you enter.",
   lg_terms_7: "Free trial, billing and automatic renewal",
-  lg_terms_8: "<li>Every plan starts with a free trial: 14 days on Basic and Pro, 5 days on Store. Each account gets one free trial.</li><li>To start the trial you add a card on Paymob's secure page. A one-time card check of 1 EGP is taken that day to confirm the card works.</li><li>Unless you stop renewal before the trial ends, your card is charged the plan's monthly price automatically when the trial ends, and then on the same date every month, until you stop renewal.</li><li>Prices are shown in Egyptian pounds on the pricing page and in the app before you pay, and are the amount charged.</li><li>If a monthly payment fails, Paymob tries again and the app stays open for 3 days. If it still fails, access pauses until you pay. Your data is kept.</li><li>If you change plan after the trial, you pay the new plan's price and any days already paid on the old plan are carried over at the new plan's price.</li><li>We may change prices for the future. We will tell you by email at least 14 days before a new price applies to you, and you can stop renewal before then.</li>",
+  lg_terms_8: "<li>Every plan starts with a free trial: 14 days on Basic and Pro, 5 days on Store. Each account gets one free trial.</li><li>To start the trial you add a card on Paymob's secure page. A one-time card check of 1 EGP is taken that day to confirm the card works.</li><li>You choose to pay monthly or yearly. A billing month is 30 days and a billing year is 360 days (12 billing months). A yearly plan costs the same as 10 months of the monthly price.</li><li>Unless you stop renewal before the trial ends, your card is charged the price of the plan and period you chose automatically when the trial ends, and then at the start of each new month or year, until you stop renewal.</li><li>Reminders: after a 14-day trial we email you 7 days before the first payment; on Store's 5-day trial we email you the day after it starts. On a yearly plan we email you 7 days before each renewal. Each reminder has a link to stop renewal online.</li><li>Prices are shown in Egyptian pounds on the pricing page and in the app before you pay, and are the amount charged.</li><li>If a payment fails, Paymob tries again and the app stays open for 3 days. If it still fails, access pauses until you pay. Your data is kept.</li><li>If you change plan or period after the trial, you pay the new price and any time already paid on the old plan is carried over at the new plan's price per day. If that time is worth more than a year of the new plan, switch when your current period ends.</li><li>Founding offer: the first 30 shops whose first full payment goes through become founding members. A founding member keeps the prices that applied on the day they became one, for any plan and period, for as long as their subscription continues without running out. If it runs out (renewal stopped and the paid period ended, or a failed payment not fixed within 3 days), the founding price ends and current prices apply. The pricing page shows how many places are left.</li><li>We may change prices for the future. We will tell you by email at least 14 days before a new price applies to you, and you can stop renewal before then. While a founding member's price lasts, it does not go up.</li>",
   lg_terms_9: "Cancelling and refunds",
-  lg_terms_10: "Stop renewal any time in the app (Settings, then Plan and billing) or by messaging us on WhatsApp. Nothing more is charged, and you keep access until the end of the trial or the month you already paid for. Refunds are covered by our <a href=\"#refunds\" data-go=\"refunds\">Refund and cancellation policy</a>.",
+  lg_terms_10: "Stop renewal any time in the app (Settings, then Plan and billing) or by messaging us on WhatsApp. Nothing more is charged, and you keep access until the end of the trial or the month or year you already paid for. After that the app pauses and your data stays saved. Refunds are covered by our <a href=\"#refunds\" data-go=\"refunds\">Refund and cancellation policy</a>.",
   lg_terms_11: "Using the app fairly",
   lg_terms_12: "You agree not to share or resell access, not to try to break, overload, scrape or reverse engineer the app, and not to use it for anything unlawful. We may suspend an account that does.",
   lg_terms_13: "Your data",
@@ -1776,7 +1880,7 @@ var SITE_EN = {
   lg_terms_27: "Law and disputes",
   lg_terms_28: "These terms are governed by the laws of the Arab Republic of Egypt. Please contact us first so we can try to solve any problem directly. Any dispute that cannot be solved this way goes to the competent courts in Cairo.",
   lg_terms_29: "Business details",
-  lg_terms_30: "<li><strong>Trading name:</strong> Etlob Sa7</li><li><strong>What we sell:</strong> a monthly subscription to an online demand planning and purchasing app, for businesses</li><li><strong>Based in:</strong> Cairo, Egypt</li><li><strong>Contact:</strong> WhatsApp +20 109 009 9849</li><li><strong>Website:</strong> etlobsa7.com</li>",
+  lg_terms_30: "<li><strong>Trading name:</strong> Etlob Sa7</li><li><strong>What we sell:</strong> a monthly or yearly subscription to an online demand planning and purchasing app, for businesses</li><li><strong>Based in:</strong> Cairo, Egypt</li><li><strong>Contact:</strong> WhatsApp +20 109 009 9849</li><li><strong>Website:</strong> etlobsa7.com</li>",
   lg_cookies_eb: "Legal",
   lg_cookies_h: "Cookie and storage policy",
   lg_cookies_d: "Last updated 3 October 2026.",
@@ -1784,7 +1888,7 @@ var SITE_EN = {
   lg_cookies_1: "etlobsa7.com, the app and the demo set no cookies. We use no analytics, advertising or tracking tools, and every font and script is served from our own site, so loading a page does not contact Google, Facebook or any other tracker.",
   lg_cookies_2: "What we keep in your browser",
   lg_cookies_3: "To work, the website and app keep a few items in your browser's own storage (local storage and session storage). They stay on your device and are only sent to our server when needed to sign you in or check a payment:",
-  lg_cookies_4: "<div class=\"legal-tbl\"><table><thead><tr><th>Name</th><th>Used on</th><th>What it is for</th><th>How long</th></tr></thead><tbody><tr><td><code>etlob-site-lang</code></td><td>Website</td><td>Remembers the language you chose for the website.</td><td>Until you clear it</td></tr><tr><td><code>es7.lang, es7.theme, es7.tab</code></td><td>App and demo</td><td>Remember your language, light or dark mode, and the last page you had open.</td><td>Until you clear it</td></tr><tr><td><code>es7.sid</code></td><td>App</td><td>Keeps you signed in. It holds a random sign-in key; our server stores only a scrambled (hashed) copy.</td><td>Until you sign out; the key stops working after 14 days without use</td></tr><tr><td><code>es7.pending</code></td><td>Website and app</td><td>The reference of a payment you just started, so we can confirm it when Paymob sends you back.</td><td>Removed when you sign in; ignored after 2 days</td></tr><tr><td><code>es7.ckForm (session storage)</code></td><td>Website and app</td><td>The plan, email, name and mobile you typed in the card form, so you do not retype them if a card is declined.</td><td>Deleted when you close the tab</td></tr><tr><td><code>es7.signinEmail</code></td><td>Website and app</td><td>Passes the email you typed on the website to the sign-in page.</td><td>Removed as soon as it is read</td></tr></tbody></table></div>",
+  lg_cookies_4: "<div class=\"legal-tbl\"><table><thead><tr><th>Name</th><th>Used on</th><th>What it is for</th><th>How long</th></tr></thead><tbody><tr><td><code>etlob-site-lang</code></td><td>Website</td><td>Remembers the language you chose for the website.</td><td>Until you clear it</td></tr><tr><td><code>es7.lang, es7.theme, es7.tab</code></td><td>App and demo</td><td>Remember your language, light or dark mode, and the last page you had open.</td><td>Until you clear it</td></tr><tr><td><code>es7.sid</code></td><td>App</td><td>Keeps you signed in. It holds a random sign-in key; our server stores only a scrambled (hashed) copy.</td><td>Until you sign out; the key stops working after 14 days without use</td></tr><tr><td><code>es7.pending</code></td><td>Website and app</td><td>The reference of a payment you just started, so we can confirm it when Paymob sends you back.</td><td>Removed when you sign in; ignored after 2 days</td></tr><tr><td><code>es7.ckForm (session storage)</code></td><td>Website and app</td><td>The plan, billing period, email, name and mobile you typed in the card form, so you do not retype them if a card is declined.</td><td>Deleted when you close the tab</td></tr><tr><td><code>es7.chkHide</code></td><td>App</td><td>Remembers that you hid the getting-started list.</td><td>Until you clear it</td></tr><tr><td><code>es7.signinEmail</code></td><td>Website and app</td><td>Passes the email you typed on the website to the sign-in page.</td><td>Removed as soon as it is read</td></tr></tbody></table></div>",
   lg_cookies_5: "Do we need your consent?",
   lg_cookies_6: "All of these are strictly necessary for features you ask for (signing in, paying, remembering your language), so we do not show a cookie banner. If we ever add analytics or advertising tools, we will ask for your consent first and update this page.",
   lg_cookies_7: "Other sites",
@@ -1792,25 +1896,25 @@ var SITE_EN = {
   lg_cookies_9: "Clearing it",
   lg_cookies_10: "You can delete these items any time from your browser settings (clear site data for etlobsa7.com). You will then need to sign in again and choose your language again.",
   lg_cookies_11: "Business details",
-  lg_cookies_12: "<li><strong>Trading name:</strong> Etlob Sa7</li><li><strong>What we sell:</strong> a monthly subscription to an online demand planning and purchasing app, for businesses</li><li><strong>Based in:</strong> Cairo, Egypt</li><li><strong>Contact:</strong> WhatsApp +20 109 009 9849</li><li><strong>Website:</strong> etlobsa7.com</li>",
+  lg_cookies_12: "<li><strong>Trading name:</strong> Etlob Sa7</li><li><strong>What we sell:</strong> a monthly or yearly subscription to an online demand planning and purchasing app, for businesses</li><li><strong>Based in:</strong> Cairo, Egypt</li><li><strong>Contact:</strong> WhatsApp +20 109 009 9849</li><li><strong>Website:</strong> etlobsa7.com</li>",
   lg_refunds_eb: "Legal",
   lg_refunds_h: "Refund and cancellation policy",
   lg_refunds_d: "Last updated 3 October 2026.",
   lg_refunds_0: "Free trial",
   lg_refunds_1: "Every plan starts free: 14 days on Basic and Pro, 5 days on Store. When you add your card, a one-time card check of 1 EGP is taken to confirm the card works; this check is not refunded. Stop renewal before the trial ends and the plan price is never charged.",
   lg_refunds_2: "How to cancel",
-  lg_refunds_3: "Stop renewal any time in the app: Settings, then Plan and billing, then Stop renewal. Or message us on WhatsApp at +20 109 009 9849 and we do it for you. No form and no phone call. Nothing more is charged, and you keep access until the end of the trial or the month you already paid for.",
+  lg_refunds_3: "Stop renewal any time in the app: Settings, then Plan and billing, then Stop renewal. Or message us on WhatsApp at +20 109 009 9849 and we do it for you. No form and no phone call. Nothing more is charged, and you keep access until the end of the trial or the month or year you already paid for.",
   lg_refunds_4: "Refunds",
-  lg_refunds_5: "Because every plan starts with a free trial, monthly payments are not refunded once charged, including for a part of a month or time you did not use. This does not affect any right to a refund that the law gives you. We always refund in full:",
+  lg_refunds_5: "Because every plan starts with a free trial, and we remind you before the first payment and before each yearly renewal, payments are not refunded once charged, including yearly payments, part of a month or year, or time you did not use. This does not affect any right to a refund that the law gives you. We always refund in full:",
   lg_refunds_6: "<li>a payment taken twice for the same period;</li><li>a charge made after you stopped renewal in time;</li><li>a charge of the wrong amount (the difference is refunded).</li>",
   lg_refunds_7: "How to ask for a refund",
   lg_refunds_8: "Message us on WhatsApp at +20 109 009 9849 with your account email and the date of the charge. We reply within 3 working days. Approved refunds go back to the card you paid with, through Paymob; how long it takes to show on your statement depends on your bank.",
   lg_refunds_9: "Changing plan",
-  lg_refunds_10: "If you move to another plan after the trial, days you already paid for are carried over to the new plan at its price. They are not paid out in cash.",
+  lg_refunds_10: "If you move to another plan or period after the trial, time you already paid for is carried over to the new plan at its price per day. It is not paid out in cash.",
   lg_refunds_11: "Please talk to us first",
   lg_refunds_12: "If something looks wrong with a charge, message us before disputing it with your bank. It is usually faster to fix directly.",
   lg_refunds_13: "Business details",
-  lg_refunds_14: "<li><strong>Trading name:</strong> Etlob Sa7</li><li><strong>What we sell:</strong> a monthly subscription to an online demand planning and purchasing app, for businesses</li><li><strong>Based in:</strong> Cairo, Egypt</li><li><strong>Contact:</strong> WhatsApp +20 109 009 9849</li><li><strong>Website:</strong> etlobsa7.com</li>",
+  lg_refunds_14: "<li><strong>Trading name:</strong> Etlob Sa7</li><li><strong>What we sell:</strong> a monthly or yearly subscription to an online demand planning and purchasing app, for businesses</li><li><strong>Based in:</strong> Cairo, Egypt</li><li><strong>Contact:</strong> WhatsApp +20 109 009 9849</li><li><strong>Website:</strong> etlobsa7.com</li>",
   ft_cookies: "Cookie policy",
   skip: "Skip to content",
   ft_refunds: "Refund policy",
@@ -1835,7 +1939,7 @@ var SITE_EN = {
   t17: 'محلات صغيرة كتير شاطرة في البيع وبتخمن في الشراء. الأداة دي بتشيل التخمين: تطلب كام قطعة، من أي مورد، في أنهي يوم، لكل منتج بتبيعه.',
   t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">اتفرج على الأداة</a>',
   t19: 'بيشتغل في المتصفح. عربي وإنجليزي مع بعض. بالجنيه المصري.',
-  t20: '<b>95.9%</b><span>دقة توقع 2015 لفرع وول مارت حقيقي، معمول من بيانات 2013 و2014 بس</span>',
+  t20: '<b>95.3%</b><span>دقة توقع 2015 لفرع وول مارت حقيقي، معمول من بيانات 2013 و2014 بس</span>',
   t21: '<b>~10 دقايق</b><small>مراجعة أسبوعية عادية بعد ما تظبطه</small>',
   t22: '<b>18</b><small>صفحة مترابطة. بتكتب في خمسة بس.</small>',
   t23: '<b>دقيقتين</b><small>علشان تسجل دخول. الإيميل بس، من غير باسورد.</small>',
@@ -2100,13 +2204,13 @@ var SITE_EN = {
   t278: '<strong>من غير حسابات ولا كاشير ولا باركود ولا فروع متعددة.</strong> هي بتخطط، وانت بتعد مخزونك بطريقتك.',
   t279: '<strong>هي بجودة اللي بتكتبه بس.</strong> وعلشان كده فيه فحص البيانات.',
   t280: 'الأسعار',
-  t281: 'شهريا. إلغاء وقت ما تحب.',
+  t281: 'شهري أو سنوي. وقف التجديد وقت ما تحب.',
   t282: 'كل باقة فيها النظام كامل، اللغتين، الدليل الإرشادي، وأدوات جديدة أول ما تتضاف. أربعتاشر يوم مجانا على الأساسية وPro، وخمس أيام على Store.',
-  t283: 'الأسعار بالجنيه المصري، وده اللي بتدفعه كل شهر، بالكارت عن طريق Paymob.',
+  t283: 'الأسعار بالجنيه المصري، والدفع بالكارت عن طريق Paymob. الباقة السنوية بسعر عشر شهور: شهرين ببلاش.',
   t284: 'الأساسية',
   t285: '1,295 <small>جنيه / شهر</small>',
   t286: 'محل فرد واحد بمنتجات محدودة.',
-  t287: 'لحد 10 منتجات',
+  t287: 'لحد 15 منتج',
   t288: 'محرك التوقع وإعادة الطلب كامل',
   t289: 'نسخة عربي وإنجليزي',
   t290: 'دليل إرشادي تعليمي',
@@ -2150,11 +2254,11 @@ var SITE_EN = {
   t330: 'عربي ولا إنجليزي؟',
   t331: 'الاتنين متضمنين في كل باقة من غير أي تكلفة إضافية. النسخة العربية من اليمين للشمال بالكامل ومبنية حول الجنيه المصري.',
   t332: 'كام منتج يقدر يستوعب؟',
-  t333: 'الأساسية بتغطي لحد 10 منتجات و10 موردين، مع أشكال المواسم الأربعة الجاهزة ثابتة زي ما هي. Pro بتغطي لحد 50 منتج، وStore لحد 200، والاتنين بلحد 100 مورد وتقدر تضيف أشكال موسم خاصة بيك.',
+  t333: 'الأساسية بتغطي لحد 15 منتج و10 موردين، مع أشكال المواسم الأربعة الجاهزة ثابتة زي ما هي. Pro بتغطي لحد 50 منتج، وStore لحد 200، والاتنين بلحد 100 مورد وتقدر تضيف أشكال موسم خاصة بيك.',
   t334: 'إيه الأدوات الجديدة اللي جاية؟',
   t335: 'أدوات جديدة وتحسينات أول ما تجهز، زائد أي تصحيحات. باقة Pro بتضيف أشكال المواسم الخاصة ومقارنة الموردين وتقييم الموردين وتوقع التدفق النقدي؛ وباقة Store بتضيف رسوم الطلب مع جدول مواعيد إعادة الطلب، والربح المعرض للخطر، وتقرير البضاعة الراكدة. كل مستخدم بياخد أي أداة في باقته يوم ما تنزل. لو ألغيت، مساحة عملك متحفظة وواقفاك لو رجعت بعدين.',
   t336: 'أقدر ألغي بسهولة؟',
-  t337: 'أيوه، في أي وقت: في البرنامج افتح الإعدادات، وبعدين الباقة والدفع، ودوس وقف التجديد. مش هيتخصم حاجة تاني، وتفضل معاك الخدمة لحد آخر الشهر اللي دفعته. أو ابعتلنا على واتساب وإحنا نعملها.',
+  t337: 'أيوه، في أي وقت: في البرنامج افتح الإعدادات، وبعدين الباقة والدفع، ودوس وقف التجديد. مش هيتخصم حاجة تاني، وتفضل معاك الخدمة لحد آخر الشهر أو السنة اللي دفعتها. بعدها البرنامج بيقف مؤقتا وبياناتك بتفضل محفوظة. أو ابعتلنا على واتساب وإحنا نعملها.',
   t338: 'إيه الفرق بينه وبين القوالب المجانية على النت؟',
   t339: 'القوالب المجانية بتسجل اللي عندك بالفعل. مش بتتوقع طلب، مش بتحسب مخزون أمان من موثوقية موردك الفعلية، مش بتفصل الموسمية عن العشوائية، ومش بتحترم أقل كمية طلب. دي بالظبط الأجزاء اللي بتغير اللي بتشتريه. تجارب الفروع الحقيقية في الصفحة دي بتوريك الأداة بتعمل إيه على مبيعات فعلية.',
   t340: 'هيشتغل لخدمة أو منتجات بالطلب المسبق؟',
@@ -2199,56 +2303,87 @@ var SITE_EN = {
   t632: 'الرف مليان. الزباين بدأوا يشتروا.',
   t631: 'شهر كامل من إعادة الطلب، مظبوط',
   t630: 'اعمل سكرول وشوف الرف بيتملى',
-  t641: 'الأداة، توقع السنة كلها معمول في ديسمبر 2013',
+  t641: 'الأداة، توقع السنة كلها معمول في ديسمبر 2014',
   t640: 'ونفس المعادلات اتجربت كمان على العشر فروع في بيانات M5، سنتين لكل فرع (20 سنة فرع)، فهي مش متظبطة على الفرعين اللي قدامك بس.',
   t642: 'المدى اللي الأداة حددته من الأول (معمول بحيث حوالي 8 من كل 10 شهور يقعوا جواه)',
   t643: 'المدى المتوقع',
   t644: '<td class="pf">المدى المتوقع، كل شهر في 2015</td><td>أقل وأعلى رقم لكل شهر، معمول في ديسمبر 2014</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>10 من 12 شهر جواه</b><span class="pbar"><i style="--w:83.3%"></i></span></td>',
-  t645: '<td class="pf">المدى المتوقع، كل شهر في 2014</td><td>أقل وأعلى رقم لكل شهر، معمول في ديسمبر 2013</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>12 من 12 شهر جواه</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t646: '<strong>ليه الخطوط مش متطابقة شهر بشهر.</strong> طلعات ونزلات الفرع ده الشهرية متكررتش من سنة للي بعدها، ومفيش توقع يقدر يتوقع طلعة عمرها ما حصلت قبل كده. الأسعار تقريبا متغيرتش (أقل من 1%)، والبيانات مفيهاش العروض ولا المناسبات ولا الجو. اللي الأداة عملته: قربت من إجمالي السنة الحقيقي بفرق 4.1% بس، و10 من 12 شهر حقيقي وقعوا جوه المدى بتاعها. وفي محل شهوره المزدحمة بتتكرر كل سنة، زي رمضان والعيد والمدارس والشتا، الأداة بتتعلم الشكل ده وبتمشي عليه.',
+  t645: '<td class="pf">المدى المتوقع، كل شهر في 2015</td><td>أقل وأعلى رقم لكل شهر، معمول في ديسمبر 2014</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>11 من 12 شهر جواه</b><span class="pbar"><i style="--w:91.7%"></i></span></td>',
+  t646: '<strong>ليه الخطوط مش متطابقة شهر بشهر.</strong> طلعات ونزلات الفرع ده الشهرية متكررتش من سنة للي بعدها، ومفيش توقع يقدر يتوقع طلعة عمرها ما حصلت قبل كده. الأسعار تقريبا متغيرتش (أقل من 1%)، والبيانات مفيهاش العروض ولا المناسبات ولا الجو. اللي الأداة عملته: قربت من إجمالي السنة الحقيقي بفرق 4.7% بس، و10 من 12 شهر حقيقي وقعوا جوه المدى بتاعها. وفي محل شهوره المزدحمة بتتكرر كل سنة، زي رمضان والعيد والمدارس والشتا، الأداة بتتعلم الشكل ده وبتمشي عليه.',
   t647: 'بتتعلم محلك',
   t648: 'بتتعلم من محلك انت وانت بتستخدمها.',
   t649: '<b>مواسمك</b><span>اديها مبيعات سنتين وهي تلاقي شهور الزحمة والهدوء لكل منتج، وبتعتمد عليه على قد ما السنتين متفقين.</span>',
   t650: '<b>مدة توريد كل مورد الحقيقية</b><span>علّم على الطلبات إنها وصلت، وهي تتعلم كل مورد بياخد قد إيه فعلا، وتستخدمه في كل نقطة إعادة طلب.</span>',
   t651: '<b>كانت صح قد إيه</b><span>كل شهر جديد بتدخله بيتقارن باللي توقعته، فتشوف دقتها الحقيقية على محلك انت.</span>',
   t652: 'في كل الباقات. وتقدر تشوف اتعلمت إيه في لوحة التحكم.',
-  t653: 'الطريقة: نفس التجربة 1. الأداة خدت 2012 و2013 بس، وبعدين اتستخدمت أسبوع بأسبوع طول 2014، على 40 منتج هوايات وأدوات منزلية اتختاروا عشوائي، وتلات موردين مفترضين (7 و14 و21 يوم، بتأخير عشوائي)، وتكلفة 55% من سعر البيع. متوسط 40 تجربة. النتايج بالدولار الأمريكي.',
+  t653: 'الطريقة: نفس التجربة 1. الأداة خدت 2013 و2014 بس، وبعدين اتستخدمت أسبوع بأسبوع طول 2015، على 40 منتج هوايات وأدوات منزلية اتختاروا عشوائي (ببذرة ثابتة) من اللي اتباعوا كل شهر في 2013 و2014، وتلات موردين مفترضين (7 و14 و21 يوم، بتأخير عشوائي)، وتكلفة 55% من سعر البيع. متوسط 40 تجربة، وكل تجربة بتتقاس لوحدها. النتايج بالدولار الأمريكي.',
+  t655: '<td class="pf">إجمالي ربح 2015</td><td>41,700 دولار</td><td>40,900 دولار</td><td class="pacc"><b>98.1%</b><span class="pbar"><i style="--w:98.1%"></i></span></td>',
+  t684: 'أهلا، عندي سؤال عن اطلب صح.',
+  t683: 'كلمنا على واتساب',
+  t682: 'كل يوم أحد الصبح، إيميل فيه تطلب إيه الأسبوع ده، وإيه اللي جاي، والبرنامج اتعلم إيه عن محلك، معمول من بياناتك المحفوظة. تقدر تقفله من الإعدادات أو من اللينك اللي في الإيميل.',
+  t681: 'إيه ملخص يوم الأحد؟',
+  t680: 'أيوه. بعد تجربة الـ 14 يوم بنبعتلك إيميل قبل أول دفعة بـ 7 أيام، فيه لينك توقف بيه التجديد أونلاين. تجربة Store اللي 5 أيام بيوصلها التذكير تاني يوم من بدايتها. والباقة السنوية بيوصلها إيميل قبل كل تجديد بـ 7 أيام.',
+  t679: 'هتفكروني قبل ما تخصموا من الكارت؟',
+  t678: 'أول 30 محل يدفعوا بيفضل سعرهم زي ما بدأوا بيه طول ما اشتراكهم مستمر، حتى لو أسعارنا زادت بعدين. لو الباقة خلصت، السعر المؤسس بيخلص معاها. قسم الأسعار بيوضح فاضل كام مكان.',
+  t677: 'إيه عرض المؤسسين؟',
+  t676: 'أيوه. ادفع عشر شهور وخد اتناشر: الأساسية 12,950، وPro بـ 28,500، وStore بـ 54,400 جنيه في السنة. التجربة المجانية زي ما هي، وبنبعتلك إيميل قبل كل تجديد سنوي بـ 7 أيام.',
+  t675: 'في باقة سنوية؟',
+  t674: 'بعد تجربة الـ 14 يوم بنبعتلك إيميل قبل أول دفعة بـ 7 أيام، فيه لينك توقف بيه التجديد أونلاين. تجربة Store اللي 5 أيام بيوصلها التذكير تاني يوم من بدايتها، والباقة السنوية بيوصلها قبل كل تجديد بـ 7 أيام.',
+  t673: 'تذكير قبل أي خصم',
+  t672: 'عرض المؤسسين: أول 30 محل يدفعوا بيفضل سعرهم زي النهارده طول ما اشتراكهم مستمر. فاضل {n} من 30 مكان.',
+  t671: 'أكتر من 200 منتج: ابعتلنا على واتساب وهنقولك بصراحة إذا كانت تناسبك.',
+  t670: 'باقة Store تناسبك: بتغطي لحد 200 منتج.',
+  t669: 'باقة Pro تناسبك: بتغطي لحد 50 منتج.',
+  t668: 'الباقة الأساسية تناسبك: بتغطي لحد 15 منتج.',
+  t667: 'اكتب رقم علشان تعرف أنهي باقة تناسبك.',
+  t666: 'بتبيع كام منتج؟',
+  t665: 'مدة الدفع',
+  t664: 'يعني 4,533 جنيه في الشهر',
+  t663: 'يعني 2,375 جنيه في الشهر',
+  t662: 'يعني 1,079 جنيه في الشهر',
+  t661: '54,400 <small>جنيه / سنة</small>',
+  t660: '28,500 <small>جنيه / سنة</small>',
+  t659: '12,950 <small>جنيه / سنة</small>',
+  t658: 'شهرين ببلاش',
+  t657: 'سنوي',
+  t656: 'شهري',
+  t654: '<td class="pf">الربح المعرض للخطر</td><td>273 دولار</td><td>314 دولار</td><td class="pacc"><b>87.1% (كل تجربة بتتقاس لوحدها)</b><span class="pbar"><i style="--w:87.1%"></i></span></td>',
   t626: 'بيانات حقيقية مفتوحة، ومصادر معروفة',
   t625: '20 سنة فرع اتجربت',
-  t624: 'توقع السنة كلها بدقة 98.8%',
-  t623: 'وول مارت، فرع WI_1، ويسكونسن',
+  t624: 'توقع السنة كلها بدقة 92.0%',
+  t623: 'وول مارت، فرع WI_2، ويسكونسن',
   t622: '99.8% من الزباين اتخدموا',
-  t621: 'توقع السنة كلها بدقة 95.9%',
+  t621: 'توقع السنة كلها بدقة 95.3%',
   t620: 'وول مارت، فرع CA_3، كاليفورنيا',
-  t582: '<td class="pf">إيراد 2014</td><td>73,400 دولار</td><td>70,300 دولار</td><td class="pacc"><b>95.7%</b><span class="pbar"><i style="--w:95.7%"></i></span></td>',
-  t581: '<td class="pf">أيام التغطية</td><td>المخزون الحالي هيكفي قد إيه</td><td>كفى قد إيه فعلا</td><td class="pacc"><b>82.8%</b><span class="pbar"><i style="--w:82.8%"></i></span></td>',
-  t580: '<td class="pf">إمتى كل منتج محتاج يتطلب</td><td>الأسبوع اللي المخزون يوصل فيه لنقطة الطلب، لحد أسبوعين قدام</td><td>الأسبوع اللي وصلها فعلا</td><td class="pacc"><b>95.3% في حدود أسبوع (من 3 لـ 4 أسابيع قدام: 80.2%)</b><span class="pbar"><i style="--w:95.3%"></i></span></td>',
-  t579: '<td class="pf">كل منتج، شهر بشهر</td><td>الشهر الجاي لكل منتج من الـ 40</td><td>اللي كل واحد باعه فعلا</td><td class="pacc lo"><b>77.9% (متوسط تلات شهور: 76.3%)</b><span class="pbar"><i style="--w:77.9%"></i></span></td>',
-  t578: '<td class="pf">توقع السنة كلها، معمول في ديسمبر 2013</td><td>16,237 قطعة</td><td>16,046 قطعة</td><td class="pacc"><b>98.8%</b><span class="pbar"><i style="--w:98.8%"></i></span></td>',
-  t577: '<td class="pf">ترتيب الإيراد A وB وC</td><td>الفئة من 2013</td><td>الفئة على إيراد 2014 الحقيقي</td><td class="pacc lo"><b>77.5%</b><span class="pbar"><i style="--w:77.5%"></i></span></td>',
-  t576: '<td class="pf">ثبات البيع X وY وZ</td><td>الفئة من 2013</td><td>الفئة على مبيعات 2014 الحقيقية</td><td class="pacc lo"><b>55% بالظبط، 97.5% في حدود فئة واحدة</b><span class="pbar"><i style="--w:55.0%"></i></span></td>',
-  t575: '<td class="pf">وعد مخزون الأمان</td><td>95% من دورات الطلب من غير ما المخزون يخلص</td><td>97.6% من الدورات</td><td class="pacc"><b>اتحقق: 97.6% (الهدف 95%)</b><span class="pbar"><i style="--w:97.6%"></i></span></td>',
+  t582: '<td class="pf">إيراد 2015</td><td>92,700 دولار</td><td>91,000 دولار</td><td class="pacc"><b>98.1%</b><span class="pbar"><i style="--w:98.1%"></i></span></td>',
+  t581: '<td class="pf">أيام التغطية</td><td>المخزون الحالي هيكفي قد إيه</td><td>كفى قد إيه فعلا</td><td class="pacc"><b>83.5%</b><span class="pbar"><i style="--w:83.5%"></i></span></td>',
+  t580: '<td class="pf">إمتى كل منتج محتاج يتطلب</td><td>الأسبوع اللي المخزون يوصل فيه لنقطة الطلب، لحد أسبوعين قدام</td><td>الأسبوع اللي وصلها فعلا</td><td class="pacc"><b>93.5% في حدود أسبوع (من 3 لـ 4 أسابيع قدام: 76.3%)</b><span class="pbar"><i style="--w:93.5%"></i></span></td>',
+  t579: '<td class="pf">كل منتج، شهر بشهر</td><td>الشهر الجاي لكل منتج من الـ 40</td><td>اللي كل واحد باعه فعلا</td><td class="pacc"><b>80.9% (متوسط تلات شهور: 79.9%)</b><span class="pbar"><i style="--w:80.9%"></i></span></td>',
+  t578: '<td class="pf">توقع السنة كلها، معمول في ديسمبر 2014</td><td>24,836 قطعة</td><td>27,009 قطعة</td><td class="pacc"><b>92.0%</b><span class="pbar"><i style="--w:92.0%"></i></span></td>',
+  t577: '<td class="pf">ترتيب الإيراد A وB وC</td><td>الفئة من 2014</td><td>الفئة على إيراد 2015 الحقيقي</td><td class="pacc"><b>85%</b><span class="pbar"><i style="--w:85.0%"></i></span></td>',
+  t576: '<td class="pf">ثبات البيع X وY وZ</td><td>الفئة من 2014</td><td>الفئة على مبيعات 2015 الحقيقية</td><td class="pacc lo"><b>42.5% بالظبط، 100% في حدود فئة واحدة</b><span class="pbar"><i style="--w:42.5%"></i></span></td>',
+  t575: '<td class="pf">وعد مخزون الأمان</td><td>95% من دورات الطلب من غير ما المخزون يخلص</td><td>95.7% من الدورات</td><td class="pacc"><b>اتحقق: 95.7% (الهدف 95%)</b><span class="pbar"><i style="--w:95.7%"></i></span></td>',
   t574: '<td class="pf">التدفق النقدي والتقريب للكرتونة</td><td>المدفوعات وأحجام الطلب</td><td>المدفوعات الفعلية وشروط الموردين</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t573: '<td class="pf">تكلفة تشغيل المخزون في السنة</td><td>4,800 دولار</td><td>4,200 دولار</td><td class="pacc"><b>85.6%</b><span class="pbar"><i style="--w:85.6%"></i></span></td>',
+  t573: '<td class="pf">تكلفة تشغيل المخزون في السنة</td><td>5,100 دولار</td><td>4,600 دولار</td><td class="pacc"><b>88.6%</b><span class="pbar"><i style="--w:88.6%"></i></span></td>',
   t572: '<td class="pf">اختيار المورد الأرخص</td><td>أنهي مورد أرخص على مدار السنة</td><td>أنهي واحد كان أرخص فعلا</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t571: '<td class="pf">مدة توريد الموردين، متعلمة</td><td>متعلمة من التوريدات المسجلة</td><td>المتوسط الحقيقي لكل مورد</td><td class="pacc"><b>96.2%</b><span class="pbar"><i style="--w:96.2%"></i></span></td>',
-  t570: '<td class="pf">تنبيه البضاعة الراكدة</td><td>المنتج وقف بيع</td><td>مفيش منتج وقف بيع في 2014</td><td class="pacc"><b>مفيش إنذار كاذب</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t569: '<td class="pf">قرار "المخزون كويس"</td><td>مش محتاج تطلب الأسبوع ده</td><td>المخزون كفى لحد ما توريد يلحق يوصل</td><td class="pacc"><b>99.4%</b><span class="pbar"><i style="--w:99.4%"></i></span></td>',
-  t568: '<td class="pf">الزباين اللي اتخدموا من المخزون</td><td>اطلب اللي الأداة بتقوله</td><td>نسبة الطلب الحقيقي اللي اتلبى</td><td class="pacc"><b>99.9%</b><span class="pbar"><i style="--w:99.9%"></i></span></td>',
-  t567: '<td class="pf">مبيعات المحل، شهر بشهر</td><td>الشهر الجاي، بيتحدث كل شهر</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>96.1% (نفس الشهر السنة اللي فاتت: 94.4%)</b><span class="pbar"><i style="--w:96.1%"></i></span></td>',
-  t566: 'القطع المباعة في الشهر، 40 منتج، 2014',
-  t565: 'التجربة 2: فرع وول مارت WI_1، ويسكونسن، كل النتايج',
+  t571: '<td class="pf">مدة توريد الموردين، متعلمة</td><td>متعلمة من التوريدات المسجلة</td><td>المتوسط الحقيقي لكل مورد</td><td class="pacc"><b>96.4%</b><span class="pbar"><i style="--w:96.4%"></i></span></td>',
+  t570: '<td class="pf">تنبيه البضاعة الراكدة</td><td>المنتج وقف بيع</td><td>منتج واحد وقف بيع في أكتوبر؛ الأداة بتستنى خمس شهور هادية، فماتنبهش عليه جوه 2015</td><td class="pacc"><b>مفيش إنذار كاذب</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
+  t569: '<td class="pf">قرار "المخزون كويس"</td><td>مش محتاج تطلب الأسبوع ده</td><td>المخزون كفى لحد ما توريد يلحق يوصل</td><td class="pacc"><b>99.1%</b><span class="pbar"><i style="--w:99.1%"></i></span></td>',
+  t568: '<td class="pf">الزباين اللي اتخدموا من المخزون</td><td>اطلب اللي الأداة بتقوله</td><td>نسبة الطلب الحقيقي اللي اتلبى</td><td class="pacc"><b>99.8%</b><span class="pbar"><i style="--w:99.8%"></i></span></td>',
+  t567: '<td class="pf">مبيعات المحل، شهر بشهر</td><td>الشهر الجاي، بيتحدث كل شهر</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>94.5% (نفس الشهر السنة اللي فاتت: 93.8%)</b><span class="pbar"><i style="--w:94.5%"></i></span></td>',
+  t566: 'القطع المباعة في الشهر، 40 منتج، 2015',
+  t565: 'التجربة 2: فرع وول مارت WI_2، ويسكونسن، كل النتايج',
   t564: 'شوف كل نتايج التجربة 2',
-  t562: '<b>98.8%</b><span>فرع وول مارت، ويسكونسن، 2014: توقع السنة كلها</span>',
-  t561: '<b>95.9%</b><span>فرع وول مارت، كاليفورنيا، 2015: توقع السنة كلها</span>',
+  t562: '<b>92.0%</b><span>فرع وول مارت، ويسكونسن، 2015: توقع السنة كلها</span>',
+  t561: '<b>95.3%</b><span>فرع وول مارت، كاليفورنيا، 2015: توقع السنة كلها</span>',
   t560: 'كل التجارب لحد دلوقتي',
-  t559: 'المصدر: <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">بيانات M5 للتوقع</a>، فرع WI_1 (مكريداكيس وسبيليوتيس وأسيماكوبولوس، <a href="https://doi.org/10.1016/j.ijforecast.2021.11.013" target="_blank" rel="noopener">المجلة الدولية للتوقع، 2022</a>)، عن طريق <a href="https://github.com/Nixtla/m5-forecasts" target="_blank" rel="noopener">النسخة العامة من Nixtla</a>. نفس طريقة التجربة 1. مش تابعين لوول مارت ولا معتمدين منها.',
-  t558: '<strong>بصراحة:</strong> أربع نتايج لسه تحت 80%: كل منتج شهر بشهر 77.9% (متوسط تلات شهور: 76.3%)، وترتيب الإيراد 77.5%، وفئة الثبات 55% بالظبط (97.5% في حدود فئة واحدة)، وبيكبر ولا بيقل 55%. نزلة ديسمبر مكانتش موجودة في أي سنة قبلها، فالأداة ماشافتهاش جاية، بس فضلت جوه المدى. الربح المعرض للخطر: الخسارة الحقيقية كانت حوالي 120 دولار قصاد حوالي 160 متوقعة، مبالغ صغيرة قوي علشان تتقاس بعدل؛ وعلى الـ 20 سنة فرع كلها طلع صح بنسبة 91.9%.',
-  t557: '<b>99.4%</b><span>من قرارات "مش محتاج تطلب" كانت في أمان</span>',
-  t556: '<b>95.3%</b><span>أسبوع إعادة الطلب صح في حدود أسبوع، قبلها بأسبوعين</span>',
-  t555: '<b>99.9%</b><span>من طلب الزباين الحقيقي اتلبى من المخزون</span>',
-  t554: '<b>98.8%</b><span>توقع السنة كلها للمحل، معمول في ديسمبر 2013</span>',
-  t553: 'مبيعات يومية حقيقية لـ 40 منتج هوايات وأدوات منزلية من فرع وول مارت WI_1 في ويسكونسن: نفس البيانات المفتوحة، بس فرع وولاية وجو وسنة مختلفين. الأداة شافت 2012 و2013 بس، وبعدين خططت 2014، بالظبط زي التجربة 1.',
+  t559: 'المصدر: بيانات مسابقة M5 Forecasting Accuracy، فرع WI_2 (ويسكونسن): مكريداكيس وسبيليوتيس وأسيماكوبولوس، جامعة نيقوسيا (M Open Forecasting Center)، والبيانات من وول مارت؛ Kaggle، 2020، <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">kaggle.com/c/m5-forecasting-accuracy</a>. ورقة الطريقة: <a href="https://doi.org/10.1016/j.ijforecast.2021.11.013" target="_blank" rel="noopener">المجلة الدولية للتوقع، 2022</a>. النسخة المستخدمة: <a href="https://github.com/Nixtla/m5-forecasts" target="_blank" rel="noopener">النسخة العامة من Nixtla</a>. مستخدمة حسب شروط مسابقة Kaggle: بنعرض النتايج بس هنا، مش البيانات الخام. نفس طريقة التجربة 1. مش تابعين لوول مارت ولا معتمدين منها.',
+  t558: '<strong>بصراحة:</strong> نتيجتين لسه تحت 80%: فئة الثبات (42.5% بالظبط، وعمرها ما بعدت أكتر من فئة واحدة)، وبيكبر ولا بيقل (55%). مبيعات الفرع ده نزلت 20.5% من 2013 لـ 2014، وبعدين زادت 5.2% في 2015. الأداة خططت على المستوى الأحدث والأقل، فتوقع السنة كلها طلع أقل من الحقيقي بـ 8%، بس 11 من 12 شهر فضلوا جوه المدى بتاعها، و99.8% من الطلب الحقيقي اتلبى من المخزون. الربح المعرض للخطر طلع صح بنسبة 87.1% هنا، و90.2% على الـ 20 سنة فرع كلها.',
+  t557: '<b>99.1%</b><span>من قرارات "مش محتاج تطلب" كانت في أمان</span>',
+  t556: '<b>93.5%</b><span>أسبوع إعادة الطلب صح في حدود أسبوع، قبلها بأسبوعين</span>',
+  t555: '<b>99.8%</b><span>من طلب الزباين الحقيقي اتلبى من المخزون</span>',
+  t554: '<b>92.0%</b><span>توقع السنة كلها للمحل، معمول في ديسمبر 2014</span>',
+  t553: 'مبيعات يومية حقيقية لـ 40 منتج هوايات وأدوات منزلية من فرع وول مارت WI_2 في ويسكونسن: نفس البيانات المفتوحة ونفس السنين، بس فرع وولاية وجو مختلفين. الأداة شافت 2013 و2014 بس، وبعدين خططت 2015، بالظبط زي التجربة 1.',
   t552: 'التجربة 2: فرع وول مارت في ويسكونسن',
   t551: 'فرع تاني، ولاية تانية، سنة تانية.',
   t550: 'وجربناها تاني.',
@@ -2271,13 +2406,13 @@ var SITE_EN = {
   t533: 'توقع 2015، معمول من 2013 و2014 بس',
   t532: 'محل حقيقي، سنة حقيقية',
   t531: '<a class="btn btn-primary" data-go="proof" href="#">شوف المثال الحقيقي</a>',
-  t530: 'إدينا الأداة سنتين مبيعات حقيقية من فرع وول مارت، وهي توقعت التالتة: دقة 95.9% للسنة كلها، و10 من 12 شهر وقعوا جوه المدى اللي حددته من الأول.',
+  t530: 'إدينا الأداة سنتين مبيعات حقيقية من فرع وول مارت، وهي توقعت التالتة: دقة 95.3% للسنة كلها، و10 من 12 شهر وقعوا جوه المدى اللي حددته من الأول.',
   t529: 'شوفها شغالة على محل حقيقي',
-  t528: 'المصدر: <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">بيانات M5 للتوقع</a>، مبيعات وأسعار يومية من وول مارت، فرع CA_3 (مكريداكيس وسبيليوتيس وأسيماكوبولوس، جامعة نيقوسيا؛ <a href="https://doi.org/10.1016/j.ijforecast.2021.11.013" target="_blank" rel="noopener">المجلة الدولية للتوقع، 2022</a>). النسخة المستخدمة: <a href="https://github.com/Nixtla/m5-forecasts" target="_blank" rel="noopener">النسخة العامة من Nixtla</a>. مش تابعين لوول مارت ولا معتمدين منها.',
+  t528: 'المصدر: بيانات مسابقة M5 Forecasting Accuracy، فرع CA_3 (كاليفورنيا): مكريداكيس وسبيليوتيس وأسيماكوبولوس، جامعة نيقوسيا (M Open Forecasting Center)، والبيانات من وول مارت؛ Kaggle، 2020، <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">kaggle.com/c/m5-forecasting-accuracy</a>. ورقة الطريقة: <a href="https://doi.org/10.1016/j.ijforecast.2021.11.013" target="_blank" rel="noopener">المجلة الدولية للتوقع، 2022</a>. النسخة المستخدمة: <a href="https://github.com/Nixtla/m5-forecasts" target="_blank" rel="noopener">النسخة العامة من Nixtla</a>. مستخدمة حسب شروط مسابقة Kaggle: بنعرض النتايج بس هنا، مش البيانات الخام. مش تابعين لوول مارت ولا معتمدين منها.',
   t527: '<b>99.3%</b><span>من قرارات "مش محتاج تطلب" كانت في أمان</span>',
-  t526: '<b>94.6%</b><span>أسبوع إعادة الطلب صح في حدود أسبوع، قبلها بأسبوعين</span>',
+  t526: '<b>96.1%</b><span>أسبوع إعادة الطلب صح في حدود أسبوع، قبلها بأسبوعين</span>',
   t525: '<b>99.8%</b><span>من طلب الزباين الحقيقي اتلبى من المخزون</span>',
-  t524: '<b>95.9%</b><span>توقع السنة كلها للمحل، معمول في ديسمبر 2014</span>',
+  t524: '<b>95.3%</b><span>توقع السنة كلها للمحل، معمول في ديسمبر 2014</span>',
   t523: 'مبيعات يومية حقيقية من فرع وول مارت في كاليفورنيا، من بيانات M5 المفتوحة: 40 منتج هوايات وأدوات منزلية. الأداة شافت 2013 و2014 بس، وبعدين خططت لـ 2015. كل رقم هنا بيقارن اللي توقعته باللي حصل فعلا.',
   t522: 'إدينا الأداة ماضي محل حقيقي. وهي توقعت السنة اللي بعدها.',
   t521: 'مثال حقيقي',
@@ -2316,26 +2451,26 @@ var SITE_EN = {
   t469: 'الأداة توقعت',
   t470: 'اللي حصل فعلا',
   t471: 'الدقة',
-  t472: '<strong>فين بتقصر.</strong> نتيجتين لسه تحت 80%: فئة الثبات (72.5% بالظبط، وعمرها ما بعدت أكتر من فئة واحدة)، وهل المنتج هيكبر ولا هيقل السنة الجاية (57.5%، قريب من رمي العملة، فالأداة بتعرضه كاتجاه السنة اللي فاتت مش كوعد). كل منتج شهر بشهر 80.3%، تقريبا زي متوسط تلات شهور (79.0%)، لأن المنتج الواحد بيتباع على دفعات. وعلى مستوى المحل كله شهر بشهر، تكرار السنة اللي فاتت طلع أحسن شوية هنا (93.4% قصاد 92.2%)؛ في ويسكونسن الأداة كانت أحسن (96.1% قصاد 94.4%)، وعلى الـ 20 سنة فرع كمان (92.8% قصاد 85.1%).',
+  t472: '<strong>فين بتقصر.</strong> نتيجتين لسه تحت 80%: فئة الثبات (72.5% بالظبط، وعمرها ما بعدت أكتر من فئة واحدة)، وهل المنتج هيكبر ولا هيقل السنة الجاية (57.5%، قريب من رمي العملة، فالأداة بتعرضه كاتجاه السنة اللي فاتت مش كوعد). كل منتج شهر بشهر 80.3%، تقريبا زي متوسط تلات شهور (79.0%)، لأن المنتج الواحد بيتباع على دفعات. وعلى مستوى المحل كله شهر بشهر، تكرار السنة اللي فاتت طلع أحسن شوية هنا (93.4% قصاد 92.2%)؛ في ويسكونسن الأداة كانت أحسن (94.5% قصاد 93.8%)، وعلى الـ 20 سنة فرع كمان (92.8% قصاد 85.1%).',
   t473: 'الطريقة: الأداة خدت بيانات 2013 و2014 بس، وبعدين اتستخدمت أسبوع بأسبوع طول 2015. الـ 40 منتج اتختاروا عشوائي (ببذرة ثابتة) من منتجات الهوايات والأدوات المنزلية اللي اتباعت كل شهر في 2013 و2014. البيانات مفيهاش موردين ولا تكلفة، فافترضنا تلات موردين (7 و14 و21 يوم، بتأخير عشوائي) وتكلفة 55% من سعر البيع. الأداة بتتعلم موسم كل منتج من سنتينه ومن موسم المحل كله، وبتعتمد عليه على قد ما السنتين متفقين؛ ولو عندك أقل من سنتين بترجع لأقرب شكل موسم جاهز. صاحب المحل بيراجع الأداة كل يوم أحد ويطلب اللي بتقوله بالظبط. متوسط 40 تجربة، وكل تجربة بتتقاس لوحدها. النتايج بالدولار الأمريكي.',
-  t474: '<td class="pf">توقع السنة كلها، معمول في ديسمبر 2014</td><td>41,024 قطعة</td><td>42,782 قطعة</td><td class="pacc"><b>95.9%</b><span class="pbar"><i style="--w:95.9%"></i></span></td>',
+  t474: '<td class="pf">توقع السنة كلها، معمول في ديسمبر 2014</td><td>40,782 قطعة</td><td>42,782 قطعة</td><td class="pacc"><b>95.3%</b><span class="pbar"><i style="--w:95.3%"></i></span></td>',
   t475: '<td class="pf">مبيعات المحل، شهر بشهر</td><td>الشهر الجاي، بيتحدث كل شهر</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>92.2% (نفس الشهر السنة اللي فاتت: 93.4%)</b><span class="pbar"><i style="--w:92.2%"></i></span></td>',
   t476: '<td class="pf">الزباين اللي اتخدموا من المخزون</td><td>اطلب اللي الأداة بتقوله</td><td>نسبة الطلب الحقيقي اللي اتلبى</td><td class="pacc"><b>99.8%</b><span class="pbar"><i style="--w:99.8%"></i></span></td>',
   t477: '<td class="pf">قرار "المخزون كويس"</td><td>مش محتاج تطلب الأسبوع ده</td><td>المخزون كفى لحد ما توريد يلحق يوصل</td><td class="pacc"><b>99.3%</b><span class="pbar"><i style="--w:99.3%"></i></span></td>',
-  t478: '<td class="pf">إمتى كل منتج محتاج يتطلب</td><td>الأسبوع اللي المخزون يوصل فيه لنقطة الطلب، لحد أسبوعين قدام</td><td>الأسبوع اللي وصلها فعلا</td><td class="pacc"><b>94.6% في حدود أسبوع (من 3 لـ 4 أسابيع قدام: 86.5%)</b><span class="pbar"><i style="--w:94.6%"></i></span></td>',
-  t479: '<td class="pf">تكلفة تشغيل المخزون في السنة</td><td>6,600 دولار</td><td>6,000 دولار</td><td class="pacc"><b>90.6%</b><span class="pbar"><i style="--w:90.6%"></i></span></td>',
-  t480: '<td class="pf">الربح المعرض للخطر</td><td>792 دولار</td><td>855 دولار</td><td class="pacc"><b>82.5% (كل تجربة بتتقاس لوحدها)</b><span class="pbar"><i style="--w:82.5%"></i></span></td>',
+  t478: '<td class="pf">إمتى كل منتج محتاج يتطلب</td><td>الأسبوع اللي المخزون يوصل فيه لنقطة الطلب، لحد أسبوعين قدام</td><td>الأسبوع اللي وصلها فعلا</td><td class="pacc"><b>96.1% في حدود أسبوع (من 3 لـ 4 أسابيع قدام: 85.9%)</b><span class="pbar"><i style="--w:96.1%"></i></span></td>',
+  t479: '<td class="pf">تكلفة تشغيل المخزون في السنة</td><td>6,600 دولار</td><td>6,000 دولار</td><td class="pacc"><b>90.8%</b><span class="pbar"><i style="--w:90.8%"></i></span></td>',
+  t480: '<td class="pf">الربح المعرض للخطر</td><td>784 دولار</td><td>857 دولار</td><td class="pacc"><b>80.9% (كل تجربة بتتقاس لوحدها)</b><span class="pbar"><i style="--w:80.9%"></i></span></td>',
   t481: '<td class="pf">اختيار المورد الأرخص</td><td>أنهي مورد أرخص على مدار السنة</td><td>أنهي واحد كان أرخص فعلا</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t482: '<td class="pf">مدة توريد الموردين، متعلمة</td><td>متعلمة من التوريدات المسجلة</td><td>المتوسط الحقيقي لكل مورد</td><td class="pacc"><b>96.7%</b><span class="pbar"><i style="--w:96.7%"></i></span></td>',
+  t482: '<td class="pf">مدة توريد الموردين، متعلمة</td><td>متعلمة من التوريدات المسجلة</td><td>المتوسط الحقيقي لكل مورد</td><td class="pacc"><b>96.6%</b><span class="pbar"><i style="--w:96.6%"></i></span></td>',
   t483: '<td class="pf">تنبيه البضاعة الراكدة</td><td>المنتج وقف بيع</td><td>فضل واقف فعلا</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
-  t484: '<td class="pf">إيراد 2015</td><td>144,900 دولار</td><td>156,600 دولار</td><td class="pacc"><b>92.5%</b><span class="pbar"><i style="--w:92.5%"></i></span></td>',
-  t485: '<td class="pf">إجمالي ربح 2015</td><td>65,200 دولار</td><td>70,500 دولار</td><td class="pacc"><b>92.5%</b><span class="pbar"><i style="--w:92.5%"></i></span></td>',
-  t486: '<td class="pf">وعد مخزون الأمان</td><td>95% من دورات الطلب من غير ما المخزون يخلص</td><td>97.1% من الدورات</td><td class="pacc"><b>اتحقق: 97.1% (الهدف 95%)</b><span class="pbar"><i style="--w:97.1%"></i></span></td>',
+  t484: '<td class="pf">إيراد 2015</td><td>144,400 دولار</td><td>156,600 دولار</td><td class="pacc"><b>92.2%</b><span class="pbar"><i style="--w:92.2%"></i></span></td>',
+  t485: '<td class="pf">إجمالي ربح 2015</td><td>65,000 دولار</td><td>70,500 دولار</td><td class="pacc"><b>92.2%</b><span class="pbar"><i style="--w:92.2%"></i></span></td>',
+  t486: '<td class="pf">وعد مخزون الأمان</td><td>95% من دورات الطلب من غير ما المخزون يخلص</td><td>97.2% من الدورات</td><td class="pacc"><b>اتحقق: 97.2% (الهدف 95%)</b><span class="pbar"><i style="--w:97.2%"></i></span></td>',
   t487: '<td class="pf">التدفق النقدي والتقريب للكرتونة</td><td>المدفوعات وأحجام الطلب</td><td>المدفوعات الفعلية وشروط الموردين</td><td class="pacc"><b>100%</b><span class="pbar"><i style="--w:100.0%"></i></span></td>',
   t488: '<td class="pf">كل منتج، شهر بشهر</td><td>الشهر الجاي لكل منتج من الـ 40</td><td>اللي كل واحد باعه فعلا</td><td class="pacc"><b>80.3% (متوسط تلات شهور: 79.0%)</b><span class="pbar"><i style="--w:80.3%"></i></span></td>',
   t489: '<td class="pf">ترتيب الإيراد A وB وC</td><td>الفئة من 2014</td><td>الفئة على إيراد 2015 الحقيقي</td><td class="pacc"><b>82.5%</b><span class="pbar"><i style="--w:82.5%"></i></span></td>',
   t490: '<td class="pf">ثبات البيع X وY وZ</td><td>الفئة من 2014</td><td>الفئة على مبيعات 2015 الحقيقية</td><td class="pacc lo"><b>72.5% بالظبط، 100% في حدود فئة واحدة</b><span class="pbar"><i style="--w:72.5%"></i></span></td>',
-  t491: '<td class="pf">أيام التغطية</td><td>المخزون الحالي هيكفي قد إيه</td><td>كفى قد إيه فعلا</td><td class="pacc"><b>83.1%</b><span class="pbar"><i style="--w:83.1%"></i></span></td>',
+  t491: '<td class="pf">أيام التغطية</td><td>المخزون الحالي هيكفي قد إيه</td><td>كفى قد إيه فعلا</td><td class="pacc"><b>83.2%</b><span class="pbar"><i style="--w:83.2%"></i></span></td>',
   t492: '<td class="pf">بيكبر ولا بيقل</td><td>الاتجاه من 2014</td><td>الاتجاه الحقيقي في 2015</td><td class="pacc lo"><b>57.5%</b><span class="pbar"><i style="--w:57.5%"></i></span></td>',
   t432: 'محل تجريبي',
   t433: 'الطلبات الجاية',
@@ -2375,12 +2510,12 @@ var SITE_EN = {
   lg_privacy_1: "Etlob Sa7 (\"إحنا\") بتشغّل موقع etlobsa7.com وتطبيق Etlob Sa7. السياسة دي بتوضح البيانات الشخصية اللي بنجمعها، وليه، ومين بيساعدنا في معالجتها، وبنحتفظ بيها قد إيه، والاختيارات المتاحة ليك. بيانات النشاط موجودة في آخر الصفحة.",
   lg_privacy_2: "بنجمع إيه، وليه",
   lg_privacy_3: "بنجمع بس اللي الخدمة محتاجاه علشان تشتغل:",
-  lg_privacy_4: "<li><strong>إيميلك</strong>: علشان نعمل حسابك، ونبعتلك رموز الدخول، ونبلغك بخصوص التجربة المجانية والمدفوعات.</li><li><strong>اسمك ورقم موبايلك</strong>: بتكتبهم لما تضيف كارت. شركة الدفع Paymob محتاجاهم علشان تنفذ الدفع بالكارت، وبنحتفظ بيهم علشان نملالك نموذج الدفع المرة الجاية.</li><li><strong>بيانات الباقة والدفع</strong>: باقتك، ومواعيد التجربة والاشتراك، وأرقام الطلب والعملية والاشتراك عند Paymob، والمبالغ، ونتيجة كل عملية دفع. محتاجينها علشان نديك الصلاحية ونحتفظ بسجلات دفع سليمة.</li><li><strong>بيانات نشاطك اللي بتكتبها في التطبيق</strong>: المنتجات، وتاريخ المبيعات، والموردين، والتكاليف، والأسعار، والطلبيات. البيانات دي بتاعتك، وبنستخدمها بس علشان التطبيق يشتغل ليك.</li><li><strong>سجلات الأمان</strong>: إمتى اتبعت رمز دخول، وإمتى دخلت وكام مرة، وأحداث الدفع، مربوطة بإيميلك. رموز الدخول ومفاتيح الجلسة بتتخزن بس بشكل مشفر باتجاه واحد (hash)، عمرها ما بتتخزن بشكل مقروء. بنستخدم السجلات دي علشان نحمي الحسابات ونمنع إساءة الاستخدام ونصلح المشاكل.</li><li><strong>سجلات الخوادم المعتادة</strong>: زي أغلب المواقع، مقدمي الاستضافة بيسجلوا تفاصيل تقنية عن كل طلب، زي عنوان IP والوقت ونوع المتصفح، للأمان ولاستمرار الخدمة.</li>",
+  lg_privacy_4: "<li><strong>إيميلك</strong>: علشان نعمل حسابك، ونبعتلك رموز الدخول، ونبلغك بخصوص التجربة المجانية والمدفوعات (ومنها التذكير قبل أي خصم)، وكمان ملخص كل يوم أحد بأرقام محلك انت، إلا لو قفلته. تقدر تقفل الملخص من الإعدادات في التطبيق أو من اللينك اللي في كل رسالة.</li><li><strong>اختياراتك</strong>: اللغة اللي بتستخدم بيها التطبيق، علشان إيميلاتنا تبقى بنفس اللغة؛ وهل ملخص يوم الأحد شغال؛ ولو وقفت التجديد واخترت تقولنا السبب، السبب اللي اخترته وأي ملاحظة كتبتها.</li><li><strong>اسمك ورقم موبايلك</strong>: بتكتبهم لما تضيف كارت. شركة الدفع Paymob محتاجاهم علشان تنفذ الدفع بالكارت، وبنحتفظ بيهم علشان نملالك نموذج الدفع المرة الجاية.</li><li><strong>بيانات الباقة والدفع</strong>: باقتك، ومواعيد التجربة والاشتراك، وأرقام الطلب والعملية والاشتراك عند Paymob، والمبالغ، ونتيجة كل عملية دفع. محتاجينها علشان نديك الصلاحية ونحتفظ بسجلات دفع سليمة.</li><li><strong>بيانات نشاطك اللي بتكتبها في التطبيق</strong>: المنتجات، وتاريخ المبيعات، والموردين، والتكاليف، والأسعار، والطلبيات. البيانات دي بتاعتك، وبنستخدمها بس علشان التطبيق يشتغل ليك.</li><li><strong>سجلات الأمان</strong>: إمتى اتبعت رمز دخول، وإمتى دخلت وكام مرة، وأحداث الدفع، مربوطة بإيميلك. رموز الدخول ومفاتيح الجلسة بتتخزن بس بشكل مشفر باتجاه واحد (hash)، عمرها ما بتتخزن بشكل مقروء. بنستخدم السجلات دي علشان نحمي الحسابات ونمنع إساءة الاستخدام ونصلح المشاكل.</li><li><strong>سجلات الخوادم المعتادة</strong>: زي أغلب المواقع، مقدمي الاستضافة بيسجلوا تفاصيل تقنية عن كل طلب، زي عنوان IP والوقت ونوع المتصفح، للأمان ولاستمرار الخدمة.</li>",
   lg_privacy_5: "إحنا مش بنجمع رقم كارتك (بتكتبه في صفحة Paymob مش صفحتنا)، ولا موقعك، ولا جهات اتصالك. مش بنستخدم أدوات تحليل أو إعلانات أو تتبع، ومش بنبيع أو بنأجر أي بيانات شخصية.",
   lg_privacy_6: "أساس استخدامنا للبيانات",
   lg_privacy_7: "بنستخدم بياناتك علشان نقدم الخدمة اللي اشتركت فيها، وبالموافقة اللي بتديها لما تبدأ تجربة أو باقة، وعلشان نحافظ على أمان الخدمة، ونلتزم بالواجبات القانونية والمحاسبية. بنحرص إننا نتعامل مع البيانات الشخصية بما يتفق مع قانون حماية البيانات الشخصية المصري (القانون رقم 151 لسنة 2020).",
   lg_privacy_8: "مين بيعالج البيانات معانا",
-  lg_privacy_9: "<li><strong>Supabase</strong>: قاعدة البيانات وخادم التطبيق، في مركز بياناتها في فرانكفورت بألمانيا (Amazon Web Services، eu-central-1). بيانات نشاطك وحسابك وسجلات الدفع متخزنة هنا.</li><li><strong>Paymob</strong>: شركة الدفع بالكارت في مصر. بتستلم اسمك وإيميلك وموبايلك مع كل عملية دفع، وبتحتفظ بالكارت للتجديد الشهري حسب سياسة الخصوصية بتاعتها.</li><li><strong>Resend</strong>: بتبعت إيميلات الدخول والحساب. بتستلم إيميلك ونص الرسالة، وممكن تعالجهم في الولايات المتحدة.</li><li><strong>GitHub Pages</strong>: بتستضيف الموقع ده وملفات صفحات التطبيق، وبتحتفظ بسجلات الخوادم المعتادة. GitHub مقرها في الولايات المتحدة.</li><li><strong>واتساب</strong> (Meta): بس لو اخترت تكلمنا عليه.</li>",
+  lg_privacy_9: "<li><strong>Supabase</strong>: قاعدة البيانات وخادم التطبيق، في مركز بياناتها في فرانكفورت بألمانيا (Amazon Web Services، eu-central-1). بيانات نشاطك وحسابك وسجلات الدفع متخزنة هنا.</li><li><strong>Paymob</strong>: شركة الدفع بالكارت في مصر. بتستلم اسمك وإيميلك وموبايلك مع كل عملية دفع، وبتحتفظ بالكارت للتجديدات حسب سياسة الخصوصية بتاعتها.</li><li><strong>Resend</strong>: بتبعت إيميلات الدخول والحساب. بتستلم إيميلك ونص الرسالة، وممكن تعالجهم في الولايات المتحدة.</li><li><strong>GitHub Pages</strong>: بتستضيف الموقع ده وملفات صفحات التطبيق، وبتحتفظ بسجلات الخوادم المعتادة. GitHub مقرها في الولايات المتحدة.</li><li><strong>واتساب</strong> (Meta): بس لو اخترت تكلمنا عليه.</li>",
   lg_privacy_10: "ده معناه إن بياناتك بتتخزن وبتتعالج برا مصر، في ألمانيا والولايات المتحدة. بنستخدم مقدمي خدمة معروفين بيحموا البيانات بالتشفير وضوابط الوصول، وبنشارك مع كل واحد بس اللي محتاجه.",
   lg_privacy_11: "مين يقدر يشوف بيانات نشاطك",
   lg_privacy_12: "إنت بس، لما تدخل برمز بيتبعت لإيميلك. قاعدة البيانات بترفض أي وصول مباشر: خادم التطبيق بس هو اللي يقدر يقراها، ومش بيرجّع مساحة العمل غير لصاحبها اللي داخل بحسابه. إحنا مش بنبص على بيانات نشاطك، إلا لو طلبت مساعدتنا وكان ده الطريق الوحيد إننا نساعدك.",
@@ -2391,7 +2526,7 @@ var SITE_EN = {
   lg_privacy_17: "حقوقك",
   lg_privacy_18: "تقدر تطلب مننا:",
   lg_privacy_19: "<li>نعرفك إيه البيانات الشخصية اللي عندنا عنك ونديك نسخة منها؛</li><li>نصحح أي حاجة غلط؛</li><li>نمسح حسابك وبياناتك (ما عدا سجلات الدفع اللي القانون بيلزمنا نحتفظ بيها)؛</li><li>نوقف استخدام بياناتك في غرض إنت معترض عليه، أو تسحب موافقة اديتها.</li>",
-  lg_privacy_20: "ابعتلنا على واتساب <span dir=\"ltr\">+20 109 009 9849</span>. ممكن نطلب منك تأكد الطلب من إيميل حسابك، علشان محدش غيرك يطلب بياناتك. بنرد في أسرع وقت، وفي حدود المدة اللي القانون بيحددها. ولو مش راضي، تقدر تشتكي لمركز حماية البيانات الشخصية في مصر.",
+  lg_privacy_20: "ابعتلنا على واتساب <bdi>+20 109 009 9849</bdi>. ممكن نطلب منك تأكد الطلب من إيميل حسابك، علشان محدش غيرك يطلب بياناتك. بنرد في أسرع وقت، وفي حدود المدة اللي القانون بيحددها. ولو مش راضي، تقدر تشتكي لمركز حماية البيانات الشخصية في مصر.",
   lg_privacy_21: "الأمان",
   lg_privacy_22: "الاتصال بالموقع والتطبيق مشفر (HTTPS). رموز الدخول بتنتهي بعد 10 دقايق وبتشتغل مرة واحدة. قاعدة البيانات مقفولة بحيث خادم التطبيق بس هو اللي يوصلها. مفيش طريقة آمنة 100%، لكن لو حصل اختراق أثر على بياناتك هنبلغك ونبلغ الجهات المختصة زي ما القانون بيطلب.",
   lg_privacy_23: "الأطفال",
@@ -2399,7 +2534,7 @@ var SITE_EN = {
   lg_privacy_25: "تغييرات السياسة",
   lg_privacy_26: "لو غيرنا السياسة دي بشكل مهم، هننشر النسخة الجديدة هنا بتاريخ جديد، ونبلغ المشتركين بالإيميل قبل ما التغيير يطبق عليهم.",
   lg_privacy_27: "بيانات النشاط",
-  lg_privacy_28: "<li><strong>الاسم التجاري:</strong> Etlob Sa7 (اطلب صح)</li><li><strong>نشاطنا:</strong> اشتراك شهري في تطبيق أونلاين لتخطيط الطلب والمشتريات، للأنشطة التجارية</li><li><strong>المقر:</strong> القاهرة، مصر</li><li><strong>التواصل:</strong> واتساب <span dir=\"ltr\">+20 109 009 9849</span></li><li><strong>الموقع:</strong> etlobsa7.com</li>",
+  lg_privacy_28: "<li><strong>الاسم التجاري:</strong> Etlob Sa7 (اطلب صح)</li><li><strong>نشاطنا:</strong> اشتراك شهري أو سنوي في تطبيق أونلاين لتخطيط الطلب والمشتريات، للأنشطة التجارية</li><li><strong>المقر:</strong> القاهرة، مصر</li><li><strong>التواصل:</strong> واتساب <bdi>+20 109 009 9849</bdi></li><li><strong>الموقع:</strong> etlobsa7.com</li>",
   lg_terms_eb: "قانوني",
   lg_terms_h: "الشروط والأحكام",
   lg_terms_d: "آخر تحديث: 3 أكتوبر 2026.",
@@ -2411,9 +2546,9 @@ var SITE_EN = {
   lg_terms_5: "حسابك",
   lg_terms_6: "بتدخل برمز لمرة واحدة بيتبعت على إيميلك، فحافظ على أمان إيميلك. كل حساب لنشاط مشترك واحد، وبيشتغل على جهازين بالكتير في نفس الوقت. إنت مسؤول عن اللي بيحصل في حسابك وعن صحة البيانات اللي بتدخلها.",
   lg_terms_7: "التجربة المجانية والدفع والتجديد التلقائي",
-  lg_terms_8: "<li>كل باقة بتبدأ بتجربة مجانية: 14 يوم على الأساسية وPro، و5 أيام على Store. كل حساب له تجربة مجانية واحدة.</li><li>علشان تبدأ التجربة بتضيف كارت في صفحة Paymob الآمنة. بيتخصم مرة واحدة 1 جنيه في نفس اليوم للتأكد إن الكارت شغال.</li><li>لو موقفتش التجديد قبل ما التجربة تخلص، الكارت بيتخصم منه سعر الباقة الشهري تلقائيا لما التجربة تخلص، وبعدها في نفس التاريخ كل شهر، لحد ما توقف التجديد.</li><li>الأسعار معروضة بالجنيه المصري في صفحة الأسعار وفي التطبيق قبل ما تدفع، وهي المبلغ اللي بيتخصم.</li><li>لو الدفع الشهري فشل، Paymob بتحاول تاني والتطبيق بيفضل شغال 3 أيام. لو فضل فاشل، الصلاحية بتتوقف لحد ما تدفع. وبياناتك بتفضل محفوظة.</li><li>لو غيرت الباقة بعد التجربة، بتدفع سعر الباقة الجديدة، والأيام المدفوعة في الباقة القديمة بتتنقل للجديدة بسعرها.</li><li>ممكن نغير الأسعار للمستقبل. هنبلغك بالإيميل قبلها بـ 14 يوم على الأقل قبل ما السعر الجديد يطبق عليك، وتقدر توقف التجديد قبلها.</li>",
+  lg_terms_8: "<li>كل باقة بتبدأ بتجربة مجانية: 14 يوم على الأساسية وPro، و5 أيام على Store. كل حساب له تجربة مجانية واحدة.</li><li>علشان تبدأ التجربة بتضيف كارت في صفحة Paymob الآمنة. بيتخصم مرة واحدة 1 جنيه في نفس اليوم للتأكد إن الكارت شغال.</li><li>بتختار تدفع شهري أو سنوي. شهر الدفع 30 يوم، وسنة الدفع 360 يوم (12 شهر دفع). الباقة السنوية سعرها زي 10 شهور من السعر الشهري.</li><li>لو موقفتش التجديد قبل ما التجربة تخلص، الكارت بيتخصم منه سعر الباقة والمدة اللي اخترتها تلقائيا لما التجربة تخلص، وبعدها في أول كل شهر أو سنة جديدة، لحد ما توقف التجديد.</li><li>التذكير: في تجربة الـ 14 يوم بنبعتلك إيميل قبل أول دفعة بـ 7 أيام؛ وفي تجربة Store اللي 5 أيام بنبعتلك تاني يوم من بدايتها. وفي الباقة السنوية بنبعتلك قبل كل تجديد بـ 7 أيام. وكل تذكير فيه لينك توقف بيه التجديد أونلاين.</li><li>الأسعار معروضة بالجنيه المصري في صفحة الأسعار وفي التطبيق قبل ما تدفع، وهي المبلغ اللي بيتخصم.</li><li>لو الدفع فشل، Paymob بتحاول تاني والتطبيق بيفضل شغال 3 أيام. لو فضل فاشل، الصلاحية بتتوقف لحد ما تدفع. وبياناتك بتفضل محفوظة.</li><li>لو غيرت الباقة أو المدة بعد التجربة، بتدفع السعر الجديد، والمدة المدفوعة في الباقة القديمة بتتنقل للجديدة بسعر اليوم فيها. ولو المدة دي قيمتها أكتر من سنة في الباقة الجديدة، غيرها لما مدتك الحالية تخلص.</li><li>عرض المؤسسين: أول 30 محل أول دفعة كاملة ليهم تتم بيبقوا أعضاء مؤسسين. العضو المؤسس بيحتفظ بالأسعار اللي كانت سارية يوم ما بقى عضو، لأي باقة ومدة، طول ما اشتراكه مستمر من غير ما يخلص. لو خلص (وقف التجديد والمدة المدفوعة انتهت، أو دفعة فشلت ومااتصلحتش خلال 3 أيام)، السعر المؤسس بينتهي والأسعار الحالية بتطبق. صفحة الأسعار بتوضح فاضل كام مكان.</li><li>ممكن نغير الأسعار للمستقبل. هنبلغك بالإيميل قبلها بـ 14 يوم على الأقل قبل ما السعر الجديد يطبق عليك، وتقدر توقف التجديد قبلها. وسعر العضو المؤسس مش بيزيد طول ما هو ساري.</li>",
   lg_terms_9: "الإلغاء والاسترداد",
-  lg_terms_10: "تقدر توقف التجديد في أي وقت من التطبيق (الإعدادات، وبعدين الباقة والدفع) أو بإنك تبعتلنا على واتساب. مش هيتخصم حاجة تاني، وبتفضل الصلاحية لحد آخر التجربة أو الشهر اللي دفعته. الاسترداد موضح في <a href=\"#refunds\" data-go=\"refunds\">سياسة الاسترداد والإلغاء</a>.",
+  lg_terms_10: "تقدر توقف التجديد في أي وقت من التطبيق (الإعدادات، وبعدين الباقة والدفع) أو بإنك تبعتلنا على واتساب. مش هيتخصم حاجة تاني، وبتفضل الصلاحية لحد آخر التجربة أو الشهر أو السنة اللي دفعتها. بعدها التطبيق بيقف مؤقتا وبياناتك بتفضل محفوظة. الاسترداد موضح في <a href=\"#refunds\" data-go=\"refunds\">سياسة الاسترداد والإلغاء</a>.",
   lg_terms_11: "الاستخدام السليم",
   lg_terms_12: "إنت موافق إنك متشاركش أو تبيعش الدخول للتطبيق، ومتحاولش تخترقه أو تضغط عليه أو تسحب بياناته أو تفكك كوده، ومتستخدموش في أي حاجة مخالفة للقانون. ومن حقنا نوقف أي حساب بيعمل كده.",
   lg_terms_13: "بياناتك",
@@ -2433,7 +2568,7 @@ var SITE_EN = {
   lg_terms_27: "القانون والنزاعات",
   lg_terms_28: "الشروط دي خاضعة لقوانين جمهورية مصر العربية. من فضلك كلمنا الأول علشان نحاول نحل أي مشكلة مباشرة. وأي نزاع ميتحلش بالطريقة دي بيروح للمحاكم المختصة في القاهرة.",
   lg_terms_29: "بيانات النشاط",
-  lg_terms_30: "<li><strong>الاسم التجاري:</strong> Etlob Sa7 (اطلب صح)</li><li><strong>نشاطنا:</strong> اشتراك شهري في تطبيق أونلاين لتخطيط الطلب والمشتريات، للأنشطة التجارية</li><li><strong>المقر:</strong> القاهرة، مصر</li><li><strong>التواصل:</strong> واتساب <span dir=\"ltr\">+20 109 009 9849</span></li><li><strong>الموقع:</strong> etlobsa7.com</li>",
+  lg_terms_30: "<li><strong>الاسم التجاري:</strong> Etlob Sa7 (اطلب صح)</li><li><strong>نشاطنا:</strong> اشتراك شهري أو سنوي في تطبيق أونلاين لتخطيط الطلب والمشتريات، للأنشطة التجارية</li><li><strong>المقر:</strong> القاهرة، مصر</li><li><strong>التواصل:</strong> واتساب <bdi>+20 109 009 9849</bdi></li><li><strong>الموقع:</strong> etlobsa7.com</li>",
   lg_cookies_eb: "قانوني",
   lg_cookies_h: "سياسة الكوكيز والتخزين",
   lg_cookies_d: "آخر تحديث: 3 أكتوبر 2026.",
@@ -2441,7 +2576,7 @@ var SITE_EN = {
   lg_cookies_1: "موقع etlobsa7.com والتطبيق والعرض التجريبي مش بيحطوا أي كوكيز. ومش بنستخدم أدوات تحليل أو إعلانات أو تتبع، وكل الخطوط والأكواد بتتحمل من موقعنا، فلما تفتح صفحة مش بيحصل اتصال بجوجل أو فيسبوك أو أي أداة تتبع.",
   lg_cookies_2: "بنحفظ إيه في متصفحك",
   lg_cookies_3: "علشان يشتغلوا، الموقع والتطبيق بيحفظوا كام حاجة في تخزين المتصفح نفسه (local storage وsession storage). الحاجات دي بتفضل على جهازك ومش بتتبعت لخادمنا غير لما يكون ده لازم علشان تدخل أو نتأكد من عملية دفع:",
-  lg_cookies_4: "<div class=\"legal-tbl\"><table><thead><tr><th>الاسم</th><th>بيتستخدم في</th><th>الغرض</th><th>المدة</th></tr></thead><tbody><tr><td><code>etlob-site-lang</code></td><td>الموقع</td><td>بيفتكر اللغة اللي اخترتها للموقع.</td><td>لحد ما تمسحه</td></tr><tr><td><code>es7.lang, es7.theme, es7.tab</code></td><td>التطبيق والعرض التجريبي</td><td>بيفتكروا لغتك، والوضع الفاتح أو الغامق، وآخر صفحة كانت مفتوحة.</td><td>لحد ما تمسحهم</td></tr><tr><td><code>es7.sid</code></td><td>التطبيق</td><td>بيخليك داخل بحسابك. فيه مفتاح دخول عشوائي، والخادم بيخزن منه نسخة مشفرة (hash) بس.</td><td>لحد ما تخرج؛ والمفتاح بيبطل بعد 14 يوم من غير استخدام</td></tr><tr><td><code>es7.pending</code></td><td>الموقع والتطبيق</td><td>رقم مرجعي لعملية دفع لسه بادئها، علشان نأكدها لما Paymob ترجعك.</td><td>بيتمسح لما تدخل؛ وبيتجاهل بعد يومين</td></tr><tr><td><code>es7.ckForm (session storage)</code></td><td>الموقع والتطبيق</td><td>الباقة والإيميل والاسم والموبايل اللي كتبتهم في نموذج الكارت، علشان متكتبهمش تاني لو الكارت اترفض.</td><td>بيتمسح لما تقفل التاب</td></tr><tr><td><code>es7.signinEmail</code></td><td>الموقع والتطبيق</td><td>بينقل الإيميل اللي كتبته في الموقع لصفحة الدخول.</td><td>بيتمسح أول ما يتقري</td></tr></tbody></table></div>",
+  lg_cookies_4: "<div class=\"legal-tbl\"><table><thead><tr><th>الاسم</th><th>بيتستخدم في</th><th>الغرض</th><th>المدة</th></tr></thead><tbody><tr><td><code>etlob-site-lang</code></td><td>الموقع</td><td>بيفتكر اللغة اللي اخترتها للموقع.</td><td>لحد ما تمسحه</td></tr><tr><td><code>es7.lang, es7.theme, es7.tab</code></td><td>التطبيق والعرض التجريبي</td><td>بيفتكروا لغتك، والوضع الفاتح أو الغامق، وآخر صفحة كانت مفتوحة.</td><td>لحد ما تمسحهم</td></tr><tr><td><code>es7.sid</code></td><td>التطبيق</td><td>بيخليك داخل بحسابك. فيه مفتاح دخول عشوائي، والخادم بيخزن منه نسخة مشفرة (hash) بس.</td><td>لحد ما تخرج؛ والمفتاح بيبطل بعد 14 يوم من غير استخدام</td></tr><tr><td><code>es7.pending</code></td><td>الموقع والتطبيق</td><td>رقم مرجعي لعملية دفع لسه بادئها، علشان نأكدها لما Paymob ترجعك.</td><td>بيتمسح لما تدخل؛ وبيتجاهل بعد يومين</td></tr><tr><td><code>es7.ckForm (session storage)</code></td><td>الموقع والتطبيق</td><td>الباقة ومدة الدفع والإيميل والاسم والموبايل اللي كتبتهم في نموذج الكارت، علشان متكتبهمش تاني لو الكارت اترفض.</td><td>بيتمسح لما تقفل التاب</td></tr><tr><td><code>es7.chkHide</code></td><td>التطبيق</td><td>بيفتكر إنك خبيت قايمة البداية.</td><td>لحد ما تمسحه</td></tr><tr><td><code>es7.signinEmail</code></td><td>الموقع والتطبيق</td><td>بينقل الإيميل اللي كتبته في الموقع لصفحة الدخول.</td><td>بيتمسح أول ما يتقري</td></tr></tbody></table></div>",
   lg_cookies_5: "محتاجين موافقتك؟",
   lg_cookies_6: "كل الحاجات دي ضرورية للميزات اللي بتطلبها (الدخول، والدفع، وتذكر اللغة)، علشان كده مش بنعرض شريط موافقة على الكوكيز. ولو ضفنا في يوم أدوات تحليل أو إعلانات، هنطلب موافقتك الأول ونحدث الصفحة دي.",
   lg_cookies_7: "مواقع تانية",
@@ -2449,25 +2584,25 @@ var SITE_EN = {
   lg_cookies_9: "إزاي تمسحها",
   lg_cookies_10: "تقدر تمسح الحاجات دي في أي وقت من إعدادات المتصفح (امسح بيانات موقع etlobsa7.com). بعدها هتحتاج تدخل تاني وتختار لغتك تاني.",
   lg_cookies_11: "بيانات النشاط",
-  lg_cookies_12: "<li><strong>الاسم التجاري:</strong> Etlob Sa7 (اطلب صح)</li><li><strong>نشاطنا:</strong> اشتراك شهري في تطبيق أونلاين لتخطيط الطلب والمشتريات، للأنشطة التجارية</li><li><strong>المقر:</strong> القاهرة، مصر</li><li><strong>التواصل:</strong> واتساب <span dir=\"ltr\">+20 109 009 9849</span></li><li><strong>الموقع:</strong> etlobsa7.com</li>",
+  lg_cookies_12: "<li><strong>الاسم التجاري:</strong> Etlob Sa7 (اطلب صح)</li><li><strong>نشاطنا:</strong> اشتراك شهري أو سنوي في تطبيق أونلاين لتخطيط الطلب والمشتريات، للأنشطة التجارية</li><li><strong>المقر:</strong> القاهرة، مصر</li><li><strong>التواصل:</strong> واتساب <bdi>+20 109 009 9849</bdi></li><li><strong>الموقع:</strong> etlobsa7.com</li>",
   lg_refunds_eb: "قانوني",
   lg_refunds_h: "سياسة الاسترداد والإلغاء",
   lg_refunds_d: "آخر تحديث: 3 أكتوبر 2026.",
   lg_refunds_0: "التجربة المجانية",
   lg_refunds_1: "كل باقة بتبدأ مجانا: 14 يوم على الأساسية وPro، و5 أيام على Store. لما تضيف كارتك، بيتخصم مرة واحدة 1 جنيه للتأكد إن الكارت شغال، والمبلغ ده مش بيترد. لو وقفت التجديد قبل ما التجربة تخلص، سعر الباقة مش هيتخصم أبدا.",
   lg_refunds_2: "إزاي تلغي",
-  lg_refunds_3: "تقدر توقف التجديد في أي وقت من التطبيق: الإعدادات، وبعدين الباقة والدفع، وبعدين إيقاف التجديد. أو ابعتلنا على واتساب <span dir=\"ltr\">+20 109 009 9849</span> وإحنا نعملها ليك. من غير أي نماذج أو مكالمات. مش هيتخصم حاجة تاني، وبتفضل الصلاحية لحد آخر التجربة أو الشهر اللي دفعته.",
+  lg_refunds_3: "تقدر توقف التجديد في أي وقت من التطبيق: الإعدادات، وبعدين الباقة والدفع، وبعدين إيقاف التجديد. أو ابعتلنا على واتساب <bdi>+20 109 009 9849</bdi> وإحنا نعملها ليك. من غير أي نماذج أو مكالمات. مش هيتخصم حاجة تاني، وبتفضل الصلاحية لحد آخر التجربة أو الشهر اللي دفعته.",
   lg_refunds_4: "الاسترداد",
-  lg_refunds_5: "علشان كل باقة بتبدأ بتجربة مجانية، الدفعات الشهرية مش بترجع بعد ما تتخصم، حتى لو جزء من شهر أو وقت ماستخدمتهوش. ده مش بيأثر على أي حق في الاسترداد بيديهولك القانون. وإحنا بنرجّع المبلغ كامل دايما في الحالات دي:",
+  lg_refunds_5: "علشان كل باقة بتبدأ بتجربة مجانية، وبنفكرك قبل أول دفعة وقبل كل تجديد سنوي، الدفعات مش بترجع بعد ما تتخصم، ومنها الدفعات السنوية، حتى لو جزء من شهر أو سنة أو وقت ماستخدمتهوش. ده مش بيأثر على أي حق في الاسترداد بيديهولك القانون. وإحنا بنرجّع المبلغ كامل دايما في الحالات دي:",
   lg_refunds_6: "<li>لو المبلغ اتخصم مرتين عن نفس الفترة؛</li><li>لو اتخصم مبلغ بعد ما وقفت التجديد في ميعاده؛</li><li>لو اتخصم مبلغ غلط (بنرجّع الفرق).</li>",
   lg_refunds_7: "إزاي تطلب استرداد",
-  lg_refunds_8: "ابعتلنا على واتساب <span dir=\"ltr\">+20 109 009 9849</span> بإيميل حسابك وتاريخ الخصم. بنرد خلال 3 أيام عمل. المبالغ اللي بتترد بترجع على نفس الكارت اللي دفعت بيه عن طريق Paymob، والمدة اللي بتاخدها لحد ما تظهر في كشف حسابك بتعتمد على البنك بتاعك.",
+  lg_refunds_8: "ابعتلنا على واتساب <bdi>+20 109 009 9849</bdi> بإيميل حسابك وتاريخ الخصم. بنرد خلال 3 أيام عمل. المبالغ اللي بتترد بترجع على نفس الكارت اللي دفعت بيه عن طريق Paymob، والمدة اللي بتاخدها لحد ما تظهر في كشف حسابك بتعتمد على البنك بتاعك.",
   lg_refunds_9: "تغيير الباقة",
-  lg_refunds_10: "لو نقلت لباقة تانية بعد التجربة، الأيام اللي دفعتها بتتنقل للباقة الجديدة بسعرها، ومش بتترد فلوس.",
+  lg_refunds_10: "لو نقلت لباقة أو مدة تانية بعد التجربة، المدة اللي دفعتها بتتنقل للباقة الجديدة بسعر اليوم فيها، ومش بتترد فلوس.",
   lg_refunds_11: "كلمنا الأول من فضلك",
   lg_refunds_12: "لو في حاجة شكلها غلط في أي خصم، كلمنا قبل ما تعترض عليه عند البنك. غالبا بيتحل أسرع لما نتكلم مباشرة.",
   lg_refunds_13: "بيانات النشاط",
-  lg_refunds_14: "<li><strong>الاسم التجاري:</strong> Etlob Sa7 (اطلب صح)</li><li><strong>نشاطنا:</strong> اشتراك شهري في تطبيق أونلاين لتخطيط الطلب والمشتريات، للأنشطة التجارية</li><li><strong>المقر:</strong> القاهرة، مصر</li><li><strong>التواصل:</strong> واتساب <span dir=\"ltr\">+20 109 009 9849</span></li><li><strong>الموقع:</strong> etlobsa7.com</li>",
+  lg_refunds_14: "<li><strong>الاسم التجاري:</strong> Etlob Sa7 (اطلب صح)</li><li><strong>نشاطنا:</strong> اشتراك شهري أو سنوي في تطبيق أونلاين لتخطيط الطلب والمشتريات، للأنشطة التجارية</li><li><strong>المقر:</strong> القاهرة، مصر</li><li><strong>التواصل:</strong> واتساب <bdi>+20 109 009 9849</bdi></li><li><strong>الموقع:</strong> etlobsa7.com</li>",
   ft_cookies: "سياسة الكوكيز",
   skip: "تخطى للمحتوى",
   ft_refunds: "سياسة الاسترداد",
@@ -3487,6 +3622,12 @@ html[dir="rtl"] .ck h2{margin:0 0 6px 34px}
 .ck input.ck-i:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(175,119,63,.18)}
 .ck .ck-hint{font-size:12.5px;color:var(--muted);margin-top:4px}
 .ck-row{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.ck-int{display:inline-flex;gap:0;margin:0 0 12px;padding:3px;border:1.5px solid var(--line);border-radius:10px}
+.ck-int label{display:inline-flex;align-items:center;gap:6px;margin:0;padding:6px 13px;border-radius:7px;cursor:pointer;font-weight:700;font-size:14px;color:var(--body)}
+.ck-int input{position:absolute;opacity:0;width:1px;height:1px}
+.ck-int label.on{background:var(--accent);color:var(--accent-ink)}
+.ck-int small{font-size:11.5px}
+.ck-int label:focus-within{outline:2px solid var(--accent);outline-offset:2px}
 .ck-sum{margin:16px 0 0;padding:12px 14px;border-radius:12px;background:var(--bg-3);font-size:14px;color:var(--ink);line-height:1.5}
 .ck-sum span{display:block;color:var(--body);font-size:13px;margin-top:2px}
 .ck-go{width:100%;margin-top:14px;height:50px;font-size:16px}
@@ -3691,11 +3832,14 @@ main:focus{outline:none}
     en: {
       h: 'Start your free trial', lede: 'Add your card to start. Nothing is charged until the trial ends, and you can cancel before then.',
       s1: 'Plan and email', s2: 'Card on Paymob', s3: 'Sign in',
-      basic: 'Basic', pro: 'Pro', store: 'Store', free: '{n} days free', then: 'then {p} a month',
+      basic: 'Basic', pro: 'Pro', store: 'Store', free: '{n} days free', then: 'then {p} a month', thenY: 'then {p} a year',
+      int: 'Billing period', month: 'Monthly', year: 'Yearly', save: '2 months free',
       email: 'Email', emailHint: 'Your account and sign-in codes use this email.', name: 'Name on the card', phone: 'Mobile number',
       sum: 'Today: a {c} card check. Free until {d}.', sum2: 'Then {p} a month, charged to this card. Cancel any time before {d} and you pay nothing more.',
+      sum2Y: 'Then {p} a year, charged to this card. We email you 7 days before. Cancel any time before {d} and you pay nothing more.',
       go: 'Continue to card details', going: 'Opening the secure card page...',
-      agree: 'I agree to the {terms}, the {refunds} and the {privacy}. I understand that 1 EGP is taken today as a card check, and that {p} will be charged to this card on {d} and every month after that, until I stop renewal.',
+      agree: 'I agree to the {terms}, the {refunds} and the {privacy}. I understand that 1 EGP is taken today as a card check, and that {p} will be charged to this card on {d} and {every} after that, until I stop renewal.',
+      every: 'every month', everyY: 'every year',
       termsL: 'Terms and conditions', refundsL: 'Refund policy', privacyL: 'Privacy policy',
       NEED_CONSENT: 'Please tick the box to agree before continuing.',
       fine: 'You enter your card on Paymob\'s secure page. We never see or keep your card number.',
@@ -3710,11 +3854,14 @@ main:focus{outline:none}
     ar: {
       h: 'ابدأ تجربتك المجانية', lede: 'ضيف كارتك علشان تبدأ. مفيش أي خصم لحد ما التجربة تخلص، وتقدر تلغي قبلها.',
       s1: 'الباقة والإيميل', s2: 'الكارت على Paymob', s3: 'تسجيل الدخول',
-      basic: 'الأساسية', pro: 'Pro', store: 'Store', free: '{n} يوم مجانا', then: 'وبعدها {p} في الشهر',
+      basic: 'الأساسية', pro: 'Pro', store: 'Store', free: '{n} يوم مجانا', then: 'وبعدها {p} في الشهر', thenY: 'وبعدها {p} في السنة',
+      int: 'مدة الدفع', month: 'شهري', year: 'سنوي', save: 'شهرين ببلاش',
       email: 'الإيميل', emailHint: 'حسابك ورموز الدخول هيبقوا على الإيميل ده.', name: 'الاسم اللي على الكارت', phone: 'رقم الموبايل',
       sum: 'النهارده: تأكيد للكارت بـ {c}. مجانا لحد {d}.', sum2: 'وبعدها {p} في الشهر على نفس الكارت. لو لغيت قبل {d} مش هتدفع حاجة تاني.',
+      sum2Y: 'وبعدها {p} في السنة على نفس الكارت. بنبعتلك إيميل قبلها بـ 7 أيام. لو لغيت قبل {d} مش هتدفع حاجة تاني.',
       go: 'كمّل لبيانات الكارت', going: 'بنفتح صفحة الكارت الآمنة...',
-      agree: 'أوافق على {terms} و{refunds} و{privacy}. وفاهم إنه هيتخصم 1 جنيه النهارده للتأكد من الكارت، وإن {p} هيتخصموا من الكارت ده يوم {d} وكل شهر بعدها، لحد ما أوقف التجديد.',
+      agree: 'أوافق على {terms} و{refunds} و{privacy}. وفاهم إنه هيتخصم 1 جنيه النهارده للتأكد من الكارت، وإن {p} هيتخصموا من الكارت ده يوم {d} و{every} بعدها، لحد ما أوقف التجديد.',
+      every: 'كل شهر', everyY: 'كل سنة',
       termsL: 'الشروط والأحكام', refundsL: 'سياسة الاسترداد', privacyL: 'سياسة الخصوصية',
       NEED_CONSENT: 'من فضلك علّم على المربع بالموافقة قبل ما تكمل.',
       fine: 'بتكتب بيانات الكارت في صفحة Paymob الآمنة. إحنا عمرنا ما بنشوف أو بنحتفظ برقم الكارت.',
@@ -3729,14 +3876,16 @@ main:focus{outline:none}
   };
   var MONTHS = { en: ['January','February','March','April','May','June','July','August','September','October','November','December'],
     ar: ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'] };
-  var st = { plan: 'pro', email: '', name: '', phone: '', agree: false, info: null, msg: '', msgKind: '', busy: false };
+  var st = { plan: 'pro', int: 'month', email: '', name: '', phone: '', agree: false, info: null, msg: '', msgKind: '', busy: false };
+  var YM = 10; // a year costs ten months
+  function priceOf(prices, p) { return st.int === 'year' ? prices[p] * ((st.info && st.info.yearMonths) || YM) : prices[p]; }
   var box = document.getElementById('ck'), body = document.getElementById('ck-body'), lastFocus = null;
   function L() { return (typeof LANG !== 'undefined' && LANG === 'ar') ? 'ar' : 'en'; }
   function tx(k, v) { var s = TX[L()][k] != null ? TX[L()][k] : TX.en[k]; if (v) for (var x in v) s = s.split('{' + x + '}').join(v[x]); return s; }
   function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function money(n) { return Number(n).toLocaleString('en-US') + ' ' + tx('egp'); }
   function day(n) { var d = new Date(Date.now() + n * 86400000); return d.getDate() + ' ' + MONTHS[L()][d.getMonth()]; }
-  function save() { try { sessionStorage.setItem('es7.ckForm', JSON.stringify({ plan: st.plan, email: st.email, name: st.name, phone: st.phone })); } catch (e) {} }
+  function save() { try { sessionStorage.setItem('es7.ckForm', JSON.stringify({ plan: st.plan, interval: st.int, email: st.email, name: st.name, phone: st.phone })); } catch (e) {} }
   function load() { try { var f = JSON.parse(sessionStorage.getItem('es7.ckForm') || 'null'); if (f) { st.email = f.email || ''; st.name = f.name || ''; st.phone = f.phone || ''; } } catch (e) {} }
   function post(fn, args) {
     return fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fn: fn, args: args }) })
@@ -3761,18 +3910,20 @@ main:focus{outline:none}
     if (info && info.testMode) h = '<span class="ck-test">' + esc(tx('test')) + '</span>' + h;
     h += '<p class="ck-lede">' + esc(tx('lede')) + '</p>' +
       '<ol class="ck-steps"><li class="on"><b>1</b>' + esc(tx('s1')) + '</li><li><b>2</b>' + esc(tx('s2')) + '</li><li><b>3</b>' + esc(tx('s3')) + '</li></ol>' +
-      '<form id="ck-form" novalidate><div class="ck-plans" role="radiogroup">' + ['basic', 'pro', 'store'].map(function (p) {
+      '<form id="ck-form" novalidate><fieldset class="ck-int"><legend class="sr">' + esc(tx('int')) + '</legend>' + ['month', 'year'].map(function (x) {
+        return '<label class="' + (x === st.int ? 'on' : '') + '"><input type="radio" name="ck-int" value="' + x + '"' + (x === st.int ? ' checked' : '') + '>' + esc(tx(x)) + (x === 'year' ? ' <small>' + esc(tx('save')) + '</small>' : '') + '</label>';
+      }).join('') + '</fieldset><div class="ck-plans" role="radiogroup">' + ['basic', 'pro', 'store'].map(function (p) {
         return '<label class="ck-plan' + (p === st.plan ? ' on' : '') + '"><input type="radio" name="ck-plan" value="' + p + '"' + (p === st.plan ? ' checked' : '') + '>' +
-          '<b>' + esc(tx(p)) + '</b><span class="ck-free">' + esc(tx('free', { n: d[p] })) + '</span><span>' + esc(tx('then', { p: money(prices[p]) })) + '</span></label>';
+          '<b>' + esc(tx(p)) + '</b><span class="ck-free">' + esc(tx('free', { n: d[p] })) + '</span><span>' + esc(tx(st.int === 'year' ? 'thenY' : 'then', { p: money(priceOf(prices, p)) })) + '</span></label>';
       }).join('') + '</div>' +
       '<label class="ck-l" for="ck-email">' + esc(tx('email')) + '</label><input class="ck-i" id="ck-email" type="email" autocomplete="email" inputmode="email" dir="ltr" maxlength="254" value="' + esc(st.email) + '">' +
       '<div class="ck-hint">' + esc(tx('emailHint')) + '</div>' +
       '<div class="ck-row"><div><label class="ck-l" for="ck-name">' + esc(tx('name')) + '</label><input class="ck-i" id="ck-name" type="text" autocomplete="cc-name" maxlength="60" value="' + esc(st.name) + '"></div>' +
       '<div><label class="ck-l" for="ck-phone">' + esc(tx('phone')) + '</label><input class="ck-i" id="ck-phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" maxlength="20" placeholder="01XXXXXXXXX" value="' + esc(st.phone) + '"></div></div>' +
-      '<div class="ck-sum" id="ck-sum">' + esc(tx('sum', { c: money((info && info.checkEGP) || 1), d: day(d[st.plan]) })) + '<span>' + esc(tx('sum2', { p: money(prices[st.plan]), d: day(d[st.plan]) })) + '</span></div>' +
+      '<div class="ck-sum" id="ck-sum">' + esc(tx('sum', { c: money((info && info.checkEGP) || 1), d: day(d[st.plan]) })) + '<span>' + esc(tx(st.int === 'year' ? 'sum2Y' : 'sum2', { p: money(priceOf(prices, st.plan)), d: day(d[st.plan]) })) + '</span></div>' +
       '<label class="ck-agree"><input type="checkbox" id="ck-agree"' + (st.agree ? ' checked' : '') + '><span>' + tx('agree', {
         terms: '<a href="#terms" data-go="terms">' + esc(tx('termsL')) + '</a>', refunds: '<a href="#refunds" data-go="refunds">' + esc(tx('refundsL')) + '</a>',
-        privacy: '<a href="#privacy" data-go="privacy">' + esc(tx('privacyL')) + '</a>', p: esc(money(prices[st.plan])), d: esc(day(d[st.plan])) }) + '</span></label>' +
+        privacy: '<a href="#privacy" data-go="privacy">' + esc(tx('privacyL')) + '</a>', p: esc(money(priceOf(prices, st.plan))), d: esc(day(d[st.plan])), every: esc(tx(st.int === 'year' ? 'everyY' : 'every')) }) + '</span></label>' +
       '<button class="btn btn-primary ck-go" type="submit" id="ck-go"' + (st.busy ? ' disabled' : '') + '>' + esc(tx(st.busy ? 'going' : 'go')) + '</button>' +
       (st.msg ? '<div class="ck-msg ' + st.msgKind + '" role="alert">' + st.msg + '</div>' : '') +
       '<p class="ck-fine"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>' + esc(tx('fine')) + '</span></p>' +
@@ -3785,6 +3936,8 @@ main:focus{outline:none}
   function open(plan) {
     lastFocus = document.activeElement;
     if (PRICES[plan]) st.plan = plan;
+    st.int = window.ES7_INT === 'year' ? 'year' : 'month'; // the period picked on the pricing section
+    if (!st.info && window.ES7_INFO && window.ES7_INFO.ok) st.info = window.ES7_INFO;
     st.msg = ''; st.busy = false; load();
     box.hidden = false; document.documentElement.style.overflow = 'hidden';
     render();
@@ -3817,6 +3970,7 @@ main:focus{outline:none}
   });
   box.addEventListener('change', function (e) {
     if (e.target.name === 'ck-plan') { st.plan = e.target.value; st.msg = ''; render(); }
+    if (e.target.name === 'ck-int') { st.int = e.target.value === 'year' ? 'year' : 'month'; st.msg = ''; render(); }
   });
   box.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -3828,7 +3982,7 @@ main:focus{outline:none}
     if (!st.agree) { setMsg(esc(tx('NEED_CONSENT'))); document.getElementById('ck-agree').focus(); return; }
     if (st.phone.replace(/[\u0660-\u0669]/g, function (d) { return String(d.charCodeAt(0) - 0x0660); }).replace(/[\u06F0-\u06F9]/g, function (d) { return String(d.charCodeAt(0) - 0x06F0); }).replace(/\D/g, '').length < 8) { setMsg(esc(tx('BAD_PHONE'))); document.getElementById('ck-phone').focus(); return; }
     save(); st.busy = true; st.msg = ''; render();
-    post('startTrial', [{ plan: st.plan, email: em, name: st.name, phone: st.phone, agree: true, termsVersion: TERMS_VERSION }, L()]).then(function (r) {
+    post('startTrial', [{ plan: st.plan, interval: st.int, email: em, name: st.name, phone: st.phone, agree: true, termsVersion: TERMS_VERSION }, L()]).then(function (r) {
       if (r && r.ok && r.url && r.ref) {
         try { localStorage.setItem('es7.pending', JSON.stringify({ ref: r.ref, email: em.toLowerCase(), plan: st.plan, at: Date.now() })); } catch (x) {}
         location.href = r.url; return;
@@ -3843,6 +3997,58 @@ main:focus{outline:none}
 })();
 </script>
 
+<script>
+/* Pricing: monthly or yearly prices, which plan fits a product count, and founding places left (from the server). */
+(function () {
+  var D = function () { return (typeof LANG !== 'undefined' && LANG === 'ar') ? SITE_AR : SITE_EN; };
+  window.ES7_INT = 'month';
+  function setInt(v) {
+    window.ES7_INT = v === 'year' ? 'year' : 'month';
+    document.querySelectorAll('.pint button').forEach(function (b) { b.setAttribute('aria-checked', b.getAttribute('data-int') === window.ES7_INT ? 'true' : 'false'); });
+    document.querySelectorAll('.price[data-m]').forEach(function (p) {
+      var k = p.getAttribute(window.ES7_INT === 'year' ? 'data-y' : 'data-m');
+      p.setAttribute('data-t-html', k); p.innerHTML = D()[k];
+      var q = p.nextElementSibling; if (q && q.classList.contains('peq')) q.hidden = window.ES7_INT !== 'year';
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.pint button'); if (b) setInt(b.getAttribute('data-int'));
+  });
+  document.addEventListener('keydown', function (e) {
+    var b = e.target.closest && e.target.closest('.pint button');
+    if (!b || ['ArrowLeft', 'ArrowRight'].indexOf(e.key) < 0) return;
+    e.preventDefault(); setInt(window.ES7_INT === 'year' ? 'month' : 'year');
+    var on = document.querySelector('.pint button[aria-checked="true"]'); if (on) on.focus();
+  });
+  var LIM = [['basic', 15, 't668'], ['pro', 50, 't669'], ['store', 200, 't670']];
+  function finder() {
+    var inp = document.getElementById('pfind-n'), out = document.getElementById('pfind-out'); if (!inp || !out) return;
+    var n = Math.floor(Number(inp.value)), fit = null;
+    document.querySelectorAll('.tier').forEach(function (t) { t.classList.remove('fit'); });
+    if (!(n > 0)) { out.setAttribute('data-t', 't667'); out.textContent = D().t667; return; }
+    for (var i = 0; i < LIM.length; i++) if (n <= LIM[i][1]) { fit = LIM[i]; break; }
+    var key = fit ? fit[2] : 't671';
+    out.setAttribute('data-t', key); out.textContent = D()[key];
+    if (fit) { var a = document.querySelector('.tier [data-plan-tier="' + fit[0] + '"]'); if (a) a.closest('.tier').classList.add('fit'); }
+  }
+  document.addEventListener('input', function (e) { if (e.target.id === 'pfind-n') finder(); });
+  function founding() {
+    var el = document.getElementById('founding'), r = window.ES7_INFO; if (!el) return;
+    if (!r || !r.ok || !(r.foundingLeft > 0)) { el.hidden = true; return; }
+    el.textContent = D().t672.split('{n}').join(String(r.foundingLeft)); el.hidden = false;
+  }
+  function wa() { var a = document.getElementById('floatWa'); if (a) a.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(D().t684); }
+  var base = window.applyLang;
+  window.applyLang = applyLang = function () { base(); setInt(window.ES7_INT); founding(); finder(); wa(); };
+  document.addEventListener('DOMContentLoaded', function () {
+    setInt('month'); wa();
+    setTimeout(function () {
+      fetch('https://wqbcxyswrqxvqrehelnw.supabase.co/functions/v1/app', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fn: 'trialInfo', args: [] }) })
+        .then(function (r) { return r.json(); }).then(function (r) { window.ES7_INFO = r; founding(); }).catch(function () {});
+    }, 800);
+  });
+})();
+</script>
 <script>
 document.getElementById('skipLink').addEventListener('click', function (e) {
   e.preventDefault();

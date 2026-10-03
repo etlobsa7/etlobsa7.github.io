@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://etlobsa7.com/sitemap.xml
