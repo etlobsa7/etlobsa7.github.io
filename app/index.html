@@ -1865,7 +1865,9 @@ en: {
   'plan.msgLine': '- {name}: {qty} pcs',
   'plan.msgTotal': 'Total: {n} pcs',
   'plan.msgThanks': 'Thank you',
-  'plan.budgetNone': 'Total to order: {v}. Set a monthly budget in Settings to get a budget check.',
+  'plan.budgetNone': 'Total to order: {v}. Enter the cash you have for orders in Settings to check this list against it.',
+  'plan.budgetNoneStore': 'Total to order: {v}. Short on cash this week? Enter the cash you have for orders in Settings, and the budget plan shows exactly which units to buy with it.',
+  'plan.setCash': 'Enter your cash',
   'plan.budgetOver': 'Total {v} is {d} more than your {b} of cash. If you cannot add cash, cut every order by the same share rather than dropping whole orders: on real Walmart years that lost far less profit than buying the most urgent products in full.',
   'plan.budgetWithin': 'Total {v} is within your {b} budget, with {d} to spare.',
 
@@ -2700,7 +2702,9 @@ ar: {
   'plan.msgLine': '- {name}: {qty} قطعة',
   'plan.msgTotal': 'الإجمالي: {n} قطعة',
   'plan.msgThanks': 'شكرا',
-  'plan.budgetNone': 'إجمالي الطلب: {v}. حدد ميزانية شهرية في الإعدادات علشان نراجعها.',
+  'plan.budgetNone': 'إجمالي الطلب: {v}. اكتب الكاش المتاح للطلبات في الإعدادات علشان نقارن القايمة دي بيه.',
+  'plan.budgetNoneStore': 'إجمالي الطلب: {v}. الكاش مش مكفي الأسبوع ده؟ اكتب الكاش المتاح للطلبات في الإعدادات، وخطة الميزانية هتقولك بالظبط تشتري أنهي قطع بيه.',
+  'plan.setCash': 'اكتب الكاش',
   'plan.budgetOver': 'الإجمالي {v} أعلى من الكاش المتاح {b} بـ {d}. لو مش هتقدر تزود الكاش، قلل كل طلب بنفس النسبة بدل ما تلغي طلبات كاملة: على سنين حقيقية من وول مارت ده ضيع ربح أقل بكتير من شراء الأكثر استعجالا كامل.',
   'plan.budgetWithin': 'الإجمالي {v} جوه ميزانيتك {b}، وفاضل {d}.',
 
@@ -4128,7 +4132,7 @@ VIEWS.plan = () => {
   const plan = planGroups(), b = S.res.budget;
   if (!plan.length) return head(t('plan.title'), t('plan.lede')) + emptyBox(t('plan.empty'), t('plan.emptyP'), btn(t('nav.orders'), 'tab', ' data-tab="orders"'));
   let banner;
-  if (b.status === 'NONE') banner = '<div class="alert info"><span>' + esc(t('plan.budgetNone', { v: money(b.total) })) + '</span></div>';
+  if (b.status === 'NONE') banner = '<div class="alert info"><span>' + esc(t(S.me.limits.budgetPlan ? 'plan.budgetNoneStore' : 'plan.budgetNone', { v: money(b.total) })) + '</span>' + btn(t('plan.setCash'), 'tab', ' data-tab="settings"', 'small') + '</div>';
   else if (b.status === 'OVER') banner = S.res.budgetPlan ? budgetPlanHtml()
     : '<div class="alert bad"><span>' + esc(t('plan.budgetOver', { v: money(b.total), d: money(b.diff), b: money(b.budget) })) + '</span></div>' +
       (S.me.limits.budgetPlan ? '' : '<div class="upsell-card"><div><b>' + esc(t('bp.lockT')) + '</b><p class="small muted">' + esc(t('bp.lockP')) + '</p></div>' +
