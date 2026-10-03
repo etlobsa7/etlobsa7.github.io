@@ -772,6 +772,10 @@ body{line-height:1.6}
 
 .plantag{display:inline-block;margin-inline-start:8px;padding:1px 7px;border-radius:999px;font-size:.66rem;font-weight:700;letter-spacing:.03em;background:var(--pop-bg);color:var(--pop);vertical-align:middle}
 .kpi.locked b{color:var(--pop);font-size:1.05rem}
+.bpst{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.78rem;font-weight:600;white-space:nowrap}
+.bp-full{background:var(--ok-bg,rgba(47,111,106,.14));color:var(--ok)}.bp-part{background:rgba(192,138,46,.16);color:var(--order,#9A6A12)}.bp-later{background:var(--wash-2);color:var(--muted)}
+.upsell-card{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:0 0 16px;background:var(--panel)}
+.upsell-card p{margin:4px 0 0}
 
 /* ================= cream, suede and grey: final colour set =================
    Matches the website: espresso and gold by night, cream leather and brown suede by day. */
@@ -1234,7 +1238,37 @@ en: {
   'bill.ledeFailed': 'Your last payment did not go through, so the app is paused. Everything you entered is saved.',
   'bill.feat.basic': 'Up to 15 products. The full forecasting and reorder engine.',
   'bill.feat.pro': 'Up to 50 products. Adds your own seasons, supplier compare, scorecard and cash flow.',
-  'bill.feat.store': 'Up to 200 products. Adds demand graphs, profit at risk and dead stock.',
+  'bill.feat.store': 'Up to 200 products. Adds the budget plan for when cash is short, the cash needed for the next 3 months, demand graphs, profit at risk and dead stock.',
+  'bp.status': 'This week',
+  'k.cashmS': 'If you order what the app suggests',
+  'k.cashm': 'Cash for stock, next month',
+  'cp.lockP': 'The Store plan shows what your orders will cost each month for the next 3 months, by supplier, so you can plan cash before a busy season.',
+  'cp.lockT': 'Cash for the next 3 months',
+  'cp.note': 'Tested on real Walmart years: the 3-month total was 92% and 89% right, next month 85% and 79%. Months 2 and 3 on their own are rougher, because the exact week an order falls in moves with real sales.',
+  'cp.month': 'Month',
+  'cp.threeS': '{a} to {b}',
+  'cp.three': 'Next 3 months',
+  'cp.nextS': '{m}, including what is due now',
+  'cp.next': 'Next month',
+  'cp.lede': 'What your orders will cost each month if you keep ordering what the app suggests, by supplier.',
+  'cp.title': 'Cash needed for stock, next 3 months',
+  'bp.lockP': 'The Store plan works out exactly which units to buy with the cash you have, to protect the most profit.',
+  'bp.lockT': 'Short on cash?',
+  'bp.tested': 'Tested on two real Walmart years the app never saw: with cash for 80% of the suggested orders every week, this plan lost 75% and 82% less profit than buying the most urgent orders in full first, and 36% and 42% less than cutting every order by the same share.',
+  'bp.use': 'Use these quantities in the supplier orders below',
+  'bp.st.later': 'Next week',
+  'bp.st.part': 'Part',
+  'bp.st.full': 'Full order',
+  'bp.now': 'Buy now',
+  'bp.full': 'Suggested',
+  'bp.keptNone': 'Nothing at risk this week',
+  'bp.keptS': 'of {r} at risk this week',
+  'bp.kept': 'Profit protected',
+  'bp.spendS': 'of {b} cash',
+  'bp.spend': 'Buy now',
+  'bp.lede': 'Your orders come to {v} and you have {b}. These quantities spend it where each unit protects the most profit until your next order can arrive.',
+  'bp.title': 'Budget plan',
+  'dash.budgetOverStore': 'This week\'s orders are {v} more than your cash for orders. The budget plan shows exactly what to buy.',
   'bill.current': 'Your plan',
   'bill.perMonth': '{price} a month',
   'bill.name': 'Full name',
@@ -1514,7 +1548,7 @@ en: {
   'dash.fix': '{n} products have data problems that can produce a wrong order.',
   'dash.review': '{n} products are worth a second look.',
   'dash.openHealth': 'Open health check',
-  'dash.budgetOver': 'This cycle\'s orders are {v} over your budget. Fund class A products first.',
+  'dash.budgetOver': 'This week\'s orders are {v} more than your cash for orders. Cut every order by the same share rather than dropping whole orders.',
   'k.stock': 'Cash tied up in stock',
   'k.stockS': 'On hand, at cost',
   'k.onorder': 'Stock on its way',
@@ -1555,8 +1589,8 @@ en: {
   'set.lastMonthH': 'The last full month you typed sales for. The Products page labels its columns from this.',
   'set.overstock': 'Overstock limit',
   'set.overstockH': 'More stock than this many days of sales is treated as overstock.',
-  'set.budget': 'Monthly purchase budget',
-  'set.budgetH': 'Optional. Leave 0 for no budget check.',
+  'set.budget': 'Cash available for orders now',
+  'set.budgetH': 'Optional. What you can spend on stock this week. Leave 0 for no budget check.',
   'set.days': 'Days per month',
   'set.daysH': 'Used to turn monthly sales into daily sales. Leave at 30.',
   'set.season': 'Use season shapes',
@@ -1832,7 +1866,7 @@ en: {
   'plan.msgTotal': 'Total: {n} pcs',
   'plan.msgThanks': 'Thank you',
   'plan.budgetNone': 'Total to order: {v}. Set a monthly budget in Settings to get a budget check.',
-  'plan.budgetOver': 'Total {v} is {d} over your {b} budget. Fund class A products first ({a}), then the rest as cash allows.',
+  'plan.budgetOver': 'Total {v} is {d} more than your {b} of cash. If you cannot add cash, cut every order by the same share rather than dropping whole orders: on real Walmart years that lost far less profit than buying the most urgent products in full.',
   'plan.budgetWithin': 'Total {v} is within your {b} budget, with {d} to spare.',
 
   /* orders */
@@ -2047,7 +2081,37 @@ ar: {
   'bill.ledeFailed': 'آخر دفعة ماتمتش، فالبرنامج واقف مؤقتا. كل اللي دخلته محفوظ.',
   'bill.feat.basic': 'لحد 15 منتج. محرك التوقع وإعادة الطلب كامل.',
   'bill.feat.pro': 'لحد 50 منتج. ومعاه أشكال موسم بتاعتك، مقارنة الموردين، تقييمهم، والتدفق النقدي.',
-  'bill.feat.store': 'لحد 200 منتج. ومعاه رسوم الطلب، الربح المعرض للخطر، والبضاعة الراكدة.',
+  'bill.feat.store': 'لحد 200 منتج. ومعاه خطة الميزانية لما الكاش يقل، فلوس الـ 3 شهور الجاية، رسوم الطلب، الربح المعرض للخطر، والبضاعة الراكدة.',
+  'bp.status': 'الأسبوع ده',
+  'k.cashmS': 'لو طلبت اللي الأداة بتقترحه',
+  'k.cashm': 'فلوس البضاعة، الشهر الجاي',
+  'cp.lockP': 'باقة Store بتوريك طلباتك هتتكلف كام كل شهر في الـ 3 شهور الجاية، مقسمة على الموردين، علشان تجهز الكاش قبل الموسم.',
+  'cp.lockT': 'فلوس الـ 3 شهور الجاية',
+  'cp.note': 'اتجربت على سنين حقيقية من وول مارت: إجمالي الـ 3 شهور طلع صح بنسبة 92% و89%، والشهر الجاي 85% و79%. الشهر التاني والتالت لوحدهم أقل دقة، لأن الأسبوع اللي الطلب بيقع فيه بيتغير مع المبيعات الحقيقية.',
+  'cp.month': 'الشهر',
+  'cp.threeS': 'من {a} لـ {b}',
+  'cp.three': 'الـ 3 شهور الجاية',
+  'cp.nextS': '{m}، ومعاه اللي مطلوب دلوقتي',
+  'cp.next': 'الشهر الجاي',
+  'cp.lede': 'طلباتك هتتكلف كام كل شهر لو فضلت تطلب اللي الأداة بتقترحه، مقسمة على الموردين.',
+  'cp.title': 'فلوس البضاعة، الـ 3 شهور الجاية',
+  'bp.lockP': 'باقة Store بتحسبلك بالظبط تشتري أنهي قطع بالكاش اللي معاك علشان تحمي أكبر ربح.',
+  'bp.lockT': 'الكاش مش مكفي؟',
+  'bp.tested': 'اتجربت على سنتين حقيقيتين من وول مارت الأداة ماشافتهمش: بكاش يكفي 80% من الطلبات المقترحة كل أسبوع، الخطة دي ضيعت ربح أقل بـ 75% و82% من شراء الأكثر استعجالا كامل الأول، وأقل بـ 36% و42% من تقليل كل طلب بنفس النسبة.',
+  'bp.use': 'استخدم الكميات دي في طلبات الموردين تحت',
+  'bp.st.later': 'الأسبوع الجاي',
+  'bp.st.part': 'جزء',
+  'bp.st.full': 'الطلب كامل',
+  'bp.now': 'اشتري دلوقتي',
+  'bp.full': 'المقترح',
+  'bp.keptNone': 'مفيش ربح معرض للخطر الأسبوع ده',
+  'bp.keptS': 'من {r} معرض للخطر الأسبوع ده',
+  'bp.kept': 'ربح محمي',
+  'bp.spendS': 'من {b} كاش',
+  'bp.spend': 'اشتري دلوقتي',
+  'bp.lede': 'طلباتك إجماليها {v} والمتاح {b}. الكميات دي بتصرف الكاش في المكان اللي كل قطعة فيه بتحمي أكبر ربح لحد ما الطلب الجاي يوصل.',
+  'bp.title': 'خطة الميزانية',
+  'dash.budgetOverStore': 'طلبات الأسبوع ده أعلى من الكاش المتاح بـ {v}. خطة الميزانية بتقولك تشتري إيه بالظبط.',
   'bill.current': 'باقتك',
   'bill.perMonth': '{price} في الشهر',
   'bill.name': 'الاسم بالكامل',
@@ -2325,7 +2389,7 @@ ar: {
   'dash.fix': 'عدد {n} منتج فيهم مشاكل في البيانات ممكن تطلّع طلبية غلط.',
   'dash.review': 'عدد {n} منتج يستاهلوا مراجعة.',
   'dash.openHealth': 'افتح فحص البيانات',
-  'dash.budgetOver': 'طلبيات الدورة دي أعلى من ميزانيتك بـ {v}. ابدأ بمنتجات الفئة A.',
+  'dash.budgetOver': 'طلبات الأسبوع ده أعلى من الكاش المتاح بـ {v}. قلل كل طلب بنفس النسبة بدل ما تلغي طلبات كاملة.',
   'k.stock': 'فلوس في المخزون',
   'k.stockS': 'الموجود، بسعر التكلفة',
   'k.onorder': 'بضاعة في الطريق',
@@ -2365,8 +2429,8 @@ ar: {
   'set.lastMonthH': 'آخر شهر كامل كتبت مبيعاته. صفحة المنتجات بتسمي أعمدتها على أساسه.',
   'set.overstock': 'حد المخزون الزيادة',
   'set.overstockH': 'أي مخزون يكفي أكتر من العدد ده من الأيام بيعتبر زيادة.',
-  'set.budget': 'ميزانية الشراء الشهرية',
-  'set.budgetH': 'اختياري. سيبها 0 لو مش عايز مراجعة ميزانية.',
+  'set.budget': 'الكاش المتاح للطلبات دلوقتي',
+  'set.budgetH': 'اختياري. اللي تقدر تصرفه على البضاعة الأسبوع ده. سيبها 0 لو مش عايز مراجعة ميزانية.',
   'set.days': 'عدد أيام الشهر',
   'set.daysH': 'بيستخدم لتحويل المبيعات الشهرية ليومية. سيبه 30.',
   'set.season': 'استخدم أشكال المواسم',
@@ -2637,7 +2701,7 @@ ar: {
   'plan.msgTotal': 'الإجمالي: {n} قطعة',
   'plan.msgThanks': 'شكرا',
   'plan.budgetNone': 'إجمالي الطلب: {v}. حدد ميزانية شهرية في الإعدادات علشان نراجعها.',
-  'plan.budgetOver': 'الإجمالي {v} أعلى من ميزانيتك {b} بـ {d}. ابدأ بمنتجات الفئة A ({a})، والباقي على قد الكاش.',
+  'plan.budgetOver': 'الإجمالي {v} أعلى من الكاش المتاح {b} بـ {d}. لو مش هتقدر تزود الكاش، قلل كل طلب بنفس النسبة بدل ما تلغي طلبات كاملة: على سنين حقيقية من وول مارت ده ضيع ربح أقل بكتير من شراء الأكثر استعجالا كامل.',
   'plan.budgetWithin': 'الإجمالي {v} جوه ميزانيتك {b}، وفاضل {d}.',
 
   'ord.title': 'قرارات الطلب',
@@ -3824,12 +3888,15 @@ VIEWS.dash = () => {
   let alerts = '';
   if (d.fix) alerts += '<div class="alert bad"><span>' + esc(t('dash.fix', { n: d.fix })) + '</span>' + btn(t('dash.openHealth'), 'tab', ' data-tab="health"', 'small') + '</div>';
   else if (d.review) alerts += '<div class="alert warn"><span>' + esc(t('dash.review', { n: d.review })) + '</span>' + btn(t('dash.openHealth'), 'tab', ' data-tab="health"', 'small') + '</div>';
-  if (S.res.budget.status === 'OVER') alerts += '<div class="alert warn"><span>' + esc(t('dash.budgetOver', { v: money(S.res.budget.diff) })) + '</span></div>';
+  if (S.res.budget.status === 'OVER') alerts += S.res.budgetPlan
+    ? '<div class="alert warn"><span>' + esc(t('dash.budgetOverStore', { v: money(S.res.budget.diff) })) + '</span>' + btn(t('dash.openPlan'), 'tab', ' data-tab="plan"', 'small') + '</div>'
+    : '<div class="alert warn"><span>' + esc(t('dash.budgetOver', { v: money(S.res.budget.diff) })) + '</span></div>';
 
   const turnWarn = d.turnover != null && d.turnover < 4;
   const kpi = (k, v, cls) => '<div class="kpi ' + (cls || '') + '"><span>' + esc(t('k.' + k)) + '</span><b>' + esc(v) + '</b><small>' + esc(t('k.' + k + 'S')) + '</small></div>';
   const kpis = '<div class="kpis">' +
     kpi('stock', money(d.stockValue)) + kpi('onorder', money(d.onOrderValue)) + kpi('order', money(d.orderValue)) +
+    (S.me.limits.cashPlan ? (S.res.cashPlan ? kpi('cashm', money(Math.round(S.res.cashPlan.spend[0] / 100) * 100)) : '') : kpi('cashm', t('plan.store'), 'locked')) +
     kpi('rev', money(d.revenue)) + kpi('profit', money(d.profit)) + kpi('margin', pct(d.margin)) +
     kpi('turn', d.turnover == null ? t('na') : t('times', { n: n1(d.turnover) }), turnWarn ? 'warn' : '') +
     kpi('cover', d.avgCover == null ? t('na') : n0(d.avgCover) + ' ' + t('days')) +
@@ -4029,12 +4096,43 @@ function updateVerdicts() {
 }
 
 /* ---------- Purchase plan ---------- */
+// The supplier orders as shown: the full plan, or the budget plan's quantities when the shop chose to use them.
+function planGroups() {
+  const bp = S.res.budgetPlan;
+  if (!bp || S.bpOff) return S.res.plan;
+  const q = {}; bp.lines.forEach(l => { q[l.id] = l.qty; });
+  return S.res.plan.map(g => {
+    const items = g.items.map(i => Object.assign({}, i, { qty: q[i.id] != null ? q[i.id] : i.qty })).filter(i => i.qty > 0)
+      .map(i => Object.assign(i, { value: i.qty * i.cost, packs: i.pack > 1 ? i.qty / i.pack : null }));
+    return Object.assign({}, g, { items, lines: items.length, units: items.reduce((s, i) => s + i.qty, 0), value: items.reduce((s, i) => s + i.value, 0) });
+  }).filter(g => g.items.length);
+}
+function budgetPlanHtml() {
+  const bp = S.res.budgetPlan; if (!bp) return '';
+  const st = l => l.qty >= l.full ? 'full' : l.qty > 0 ? 'part' : 'later';
+  const rows = bp.lines.map(l => '<tr><td class="name">' + bdi(l.name || t('unnamed')) + ' <span class="tag">' + esc(l.abc) + '</span></td><td>' + bdi(l.supplierName || t('plan.noSup')) +
+    '</td><td class="num">' + n0(l.full) + '</td><td class="num"><b>' + n0(l.qty) + '</b></td><td class="num">' + money(l.value) +
+    '</td><td><span class="bpst bp-' + st(l) + '">' + esc(t('bp.st.' + st(l))) + '</span></td></tr>').join('');
+  const kept = bp.riskAll > 0.5
+    ? '<div class="kpi good"><span>' + esc(t('bp.kept')) + '</span><b>' + money(bp.protectedProfit) + '</b><small>' + esc(t('bp.keptS', { r: money(bp.riskAll) })) + '</small></div>'
+    : '<div class="kpi"><span>' + esc(t('bp.kept')) + '</span><b>' + money(0) + '</b><small>' + esc(t('bp.keptNone')) + '</small></div>';
+  return '<div class="section bplan"><h2>' + esc(t('bp.title')) + '</h2>' +
+    '<p class="muted">' + esc(t('bp.lede', { v: money(bp.total), b: money(bp.budget) })) + '</p>' +
+    '<div class="kpis" style="margin:10px 0 14px"><div class="kpi"><span>' + esc(t('bp.spend')) + '</span><b>' + money(bp.spend) + '</b><small>' + esc(t('bp.spendS', { b: money(bp.budget) })) + '</small></div>' + kept + '</div>' +
+    '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('product')) + '</th><th>' + esc(t('supplier')) + '</th><th class="num">' + esc(t('bp.full')) +
+    '</th><th class="num">' + esc(t('bp.now')) + '</th><th class="num">' + esc(t('plan.value')) + '</th><th>' + esc(t('bp.status')) + '</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+    '<label class="switch" style="margin:12px 0 4px"><input type="checkbox" data-act="bpUse"' + (S.bpOff ? '' : ' checked') + '><span>' + esc(t('bp.use')) + '</span></label>' +
+    '<p class="gridnote">' + esc(t('bp.tested')) + '</p></div>';
+}
 VIEWS.plan = () => {
-  const plan = S.res.plan, b = S.res.budget;
+  const plan = planGroups(), b = S.res.budget;
   if (!plan.length) return head(t('plan.title'), t('plan.lede')) + emptyBox(t('plan.empty'), t('plan.emptyP'), btn(t('nav.orders'), 'tab', ' data-tab="orders"'));
   let banner;
   if (b.status === 'NONE') banner = '<div class="alert info"><span>' + esc(t('plan.budgetNone', { v: money(b.total) })) + '</span></div>';
-  else if (b.status === 'OVER') banner = '<div class="alert bad"><span>' + esc(t('plan.budgetOver', { v: money(b.total), d: money(b.diff), b: money(b.budget), a: money(b.classA) })) + '</span></div>';
+  else if (b.status === 'OVER') banner = S.res.budgetPlan ? budgetPlanHtml()
+    : '<div class="alert bad"><span>' + esc(t('plan.budgetOver', { v: money(b.total), d: money(b.diff), b: money(b.budget) })) + '</span></div>' +
+      (S.me.limits.budgetPlan ? '' : '<div class="upsell-card"><div><b>' + esc(t('bp.lockT')) + '</b><p class="small muted">' + esc(t('bp.lockP')) + '</p></div>' +
+        btn(t('lock.unlock', { plan: t('plan.store'), price: money(S.bill && S.bill.prices ? S.bill.prices.store : CFG.prices.store) }), 'billOpen', ' data-plan="store"', 'small primary') + '</div>');
   else banner = '<div class="alert good"><span>' + esc(t('plan.budgetWithin', { v: money(b.total), d: money(b.diff), b: money(b.budget) })) + '</span></div>';
 
   const cards = plan.map((g, gi) => {
@@ -4417,12 +4515,30 @@ VIEWS.dead = () => {
 };
 
 /* ---------- Cash flow forecast ---------- */
+function cashPlanHtml() {
+  if (!S.me.limits.cashPlan) return '<div class="upsell-card"><div><b>' + esc(t('cp.lockT')) + '</b><p class="small muted">' + esc(t('cp.lockP')) + '</p></div>' +
+    btn(t('lock.unlock', { plan: t('plan.store'), price: money(S.bill && S.bill.prices ? S.bill.prices.store : CFG.prices.store) }), 'billOpen', ' data-plan="store"', 'small primary') + '</div>';
+  const cp0 = S.res.cashPlan; if (!cp0) return '';
+  const r100 = v => Math.round(v / 100) * 100;
+  const cp = Object.assign({}, cp0, { spend: cp0.spend.map(r100), suppliers: cp0.suppliers.map(x => Object.assign({}, x, { spend: x.spend.map(r100) })) });
+  const tot3 = cp.spend[0] + cp.spend[1] + cp.spend[2], maxM = Math.max(1, ...cp.spend), mName = m => monthName(m, true);
+  const bars = cp.months.map((m, i) => '<div class="cfrow"><span class="cflabel">' + esc(mName(m)) + '</span><div class="cfbar-track"><div class="cfbar" style="width:' + Math.max(2, 100 * cp.spend[i] / maxM) + '%"></div></div><span class="cfval">' + money(cp.spend[i]) + '</span></div>').join('');
+  const sup = cp.suppliers.map(x => '<tr><td class="name">' + bdi(x.supplierName || t('plan.noSup')) + '</td>' + x.spend.map(v => '<td class="num">' + money(v) + '</td>').join('') +
+    '<td class="num"><b>' + money(x.spend[0] + x.spend[1] + x.spend[2]) + '</b></td></tr>').join('');
+  return '<div class="section"><h2>' + esc(t('cp.title')) + '</h2><p class="muted">' + esc(t('cp.lede')) + '</p>' +
+    '<div class="kpis" style="margin:10px 0 14px"><div class="kpi"><span>' + esc(t('cp.next')) + '</span><b>' + money(cp.spend[0]) + '</b><small>' + esc(t('cp.nextS', { m: mName(cp.months[0]) })) + '</small></div>' +
+    '<div class="kpi"><span>' + esc(t('cp.three')) + '</span><b>' + money(tot3) + '</b><small>' + esc(t('cp.threeS', { a: mName(cp.months[0]), b: mName(cp.months[2]) })) + '</small></div></div>' +
+    '<div class="panel graph">' + bars + '</div>' +
+    (sup ? '<div class="tbl-wrap" style="margin-top:12px"><table class="t"><thead><tr><th>' + esc(t('supplier')) + '</th>' + cp.months.map(m => '<th class="num">' + esc(mName(m)) + '</th>').join('') +
+      '<th class="num">' + esc(t('total')) + '</th></tr></thead><tbody>' + sup + '</tbody></table></div>' : '') +
+    '<p class="gridnote">' + esc(t('cp.note')) + '</p></div>';
+}
 VIEWS.cash = () => {
   if (!S.me.limits.cashFlow) {
     return head(t('cash.title'), t('cash.lede')) + lockedPreview('cash', 'cash.locked', 'pro');
   }
   const cf = S.res.cashFlow;
-  if (!cf || !cf.lines.length) return head(t('cash.title'), t('cash.lede')) + emptyBox(t('cash.empty'), t('cash.emptyP'));
+  if (!cf || !cf.lines.length) return head(t('cash.title'), t('cash.lede')) + emptyBox(t('cash.empty'), t('cash.emptyP')) + cashPlanHtml();
   const bucketLabel = { now: 'cash.now', week1: 'cash.week1', week2: 'cash.week2', week34: 'cash.week34', later: 'cash.later' };
   const maxB = Math.max(1, ...cf.buckets.map(b => b.total));
   const bars = cf.buckets.map(b => '<div class="cfrow"><span class="cflabel">' + esc(t(bucketLabel[b.key])) + '</span>' +
@@ -4438,7 +4554,7 @@ VIEWS.cash = () => {
     '<div class="section"><h2>' + esc(t('cash.bySupplier')) + '</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('supplier')) +
     '</th><th class="num">' + esc(t('total')) + '</th><th class="num">' + esc(t('cash.deposit')) + '</th><th class="num">' + esc(t('cash.balance')) +
     '</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +
-    '<p class="gridnote">' + esc(t('cash.note')) + '</p>';
+    '<p class="gridnote">' + esc(t('cash.note')) + '</p>' + cashPlanHtml();
 };
 
 /* ---------- Health check ---------- */
@@ -4480,7 +4596,7 @@ function labelGrid(root) {
     });
   });
   root.querySelectorAll('.tbl-wrap').forEach(w => {
-    if (!w.querySelector('a,button,input,select,textarea,[tabindex]')) { w.setAttribute('tabindex', '0'); w.setAttribute('role', 'region'); const h = $('#view h1'); if (h) w.setAttribute('aria-label', h.textContent); }
+    if (!w.querySelector('a,button,input,select,textarea,[tabindex]')) { w.setAttribute('tabindex', '0'); w.setAttribute('role', 'region'); const sec = w.closest('.section'), h2 = sec && sec.querySelector('h2'), h = $('#view h1'); const nm = h2 ? h2.cloneNode(true) : null; if (nm) nm.querySelectorAll('.plantag').forEach(x => x.remove()); const lab = nm ? nm.textContent.trim() : h ? h.textContent : ''; if (lab) w.setAttribute('aria-label', lab); }
   });
 }
 function onEdit(e) {
@@ -4853,7 +4969,7 @@ const ACTIONS = {
     inp.click();
   },
   markSent: el => {
-    const g = S.res.plan[Number(el.dataset.g)];
+    const g = planGroups()[Number(el.dataset.g)];
     if (!g || !g.supplierId) return;
     S.ws.orders = S.ws.orders || [];
     S.ws.orders.push({ id: newId(), supplierId: g.supplierId, supplierName: g.supplierName, status: 'sent', sentAt: isoToday(), receivedAt: '',
@@ -4955,6 +5071,7 @@ const ACTIONS = {
   },
   filter: el => { S.filter = el.dataset.filter; renderTab(); },
   healthOnly: el => { S.healthOnly = el.checked; renderTab(); },
+  bpUse: el => { S.bpOff = !el.checked; renderTab(); },
   gotoProduct: el => {
     goTab('products');
     const tr = $('#pgrid tr[data-id="' + el.dataset.id + '"]');
@@ -4992,12 +5109,12 @@ const ACTIONS = {
     if (p) p.altSuppliers = p.altSuppliers.filter(a => a.supplierId !== el.dataset.sup);
   }),
   copyPO: async el => {
-    const text = poText(S.res.plan[Number(el.dataset.g)]);
+    const text = poText(planGroups()[Number(el.dataset.g)]);
     try { await navigator.clipboard.writeText(text); toast(t('copied')); }
     catch (err) { dialog({ title: t('plan.msgTitle'), body: t('plan.msgHint'), textarea: text }); }
   },
   waPO: el => {
-    const text = poText(S.res.plan[Number(el.dataset.g)]);
+    const text = poText(planGroups()[Number(el.dataset.g)]);
     window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank', 'noopener');
   }
 };
