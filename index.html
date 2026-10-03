@@ -851,7 +851,7 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <li data-t="t291"></li>
 <li data-t="t292"></li>
 </ul>
-<a class="btn btn-ghost" data-t="t293" href="https://etlobsa7.com/app/?start=basic"></a>
+<a class="btn btn-ghost" data-t="t293" href="https://etlobsa7.com/app/?start=basic" data-trial="basic"></a>
 </div>
 <div class="tier best">
 <span class="badge" data-t="t294"></span>
@@ -867,7 +867,7 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <li data-t="t311"></li>
 <li data-t="t303"></li>
 </ul>
-<a class="btn btn-primary" data-t="t304" href="https://etlobsa7.com/app/?start=pro"></a>
+<a class="btn btn-primary" data-t="t304" href="https://etlobsa7.com/app/?start=pro" data-trial="pro"></a>
 </div>
 <div class="tier">
 <h3 data-t="t305"></h3>
@@ -880,7 +880,7 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <li data-t="t548"></li>
 <li data-t="t549"></li>
 </ul>
-<a class="btn btn-ghost" data-t="t313" href="https://etlobsa7.com/app/?start=store"></a>
+<a class="btn btn-ghost" data-t="t313" href="https://etlobsa7.com/app/?start=store" data-trial="store"></a>
 </div>
 </div>
 <div class="grid g2" style="margin-top:44px">
@@ -1456,7 +1456,7 @@ var SITE_EN = {
   t347: 'Free trial on every plan. Charged only when it ends.',
   t348: 'See pricing',
   t349: 'Payment received',
-  t350: 'Open the app and sign in with your email: we email you a 6 digit code, and your plan is already on.',
+  t350: 'Open the app and sign in with the email you paid with: we email you a 6 digit code, and your plan is already on.',
   t351: 'Anything not right? Message us on WhatsApp and we will sort it out.',
   t352: '<a class="btn btn-ghost" data-go="home" href="#">Back to the site</a>',
   t353: 'Legal',
@@ -2066,7 +2066,7 @@ var SITE_EN = {
   t347: 'تجربة مجانية على كل باقة. الخصم بس لما تخلص.',
   t348: 'شوف الأسعار',
   t349: 'الدفع اتم',
-  t350: 'افتح الأداة وسجل دخول بإيميلك: هنبعتلك كود من 6 أرقام، وباقتك شغالة بالفعل.',
+  t350: 'افتح الأداة وسجل دخول بالإيميل اللي دفعت بيه: هنبعتلك كود من 6 أرقام، وباقتك شغالة بالفعل.',
   t351: 'في حاجة مش مظبوطة؟ ابعتلنا على واتساب وإحنا نظبطها.',
   t352: '<a class="btn btn-ghost" data-go="home" href="#">ارجع للموقع</a>',
   t353: 'قانوني',
@@ -2352,6 +2352,7 @@ function applyLang() {
     b.textContent = LANG === 'ar' ? 'English' : 'العربية';
   });
   try { localStorage.setItem('etlob-site-lang', LANG); } catch (e) {}
+  if (window.ckRender) window.ckRender();
 }
 
 function toggleLang() {
@@ -2367,7 +2368,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (b) b.addEventListener('click', toggleLang);
   applyLang();
 });
-// Free trial buttons are plain links to the app's sign-up (/app/?start=plan). Payment happens inside the app, through Paymob.
+// Free trial buttons open the checkout below: plan, email, name and mobile, then Paymob's card page. The app comes after the card.
 var WHATSAPP = "201090099849";
 
 (function(){
@@ -3307,6 +3308,57 @@ html[dir="rtl"] .cv{animation-direction:reverse}
   .gstar,.brand:hover .gstar,.brand:hover .gs-stitch,.hero-star,.hv-pile .kbox,.js-anim .hv-pile .pb,.belt-rail,.cv,.ms-over.full .ms-box.top{animation:none !important}
   .cv{transform:translateX(calc(var(--slot,0) * 1px))}
 }
+
+/* ---------- free trial checkout ---------- */
+.ck{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:16px}
+.ck[hidden]{display:none}
+.ck-back{position:absolute;inset:0;background:rgba(15,11,8,.62);backdrop-filter:blur(3px)}
+.ck-box{position:relative;width:100%;max-width:520px;max-height:calc(100vh - 32px);overflow:auto;background:var(--card);color:var(--body);
+  border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px 26px 22px}
+.ck-x{position:absolute;top:10px;inset-inline-end:12px;width:36px;height:36px;border:0;background:none;color:var(--muted);font-size:26px;line-height:1;cursor:pointer;border-radius:8px}
+.ck-x:hover{background:var(--bg-3);color:var(--ink)}
+.ck h2{font-family:var(--serif);color:var(--ink);font-size:24px;line-height:1.2;margin:0 34px 6px 0}
+html[dir="rtl"] .ck h2{margin:0 0 6px 34px}
+.ck .ck-lede{font-size:14.5px;margin:0 0 16px;color:var(--body)}
+.ck-steps{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px;padding:0;list-style:none;font-size:12.5px;color:var(--muted)}
+.ck-steps li{display:flex;align-items:center;gap:6px}
+.ck-steps li b{display:inline-flex;width:20px;height:20px;border-radius:50%;align-items:center;justify-content:center;background:var(--bg-3);color:var(--ink);font-size:11.5px}
+.ck-steps li.on b{background:var(--accent);color:var(--accent-ink)}
+.ck-steps li.on{color:var(--ink);font-weight:600}
+.ck-steps li+li::before{content:"";width:14px;height:1px;background:var(--line);margin-inline-end:2px}
+.ck-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:16px}
+.ck-plan{position:relative;display:block;border:1.5px solid var(--line);border-radius:12px;padding:10px 10px 9px;cursor:pointer;background:var(--bg-2)}
+.ck-plan input{position:absolute;opacity:0;pointer-events:none}
+.ck-plan b{display:block;color:var(--ink);font-size:15px}
+.ck-plan span{display:block;font-size:12.5px;color:var(--muted);line-height:1.35;margin-top:2px}
+.ck-plan .ck-free{color:var(--accent);font-weight:700}
+.ck-plan.on{border-color:var(--accent);background:var(--card);box-shadow:0 0 0 3px rgba(175,119,63,.16)}
+.ck-plan:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.ck label.ck-l{display:block;font-size:13px;font-weight:600;color:var(--ink);margin:12px 0 5px}
+.ck input.ck-i{width:100%;box-sizing:border-box;height:46px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);padding:0 12px;font:inherit;font-size:16px}
+.ck input.ck-i:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(175,119,63,.18)}
+.ck .ck-hint{font-size:12.5px;color:var(--muted);margin-top:4px}
+.ck-row{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.ck-sum{margin:16px 0 0;padding:12px 14px;border-radius:12px;background:var(--bg-3);font-size:14px;color:var(--ink);line-height:1.5}
+.ck-sum span{display:block;color:var(--body);font-size:13px;margin-top:2px}
+.ck-go{width:100%;margin-top:14px;height:50px;font-size:16px}
+.ck-go[disabled]{opacity:.6;cursor:default}
+.ck-msg{margin-top:12px;padding:10px 12px;border-radius:10px;font-size:14px}
+.ck-msg.bad{background:var(--bad-bg);color:var(--bad)}
+.ck-msg.info{background:var(--bg-3);color:var(--ink)}
+.ck-msg a{color:inherit;font-weight:700;text-decoration:underline}
+.ck-fine{font-size:12px;color:var(--muted);margin:12px 0 0;display:flex;gap:6px;align-items:flex-start}
+.ck-fine svg{flex:0 0 auto;margin-top:2px}
+.ck-alt{font-size:13.5px;margin:14px 0 0;text-align:center;color:var(--body)}
+.ck-alt a{color:var(--accent);font-weight:700}
+.ck-test{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--warn-bg);color:var(--warn);border-radius:6px;padding:3px 8px;margin-bottom:10px}
+@media (max-width:520px){
+  .ck{padding:0;align-items:flex-end}
+  .ck-box{max-width:none;border-radius:16px 16px 0 0;max-height:94vh;padding:22px 16px 18px}
+  .ck-plans{gap:6px}
+  .ck-plan{padding:9px 8px}
+  .ck-row{grid-template-columns:1fr}
+}
 </style>
 
 <script data-goose-motion>
@@ -3440,6 +3492,157 @@ html[dir="rtl"] .cv{animation-direction:reverse}
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; frameShelves(); }); } }
   window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll);
   setTimeout(frameShelves, 100);
+})();
+</script>
+
+<!-- ============ free trial checkout: the card comes before the app ============ -->
+<div class="ck" id="ck" hidden>
+  <div class="ck-back" data-ck="close"></div>
+  <div class="ck-box" role="dialog" aria-modal="true" aria-labelledby="ck-h">
+    <button type="button" class="ck-x" data-ck="close" aria-label="Close">&times;</button>
+    <div id="ck-body"></div>
+  </div>
+</div>
+
+<script>
+/* Free trial checkout. Plan, email, name and mobile go to our server, which opens a Paymob card page for a
+   1 EGP card check (the plan price is charged only when the trial ends). Paymob then sends the shop to the
+   app's sign-in with this email filled in. Nothing here asks for card numbers: those go to Paymob only. */
+(function () {
+  var API = 'https://wqbcxyswrqxvqrehelnw.supabase.co/functions/v1/app';
+  var APP = 'https://etlobsa7.com/app/';
+  var PRICES = { basic: 1295, pro: 2850, store: 5440 }, DAYS = { basic: 14, pro: 14, store: 5 };
+  var TX = {
+    en: {
+      h: 'Start your free trial', lede: 'Add your card to start. Nothing is charged until the trial ends, and you can cancel before then.',
+      s1: 'Plan and email', s2: 'Card on Paymob', s3: 'Sign in',
+      basic: 'Basic', pro: 'Pro', store: 'Store', free: '{n} days free', then: 'then {p} a month',
+      email: 'Email', emailHint: 'Your account and sign-in codes use this email.', name: 'Name on the card', phone: 'Mobile number',
+      sum: 'Today: a {c} card check. Free until {d}.', sum2: 'Then {p} a month, charged to this card. Cancel any time before {d} and you pay nothing more.',
+      go: 'Continue to card details', going: 'Opening the secure card page...',
+      fine: 'You enter your card on Paymob\'s secure page. We never see or keep your card number.',
+      have: 'Already have an account?', signin: 'Sign in',
+      off: 'Card payments open in a few days. Message us on WhatsApp and we will set up your trial.', wa: 'Message us on WhatsApp',
+      test: 'Test mode', egp: 'EGP',
+      BAD_EMAIL: 'Please enter a valid email address.', BAD_NAME: 'Please enter the name on the card.', BAD_PHONE: 'Please enter a mobile number, like 01012345678.',
+      HAS_ACCOUNT: 'This email already has an account, so the free trial is used. ', HAS_ACCOUNT2: 'Sign in with it',
+      TOO_MANY: 'Too many tries with this email. Please wait an hour and try again.', BUSY: 'We are busy right now. Please try again in a few minutes.',
+      NET: 'No connection. Check your internet and try again.', SERVER: 'Something went wrong on our side. Please try again.', BILLING_OFF: 'Card payments are not switched on yet.', PAY_FAILED: 'Paymob did not open the card page. Please try again.'
+    },
+    ar: {
+      h: 'ابدأ تجربتك المجانية', lede: 'ضيف كارتك علشان تبدأ. مفيش أي خصم لحد ما التجربة تخلص، وتقدر تلغي قبلها.',
+      s1: 'الباقة والإيميل', s2: 'الكارت على Paymob', s3: 'تسجيل الدخول',
+      basic: 'الأساسية', pro: 'Pro', store: 'Store', free: '{n} يوم مجانا', then: 'وبعدها {p} في الشهر',
+      email: 'الإيميل', emailHint: 'حسابك ورموز الدخول هيبقوا على الإيميل ده.', name: 'الاسم اللي على الكارت', phone: 'رقم الموبايل',
+      sum: 'النهارده: تأكيد للكارت بـ {c}. مجانا لحد {d}.', sum2: 'وبعدها {p} في الشهر على نفس الكارت. لو لغيت قبل {d} مش هتدفع حاجة تاني.',
+      go: 'كمّل لبيانات الكارت', going: 'بنفتح صفحة الكارت الآمنة...',
+      fine: 'بتكتب بيانات الكارت في صفحة Paymob الآمنة. إحنا عمرنا ما بنشوف أو بنحتفظ برقم الكارت.',
+      have: 'عندك حساب بالفعل؟', signin: 'سجل دخول',
+      off: 'الدفع بالكارت هيفتح خلال أيام. ابعتلنا على واتساب وإحنا نفعّلك التجربة.', wa: 'ابعتلنا على واتساب',
+      test: 'وضع التجربة', egp: 'جنيه',
+      BAD_EMAIL: 'اكتب إيميل صحيح.', BAD_NAME: 'اكتب الاسم اللي على الكارت.', BAD_PHONE: 'اكتب رقم موبايل، زي 01012345678.',
+      HAS_ACCOUNT: 'الإيميل ده عليه حساب بالفعل، فالتجربة المجانية اتستخدمت. ', HAS_ACCOUNT2: 'سجل دخول بيه',
+      TOO_MANY: 'محاولات كتير بالإيميل ده. استنى ساعة وجرب تاني.', BUSY: 'في ضغط دلوقتي. جرب تاني بعد شوية.',
+      NET: 'مفيش اتصال. اتأكد من النت وجرب تاني.', SERVER: 'حصلت مشكلة عندنا. جرب تاني.', BILLING_OFF: 'الدفع بالكارت لسه ماشتغلش.', PAY_FAILED: 'Paymob مافتحتش صفحة الكارت. جرب تاني.'
+    }
+  };
+  var MONTHS = { en: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+    ar: ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'] };
+  var st = { plan: 'pro', email: '', name: '', phone: '', info: null, msg: '', msgKind: '', busy: false };
+  var box = document.getElementById('ck'), body = document.getElementById('ck-body'), lastFocus = null;
+  function L() { return (typeof LANG !== 'undefined' && LANG === 'ar') ? 'ar' : 'en'; }
+  function tx(k, v) { var s = TX[L()][k] != null ? TX[L()][k] : TX.en[k]; if (v) for (var x in v) s = s.split('{' + x + '}').join(v[x]); return s; }
+  function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function money(n) { return Number(n).toLocaleString('en-US') + ' ' + tx('egp'); }
+  function day(n) { var d = new Date(Date.now() + n * 86400000); return d.getDate() + ' ' + MONTHS[L()][d.getMonth()]; }
+  function save() { try { localStorage.setItem('es7.ckForm', JSON.stringify({ plan: st.plan, email: st.email, name: st.name, phone: st.phone })); } catch (e) {} }
+  function load() { try { var f = JSON.parse(localStorage.getItem('es7.ckForm') || 'null'); if (f) { st.email = f.email || ''; st.name = f.name || ''; st.phone = f.phone || ''; } } catch (e) {} }
+  function post(fn, args) {
+    return fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fn: fn, args: args }) })
+      .then(function (r) { return r.json(); }).catch(function () { return { error: 'NET' }; });
+  }
+  function read() {
+    var e = document.getElementById('ck-email'), n = document.getElementById('ck-name'), p = document.getElementById('ck-phone');
+    if (e) st.email = e.value.trim(); if (n) st.name = n.value; if (p) st.phone = p.value;
+  }
+  function render() {
+    if (box.hidden) return;
+    read();
+    var info = st.info, days = DAYS[st.plan], prices = (info && info.prices) || PRICES, d = (info && info.trialDays) || DAYS;
+    var h = '<h2 id="ck-h">' + esc(tx('h')) + '</h2>';
+    if (info && info.ready === false) {
+      h += '<p class="ck-lede">' + esc(tx('off')) + '</p><a class="btn btn-primary ck-go" style="display:flex;align-items:center;justify-content:center" href="https://wa.me/' + (typeof WHATSAPP !== 'undefined' ? WHATSAPP : '') + '" target="_blank" rel="noopener">' + esc(tx('wa')) + '</a>' +
+        '<p class="ck-alt">' + esc(tx('have')) + ' <a href="' + APP + '">' + esc(tx('signin')) + '</a></p>';
+      body.innerHTML = h; return;
+    }
+    if (info && info.testMode) h = '<span class="ck-test">' + esc(tx('test')) + '</span>' + h;
+    h += '<p class="ck-lede">' + esc(tx('lede')) + '</p>' +
+      '<ol class="ck-steps"><li class="on"><b>1</b>' + esc(tx('s1')) + '</li><li><b>2</b>' + esc(tx('s2')) + '</li><li><b>3</b>' + esc(tx('s3')) + '</li></ol>' +
+      '<form id="ck-form" novalidate><div class="ck-plans" role="radiogroup">' + ['basic', 'pro', 'store'].map(function (p) {
+        return '<label class="ck-plan' + (p === st.plan ? ' on' : '') + '"><input type="radio" name="ck-plan" value="' + p + '"' + (p === st.plan ? ' checked' : '') + '>' +
+          '<b>' + esc(tx(p)) + '</b><span class="ck-free">' + esc(tx('free', { n: d[p] })) + '</span><span>' + esc(tx('then', { p: money(prices[p]) })) + '</span></label>';
+      }).join('') + '</div>' +
+      '<label class="ck-l" for="ck-email">' + esc(tx('email')) + '</label><input class="ck-i" id="ck-email" type="email" autocomplete="email" inputmode="email" dir="ltr" maxlength="254" value="' + esc(st.email) + '">' +
+      '<div class="ck-hint">' + esc(tx('emailHint')) + '</div>' +
+      '<div class="ck-row"><div><label class="ck-l" for="ck-name">' + esc(tx('name')) + '</label><input class="ck-i" id="ck-name" type="text" autocomplete="cc-name" maxlength="60" value="' + esc(st.name) + '"></div>' +
+      '<div><label class="ck-l" for="ck-phone">' + esc(tx('phone')) + '</label><input class="ck-i" id="ck-phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" maxlength="20" placeholder="01XXXXXXXXX" value="' + esc(st.phone) + '"></div></div>' +
+      '<div class="ck-sum" id="ck-sum">' + esc(tx('sum', { c: money((info && info.checkEGP) || 1), d: day(d[st.plan]) })) + '<span>' + esc(tx('sum2', { p: money(prices[st.plan]), d: day(d[st.plan]) })) + '</span></div>' +
+      '<button class="btn btn-primary ck-go" type="submit" id="ck-go"' + (st.busy ? ' disabled' : '') + '>' + esc(tx(st.busy ? 'going' : 'go')) + '</button>' +
+      (st.msg ? '<div class="ck-msg ' + st.msgKind + '" role="alert">' + st.msg + '</div>' : '') +
+      '<p class="ck-fine"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>' + esc(tx('fine')) + '</span></p>' +
+      '<p class="ck-alt">' + esc(tx('have')) + ' <a href="' + APP + '" id="ck-signin">' + esc(tx('signin')) + '</a></p></form>';
+    var ae = document.activeElement && document.activeElement.id;
+    body.innerHTML = h;
+    if (ae && document.getElementById(ae)) document.getElementById(ae).focus();
+  }
+  function setMsg(html, kind) { read(); st.msg = html; st.msgKind = kind || 'bad'; render(); }
+  function open(plan) {
+    lastFocus = document.activeElement;
+    if (PRICES[plan]) st.plan = plan;
+    st.msg = ''; st.busy = false; load();
+    box.hidden = false; document.documentElement.style.overflow = 'hidden';
+    render();
+    setTimeout(function () { var e = document.getElementById(st.email ? 'ck-name' : 'ck-email'); if (e) e.focus(); }, 30);
+    if (!st.info) post('trialInfo', []).then(function (r) { if (r && r.ok) { st.info = r; render(); } });
+  }
+  function close() {
+    read(); save();
+    box.hidden = true; document.documentElement.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  window.ckRender = render;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-trial]');
+    if (a && !e.metaKey && !e.ctrlKey && !e.shiftKey) { e.preventDefault(); open(a.getAttribute('data-trial')); return; }
+    if (e.target.closest('[data-ck="close"]')) { close(); return; }
+    var si = e.target.closest('#ck-signin, #ck-has');
+    if (si) { read(); try { if (/@/.test(st.email)) localStorage.setItem('es7.signinEmail', st.email.trim()); } catch (x) {} }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+  box.addEventListener('change', function (e) {
+    if (e.target.name === 'ck-plan') { st.plan = e.target.value; st.msg = ''; render(); }
+  });
+  box.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (st.busy) return;
+    read();
+    var em = st.email.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { setMsg(esc(tx('BAD_EMAIL'))); document.getElementById('ck-email').focus(); return; }
+    if (!/\p{L}.*\p{L}/u.test(st.name)) { setMsg(esc(tx('BAD_NAME'))); document.getElementById('ck-name').focus(); return; }
+    if (st.phone.replace(/[\u0660-\u0669]/g, function (d) { return String(d.charCodeAt(0) - 0x0660); }).replace(/[\u06F0-\u06F9]/g, function (d) { return String(d.charCodeAt(0) - 0x06F0); }).replace(/\D/g, '').length < 8) { setMsg(esc(tx('BAD_PHONE'))); document.getElementById('ck-phone').focus(); return; }
+    save(); st.busy = true; st.msg = ''; render();
+    post('startTrial', [{ plan: st.plan, email: em, name: st.name, phone: st.phone }, L()]).then(function (r) {
+      if (r && r.ok && r.url && r.ref) {
+        try { localStorage.setItem('es7.pending', JSON.stringify({ ref: r.ref, email: em.toLowerCase(), plan: st.plan, at: Date.now() })); } catch (x) {}
+        location.href = r.url; return;
+      }
+      st.busy = false;
+      var err = (r && r.error) || 'SERVER';
+      if (err === 'HAS_ACCOUNT') { setMsg(esc(tx('HAS_ACCOUNT')) + '<a href="' + APP + '" id="ck-has">' + esc(tx('HAS_ACCOUNT2')) + '</a>', 'info'); return; }
+      if (err === 'BILLING_OFF') { st.info = Object.assign({}, st.info || {}, { ready: false }); render(); return; }
+      setMsg(esc(TX[L()][err] ? tx(err) : tx('SERVER')));
+    });
+  });
 })();
 </script>
 </body>
