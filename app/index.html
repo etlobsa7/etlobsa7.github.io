@@ -3,6 +3,7 @@
 <head>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%232A1F17%27/%3E%3Cpath transform=%27translate(16 16.4) scale(.82) translate(-16 -16.8)%27 d=%27M14.0%202.7%20L18.8%2011.6%20L28.1%2010.9%20L22.1%2017.9%20L26.0%2027.2%20L16.8%2022.5%20L9.6%2028.9%20L10.5%2019.5%20L2.2%2014.4%20L11.8%2012.5Z%27 fill=%27%23D9AE5C%27 stroke=%27%23D9AE5C%27 stroke-width=%272%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
 <title>Etlob Sa7</title>
+<meta name="robots" content="noindex">
 <base target="_top">
 <meta charset="utf-8">
 <script>try{var t=localStorage.getItem("es7.theme");document.documentElement.setAttribute("data-theme",(t==="light"||t==="dark")?t:"dark");}catch(e){}</script>
@@ -585,6 +586,7 @@ html[dir="rtl"] .cfbar{transform-origin:right center}
 .gtable td{padding:8px 12px;border-bottom:1px solid var(--line-2)}
 .gtable tr:last-child td{border-bottom:0}
 .gtable .num{text-align:end}
+@media (max-width:560px){.gtable{table-layout:fixed;font-size:12.5px}.gtable th,.gtable td{padding:7px 8px;white-space:normal;overflow-wrap:anywhere}.gtable th:first-child{width:38%}.gtable th.num{width:22%}.gtable td *{white-space:normal}}
 .gtable .gl i{width:18px;height:3px}
 .gkey{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:13px;color:var(--body);margin:0 0 4px}
 .gkey span{display:inline-flex;align-items:center;gap:8px}
@@ -913,6 +915,48 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
 .bill-panel.bad p{color:var(--crit)}
 .bill-panel .actions{display:flex;gap:10px;flex-wrap:wrap}
 .bill-choose{margin-top:14px;max-width:620px}
+.segs{display:inline-flex;gap:0;margin:0 0 12px;padding:3px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper)}
+.segs .seg{display:inline-flex;align-items:center;gap:6px;margin:0;padding:7px 14px;border-radius:7px;cursor:pointer;font-weight:600;font-size:14px;color:var(--body)}
+.segs .seg input{position:absolute;opacity:0;width:1px;height:1px}
+.segs .seg.on{background:var(--accent);color:var(--accent-ink)}
+.segs .seg small{font-size:11.5px;font-weight:700;opacity:.9}
+.segs .seg:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.founding{margin:0 0 12px;padding:9px 12px;border-inline-start:3px solid var(--accent);background:var(--accent-bg);border-radius:6px;font-size:13.5px;line-height:1.5;color:var(--ink)}
+.founding.on{font-weight:600}
+.cxdlg{max-width:520px;max-height:calc(100vh - 32px);overflow:auto}
+.cxdlg .cx-down{margin:10px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--accent-bg)}
+.cxdlg .cx-down p{margin:0 0 8px}
+.cxdlg fieldset{border:0;margin:12px 0 6px;padding:0}
+.cxdlg legend{font-weight:600;color:var(--ink);margin-bottom:6px;font-size:14px}
+.cxdlg fieldset label{display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;color:var(--body);font-size:14px}
+.cxdlg .cx-nl{display:block;margin-top:8px;font-size:13px;color:var(--muted)}
+.cxdlg textarea{min-height:56px}
+.cxdlg .actions{display:flex;gap:10px;flex-wrap:wrap}
+.lbar{display:block;height:5px;border-radius:3px;background:var(--line-2);margin:6px 0 4px;overflow:hidden}
+.lbar>i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.chk{margin-bottom:18px}
+.chk-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.chk-head h2{margin:0}
+.chk ol{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+.chk li{display:flex;align-items:center;gap:10px;font-size:14px}
+.chk li.done span:last-child{color:var(--muted);text-decoration:line-through}
+.chk .tick{display:inline-grid;place-items:center;width:20px;height:20px;border:1.5px solid var(--line);border-radius:6px;font-size:12px;color:var(--ok);flex:none}
+.chk li.done .tick{border-color:var(--ok)}
+.tval{margin-bottom:18px;border-color:var(--accent)}
+.tval h2{margin-bottom:6px}
+.tval ul{margin:6px 0 10px;padding-inline-start:20px}
+.tval li{margin:3px 0}
+.lockprev{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;min-height:260px;display:grid;place-items:center;background:var(--paper)}
+.lp-mock{position:absolute;inset:0;padding:22px;filter:blur(5px);opacity:.55;color:var(--accent);pointer-events:none}
+.lp-mock svg{width:100%;height:100%}
+.lp-rows{display:grid;gap:14px}
+.lp-rows div{display:flex;gap:12px}
+.lp-rows i{display:block;height:14px;border-radius:4px;background:var(--line)}
+.lp-tag{position:absolute;top:10px;inset-inline-start:12px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+html[lang="ar"] .lp-tag{letter-spacing:0}
+.lp-card{position:relative;max-width:440px;margin:24px;padding:18px 20px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.lp-card p{margin:0 0 8px}
 .bill-choose .tplans{margin-top:0}
 .planbar{display:flex;align-items:center;justify-content:center;gap:10px 16px;flex-wrap:wrap;padding:9px 20px;background:var(--accent-bg);color:var(--ink);font-size:14px;border-bottom:1px solid var(--line-2)}
 .planbar.bad{background:var(--crit-bg);color:var(--crit)}
@@ -1016,13 +1060,13 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
     <button type="button" class="themebtn" data-act="theme" aria-label="Light or dark mode" title="Light or dark mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg></button>
     <button type="button" class="lang" data-act="lang">العربية</button>
   </header>
-  <div class="login-brand">
+  <aside class="login-brand">
     <p class="eyebrow" data-t="login.eyebrow">Your purchasing, planned</p>
     <h2 data-t="login.pitch">Know what to reorder, how much, and when.</h2>
     <p data-t="login.pitch2">Your sales history in. A purchase order you can send out.</p>
     <p class="small fine hide-sm" data-t="login.private">Your numbers are private to your account.</p>
-  </div>
-  <div class="login-form">
+  </aside>
+  <main class="login-form">
     <div class="login-card">
       <h1 id="login-title">Sign in</h1>
       <p class="lede" id="login-lede"></p>
@@ -1051,7 +1095,7 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
       </div>
       <div class="legal-links" id="login-legal"></div>
     </div>
-  </div>
+  </main>
 </div>
 
 <!-- ============ PLAN NEEDED ============ -->
@@ -1066,14 +1110,14 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
     <button type="button" class="lang" data-act="lang">العربية</button>
     <button type="button" class="lang" data-act="logout" data-t="nav.signout">Sign out</button>
   </header>
-  <div class="login-brand">
+  <aside class="login-brand">
     <p class="eyebrow" data-t="bill.eyebrow">Your data is saved</p>
     <h2 data-t="bill.pitch">Pick a plan and carry on where you left off.</h2>
     <p data-t="bill.pitch2">Monthly, in Egyptian pounds. Stop renewal any time.</p>
-  </div>
-  <div class="login-form">
+  </aside>
+  <main class="login-form">
     <div class="login-card bill-card" id="bill-card"></div>
-  </div>
+  </main>
 </div>
 
 <!-- ============ APP ============ -->
@@ -1105,7 +1149,7 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
 <div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
 <div id="overlay" class="overlay" hidden></div>
 <script>
-const CFG = {"appName":"Etlob Sa7","siteUrl":"https://etlobsa7.com","whatsapp":"201090099849","prices":{"basic":1295,"pro":2850,"store":5440},"trialDays":{"basic":14,"pro":14,"store":5},"serviceLevels":[85,90,95,97,98,99]};
+const CFG = {"appName":"Etlob Sa7","siteUrl":"https://etlobsa7.com","whatsapp":"201090099849","prices":{"basic":1295,"pro":2850,"store":5440},"trialDays":{"basic":14,"pro":14,"store":5},"yearMonths":10,"foundingSpots":30,"serviceLevels":[85,90,95,97,98,99]};
 const MONTHS = {
   en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']
@@ -1141,7 +1185,7 @@ en: {
   'login.ledeTrial': 'Pick a plan and enter your email. Next you add your card on Paymob: nothing is charged until the trial ends, and you can cancel before then. Then you sign in.',
   'login.sendTrial': 'Continue to card details',
   'login.checking': 'Checking your payment with Paymob...',
-  'login.paidOk': 'Card saved. Your free {plan} trial runs until {date}, then {price} a month. Send yourself a code to sign in.',
+  'login.paidOk': 'Card saved. Your free {plan} trial runs until {date}, then {price} {per}. Send yourself a code to sign in.',
   'login.paidFix': 'Typed the wrong email on the card page? Correct it above, then send the code.',
   'login.waitPay': 'Paymob has not confirmed your card yet. You can sign in with {email}: the app opens as soon as it does.',
   'bill.guestFor': 'Account email: {email}',
@@ -1155,7 +1199,7 @@ en: {
   'login.signinLink': 'Sign in',
   'login.sentTrial': 'We sent a code to {email}. Check your spam folder too.',
   'login.trialDays': '{n} days free',
-  'login.then': 'Then {price} a month.',
+  'login.then': 'Then {price} a month, or {yprice} a year (2 months free).',
   'err.BUSY': 'A lot of people are signing up right now. Try again in a few minutes.',
   'err.BLOCKED': 'This account is closed. Message us on WhatsApp if you think this is a mistake.',
   'err.BILLING_OFF': 'Card payments are not switched on yet. Message us on WhatsApp and we will set up your plan.',
@@ -1168,12 +1212,12 @@ en: {
   'err.ENDED': 'This plan has already ended. Choose a plan to start again.',
   'bill.eyebrow': 'Your data is saved',
   'bill.pitch': 'Pick a plan and carry on where you left off.',
-  'bill.pitch2': 'Monthly, in Egyptian pounds. Stop renewal any time.',
+  'bill.pitch2': 'Monthly or yearly, in Egyptian pounds. Stop renewal any time.',
   'bill.title': 'Plan and billing',
   'bill.hTrial': 'Add your card to start your free trial',
   'bill.ledeTrial': 'Nothing is charged until your trial ends. Stop renewal before then and you pay nothing.',
-  'bill.sumTrialStart': 'Free until {date}, then {price} a month, charged automatically. Today your card gets a {check} check only.',
-  'bill.sumTrialSwitch': 'Your trial still ends on {date}; then {price} a month. Today your card gets a {check} check only.',
+  'bill.sumTrialStart': 'Free until {date}, then {price} {per}, charged automatically. Today your card gets a {check} check only.',
+  'bill.sumTrialSwitch': 'Your trial still ends on {date}; then {price} {per}. Today your card gets a {check} check only.',
   'bill.startTrial': 'Start free trial',
   'bill.switchPlan': 'Switch plan',
   'bill.stTrialCanceling': 'Your free trial of the {plan} ends on {date} and nothing will be charged. The app closes then.',
@@ -1181,14 +1225,14 @@ en: {
   'bill.manage': 'Plan and billing',
   'bill.trialOn': 'Card saved. Your free trial of the {plan} is on.',
   'bill.trialEyebrow': 'Free trial',
-  'bill.trialPitch': 'Every feature free, then a simple monthly plan.',
+  'bill.trialPitch': 'Every feature free, then a simple monthly or yearly plan.',
   'bill.trialPitch2': 'Your card is charged only when the trial ends. Cancel any time before.',
   'bill.hTrialOver': 'Your free trial has ended',
   'bill.hExpired': 'Your plan has ended',
   'bill.hNone': 'Choose a plan',
   'bill.ledeKept': 'Everything you entered is saved. Choose a plan to open the app again.',
-  'bill.ledeFailed': 'Your last monthly payment did not go through, so the app is paused. Everything you entered is saved.',
-  'bill.feat.basic': 'Up to 10 products. The full forecasting and reorder engine.',
+  'bill.ledeFailed': 'Your last payment did not go through, so the app is paused. Everything you entered is saved.',
+  'bill.feat.basic': 'Up to 15 products. The full forecasting and reorder engine.',
   'bill.feat.pro': 'Up to 50 products. Adds your own seasons, supplier compare, scorecard and cash flow.',
   'bill.feat.store': 'Up to 200 products. Adds demand graphs, profit at risk and dead stock.',
   'bill.current': 'Your plan',
@@ -1203,16 +1247,16 @@ en: {
   'bill.pay': 'Pay {price}',
   'bill.keep': 'Keep my plan',
   'bill.secure': 'You pay by card on Paymob\'s secure page. We never see your card number. Stop renewal any time in Settings.',
-  'bill.agreeTrial': 'I agree to the {terms}, the {refunds} and the {privacy}. I understand that 1 EGP is taken today as a card check, and that {price} will be charged to this card on {date} and every month after that, until I stop renewal.',
-  'bill.agreePaid': 'I agree to the {terms}, the {refunds} and the {privacy}. I understand that {price} will be charged to this card today and every month after that, until I stop renewal.',
+  'bill.agreeTrial': 'I agree to the {terms}, the {refunds} and the {privacy}. I understand that 1 EGP is taken today as a card check, and that {price} will be charged to this card on {date} and {every} after that, until I stop renewal.',
+  'bill.agreePaid': 'I agree to the {terms}, the {refunds} and the {privacy}. I understand that {price} will be charged to this card today and {every} after that, until I stop renewal.',
   'legal.terms': 'Terms and conditions', 'legal.refunds': 'Refund policy', 'legal.privacy': 'Privacy policy', 'legal.cookies': 'Cookie policy',
   'err.NEED_CONSENT': 'Please tick the box to agree before continuing.',
   'bill.going': 'Taking you to the secure payment page.',
   'bill.test': 'Test mode: use a Paymob test card. No real money moves.',
   'bill.off': 'Card payments are switching on very soon. Until then, message us on WhatsApp and we will set up your plan by hand.',
   'bill.wa': 'Message us on WhatsApp',
-  'bill.stTrial': 'Free trial of the {plan} until {date} ({left}). Then {price} a month, charged automatically to your card.',
-  'bill.stActive': '{plan}: {price} a month. Next payment on {date}.',
+  'bill.stTrial': 'Free trial of the {plan} until {date} ({left}). Then {price} {per}, charged automatically to your card.',
+  'bill.stActive': '{plan}: {price} {per}. Next payment on {date}.',
   'bill.stPaid': '{plan}, paid until {date}.',
   'bill.stCanceling': '{plan} until {date}. Renewal is off, so nothing more will be charged.',
   'bill.stPastDue': 'We could not take this month\'s payment for the {plan}. We will try again, and the app stays open until {date}.',
@@ -1236,6 +1280,65 @@ en: {
   'bill.barTrial': 'Free trial: {left}. First payment on {date}.',
   'bill.barCanceling': 'Your plan ends on {date}.',
   'bill.barPastDue': 'We could not take this month\'s payment.',
+  'bill.int': 'Billing period',
+  'bill.int.month': 'Monthly',
+  'bill.int.year': 'Yearly',
+  'bill.int.save': '2 months free',
+  'bill.per.month': 'a month',
+  'bill.per.year': 'a year',
+  'bill.every.month': 'every month',
+  'bill.every.year': 'every year',
+  'bill.perYear': '{price} a year',
+  'bill.yearNote': 'Same as {price} a month.',
+  'bill.founding': 'Founding member {n} of {spots}: your price stays the same for as long as you stay subscribed.',
+  'bill.foundingOffer': 'Founding offer: the first {spots} shops to pay keep today\'s price for as long as they stay subscribed. {left} places left.',
+  'err.SWITCH_LATER': 'The time you have already paid for is worth more than a year of that plan. Switch when your current period ends, or message us on WhatsApp.',
+  'cx.title': 'Stop renewal?',
+  'cx.keep': 'Nothing more will be charged. Your {plan} stays on until {date}. After that the app pauses: your data stays saved, and everything is here when you choose a plan again.',
+  'cx.founding': 'You are founding member {n}. If your plan runs out, your locked price ends with it.',
+  'cx.down': 'Your {n} products fit the {plan}: {price} {per}. Switch to it instead?',
+  'cx.downBtn': 'Switch to the {plan}',
+  'cx.why': 'What is the main reason? Optional, it helps us improve.',
+  'cx.r.price': 'It costs too much',
+  'cx.r.not_needed': 'I do not need it right now',
+  'cx.r.season': 'My busy season is over',
+  'cx.r.too_hard': 'It is hard to use',
+  'cx.r.missing': 'It is missing something I need',
+  'cx.r.other_tool': 'I use another tool',
+  'cx.r.other': 'Something else',
+  'cx.note': 'Anything you want to tell us (optional)',
+  'cx.stop': 'Stop renewal',
+  'cx.back': 'Keep my plan',
+  'set.mail': 'Emails',
+  'set.digest': 'Sunday summary',
+  'set.digestH': 'Every Sunday morning: what to order this week, what is coming up, and what the app has learned. Made from your saved data.',
+  'set.digestOn': 'The Sunday summary is on.',
+  'set.digestOff': 'The Sunday summary is off.',
+  'unsub.done': 'Done: no more Sunday summaries. You can turn them back on in Settings.',
+  'unsub.bad': 'That link did not work. You can turn the Sunday summary off in Settings.',
+  'learn.monthsOf': '{n} of 24 months',
+  'learn.leadOf': '{k} of {m} suppliers',
+  'chk.title': 'Getting started: {k} of {n} done',
+  'chk.sup': 'Add your suppliers and their delivery times',
+  'chk.prod': 'Add your products with their monthly sales',
+  'chk.stock': 'Enter the stock you have now',
+  'chk.order': 'Record an order you placed, on Ordered stock',
+  'chk.recv': 'Mark an order received, so it learns real delivery times',
+  'chk.hide': 'Hide',
+  'tv.title': 'Your free trial: {left}',
+  'tv.found': 'From your data so far, the app found:',
+  'tv.order': '{n} products to order now, {v} in total',
+  'tv.orderNone': 'nothing that needs ordering this week',
+  'tv.over': '{v} of cash in more stock than you need',
+  'tv.dead': '{n} products that stopped selling, {v} of stock',
+  'tv.fit': 'Your {n} products also fit the {plan} ({price} {per}), if you do not need the extras.',
+  'tv.first': 'First payment on {date}. You can change plan or stop before then.',
+  'lock.prev': 'Preview',
+  'lock.unlock': 'Unlock with the {plan}: {price} a month',
+  'lock.sc': 'See which supplier is late most often, how much you spend with each, and how much safety stock each one needs.',
+  'lock.gr': 'See every product\'s real sales and forecast on one graph, with the week to reorder marked.',
+  'lock.dead': 'See which products stopped selling and how much cash is stuck in them.',
+  'lock.cash': 'See what you will pay suppliers each week for the coming months, before it happens.',
   'plan.trialTag': 'free trial',
   'err.BAD_EMAIL': 'Enter a valid email address.',
   'err.WAIT': 'Wait a minute before asking for another code.',
@@ -1779,7 +1882,7 @@ en: {
   'learn.title': 'What the app has learned about your shop',
   'learn.months': 'Sales history it uses',
   'learn.monthsV': '{n} months',
-  'learn.monthsS': 'Kept and used as you add months. From 24 months it learns seasons from your own sales.',
+  'learn.monthsS': 'Kept and used as you add months. At 24 months it learns seasons from your own sales.',
   'learn.season': 'Products with a season found',
   'learn.seasonS': 'Out of {n} with two years of history. It leans on a season only as much as your years agree on it.',
   'learn.seasonNone': 'Needs two years',
@@ -1895,7 +1998,7 @@ ar: {
   'login.ledeTrial': 'اختار الباقة واكتب إيميلك. بعدها تضيف كارتك على Paymob: مفيش أي خصم لحد ما التجربة تخلص، وتقدر تلغي قبلها. وبعدين تسجل دخول.',
   'login.sendTrial': 'كمّل لبيانات الكارت',
   'login.checking': 'بنتأكد من الدفع مع Paymob...',
-  'login.paidOk': 'الكارت اتسجل. تجربتك المجانية لباقة {plan} شغالة لحد {date}، وبعدها {price} في الشهر. ابعت لنفسك رمز علشان تدخل.',
+  'login.paidOk': 'الكارت اتسجل. تجربتك المجانية لباقة {plan} شغالة لحد {date}، وبعدها {price} {per}. ابعت لنفسك رمز علشان تدخل.',
   'login.paidFix': 'كتبت إيميل غلط في صفحة الكارت؟ صححه فوق وبعدين ابعت الرمز.',
   'login.waitPay': 'Paymob لسه ماأكدتش الكارت. تقدر تسجل دخول بـ {email}، والبرنامج هيفتح أول ما يتأكد.',
   'bill.guestFor': 'إيميل الحساب: {email}',
@@ -1909,7 +2012,7 @@ ar: {
   'login.signinLink': 'سجل دخول',
   'login.sentTrial': 'بعتنا رمز على {email}. بص في الـ Spam كمان.',
   'login.trialDays': '{n} يوم مجانا',
-  'login.then': 'وبعدها {price} في الشهر.',
+  'login.then': 'وبعدها {price} في الشهر، أو {yprice} في السنة (شهرين ببلاش).',
   'err.BUSY': 'في ناس كتير بتسجل دلوقتي. جرب تاني بعد دقايق.',
   'err.BLOCKED': 'الحساب ده مقفول. ابعتلنا على واتساب لو شايف إن في غلط.',
   'err.BILLING_OFF': 'الدفع بالكارت لسه ماشتغلش. ابعتلنا على واتساب وإحنا نفعّلك الباقة.',
@@ -1922,12 +2025,12 @@ ar: {
   'err.ENDED': 'الباقة دي خلصت خلاص. اختار باقة علشان تبدأ تاني.',
   'bill.eyebrow': 'بياناتك محفوظة',
   'bill.pitch': 'اختار باقة وكمل من مكان ما وقفت.',
-  'bill.pitch2': 'اشتراك شهري بالجنيه المصري. توقف التجديد في أي وقت.',
+  'bill.pitch2': 'اشتراك شهري أو سنوي بالجنيه المصري. توقف التجديد في أي وقت.',
   'bill.title': 'الباقة والدفع',
   'bill.hTrial': 'ضيف كارتك علشان تبدأ التجربة المجانية',
   'bill.ledeTrial': 'مفيش أي خصم لحد ما التجربة تخلص. وقف التجديد قبلها ومش هتدفع حاجة.',
-  'bill.sumTrialStart': 'مجانا لحد {date}، وبعدها {price} في الشهر بتتخصم أوتوماتيك. النهارده بس تأكيد للكارت بـ {check}.',
-  'bill.sumTrialSwitch': 'تجربتك هتفضل لحد {date}؛ وبعدها {price} في الشهر. النهارده بس تأكيد للكارت بـ {check}.',
+  'bill.sumTrialStart': 'مجانا لحد {date}، وبعدها {price} {per} بتتخصم أوتوماتيك. النهارده بس تأكيد للكارت بـ {check}.',
+  'bill.sumTrialSwitch': 'تجربتك هتفضل لحد {date}؛ وبعدها {price} {per}. النهارده بس تأكيد للكارت بـ {check}.',
   'bill.startTrial': 'ابدأ التجربة المجانية',
   'bill.switchPlan': 'غير الباقة',
   'bill.stTrialCanceling': 'تجربتك المجانية لـ{plan} هتخلص يوم {date} ومش هيتخصم حاجة. البرنامج هيقفل ساعتها.',
@@ -1935,14 +2038,14 @@ ar: {
   'bill.manage': 'الباقة والدفع',
   'bill.trialOn': 'الكارت اتحفظ. تجربتك المجانية لـ{plan} شغالة.',
   'bill.trialEyebrow': 'تجربة مجانية',
-  'bill.trialPitch': 'كل المميزات مجانا، وبعدها باقة شهرية بسيطة.',
+  'bill.trialPitch': 'كل المميزات مجانا، وبعدها باقة شهرية أو سنوية بسيطة.',
   'bill.trialPitch2': 'كارتك بيتخصم منه بس لما التجربة تخلص. تقدر تلغي في أي وقت قبلها.',
   'bill.hTrialOver': 'التجربة المجانية خلصت',
   'bill.hExpired': 'باقتك خلصت',
   'bill.hNone': 'اختار باقة',
   'bill.ledeKept': 'كل اللي دخلته محفوظ. اختار باقة علشان البرنامج يفتح تاني.',
-  'bill.ledeFailed': 'آخر دفعة شهرية ماتمتش، فالبرنامج واقف مؤقتا. كل اللي دخلته محفوظ.',
-  'bill.feat.basic': 'لحد 10 منتجات. محرك التوقع وإعادة الطلب كامل.',
+  'bill.ledeFailed': 'آخر دفعة ماتمتش، فالبرنامج واقف مؤقتا. كل اللي دخلته محفوظ.',
+  'bill.feat.basic': 'لحد 15 منتج. محرك التوقع وإعادة الطلب كامل.',
   'bill.feat.pro': 'لحد 50 منتج. ومعاه أشكال موسم بتاعتك، مقارنة الموردين، تقييمهم، والتدفق النقدي.',
   'bill.feat.store': 'لحد 200 منتج. ومعاه رسوم الطلب، الربح المعرض للخطر، والبضاعة الراكدة.',
   'bill.current': 'باقتك',
@@ -1957,16 +2060,16 @@ ar: {
   'bill.pay': 'ادفع {price}',
   'bill.keep': 'خليني على باقتي',
   'bill.secure': 'الدفع بالكارت على صفحة Paymob الآمنة. إحنا مابنشوفش رقم كارتك. توقف التجديد في أي وقت من الإعدادات.',
-  'bill.agreeTrial': 'أوافق على {terms} و{refunds} و{privacy}. وفاهم إنه هيتخصم 1 جنيه النهارده للتأكد من الكارت، وإن {price} هيتخصموا من الكارت ده يوم {date} وكل شهر بعدها، لحد ما أوقف التجديد.',
-  'bill.agreePaid': 'أوافق على {terms} و{refunds} و{privacy}. وفاهم إن {price} هيتخصموا من الكارت ده النهارده وكل شهر بعدها، لحد ما أوقف التجديد.',
+  'bill.agreeTrial': 'أوافق على {terms} و{refunds} و{privacy}. وفاهم إنه هيتخصم 1 جنيه النهارده للتأكد من الكارت، وإن {price} هيتخصموا من الكارت ده يوم {date} و{every} بعدها، لحد ما أوقف التجديد.',
+  'bill.agreePaid': 'أوافق على {terms} و{refunds} و{privacy}. وفاهم إن {price} هيتخصموا من الكارت ده النهارده و{every} بعدها، لحد ما أوقف التجديد.',
   'legal.terms': 'الشروط والأحكام', 'legal.refunds': 'سياسة الاسترداد', 'legal.privacy': 'سياسة الخصوصية', 'legal.cookies': 'سياسة الكوكيز',
   'err.NEED_CONSENT': 'من فضلك علّم على المربع بالموافقة قبل ما تكمل.',
   'bill.going': 'بنوديك لصفحة الدفع الآمنة.',
   'bill.test': 'وضع تجريبي: استخدم كارت تجريبي من Paymob. مفيش فلوس حقيقية بتتحرك.',
   'bill.off': 'الدفع بالكارت هيشتغل قريب جدا. لحد كده، ابعتلنا على واتساب وإحنا نفعّلك الباقة بإيدينا.',
   'bill.wa': 'ابعتلنا على واتساب',
-  'bill.stTrial': 'تجربة مجانية: {plan} لحد {date} ({left}). وبعدها {price} في الشهر بتتخصم أوتوماتيك من كارتك.',
-  'bill.stActive': '{plan}: {price} في الشهر. الدفعة الجاية يوم {date}.',
+  'bill.stTrial': 'تجربة مجانية: {plan} لحد {date} ({left}). وبعدها {price} {per} بتتخصم أوتوماتيك من كارتك.',
+  'bill.stActive': '{plan}: {price} {per}. الدفعة الجاية يوم {date}.',
   'bill.stPaid': '{plan}، مدفوعة لحد {date}.',
   'bill.stCanceling': '{plan} لحد {date}. التجديد متوقف، فمش هيتخصم حاجة تاني.',
   'bill.stPastDue': 'مقدرناش ناخد دفعة الشهر ده لـ{plan}. هنحاول تاني، والبرنامج هيفضل فاتح لحد {date}.',
@@ -1990,6 +2093,65 @@ ar: {
   'bill.barTrial': 'تجربة مجانية: {left}. أول دفعة يوم {date}.',
   'bill.barCanceling': 'باقتك هتخلص يوم {date}.',
   'bill.barPastDue': 'مقدرناش ناخد دفعة الشهر ده.',
+  'bill.int': 'مدة الدفع',
+  'bill.int.month': 'شهري',
+  'bill.int.year': 'سنوي',
+  'bill.int.save': 'شهرين ببلاش',
+  'bill.per.month': 'في الشهر',
+  'bill.per.year': 'في السنة',
+  'bill.every.month': 'كل شهر',
+  'bill.every.year': 'كل سنة',
+  'bill.perYear': '{price} في السنة',
+  'bill.yearNote': 'يعني {price} في الشهر.',
+  'bill.founding': 'انت عضو مؤسس رقم {n} من {spots}: سعرك ثابت طول ما اشتراكك مستمر.',
+  'bill.foundingOffer': 'عرض المؤسسين: أول {spots} محل يدفعوا بيفضل سعرهم زي النهارده طول ما اشتراكهم مستمر. فاضل {left} مكان.',
+  'err.SWITCH_LATER': 'المدة اللي انت دافعها أصلا قيمتها أكتر من سنة في الباقة دي. غيرها لما مدتك الحالية تخلص، أو ابعتلنا على واتساب.',
+  'cx.title': 'توقف التجديد؟',
+  'cx.keep': 'مش هيتخصم حاجة تاني. {plan} هتفضل شغالة لحد {date}. بعدها البرنامج بيقف مؤقتا: بياناتك بتفضل محفوظة، وكل حاجة هتلاقيها زي ما هي لما تختار باقة تاني.',
+  'cx.founding': 'انت عضو مؤسس رقم {n}. لو باقتك خلصت، السعر الثابت بتاعك بيخلص معاها.',
+  'cx.down': 'منتجاتك الـ {n} تكفيها {plan}: {price} {per}. تحب تنقل لها بدل ما توقف؟',
+  'cx.downBtn': 'انقل لـ{plan}',
+  'cx.why': 'إيه السبب الأساسي؟ اختياري، وبيساعدنا نحسن البرنامج.',
+  'cx.r.price': 'غالي عليا',
+  'cx.r.not_needed': 'مش محتاجه دلوقتي',
+  'cx.r.season': 'موسمي خلص',
+  'cx.r.too_hard': 'صعب في الاستخدام',
+  'cx.r.missing': 'ناقصه حاجة محتاجها',
+  'cx.r.other_tool': 'بستخدم أداة تانية',
+  'cx.r.other': 'سبب تاني',
+  'cx.note': 'حاجة تحب تقولهالنا (اختياري)',
+  'cx.stop': 'وقف التجديد',
+  'cx.back': 'خليني على باقتي',
+  'set.mail': 'الإيميلات',
+  'set.digest': 'ملخص يوم الأحد',
+  'set.digestH': 'كل يوم أحد الصبح: تطلب إيه الأسبوع ده، وإيه اللي جاي، والأداة اتعلمت إيه. معمول من بياناتك المحفوظة.',
+  'set.digestOn': 'ملخص يوم الأحد شغال.',
+  'set.digestOff': 'ملخص يوم الأحد متوقف.',
+  'unsub.done': 'تمام: مش هيوصلك ملخص يوم الأحد تاني. تقدر ترجعه من الإعدادات.',
+  'unsub.bad': 'اللينك ده مااشتغلش. تقدر توقف ملخص يوم الأحد من الإعدادات.',
+  'learn.monthsOf': '{n} من 24 شهر',
+  'learn.leadOf': '{k} من {m} موردين',
+  'chk.title': 'البداية: خلصت {k} من {n}',
+  'chk.sup': 'ضيف الموردين ومدة التوريد بتاعتهم',
+  'chk.prod': 'ضيف منتجاتك ومبيعاتها الشهرية',
+  'chk.stock': 'اكتب المخزون اللي عندك دلوقتي',
+  'chk.order': 'سجل طلب عملته، في صفحة البضاعة المطلوبة',
+  'chk.recv': 'علم على طلب إنه وصل، علشان تتعلم مدة التوريد الحقيقية',
+  'chk.hide': 'إخفاء',
+  'tv.title': 'تجربتك المجانية: {left}',
+  'tv.found': 'من بياناتك لحد دلوقتي، الأداة لقت:',
+  'tv.order': '{n} منتج محتاج يتطلب دلوقتي، بإجمالي {v}',
+  'tv.orderNone': 'مفيش حاجة محتاجة تتطلب الأسبوع ده',
+  'tv.over': '{v} فلوس محبوسة في مخزون زيادة عن اللازم',
+  'tv.dead': '{n} منتج وقف بيع، ومخزونهم {v}',
+  'tv.fit': 'منتجاتك الـ {n} تكفيها كمان {plan} ({price} {per})، لو مش محتاج المميزات الزيادة.',
+  'tv.first': 'أول دفعة يوم {date}. تقدر تغير الباقة أو توقف قبلها.',
+  'lock.prev': 'عرض توضيحي',
+  'lock.unlock': 'افتحها مع {plan}: {price} في الشهر',
+  'lock.sc': 'شوف أنهي مورد بيتأخر أكتر، وبتصرف قد إيه مع كل واحد، وكل مورد محتاج مخزون أمان قد إيه.',
+  'lock.gr': 'شوف مبيعات كل منتج الحقيقية وتوقعها في رسم واحد، ومتعلم عليه أسبوع إعادة الطلب.',
+  'lock.dead': 'شوف أنهي منتجات وقفت بيع، وقد إيه فلوس محبوسة فيها.',
+  'lock.cash': 'شوف هتدفع للموردين قد إيه كل أسبوع في الشهور الجاية، قبل ما ده يحصل.',
   'plan.trialTag': 'تجربة مجانية',
   'err.BAD_EMAIL': 'اكتب إيميل صحيح.',
   'err.WAIT': 'استنى دقيقة قبل ما تطلب رمز تاني.',
@@ -2523,7 +2685,7 @@ ar: {
   'learn.title': 'الأداة اتعلمت إيه عن محلك',
   'learn.months': 'تاريخ المبيعات اللي بتستخدمه',
   'learn.monthsV': '{n} شهر',
-  'learn.monthsS': 'بيتحفظ ويتستخدم كل ما تضيف شهور. من 24 شهر بتتعلم المواسم من مبيعاتك انت.',
+  'learn.monthsS': 'بيتحفظ ويتستخدم كل ما تضيف شهور. لما توصل 24 شهر بتتعلم المواسم من مبيعاتك انت.',
   'learn.season': 'منتجات لقت لها موسم',
   'learn.seasonS': 'من {n} ليهم تاريخ سنتين. بتعتمد على الموسم على قد ما سنينك متفقة عليه.',
   'learn.seasonNone': 'محتاجة سنتين',
@@ -2629,7 +2791,7 @@ const sess = {
 const legalLink = (page, key) => '<a href="' + CFG.siteUrl + '/#' + page + '" target="_blank" rel="noopener">' + esc(t(key)) + '</a>';
 const S = { selectMode: false, selected: new Set(), sid: store.get('es7.sid'), me: null, ws: null, res: null, rev: 0, tab: store.get('es7.tab') || 'dash',
             dirty: false, saving: false, timer: null, retry: null, filter: 'ALL', healthOnly: true, loginEmail: '', undo: null,
-            loginMode: 'signin', trialPick: 'pro', guest: null, pend: null, paid: null, bill: null, billPick: null, billForm: null, billOpen: false, payReturn: null, payConfirmed: false };
+            loginMode: 'signin', trialPick: 'pro', billInt: null, openBill: false, guest: null, pend: null, paid: null, bill: null, billPick: null, billForm: null, billOpen: false, payReturn: null, payConfirmed: false };
 let LANG = store.get('es7.lang') || ((navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en');
 
 function t(key, vars) {
@@ -2767,7 +2929,7 @@ function renderLoginMode() {
   const box = $('#trial-plans');
   box.hidden = !trial;
   box.innerHTML = trial ? ['basic', 'pro', 'store'].map(p => planOption(p, S.trialPick, 'trialPick', t('login.trialDays', { n: CFG.trialDays[p] }),
-    t('login.then', { price: money(CFG.prices[p]) }) + ' ' + t('bill.feat.' + p))).join('') : '';
+    t('login.then', { price: money(CFG.prices[p]), yprice: money(CFG.prices[p] * CFG.yearMonths) }) + ' ' + t('bill.feat.' + p))).join('') : '';
   $('#login-plans').innerHTML = trial
     ? esc(t('login.haveAcct')) + ' <button type="button" class="linkbtn" data-act="loginMode" data-m="signin">' + esc(t('login.signinLink')) + '</button>'
     : esc(t('login.newHere')) + ' <button type="button" class="linkbtn" data-act="loginMode" data-m="trial">' + esc(t('login.startTrial')) + '</button>';
@@ -2834,6 +2996,7 @@ async function boot() {
   setStatus('saved');
   showNotices(r.notices);
   payNotice();
+  if (S.openBill) { S.openBill = false; openBilling(); }
 }
 
 function setStatus(key) {
@@ -2909,21 +3072,34 @@ function billMsg(text, kind) {
   el.textContent = text || '';
   el.hidden = !text;
 }
+// Monthly or yearly: the shop's choice on this screen, else the period it is on now.
+const billInt = b => S.billInt === 'year' || S.billInt === 'month' ? S.billInt : (b && b.interval === 'year' ? 'year' : 'month');
+const priceFor = (b, p, int) => int === 'year' ? (b.yearPrices ? b.yearPrices[p] : b.prices[p] * CFG.yearMonths) : b.prices[p];
+const startsFor = (b, p, int) => (int === 'year' && b.startsOnYear ? b.startsOnYear : b.startsOn)[p];
+const samePlan = (b, pick) => pick === b.plan && billInt(b) === (b.interval === 'year' ? 'year' : 'month');
 function billSummary(b, pick) {
-  if (pick === b.plan && /_canceling$/.test(b.state)) return esc(t('bill.sumKeep', { date: fmtDate(b.paidUntil) }));
-  if (pick === b.plan && (b.state === 'active' || b.state === 'trial')) return esc(t('bill.sumSame'));
-  if (b.trialOffer) return esc(t(/^trial/.test(b.state) ? 'bill.sumTrialSwitch' : 'bill.sumTrialStart', { price: money(b.prices[pick]), date: fmtDate(b.startsOn[pick]), check: money(b.checkEGP) }));
-  let s = t('bill.sumNew', { price: money(b.prices[pick]), date: fmtDate(b.startsOn[pick]) });
-  if (/^active/.test(b.state) && pick !== b.plan) s += ' ' + t('bill.sumCredit');
+  const int = billInt(b), per = t('bill.per.' + int);
+  if (samePlan(b, pick) && /_canceling$/.test(b.state)) return esc(t('bill.sumKeep', { date: fmtDate(b.paidUntil) }));
+  if (samePlan(b, pick) && (b.state === 'active' || b.state === 'trial')) return esc(t('bill.sumSame'));
+  if (b.trialOffer) return esc(t(/^trial/.test(b.state) ? 'bill.sumTrialSwitch' : 'bill.sumTrialStart', { price: money(priceFor(b, pick, int)), per: per, date: fmtDate(startsFor(b, pick, int)), check: money(b.checkEGP) }));
+  let s = t('bill.sumNew', { price: money(priceFor(b, pick, int)), date: fmtDate(startsFor(b, pick, int)) });
+  if (/^active/.test(b.state) && !samePlan(b, pick)) s += ' ' + t('bill.sumCredit');
   return esc(s);
 }
-const payLabel = (b, pick) => pick === b.plan && /_canceling$/.test(b.state) ? t('bill.keep')
-  : b.trialOffer ? t(/^trial/.test(b.state) ? 'bill.switchPlan' : 'bill.startTrial') : t('bill.pay', { price: money(b.prices[pick]) });
-const payDisabled = (b, pick) => pick === b.plan && (b.state === 'active' || b.state === 'trial');
+const payLabel = (b, pick) => samePlan(b, pick) && /_canceling$/.test(b.state) ? t('bill.keep')
+  : b.trialOffer ? t(/^trial/.test(b.state) ? 'bill.switchPlan' : 'bill.startTrial') : t('bill.pay', { price: money(priceFor(b, pick, billInt(b))) });
+const payDisabled = (b, pick) => samePlan(b, pick) && (b.state === 'active' || b.state === 'trial');
 // What the shop agrees to before paying: the policies, and exactly what will be charged and when.
 function agreeText(b, pick) {
-  const v = { terms: legalLink('terms', 'legal.terms'), refunds: legalLink('refunds', 'legal.refunds'), privacy: legalLink('privacy', 'legal.privacy'), price: esc(money(b.prices[pick])), date: esc(fmtDate(b.startsOn[pick])) };
+  const int = billInt(b);
+  const v = { terms: legalLink('terms', 'legal.terms'), refunds: legalLink('refunds', 'legal.refunds'), privacy: legalLink('privacy', 'legal.privacy'), price: esc(money(priceFor(b, pick, int))), date: esc(fmtDate(startsFor(b, pick, int))), every: esc(t('bill.every.' + int)) };
   return t(b.trialOffer ? 'bill.agreeTrial' : 'bill.agreePaid', v);
+}
+// The first 30 shops to pay keep today's price while subscribed: say so plainly, with the places left.
+function foundingNote(b) {
+  if (b.founding) return '<p class="founding on">' + esc(t('bill.founding', { n: b.founding, spots: b.foundingSpots || CFG.foundingSpots })) + '</p>';
+  if (b.foundingLeft > 0) return '<p class="founding">' + esc(t('bill.foundingOffer', { spots: b.foundingSpots || CFG.foundingSpots, left: b.foundingLeft })) + '</p>';
+  return '';
 }
 // The plan picker, used on the payment screen and in Settings.
 function chooserHtml(b) {
@@ -2932,7 +3108,13 @@ function chooserHtml(b) {
   const pick = b.prices[S.billPick] ? S.billPick : b.plan;
   const live = ['active', 'active_canceling', 'trial', 'trial_canceling', 'past_due'].includes(b.state);
   const f = S.billForm || { name: b.name, phone: b.phone };
-  return '<div class="tplans">' + ['basic', 'pro', 'store'].map(p => planOption(p, pick, 'billPick', t('bill.perMonth', { price: money(b.prices[p]) }), t('bill.feat.' + p), live && p === b.plan)).join('') + '</div>' +
+  const int = billInt(b), curInt = b.interval === 'year' ? 'year' : 'month';
+  const seg = ['month', 'year'].map(x => '<label class="seg' + (x === int ? ' on' : '') + '"><input type="radio" name="billInt" value="' + x + '" data-act="billInt"' + (x === int ? ' checked' : '') + '>' +
+    esc(t('bill.int.' + x)) + (x === 'year' ? ' <small>' + esc(t('bill.int.save')) + '</small>' : '') + '</label>').join('');
+  const side = p => int === 'year' ? t('bill.perYear', { price: money(priceFor(b, p, 'year')) }) : t('bill.perMonth', { price: money(b.prices[p]) });
+  const note = p => (int === 'year' ? t('bill.yearNote', { price: money(Math.round(priceFor(b, p, 'year') / 12)) }) + ' ' : '') + t('bill.feat.' + p);
+  return foundingNote(b) + '<fieldset class="segs"><legend class="sr">' + esc(t('bill.int')) + '</legend>' + seg + '</fieldset>' +
+    '<div class="tplans">' + ['basic', 'pro', 'store'].map(p => planOption(p, pick, 'billPick', side(p), note(p), live && p === b.plan && int === curInt)).join('') + '</div>' +
     '<div class="bill-fields"><div><label for="b-name">' + esc(t('bill.name')) + '</label><input id="b-name" type="text" autocomplete="name" maxlength="60" value="' + esc(f.name || '') + '"></div>' +
     '<div><label for="b-phone">' + esc(t('bill.phone')) + '</label><input id="b-phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" dir="ltr" placeholder="01XXXXXXXXX" value="' + esc(f.phone || '') + '"></div></div>' +
     '<p class="bill-sum" id="bill-sum">' + billSummary(b, pick) + '</p>' +
@@ -2958,15 +3140,18 @@ function toSignIn(email, msg, kind) {
 async function toGuestCard(email) {
   S.guest = { email: email };
   S.billPick = S.trialPick; S.billForm = null;
-  try { const f = JSON.parse(sess.get('es7.ckForm') || 'null'); if (f) S.billForm = { name: f.name || '', phone: f.phone || '' }; } catch (e) {}
+  try { const f = JSON.parse(sess.get('es7.ckForm') || 'null'); if (f) { S.billForm = { name: f.name || '', phone: f.phone || '' }; if (f.interval === 'year' || f.interval === 'month') S.billInt = f.interval; } } catch (e) {}
   $('#paywall').classList.add('guest');
   show('paywall');
   $('#bill-card').innerHTML = '<div class="spinner" style="margin:40px auto"></div>';
   const info = await gs('trialInfo');
   const startsOn = {};
   Object.keys(CFG.trialDays).forEach(p => { startsOn[p] = new Date(Date.now() + CFG.trialDays[p] * 86400000).toISOString().slice(0, 10); });
-  S.bill = { ready: info.ok ? info.ready : true, testMode: !!info.testMode, prices: info.prices || CFG.prices, trialDays: info.trialDays || CFG.trialDays, startsOn: startsOn,
-    trialOffer: true, state: 'none', plan: S.trialPick, checkEGP: info.checkEGP || 1, name: '', phone: '' };
+  const prices = info.prices || CFG.prices, ym = info.yearMonths || CFG.yearMonths, yearPrices = {};
+  Object.keys(prices).forEach(p => { yearPrices[p] = prices[p] * ym; });
+  S.bill = { ready: info.ok ? info.ready : true, testMode: !!info.testMode, prices: prices, yearPrices: yearPrices, trialDays: info.trialDays || CFG.trialDays, startsOn: startsOn, startsOnYear: startsOn,
+    trialOffer: true, state: 'none', plan: S.trialPick, interval: 'month', checkEGP: info.checkEGP || 1, name: '', phone: '',
+    foundingLeft: info.foundingLeft || 0, foundingSpots: info.foundingSpots || CFG.foundingSpots };
   renderBilling();
 }
 // Paymob sent the shop back here (or it came back later). Ask the server how that payment went, using the
@@ -2989,7 +3174,7 @@ async function guestReturn() {
   $('#email').value = r.email;
   if (r.state === 'paid') {
     S.paid = { email: r.email, signedInBefore: r.signedInBefore };
-    loginMsg(t('login.paidOk', { plan: t('plan.' + r.plan), date: fmtDate(r.firstCharge), price: money(r.price) }) + (r.signedInBefore ? '' : ' ' + t('login.paidFix')), 'ok');
+    loginMsg(t('login.paidOk', { plan: t('plan.' + r.plan), date: fmtDate(r.firstCharge), price: money(r.price), per: t('bill.per.' + (r.interval === 'year' ? 'year' : 'month')) }) + (r.signedInBefore ? '' : ' ' + t('login.paidFix')), 'ok');
     return;
   }
   if (r.state === 'failed' && back) { S.trialPick = r.plan; await toGuestCard(r.email); billMsg(t('bill.notPaid'), 'bad'); return; }
@@ -3032,15 +3217,16 @@ function billingSection() {
   const b = S.bill;
   if (!b) return '';
   const P = t('plan.' + b.plan), open = S.billOpen && b.state !== 'comp';
+  const curInt = b.interval === 'year' ? 'year' : 'month', per = t('bill.per.' + curInt);
   let line = '', acts = '', bad = false;
   if (b.state === 'trial') {
-    line = t('bill.stTrial', { plan: P, date: fmtDate(b.paidUntil), left: leftText(b.paidUntil), price: money(b.prices[b.plan]) });
+    line = t('bill.stTrial', { plan: P, date: fmtDate(b.paidUntil), left: leftText(b.paidUntil), price: money(priceFor(b, b.plan, curInt)), per: per });
     acts = (open ? '' : btn(t('bill.change'), 'billOpen')) + (b.canCancel ? btn(t('bill.cancel'), 'billCancel', '', 'danger') : '');
   } else if (b.state === 'trial_canceling') {
     line = t('bill.stTrialCanceling', { plan: P, date: fmtDate(b.paidUntil) });
     acts = (b.canResume ? btn(t('bill.keep'), 'billResume', '', 'primary') : '') + (open ? '' : btn(t('bill.change'), 'billOpen'));
   } else if (b.state === 'active') {
-    line = b.renews ? t('bill.stActive', { plan: P, price: money(b.prices[b.plan]), date: fmtDate(b.paidUntil) }) : t('bill.stPaid', { plan: P, date: fmtDate(b.paidUntil) });
+    line = b.renews ? t('bill.stActive', { plan: P, price: money(priceFor(b, b.plan, curInt)), per: per, date: fmtDate(b.paidUntil) }) : t('bill.stPaid', { plan: P, date: fmtDate(b.paidUntil) });
     acts = (open ? '' : btn(t('bill.change'), 'billOpen')) + (b.canCancel ? btn(t('bill.cancel'), 'billCancel', '', 'danger') : '');
   } else if (b.state === 'active_canceling') {
     line = t('bill.stCanceling', { plan: P, date: fmtDate(b.paidUntil) });
@@ -3056,9 +3242,47 @@ function billingSection() {
   return '<div class="section" id="billing"><h2>' + esc(t('bill.title')) + '</h2>' +
     (b.testMode && b.ready && b.state !== 'comp' ? '<p class="testmode">' + esc(t('bill.test')) + '</p>' : '') +
     '<div class="panel bill-panel' + (bad ? ' bad' : '') + '"><p>' + esc(line) + '</p>' + (acts ? '<div class="actions">' + acts + '</div>' : '') + '</div>' +
+    (b.founding && !open ? foundingNote(b) : '') +
     (b.pending && b.pending.failed ? '<div class="alert bad"><span>' + esc(t('bill.lastFailed')) + '</span></div>' : '') +
-    (open ? '<div class="panel bill-choose">' + chooserHtml(b) + '</div>' : '') + '</div>';
+    (open ? '<div class="panel bill-choose">' + chooserHtml(b) + '</div>' : '') + '</div>' + prefsSection();
 }
+// Settings, Emails: the Sunday summary, on unless the shop turns it off.
+function prefsSection() {
+  if (!S.me || !S.me.prefs) return '';
+  const on = S.me.prefs.digest !== false;
+  return '<div class="section" id="emails"><h2>' + esc(t('set.mail')) + '</h2><div class="field"><label class="switch"><input type="checkbox" data-act="digestToggle"' + (on ? ' checked' : '') + '>' +
+    '<span>' + esc(t('set.digest')) + '</span></label><div class="help">' + esc(t('set.digestH')) + '</div></div></div>';
+}
+// Stopping renewal: say what happens (the app pauses, data stays), offer a cheaper plan that fits, ask why (optional).
+function cancelDialog(b) {
+  return new Promise(resolve => {
+    const ov = $('#overlay'), n = S.ws.products.length, int = b.interval === 'year' ? 'year' : 'month';
+    const lower = ['basic', 'pro'].find(p => PLAN_RANK[p] < PLAN_RANK[b.plan] && n <= PLAN_PRODUCTS[p]) || null;
+    const reasons = ['price', 'not_needed', 'season', 'too_hard', 'missing', 'other_tool', 'other'];
+    ov.innerHTML = '<div class="dialog cxdlg" role="dialog" aria-modal="true" aria-labelledby="dlg-t"><h2 id="dlg-t">' + esc(t('cx.title')) + '</h2>' +
+      '<p>' + esc(t('cx.keep', { plan: t('plan.' + b.plan), date: fmtDate(b.paidUntil) })) + '</p>' +
+      (b.founding ? '<p class="small">' + esc(t('cx.founding', { n: b.founding })) + '</p>' : '') +
+      (lower ? '<div class="cx-down"><p>' + esc(t('cx.down', { n: n, plan: t('plan.' + lower), price: money(priceFor(b, lower, int)), per: t('bill.per.' + int) })) + '</p>' +
+        '<button type="button" class="btn" data-r="down">' + esc(t('cx.downBtn', { plan: t('plan.' + lower) })) + '</button></div>' : '') +
+      '<fieldset class="cx-why"><legend>' + esc(t('cx.why')) + '</legend>' + reasons.map(r => '<label><input type="radio" name="cxr" value="' + r + '"> ' + esc(t('cx.r.' + r)) + '</label>').join('') + '</fieldset>' +
+      '<label class="cx-nl" for="cx-note">' + esc(t('cx.note')) + '</label><textarea id="cx-note" maxlength="300" rows="2"></textarea>' +
+      '<div class="actions"><button type="button" class="btn danger" data-r="1">' + esc(t('cx.stop')) + '</button><button type="button" class="btn primary" data-r="0">' + esc(t('cx.back')) + '</button></div></div>';
+    ov.hidden = false;
+    const done = r => { ov.hidden = true; ov.innerHTML = ''; document.removeEventListener('keydown', onKey); resolve(r); };
+    const onKey = e => { if (e.key === 'Escape') done(null); };
+    document.addEventListener('keydown', onKey);
+    ov.onclick = e => {
+      const x = e.target.closest('[data-r]');
+      if (!x) { if (e.target === ov) done(null); return; }
+      if (x.dataset.r === 'down') { done({ down: lower }); return; }
+      if (x.dataset.r === '0') { done(null); return; }
+      const pickR = ov.querySelector('input[name="cxr"]:checked');
+      done({ reason: pickR ? pickR.value : '', note: (ov.querySelector('#cx-note').value || '').trim() });
+    };
+    ov.querySelector('[data-r="0"]').focus();
+  });
+}
+const PLAN_RANK = { basic: 0, pro: 1, store: 2 }, PLAN_PRODUCTS = { basic: 15, pro: 50, store: 200 };
 // A slim line above every page while the trial runs, renewal is off, or a payment failed.
 function renderPlanBar() {
   const bar = $('#planbar'), b = S.bill;
@@ -3253,6 +3477,17 @@ function emptyBox(title, text, actions) {
 }
 const btn = (label, act, attrs, cls) => '<button type="button" class="btn ' + (cls || '') + '" data-act="' + act + '"' + (attrs || '') + '>' + esc(label) + '</button>';
 const sub = key => '<span class="sub">' + esc(t(key)) + '</span>';
+function lockedPreview(kind, lockedKey, need) {
+  const price = money(S.bill && S.bill.prices && S.bill.prices[need] ? S.bill.prices[need] : CFG.prices[need]);
+  const bars = w => '<i style="width:' + w + '%"></i>';
+  const mock = kind === 'gr' || kind === 'cash'
+    ? '<svg viewBox="0 0 400 150" preserveAspectRatio="none"><path d="M0 120 L50 95 L100 105 L150 70 L200 80 L250 50 L300 65 L350 40 L400 55" fill="none" stroke="currentColor" stroke-width="4"/>' +
+      '<path d="M0 135 L50 125 L100 128 L150 110 L200 115 L250 95 L300 100 L350 85 L400 90" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/></svg>'
+    : '<div class="lp-rows">' + [72, 54, 88, 40, 63].map(w => '<div>' + bars(28) + bars(w / 2) + bars(w / 3) + '</div>').join('') + '</div>';
+  return '<div class="lockprev"><div class="lp-mock" aria-hidden="true">' + mock + '</div><span class="lp-tag">' + esc(t('lock.prev')) + '</span>' +
+    '<div class="lp-card"><p><b>' + esc(t('lock.' + kind)) + '</b></p><p class="small muted">' + esc(t(lockedKey)) + '</p>' +
+    btn(t('lock.unlock', { plan: t('plan.' + need), price: price }), 'billOpen', ' data-plan="' + need + '"', 'primary') + '</div></div>';
+}
 const upgradeLink = () => ' <a href="#" data-act="billOpen" data-plan="pro">' + esc(t('upgrade')) + '</a>';
 // What the next tier up actually offers. Store is the top tier, so it gets no upsell at all.
 function upsellText() {
@@ -3538,11 +3773,44 @@ function impApply() {
 }
 
 /* ---------- Dashboard ---------- */
+// Getting started: five steps that make the numbers right, ticked from the shop's own data.
+function checklist() {
+  if (store.get('es7.chkHide') === '1') return '';
+  const ws = S.ws, orders = ws.orders || [];
+  const steps = [
+    ['chk.sup', ws.suppliers.length > 0, 'suppliers'],
+    ['chk.prod', ws.products.some(p => (p.sales || []).filter(v => v != null).length >= 3), 'products'],
+    ['chk.stock', ws.products.some(p => p.onHand > 0), 'products'],
+    ['chk.order', orders.length > 0, 'ordered'],
+    ['chk.recv', orders.some(o => o.status === 'received'), 'ordered']
+  ];
+  const k = steps.filter(x => x[1]).length;
+  if (k === steps.length) return '';
+  return '<div class="panel chk"><div class="chk-head"><h2>' + esc(t('chk.title', { k: k, n: steps.length })) + '</h2>' + btn(t('chk.hide'), 'chkHide', '', 'small') + '</div>' +
+    '<i class="lbar" role="presentation"><i style="width:' + Math.round(100 * k / steps.length) + '%"></i></i><ol>' +
+    steps.map(x => '<li class="' + (x[1] ? 'done' : '') + '">' + (x[1] ? '<span class="tick" aria-hidden="true">✓</span>' : '<span class="tick" aria-hidden="true"></span>') +
+      (x[1] ? '<span>' + esc(t(x[0])) + '</span>' : '<a href="#" data-act="tab" data-tab="' + x[2] + '">' + esc(t(x[0])) + '</a>')).join('</li>') + '</li></ol></div>';
+}
+// During the free trial: what the app has already found in the shop's own data, and the plan that fits.
+function trialValue() {
+  const b = S.bill;
+  if (!b || b.state !== 'trial' || !S.res.rows.some(r => r.n > 0)) return '';
+  const d = S.res.dash, n = S.ws.products.length, int = b.interval === 'year' ? 'year' : 'month';
+  const need = d.decisions.CRITICAL + d.decisions.ORDER;
+  const items = [need ? t('tv.order', { n: need, v: money(d.orderValue) }) : t('tv.orderNone')];
+  if (d.overstockValue > 0) items.push(t('tv.over', { v: money(d.overstockValue) }));
+  if (S.me.limits.deadStock && d.deadCount > 0) items.push(t('tv.dead', { n: d.deadCount, v: money(d.deadValue) }));
+  const fit = ['basic', 'pro', 'store'].find(p => n <= PLAN_PRODUCTS[p]) || 'store';
+  return '<div class="panel tval"><h2>' + esc(t('tv.title', { left: leftText(b.paidUntil) })) + '</h2><p>' + esc(t('tv.found')) + '</p><ul>' +
+    items.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
+    (PLAN_RANK[fit] < PLAN_RANK[b.plan] ? '<p class="small">' + esc(t('tv.fit', { n: n, plan: t('plan.' + fit), price: money(priceFor(b, fit, int)), per: t('bill.per.' + int) })) + '</p>' : '') +
+    '<p class="small muted">' + esc(t('tv.first', { date: fmtDate(b.paidUntil) })) + '</p>' + btn(t('bill.manage'), 'billOpen', '', 'small') + '</div>';
+}
 VIEWS.dash = () => {
   const d = S.res.dash;
   const hasData = S.res.rows.some(r => r.n > 0);
   if (!hasData) {
-    return head(t('dash.title'), t('dash.lede')) +
+    return head(t('dash.title'), t('dash.lede')) + checklist() +
       emptyBox(t('dash.emptyT'), t('dash.emptyP'),
         btn(t('nav.suppliers'), 'tab', ' data-tab="suppliers"', 'primary') + btn(t('nav.products'), 'tab', ' data-tab="products"') + btn(t('start.loadSample'), 'sample'));
   }
@@ -3579,7 +3847,7 @@ VIEWS.dash = () => {
     '<tr><td class="name">' + bdi(a.name || t('unnamed')) + '</td><td>' + bdi(a.supplierName || t('plan.noSup')) + '</td><td>' + verdict(a.decision) +
     '</td><td class="num">' + n0(a.qty) + '</td><td class="num">' + money(a.value) + '</td></tr>').join('');
 
-  return head(t('dash.title'), t('dash.lede')) + today + alerts +
+  return head(t('dash.title'), t('dash.lede')) + trialValue() + checklist() + today + alerts +
     '<div class="section">' + kpis + '</div>' +
     '<div class="section">' + learnedPanel() + '</div>' +
     '<div class="section two">' +
@@ -3851,12 +4119,16 @@ function shopChart() {
 function learnedPanel() {
   const L = S.res.dash && S.res.dash.learn; if (!L) return '';
   const d = S.res.dash, twoYear = L.learnedProducts;
-  const kpi = (title, val, small) => '<div class="kpi"><span>' + esc(title) + '</span><b>' + esc(val) + '</b><small>' + esc(small) + '</small></div>';
+  // progress toward what it can learn: a thin bar under the number
+  const kpi = (title, val, small, part) => '<div class="kpi"><span>' + esc(title) + '</span><b>' + esc(val) + '</b>' +
+    (part != null ? '<i class="lbar" role="presentation"><i style="width:' + Math.round(Math.max(0, Math.min(1, part)) * 100) + '%"></i></i>' : '') + '<small>' + esc(small) + '</small></div>';
+  const sup = (S.ws.suppliers || []).length;
   const leads = (L.leads || []).map(x => t('learn.leadLine', { s: x.name || t('unnamed'), a: n0(x.learned), b: n0(x.typed) }));
   return '<h2 style="margin:6px 0 10px">' + esc(t('learn.title')) + '</h2><div class="kpis" style="margin-bottom:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">' +
-    kpi(t('learn.months'), t('learn.monthsV', { n: L.months }), t('learn.monthsS')) +
+    kpi(t('learn.months'), L.months < 24 ? t('learn.monthsOf', { n: L.months }) : t('learn.monthsV', { n: L.months }), t('learn.monthsS'), L.months < 24 ? L.months / 24 : null) +
     (twoYear ? kpi(t('learn.season'), L.seasonalProducts + ' / ' + twoYear, t('learn.seasonS', { n: twoYear })) : kpi(t('learn.season'), t('learn.seasonNone'), t('learn.seasonNoneS'))) +
-    (leads.length ? kpi(t('learn.lead'), String(leads.length), leads.join(' · ')) : kpi(t('learn.lead'), '0', t('learn.leadNone'))) +
+    (leads.length ? kpi(t('learn.lead'), sup ? t('learn.leadOf', { k: leads.length, m: sup }) : String(leads.length), leads.join(' · '), sup ? leads.length / sup : null)
+      : kpi(t('learn.lead'), sup ? t('learn.leadOf', { k: 0, m: sup }) : '0', t('learn.leadNone'), sup ? 0 : null)) +
     (d.accuracyN ? kpi(t('learn.acc'), Math.round(d.accuracy * 100) + '%', t('learn.accS', { n: d.accuracyN })) : kpi(t('learn.acc'), t('na'), t('learn.accNone'))) +
     '</div>';
 }
@@ -4060,7 +4332,7 @@ function reorderTimeline() {
 
 VIEWS.trends = () => {
   if (!S.me.limits.graphs) {
-    return head(t('gr.title'), t('gr.lede')) + '<div class="alert info"><span>' + esc(t('gr.locked')) + upsellLink('store') + '</span></div>';
+    return head(t('gr.title'), t('gr.lede')) + lockedPreview('gr', 'gr.locked', 'store');
   }
   const bands = S.res.bands || [];
   if (!bands.length) {
@@ -4076,8 +4348,7 @@ VIEWS.trends = () => {
 /* ---------- Suppliers scorecard ---------- */
 VIEWS.score = () => {
   if (!S.me.limits.scorecard) {
-    return head(t('sc.title'), t('sc.lede')) +
-      '<div class="alert info"><span>' + esc(t('sc.locked')) + upsellLink('pro') + '</span></div>';
+    return head(t('sc.title'), t('sc.lede')) + lockedPreview('sc', 'sc.locked', 'pro');
   }
   const list = (S.res.scorecard || []).filter(sc => sc.products > 0);
   if (!list.length) {
@@ -4128,7 +4399,7 @@ function whyText(r) {
 /* ---------- Dead stock report ---------- */
 VIEWS.dead = () => {
   if (!S.me.limits.deadStock) {
-    return head(t('dead.title'), t('dead.lede')) + '<div class="alert info"><span>' + esc(t('dead.locked')) + upsellLink('store') + '</span></div>';
+    return head(t('dead.title'), t('dead.lede')) + lockedPreview('dead', 'dead.locked', 'store');
   }
   const list = S.res.rows.filter(r => r.isDead).slice().sort((a, b) => b.deadValue - a.deadValue);
   if (!list.length) return head(t('dead.title'), t('dead.lede')) + emptyBox(t('dead.empty'), t('dead.emptyP'));
@@ -4148,7 +4419,7 @@ VIEWS.dead = () => {
 /* ---------- Cash flow forecast ---------- */
 VIEWS.cash = () => {
   if (!S.me.limits.cashFlow) {
-    return head(t('cash.title'), t('cash.lede')) + '<div class="alert info"><span>' + esc(t('cash.locked')) + upsellLink('pro') + '</span></div>';
+    return head(t('cash.title'), t('cash.lede')) + lockedPreview('cash', 'cash.locked', 'pro');
   }
   const cf = S.res.cashFlow;
   if (!cf || !cf.lines.length) return head(t('cash.title'), t('cash.lede')) + emptyBox(t('cash.empty'), t('cash.emptyP'));
@@ -4406,6 +4677,21 @@ const ACTIONS = {
     S.trialPick = S.billPick || S.trialPick; S.guest = null; $('#paywall').classList.remove('guest');
     S.loginMode = 'trial'; toLogin(); $('#email').value = S.loginEmail || '';
   },
+  billInt: el => {
+    S.billInt = el.value === 'year' ? 'year' : 'month';
+    saveForm();
+    if (!$('#paywall').hidden) renderBilling(); else if (S.tab === 'settings') renderTab();
+    const r = document.querySelector('input[name="billInt"][value="' + S.billInt + '"]'); if (r) r.focus();
+  },
+  digestToggle: async el => {
+    const want = !!el.checked;
+    const r = await call('prefs', { digest: want });
+    if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
+    if (!r.ok) { el.checked = !want; toast(t('err.' + (r.error || 'SERVER'))); return; }
+    S.me.prefs = r.prefs;
+    toast(t(r.prefs.digest ? 'set.digestOn' : 'set.digestOff'));
+  },
+  chkHide: () => { store.set('es7.chkHide', '1'); renderTab(); },
   billPick: el => {
     S.billPick = el.value;
     $$('.tplan input[name="billPick"]').forEach(x => x.closest('.tplan').classList.toggle('on', x.checked));
@@ -4416,16 +4702,16 @@ const ACTIONS = {
     billMsg('');
   },
   billPay: async el => {
-    const b = S.bill, plan = b.prices[S.billPick] ? S.billPick : b.plan;
+    const b = S.bill, plan = b.prices[S.billPick] ? S.billPick : b.plan, interval = billInt(b);
     saveForm();
-    const needAgree = !(plan === b.plan && /_canceling$/.test(b.state));
+    const needAgree = !(samePlan(b, plan) && /_canceling$/.test(b.state));
     if (needAgree && !S.billForm.agree) { billMsg(t('err.NEED_CONSENT'), 'bad'); $('#b-agree').focus(); return; }
     if (S.guest) {
       el.disabled = true;
       billMsg(t('bill.going'), 'info');
       const email = S.guest.email, f = S.billForm || {};
-      sess.set('es7.ckForm', JSON.stringify({ plan: plan, email: email, name: f.name, phone: f.phone }));
-      const g = await gs('startTrial', { plan: plan, email: email, name: f.name, phone: f.phone, agree: true, termsVersion: TERMS_VERSION }, LANG);
+      sess.set('es7.ckForm', JSON.stringify({ plan: plan, interval: interval, email: email, name: f.name, phone: f.phone }));
+      const g = await gs('startTrial', { plan: plan, interval: interval, email: email, name: f.name, phone: f.phone, agree: true, termsVersion: TERMS_VERSION }, LANG);
       if (g.ok && g.url && g.ref) { store.set('es7.pending', JSON.stringify({ ref: g.ref, email: email.toLowerCase(), plan: plan, at: Date.now() })); location.href = g.url; return; }
       el.disabled = false;
       if (g.error === 'HAS_ACCOUNT') { toSignIn(email, t('err.HAS_ACCOUNT'), 'info'); return; }
@@ -4433,10 +4719,10 @@ const ACTIONS = {
       billMsg(t('err.' + (g.error || 'SERVER')), 'bad');
       return;
     }
-    if (plan === b.plan && /_canceling$/.test(b.state)) { ACTIONS.billResume(); return; }
+    if (samePlan(b, plan) && /_canceling$/.test(b.state)) { ACTIONS.billResume(); return; }
     el.disabled = true;
     billMsg(t('bill.going'), 'info');
-    const r = await gs('api', S.sid, 'checkout', { plan: plan, name: S.billForm.name, phone: S.billForm.phone, agree: true, termsVersion: TERMS_VERSION }, LANG);
+    const r = await gs('api', S.sid, 'checkout', { plan: plan, interval: interval, name: S.billForm.name, phone: S.billForm.phone, agree: true, termsVersion: TERMS_VERSION }, LANG);
     if (r.ok && r.url) { location.href = r.url; return; }
     el.disabled = false;
     if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
@@ -4445,9 +4731,10 @@ const ACTIONS = {
   },
   billCancel: async () => {
     const b = S.bill;
-    const ok = await dialog({ title: t('bill.cancelQ'), body: t('bill.cancelP', { plan: t('plan.' + b.plan), date: fmtDate(b.paidUntil) }), ok: t('bill.cancel'), danger: true });
-    if (!ok) return;
-    const r = await call('cancel');
+    const ans = await cancelDialog(b);
+    if (!ans) return;
+    if (ans.down) { S.billInt = b.interval === 'year' ? 'year' : 'month'; openBilling(ans.down); return; }
+    const r = await call('cancel', { reason: ans.reason, note: ans.note });
     if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
     if (!r.ok) { toast(t('err.' + (r.error || 'SERVER'))); return; }
     S.bill = r.billing;
@@ -4720,6 +5007,8 @@ function init() {
   // ?start=pro from the website opens the free trial sign-up; Paymob sends people back with ?success=...&order=...
   const qs = new URLSearchParams(location.search);
   if (qs.has('start')) { S.loginMode = 'trial'; if (CFG.prices[qs.get('start')]) S.trialPick = qs.get('start'); }
+  if (qs.has('billing')) S.openBill = true; // the link in billing emails: straight to Plan and billing
+  const unsub = qs.get('unsub');
   if (qs.has('success') && (qs.has('order') || qs.has('id'))) S.payReturn = qs.get('success') === 'true' ? 'ok' : 'fail';
   // A new shop's payment: this browser kept its reference when it opened the card page.
   S.pend = qs.has('start') ? null : readPending();
@@ -4729,6 +5018,7 @@ function init() {
   if (fromSite) { store.del('es7.signinEmail'); S.loginEmail = fromSite; }
   if (location.search) history.replaceState(null, '', location.pathname + location.hash);
   applyStatic();
+  if (unsub) gs('unsubscribe', unsub).then(r => toast(t(r.ok ? 'unsub.done' : 'unsub.bad')));
   if (S.loginEmail) $('#email').value = S.loginEmail;
   $('#f-email').addEventListener('submit', sendCode);
   $('#skipLink').addEventListener('click', e => { // straight to the form or the page content, past the menus
