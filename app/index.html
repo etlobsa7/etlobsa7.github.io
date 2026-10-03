@@ -7,9 +7,7 @@
 <meta charset="utf-8">
 <script>try{var t=localStorage.getItem("es7.theme");document.documentElement.setAttribute("data-theme",(t==="light"||t==="dark")?t:"dark");}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
 <style>
 :root{
   --navy:#3B2F26; --navy-2:#3D362F; --navy-3:#5F4831;
@@ -523,7 +521,7 @@ label > input[type=checkbox]:not(.switch input){margin-inline-end:10px}
   --line:#D1CCC8; --line-2:#DAD7D3;
   --ink:#221D19; --body:#464039; --muted:#69635C; --faint:#817B74;
   --navy-3:#664B30; --accent:#AF773F; --accent-ink:#fff;
-  --ok:#65482A; --ok-bg:#DDEFE4; --order:#664E1A; --order-bg:#F6EBD2; --crit:#A82219; --crit-bg:#F6DEDB; --over:#8E6944; --over-bg:#F0EADE; --none:#736C65; --none-bg:#EEE8DC;
+  --ok:#65482A; --ok-bg:#DDEFE4; --order:#664E1A; --order-bg:#F6EBD2; --crit:#A82219; --crit-bg:#F6DEDB; --over:#7A5A38; --over-bg:#F0EADE; --none:#736C65; --none-bg:#EEE8DC;
   background:var(--paper);color:var(--body);border:1px solid #4E4033;border-radius:var(--r)}
 .graph .gl{color:var(--body)}
 .bars{background:#F0EADF;border-radius:8px;padding:8px 8px 0;border-bottom:0;height:86px;--line:#D1CCC8;--faint:#817B74}
@@ -627,7 +625,7 @@ html[dir="rtl"] .tl-fill{transform-origin:right center;background:linear-gradien
 .tl-dot.crit{border-color:#C0392B;animation:tlpop .35s ease-out both,tlpulse 1.8s ease-out .6s infinite}
 .tl-dot.order{border-color:#D98A00;animation:tlpop .35s ease-out both,tlpulse 1.8s ease-out .6s infinite}
 .tl-empty{background:repeating-linear-gradient(90deg,#DBD9D6 0 6px,transparent 6px 12px);opacity:.8}
-.tl-when{font-size:13px;font-weight:700;color:#926538}
+.tl-when{font-size:13px;font-weight:700;color:#7E5A33}
 .tl-when.crit{color:#A82219}.tl-when.order,.tl-when.near{color:#664E1A}
 .tl-when.later,.tl-when.over,.tl-when.idle{color:var(--muted);font-weight:600}
 @keyframes tlgrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -929,6 +927,11 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
 }
 #paywall.guest .topbar [data-act="logout"]{display:none}
 .guest-for{margin:-8px 0 0;color:var(--muted)}
+/* contrast: small grey text and amber labels at least 4.5:1 in the light theme (WCAG AA) */
+:root[data-theme="light"]{--muted:#655A4F;--over:#7A5A38}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;z-index:300;background:var(--accent);color:var(--accent-ink);padding:10px 14px;border-radius:8px;font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+#view:focus{outline:none}
 /* Ordered stock form and Upcoming orders list */
 .os-form{margin-bottom:22px}
 .os-form h2{margin-bottom:12px}
@@ -966,6 +969,10 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
   .os-top{grid-template-columns:1fr}
   .os-line{grid-template-columns:minmax(0,1fr) 90px 32px}
 }
+.bill-agree{display:flex;gap:10px;align-items:flex-start;margin:12px 0 4px;font-size:13.5px;line-height:1.5;color:var(--body);cursor:pointer;font-weight:400}
+.bill-agree input{flex:0 0 auto;width:20px!important;height:20px;margin-top:2px;padding:0!important;accent-color:var(--accent)}
+.bill-agree a,.legal-links a{color:var(--accent);text-decoration:underline}
+.legal-links{margin-top:16px;font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px}
 /* Order decisions: one block per product, reasoning across the full width under its numbers */
 .t.ord .cs{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:2px;white-space:nowrap}
 .t.ord td.c-name{white-space:normal;min-width:150px}
@@ -994,6 +1001,7 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
 </style>
 </head>
 <body>
+<a class="skip" href="#view" id="skipLink" data-t="skip">Skip to content</a>
 
 <div id="boot" class="boot"><div><div class="spinner"></div><span data-t="boot.loading">Loading your workspace</span></div></div>
 
@@ -1041,6 +1049,7 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
       <div class="login-foot">
         <span id="login-plans"></span>
       </div>
+      <div class="legal-links" id="login-legal"></div>
     </div>
   </div>
 </div>
@@ -1089,7 +1098,7 @@ html[lang="ar"] .tp-cur{letter-spacing:0;font-size:12px}
   </aside>
   <div class="main">
     <div class="planbar" id="planbar" hidden></div>
-    <div class="view" id="view"></div>
+    <div class="view" id="view" tabindex="-1"></div>
   </div>
 </div>
 
@@ -1194,6 +1203,10 @@ en: {
   'bill.pay': 'Pay {price}',
   'bill.keep': 'Keep my plan',
   'bill.secure': 'You pay by card on Paymob\'s secure page. We never see your card number. Stop renewal any time in Settings.',
+  'bill.agreeTrial': 'I agree to the {terms}, the {refunds} and the {privacy}. I understand that 1 EGP is taken today as a card check, and that {price} will be charged to this card on {date} and every month after that, until I stop renewal.',
+  'bill.agreePaid': 'I agree to the {terms}, the {refunds} and the {privacy}. I understand that {price} will be charged to this card today and every month after that, until I stop renewal.',
+  'legal.terms': 'Terms and conditions', 'legal.refunds': 'Refund policy', 'legal.privacy': 'Privacy policy', 'legal.cookies': 'Cookie policy',
+  'err.NEED_CONSENT': 'Please tick the box to agree before continuing.',
   'bill.going': 'Taking you to the secure payment page.',
   'bill.test': 'Test mode: use a Paymob test card. No real money moves.',
   'bill.off': 'Card payments are switching on very soon. Until then, message us on WhatsApp and we will set up your plan by hand.',
@@ -1349,7 +1362,7 @@ en: {
 
   /* start */
   'start.title': 'Start here',
-  'start.lede': 'Fill in the four pages under Inputs (your numbers), in order. Everything under Results / What to do now updates by itself every time you type.',
+  'start.lede': 'Fill in the first four pages under Inputs (your numbers), in order, and add orders you have placed in Ordered stock. Everything under Results / What to do now updates by itself every time you type.',
   'start.s1': 'Settings',
   'start.s1p': 'Two costs: placing one order, and holding stock for a year. Rough numbers are fine.',
   'start.s2': 'Seasons',
@@ -1520,6 +1533,7 @@ en: {
   'wt.done': 'If every number matched, you understand the whole app. Now clear it and type in your own shop.',
   'nav.incoming': 'Upcoming orders',
   'nav.ordered': 'Ordered stock',
+  'skip': 'Skip to content',
   'nav.accuracy': 'Forecast accuracy',
   'imp.btn': 'Import file',
   'imp.title': 'Import products from a file',
@@ -1943,6 +1957,10 @@ ar: {
   'bill.pay': 'ادفع {price}',
   'bill.keep': 'خليني على باقتي',
   'bill.secure': 'الدفع بالكارت على صفحة Paymob الآمنة. إحنا مابنشوفش رقم كارتك. توقف التجديد في أي وقت من الإعدادات.',
+  'bill.agreeTrial': 'أوافق على {terms} و{refunds} و{privacy}. وفاهم إنه هيتخصم 1 جنيه النهارده للتأكد من الكارت، وإن {price} هيتخصموا من الكارت ده يوم {date} وكل شهر بعدها، لحد ما أوقف التجديد.',
+  'bill.agreePaid': 'أوافق على {terms} و{refunds} و{privacy}. وفاهم إن {price} هيتخصموا من الكارت ده النهارده وكل شهر بعدها، لحد ما أوقف التجديد.',
+  'legal.terms': 'الشروط والأحكام', 'legal.refunds': 'سياسة الاسترداد', 'legal.privacy': 'سياسة الخصوصية', 'legal.cookies': 'سياسة الكوكيز',
+  'err.NEED_CONSENT': 'من فضلك علّم على المربع بالموافقة قبل ما تكمل.',
   'bill.going': 'بنوديك لصفحة الدفع الآمنة.',
   'bill.test': 'وضع تجريبي: استخدم كارت تجريبي من Paymob. مفيش فلوس حقيقية بتتحرك.',
   'bill.off': 'الدفع بالكارت هيشتغل قريب جدا. لحد كده، ابعتلنا على واتساب وإحنا نفعّلك الباقة بإيدينا.',
@@ -2097,7 +2115,7 @@ ar: {
   'upgrade': 'شوف Pro',
 
   'start.title': 'ابدأ من هنا',
-  'start.lede': 'املأ الأربع صفحات اللي تحت "المدخلات (أرقامك)" بالترتيب. كل اللي تحت "النتائج / تعمل إيه دلوقتي" بيتحدث لوحده مع كل رقم تكتبه.',
+  'start.lede': 'املأ أول أربع صفحات تحت "المدخلات (أرقامك)" بالترتيب، وضيف الطلبيات اللي طلبتها في البضاعة المطلوبة. كل اللي تحت "النتائج / تعمل إيه دلوقتي" بيتحدث لوحده مع كل رقم تكتبه.',
   'start.s1': 'الإعدادات',
   'start.s1p': 'تكلفتين: تكلفة الطلبية الواحدة، وتكلفة تخزين البضاعة لمدة سنة. أرقام تقريبية كفاية.',
   'start.s2': 'المواسم',
@@ -2265,6 +2283,7 @@ ar: {
   'wt.done': 'لو كل الأرقام طلعت زي دي، يبقى فهمت الأداة كلها. امسحه واكتب بيانات محلك.',
   'nav.incoming': 'الطلبيات الجاية',
   'nav.ordered': 'البضاعة المطلوبة',
+  'skip': 'تخطى للمحتوى',
   'nav.accuracy': 'دقة التوقع',
   'imp.btn': 'استورد ملف',
   'imp.title': 'استورد المنتجات من ملف',
@@ -2602,6 +2621,12 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
   del(k) { try { localStorage.removeItem(k); } catch (e) {} }
 };
+// The card form (name, mobile) lives only in this tab's session storage: gone when the tab closes.
+const sess = {
+  get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
+};
+const legalLink = (page, key) => '<a href="' + CFG.siteUrl + '/#' + page + '" target="_blank" rel="noopener">' + esc(t(key)) + '</a>';
 const S = { selectMode: false, selected: new Set(), sid: store.get('es7.sid'), me: null, ws: null, res: null, rev: 0, tab: store.get('es7.tab') || 'dash',
             dirty: false, saving: false, timer: null, retry: null, filter: 'ALL', healthOnly: true, loginEmail: '', undo: null,
             loginMode: 'signin', trialPick: 'pro', guest: null, pend: null, paid: null, bill: null, billPick: null, billForm: null, billOpen: false, payReturn: null, payConfirmed: false };
@@ -2647,6 +2672,7 @@ const digits = v => String(v == null ? '' : v)
 /* ================= server calls ================= */
 // Talks to the Supabase server. Same functions and answers as the old Apps Script version.
 const API_URL = 'https://wqbcxyswrqxvqrehelnw.supabase.co/functions/v1/app';
+const TERMS_VERSION = '2026-10-03'; // the date on the website's terms, refund and privacy pages
 async function gs(fn, ...args) {
   try {
     const payload = { fn, args };
@@ -2731,8 +2757,10 @@ function planOption(p, pick, name, side, note, cur) {
     '<b>' + esc(t('plan.' + p)) + (cur ? '<span class="tp-cur">' + esc(t('bill.current')) + '</span>' : '') + '</b>' +
     '<span class="tp-price">' + esc(side) + '</span><span class="tp-note">' + esc(note) + '</span></label>';
 }
+const legalLinks = () => [['terms', 'legal.terms'], ['privacy', 'legal.privacy'], ['refunds', 'legal.refunds'], ['cookies', 'legal.cookies']].map(x => legalLink(x[0], x[1])).join('');
 function renderLoginMode() {
   const trial = S.loginMode === 'trial';
+  $('#login-legal').innerHTML = legalLinks();
   $('#login-title').textContent = t(trial ? 'login.titleTrial' : 'login.title');
   $('#login-lede').textContent = t(trial ? 'login.ledeTrial' : 'login.lede');
   $('#b-send').textContent = t(trial ? 'login.sendTrial' : 'login.send');
@@ -2872,7 +2900,7 @@ function leftText(iso) {
 }
 function saveForm() {
   const n = $('#b-name'), p = $('#b-phone');
-  if (n && p) S.billForm = { name: n.value, phone: p.value };
+  if (n && p) S.billForm = { name: n.value, phone: p.value, agree: !!($('#b-agree') && $('#b-agree').checked) };
 }
 function billMsg(text, kind) {
   const el = $('#bill-msg');
@@ -2892,6 +2920,11 @@ function billSummary(b, pick) {
 const payLabel = (b, pick) => pick === b.plan && /_canceling$/.test(b.state) ? t('bill.keep')
   : b.trialOffer ? t(/^trial/.test(b.state) ? 'bill.switchPlan' : 'bill.startTrial') : t('bill.pay', { price: money(b.prices[pick]) });
 const payDisabled = (b, pick) => pick === b.plan && (b.state === 'active' || b.state === 'trial');
+// What the shop agrees to before paying: the policies, and exactly what will be charged and when.
+function agreeText(b, pick) {
+  const v = { terms: legalLink('terms', 'legal.terms'), refunds: legalLink('refunds', 'legal.refunds'), privacy: legalLink('privacy', 'legal.privacy'), price: esc(money(b.prices[pick])), date: esc(fmtDate(b.startsOn[pick])) };
+  return t(b.trialOffer ? 'bill.agreeTrial' : 'bill.agreePaid', v);
+}
 // The plan picker, used on the payment screen and in Settings.
 function chooserHtml(b) {
   if (!b.ready) return '<div class="bill-off"><p>' + esc(t('bill.off')) + '</p>' +
@@ -2903,6 +2936,7 @@ function chooserHtml(b) {
     '<div class="bill-fields"><div><label for="b-name">' + esc(t('bill.name')) + '</label><input id="b-name" type="text" autocomplete="name" maxlength="60" value="' + esc(f.name || '') + '"></div>' +
     '<div><label for="b-phone">' + esc(t('bill.phone')) + '</label><input id="b-phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" dir="ltr" placeholder="01XXXXXXXXX" value="' + esc(f.phone || '') + '"></div></div>' +
     '<p class="bill-sum" id="bill-sum">' + billSummary(b, pick) + '</p>' +
+    '<label class="bill-agree"><input type="checkbox" id="b-agree"' + (f.agree ? ' checked' : '') + '><span id="b-agree-txt">' + agreeText(b, pick) + '</span></label>' +
     '<button type="button" class="btn primary bill-pay" id="bill-pay" data-act="billPay"' + (payDisabled(b, pick) ? ' disabled' : '') + '>' + esc(payLabel(b, pick)) + '</button>' +
     '<div id="bill-msg" class="msg" hidden></div>' +
     '<p class="bill-fine">' + esc(t('bill.secure')) + '</p>';
@@ -2924,7 +2958,7 @@ function toSignIn(email, msg, kind) {
 async function toGuestCard(email) {
   S.guest = { email: email };
   S.billPick = S.trialPick; S.billForm = null;
-  try { const f = JSON.parse(store.get('es7.ckForm') || 'null'); if (f) S.billForm = { name: f.name || '', phone: f.phone || '' }; } catch (e) {}
+  try { const f = JSON.parse(sess.get('es7.ckForm') || 'null'); if (f) S.billForm = { name: f.name || '', phone: f.phone || '' }; } catch (e) {}
   $('#paywall').classList.add('guest');
   show('paywall');
   $('#bill-card').innerHTML = '<div class="spinner" style="margin:40px auto"></div>';
@@ -2990,7 +3024,8 @@ function renderBilling() {
     (S.guest ? '<p class="small guest-for">' + esc(t('bill.guestFor', { email: S.guest.email })) + ' <button type="button" class="linkbtn" data-act="guestBack">' + esc(t('bill.guestChange')) + '</button></p>' : '') +
     '<div style="margin-top:18px">' + chooserHtml(b) + '</div>' +
     '<div class="bill-links">' + (CFG.whatsapp ? '<a href="https://wa.me/' + esc(CFG.whatsapp) + '" target="_blank" rel="noopener">' + esc(t('nav.support')) + '</a>' : '<span></span>') +
-    (S.guest ? '<button type="button" class="linkbtn" data-act="guestBack">' + esc(t('bill.back')) + '</button>' : '<button type="button" class="linkbtn" data-act="logout">' + esc(t('nav.signout')) + '</button>') + '</div>';
+    (S.guest ? '<button type="button" class="linkbtn" data-act="guestBack">' + esc(t('bill.back')) + '</button>' : '<button type="button" class="linkbtn" data-act="logout">' + esc(t('nav.signout')) + '</button>') + '</div>' +
+    '<div class="legal-links">' + legalLinks() + '</div>';
 }
 // Settings, Plan and billing.
 function billingSection() {
@@ -3184,6 +3219,7 @@ function renderTab() {
   const keep = { y: window.scrollY, x: wrap ? wrap.scrollLeft : 0, ty: wrap ? wrap.scrollTop : 0 };
   const fn = VIEWS[S.tab] || VIEWS.dash;
   view.innerHTML = fn();
+  labelGrid(view);
   $('#bar-title').textContent = t('nav.' + S.tab);
   return keep;
 }
@@ -3412,7 +3448,7 @@ function loadXLSX() {
   return new Promise((ok, no) => {
     if (window.XLSX) return ok();
     const sc = document.createElement('script');
-    sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+    sc.src = '/assets/js/xlsx.full.min.js';
     sc.onload = () => ok(); sc.onerror = no; document.head.appendChild(sc);
   });
 }
@@ -3599,7 +3635,7 @@ VIEWS.seasons = () => {
   const canEdit = S.me.limits.customProfiles;
   const cards = S.ws.profiles.map(p => {
     const used = S.ws.products.filter(x => x.profileId === p.id).length;
-    const inputs = p.f.map((v, i) => '<div><label>' + esc(MONTHS[LANG][i]) + '</label><input type="text" inputmode="decimal" data-scope="profile" data-id="' + p.id + '" data-f="f" data-i="' + i + '" value="' + esc(val(v)) + '"' + (canEdit ? '' : ' disabled') + '></div>').join('');
+    const inputs = p.f.map((v, i) => '<div><label>' + esc(MONTHS[LANG][i]) + '</label><input type="text" inputmode="decimal" data-scope="profile" data-id="' + p.id + '" data-f="f" data-i="' + i + '" value="' + esc(val(v)) + '" aria-label="' + esc(MONTHS[LANG][i] + ', ' + profName(p)) + '"' + (canEdit ? '' : ' disabled') + '></div>').join('');
     const title = !p.builtin && canEdit
       ? '<input type="text" dir="auto" data-scope="profile" data-id="' + p.id + '" data-f="name" value="' + esc(p.name) + '" aria-label="Name">'
       : '<h3>' + esc(profName(p)) + '</h3>';
@@ -4158,6 +4194,24 @@ VIEWS.health = () => {
 };
 
 /* ================= editing ================= */
+// Grid cells have no visible label of their own: name each one after its column and row, so screen readers
+// say "Cost, Wool scarf" instead of "edit text". Tables that only scroll get a keyboard stop.
+function labelGrid(root) {
+  root.querySelectorAll('table').forEach(tb => {
+    const heads = Array.from(tb.querySelectorAll('thead th')).map(th => { const c = th.cloneNode(true); c.querySelectorAll('.sub,.plantag').forEach(x => x.remove()); return c.textContent.trim(); });
+    tb.querySelectorAll('tbody tr').forEach(tr => {
+      const cells = Array.from(tr.children);
+      const first = cells[0], nm = first ? (first.querySelector('input,select') ? (first.querySelector('input,select').value || '') : first.textContent.trim()) : '';
+      cells.forEach((td, i) => td.querySelectorAll('input:not([type=checkbox]):not([aria-label]),select:not([aria-label])').forEach(el => {
+        const col = heads[i] || '';
+        el.setAttribute('aria-label', (i === 0 ? col : col + (nm ? ', ' + nm : '')) || nm);
+      }));
+    });
+  });
+  root.querySelectorAll('.tbl-wrap').forEach(w => {
+    if (!w.querySelector('a,button,input,select,textarea,[tabindex]')) { w.setAttribute('tabindex', '0'); w.setAttribute('role', 'region'); const h = $('#view h1'); if (h) w.setAttribute('aria-label', h.textContent); }
+  });
+}
 function onEdit(e) {
   const el = e.target;
   if (el.dataset.draft && S.draft) { // the new-order form on Ordered stock: kept aside until saved
@@ -4357,18 +4411,21 @@ const ACTIONS = {
     $$('.tplan input[name="billPick"]').forEach(x => x.closest('.tplan').classList.toggle('on', x.checked));
     const b = S.bill, sum = $('#bill-sum'), pay = $('#bill-pay');
     if (sum) sum.innerHTML = billSummary(b, S.billPick);
+    const ag = $('#b-agree-txt'); if (ag) ag.innerHTML = agreeText(b, S.billPick);
     if (pay) { pay.textContent = payLabel(b, S.billPick); pay.disabled = payDisabled(b, S.billPick); }
     billMsg('');
   },
   billPay: async el => {
     const b = S.bill, plan = b.prices[S.billPick] ? S.billPick : b.plan;
     saveForm();
+    const needAgree = !(plan === b.plan && /_canceling$/.test(b.state));
+    if (needAgree && !S.billForm.agree) { billMsg(t('err.NEED_CONSENT'), 'bad'); $('#b-agree').focus(); return; }
     if (S.guest) {
       el.disabled = true;
       billMsg(t('bill.going'), 'info');
       const email = S.guest.email, f = S.billForm || {};
-      store.set('es7.ckForm', JSON.stringify({ plan: plan, email: email, name: f.name, phone: f.phone }));
-      const g = await gs('startTrial', { plan: plan, email: email, name: f.name, phone: f.phone }, LANG);
+      sess.set('es7.ckForm', JSON.stringify({ plan: plan, email: email, name: f.name, phone: f.phone }));
+      const g = await gs('startTrial', { plan: plan, email: email, name: f.name, phone: f.phone, agree: true, termsVersion: TERMS_VERSION }, LANG);
       if (g.ok && g.url && g.ref) { store.set('es7.pending', JSON.stringify({ ref: g.ref, email: email.toLowerCase(), plan: plan, at: Date.now() })); location.href = g.url; return; }
       el.disabled = false;
       if (g.error === 'HAS_ACCOUNT') { toSignIn(email, t('err.HAS_ACCOUNT'), 'info'); return; }
@@ -4379,7 +4436,7 @@ const ACTIONS = {
     if (plan === b.plan && /_canceling$/.test(b.state)) { ACTIONS.billResume(); return; }
     el.disabled = true;
     billMsg(t('bill.going'), 'info');
-    const r = await gs('api', S.sid, 'checkout', { plan: plan, name: S.billForm.name, phone: S.billForm.phone }, LANG);
+    const r = await gs('api', S.sid, 'checkout', { plan: plan, name: S.billForm.name, phone: S.billForm.phone, agree: true, termsVersion: TERMS_VERSION }, LANG);
     if (r.ok && r.url) { location.href = r.url; return; }
     el.disabled = false;
     if (r.error === 'AUTH') { toLogin('EXPIRED'); return; }
@@ -4674,11 +4731,17 @@ function init() {
   applyStatic();
   if (S.loginEmail) $('#email').value = S.loginEmail;
   $('#f-email').addEventListener('submit', sendCode);
+  $('#skipLink').addEventListener('click', e => { // straight to the form or the page content, past the menus
+    e.preventDefault();
+    const target = !$('#app').hidden ? $('#view') : !$('#login').hidden ? $('#email') : $('#bill-card input, #bill-card button');
+    if (target) target.focus();
+  });
   $('#f-code').addEventListener('submit', verify);
   $('#b-other').addEventListener('click', () => { $('#f-code').hidden = true; $('#f-email').hidden = false; loginMsg(''); $('#email').focus(); });
   $('#b-resend').addEventListener('click', () => sendCode());
   $('#code').addEventListener('input', e => { if (digits(e.target.value).length === 6) verify(); });
   document.addEventListener('input', e => { if (e.target.id === 'b-name' || e.target.id === 'b-phone') saveForm(); });
+  document.addEventListener('change', e => { if (e.target.id === 'b-agree') { saveForm(); billMsg(''); } });
 
   document.addEventListener('click', e => {
     const el = e.target.closest('[data-act]');
