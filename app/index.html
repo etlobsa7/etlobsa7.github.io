@@ -251,7 +251,9 @@ html[dir="rtl"] .grid .stick{box-shadow:inset -4px 0 0 var(--vb),inset 1px 0 0 v
 .routine p{margin:4px 0 0;color:var(--muted);max-width:70ch}
 
 /* ---------- seasons ---------- */
-.profiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:16px}
+.profiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(440px,100%),1fr));gap:16px}
+.bars,.months{grid-template-columns:repeat(12,minmax(0,1fr))!important}.months input{min-width:0;width:100%}.months label{display:block;white-space:nowrap;overflow:hidden}
+@media (max-width:520px){.months{grid-template-columns:repeat(6,minmax(0,1fr))!important;row-gap:8px}}
 @media (max-width:520px){.profiles{grid-template-columns:1fr}}
 .prof{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px}
 .prof-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
@@ -1050,6 +1052,7 @@ html[lang="ar"] .lp-tag{letter-spacing:0}
   .t.ord td[data-l]::before{content:attr(data-l);display:block;font-size:11px;color:var(--muted);margin-bottom:1px}
   .t.ord tr.r2 td{padding:10px 0 0;border:0}
 }
+.cfbar[style*="width:0%"]{display:none}
 </style>
 </head>
 <body>
@@ -1257,7 +1260,7 @@ en: {
   'st.cpOpen': 'Open the cash plan',
   'st.setCash': 'Enter your cash',
   'bp.status': 'This week',
-  'k.cashmS': 'If you order what the app suggests',
+  'k.cashmS': 'What the app expects you to spend on stock next month',
   'k.cashm': 'Cash for stock, next month',
   'cp.lockP': 'The Store plan shows what your orders will cost each month for the next 3 months, by supplier, so you can plan cash before a busy season.',
   'cp.lockT': 'Cash for the next 3 months',
@@ -1371,7 +1374,7 @@ en: {
   'learn.leadOf': '{k} of {m} suppliers',
   'chk.title': 'Getting started: {k} of {n} done',
   'chk.sup': 'Add your suppliers and their delivery times',
-  'chk.prod': 'Add your products with their monthly sales',
+  'chk.prod': 'Add your products with their monthly sales (or import them from an Excel file)',
   'chk.stock': 'Enter the stock you have now',
   'chk.order': 'Record an order you placed, on Ordered stock',
   'chk.recv': 'Mark an order received, so it learns real delivery times',
@@ -1438,9 +1441,9 @@ en: {
   'why.OVER': 'You have {cover} days of cover, past your {limit} day overstock limit. About {excess} units and {value} of cash are sitting still here.',
   'why.NOHIST': 'No sales typed in yet, so there is nothing to forecast from.',
   'why.NODEMAND': 'The forecast for next month is zero, so no order is suggested.',
-  'why.risk': 'If you do not order, you stand to lose about {v} of gross profit over the next {d} days.',
+  'why.risk': 'If you skip this order, you will likely lose about {v} of gross profit to empty shelves before a later order could arrive (the next {d} days).',
   'k.risk': 'Profit at risk',
-  'k.riskS': 'If the red items are not ordered',
+  'k.riskS': 'Profit you will likely lose to empty shelves if this week\'s orders are not placed',
   'sc.title': 'Suppliers scorecard',
   'sc.lede': 'Which suppliers hold your cash, and what their unreliability actually costs you.',
   'sc.empty': 'No suppliers with products yet',
@@ -1449,6 +1452,8 @@ en: {
   'sc.products': 'Products',
   'sc.lt': 'Lead time',
   'sc.reliability': 'Reliability',
+  'sc.relReal': 'From {n} real deliveries',
+  'sc.relTyped': 'From the ±{v} of {lt} days you typed',
   'sc.stock': 'Your cash in their stock',
   'sc.varValue': 'Cash tied up by their lateness',
   'sc.varValueS': 'extra buffer you hold because their timing swings',
@@ -1567,32 +1572,32 @@ en: {
   'dash.openHealth': 'Open health check',
   'dash.budgetOver': 'This week\'s orders are {v} more than your cash for orders. Cut every order by the same share rather than dropping whole orders.',
   'k.stock': 'Cash tied up in stock',
-  'k.stockS': 'On hand, at cost',
+  'k.stockS': 'What the stock on your shelves cost you to buy',
   'k.onorder': 'Stock on its way',
-  'k.onorderS': 'Ordered, not yet received',
+  'k.onorderS': 'What the stock you ordered but have not received cost',
   'k.order': 'To order now',
-  'k.orderS': 'Value of this cycle\'s purchase plan',
+  'k.orderS': 'What this week\'s suggested orders cost at your buying price',
   'k.rev': 'Projected revenue',
-  'k.revS': 'Next 12 months',
+  'k.revS': 'Sales the app expects over the next 12 months',
   'k.profit': 'Projected gross profit',
-  'k.profitS': 'Next 12 months',
+  'k.profitS': 'Expected sales minus what the products cost you, next 12 months',
   'k.margin': 'Gross margin',
-  'k.marginS': 'Across all products',
+  'k.marginS': 'Of each sale\'s price that is left after the product\'s cost',
   'k.turn': 'Stock turnover',
-  'k.turnS': 'A common rule of thumb: under 4 a year means cash is sitting still',
+  'k.turnS': 'How many times a year your stock sells through. Under 4 usually means cash is sitting still',
   'k.cover': 'Average days of cover',
-  'k.coverS': 'How long current stock lasts',
+  'k.coverS': 'How long the stock on your shelves lasts at expected sales, on average',
   'k.over': 'Cash locked in overstock',
-  'k.overS': 'Stock beyond your overstock limit',
+  'k.overS': 'What the stock beyond your overstock limit cost you',
   'k.aic': 'Yearly cost of running stock',
-  'k.aicS': 'Ordering plus holding',
+  'k.aicS': 'What placing orders and holding stock should cost over the next 12 months',
   'dash.decisions': 'Verdicts across {n} products',
   'dash.abc': 'Where revenue comes from',
   'dash.abcA': 'A products',
   'dash.abcB': 'B products',
   'dash.abcC': 'C products',
   'dash.abcP': 'A products earn about 80% of projected revenue, so watch them most closely.',
-  'dash.abcZ': '{n} of your products are erratic even with the season removed.',
+  'dash.abcZ': 'Products that stay erratic even with the season removed: {n}.',
   'dash.actions': 'Order list',
 
   /* settings */
@@ -1640,6 +1645,7 @@ en: {
   'cash.lede': 'If you placed every order in your current purchase plan today, here is roughly when the money would actually leave, based on each supplier\'s real deposit and payment terms.',
   'cash.empty': 'Nothing on order right now',
   'cash.emptyP': 'Once the purchase plan has orders on it, this page lays out when they would be due.',
+  'cash.budgetNote': 'Using the budget plan\'s quantities, as on the Purchase plan',
   'cash.total': 'Total across the current purchase plan',
   'cash.now': 'Due now',
   'cash.week1': 'Due in 1 to 7 days',
@@ -1772,6 +1778,7 @@ en: {
   'sea.newName': 'My season',
   'sea.delConfirm': 'Delete "{name}"? Products using it will need a new shape.',
   'sea.ramadan': 'Ramadan moves about 11 days earlier each year. Review this shape yearly.',
+  'sea.holy': 'Coming up: Ramadan starts about {r}, Eid al-Fitr about {f}, Eid al-Adha about {a}. Moon sighting can shift each by a day. Ramadan moves about 11 days earlier every year, so check that this shape\'s busy months match.',
 
   /* suppliers */
   'sup.title': 'Suppliers',
@@ -2115,7 +2122,7 @@ ar: {
   'st.cpOpen': 'افتح خطة الكاش',
   'st.setCash': 'اكتب الكاش',
   'bp.status': 'الأسبوع ده',
-  'k.cashmS': 'لو طلبت اللي الأداة بتقترحه',
+  'k.cashmS': 'اللي الأداة متوقعة تصرفه على البضاعة الشهر الجاي',
   'k.cashm': 'فلوس البضاعة، الشهر الجاي',
   'cp.lockP': 'باقة Store بتوريك طلباتك هتتكلف كام كل شهر في الـ 3 شهور الجاية، مقسمة على الموردين، علشان تجهز الكاش قبل الموسم.',
   'cp.lockT': 'فلوس الـ 3 شهور الجاية',
@@ -2229,7 +2236,7 @@ ar: {
   'learn.leadOf': '{k} من {m} موردين',
   'chk.title': 'البداية: خلصت {k} من {n}',
   'chk.sup': 'ضيف الموردين ومدة التوريد بتاعتهم',
-  'chk.prod': 'ضيف منتجاتك ومبيعاتها الشهرية',
+  'chk.prod': 'ضيف منتجاتك ومبيعاتها الشهرية (أو استوردها من ملف Excel)',
   'chk.stock': 'اكتب المخزون اللي عندك دلوقتي',
   'chk.order': 'سجل طلب عملته، في صفحة البضاعة المطلوبة',
   'chk.recv': 'علم على طلب إنه وصل، علشان تتعلم مدة التوريد الحقيقية',
@@ -2296,9 +2303,9 @@ ar: {
   'why.OVER': 'عندك تغطية {cover} يوم، فوق حد المخزون الزيادة {limit} يوم. يعني حوالي {excess} قطعة و{value} فلوس واقفة هنا.',
   'why.NOHIST': 'لسه مفيش مبيعات مكتوبة، فمفيش حاجة نتوقع منها.',
   'why.NODEMAND': 'توقع الشهر الجاي صفر، فمفيش طلبية مقترحة.',
-  'why.risk': 'لو ماطلبتش، معرض تخسر حوالي {v} مجمل ربح خلال الـ {d} يوم الجايين.',
+  'why.risk': 'لو ماطلبتش، غالبا هتخسر حوالي {v} مجمل ربح بسبب نقص البضاعة قبل ما أي طلبية بعدها تلحق توصل (الـ {d} يوم الجايين).',
   'k.risk': 'ربح معرض للضياع',
-  'k.riskS': 'لو المنتجات الحمرا ماتطلبتش',
+  'k.riskS': 'ربح غالبا هيضيع بسبب نقص البضاعة لو طلبات الأسبوع ده ماتعملتش',
   'sc.title': 'تقييم الموردين',
   'sc.lede': 'مين من الموردين ماسك فلوسك، وعدم انضباطه بيكلفك كام فعلا.',
   'sc.empty': 'لسه مفيش موردين عليهم منتجات',
@@ -2307,6 +2314,8 @@ ar: {
   'sc.products': 'المنتجات',
   'sc.lt': 'مدة التوريد',
   'sc.reliability': 'الانضباط',
+  'sc.relReal': 'من {n} توريدات حقيقية',
+  'sc.relTyped': 'من الـ ±{v} من {lt} يوم اللي كتبتها',
   'sc.stock': 'فلوسك في بضاعته',
   'sc.varValue': 'فلوس متجمدة بسبب تأخيره',
   'sc.varValueS': 'مخزون أمان زيادة بتحتفظ بيه علشان مواعيده بتتغير',
@@ -2423,25 +2432,25 @@ ar: {
   'dash.openHealth': 'افتح فحص البيانات',
   'dash.budgetOver': 'طلبات الأسبوع ده أعلى من الكاش المتاح بـ {v}. قلل كل طلب بنفس النسبة بدل ما تلغي طلبات كاملة.',
   'k.stock': 'فلوس في المخزون',
-  'k.stockS': 'الموجود، بسعر التكلفة',
+  'k.stockS': 'تمن البضاعة اللي على الرفوف بسعر شرائها',
   'k.onorder': 'بضاعة في الطريق',
-  'k.onorderS': 'اتطلبت ولسه ماوصلتش',
+  'k.onorderS': 'تمن البضاعة اللي طلبتها ولسه ماوصلتش',
   'k.order': 'المطلوب دلوقتي',
-  'k.orderS': 'قيمة خطة الشراء الحالية',
+  'k.orderS': 'تمن طلبات الأسبوع ده المقترحة بسعر الشراء',
   'k.rev': 'المبيعات المتوقعة',
-  'k.revS': 'الـ 12 شهر الجايين',
+  'k.revS': 'المبيعات اللي الأداة متوقعاها في الـ 12 شهر الجايين',
   'k.profit': 'مجمل الربح المتوقع',
-  'k.profitS': 'الـ 12 شهر الجايين',
+  'k.profitS': 'المبيعات المتوقعة ناقص تمن المنتجات عليك، الـ 12 شهر الجايين',
   'k.margin': 'هامش الربح',
-  'k.marginS': 'لكل المنتجات',
+  'k.marginS': 'من سعر كل بيعة بيفضل بعد تمن المنتج',
   'k.turn': 'معدل دوران المخزون',
-  'k.turnS': 'قاعدة شائعة: أقل من 4 في السنة معناه فلوسك واقفة',
+  'k.turnS': 'كام مرة في السنة مخزونك بيتباع ويتجدد. أقل من 4 غالبا معناه فلوسك واقفة',
   'k.cover': 'متوسط أيام التغطية',
-  'k.coverS': 'المخزون الحالي يكفي قد إيه',
+  'k.coverS': 'المخزون اللي على الرفوف بيكفي قد إيه بالمبيعات المتوقعة، في المتوسط',
   'k.over': 'فلوس متجمدة في مخزون زيادة',
-  'k.overS': 'البضاعة اللي فوق حد المخزون الزيادة',
+  'k.overS': 'تمن البضاعة اللي فوق حد المخزون الزيادة',
   'k.aic': 'تكلفة المخزون في السنة',
-  'k.aicS': 'الطلب والتخزين',
+  'k.aicS': 'اللي عمل الطلبات وتخزين البضاعة المفروض يكلفوه في الـ 12 شهر الجايين',
   'dash.decisions': 'القرارات لـ {n} منتج',
   'dash.abc': 'المبيعات جاية منين',
   'dash.abcA': 'منتجات A',
@@ -2494,6 +2503,7 @@ ar: {
   'cash.lede': 'لو طلبت كل حاجة في خطة الشراء الحالية النهارده، ده تقريبا إمتى الفلوس هتخرج فعلا، حسب شروط الدفع الحقيقية لكل مورد.',
   'cash.empty': 'مفيش حاجة مطلوبة دلوقتي',
   'cash.emptyP': 'أول ما خطة الشراء يبقى فيها طلبيات، الصفحة دي هتوضح إمتى مستحقة.',
+  'cash.budgetNote': 'بكميات خطة الميزانية، زي صفحة خطة الشراء',
   'cash.total': 'الإجمالي في خطة الشراء الحالية',
   'cash.now': 'مستحق دلوقتي',
   'cash.week1': 'مستحق خلال 1 لـ 7 أيام',
@@ -2626,6 +2636,7 @@ ar: {
   'sea.newName': 'موسمي',
   'sea.delConfirm': 'تمسح "{name}"؟ المنتجات اللي عليه هتحتاج شكل جديد.',
   'sea.ramadan': 'رمضان بييجي بدري حوالي 11 يوم كل سنة. راجع الشكل ده سنويا.',
+  'sea.holy': 'الجاي: رمضان بيبدأ حوالي {r}، وعيد الفطر حوالي {f}، وعيد الأضحى حوالي {a}. رؤية الهلال ممكن تغير كل تاريخ يوم. رمضان بييجي بدري حوالي 11 يوم كل سنة، فاتأكد إن الشهور المزدحمة في الشكل ده ماشية معاه.',
 
   'sup.title': 'الموردين',
   'sup.lede': 'صف لكل مورد. المنتجات بتختار موردها من القائمة دي.',
@@ -3156,7 +3167,8 @@ const fmtDate = v => {
   return d.getUTCDate() + ' ' + MONTHS_LONG[LANG][d.getUTCMonth()] + ' ' + d.getUTCFullYear();
 };
 function leftText(iso) {
-  const n = Math.round((Date.parse(iso) - Date.now()) / 86400000);
+  // calendar days from today to the last day (a trial runs to the end of that day), so a new 14-day trial reads 14
+  const n = Math.round((Date.parse(String(iso).slice(0, 10)) - Date.parse(new Date().toISOString().slice(0, 10))) / 86400000);
   return n <= 0 ? t('bill.left0') : n === 1 ? t('bill.left1') : t('bill.left', { n: n });
 }
 function saveForm() {
@@ -3722,7 +3734,7 @@ VIEWS.incoming = () => {
     }).sort((a, b) => b.late - a.late).map(r => r.html).join('');
     const doneRows = done.slice().sort((a, b) => a.receivedAt < b.receivedAt ? 1 : -1).slice(0, 20).map(o => {
       const took = dayDiff(o.receivedAt, o.sentAt), promised = supLt(o.supplierId);
-      return '<tr><td class="name">' + bdi(o.supplierName || t('unnamed')) + '</td><td data-l="' + esc(t('ord.sent')) + '">' + esc(o.sentAt) + '</td><td data-l="' + esc(t('ord.arrived')) + '">' + esc(o.receivedAt) + '</td>' +
+      return '<tr><td class="name">' + bdi(o.supplierName || t('unnamed')) + '</td><td data-l="' + esc(t('ord.sent')) + '">' + esc(fmtDate(o.sentAt)) + '</td><td data-l="' + esc(t('ord.arrived')) + '">' + esc(fmtDate(o.receivedAt)) + '</td>' +
         '<td class="num" data-l="' + esc(t('ord.took')) + '"' + (took > promised ? ' style="color:var(--crit);font-weight:600"' : '') + '>' + esc(t('ord.days', { n: took })) + '</td><td class="num" data-l="' + esc(t('ord.promised')) + '">' + esc(t('ord.days', { n: promised })) + '</td></tr>';
     }).join('');
     cmp = '<div class="section"><h2>' + esc(t('up.cmp')) + '</h2><p class="muted" style="margin:-8px 0 12px">' + esc(t('up.cmpLede')) + '</p>' +
@@ -3945,13 +3957,12 @@ VIEWS.dash = () => {
   const kpi = (k, v, cls) => '<div class="kpi ' + (cls || '') + '"><span>' + esc(t('k.' + k)) + '</span><b>' + esc(v) + '</b><small>' + esc(t('k.' + k + 'S')) + '</small></div>';
   const kpis = '<div class="kpis">' +
     kpi('stock', money(d.stockValue)) + kpi('onorder', money(d.onOrderValue)) + kpi('order', money(d.orderValue)) +
-    (S.me.limits.cashPlan ? (S.res.cashPlan ? kpi('cashm', money(Math.round(S.res.cashPlan.spend[0] / 100) * 100)) : '') : kpi('cashm', t('plan.store'), 'locked')) +
+    (S.me.limits.cashPlan ? '' : kpi('cashm', t('plan.store'), 'locked')) +
     kpi('rev', money(d.revenue)) + kpi('profit', money(d.profit)) + kpi('margin', pct(d.margin)) +
     kpi('turn', d.turnover == null ? t('na') : t('times', { n: n1(d.turnover) }), turnWarn ? 'warn' : '') +
     kpi('cover', d.avgCover == null ? t('na') : n0(d.avgCover) + ' ' + t('days')) +
     kpi('over', money(d.overstockValue), d.overstockValue > 0 ? 'warn' : '') +
     (S.me.limits.stockoutCost ? kpi('risk', money(d.riskProfit || 0), (d.riskProfit || 0) > 0 ? 'bad' : '') : kpi('risk', t('plan.store'), 'locked')) +
-    (d.accuracy != null ? kpi('acc', Math.round(d.accuracy * 100) + '%', d.accuracy < 0.6 ? 'warn' : '') : '') +
     kpi('aic', money(d.inventoryCost)) + '</div>';
 
   const colors = { CRITICAL: 'var(--crit)', ORDER: '#D98A00', OK: 'var(--ok)', OVER: 'var(--over)', NODEMAND: '#BAB5AF', NOHIST: '#D6D2CD' };
@@ -4031,7 +4042,7 @@ VIEWS.seasons = () => {
       '<div class="bars" data-bars="' + p.id + '">' + barsHtml(p.f) + '</div>' +
       '<div class="months">' + inputs + '</div>' +
       '<div class="prof-foot"><span class="muted" data-used="' + p.id + '">' + esc(t('sea.used', { n: used })) + '</span></div>' +
-      (p.id === 'ramadan' ? '<p class="small muted" style="margin:8px 0 0">' + esc(t('sea.ramadan')) + '</p>' : '') +
+      (p.id === 'ramadan' ? '<p class="small muted" style="margin:8px 0 0">' + esc(holyNote()) + '</p>' : '') +
       '</div>';
   }).join('');
   return head(t('sea.title'), t('sea.lede'), canEdit ? btn(t('sea.add'), 'addProfile', '', 'primary') : '') +
@@ -4503,6 +4514,11 @@ VIEWS.score = () => {
       emptyBox(t('sc.empty'), t('sc.emptyP'), btn(t('sup.add'), 'tab', ' data-tab="suppliers"', 'primary'));
   }
   const rel = { GOOD: 'v-OK', FAIR: 'v-ORDER', POOR: 'v-CRITICAL', NONE: 'v-NOHIST' };
+  // Reliability: from real deliveries once there are two or more, otherwise from the variation typed in Suppliers.
+  const relOf = sc => {
+    if (sc.actualCount >= 2 && sc.actualLt > 0) { const v = (sc.actualLtv || 0) / sc.actualLt; return { k: v <= 0.1 ? 'GOOD' : v <= 0.25 ? 'FAIR' : 'POOR', why: t('sc.relReal', { n: sc.actualCount }) }; }
+    return { k: sc.reliability, why: sc.lt > 0 ? t('sc.relTyped', { v: n0(sc.ltv), lt: n0(sc.lt) }) : '' };
+  };
   const body = list.map(sc =>
     '<tr><td class="name">' + bdi(sc.name || t('unnamed')) + '</td>' +
     '<td class="num">' + sc.products + '</td>' +
@@ -4510,7 +4526,7 @@ VIEWS.score = () => {
     '<td class="num">' + (sc.actualCount ? n0(sc.actualLt) + ' ' + esc(t('days')) + ' <span class="small muted">(' + sc.actualCount + ')</span>' +
       (sc.actualCount >= 2 ? '<div>' + btn(t('sc.useReal'), 'useReal', ' data-id="' + sc.id + '"', 'small') + '</div>' : '') : t('na')) + '</td>' +
     '<td class="num">' + (sc.onTimePct != null ? Math.round(sc.onTimePct * 100) + '%' : t('na')) + '</td>' +
-    '<td><span class="pill ' + rel[sc.reliability] + '">' + esc(t('sc.' + sc.reliability)) + '</span></td>' +
+    (r0 => '<td><span class="pill ' + rel[r0.k] + '">' + esc(t('sc.' + r0.k)) + '</span>' + (r0.why ? '<div class="small muted" style="margin-top:4px">' + esc(r0.why) + '</div>' : '') + '</td>')(relOf(sc)) +
     '<td class="num">' + money(sc.stockValue) + '</td>' +
     '<td class="num"' + (sc.varValue > 0 ? ' style="color:var(--order);font-weight:600"' : '') + '>' + money(sc.varValue) + '</td>' +
     '<td class="num">' + (sc.orderNowValue ? money(sc.orderNowValue) : t('na')) + '</td>' +
@@ -4523,13 +4539,22 @@ VIEWS.score = () => {
     '<p class="gridnote">' + esc(t('sc.note')) + '</p>';
 };
 
+/* ---------- Upcoming Ramadan and Eid dates (astronomical estimates; moon sighting can move each by a day) ---------- */
+const HOLY = [['2027-02-08', '2027-03-10', '2027-05-16'], ['2028-01-28', '2028-02-26', '2028-05-05'], ['2029-01-16', '2029-02-14', '2029-04-24'],
+  ['2030-01-06', '2030-02-04', '2030-04-13'], ['2030-12-26', '2031-01-24', '2031-04-02']];
+function holyNote() {
+  const today = isoToday(), h = HOLY.find(x => x[2] >= today);
+  return h ? t('sea.holy', { r: fmtDate(h[0]), f: fmtDate(h[1]), a: fmtDate(h[2]) }) : t('sea.ramadan');
+}
+
 /* ---------- Plain-language reasoning behind a verdict ---------- */
 function whyText(r) {
-  const rate = n1(r.dDay || 0);
+  // daily rate the engine plans with: next month's forecast spread over the shop's selling days
+  const dDay = r.fc && r.fc[0] > 0 ? r.fc[0] / (S.ws.settings.daysPerMonth || 30) : 0, rate = n1(dDay);
   if (r.decision === 'NOHIST') return t('why.NOHIST');
   if (r.decision === 'NODEMAND') return t('why.NODEMAND');
   if (r.decision === 'OVER') {
-    const excess = r.dDay > 0 ? Math.max(0, r.onHand - S.ws.settings.overstockDays * r.dDay) : 0;
+    const excess = dDay > 0 ? Math.max(0, r.onHand - S.ws.settings.overstockDays * dDay) : 0;
     return t('why.OVER', { cover: n0(r.cover), limit: n0(S.ws.settings.overstockDays),
                            excess: n0(excess), value: money(r.overstockValue) });
   }
@@ -4538,7 +4563,7 @@ function whyText(r) {
   }
   const base = t('why.' + r.decision, { ip: n0(r.ip), ss: n0(r.ss), rop: n0(r.rop), rate: rate, lt: n0(r.lt) });
   const risk = (S.me.limits.stockoutCost && r.risk && r.risk.profit > 0)
-    ? ' ' + t('why.risk', { v: money(r.risk.profit), d: n0(r.risk.days) }) : '';
+    ? ' ' + t('why.risk', { v: money(r.risk.profit), d: n0((r.lt || 0) + 7) }) : '';
   return base + risk;
 }
 
@@ -4571,7 +4596,7 @@ function cashPlanHtml() {
   const r100 = v => Math.round(v / 100) * 100;
   const cp = Object.assign({}, cp0, { spend: cp0.spend.map(r100), suppliers: cp0.suppliers.map(x => Object.assign({}, x, { spend: x.spend.map(r100) })) });
   const tot3 = cp.spend[0] + cp.spend[1] + cp.spend[2], maxM = Math.max(1, ...cp.spend), mName = m => monthName(m, true);
-  const bars = cp.months.map((m, i) => '<div class="cfrow"><span class="cflabel">' + esc(mName(m)) + '</span><div class="cfbar-track"><div class="cfbar" style="width:' + Math.max(2, 100 * cp.spend[i] / maxM) + '%"></div></div><span class="cfval">' + money(cp.spend[i]) + '</span></div>').join('');
+  const bars = cp.months.map((m, i) => '<div class="cfrow"><span class="cflabel">' + esc(mName(m)) + '</span><div class="cfbar-track"><div class="cfbar" style="width:' + (cp.spend[i] > 0 ? Math.max(2, 100 * cp.spend[i] / maxM) : 0) + '%"></div></div><span class="cfval">' + money(cp.spend[i]) + '</span></div>').join('');
   const sup = cp.suppliers.map(x => '<tr><td class="name">' + bdi(x.supplierName || t('plan.noSup')) + '</td>' + x.spend.map(v => '<td class="num">' + money(v) + '</td>').join('') +
     '<td class="num"><b>' + money(x.spend[0] + x.spend[1] + x.spend[2]) + '</b></td></tr>').join('');
   return '<div class="section"><h2>' + esc(t('cp.title')) + '</h2><p class="muted">' + esc(t('cp.lede')) + '</p>' +
@@ -4582,23 +4607,36 @@ function cashPlanHtml() {
       '<th class="num">' + esc(t('total')) + '</th></tr></thead><tbody>' + sup + '</tbody></table></div>' : '') +
     '<p class="gridnote">' + esc(t('cp.note')) + '</p></div>';
 }
+// When the money for this cycle's orders leaves: the orders as they will be sent (budget quantities when that plan is on),
+// split into each supplier's deposit (due now) and balance (due after its payment days).
+function planCashFlow() {
+  const W = [['now', 0], ['week1', 7], ['week2', 14], ['week34', 30], ['later', 1e9]].map(([key, maxDays]) => ({ key, maxDays, total: 0 }));
+  const at = d => W.find(b => d <= b.maxDays) || W[W.length - 1];
+  const lines = planGroups().filter(g => g.value > 0).map(g => {
+    const sup = S.ws.suppliers.find(x => x.id === g.supplierId), dep = sup ? Number(sup.depositPct) || 0 : 0, days = sup ? Number(sup.balanceDays) || 0 : 0;
+    const depositDue = g.value * dep / 100, balanceDue = g.value - depositDue;
+    at(0).total += depositDue; if (balanceDue > 0.005) at(days).total += balanceDue;
+    return { supplierId: g.supplierId, supplierName: g.supplierName, total: g.value, depositPct: dep, depositDue, balanceDays: days, balanceDue };
+  }).sort((a, b) => b.total - a.total);
+  return { lines, buckets: W, total: lines.reduce((x, l) => x + l.total, 0), budget: !!(S.res.budgetPlan && !S.bpOff) };
+}
 VIEWS.cash = () => {
   if (!S.me.limits.cashFlow) {
     return head(t('cash.title'), t('cash.lede')) + lockedPreview('cash', 'cash.locked', 'pro');
   }
-  const cf = S.res.cashFlow;
-  if (!cf || !cf.lines.length) return head(t('cash.title'), t('cash.lede')) + emptyBox(t('cash.empty'), t('cash.emptyP')) + cashPlanHtml();
+  const cf = planCashFlow();
+  if (!cf.lines.length) return head(t('cash.title'), t('cash.lede')) + emptyBox(t('cash.empty'), t('cash.emptyP')) + cashPlanHtml();
   const bucketLabel = { now: 'cash.now', week1: 'cash.week1', week2: 'cash.week2', week34: 'cash.week34', later: 'cash.later' };
   const maxB = Math.max(1, ...cf.buckets.map(b => b.total));
   const bars = cf.buckets.map(b => '<div class="cfrow"><span class="cflabel">' + esc(t(bucketLabel[b.key])) + '</span>' +
-    '<div class="cfbar-track"><div class="cfbar" style="width:' + Math.max(2, 100 * b.total / maxB) + '%"></div></div>' +
+    '<div class="cfbar-track"><div class="cfbar" style="width:' + (b.total > 0 ? Math.max(2, 100 * b.total / maxB) : 0) + '%"></div></div>' +
     '<span class="cfval">' + money(b.total) + '</span></div>').join('');
   const rows = cf.lines.map(l => '<tr><td class="name">' + bdi(l.supplierName || t('unnamed')) + '</td><td class="num">' + money(l.total) +
     '</td><td class="num">' + (l.depositDue > 0 ? money(l.depositDue) : t('na')) +
     '</td><td class="num">' + (l.balanceDue > 0 ? money(l.balanceDue) + ' <span class="small muted">(' + esc(t('cash.balanceIn', { n: n0(l.balanceDays) })) + ')</span>' : t('na')) +
     '</td></tr>').join('');
   return head(t('cash.title'), t('cash.lede')) +
-    '<div class="kpis" style="margin-bottom:16px"><div class="kpi"><span>' + esc(t('cash.total')) + '</span><b>' + money(cf.total) + '</b></div></div>' +
+    '<div class="kpis" style="margin-bottom:16px"><div class="kpi"><span>' + esc(t('cash.total')) + '</span><b>' + money(cf.total) + '</b>' + (cf.budget ? '<small>' + esc(t('cash.budgetNote')) + '</small>' : '') + '</div></div>' +
     '<div class="panel graph">' + bars + '</div>' +
     '<div class="section"><h2>' + esc(t('cash.bySupplier')) + '</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>' + esc(t('supplier')) +
     '</th><th class="num">' + esc(t('total')) + '</th><th class="num">' + esc(t('cash.deposit')) + '</th><th class="num">' + esc(t('cash.balance')) +
