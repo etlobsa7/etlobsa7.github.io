@@ -351,6 +351,9 @@ html[dir="rtl"] .feats li::before{left:auto;right:2px}
 .again-case.st-tools{margin-top:40px}
 .st-tools .rx-stat b{white-space:nowrap;font-size:clamp(1.15rem,4.6vw,2.4rem)}
 .steps + h3{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
+details.pmore{margin-top:14px;background:none!important;border:0!important;box-shadow:none!important;padding:0!important;border-radius:0}
+details.pmore>summary{cursor:pointer;padding:4px 0!important;font-size:14px;font-weight:500;color:inherit;opacity:.8;text-decoration:underline;text-underline-offset:3px;width:fit-content}
+details.pmore>summary:hover{opacity:1}details.pmore>summary::after{content:none!important}details.pmore[open]>summary{margin-bottom:10px}
 </style>
 
 <style data-lime>
@@ -644,7 +647,6 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <div data-t-html="t20"></div>
 <div data-t-html="t21"></div>
 <div data-t-html="t22"></div>
-<div data-t-html="t23"></div>
 </div>
 <div class="hero-visual">
 <a class="rx-card" data-go="proof" href="#">
@@ -678,14 +680,14 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 </section>
 
 <div class="scrollsec" id="s-example">
-<section class="rx-hero"><div class="wrap"><p class="eyebrow" data-t="t521"></p><h1 data-t="t522"></h1><p class="lede" data-t="t523"></p><div class="rx-stats"><div class="rx-stat" data-t-html="t524"></div><div class="rx-stat" data-t-html="t525"></div><div class="rx-stat" data-t-html="t526"></div><div class="rx-stat" data-t-html="t527"></div></div></div></section>
+<section class="rx-hero"><div class="wrap"><p class="eyebrow" data-t="t521"></p><h1 data-t="t522"></h1><p class="lede" data-t="t523"></p><div class="rx-stats"><div class="rx-stat" data-t-html="t524"></div><div class="rx-stat" data-t-html="t525"></div><div class="rx-stat" data-t-html="t526"></div></div></div></section>
 <section class="proofsec">
 <div class="wrap">
 <div class="head"><h2 data-t="t466"></h2></div>
 <figure class="realchart"><figcaption class="rc-cap" data-t="t517"></figcaption><svg viewBox="0 0 780 290" role="img" aria-labelledby="rc-t"><title id="rc-t" data-t="t517"></title><line class="rc-grid" x1="70" x2="760" y1="250.0" y2="250.0"/><text class="rc-y" x="62" y="254.0" text-anchor="end">1,200</text><line class="rc-grid" x1="70" x2="760" y1="176.7" y2="176.7"/><text class="rc-y" x="62" y="180.7" text-anchor="end">1,800</text><line class="rc-grid" x1="70" x2="760" y1="103.3" y2="103.3"/><text class="rc-y" x="62" y="107.3" text-anchor="end">2,400</text><line class="rc-grid" x1="70" x2="760" y1="30.0" y2="30.0"/><text class="rc-y" x="62" y="34.0" text-anchor="end">3,000</text><text class="rc-x" x="70.0" y="272" text-anchor="middle" data-t="t505"></text><text class="rc-x" x="132.7" y="272" text-anchor="middle" data-t="t506"></text><text class="rc-x" x="195.5" y="272" text-anchor="middle" data-t="t507"></text><text class="rc-x" x="258.2" y="272" text-anchor="middle" data-t="t508"></text><text class="rc-x" x="320.9" y="272" text-anchor="middle" data-t="t509"></text><text class="rc-x" x="383.6" y="272" text-anchor="middle" data-t="t510"></text><text class="rc-x" x="446.4" y="272" text-anchor="middle" data-t="t511"></text><text class="rc-x" x="509.1" y="272" text-anchor="middle" data-t="t512"></text><text class="rc-x" x="571.8" y="272" text-anchor="middle" data-t="t513"></text><text class="rc-x" x="634.5" y="272" text-anchor="middle" data-t="t514"></text><text class="rc-x" x="697.3" y="272" text-anchor="middle" data-t="t515"></text><text class="rc-x" x="760.0" y="272" text-anchor="middle" data-t="t516"></text><path class="rc-band" d="M70.0 222.3 L132.7 229.7 L195.5 206.6 L258.2 214.9 L320.9 199.6 L383.6 193.6 L446.4 181.1 L509.1 184.8 L571.8 197.0 L634.5 191.4 L697.3 210.1 L760.0 232.7 L760.0 95.2 L697.3 60.2 L634.5 33.5 L571.8 50.3 L509.1 36.8 L446.4 38.2 L383.6 66.4 L320.9 83.3 L258.2 114.5 L195.5 108.9 L132.7 150.6 L70.0 146.8 Z"/><path class="rc-l rc-act" d="M70.0 154.5 L132.7 133.4 L195.5 128.1 L258.2 136.9 L320.9 123.0 L383.6 132.3 L446.4 83.2 L509.1 80.4 L571.8 99.2 L634.5 100.3 L697.3 146.7 L760.0 140.9"/><path class="rc-l rc-year" d="M70.0 184.6 L132.7 190.2 L195.5 157.7 L258.2 164.7 L320.9 141.4 L383.6 130.0 L446.4 109.7 L509.1 110.8 L571.8 123.7 L634.5 112.4 L697.3 135.2 L760.0 163.9"/><path class="rc-l rc-mon" d="M70.0 168.0 L132.7 170.0 L195.5 128.7 L258.2 136.5 L320.9 127.0 L383.6 133.3 L446.4 122.4 L509.1 103.4 L571.8 105.0 L634.5 92.2 L697.3 112.5 L760.0 127.0"/><circle class="rc-d-act" cx="70.0" cy="154.5" r="3.4"/><circle class="rc-d-act" cx="132.7" cy="133.4" r="3.4"/><circle class="rc-d-act" cx="195.5" cy="128.1" r="3.4"/><circle class="rc-d-act" cx="258.2" cy="136.9" r="3.4"/><circle class="rc-d-act" cx="320.9" cy="123.0" r="3.4"/><circle class="rc-d-act" cx="383.6" cy="132.3" r="3.4"/><circle class="rc-d-act" cx="446.4" cy="83.2" r="3.4"/><circle class="rc-d-act" cx="509.1" cy="80.4" r="3.4"/><circle class="rc-d-act" cx="571.8" cy="99.2" r="3.4"/><circle class="rc-d-act" cx="634.5" cy="100.3" r="3.4"/><circle class="rc-d-act" cx="697.3" cy="146.7" r="3.4"/><circle class="rc-d-act" cx="760.0" cy="140.9" r="3.4"/><circle class="rc-d-mon" cx="70.0" cy="168.0" r="3.4"/><circle class="rc-d-mon" cx="132.7" cy="170.0" r="3.4"/><circle class="rc-d-mon" cx="195.5" cy="128.7" r="3.4"/><circle class="rc-d-mon" cx="258.2" cy="136.5" r="3.4"/><circle class="rc-d-mon" cx="320.9" cy="127.0" r="3.4"/><circle class="rc-d-mon" cx="383.6" cy="133.3" r="3.4"/><circle class="rc-d-mon" cx="446.4" cy="122.4" r="3.4"/><circle class="rc-d-mon" cx="509.1" cy="103.4" r="3.4"/><circle class="rc-d-mon" cx="571.8" cy="105.0" r="3.4"/><circle class="rc-d-mon" cx="634.5" cy="92.2" r="3.4"/><circle class="rc-d-mon" cx="697.3" cy="112.5" r="3.4"/><circle class="rc-d-mon" cx="760.0" cy="127.0" r="3.4"/></svg><div class="rc-key"><span><i class="k-act"></i><span data-t="t518"></span></span><span><i class="k-year"></i><span data-t="t519"></span></span><span><i class="k-mon"></i><span data-t="t520"></span></span><span><i class="k-band"></i><span data-t="t642"></span></span></div></figure>
 <p class="rx-more"><button type="button" class="btn btn-primary" data-pop="pop-results2" data-t="t543"></button></p>
-<p class="pnote" data-t-html="t472"></p>
-<p class="pmethod" data-t-html="t528"></p>
+<details class="pmore"><summary data-t="t698"></summary><p class="pnote" data-t-html="t472"></p>
+<p class="pmethod" data-t-html="t528"></p></details>
 </div>
 </section>
 <section class="alt">
@@ -713,20 +715,18 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <div class="wrap">
 <h2 class="again-h" data-t="t550"></h2>
 <p class="again-sub" data-t="t551"></p>
-<div class="again-tests"><p class="eyebrow" data-t="t560"></p><div class="ag-grid"><div class="ag-card" data-t-html="t561"></div><div class="ag-card" data-t-html="t562"></div></div></div>
 <div class="again-case"><h3 data-t="t552"></h3><p data-t="t553"></p>
-<div class="rx-stats ag-stats"><div class="rx-stat" data-t-html="t554"></div><div class="rx-stat" data-t-html="t555"></div><div class="rx-stat" data-t-html="t556"></div><div class="rx-stat" data-t-html="t557"></div></div>
-<p class="pnote whynote" data-t-html="t646"></p>
+<div class="rx-stats ag-stats"><div class="rx-stat" data-t-html="t554"></div><div class="rx-stat" data-t-html="t555"></div></div>
 <figure class="realchart rc2"><figcaption class="rc-cap" data-t="t566"></figcaption><svg viewBox="0 0 780 290" role="img"><title data-t="t566"></title><line class="rc-grid" x1="70" x2="760" y1="250.0" y2="250.0"/><text class="rc-y" x="62" y="254.0" text-anchor="end">2,600</text><line class="rc-grid" x1="70" x2="760" y1="176.7" y2="176.7"/><text class="rc-y" x="62" y="180.7" text-anchor="end">3,200</text><line class="rc-grid" x1="70" x2="760" y1="103.3" y2="103.3"/><text class="rc-y" x="62" y="107.3" text-anchor="end">3,800</text><line class="rc-grid" x1="70" x2="760" y1="30.0" y2="30.0"/><text class="rc-y" x="62" y="34.0" text-anchor="end">4,400</text><text class="rc-x" x="70.0" y="272" text-anchor="middle" data-t="t505"></text><text class="rc-x" x="132.7" y="272" text-anchor="middle" data-t="t506"></text><text class="rc-x" x="195.5" y="272" text-anchor="middle" data-t="t507"></text><text class="rc-x" x="258.2" y="272" text-anchor="middle" data-t="t508"></text><text class="rc-x" x="320.9" y="272" text-anchor="middle" data-t="t509"></text><text class="rc-x" x="383.6" y="272" text-anchor="middle" data-t="t510"></text><text class="rc-x" x="446.4" y="272" text-anchor="middle" data-t="t511"></text><text class="rc-x" x="509.1" y="272" text-anchor="middle" data-t="t512"></text><text class="rc-x" x="571.8" y="272" text-anchor="middle" data-t="t513"></text><text class="rc-x" x="634.5" y="272" text-anchor="middle" data-t="t514"></text><text class="rc-x" x="697.3" y="272" text-anchor="middle" data-t="t515"></text><text class="rc-x" x="760.0" y="272" text-anchor="middle" data-t="t516"></text><path class="rc-band" d="M70.0 214.1 L132.7 242.1 L195.5 205.0 L258.2 216.6 L320.9 208.5 L383.6 224.8 L446.4 214.3 L509.1 213.1 L571.8 222.9 L634.5 212.5 L697.3 233.8 L760.0 239.3 L760.0 74.7 L697.3 72.5 L634.5 47.6 L571.8 69.3 L509.1 62.1 L446.4 70.7 L383.6 92.4 L320.9 77.3 L258.2 95.9 L195.5 88.4 L132.7 144.8 L70.0 117.1 Z"/><path class="rc-l rc-act" d="M70.0 191.0 L132.7 132.5 L195.5 139.1 L258.2 131.9 L320.9 95.3 L383.6 151.0 L446.4 103.8 L509.1 52.2 L571.8 120.0 L634.5 117.9 L697.3 164.9 L760.0 184.7"/><path class="rc-l rc-year" d="M70.0 165.6 L132.7 193.5 L195.5 146.7 L258.2 156.3 L320.9 142.9 L383.6 158.6 L446.4 142.5 L509.1 137.6 L571.8 146.1 L634.5 130.1 L697.3 153.1 L760.0 157.0"/><path class="rc-l rc-mon" d="M70.0 164.0 L132.7 204.9 L195.5 131.4 L258.2 147.8 L320.9 132.7 L383.6 128.7 L446.4 125.5 L509.1 116.0 L571.8 101.4 L634.5 90.7 L697.3 122.5 L760.0 134.1"/><circle class="rc-d-act" cx="70.0" cy="191.0" r="3.4"/><circle class="rc-d-act" cx="132.7" cy="132.5" r="3.4"/><circle class="rc-d-act" cx="195.5" cy="139.1" r="3.4"/><circle class="rc-d-act" cx="258.2" cy="131.9" r="3.4"/><circle class="rc-d-act" cx="320.9" cy="95.3" r="3.4"/><circle class="rc-d-act" cx="383.6" cy="151.0" r="3.4"/><circle class="rc-d-act" cx="446.4" cy="103.8" r="3.4"/><circle class="rc-d-act" cx="509.1" cy="52.2" r="3.4"/><circle class="rc-d-act" cx="571.8" cy="120.0" r="3.4"/><circle class="rc-d-act" cx="634.5" cy="117.9" r="3.4"/><circle class="rc-d-act" cx="697.3" cy="164.9" r="3.4"/><circle class="rc-d-act" cx="760.0" cy="184.7" r="3.4"/><circle class="rc-d-mon" cx="70.0" cy="164.0" r="3.4"/><circle class="rc-d-mon" cx="132.7" cy="204.9" r="3.4"/><circle class="rc-d-mon" cx="195.5" cy="131.4" r="3.4"/><circle class="rc-d-mon" cx="258.2" cy="147.8" r="3.4"/><circle class="rc-d-mon" cx="320.9" cy="132.7" r="3.4"/><circle class="rc-d-mon" cx="383.6" cy="128.7" r="3.4"/><circle class="rc-d-mon" cx="446.4" cy="125.5" r="3.4"/><circle class="rc-d-mon" cx="509.1" cy="116.0" r="3.4"/><circle class="rc-d-mon" cx="571.8" cy="101.4" r="3.4"/><circle class="rc-d-mon" cx="634.5" cy="90.7" r="3.4"/><circle class="rc-d-mon" cx="697.3" cy="122.5" r="3.4"/><circle class="rc-d-mon" cx="760.0" cy="134.1" r="3.4"/></svg><div class="rc-key"><span><i class="k-act"></i><span data-t="t518"></span></span><span><i class="k-year"></i><span data-t="t641"></span></span><span><i class="k-mon"></i><span data-t="t520"></span></span><span><i class="k-band"></i><span data-t="t642"></span></span></div></figure>
-<p class="pnote" data-t-html="t558"></p>
 <p class="rx-more"><button type="button" class="btn btn-primary" data-pop="pop-results" data-t="t564"></button></p>
-<p class="pmethod" data-t-html="t559"></p>
 <p class="pmethod psrc" data-t-html="t640"></p>
+<details class="pmore"><summary data-t="t698"></summary><p class="pnote whynote" data-t-html="t646"></p><p class="pnote" data-t-html="t558"></p>
+<p class="pmethod" data-t-html="t559"></p></details>
 </div>
 <div class="again-case st-tools"><h3 data-t="t687"></h3><p data-t="t688"></p>
-<div class="rx-stats ag-stats"><div class="rx-stat" data-t-html="t689"></div><div class="rx-stat" data-t-html="t690"></div><div class="rx-stat" data-t-html="t691"></div><div class="rx-stat" data-t-html="t692"></div></div>
-<p class="pnote" data-t-html="t693"></p>
-<p class="pmethod" data-t="t694"></p>
+<div class="rx-stats ag-stats"><div class="rx-stat" data-t-html="t689"></div><div class="rx-stat" data-t-html="t691"></div></div>
+<details class="pmore"><summary data-t="t698"></summary><p class="pnote" data-t-html="t693"></p>
+<p class="pmethod" data-t="t694"></p></details>
 </div>
 </div>
 </section></div>
@@ -910,6 +910,7 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <p class="who" data-t="t286"></p>
 <ul class="feats">
 <li data-t="t287"></li>
+<li data-t="t699"></li>
 <li data-t="t288"></li>
 <li data-t="t289"></li>
 <li data-t="t290"></li>
@@ -945,6 +946,7 @@ body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;op
 <p class="who" data-t="t307"></p>
 <ul class="feats">
 <li data-t="t308"></li>
+<li data-t="t303"></li>
 <li data-t="t309"></li>
 <li data-t="t685"></li>
 <li data-t="t686"></li>
@@ -1263,9 +1265,9 @@ var SITE_EN = {
   t17: 'Many small brands sell well and guess at buying. This removes the guess: how many units to order, from which supplier, on which day, for every product you sell.',
   t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">Start your free trial</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">See the app in action</a>',
   t19: 'Runs in your browser. Arabic and English included. Priced in Egyptian pounds.',
-  t20: '<b>95.3%</b><span>2015 forecast accuracy on a real Walmart store, made from 2013 and 2014 only</span>',
-  t21: '<b>~10 min</b><small>A typical weekly check once it is set up</small>',
-  t22: '<b>18</b><small>Connected pages. You type into five.</small>',
+  t20: '<b>99.8%</b><span>Of customer demand served from stock, tested on a real Walmart store</span>',
+  t21: '<b>14 days</b><small>Free trial on Basic and Pro. Card required; nothing is charged until it ends.</small>',
+  t22: '<b>Save 17%</b><small>With a yearly plan. Stop renewal online any time.</small>',
   t23: '<b>2 min</b><small>To sign in. Just your email, no password to remember.</small>',
   t24: 'The problem',
   t25: 'You may be doing both of these at once',
@@ -1530,7 +1532,7 @@ var SITE_EN = {
   t280: 'Pricing',
   t281: 'Monthly or yearly. Stop renewal whenever you like.',
   t282: 'Every plan includes the full system, both languages, the guided walkthrough, and new tools as they are added. Fourteen days free on Basic and Pro, five days on Store.',
-  t283: 'Prices are in Egyptian pounds, paid by card through Paymob. A yearly plan costs ten months: two months free.',
+  t283: 'Prices are in Egyptian pounds, paid by card through Paymob. A yearly plan saves 17%.',
   t284: 'Basic',
   t285: '1,295 <small>EGP / month</small>',
   t286: 'A one person shop with a focused range.',
@@ -1562,7 +1564,7 @@ var SITE_EN = {
   t312: 'Direct line for questions',
   t313: 'Start 5-day free trial',
   t314: 'Free trial on every plan',
-  t315: 'Add your card to start the trial. Nothing is charged until it ends; stop renewal before then in the app and you pay nothing.',
+  t315: 'Card required to start. Nothing is charged until the trial ends, and you can stop it online before then.',
   t318: 'Your data stays put',
   t319: 'Your workspace is kept even if you cancel, so everything is exactly as you left it if you come back.',
   t320: 'Questions',
@@ -1628,7 +1630,7 @@ var SITE_EN = {
   t631: 'A month of reordering, done right',
   t630: 'Scroll to restock the shelf',
   t641: 'App, whole year forecast made in December 2014',
-  t640: 'The same formulas were also checked on all ten M5 stores, two years each (20 store-years), so they are not tuned to the two stores shown.',
+  t640: 'The same formulas were checked on all ten stores in the dataset (20 store-years), so they are not tuned to the two shown.',
   t642: 'Range the app gave in advance (built so about 8 in 10 months land inside)',
   t643: 'Expected range',
   t644: '<td class="pf">Expected range, each month of 2015</td><td>Low and high for each month, made Dec 2014</td><td>Real monthly sales</td><td class="pacc"><b>10 of 12 months inside</b><span class="pbar"><i style="--w:83.3%"></i></span></td>',
@@ -1650,21 +1652,21 @@ var SITE_EN = {
   t694: 'Method: each Sunday the shop had 80% of the average weekly cash the app spends with no limit, and unspent cash carried to the next week. The budget plan was compared with buying the most urgent orders in full (order today first, then revenue class, then value) and with cutting every order by the same share. Profit lost is the margin on sales missed for lack of stock. Cash plan: the prediction made at the start of each month of 2015 against what the orders really cost. Averages of 10 runs, same products, suppliers and costs as tests 1 and 2, and all 20 store-years with 3 runs each.',
   t693: '<strong>Plainly:</strong> with cash short, cutting every order by the same share also does better than buying the most urgent first, and the budget plan lost 36% and 42% less profit than that too. Across all 20 store-years it lost 91% less profit than most urgent first and 45% less than cutting evenly. It is not magic: with 80% of the cash some sales are still lost (with full cash the app served 99.8% and 99.7%). The cash plan is strongest for next month and the 3-month total; months 2 and 3 on their own were 82% and 81% right in California, 68% and 65% in Wisconsin.',
   t692: '<b>85.1% / 79.0%</b><span>Cash needed for next month, right (California / Wisconsin)</span>',
-  t691: '<b>92.0% / 88.5%</b><span>Cash needed for the next 3 months, right in total (California / Wisconsin)</span>',
+  t691: '<b>88% to 92%</b><span>Of the next 3 months of stock spending predicted correctly</span>',
   t690: '<b>95.0% / 95.9%</b><span>Of real demand served on 80% of the cash, against 90.6% / 78.0% for most urgent first</span>',
-  t689: '<b>75% / 82%</b><span>Less profit lost with the budget plan than buying the most urgent orders in full (California / Wisconsin)</span>',
-  t688: 'Same method: the app saw 2013 and 2014 only, then ran through the real 2015 week by week. For the budget plan, the shop had cash for only 80% of what the app suggested each week. For the cash plan, at the start of each month the app predicted what its orders would cost over the next 3 months, checked against what they really cost.',
+  t689: '<b>75% to 82%</b><span>Less profit lost when cash is short, against buying the most urgent orders first</span>',
+  t688: 'Same method: the app saw 2013 and 2014 only, then ran through the real 2015 with less cash than its orders needed.',
   t687: 'Test 3: the Store tools, on the same two Walmart years',
   t686: 'Cash needed for stock, next 3 months',
   t685: 'Budget plan: exactly what to buy when cash is short',
   t681: 'What is the Sunday summary?',
-  t680: 'Yes. After a 14-day trial we email you 7 days before the first payment, with a link to stop renewal online. Store\'s 5-day trial is reminded the day after it starts. Yearly plans get an email 7 days before each renewal.',
+  t680: 'Yes. We email you before your first payment and before every yearly renewal, with a link to stop renewal online.',
   t679: 'Will you remind me before charging my card?',
   t678: 'The first 30 shops to make a payment keep the price they started on for as long as they stay subscribed, even if our prices go up later. If a plan runs out, the founding price ends with it. The pricing section shows how many places are left.',
   t677: 'What is the founding offer?',
-  t676: 'Yes. Pay for ten months and get twelve: Basic 12,950, Pro 28,500 and Store 54,400 EGP a year. The free trial is the same, and we email you 7 days before each yearly renewal.',
+  t676: 'Yes. Yearly plans save 17%: Basic 12,950, Pro 28,500 and Store 54,400 EGP a year. The free trial is the same.',
   t675: 'Is there a yearly plan?',
-  t674: 'After a 14-day trial we email you 7 days before the first payment, with a link to stop it online. Store\'s 5-day trial gets its reminder the day after it starts, and yearly plans get one 7 days before each renewal.',
+  t674: 'We email you before your first payment and before every yearly renewal, with a link to stop it online.',
   t673: 'A reminder before any charge',
   t672: 'Founding offer: the first 30 shops to pay keep today\'s price for as long as they stay subscribed. {n} of 30 places left.',
   t671: 'More than 200 products: message us on WhatsApp and we will tell you honestly whether it suits you.',
@@ -1674,13 +1676,13 @@ var SITE_EN = {
   t667: 'Type a number to see which plan fits.',
   t666: 'How many products do you sell?',
   t665: 'Billing period',
-  t664: 'Same as 4,533 EGP a month',
-  t663: 'Same as 2,375 EGP a month',
-  t662: 'Same as 1,079 EGP a month',
+  t664: 'Billed once a year',
+  t663: 'Billed once a year',
+  t662: 'Billed once a year',
   t661: '54,400 <small>EGP / year</small>',
   t660: '28,500 <small>EGP / year</small>',
   t659: '12,950 <small>EGP / year</small>',
-  t658: '2 months free',
+  t658: 'Save 17%',
   t657: 'Yearly',
   t656: 'Monthly',
   t654: '<td class="pf">Profit at risk</td><td>272 USD</td><td>311 USD</td><td class="pacc"><b>87.7% (each run scored on its own)</b><span class="pbar"><i style="--w:87.7%"></i></span></td>',
@@ -1689,7 +1691,7 @@ var SITE_EN = {
   t624: '95.3% whole year forecast',
   t623: 'Walmart, store CA_3, California',
   t622: '99.8% of customers served',
-  t621: '92.0% whole year forecast',
+  t621: '94.5% month by month',
   t620: 'Walmart, store WI_2, Wisconsin',
   t582: '<td class="pf">Revenue for 2015</td><td>92,700 USD</td><td>91,000 USD</td><td class="pacc"><b>98.1%</b><span class="pbar"><i style="--w:98.1%"></i></span></td>',
   t581: '<td class="pf">Days of cover</td><td>How long current stock will last</td><td>How long it really lasted</td><td class="pacc"><b>83.5%</b><span class="pbar"><i style="--w:83.5%"></i></span></td>',
@@ -1709,6 +1711,8 @@ var SITE_EN = {
   t567: '<td class="pf">Store sales, month by month</td><td>Next month, updated monthly</td><td>Real monthly sales</td><td class="pacc"><b>94.5% (same month last year: 93.8%)</b><span class="pbar"><i style="--w:94.5%"></i></span></td>',
   t566: 'Units sold per month, 40 products, 2015',
   t697: 'Test 2: Walmart store CA_3, California, full results',
+  t699: 'Up to 10 suppliers',
+  t698: 'How it was tested, and where it falls short',
   t565: 'Test 1: Walmart store WI_2, Wisconsin, full results',
   t564: 'See all results for test 2',
   t562: '<b>95.3%</b><span>Walmart store, California, 2015: whole year forecast</span>',
@@ -1730,7 +1734,7 @@ var SITE_EN = {
   t546: 'Tap any card for a closer look',
   t545: 'Close',
   t544: 'See all 18 pages',
-  t543: 'See all 20 results',
+  t543: 'See the full results',
   t542: 'Questions',
   t541: 'Pricing',
   t540: 'What you get',
@@ -1747,10 +1751,10 @@ var SITE_EN = {
   t529: 'See it work on a real store',
   t528: 'Source: M5 Forecasting Accuracy competition data, store WI_2 (Wisconsin): Makridakis, Spiliotis and Assimakopoulos, University of Nicosia (M Open Forecasting Center), with data provided by Walmart; Kaggle, 2020, <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">kaggle.com/c/m5-forecasting-accuracy</a>. Method paper: <a href="https://doi.org/10.1016/j.ijforecast.2021.11.013" target="_blank" rel="noopener">International Journal of Forecasting, 2022</a>. Copy used: the <a href="https://github.com/Nixtla/m5-forecasts" target="_blank" rel="noopener">Nixtla public mirror</a>. Used under the Kaggle competition rules: only results are shown here, never the raw data. Not affiliated with or endorsed by Walmart.',
   t527: '<b>99.1%</b><span>"No need to order" calls that were safe</span>',
-  t526: '<b>93.6%</b><span>Reorder week right to within a week, two weeks ahead</span>',
-  t525: '<b>99.8%</b><span>Of real customer demand served from stock</span>',
-  t524: '<b>92.0%</b><span>Whole year forecast for the store, made in December 2014</span>',
-  t523: 'Real daily sales from a Walmart store in Wisconsin, from the public M5 dataset: 40 hobby and household products. The app saw only 2013 and 2014, then planned 2015. Every number here compares what it predicted with what really happened.',
+  t526: '<b>99.8%</b><span>Of customer demand served from stock</span>',
+  t525: '<b>11 of 12</b><span>Months inside the range it gave in advance</span>',
+  t524: '<b>94.5%</b><span>Store sales forecast right, month by month</span>',
+  t523: 'Real daily sales from a Walmart store in Wisconsin, from the public M5 dataset. The app saw only 2013 and 2014, then planned 2015.',
   t522: 'We gave the app a real store\'s past. It predicted the next year.',
   t521: 'A real example',
   t520: 'App, next month, updated each month',
@@ -1964,9 +1968,9 @@ var SITE_EN = {
   t17: 'محلات صغيرة كتير شاطرة في البيع وبتخمن في الشراء. الأداة دي بتشيل التخمين: تطلب كام قطعة، من أي مورد، في أنهي يوم، لكل منتج بتبيعه.',
   t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">اتفرج على الأداة</a>',
   t19: 'بيشتغل في المتصفح. عربي وإنجليزي مع بعض. بالجنيه المصري.',
-  t20: '<b>95.3%</b><span>دقة توقع 2015 لفرع وول مارت حقيقي، معمول من بيانات 2013 و2014 بس</span>',
-  t21: '<b>~10 دقايق</b><small>مراجعة أسبوعية عادية بعد ما تظبطه</small>',
-  t22: '<b>18</b><small>صفحة مترابطة. بتكتب في خمسة بس.</small>',
+  t20: '<b>99.8%</b><span>من طلب الزباين اتلبى من المخزون، في تجربة على فرع وول مارت حقيقي</span>',
+  t21: '<b>14 يوم</b><small>تجربة مجانية على الأساسية وPro. محتاج كارت، ومفيش خصم لحد ما تخلص.</small>',
+  t22: '<b>وفر 17%</b><small>مع الباقة السنوية. وقف التجديد أونلاين في أي وقت.</small>',
   t23: '<b>دقيقتين</b><small>علشان تسجل دخول. الإيميل بس، من غير باسورد.</small>',
   t24: 'المشكلة',
   t25: 'ممكن تكون بتعمل الاتنين دول في نفس الوقت',
@@ -2231,7 +2235,7 @@ var SITE_EN = {
   t280: 'الأسعار',
   t281: 'شهري أو سنوي. وقف التجديد وقت ما تحب.',
   t282: 'كل باقة فيها النظام كامل، اللغتين، الدليل الإرشادي، وأدوات جديدة أول ما تتضاف. أربعتاشر يوم مجانا على الأساسية وPro، وخمس أيام على Store.',
-  t283: 'الأسعار بالجنيه المصري، والدفع بالكارت عن طريق Paymob. الباقة السنوية بسعر عشر شهور: شهرين ببلاش.',
+  t283: 'الأسعار بالجنيه المصري، والدفع بالكارت عن طريق Paymob. الباقة السنوية بتوفر 17%.',
   t284: 'الأساسية',
   t285: '1,295 <small>جنيه / شهر</small>',
   t286: 'محل فرد واحد بمنتجات محدودة.',
@@ -2263,7 +2267,7 @@ var SITE_EN = {
   t312: 'خط مباشر للأسئلة',
   t313: 'ابدأ تجربة مجانية 5 أيام',
   t314: 'تجربة مجانية على كل باقة',
-  t315: 'ضيف كارتك علشان تبدأ التجربة. مفيش أي خصم لحد ما تخلص؛ وقف التجديد من البرنامج قبلها ومش هتدفع حاجة.',
+  t315: 'محتاج كارت علشان تبدأ. مفيش أي خصم لحد ما التجربة تخلص، وتقدر توقفها أونلاين قبلها.',
   t318: 'بياناتك فاضلة مكانها',
   t319: 'مساحة عملك بتفضل محفوظة حتى لو ألغيت، فكل حاجة زي ما سبتها بالظبط لو رجعت.',
   t320: 'أسئلة',
@@ -2329,7 +2333,7 @@ var SITE_EN = {
   t631: 'شهر كامل من إعادة الطلب، مظبوط',
   t630: 'اعمل سكرول وشوف الرف بيتملى',
   t641: 'الأداة، توقع السنة كلها معمول في ديسمبر 2014',
-  t640: 'ونفس المعادلات اتجربت كمان على العشر فروع في بيانات M5، سنتين لكل فرع (20 سنة فرع)، فهي مش متظبطة على الفرعين اللي قدامك بس.',
+  t640: 'ونفس المعادلات اتجربت على العشر فروع في البيانات (20 سنة فرع)، فهي مش متظبطة على الفرعين اللي قدامك بس.',
   t642: 'المدى اللي الأداة حددته من الأول (معمول بحيث حوالي 8 من كل 10 شهور يقعوا جواه)',
   t643: 'المدى المتوقع',
   t644: '<td class="pf">المدى المتوقع، كل شهر في 2015</td><td>أقل وأعلى رقم لكل شهر، معمول في ديسمبر 2014</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>10 من 12 شهر جواه</b><span class="pbar"><i style="--w:83.3%"></i></span></td>',
@@ -2351,21 +2355,21 @@ var SITE_EN = {
   t694: 'الطريقة: كل يوم أحد المحل كان معاه 80% من متوسط الكاش الأسبوعي اللي الأداة بتصرفه من غير حد، والكاش اللي ماتصرفش بيترحل للأسبوع اللي بعده. خطة الميزانية اتقارنت بشراء الطلبات الأكثر استعجالا كاملة (اطلب النهارده الأول، بعدين فئة الإيراد، بعدين القيمة) وبتقليل كل طلب بنفس النسبة. الربح الضايع هو هامش المبيعات اللي راحت علشان البضاعة خلصت. خطة الكاش: التوقع اللي اتعمل أول كل شهر في 2015 قصاد اللي الطلبات اتكلفته فعلا. متوسط 10 تجارب، بنفس المنتجات والموردين والتكاليف بتوع التجربة 1 و2، والـ 20 سنة فرع كلها بـ 3 تجارب لكل واحدة.',
   t693: '<strong>بصراحة:</strong> لما الكاش يقل، تقليل كل طلب بنفس النسبة كمان أحسن من شراء الأكثر استعجالا الأول، وخطة الميزانية ضيعت ربح أقل منه كمان بـ 36% و42%. وعلى الـ 20 سنة فرع كلها، ضيعت ربح أقل بـ 91% من الأكثر استعجالا الأول، وأقل بـ 45% من التقليل بالتساوي. ده مش سحر: بـ 80% من الكاش لسه في مبيعات بتضيع (بالكاش كامل الأداة لبت 99.8% و99.7%). خطة الكاش أقوى في الشهر الجاي وإجمالي الـ 3 شهور؛ الشهر التاني والتالت لوحدهم طلعوا صح بنسبة 82% و81% في كاليفورنيا، و68% و65% في ويسكونسن.',
   t692: '<b>85.1% / 79.0%</b><span>فلوس الشهر الجاي، صح (كاليفورنيا / ويسكونسن)</span>',
-  t691: '<b>92.0% / 88.5%</b><span>فلوس الـ 3 شهور الجاية، صح في الإجمالي (كاليفورنيا / ويسكونسن)</span>',
+  t691: '<b>88% لـ 92%</b><span>من فلوس البضاعة في الـ 3 شهور الجاية اتوقعت صح</span>',
   t690: '<b>95.0% / 95.9%</b><span>من الطلب الحقيقي اتلبى بـ 80% من الكاش، قصاد 90.6% / 78.0% للأكثر استعجالا الأول</span>',
-  t689: '<b>75% / 82%</b><span>ربح ضايع أقل مع خطة الميزانية من شراء الطلبات الأكثر استعجالا كاملة (كاليفورنيا / ويسكونسن)</span>',
-  t688: 'نفس الطريقة: الأداة شافت 2013 و2014 بس، وبعدين مشيت في 2015 الحقيقية أسبوع بأسبوع. في خطة الميزانية، المحل كان معاه كاش يكفي 80% بس من اللي الأداة اقترحته كل أسبوع. وفي خطة الكاش، أول كل شهر الأداة توقعت طلباتها هتتكلف كام في الـ 3 شهور الجاية، واتقارن ده باللي اتكلفته فعلا.',
+  t689: '<b>75% لـ 82%</b><span>ربح ضايع أقل لما الكاش يقل، قصاد شراء الطلبات الأكثر استعجالا الأول</span>',
+  t688: 'نفس الطريقة: الأداة شافت 2013 و2014 بس، وبعدين مشيت في 2015 الحقيقية بكاش أقل من اللي طلباتها محتاجاه.',
   t687: 'التجربة 3: أدوات Store، على نفس سنتين وول مارت',
   t686: 'فلوس البضاعة للـ 3 شهور الجاية',
   t685: 'خطة الميزانية: تشتري إيه بالظبط لما الكاش يقل',
   t681: 'إيه ملخص يوم الأحد؟',
-  t680: 'أيوه. بعد تجربة الـ 14 يوم بنبعتلك إيميل قبل أول دفعة بـ 7 أيام، فيه لينك توقف بيه التجديد أونلاين. تجربة Store اللي 5 أيام بيوصلها التذكير تاني يوم من بدايتها. والباقة السنوية بيوصلها إيميل قبل كل تجديد بـ 7 أيام.',
+  t680: 'أيوه. بنبعتلك إيميل قبل أول دفعة وقبل كل تجديد سنوي، فيه لينك توقف بيه التجديد أونلاين.',
   t679: 'هتفكروني قبل ما تخصموا من الكارت؟',
   t678: 'أول 30 محل يدفعوا بيفضل سعرهم زي ما بدأوا بيه طول ما اشتراكهم مستمر، حتى لو أسعارنا زادت بعدين. لو الباقة خلصت، السعر المؤسس بيخلص معاها. قسم الأسعار بيوضح فاضل كام مكان.',
   t677: 'إيه عرض المؤسسين؟',
-  t676: 'أيوه. ادفع عشر شهور وخد اتناشر: الأساسية 12,950، وPro بـ 28,500، وStore بـ 54,400 جنيه في السنة. التجربة المجانية زي ما هي، وبنبعتلك إيميل قبل كل تجديد سنوي بـ 7 أيام.',
+  t676: 'أيوه. الباقة السنوية بتوفر 17%: الأساسية 12,950، وPro بـ 28,500، وStore بـ 54,400 جنيه في السنة. والتجربة المجانية زي ما هي.',
   t675: 'في باقة سنوية؟',
-  t674: 'بعد تجربة الـ 14 يوم بنبعتلك إيميل قبل أول دفعة بـ 7 أيام، فيه لينك توقف بيه التجديد أونلاين. تجربة Store اللي 5 أيام بيوصلها التذكير تاني يوم من بدايتها، والباقة السنوية بيوصلها قبل كل تجديد بـ 7 أيام.',
+  t674: 'بنبعتلك إيميل قبل أول دفعة وقبل كل تجديد سنوي، فيه لينك توقفه بيه أونلاين.',
   t673: 'تذكير قبل أي خصم',
   t672: 'عرض المؤسسين: أول 30 محل يدفعوا بيفضل سعرهم زي النهارده طول ما اشتراكهم مستمر. فاضل {n} من 30 مكان.',
   t671: 'أكتر من 200 منتج: ابعتلنا على واتساب وهنقولك بصراحة إذا كانت تناسبك.',
@@ -2375,13 +2379,13 @@ var SITE_EN = {
   t667: 'اكتب رقم علشان تعرف أنهي باقة تناسبك.',
   t666: 'بتبيع كام منتج؟',
   t665: 'مدة الدفع',
-  t664: 'يعني 4,533 جنيه في الشهر',
-  t663: 'يعني 2,375 جنيه في الشهر',
-  t662: 'يعني 1,079 جنيه في الشهر',
+  t664: 'بتتدفع مرة في السنة',
+  t663: 'بتتدفع مرة في السنة',
+  t662: 'بتتدفع مرة في السنة',
   t661: '54,400 <small>جنيه / سنة</small>',
   t660: '28,500 <small>جنيه / سنة</small>',
   t659: '12,950 <small>جنيه / سنة</small>',
-  t658: 'شهرين ببلاش',
+  t658: 'وفر 17%',
   t657: 'سنوي',
   t656: 'شهري',
   t654: '<td class="pf">الربح المعرض للخطر</td><td>272 دولار</td><td>311 دولار</td><td class="pacc"><b>87.7% (كل تجربة بتتقاس لوحدها)</b><span class="pbar"><i style="--w:87.7%"></i></span></td>',
@@ -2390,7 +2394,7 @@ var SITE_EN = {
   t624: 'توقع السنة كلها بدقة 95.3%',
   t623: 'وول مارت، فرع CA_3، كاليفورنيا',
   t622: '99.8% من الزباين اتخدموا',
-  t621: 'توقع السنة كلها بدقة 92.0%',
+  t621: 'دقة 94.5% شهر بشهر',
   t620: 'وول مارت، فرع WI_2، ويسكونسن',
   t582: '<td class="pf">إيراد 2015</td><td>92,700 دولار</td><td>91,000 دولار</td><td class="pacc"><b>98.1%</b><span class="pbar"><i style="--w:98.1%"></i></span></td>',
   t581: '<td class="pf">أيام التغطية</td><td>المخزون الحالي هيكفي قد إيه</td><td>كفى قد إيه فعلا</td><td class="pacc"><b>83.5%</b><span class="pbar"><i style="--w:83.5%"></i></span></td>',
@@ -2410,6 +2414,8 @@ var SITE_EN = {
   t567: '<td class="pf">مبيعات المحل، شهر بشهر</td><td>الشهر الجاي، بيتحدث كل شهر</td><td>المبيعات الشهرية الحقيقية</td><td class="pacc"><b>94.5% (نفس الشهر السنة اللي فاتت: 93.8%)</b><span class="pbar"><i style="--w:94.5%"></i></span></td>',
   t566: 'القطع المباعة في الشهر، 40 منتج، 2015',
   t697: 'التجربة 2: فرع وول مارت CA_3، كاليفورنيا، كل النتايج',
+  t699: 'لحد 10 موردين',
+  t698: 'اتجربت إزاي، وفين بتقصر',
   t565: 'التجربة 1: فرع وول مارت WI_2، ويسكونسن، كل النتايج',
   t564: 'شوف كل نتايج التجربة 2',
   t562: '<b>95.3%</b><span>فرع وول مارت، كاليفورنيا، 2015: توقع السنة كلها</span>',
@@ -2431,7 +2437,7 @@ var SITE_EN = {
   t546: 'دوس على أي كارت تشوفه أوضح',
   t545: 'اقفل',
   t544: 'شوف الـ 18 صفحة كلهم',
-  t543: 'شوف الـ 20 نتيجة كلها',
+  t543: 'شوف كل النتايج',
   t542: 'الأسئلة',
   t541: 'الأسعار',
   t540: 'اللي بتاخده',
@@ -2448,10 +2454,10 @@ var SITE_EN = {
   t529: 'شوفها شغالة على محل حقيقي',
   t528: 'المصدر: بيانات مسابقة M5 Forecasting Accuracy، فرع WI_2 (ويسكونسن): مكريداكيس وسبيليوتيس وأسيماكوبولوس، جامعة نيقوسيا (M Open Forecasting Center)، والبيانات من وول مارت؛ Kaggle، 2020، <a href="https://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">kaggle.com/c/m5-forecasting-accuracy</a>. ورقة الطريقة: <a href="https://doi.org/10.1016/j.ijforecast.2021.11.013" target="_blank" rel="noopener">المجلة الدولية للتوقع، 2022</a>. النسخة المستخدمة: <a href="https://github.com/Nixtla/m5-forecasts" target="_blank" rel="noopener">النسخة العامة من Nixtla</a>. مستخدمة حسب شروط مسابقة Kaggle: بنعرض النتايج بس هنا، مش البيانات الخام. مش تابعين لوول مارت ولا معتمدين منها.',
   t527: '<b>99.1%</b><span>من قرارات "مش محتاج تطلب" كانت في أمان</span>',
-  t526: '<b>93.6%</b><span>أسبوع إعادة الطلب صح في حدود أسبوع، قبلها بأسبوعين</span>',
-  t525: '<b>99.8%</b><span>من طلب الزباين الحقيقي اتلبى من المخزون</span>',
-  t524: '<b>92.0%</b><span>توقع السنة كلها للمحل، معمول في ديسمبر 2014</span>',
-  t523: 'مبيعات يومية حقيقية من فرع وول مارت في ويسكونسن، من بيانات M5 المفتوحة: 40 منتج هوايات وأدوات منزلية. الأداة شافت 2013 و2014 بس، وبعدين خططت لـ 2015. كل رقم هنا بيقارن اللي توقعته باللي حصل فعلا.',
+  t526: '<b>99.8%</b><span>من طلب الزباين اتلبى من المخزون</span>',
+  t525: '<b>11 من 12</b><span>شهر وقعوا جوه المدى اللي حددته من الأول</span>',
+  t524: '<b>94.5%</b><span>مبيعات المحل اتوقعت صح، شهر بشهر</span>',
+  t523: 'مبيعات يومية حقيقية من فرع وول مارت في ويسكونسن، من بيانات M5 المفتوحة. الأداة شافت 2013 و2014 بس، وبعدين خططت لـ 2015.',
   t522: 'إدينا الأداة ماضي محل حقيقي. وهي توقعت السنة اللي بعدها.',
   t521: 'مثال حقيقي',
   t520: 'الأداة، الشهر الجاي، بيتحدث كل شهر',
