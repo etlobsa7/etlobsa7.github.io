@@ -6,13 +6,15 @@
 <meta name="robots" content="noindex">
 <base target="_top">
 <meta charset="utf-8">
-<script>try{var t=localStorage.getItem("es7.theme");document.documentElement.setAttribute("data-theme",(t==="light"||t==="dark")?t:"dark");}catch(e){}</script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0D0F13">
+<script>try{var t=localStorage.getItem("es7.theme");t=(t==="light"||t==="dark")?t:"dark";document.documentElement.setAttribute("data-theme",t);document.querySelector('meta[name="theme-color"]').content=t==="light"?"#F8FAFC":"#0D0F13";}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <link href="/assets/fonts/fonts.css" rel="stylesheet">
 <style>
 :root{
   --sans:"Public Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --serif:var(--sans);
+  --ease-out:cubic-bezier(.23,1,.32,1);
   --r:10px;
 }
 html[lang="ar"]{
@@ -20,7 +22,8 @@ html[lang="ar"]{
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--wash);color:var(--body);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh}
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;overscroll-behavior:none}
+body{background:var(--wash);color:var(--body);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh}
 [hidden]{display:none !important}
 h1,h2,h3{color:var(--ink);margin:0;line-height:1.2}
 h1{font-size:28px;font-weight:700;letter-spacing:-.02em}
@@ -34,13 +37,13 @@ button,input,select,textarea{font:inherit;color:inherit}
 .muted{color:var(--muted)}
 .small{font-size:13px}
 .nowrap{white-space:nowrap}
-@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important}}
 
 /* ---------- boot + login ---------- */
-.boot{min-height:100vh;display:grid;place-items:center;color:var(--muted)}
+.boot{min-height:100vh;min-height:100dvh;display:grid;place-items:center;color:var(--muted)}
 .spinner{width:26px;height:26px;border:2.5px solid var(--line);border-top-color:var(--ink);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.login{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.login{min-height:100dvh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
 .login-brand{background:var(--wash);color:var(--body);padding:48px;display:flex;flex-direction:column;justify-content:space-between}
 .login-brand h2{color:var(--ink);font-size:38px;line-height:1.15;max-width:17ch;margin-top:28px}
 .login-brand p{max-width:40ch;margin-top:14px}
@@ -82,7 +85,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .account .plan{margin:6px 0 10px}
 .account .row{display:flex;gap:8px;flex-wrap:wrap}
 .ghost{background:none;border:1px solid var(--line-3);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:13px}
-.ghost:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.ghost:hover{background:var(--wash)}}
 
 .main{min-width:0;display:flex;flex-direction:column}
 .bar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:10px 28px;min-height:52px}
@@ -125,10 +128,10 @@ button,input,select,textarea{font:inherit;color:inherit}
 .btn.small{padding:6px 10px;font-size:13px}
 .btn[disabled]{opacity:.55;cursor:not-allowed}
 .iconbtn{background:none;border:0;color:var(--faint);cursor:pointer;padding:6px 10px;font-size:18px;line-height:1}
-.iconbtn:hover{color:var(--crit)}
+@media (hover:hover) and (pointer:fine){.iconbtn:hover{color:var(--crit)}}
 
 /* ---------- tables ---------- */
-.tbl-wrap{overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);max-height:72vh}
+.tbl-wrap{overflow:auto;overscroll-behavior:contain;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);max-height:72dvh}
 table.t{border-collapse:separate;border-spacing:0;width:100%;font-size:14px}
 .t th{position:sticky;top:0;z-index:2;background:var(--wash-2);color:var(--ink);font-weight:600;text-align:start;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap;font-size:13px;vertical-align:bottom}
 .t td{padding:9px 12px;border-bottom:1px solid var(--line-2);white-space:nowrap;vertical-align:middle}
@@ -143,7 +146,7 @@ table.t{border-collapse:separate;border-spacing:0;width:100%;font-size:14px}
 .grid th{border-inline-end:1px solid var(--line)}
 .grid input,.grid select{display:block;width:100%;border:0;background:transparent;padding:9px 10px;color:var(--ink);min-width:0;border-radius:0;font-variant-numeric:tabular-nums}
 .grid select{padding-inline-end:4px;cursor:pointer}
-.grid input:hover,.grid select:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.grid input:hover,.grid select:hover{background:var(--wash)}}
 .grid input:focus,.grid select:focus{outline:2px solid var(--accent);outline-offset:-2px;background:var(--field)}
 .grid input.bad{background:var(--crit-bg);color:var(--crit)}
 .grid .stick{--vb:transparent;position:sticky;inset-inline-start:0;z-index:1;background:var(--paper);box-shadow:inset 4px 0 0 var(--vb),inset -1px 0 0 var(--line)}
@@ -225,9 +228,11 @@ html[dir="rtl"] .grid .stick{box-shadow:inset -4px 0 0 var(--vb),inset 1px 0 0 v
 .unit input{padding-inline-end:52px !important}
 .switch{display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;color:var(--ink)}
 .switch input{appearance:none;width:40px;height:22px;border-radius:11px;background:var(--line);position:relative;cursor:pointer;flex:0 0 40px;margin:0}
-.switch input::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:inset-inline-start .15s}
+.switch input::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform 180ms var(--ease-out)}
+.switch input{transition:background-color 180ms ease}
 .switch input:checked{background:var(--ok)}
-.switch input:checked::after{inset-inline-start:21px}
+.switch input:checked::after{transform:translateX(18px)}
+html[dir="rtl"] .switch input:checked::after{transform:translateX(-18px)}
 .routine{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
 .routine p{margin:4px 0 0;color:var(--muted);max-width:70ch}
 
@@ -299,7 +304,7 @@ html[dir="rtl"] .steps li{padding:0 44px 18px 0}
 .legend-list div{display:flex;align-items:center;gap:10px;font-size:14px}
 
 /* ---------- toast + dialog ---------- */
-.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--btn);color:var(--btn-ink);padding:11px 16px;border-radius:10px;font-size:14px;z-index:50;display:flex;gap:14px;align-items:center;max-width:calc(100vw - 32px);box-shadow:var(--shadow)}
+.toast{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--btn);color:var(--btn-ink);padding:11px 16px;border-radius:10px;font-size:14px;z-index:50;display:flex;gap:14px;align-items:center;max-width:calc(100vw - 32px);box-shadow:var(--shadow)}
 .toast button{background:none;border:0;color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:700;cursor:pointer;padding:0}
 .overlay{position:fixed;inset:0;background:rgba(10,12,16,.6);display:grid;place-items:center;z-index:60;padding:16px}
 .dialog{background:var(--paper);border:1px solid var(--line);border-radius:12px;max-width:480px;width:100%;padding:22px;box-shadow:var(--shadow)}
@@ -358,7 +363,9 @@ h2{font-size:20px}
 
 /* ---------- top bar, shared by sign-in and the app ---------- */
 .topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:16px;min-height:var(--barh);padding:10px 28px;
-  background:var(--bg);border-bottom:1px solid var(--line);color:var(--body)}
+  background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);
+  border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);color:var(--body);
+  padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
 .topbar .mark{flex:0 0 auto}
 .topbar .mark span{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-top:1px}
 .topbar .mark b{display:block;line-height:1.1;font-size:18px}
@@ -366,18 +373,18 @@ h2{font-size:20px}
 .topbar .title{font-weight:600;color:var(--ink);font-size:15px}
 .topbar .status{color:var(--muted)}
 .topbar .lang{background:transparent;border:1px solid var(--line-3);color:var(--ink);border-radius:8px;padding:7px 14px;font-size:14px}
-.topbar .lang:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.topbar .lang:hover{background:var(--wash)}}
 .topbar .ghost{display:none}
 .topbar .push{margin-inline-start:auto}
 
 /* ---------- app shell ---------- */
-.app{display:grid;grid-template-columns:248px minmax(0,1fr);grid-template-rows:auto 1fr;min-height:100vh;background:var(--bg) !important}
+.app{display:grid;grid-template-columns:248px minmax(0,1fr);grid-template-rows:auto 1fr;min-height:100dvh;background:var(--bg) !important}
 .app > .topbar{grid-column:1 / -1}
-.side{background:var(--bg);border-inline-end:1px solid var(--line-2);padding:18px 14px;position:sticky;top:calc(var(--barh) + 1px);height:calc(100vh - var(--barh) - 1px);overflow-y:auto;display:flex;flex-direction:column;gap:18px}
+.side{background:var(--bg);border-inline-end:1px solid var(--line-2);padding:18px 14px;position:sticky;top:calc(var(--barh) + 1px);height:calc(100dvh - var(--barh) - 1px);overflow-y:auto;display:flex;flex-direction:column;gap:18px}
 .nav{gap:3px}
 .nav-label{color:var(--muted);padding:18px 11px 8px;font-size:12px;font-weight:600}
 .nav button{color:var(--body);padding:8px 11px;border-radius:8px;position:relative;transition:background .15s,color .15s}
-.nav button:hover{background:var(--wash);color:var(--ink)}
+@media (hover:hover) and (pointer:fine){.nav button:hover{background:var(--wash);color:var(--ink)}}
 .nav button[aria-current="page"]{background:var(--wash-2);color:var(--ink);font-weight:600}
 .nav button[aria-current="page"]::before{content:"";position:absolute;inset-inline-start:0;top:8px;bottom:8px;width:2px;border-radius:1px;background:var(--ink)}
 .badge{background:var(--wash-2);color:var(--ink)}
@@ -385,7 +392,7 @@ h2{font-size:20px}
 .account{border-top:1px solid var(--line-2);color:var(--muted)}
 .account .email{color:var(--ink)}
 .ghost{border:1px solid var(--line-3);color:var(--ink);border-radius:8px}
-.ghost:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.ghost:hover{background:var(--wash)}}
 .main{min-width:0}
 .view{padding:28px 32px 96px}
 .section{margin-top:34px}
@@ -396,25 +403,24 @@ h2{font-size:20px}
 
 /* ---------- buttons ---------- */
 .btn{background:transparent;border:1px solid var(--line-3);color:var(--ink);gap:8px;border-radius:8px;transition:background .15s,border-color .15s,color .15s}
-.btn:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.btn:hover{background:var(--wash)}}
 .btn.primary{background:var(--btn);border-color:var(--btn);color:var(--btn-ink)}
-.btn.primary:hover{background:var(--btn-2);border-color:var(--btn-2);color:var(--btn-ink)}
+@media (hover:hover) and (pointer:fine){.btn.primary:hover{background:var(--btn-2);border-color:var(--btn-2);color:var(--btn-ink)}}
 .btn.primary.danger{background:var(--crit);border-color:var(--crit);color:var(--bg)}
 .btn.danger{color:var(--crit)}
 .iconbtn{color:var(--faint)}
 .actions{gap:10px}
 .lang{background:transparent;border:1px solid var(--line-3);color:var(--ink);border-radius:8px;padding:6px 12px}
-.lang:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.lang:hover{background:var(--wash)}}
 .linkbtn{color:var(--accent)}
 
 /* ---------- tables and input grids ---------- */
 .tbl-wrap{background:var(--paper);border-color:var(--line)}
 .t th{background:var(--wash-2);border-bottom-color:var(--line);color:var(--ink)}
 .t td{border-bottom-color:var(--line-2)}
-.t tbody tr{transition:background .12s}
-.t tbody tr:hover td{background:color-mix(in srgb,var(--ink) 3%,transparent)}
+@media (hover:hover) and (pointer:fine){.t tbody tr:hover td{background:color-mix(in srgb,var(--ink) 3%,transparent)}}
 .t tfoot td{background:var(--wash);border-top-color:var(--line)}
-.grid input:hover,.grid select:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.grid input:hover,.grid select:hover{background:var(--wash)}}
 .grid input:focus,.grid select:focus{background:var(--field)}
 .grid select option{background:var(--paper);color:var(--ink)}
 .grid .stick{background:var(--paper)}
@@ -450,7 +456,7 @@ label > input[type=checkbox]:not(.switch input){margin-inline-end:10px}
 .po-head{border-bottom-color:var(--line)}
 .po-foot{background:var(--wash);border-top-color:var(--line);gap:10px}
 .chip{background:transparent;border-color:var(--line-3);color:var(--body);padding:6px 13px}
-.chip:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.chip:hover{background:var(--wash)}}
 .chip[aria-pressed="true"]{background:var(--btn);border-color:var(--btn);color:var(--btn-ink)}
 .chips{gap:8px;margin-bottom:16px}
 .alert{padding:13px 18px}
@@ -470,11 +476,11 @@ label > input[type=checkbox]:not(.switch input){margin-inline-end:10px}
 .cflabel{color:var(--body)}
 .cfval{color:var(--ink)}
 .chart .ser{transition:opacity .15s}
-.chart:hover .ser{opacity:.3}
-.chart .ser:hover{opacity:1}
+@media (hover:hover) and (pointer:fine){.chart:hover .ser{opacity:.3}}
+@media (hover:hover) and (pointer:fine){.chart .ser:hover{opacity:1}}
 
 /* ---------- sign in ---------- */
-.login{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);grid-template-rows:auto 1fr;min-height:100vh;background:var(--bg)}
+.login{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);grid-template-rows:auto 1fr;min-height:100dvh;background:var(--bg)}
 .login > .topbar{grid-column:1 / -1}
 .login-brand{background:var(--wash);color:var(--body);padding:56px 48px;display:flex;flex-direction:column;justify-content:center;gap:10px;border-inline-end:1px solid var(--line)}
 .login-brand h2{color:var(--ink);font-size:40px;line-height:1.1;letter-spacing:-.025em;margin-top:0;max-width:16ch}
@@ -587,7 +593,7 @@ html[data-theme="light"]{
 /* theme switch: sits beside the language button */
 .themebtn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:34px;border-radius:8px;background:transparent;
   border:1px solid var(--line-3);color:var(--ink);cursor:pointer;padding:0;flex:0 0 auto;transition:background .15s}
-.themebtn:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.themebtn:hover{background:var(--wash)}}
 .themebtn svg{width:18px;height:18px}
 .themebtn .sun{display:none}
 html[data-theme="light"] .themebtn .sun{display:block}
@@ -643,7 +649,8 @@ body{line-height:1.6}
 @media (min-width:901px){
   .app{grid-template-columns:minmax(0,1fr) !important;grid-template-rows:auto auto 1fr}
   .side{position:sticky;top:calc(var(--barh) + 1px);z-index:20;height:auto;overflow:visible;display:block;
-    padding:8px 28px;border-inline-end:0;border-bottom:1px solid var(--line);background:var(--bg)}
+    padding:8px 28px;border-inline-end:0;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent);
+    background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%)}
   .side .nav{display:grid !important;grid-template-columns:max-content minmax(0,1fr);gap:4px 14px;align-items:start;min-width:0}
   .side .nav[hidden]{display:none !important}
   .side .nav-row{display:contents}
@@ -672,7 +679,7 @@ body{line-height:1.6}
 .gchips{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 4px}
 .gchip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 10px;border-radius:8px;border:1px solid var(--line-3);background:var(--paper);color:var(--ink);font-size:13px;font-weight:600;line-height:1.2;cursor:pointer;transition:opacity .15s,border-color .15s}
 .gchip i{width:22px;height:6px;border-radius:3px;flex:0 0 22px}
-.gchip:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.gchip:hover{background:var(--wash)}}
 .gchip.off{opacity:.45;text-decoration:line-through}
 .gchip.off i{background:var(--line) !important}
 .gchip.all{color:var(--muted)}
@@ -682,7 +689,7 @@ body{line-height:1.6}
 /* ---------- plans and billing ---------- */
 .tplans{display:grid;gap:8px;margin:0 0 18px}
 .tplans .tplan{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:2px 12px;margin:0;padding:12px 14px;border:1px solid var(--line-3);border-radius:10px;background:var(--paper);cursor:pointer;font-weight:400;color:var(--body);transition:border-color .15s,background .15s}
-.tplan:hover{background:var(--wash)}
+@media (hover:hover) and (pointer:fine){.tplan:hover{background:var(--wash)}}
 .login-card .tplan input,.tplan input{width:18px;height:18px;margin:0;padding:0;accent-color:var(--accent);grid-row:span 2}
 .tplan b{color:var(--ink);font-size:15px;font-weight:700}
 .tplan .tp-price{font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:end}
@@ -720,7 +727,7 @@ body{line-height:1.6}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .founding{margin:0 0 12px;padding:9px 12px;border:1px solid var(--line);background:var(--wash);border-radius:8px;font-size:13.5px;line-height:1.5;color:var(--ink)}
 .founding.on{font-weight:600}
-.cxdlg{max-width:520px;max-height:calc(100vh - 32px);overflow:auto}
+.cxdlg{max-width:520px;max-height:calc(100dvh - 32px);overflow:auto;overscroll-behavior:contain}
 .cxdlg .cx-down{margin:10px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--wash)}
 .cxdlg .cx-down p{margin:0 0 8px}
 .cxdlg fieldset{border:0;margin:12px 0 6px;padding:0}
@@ -757,7 +764,7 @@ body{line-height:1.6}
 .planbar.bad{background:var(--crit-bg);color:var(--crit)}
 .planbar .btn{padding:5px 12px;font-size:13px}
 .acct-plan{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;text-align:inherit}
-.acct-plan:hover{color:var(--accent)}
+@media (hover:hover) and (pointer:fine){.acct-plan:hover{color:var(--accent)}}
 @media (max-width:560px){
   .bill-fields{grid-template-columns:1fr} .planbar{justify-content:space-between;padding:8px 14px} .bill-panel .actions{width:100%}
   .tplans .tplan{grid-template-columns:auto minmax(0,1fr);padding:11px 12px}
@@ -821,8 +828,8 @@ body{line-height:1.6}
 .t.ord tbody.oi tr.r2 td{padding-top:0;padding-bottom:14px;border-bottom:1px solid var(--line-2)}
 .t.ord tbody.oi:last-child tr.r2 td{border-bottom:0}
 .t.ord .why{max-width:110ch;margin-top:0}
-.t.ord tbody tr:hover td{background:transparent}
-.t.ord tbody.oi:hover tr td{background:color-mix(in srgb,var(--ink) 3%,transparent)}
+@media (hover:hover) and (pointer:fine){.t.ord tbody tr:hover td{background:transparent}}
+@media (hover:hover) and (pointer:fine){.t.ord tbody.oi:hover tr td{background:color-mix(in srgb,var(--ink) 3%,transparent)}}
 @media (max-width:760px){
   .t.ord thead{display:none}
   .t.ord,.t.ord tbody,.t.ord tr,.t.ord td{display:block}
@@ -836,6 +843,30 @@ body{line-height:1.6}
   .t.ord tr.r2 td{padding:10px 0 0;border:0}
 }
 .cfbar[style*="width:0%"]{display:none}
+
+/* ---------- touch, press and motion ---------- */
+@media (prefers-reduced-transparency:reduce){.topbar,.side{background:var(--bg) !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important}}
+/* inputs at 16px on touch screens so the page never zooms in */
+@media (pointer:coarse){input:not(.code):not([type=checkbox]):not([type=radio]),select,textarea{font-size:16px !important}}
+/* controls: no double-tap wait, no label selection on long press, feedback the moment they are pressed */
+button,.btn,.chip,.gchip,.lang,.themebtn,.ghost,.seg,.tplan,.linkbtn,.iconbtn,.acct-plan{touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn{transition:transform 160ms var(--ease-out),background-color 150ms ease,border-color 150ms ease,color 150ms ease}
+.chip,.gchip,.lang,.themebtn,.ghost,.nav button,.seg,.tplan{transition:transform 160ms var(--ease-out),background-color 150ms ease,border-color 150ms ease,color 150ms ease,opacity 150ms ease}
+.btn:active,.chip:active,.gchip:active,.lang:active,.themebtn:active,.ghost:active,.nav button:active,.seg:active,.iconbtn:active{transform:scale(.97)}
+.tplan:active{transform:scale(.99)}
+.btn[disabled]:active{transform:none}
+/* dialogs and toasts settle in: a short fade, the card a touch smaller than its final size */
+.overlay{transition:opacity 200ms var(--ease-out)}
+.overlay > .dialog{transition:opacity 200ms var(--ease-out),transform 220ms var(--ease-out)}
+.toast{transition:opacity 200ms var(--ease-out),transform 200ms var(--ease-out)}
+@starting-style{.overlay{opacity:0}.overlay > .dialog{opacity:0;transform:scale(.97)}.toast{opacity:0;transform:translateX(-50%) translateY(8px)}}
+/* switching light and dark eases instead of flashing */
+html.theming,html.theming *{transition:background-color 200ms ease,color 200ms ease,border-color 200ms ease !important}
+@media (prefers-reduced-motion:reduce){
+  .btn:active,.chip:active,.gchip:active,.lang:active,.themebtn:active,.ghost:active,.nav button:active,.seg:active,.iconbtn:active,.tplan:active{transform:none}
+  @starting-style{.overlay > .dialog{transform:none}.toast{transform:translateX(-50%)}}
+  .switch input::after{transition:none}
+}
 </style>
 </head>
 <body>
@@ -4641,8 +4672,10 @@ async function withSaveThen(fn) {
 
 const ACTIONS = {
   theme: () => {
-    const light = document.documentElement.getAttribute('data-theme') !== 'light';
-    document.documentElement.setAttribute('data-theme', light ? 'light' : 'dark');
+    const light = document.documentElement.getAttribute('data-theme') !== 'light', root = document.documentElement;
+    root.classList.add('theming'); setTimeout(() => root.classList.remove('theming'), 260);
+    root.setAttribute('data-theme', light ? 'light' : 'dark');
+    const tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.content = light ? '#F8FAFC' : '#0D0F13';
     try { localStorage.setItem('es7.theme', light ? 'light' : 'dark'); } catch (e) {}
     if (S.res && !$('#app').hidden) renderTab();
   },

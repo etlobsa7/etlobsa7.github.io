@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <meta name="robots" content="noindex">
 <title>Page not found | Etlob Sa7</title>
 <link rel="icon" href="/assets/apple-touch-icon.png">
@@ -19,7 +20,10 @@ p{font-size:17px;line-height:1.6;margin:0 0 6px}
 .ar{font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl;margin-top:16px}
 .ar h2{font-size:24px;font-weight:700;color:var(--ink);margin:0 0 4px}
 nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px}
-a{display:inline-block;padding:11px 18px;border-radius:8px;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600}
+html{-webkit-tap-highlight-color:transparent}
+a{display:inline-block;padding:11px 18px;border-radius:8px;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;touch-action:manipulation;transition:transform 160ms cubic-bezier(.23,1,.32,1)}
+a:active{transform:scale(.97)}
+@media (prefers-reduced-motion:reduce){a:active{transform:none}}
 a.p{background:var(--btn);border-color:var(--btn);color:var(--btn-ink)}
 a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 </style>
