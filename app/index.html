@@ -138,6 +138,7 @@ table.t{border-collapse:separate;border-spacing:0;width:100%;font-size:14px}
 .t tr:last-child td{border-bottom:0}
 .t td.wrap{white-space:normal;min-width:240px}
 .t .name{font-weight:600;color:var(--ink)}
+.t td.name{white-space:normal;overflow-wrap:anywhere;min-width:140px}
 .t th .sub{display:block;font-weight:400;color:var(--muted);font-size:12px}
 .t tfoot td{font-weight:700;color:var(--ink);background:var(--wash);border-top:1px solid var(--line)}
 
@@ -3846,7 +3847,7 @@ VIEWS.seasons = () => {
     const used = S.ws.products.filter(x => x.profileId === p.id).length;
     const inputs = p.f.map((v, i) => '<div><label>' + esc(MONTHS[LANG][i]) + '</label><input type="text" inputmode="decimal" data-scope="profile" data-id="' + p.id + '" data-f="f" data-i="' + i + '" value="' + esc(val(v)) + '" aria-label="' + esc(MONTHS[LANG][i] + ', ' + profName(p)) + '"' + (canEdit ? '' : ' disabled') + '></div>').join('');
     const title = !p.builtin && canEdit
-      ? '<input type="text" dir="auto" data-scope="profile" data-id="' + p.id + '" data-f="name" value="' + esc(p.name) + '" aria-label="Name">'
+      ? '<input type="text" dir="auto" maxlength="40" data-scope="profile" data-id="' + p.id + '" data-f="name" value="' + esc(p.name) + '" aria-label="Name">'
       : '<h3>' + esc(profName(p)) + '</h3>';
     const tools = canEdit ? (
       btn(t('sea.dup'), 'dupProfile', ' data-id="' + p.id + '"', 'small') +
@@ -3874,10 +3875,10 @@ VIEWS.suppliers = () => {
   const list = S.ws.suppliers;
   const add = btn(t('sup.add'), 'addSupplier', '', 'primary');
   if (!list.length) return head(t('sup.title'), t('sup.lede')) + emptyBox(t('sup.empty'), t('sup.emptyP'), add);
-  const cell = (s, f, cls, mode) => '<td class="' + cls + '"><input type="text"' + (mode ? ' inputmode="' + mode + '"' : ' dir="auto"') + ' data-scope="supplier" data-f="' + f + '" value="' + esc(val(s[f])) + '"></td>';
+  const cell = (s, f, cls, mode) => '<td class="' + cls + '"><input type="text"' + (mode ? ' inputmode="' + mode + '"' : ' dir="auto"') + (f === 'terms' ? ' maxlength="40"' : '') + ' data-scope="supplier" data-f="' + f + '" value="' + esc(val(s[f])) + '"></td>';
   const showCash = S.me.limits.cashFlow;
   const rows = list.map(s => '<tr data-id="' + s.id + '">' +
-    '<td class="stick w-name"><input type="text" dir="auto" data-scope="supplier" data-f="name" value="' + esc(s.name) + '" placeholder="' + esc(t('sup.name')) + '"></td>' +
+    '<td class="stick w-name"><input type="text" dir="auto" maxlength="60" data-scope="supplier" data-f="name" value="' + esc(s.name) + '" title="' + esc(s.name) + '" placeholder="' + esc(t('sup.name')) + '"></td>' +
     cell(s, 'lt', 'w-n', 'decimal') + cell(s, 'ltv', 'w-n', 'decimal') + cell(s, 'moq', 'w-n', 'numeric') + cell(s, 'pack', 'w-n', 'numeric') +
     cell(s, 'terms', 'w-t') + (showCash ? cell(s, 'depositPct', 'w-n', 'numeric') + cell(s, 'balanceDays', 'w-n', 'numeric') : '') +
     '<td><button class="iconbtn" data-act="delSupplier" data-id="' + s.id + '" aria-label="' + esc(t('delete')) + '">&times;</button></td></tr>').join('');
@@ -3919,7 +3920,7 @@ VIEWS.products = () => {
     const res = rowById(p.id);
     let h = '<tr data-id="' + p.id + '">';
     if (S.selectMode) h += '<td style="text-align:center"><input type="checkbox" data-act="selOne" data-id="' + p.id + '"' + (S.selected.has(p.id) ? ' checked' : '') + '></td>';
-    h += '<td class="stick w-name' + (res ? ' vb-' + res.decision : '') + '" data-vb="' + p.id + '"><input type="text" dir="auto" data-scope="product" data-f="name" data-r="' + r + '" data-c="' + (c++) + '" value="' + esc(p.name) + '" placeholder="' + esc(t('pro.name')) + '"></td>';
+    h += '<td class="stick w-name' + (res ? ' vb-' + res.decision : '') + '" data-vb="' + p.id + '"><input type="text" dir="auto" maxlength="80" data-scope="product" data-f="name" data-r="' + r + '" data-c="' + (c++) + '" value="' + esc(p.name) + '" title="' + esc(p.name) + '" placeholder="' + esc(t('pro.name')) + '"></td>';
     h += '<td class="v" data-verdict="' + p.id + '">' + (res ? verdict(res.decision) : '') + '</td>';
     h += '<td class="w-sel"><select data-scope="product" data-f="supplierId" data-r="' + r + '" data-c="' + (c++) + '">' + supOpts(p.supplierId) + '</select></td>';
     if (canCompare) h += '<td>' + btn(t('pro.compare'), 'openCompare', ' data-id="' + p.id + '"', 'small') + '</td>';
