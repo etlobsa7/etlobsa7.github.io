@@ -939,6 +939,24 @@ html[dir="rtl"] .tl-fill,html[dir="rtl"] .cfbar{transform-origin:right center}
   .view > *,.view > .page-head:first-child,#view.enter *,#view.enter > *,.nav button[aria-current="page"],#bar-title.swap,.tl-fill,.cfbar,.tl-dot,.mark .markico,.today::after{animation:none !important}
   .btn.primary:active{transform:none}
 }
+/* ================= the original app lettering: Bebas Neue titles and numbers, Oswald headings and main buttons ================= */
+:root{--display:"Bebas Neue","Oswald",Impact,"Arial Narrow",sans-serif;--serif:"Oswald","Arial Narrow",Impact,sans-serif}
+html[lang="ar"]{--display:"IBM Plex Sans Arabic","Public Sans",sans-serif;--serif:"IBM Plex Sans Arabic","Public Sans",sans-serif}
+h1{font-family:var(--display);font-weight:400;font-size:40px;letter-spacing:.02em;text-transform:uppercase;line-height:1}
+h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.005em}
+.login-brand h2{font-family:var(--display);font-weight:400;font-size:58px;line-height:1;text-transform:uppercase;letter-spacing:.015em}
+.topbar .mark b{font-family:var(--display);font-weight:400;font-size:25px;letter-spacing:.06em;line-height:.95}
+.today .big{font-family:var(--display);font-weight:400;font-size:70px;letter-spacing:0}
+.kpi b{font-family:var(--display);font-weight:400;font-size:34px;letter-spacing:.02em;line-height:1}
+.split b,.po-total b{font-family:var(--display);font-weight:400;font-size:28px;letter-spacing:.02em}
+.mx .cell .n{font-family:var(--display);font-weight:400;font-size:32px}
+.btn.primary,.today .btn{font-family:var(--serif);font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+html[lang="ar"] h1,html[lang="ar"] .login-brand h2{text-transform:none;letter-spacing:0;font-weight:700;line-height:1.25}
+html[lang="ar"] h1{font-size:30px}html[lang="ar"] .login-brand h2{font-size:38px}
+html[lang="ar"] .topbar .mark b{font-size:18px;letter-spacing:0;font-weight:700}
+html[lang="ar"] .today .big,html[lang="ar"] .kpi b,html[lang="ar"] .split b,html[lang="ar"] .po-total b,html[lang="ar"] .mx .cell .n{font-weight:700;letter-spacing:0}
+html[lang="ar"] .btn.primary,html[lang="ar"] .today .btn{font-family:var(--sans);text-transform:none;letter-spacing:0;font-weight:600}
+@media (max-width:480px){.topbar .mark b{font-size:20px}}
 </style>
 </head>
 <body>
