@@ -772,7 +772,7 @@ html[dir="rtl"] .app-bg::after{-webkit-mask-image:radial-gradient(ellipse at 22%
 @media (max-width:900px){.bg-pile,.bg-star{display:none}}
 @media (prefers-reduced-motion:reduce){.bg-star{transition:none}}
 @media print{.app-bg{display:none}}
-/* the two bars stand apart from the page: near-black on the light theme, a deep navy blue on the dark theme */
+/* the two bars stand apart from the page: near-black on the light theme, dark grey on the dark theme */
 :root{--bar-bg:#1E3A8A;--bar-line:rgba(255,255,255,.14);--bar-hover:rgba(255,255,255,.1);--bar-current:rgba(255,255,255,.16);--bar-chip:rgba(255,255,255,.14)}
 html[data-theme="light"]{--bar-bg:#0F172A;--bar-line:rgba(255,255,255,.14);--bar-hover:rgba(255,255,255,.1);--bar-current:rgba(255,255,255,.16);--bar-chip:rgba(255,255,255,.12)}
 .side .nav-row{color:#FFFFFF;scrollbar-color:rgba(255,255,255,.45) transparent}
@@ -806,6 +806,26 @@ html[data-theme="light"]{--bar-bg:#0F172A;--bar-line:rgba(255,255,255,.14);--bar
   .side .nav-row.in .bar-tab{color:#FFFFFF;background:transparent;border-color:rgba(255,255,255,.5)}
   .side .nav-row.out .bar-tab{color:var(--bar-bg);background:#FFFFFF;border-color:#FFFFFF}
 }
+/* results bar across the top, always shown; the inputs bar sits under it and slides away until you point at it (or pin it) */
+:root{--bar-bg:#2A2F38}
+@media (min-width:901px){
+  html{scroll-padding-top:calc(var(--toph,61px) + var(--outh,50px) + var(--peek) + 16px)}
+  html.pin-in{scroll-padding-top:calc(var(--toph,61px) + var(--outh,50px) + var(--inh,50px) + 16px)}
+  .side .nav-row.out{top:var(--toph,61px);bottom:auto;left:0;right:0;width:auto;z-index:26;flex-direction:row;align-items:center;flex-wrap:nowrap;gap:6px 12px;padding-block:8px;padding-inline:28px 16px;border-inline-end:0;border-bottom:1px solid var(--bar-line);transform:none !important;box-shadow:none !important}
+  .side .nav-row.out > *{opacity:1 !important}
+  .side .nav-row.out .bar-tab,.side .nav-row.out .pin{display:none !important}
+  .side .nav-row.out .nav-label{align-self:auto;max-width:none;white-space:nowrap}
+  .side .nav-row.out .nav-items{flex-direction:row;flex-wrap:wrap;align-items:center;gap:2px;flex:1 1 auto;min-width:0;overflow:visible;margin-inline:0;padding-inline:0}
+  .side .nav-row.out .nav-items > button{display:inline-flex !important;width:auto !important;justify-content:flex-start;padding:6px 7px;font-size:13px;white-space:nowrap}
+  .side .nav-row.out .nav-label{padding-inline:7px 8px}
+  .side .nav-row.out button[aria-current="page"]::before{inset-inline-start:9px;inset-inline-end:9px;top:auto;bottom:0;width:auto;height:2px;border-radius:1px}
+  .side .nav-row.in,html.pin-out .side .nav-row.in{top:calc(var(--toph,61px) + var(--outh,50px));inset-inline-start:0}
+  .main,html.pin-out .main{padding-inline-start:0;padding-top:calc(var(--outh,50px) + var(--peek) + 16px)}
+  html.pin-in .main{padding-top:calc(var(--outh,50px) + var(--inh,50px))}
+  html.pin-out .bg-star,html[dir="rtl"].pin-out .bg-star{translate:none}
+}
+@media (min-width:901px) and (max-width:1380px){ .side .nav-row.out{padding-inline:16px 12px;gap:6px 8px} .side .nav-row.out .nav-items > button{padding:5px 5px;font-size:12.5px} }
+@media (max-width:900px){ .side .nav-row.out{order:-1} }
 .topbar .ghost{white-space:nowrap}
 @media (max-width:480px){ .topbar{gap:8px;padding:10px 12px} .topbar .status{display:none} .topbar .mark b{font-size:20px} .topbar .lang,.topbar .ghost{padding:5px 8px;font-size:12px} .topbar .themebtn{width:32px;height:32px} }
 
@@ -1276,9 +1296,9 @@ html[lang="ar"] h1,html[lang="ar"] .login-brand h2{-webkit-text-stroke:0}
 })();
 </script>
 <script data-navbars>
-/* Wide screens: the inputs bar runs across the top and the results bar down the side. Each slides away
-   and comes back when you point at its edge or tab, tap the tab, or move keyboard focus into it.
-   The pin keeps a bar open; the choice is remembered on this device. */
+/* Wide screens: the results bar runs across the top and is always shown; the inputs bar sits under it, slides
+   away and comes back when you point at its edge or tab, tap the tab, or move keyboard focus into it.
+   The pin keeps the inputs bar open; the choice is remembered on this device. */
 (function () {
   var H = document.documentElement, KEY = 'es7.pin.', mem = {}, wait = {}, goal = {}, queued = false;
   function pinned(k) { if (k in mem) return mem[k]; try { return localStorage.getItem(KEY + k) === '1'; } catch (e) { return false; } }
@@ -1286,11 +1306,13 @@ html[lang="ar"] h1,html[lang="ar"] .login-brand h2{-webkit-text-stroke:0}
   function sync() {
     queued = false;
     ['in', 'out'].forEach(function (k) {
-      var p = pinned(k); H.classList.toggle('pin-' + k, p);
+      var p = k === 'out' || pinned(k); H.classList.toggle('pin-' + k, p);   /* the results bar is always shown */
       document.querySelectorAll('[data-pin="' + k + '"]').forEach(function (b) { b.setAttribute('aria-pressed', p ? 'true' : 'false'); });
     });
     var tops = document.querySelectorAll('.topbar');
     for (var i = 0; i < tops.length; i++) if (tops[i].getClientRects().length) { H.style.setProperty('--toph', tops[i].offsetHeight + 'px'); break; }
+    var outs = document.querySelectorAll('.side .nav-row.out');
+    for (var o = 0; o < outs.length; o++) if (outs[o].getClientRects().length) { H.style.setProperty('--outh', outs[o].offsetHeight + 'px'); break; }
     var ins = document.querySelectorAll('.side .nav-row.in');
     for (var j = 0; j < ins.length; j++) if (ins[j].getClientRects().length) { H.style.setProperty('--inh', ins[j].offsetHeight + 'px'); break; }
   }
