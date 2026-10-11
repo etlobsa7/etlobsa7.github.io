@@ -698,6 +698,52 @@ html[dir="rtl"] .cv{animation-direction:reverse}
   .scrollbar{display:none}
   details[open] > .ans,.js-anim .page.on{animation:none}
 }
+/* ================= the shelf ================= */
+/* the shelf: a month of reordering, played by scrolling. Scene colours come from these tokens, so it follows light and dark */
+:root{--sh-floor:#E9EEF4;--sh-grid:#CBD5E1;--sh-grid-2:#DDE3EA;--sh-post:#94A3B8;--sh-board:#CBD5E1;
+  --sh-box:#D3DCE7;--sh-box-ink:#475569;--sh-box-tape:rgba(255,255,255,.95);--sh-box-edge:#64748B;
+  --sh-safe:#94A3B8;--sh-safe-ink:#334155;--sh-safe-tape:rgba(37,99,235,.55);--sh-safe-edge:#475569;--sh-light:.6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sh-floor:#171A20;--sh-grid:#2A303A;--sh-grid-2:#20252D;--sh-post:#5B6472;--sh-board:#2A303A;
+  --sh-box:#3A414C;--sh-box-ink:#A3ACB9;--sh-box-tape:rgba(255,255,255,.2);--sh-box-edge:#5B6472;
+  --sh-safe:#232831;--sh-safe-ink:#A3ACB9;--sh-safe-tape:rgba(122,174,255,.55);--sh-safe-edge:#4B5563;--sh-light:.5}}
+:root[data-theme="dark"]{--sh-floor:#171A20;--sh-grid:#2A303A;--sh-grid-2:#20252D;--sh-post:#5B6472;--sh-board:#2A303A;
+  --sh-box:#3A414C;--sh-box-ink:#A3ACB9;--sh-box-tape:rgba(255,255,255,.2);--sh-box-edge:#5B6472;
+  --sh-safe:#232831;--sh-safe-ink:#A3ACB9;--sh-safe-tape:rgba(122,174,255,.55);--sh-safe-edge:#4B5563;--sh-light:.5}
+.shelf3d{position:relative;height:340vh;background:var(--bg-2);border-bottom:1px solid var(--line)}
+.sh-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.sh-sticky::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--bg-2) 94%,transparent) 0%,color-mix(in srgb,var(--bg-2) 72%,transparent) 34%,transparent 58%)}
+html[dir="rtl"] .sh-sticky::after{background:linear-gradient(270deg,color-mix(in srgb,var(--bg-2) 94%,transparent) 0%,color-mix(in srgb,var(--bg-2) 72%,transparent) 34%,transparent 58%)}
+@media (max-width:760px){.sh-sticky::after,html[dir="rtl"] .sh-sticky::after{background:linear-gradient(180deg,color-mix(in srgb,var(--bg-2) 96%,transparent) 0%,color-mix(in srgb,var(--bg-2) 82%,transparent) 42%,transparent 62%)}}
+#shelfCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sh-ui{position:relative;z-index:2;max-width:var(--mx,1120px);margin:0 auto;padding:clamp(80px,12vh,130px) 24px 0;pointer-events:none;color:var(--body)}
+.sh-title{font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.15;letter-spacing:-.022em;max-width:520px;margin:8px 0 18px}
+html[lang="ar"] .sh-title{letter-spacing:0;line-height:1.3}
+.sh-steps{position:relative;max-width:420px;min-height:90px}
+.sh-step{position:absolute;inset:0 auto auto 0;margin:0;font-size:1.1rem;line-height:1.55;color:var(--body);opacity:0;transform:translateY(16px);transition:opacity .45s,transform .45s}
+html[dir="rtl"] .sh-step{inset:0 0 auto auto}
+.sh-step.on{opacity:1;transform:none}
+.sh-meter{display:inline-flex;align-items:baseline;gap:12px;margin-top:6px;padding:10px 16px;border-radius:10px;background:var(--card);border:1px solid var(--line)}
+.sh-meter span{font-size:.88rem;color:var(--muted)}
+.sh-meter b{font-size:2rem;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums;transition:color .3s}
+.sh-meter.low b{color:var(--warn)}
+.sh-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:.86rem;color:var(--muted)}
+.sh-legend > span{display:inline-flex;align-items:center;gap:8px}
+.sh-legend i{display:inline-block;width:22px;height:4px;border-radius:3px}
+.sh-legend .lg-rop{background:var(--accent);box-shadow:0 0 10px color-mix(in srgb,var(--accent) 60%,transparent)}
+.sh-legend .lg-ss{background:var(--sh-safe);height:12px;width:14px;border:1px solid var(--sh-safe-edge);border-radius:2px}
+.sh-tag{position:absolute;z-index:3;top:46%;inset-inline-end:clamp(20px,9vw,140px);padding:12px 20px;border-radius:8px;background:var(--btn);color:var(--btn-ink);font-weight:700;font-size:1.05rem;
+  box-shadow:var(--shadow);opacity:0;transform:scale(.4) rotate(-8deg);transition:opacity .3s,transform .5s cubic-bezier(.2,1.6,.4,1)}
+.sh-tag.on{opacity:1;transform:none}
+.sh-progress{position:absolute;z-index:3;left:24px;right:24px;bottom:22px;height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.sh-progress i{display:block;height:100%;width:0;background:var(--accent)}
+@media (max-width:700px){.sh-ui{padding-top:84px}.sh-steps{min-height:110px}.sh-tag{top:auto;bottom:150px}}
+/* readable fallback when 3D is unavailable or motion is reduced */
+.shelf3d.flat{height:auto;padding:70px 0}
+.shelf3d.flat .sh-sticky{position:relative;height:auto}
+.shelf3d.flat .sh-sticky::after,.shelf3d.flat #shelfCanvas,.shelf3d.flat .sh-tag,.shelf3d.flat .sh-progress,.shelf3d.flat .sh-meter{display:none}
+.shelf3d.flat .sh-step{position:relative;opacity:1;transform:none;margin-bottom:10px}
+.shelf3d.flat .sh-steps{min-height:0}
 </style>
 
 
@@ -801,6 +847,26 @@ html[dir="rtl"] .cv{animation-direction:reverse}
 </div>
 </div>
 </header>
+<section class="shelf3d" id="s-shelf">
+<div class="sh-sticky">
+<canvas id="shelfCanvas" aria-hidden="true"></canvas>
+<div class="sh-ui">
+<p class="eyebrow" data-t="t630"></p>
+<h2 class="sh-title" data-t="t631"></h2>
+<div class="sh-steps">
+<p class="sh-step" data-step="0" data-t="t632"></p>
+<p class="sh-step" data-step="1" data-t="t633"></p>
+<p class="sh-step" data-step="2" data-t="t634"></p>
+<p class="sh-step" data-step="3" data-t="t635"></p>
+</div>
+<div class="sh-meter"><span data-t="t636"></span><b id="shStock">36</b></div>
+<div class="sh-legend"><span><i class="lg-rop"></i><span data-t="t639"></span></span><span><i class="lg-ss"></i><span data-t="t638"></span></span></div>
+</div>
+<div class="sh-tag" id="shTag" data-t="t637"></div>
+<div class="sh-progress"><i id="shProg"></i></div>
+</div>
+</section>
+
 <div class="scrollsec" id="s-example">
 <section class="rx-hero"><div class="wrap"><p class="eyebrow" data-t="t521"></p><h1 data-t="t522"></h1><p class="lede" data-t="t523"></p><div class="rx-stats"><div class="rx-stat" data-t-html="t524"></div><div class="rx-stat" data-t-html="t525"></div><div class="rx-stat" data-t-html="t526"></div></div></div></section>
 <section class="proofsec">
@@ -3094,6 +3160,137 @@ var WHATSAPP = "201090099849";
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; frameShelves(); }); } }
   window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll);
   setTimeout(frameShelves, 100);
+})();
+</script>
+
+<script data-shelf3d>
+(function () {
+  var sec = document.getElementById('s-shelf'); if (!sec) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function webgl() { try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl'))); } catch (e) { return false; } }
+  function flat() { sec.classList.add('flat'); }
+  if (reduce || !webgl()) { flat(); return; }
+  var steps = sec.querySelectorAll('.sh-step'), tag = document.getElementById('shTag'), meter = document.getElementById('shStock'), prog = document.getElementById('shProg');
+  steps[0].classList.add('on');
+  var started = false;
+  function load() {
+    if (started) return; started = true;
+    var sc = document.createElement('script'); sc.src = '/assets/js/three.min.js';
+    sc.onload = init; sc.onerror = flat; document.head.appendChild(sc);
+  }
+  new IntersectionObserver(function (es, ob) { es.forEach(function (e) { if (e.isIntersecting) { load(); ob.disconnect(); } }); }, { rootMargin: '900px 0px' }).observe(sec);
+  function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
+  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function tok(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+  function init() {
+    var T = window.THREE; if (!T) { flat(); return; }
+    var canvas = document.getElementById('shelfCanvas');
+    var renderer; try { renderer = new T.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true }); } catch (e) { flat(); return; }
+    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+    var scene = new T.Scene(); scene.fog = new T.Fog(0xffffff, 14, 30);
+    var cam = new T.PerspectiveCamera(38, 1, 0.1, 100);
+    var amb = new T.AmbientLight(0xFFFFFF, 0.7); scene.add(amb);
+    var key = new T.DirectionalLight(0xFFFFFF, 0.9); key.position.set(5, 9, 7); scene.add(key);
+    var rim = new T.PointLight(0xFFFFFF, 0.9, 30); rim.position.set(-6, 5, -4); scene.add(rim);
+    var root = new T.Group(); scene.add(root);
+    /* floor and shelf frame */
+    var floorMat = new T.MeshStandardMaterial({ roughness: .95 }), floor = new T.Mesh(new T.PlaneGeometry(40, 40), floorMat);
+    floor.rotation.x = -Math.PI / 2; root.add(floor);
+    var grid = null;
+    var metal = new T.MeshStandardMaterial({ metalness: .5, roughness: .4 }), boardMat = new T.MeshStandardMaterial({ metalness: .1, roughness: .75 });
+    var W = 7.2, D = 2.4, levels = [0.15, 1.45, 2.75], top = 4.05;
+    [[-W / 2, -D / 2], [W / 2, -D / 2], [-W / 2, D / 2], [W / 2, D / 2]].forEach(function (pp) { var post = new T.Mesh(new T.BoxGeometry(.12, top, .12), metal); post.position.set(pp[0], top / 2, pp[1]); root.add(post); });
+    levels.concat([top]).forEach(function (y) { var board = new T.Mesh(new T.BoxGeometry(W + .2, .08, D + .2), boardMat); board.position.set(0, y, 0); root.add(board); });
+    /* cartons: packing tape over the top, a star stamp on the sides. The bottom level is safety stock, never sold */
+    function carton(base, ink, tape, star) {
+      var c = document.createElement('canvas'); c.width = c.height = 256; var g = c.getContext('2d');
+      g.fillStyle = base; g.fillRect(0, 0, 256, 256);
+      for (var n = 0; n < 700; n++) { g.fillStyle = 'rgba(15,23,42,' + (Math.random() * .05).toFixed(3) + ')'; g.fillRect(Math.random() * 256, Math.random() * 256, 2, 2); }
+      g.strokeStyle = ink; g.globalAlpha = .45; g.lineWidth = 5; g.strokeRect(3, 3, 250, 250); g.globalAlpha = 1;
+      if (tape) { g.fillStyle = tape; g.fillRect(104, 0, 48, 256); }
+      if (star) {
+        g.save(); g.translate(128, 132); g.beginPath();
+        for (var k = 0; k < 10; k++) { var r = k % 2 ? 22 : 52, a = -Math.PI / 2 + k * Math.PI / 5; g.lineTo(Math.cos(a) * r, Math.sin(a) * r); }
+        g.closePath(); g.lineJoin = 'round'; g.lineWidth = 6; g.strokeStyle = ink; g.globalAlpha = .6; g.stroke(); g.restore();
+      }
+      var tx = new T.CanvasTexture(c); tx.anisotropy = 4; return tx;
+    }
+    var sideStock = new T.MeshStandardMaterial({ roughness: .85 }), lidStock = new T.MeshStandardMaterial({ roughness: .7 });
+    var sideSafe = new T.MeshStandardMaterial({ roughness: .85 }), lidSafe = new T.MeshStandardMaterial({ roughness: .7 });
+    var stockMats = [sideStock, sideStock, lidStock, sideStock, sideStock, sideStock], safeMats = [sideSafe, sideSafe, lidSafe, sideSafe, sideSafe, sideSafe];
+    var edgeStock = new T.LineBasicMaterial(), edgeSafe = new T.LineBasicMaterial();
+    var geo = new T.BoxGeometry(.98, .98, .98), boxes = [];
+    levels.slice().reverse().forEach(function (y, li) {       /* top level first, so it is sold first */
+      for (var row = 0; row < 2; row++) for (var c = 0; c < 6; c++) {
+        var safety = li === 2, m = new T.Mesh(geo, safety ? safeMats : stockMats);
+        var home = new T.Vector3(-W / 2 + .6 + c * 1.2, y + .04 + .49, (row ? -.6 : .6));
+        m.position.copy(home); m.userData = { home: home, safety: safety, k: boxes.length }; root.add(m); boxes.push(m);
+        m.add(new T.LineSegments(new T.EdgesGeometry(geo), safety ? edgeSafe : edgeStock));
+      }
+    });
+    /* glowing reorder point line, at the height where 20 units remain */
+    var ropY = levels[1] + .55;
+    var rop = new T.Mesh(new T.BoxGeometry(W + 1.2, .05, D + 1.2), new T.MeshBasicMaterial({ transparent: true, opacity: .35 }));
+    rop.position.set(0, ropY, 0); root.add(rop);
+    /* colours come from the page's own tokens, and follow light and dark */
+    function paint() {
+      var bg = tok('--bg-2') || '#F8FAFC', acc = tok('--accent') || '#2563EB';
+      scene.fog.color.set(bg); floorMat.color.set(tok('--sh-floor')); metal.color.set(tok('--sh-post')); boardMat.color.set(tok('--sh-board'));
+      if (grid) { root.remove(grid); grid.geometry.dispose(); }
+      grid = new T.GridHelper(40, 40, new T.Color(tok('--sh-grid')), new T.Color(tok('--sh-grid-2'))); grid.position.y = .01; root.add(grid);
+      [sideStock, lidStock, sideSafe, lidSafe].forEach(function (m) { if (m.map) m.map.dispose(); });
+      sideStock.map = carton(tok('--sh-box'), tok('--sh-box-ink'), null, true); lidStock.map = carton(tok('--sh-box'), tok('--sh-box-ink'), tok('--sh-box-tape'), false);
+      sideSafe.map = carton(tok('--sh-safe'), tok('--sh-safe-ink'), null, true); lidSafe.map = carton(tok('--sh-safe'), tok('--sh-safe-ink'), tok('--sh-safe-tape'), false);
+      [sideStock, lidStock, sideSafe, lidSafe].forEach(function (m) { m.needsUpdate = true; });
+      edgeStock.color.set(tok('--sh-box-edge')); edgeSafe.color.set(tok('--sh-safe-edge'));
+      rop.material.color.set(acc); rim.color.set(acc); amb.intensity = parseFloat(tok('--sh-light')) || .7;
+    }
+    paint();
+    if (window.matchMedia) { var mq = matchMedia('(prefers-color-scheme: dark)'); var re = function () { paint(); frame(); }; if (mq.addEventListener) mq.addEventListener('change', re); else if (mq.addListener) mq.addListener(re); }
+    var sellOrder = boxes.filter(function (b) { return !b.userData.safety; });   /* 24 sellable, top level first */
+    function size() { var w = sec.clientWidth, h = window.innerHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
+    function frame() {
+      var r = sec.getBoundingClientRect(), total = sec.offsetHeight - window.innerHeight;
+      var p = clamp(-r.top / Math.max(1, total), 0, 1);
+      prog.style.width = (p * 100).toFixed(1) + '%';
+      /* stock: 36 full, sold down to 14 by p=.6 (order placed at 20 units), delivery refills by p=.85 */
+      var soldF = p < .12 ? 0 : p < .6 ? 22 * (p - .12) / .48 : 22, sold = Math.round(soldF);
+      var refill = p < .62 ? 0 : clamp((p - .62) / .23, 0, 1);
+      var stock = 36 - sold + Math.round(22 * refill);
+      sellOrder.forEach(function (b, i) {
+        var h = b.userData.home, back = i >= 22 - Math.round(22 * refill) && i < sold;
+        var out = clamp(soldF - i, 0, 1);                 /* 0 on the shelf, 1 gone to a customer */
+        if (back) {
+          var idx = 22 - 1 - i, t = clamp(refill * 22 - idx, 0, 1), drop = (1 - ease(t)) * 7;
+          b.visible = true; b.position.set(h.x, h.y + drop, h.z); b.scale.setScalar(1); b.rotation.set(0, drop * .15, 0);
+        } else if (out < 1) {
+          var o = ease(out);                                    /* slides forward off the shelf, hops, spins away */
+          b.visible = true; b.position.set(h.x + o * (h.x > 0 ? 1.4 : -1.4), h.y + Math.sin(o * Math.PI) * 1.1 - o * o * 1.4, h.z + o * 3.4);
+          b.rotation.set(o * .9, o * (i % 2 ? 1.3 : -1.3), o * .4); b.scale.setScalar(1 - o * .55);
+        } else {
+          b.visible = false;
+        }
+      });
+      meter.textContent = stock; meter.parentNode.classList.toggle('low', stock <= 20 && refill < 1);
+      tag.classList.toggle('on', p > .38 && p < .7);
+      rop.material.opacity = (stock <= 20 && refill < 1) ? .55 + .25 * Math.sin(Date.now() / 160) : .3;
+      var st = p < .2 ? 0 : p < .38 ? 1 : p < .62 ? 2 : 3;
+      steps.forEach(function (el, i) { el.classList.toggle('on', i === st); });
+      /* camera: swoop in, then slowly circle once the shelf is full again */
+      var a = ease(clamp(p / .25, 0, 1)), orbit = (p - .5) * .9, narrow = sec.clientWidth < 760, rtl = document.documentElement.dir === 'rtl';
+      var radius = (narrow ? 19 : 20) - (narrow ? 4 : 3.2) * a, height = 7.8 - 2.6 * a;
+      var side = narrow ? 0 : (rtl ? 3.4 : -3.4);   /* desktop: shelf sits beside the text, not behind it */
+      cam.position.set(Math.sin(orbit) * radius + side, height, Math.cos(orbit) * radius);
+      cam.lookAt(side, narrow ? 3.6 : 1.9, 0);
+      renderer.render(scene, cam);
+    }
+    var ticking = false;
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; var r = sec.getBoundingClientRect(); if (r.bottom > 0 && r.top < window.innerHeight) frame(); }); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () { size(); frame(); });
+    setInterval(function () { var r = sec.getBoundingClientRect(); if (r.bottom > 0 && r.top < window.innerHeight && meter.parentNode.classList.contains('low')) frame(); }, 120);
+    size(); frame(); sec.classList.add('live');
+  }
 })();
 </script>
 
