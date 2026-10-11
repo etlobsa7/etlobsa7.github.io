@@ -481,6 +481,223 @@ button,.btn,.tab,summary,.pint button,.ck-plan,.ck-int label,.rx-card,.foot-link
   @starting-style{.pop-card,.ck-box{transform:none}}
   @media (max-width:520px){@starting-style{.ck-box{opacity:0;transform:none}}.ck-box{transition:opacity 200ms ease}}
 }
+/* ================= motion: the original animations, in the neutral palette ================= */
+/* sections clip sideways motion, so cards waiting to slide in never widen the page */
+.scrollsec,#p-home > section,#p-home > header,#p-home > .scrollsec,#p-home > div{overflow-x:clip}
+:root{--box-front:#E2E8F0;--box-side:#CBD5E1;--box-side-2:#B8C4D3;--box-top:#F1F5F9;--box-tape:#FFFFFF;--box-bottom:#94A3B8;--box-edge:rgba(15,23,42,.18);--box-alt:#D5DCE6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--box-front:#2A303A;--box-side:#222730;--box-side-2:#1B1F26;--box-top:#353C47;--box-tape:#4B5563;--box-bottom:#15181E;--box-edge:rgba(255,255,255,.1);--box-alt:#303744}}
+:root[data-theme="dark"]{--box-front:#2A303A;--box-side:#222730;--box-side-2:#1B1F26;--box-top:#353C47;--box-tape:#4B5563;--box-bottom:#15181E;--box-edge:rgba(255,255,255,.1);--box-alt:#303744}
+
+/* scroll progress */
+.scrollbar{position:fixed;top:0;inset-inline-start:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--accent);z-index:200;pointer-events:none}
+html[dir="rtl"] .scrollbar{transform-origin:100% 50%}
+
+/* page change */
+@keyframes pgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.js-anim .page.on{animation:pgIn .45s cubic-bezier(.2,.7,.2,1)}
+
+/* reveal on scroll; items in a group follow one after another */
+.js-anim .rv{opacity:0;translate:0 22px;transition:opacity .7s cubic-bezier(.2,.7,.2,1),translate .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+.js-anim .rv.in{opacity:1;translate:0 0}
+
+/* hero: staged entrance, a slow soft glow and a drifting grid */
+.hero{position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:1}
+.hero::before{content:"";position:absolute;top:-30%;right:-15%;width:70%;height:130%;pointer-events:none;
+  background:radial-gradient(ellipse at center,color-mix(in srgb,var(--accent) 10%,transparent),transparent 62%);animation:glowDrift 14s ease-in-out infinite alternate}
+@keyframes glowDrift{from{translate:0 0;scale:1}to{translate:-6% 8%;scale:1.12}}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
+  background-image:linear-gradient(color-mix(in srgb,var(--ink) 5%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--ink) 5%,transparent) 1px,transparent 1px);
+  background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 70%);
+  animation:gridMove 30s linear infinite}
+@keyframes gridMove{to{background-position:48px 48px,48px 48px}}
+.js-anim .hero .wrap > *{opacity:0;translate:0 18px;animation:heroIn .8s cubic-bezier(.2,.7,.2,1) forwards}
+.js-anim .hero .wrap > :nth-child(1){animation-delay:.05s}
+.js-anim .hero .wrap > :nth-child(2){animation-delay:.15s}
+.js-anim .hero .wrap > :nth-child(3){animation-delay:.3s}
+.js-anim .hero .wrap > :nth-child(4){animation-delay:.45s}
+.js-anim .hero .wrap > :nth-child(5){animation-delay:.55s}
+.js-anim .hero .wrap > :nth-child(6){animation-delay:.7s}
+.js-anim .hero .wrap > :nth-child(7){animation-delay:.5s}
+@keyframes heroIn{to{opacity:1;translate:0 0}}
+/* hero depth on scroll */
+#p-home .hero::before{transform:translate3d(0,var(--py,0px),0)}
+#p-home .hero .hero-visual{transform:translate3d(0,var(--cy,0px),0);will-change:transform}
+
+/* buttons: lift, a soft glow and a light sweep on the main actions */
+.btn-primary{position:relative;overflow:hidden;isolation:isolate}
+.btn-primary::after{content:"";position:absolute;top:0;bottom:0;width:45%;inset-inline-start:-70%;z-index:-1;
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--btn-ink) 30%,transparent),transparent);transform:skewX(-20deg)}
+@media (hover:hover) and (pointer:fine){
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px color-mix(in srgb,var(--btn) 28%,transparent)}
+  .btn-primary:hover::after{animation:sweep .8s ease}
+  .btn-ghost:hover{transform:translateY(-2px)}
+}
+.hero .btn-primary{animation:ctaPulse 2.8s ease-in-out 1.6s infinite}
+.hero .btn-primary::after{animation:sweep 1.1s ease 1.4s 1}
+@keyframes sweep{to{inset-inline-start:130%}}
+@keyframes ctaPulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--btn) 35%,transparent)}50%{box-shadow:0 0 0 10px color-mix(in srgb,var(--btn) 0%,transparent)}}
+.btn:active{transform:scale(.97)}
+
+/* cards and blocks respond to the pointer */
+.card,.pain,.tier,.box,.learn-c,.rx-stat{transition:transform .2s,box-shadow .2s,border-color .2s}
+@media (hover:hover) and (pointer:fine){
+  .card:hover,.pain:hover,.box:hover,.learn-c:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .tier:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card:hover .ico{transform:rotate(-6deg) scale(1.08)}
+}
+.ico{transition:transform .25s}
+.tier.best .badge{animation:badgeGlow 2.4s ease-in-out infinite}
+@keyframes badgeGlow{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--btn) 30%,transparent)}50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--btn) 0%,transparent)}}
+.stats b{font-variant-numeric:tabular-nums}
+
+/* questions: answers slide open */
+details[open] > .ans{animation:pgIn .35s ease}
+@media (hover:hover) and (pointer:fine){summary{transition:color .2s}summary:hover{color:var(--accent)}}
+
+/* charts draw themselves once they come into view */
+.js-anim .realchart .rc-l{stroke-dasharray:2000;stroke-dashoffset:2000}
+.js-anim .realchart.seen .rc-l{animation:rcDraw 1.6s cubic-bezier(.4,.1,.2,1) forwards}
+.js-anim .realchart.seen .rc-year{stroke-dasharray:7 6;stroke-dashoffset:0;opacity:0;animation:ucFade .8s ease .9s forwards}
+.js-anim .realchart .rc-band{opacity:0}
+.js-anim .realchart.seen .rc-band{animation:ucFade .9s ease .2s forwards}
+@keyframes rcDraw{to{stroke-dashoffset:0}}
+@keyframes ucFade{to{opacity:1}}
+.js-anim .proofsec .pbar i,.js-anim .pop .pbar i{transform:scaleX(0);transform-origin:0 50%;animation:hvGrow 1s cubic-bezier(.2,.7,.2,1) .2s forwards}
+html[dir="rtl"].js-anim .pbar i{transform-origin:100% 50%}
+@keyframes hvGrow{to{transform:none}}
+
+/* the real example pops in: the headline wipes on, the numbers pop and count up, the chart tilts up out of a blur */
+.rx-hero{position:relative;overflow:hidden}
+.rx-hero .wrap{position:relative;z-index:1}
+.rx-hero::after{content:"";position:absolute;inset:-40%;pointer-events:none;
+  background:conic-gradient(from 0deg,transparent,color-mix(in srgb,var(--accent) 7%,transparent),transparent 30%);animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotate(1turn)}}
+.js-anim #s-example .rx-hero h1{clip-path:inset(0 100% 0 0);transition:clip-path 1.1s cubic-bezier(.7,0,.2,1) .15s}
+html[dir="rtl"].js-anim #s-example .rx-hero h1{clip-path:inset(0 0 0 100%)}
+.js-anim #s-example.popped .rx-hero h1{clip-path:inset(0 0 0 0)}
+.js-anim #s-example .rx-stat{opacity:0;transform:translateY(40px) scale(.7) rotate(-2deg)}
+.js-anim #s-example.popped .rx-stat{animation:popIn .7s cubic-bezier(.2,1.3,.4,1) forwards}
+.js-anim #s-example.popped .rx-stat:nth-child(2){animation-delay:.12s}.js-anim #s-example.popped .rx-stat:nth-child(3){animation-delay:.24s}.js-anim #s-example.popped .rx-stat:nth-child(4){animation-delay:.36s}
+@keyframes popIn{to{opacity:1;transform:none}}
+.js-anim #s-example .realchart{opacity:0;transform:perspective(1200px) rotateX(14deg) scale(.86);filter:blur(10px);transition:opacity .9s,transform 1.1s cubic-bezier(.2,.9,.3,1.1),filter .9s}
+.js-anim #s-example .realchart.seen{opacity:1;transform:none;filter:none}
+/* the panel grows from a card to full width as it scrolls in */
+#s-example .rx-hero{clip-path:inset(0 calc(var(--ins,0) * 1%) round calc(var(--rad,0) * 1px));will-change:clip-path}
+/* headings light up word by word as they scroll through */
+.wr .ww{opacity:var(--o,1);transition:opacity .15s linear}
+
+/* problem cards slide in from the sides */
+.js-anim #s-problem .pain.rv:nth-child(odd){translate:-60px 0}
+.js-anim #s-problem .pain.rv:nth-child(even){translate:60px 0}
+.js-anim #s-problem .pain.rv.in{translate:0 0}
+
+/* tested again: words bounce in, the "again" words wiggle, the numbers pop */
+.again{position:relative;overflow:hidden}
+.again-h .w{display:inline-block}
+.again-h .w.hot{color:var(--accent)}
+.js-anim .again-h .w{opacity:0;transform:translateY(30px) rotate(4deg)}
+.js-anim .again.go .again-h .w{animation:wordIn .6s cubic-bezier(.2,1.5,.4,1) forwards;animation-delay:calc(var(--i) * 70ms)}
+.js-anim .again.go .again-h .w.hot{animation:wordIn .6s cubic-bezier(.2,1.5,.4,1) forwards,wiggle .6s ease calc(var(--i) * 70ms + .6s) 1;animation-delay:calc(var(--i) * 70ms)}
+@keyframes wordIn{to{opacity:1;transform:none}}
+@keyframes wiggle{25%{transform:rotate(-6deg) scale(1.08)}75%{transform:rotate(6deg) scale(1.08)}}
+.js-anim .again-case .rx-stat{opacity:0;transform:scale(.6) rotate(-3deg)}
+.js-anim .again-case.go .rx-stat{animation:popIn .7s cubic-bezier(.2,1.3,.4,1) forwards}
+.js-anim .again-case.go .rx-stat:nth-child(2){animation-delay:.12s}
+
+/* the 3D carton, in slate */
+.kbox{--s:56px;width:var(--s);height:var(--s);position:relative;transform-style:preserve-3d}
+.kbox i{position:absolute;inset:0;display:block;border:1px solid var(--box-edge);border-radius:2px;background:var(--box-side)}
+.kbox .k1{transform:translateZ(calc(var(--s) / 2));background:var(--box-front) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 7.4L18.3 13.4 24.7 13.8 19.7 17.8 21.4 24 16 20.5 10.6 24 12.3 17.8 7.3 13.8 13.7 13.4Z' fill='none' stroke='%2394A3B8' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") center/46% no-repeat}
+.kbox .k2{transform:rotateY(180deg) translateZ(calc(var(--s) / 2));background:var(--box-front)}
+.kbox .k3{transform:rotateY(90deg) translateZ(calc(var(--s) / 2));background:var(--box-side)}
+.kbox .k4{transform:rotateY(-90deg) translateZ(calc(var(--s) / 2));background:var(--box-side-2)}
+.kbox .k5{transform:rotateX(90deg) translateZ(calc(var(--s) / 2));background:linear-gradient(90deg,var(--box-top) 0 40%,var(--box-tape) 40% 60%,var(--box-top) 60%)}
+.kbox .k6{transform:rotateX(-90deg) translateZ(calc(var(--s) / 2));background:var(--box-bottom)}
+.kbox.grey .k1{background-color:var(--box-alt)}.kbox.grey .k2{background:var(--box-alt)}
+.kbox.gold .k1{background-color:color-mix(in srgb,var(--accent) 22%,var(--box-front))}.kbox.gold .k2{background:color-mix(in srgb,var(--accent) 22%,var(--box-front))}
+.kbox.gold .k5{background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 16%,var(--box-top)) 0 40%,var(--box-tape) 40% 60%,color-mix(in srgb,var(--accent) 16%,var(--box-top)) 60%)}
+
+/* hero: the evidence card rests on a pile of cartons that drop in, then sway with the pointer */
+.hero-visual{position:relative}
+.hero-visual .rx-card{position:relative;z-index:1}
+.hv-pile{position:absolute;inset:0;pointer-events:none;perspective:1000px;z-index:0}
+.hv-rig{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.2,1);transform:rotateY(calc(var(--tx,0) * 9deg)) rotateX(calc(var(--ty,0) * -6deg))}
+.hv-pile .pb{position:absolute;transform-style:preserve-3d}
+.hv-pile .kbox{transform:rotateX(-18deg) rotateY(var(--ry,-24deg));animation:bob 6s ease-in-out infinite;animation-delay:var(--bd,0s)}
+@keyframes bob{0%,100%{transform:rotateX(-18deg) rotateY(var(--ry,-24deg)) translateY(0)}50%{transform:rotateX(-18deg) rotateY(calc(var(--ry,-24deg) + 6deg)) translateY(-7px)}}
+.js-anim .hv-pile .pb{animation:pileDrop 1.05s cubic-bezier(.45,0,.55,1) backwards;animation-delay:var(--dd,0s)}
+@keyframes pileDrop{0%{translate:0 -460px;opacity:0}12%{opacity:1}55%{translate:0 0}70%{translate:0 -22px}84%{translate:0 0}92%{translate:0 -6px}100%{translate:0 0}}
+@media (max-width:999px){.hv-pile .pb.far{display:none}}
+.hero-star{position:absolute;z-index:0;width:min(560px,80vw);height:auto;top:-150px;inset-inline-start:-170px;opacity:.5;color:var(--line-3);pointer-events:none;animation:starTurn 90s linear infinite}
+@keyframes starTurn{to{transform:rotate(1turn)}}
+
+/* the logo spins in, and again on hover */
+.brand .mark{animation:starIn 1.1s cubic-bezier(.2,1.4,.4,1) .1s both}
+@media (hover:hover) and (pointer:fine){.brand:hover .mark{animation:starSpin .9s cubic-bezier(.3,1.3,.5,1)}}
+@keyframes starIn{from{opacity:0;transform:rotate(-220deg) scale(.2)}}
+@keyframes starSpin{from{transform:rotate(-1turn) scale(.85)}}
+
+/* section headings get a short seam, drawn in as they arrive */
+.js-anim .head h2::after{content:"";display:block;width:56px;height:0;border-top:2px solid var(--line-3);margin-top:16px;scale:0 1;transform-origin:0 50%;transition:scale .9s cubic-bezier(.2,.7,.2,1) .25s}
+html[dir="rtl"].js-anim .head h2::after{transform-origin:100% 50%}
+.js-anim .head.mid h2::after{margin-inline:auto;transform-origin:50% 50%}
+.js-anim .head.in h2::after{scale:1 1}
+
+/* problem cards: one shelf empties as you scroll, the other piles up past what it can hold */
+.ms{position:relative;height:132px;margin-top:22px;overflow:hidden}
+.ms-plank{position:absolute;left:0;right:0;bottom:8px;height:8px;border-radius:3px;background:var(--line-3);transform-origin:50% 0}
+.ms-box{position:absolute;bottom:16px;width:34px;height:34px;border:1px solid var(--box-edge);border-radius:2px;
+  background:linear-gradient(90deg,transparent 40%,var(--box-tape) 40% 60%,transparent 60%) top/100% 7px no-repeat,var(--box-front);will-change:transform,opacity}
+.ms-box.grey{background:linear-gradient(90deg,transparent 40%,var(--box-tape) 40% 60%,transparent 60%) top/100% 7px no-repeat,var(--box-alt)}
+.ms-ghost{position:absolute;bottom:16px;width:34px;height:34px;border:1.5px dashed color-mix(in srgb,var(--muted) 55%,transparent);border-radius:2px}
+.ms-flag{position:absolute;top:10px;inset-inline-end:4px;padding:2px 12px;border-radius:6px;background:var(--bad-bg);color:var(--bad);font:700 1.1rem/1.4 var(--sans);opacity:0;transform:scale(.6) rotate(-6deg);transition:opacity .3s,transform .45s cubic-bezier(.2,1.6,.4,1)}
+.ms.empty .ms-flag{opacity:1;transform:none}
+.ms-over.full .ms-box.top{animation:teeter 1.8s ease-in-out infinite}
+@keyframes teeter{0%,100%{rotate:0deg}30%{rotate:-7deg}70%{rotate:6deg}}
+
+/* what it does: cards swing in like the faces of a box */
+.js-anim #s-what .card.rv.in{animation:faceIn 1s cubic-bezier(.2,1,.3,1) backwards;animation-delay:var(--d,0ms)}
+@keyframes faceIn{from{transform:perspective(900px) rotateY(-32deg) rotateX(14deg) scale(.9)}}
+
+/* pricing: each plan unfolds out of its box, the flaps open and fall away */
+.js-anim .tier.rv.in{animation:unbox 1s cubic-bezier(.2,1.15,.35,1) backwards;animation-delay:var(--d,0ms);transform-origin:50% 100%}
+@keyframes unbox{from{transform:perspective(1100px) rotateX(-72deg) translateY(40px)}}
+.tier::before,.tier::after{content:"";position:absolute;top:-1px;width:50%;height:58px;z-index:4;pointer-events:none;opacity:0;background:var(--box-top);border:1px solid var(--box-edge)}
+.tier::before{inset-inline-start:-1px;border-start-start-radius:14px;transform-origin:0 0}
+.tier::after{inset-inline-end:-1px;border-start-end-radius:14px;transform-origin:100% 0;background:var(--box-side)}
+.js-anim .tier.rv.in::before{animation:flapL 1.25s cubic-bezier(.5,0,.3,1) backwards;animation-delay:calc(var(--d,0ms) + .45s)}
+.js-anim .tier.rv.in::after{animation:flapR 1.25s cubic-bezier(.5,0,.3,1) backwards;animation-delay:calc(var(--d,0ms) + .55s)}
+@keyframes flapL{0%{opacity:1;transform:none}55%{opacity:1;transform:perspective(600px) rotateX(-160deg) rotateZ(-8deg)}100%{opacity:0;transform:perspective(600px) rotateX(-180deg) rotateZ(-16deg) translateY(30px)}}
+@keyframes flapR{0%{opacity:1;transform:none}55%{opacity:1;transform:perspective(600px) rotateX(-160deg) rotateZ(8deg)}100%{opacity:0;transform:perspective(600px) rotateX(-180deg) rotateZ(16deg) translateY(30px)}}
+
+/* how it works: step numbers roll into place */
+.js-anim .steps li.rv.in::before{animation:roll 1s cubic-bezier(.3,1.35,.5,1) backwards;animation-delay:calc(var(--d,0ms) + .15s)}
+@keyframes roll{from{opacity:0;transform:translateY(-40px) rotate(-270deg) scale(.4)}}
+
+/* closing band: a conveyor belt carries cartons along the bottom */
+.band{position:relative;overflow:hidden;padding-bottom:156px}
+.band .wrap{position:relative;z-index:2}
+.belt{position:absolute;left:0;right:0;bottom:0;height:130px;pointer-events:none;z-index:1;perspective:900px}
+.belt-rail{position:absolute;left:0;right:0;bottom:24px;height:14px;border-radius:7px;
+  background:repeating-linear-gradient(90deg,var(--line-3) 0 20px,var(--line) 20px 40px);box-shadow:0 6px 0 color-mix(in srgb,var(--ink) 12%,transparent);animation:railMove var(--rail,1s) linear infinite}
+html[dir="rtl"] .belt-rail{animation-direction:reverse}
+@keyframes railMove{to{background-position:40px 0}}
+.cv{position:absolute;bottom:38px;left:0;animation:ride var(--dur,18s) linear infinite;animation-delay:var(--del,0s);transform-style:preserve-3d}
+html[dir="rtl"] .cv{animation-direction:reverse}
+.cv .kbox{transform:rotateX(-14deg) rotateY(-30deg)}
+@keyframes ride{from{transform:translateX(-140px)}to{transform:translateX(calc(100vw + 40px))}}
+
+@media (prefers-reduced-motion:reduce){
+  .js-anim .rv,.js-anim .hero .wrap > *{opacity:1 !important;translate:none !important;animation:none !important;transition:none !important}
+  .hero::before,.hero::after,.hero .btn-primary,.hero .btn-primary::after,.tier.best .badge,.rx-hero::after,.brand .mark,.hero-star,.hv-pile .kbox,.js-anim .hv-pile .pb,.belt-rail,.cv,.ms-over.full .ms-box.top{animation:none !important}
+  .js-anim #s-example .rx-hero h1,.js-anim #s-example .rx-stat,.js-anim #s-example .realchart{clip-path:none !important;opacity:1 !important;transform:none !important;filter:none !important;animation:none !important}
+  .js-anim .again-h .w,.js-anim .again-case .rx-stat{opacity:1 !important;transform:none !important;animation:none !important}
+  .wr .ww{opacity:1 !important}#s-example .rx-hero{clip-path:none}#p-home .hero::before,#p-home .hero .hero-visual{transform:none}
+  .cv{transform:translateX(calc(var(--slot,0) * 1px))}
+  .scrollbar{display:none}
+  details[open] > .ans,.js-anim .page.on{animation:none}
+}
 </style>
 
 
@@ -2556,6 +2773,84 @@ var WHATSAPP = "201090099849";
 
 
 
+<div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
+<script data-anim-layer>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+
+  /* scroll progress */
+  var bar = document.getElementById('scrollbar');
+  function prog() {
+    var h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, scrollY / h) : 0) + ')';
+  }
+  addEventListener('scroll', prog, { passive: true }); addEventListener('resize', prog); prog();
+
+  if (reduce || !('IntersectionObserver' in window)) return;
+  root.classList.add('js-anim');
+
+  /* reveal: blocks fade up as they enter; items in a group follow one after another */
+  var SEL = ['section .head', '.pain', '.verdict', '.card', '.feat', '.steps > *', '.tier', '.band', '.figure',
+    '.tablewrap', '.box', '.win', '.price-note', '.sheets', '.fr', '.thanks-card', '.foot .wrap > *'];
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting || (e.boundingClientRect.height > 0 && e.boundingClientRect.bottom < 0)) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  var seen = new WeakSet();
+  function arm() {
+    document.querySelectorAll(SEL.join(',')).forEach(function (el) {
+      if (seen.has(el) || el.closest('.hero') || el.closest('.nav')) return;
+      seen.add(el);
+      var sib = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+      el.style.setProperty('--d', Math.min(sib, 6) * 90 + 'ms');
+      el.classList.add('rv'); io.observe(el);
+    });
+  }
+  arm();
+  /* safety net: anything still hidden after a page switch or a long wait is shown */
+  function flushVisible() {
+    document.querySelectorAll('.rv:not(.in)').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.width && r.top < innerHeight && r.bottom > 0) el.classList.add('in');
+    });
+  }
+  document.addEventListener('click', function (e) { if (e.target.closest('[data-go]')) setTimeout(function () { arm(); flushVisible(); }, 60); });
+  setTimeout(flushVisible, 2500);
+
+  /* count up the hero numbers, then put back the exact original text */
+  function countUp(b) {
+    var txt = b.textContent, m = txt.match(/^(\D*)([\d.,]+)(.*)$/);
+    if (!m) return;
+    var target = parseFloat(m[2].replace(/,/g, '')), dec = (m[2].split('.')[1] || '').length, t0 = null, dur = 1300, last = txt;
+    if (!isFinite(target) || target === 0) return;
+    function step(ts) {
+      if (b.textContent !== last) return;            /* text was re-rendered (language switch): stop */
+      if (!t0) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur), v = target * (1 - Math.pow(1 - k, 3));
+      last = k < 1 ? m[1] + v.toFixed(dec) + m[3] : txt;
+      b.textContent = last;
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var sio = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { sio.unobserve(e.target); setTimeout(function () { countUp(e.target); }, 700); } });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.stats b').forEach(function (b) { sio.observe(b); });
+})();
+</script>
+
+<script data-v2>
+(function () {
+  /* charts play once they come into view */
+  if (!('IntersectionObserver' in window)) { document.querySelectorAll('.ucurve,.evbars,.proofsec,.realchart').forEach(function (e) { e.classList.add('seen'); }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting || (e.boundingClientRect.height > 0 && e.boundingClientRect.bottom < 0)) { e.target.classList.add('seen'); io.unobserve(e.target); } });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.ucurve,.evbars,.proofsec,.realchart').forEach(function (e) { io.observe(e); });
+})();
+</script>
+
 <script data-pop>
 (function () {
   /* pop-ups with the full results tables */
@@ -2574,6 +2869,231 @@ var WHATSAPP = "201090099849";
     if (e.target.classList && e.target.classList.contains('pop')) closePop(e.target);
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') document.querySelectorAll('.pop:not([hidden])').forEach(closePop); });
+})();
+</script>
+
+<script data-popin>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) { var ex0 = document.getElementById('s-example'); if (ex0) ex0.classList.add('popped'); return; }
+  /* the Walmart example pops in, numbers count up */
+  function countUp(el) {
+    var t = el.textContent, m = t.match(/^(\D*)([\d.,]+)(.*)$/); if (!m) return;
+    var target = parseFloat(m[2].replace(/,/g, '')), dec = (m[2].split('.')[1] || '').length, t0 = null, last = t;
+    function step(ts) { if (el.textContent !== last) return; if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / 1400), v = target * (1 - Math.pow(1 - k, 3));
+      last = k < 1 ? m[1] + v.toFixed(dec) + m[3] : t; el.textContent = last; if (k < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  var ex = document.getElementById('s-example');
+  if (ex) new IntersectionObserver(function (es, ob) { es.forEach(function (e) { if (e.isIntersecting) { ex.classList.add('popped');
+      ex.querySelectorAll('.rx-stat b').forEach(function (b, i) { setTimeout(function () { countUp(b); }, 250 + i * 120); }); ob.disconnect(); } }); }, { threshold: 0.2 }).observe(ex.querySelector('.rx-hero') || ex);
+})();
+</script>
+
+<script data-again>
+(function () {
+  var sec = document.querySelector('.again'); if (!sec) return;
+  var h = sec.querySelector('.again-h');
+  function split() {   /* each word becomes its own bouncing piece; "again" words get a wiggle */
+    var txt = h.textContent; if (!txt || h.getAttribute('data-split') === txt) return;
+    h.innerHTML = txt.split(' ').map(function (w, i) { var hot = /again|تاني/i.test(w); return '<span class="w' + (hot ? ' hot' : '') + '" style="--i:' + i + '">' + w + '</span>'; }).join(' ');
+    h.setAttribute('data-split', h.textContent);
+  }
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cards = sec.querySelectorAll('.ag-card'), css = sec.querySelectorAll('.again-case');
+  function tick() { cards.forEach(function (c, i) { setTimeout(function () { c.classList.add('done'); }, reduce ? 0 : 700 + i * 300); }); }
+  if (reduce || !('IntersectionObserver' in window)) { sec.classList.add('go'); css.forEach(function (cs) { cs.classList.add('go'); }); tick(); return; }
+  new IntersectionObserver(function (es, ob) { es.forEach(function (e) { if (e.isIntersecting) { sec.classList.add('go'); tick(); ob.disconnect(); } }); }, { threshold: 0.15 }).observe(h);
+  css.forEach(function (cs) { new IntersectionObserver(function (es, ob) { es.forEach(function (e) { if (e.isIntersecting) { cs.classList.add('go'); ob.disconnect(); } }); }, { threshold: 0.15 }).observe(cs.querySelector('h3')); });
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('seen'); io.unobserve(e.target); } }); }, { threshold: 0.3 });
+  var c2 = sec.querySelector('.realchart'); if (c2) io.observe(c2);
+})();
+</script>
+
+<script data-scrollfx>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var vh = window.innerHeight;
+  /* split section headings into words; re-split whenever the language changes the text */
+  var heads = Array.prototype.slice.call(document.querySelectorAll('#p-home .scrollsec h2, #p-home > section h2, #p-home .band h2')).filter(function (h) { return !h.closest('.again') && !h.closest('.pop'); });
+  function split(h) {
+    var txt = h.textContent; if (!txt || h.getAttribute('data-split') === txt) return;
+    h.innerHTML = txt.split(' ').map(function (w) { return '<span class="ww">' + w + '</span>'; }).join(' ');
+    h.setAttribute('data-split', h.textContent); h.classList.add('wr');
+  }
+  /* pinned sideways cards on wide screens */
+  var grid = document.querySelector('#s-provide .pgrid'), hs = null;
+  function buildH() {
+    if (!grid || hs || window.innerWidth < 1100) return;
+    var wrap = document.createElement('div'); wrap.className = 'hscroll';
+    var sticky = document.createElement('div'); sticky.className = 'hs-sticky';
+    var bar = document.createElement('div'); bar.className = 'hs-bar'; bar.innerHTML = '<i></i>';
+    grid.parentNode.insertBefore(wrap, grid); sticky.appendChild(grid); sticky.appendChild(bar); wrap.appendChild(sticky); grid.classList.add('hs-track');
+    hs = { wrap: wrap, sticky: sticky, bar: bar };
+  }
+  function sizeH() { if (!hs) return; var over = Math.max(0, grid.scrollWidth - hs.sticky.clientWidth); hs.over = over; hs.wrap.style.height = (hs.sticky.offsetHeight + over) + 'px'; }
+  buildH(); sizeH();
+  var heroEl = document.querySelector('#p-home .hero'), ex = document.querySelector('#s-example .rx-hero');
+  var ticking = false;
+  function frame() {
+    ticking = false;
+    var home = document.getElementById('p-home'); if (!home || !home.classList.contains('on')) return;
+    var y = window.scrollY;
+    if (heroEl) { heroEl.style.setProperty('--py', (y * 0.35) + 'px'); heroEl.style.setProperty('--cy', (-y * 0.12) + 'px'); }
+    if (ex) { var r = ex.getBoundingClientRect(); var p = Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.8))); ex.style.setProperty('--ins', (6 * (1 - p)).toFixed(2)); ex.style.setProperty('--rad', (32 * (1 - p)).toFixed(1)); }
+    heads.forEach(function (h) {
+      var r = h.getBoundingClientRect(); if (r.bottom < -50 || r.top > vh + 50) return;
+      var p = Math.min(1, Math.max(0, (vh * 0.92 - r.top) / (vh * 0.45)));
+      var ws = h.querySelectorAll('.ww'), n = ws.length;
+      for (var i = 0; i < n; i++) { var o = Math.min(1, Math.max(0.14, p * n * 1.25 - i)); ws[i].style.setProperty('--o', o.toFixed(2)); }
+    });
+    if (hs && hs.over > 0) {
+      var r2 = hs.wrap.getBoundingClientRect(); var q = Math.min(1, Math.max(0, (90 - r2.top) / hs.over));
+      var dir = document.documentElement.dir === 'rtl' ? 1 : -1;
+      grid.style.transform = 'translate3d(' + (dir * q * hs.over).toFixed(1) + 'px,0,0)'; hs.bar.style.setProperty('--hp', q.toFixed(3));
+    }
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function () { vh = window.innerHeight; buildH(); sizeH(); onScroll(); });
+  document.addEventListener('click', function (e) { if (e.target.closest('#langBtn,#langBtnM')) setTimeout(function () { sizeH(); onScroll(); }, 120); });
+  setTimeout(function () { sizeH(); frame(); }, 300);
+  window.addEventListener('load', function () { sizeH(); frame(); });
+})();
+</script>
+
+<script data-goose-motion>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rtl = function () { return document.documentElement.dir === 'rtl'; };
+  function kbox(size, cls) {
+    var b = document.createElement('div'); b.className = 'kbox' + (cls ? ' ' + cls : ''); b.style.setProperty('--s', size + 'px');
+    b.innerHTML = '<i class="k1"></i><i class="k2"></i><i class="k3"></i><i class="k4"></i><i class="k5"></i><i class="k6"></i>';
+    return b;
+  }
+  function el(tag, cls, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (parent) parent.appendChild(e); return e; }
+
+  /* big slow star behind the hero */
+  var hero = document.querySelector('#p-home .hero');
+  if (hero) {
+    var ns = 'http://www.w3.org/2000/svg', s = document.createElementNS(ns, 'svg');
+    s.setAttribute('class', 'hero-star'); s.setAttribute('viewBox', '0 0 32 32'); s.setAttribute('aria-hidden', 'true');
+    s.innerHTML = '<path d="M14.0 2.7 L18.8 11.6 L28.1 10.9 L22.1 17.9 L26.0 27.2 L16.8 22.5 L9.6 28.9 L10.5 19.5 L2.2 14.4 L11.8 12.5Z" fill="none" stroke="currentColor" stroke-width=".5" stroke-linejoin="round"/>' +
+      '<path d="M14.0 2.7 L18.8 11.6 L28.1 10.9 L22.1 17.9 L26.0 27.2 L16.8 22.5 L9.6 28.9 L10.5 19.5 L2.2 14.4 L11.8 12.5Z" fill="none" stroke="currentColor" stroke-width=".25" stroke-dasharray=".6 .5" transform="translate(16 16.8) scale(.86) translate(-16 -16.8)"/>';
+    hero.insertBefore(s, hero.firstChild);
+  }
+
+  /* the pile of cartons under the hero card */
+  var hv = document.querySelector('#p-home .hero-visual');
+  if (hv) {
+    var pile = el('div', 'hv-pile'); pile.setAttribute('aria-hidden', 'true'); var rig = el('div', 'hv-rig', pile);
+    [ /* size, css position, turn, drop delay, class */
+      [74, 'left:-30px;bottom:-34px', -26, .25, ''],
+      [46, 'left:40px;bottom:-30px', -40, .45, 'grey far'],
+      [42, 'left:-16px;bottom:38px', -12, .65, 'gold'],
+      [56, 'right:-24px;top:-30px', -34, .35, ''],
+      [32, 'right:34px;top:-22px', -18, .55, 'far']
+    ].forEach(function (d, i) {
+      var pb = el('div', 'pb' + (d[4].indexOf('far') > -1 ? ' far' : ''), rig); pb.style.cssText = d[1];
+      pb.style.setProperty('--dd', (d[3] + .2) + 's');
+      var b = kbox(d[0], d[4].replace('far', '').trim()); b.style.setProperty('--ry', d[2] + 'deg'); b.style.setProperty('--bd', (-i * 1.3) + 's');
+      pb.appendChild(b);
+    });
+    hv.insertBefore(pile, hv.firstChild);
+    if (!reduce && hero) {
+      hero.addEventListener('pointermove', function (e) {
+        var r = hero.getBoundingClientRect();
+        rig.style.setProperty('--tx', (((e.clientX - r.left) / r.width) - .5).toFixed(3));
+        rig.style.setProperty('--ty', (((e.clientY - r.top) / r.height) - .5).toFixed(3));
+      });
+      hero.addEventListener('pointerleave', function () { rig.style.setProperty('--tx', 0); rig.style.setProperty('--ty', 0); });
+    }
+  }
+
+  /* conveyor belts in the closing bands */
+  var belts = [];
+  document.querySelectorAll('#p-home .band').forEach(function (band, bi) {
+    var belt = el('div', 'belt', band); belt.setAttribute('aria-hidden', 'true'); el('div', 'belt-rail', belt);
+    var sizes = [52, 38, 60, 44, 34, 56], n = sizes.length;
+    sizes.forEach(function (sz, i) {
+      var cv = el('div', 'cv', belt); cv.appendChild(kbox(sz, i === 2 ? 'gold' : i === 4 ? 'grey' : ''));
+      cv.dataset.i = i; cv.dataset.n = n; cv.dataset.b = bi;
+    });
+    belts.push(belt);
+  });
+  function sizeBelts() {
+    var w = window.innerWidth, dur = Math.max(12, (w + 180) / 95);          /* about 95px a second on any screen */
+    belts.forEach(function (belt) {
+      belt.style.setProperty('--rail', (40 / ((w + 180) / dur)).toFixed(3) + 's');
+      belt.querySelectorAll('.cv').forEach(function (cv) {
+        var i = +cv.dataset.i, n = +cv.dataset.n, jitter = ((i * 37 + +cv.dataset.b * 53) % 10) / 10 * .35;
+        cv.style.setProperty('--dur', dur.toFixed(2) + 's');
+        cv.style.setProperty('--del', (-(i + jitter) * dur / n).toFixed(2) + 's');
+        cv.style.setProperty('--slot', Math.round((i + .5) * w / n - 30));
+      });
+    });
+  }
+  sizeBelts(); window.addEventListener('resize', sizeBelts);
+
+  /* mini shelves inside the two problem cards */
+  var pains = document.querySelectorAll('#s-problem .pain'), shelves = [];
+  if (pains.length >= 2) {
+    /* stockout: six cartons leave one by one, leaving dashed outlines and a sold out flag */
+    var a = el('div', 'ms ms-out', pains[0]); a.setAttribute('aria-hidden', 'true'); el('div', 'ms-plank', a);
+    var flag = el('span', 'ms-flag', a); flag.textContent = '0';
+    var outs = [];
+    for (var i = 0; i < 6; i++) {
+      var g = el('div', 'ms-ghost', a); g.style.insetInlineStart = (i * 40) + 'px';
+      var b = el('div', 'ms-box', a); b.style.insetInlineStart = (i * 40) + 'px'; outs.push(b);
+    }
+    /* overstock: cartons keep landing until the shelf is stacked three high */
+    var o = el('div', 'ms ms-over', pains[1]); o.setAttribute('aria-hidden', 'true'); var plank = el('div', 'ms-plank', o);
+    var ins = [], rows = [[0, 1, 2, 3, 4, 5], [.5, 1.5, 2.5, 3.5, 4.5], [1.5, 2.5, 3.5]];
+    rows.forEach(function (row, r) {
+      row.forEach(function (x, k) {
+        var b = el('div', 'ms-box' + ((r + k) % 3 === 2 ? ' grey' : '') + (r === rows.length - 1 ? ' top' : ''), o);
+        b.style.insetInlineStart = (x * 40) + 'px'; b.style.bottom = (18 + r * 35) + 'px'; ins.push(b);
+      });
+    });
+    shelves.push({ out: a, outs: outs, over: o, ins: ins, plank: plank, card: pains[0] });
+  }
+  function frameShelves() {
+    var vh = window.innerHeight;
+    shelves.forEach(function (S) {
+      var r = S.card.getBoundingClientRect(), p = Math.min(1, Math.max(0, (vh * .92 - r.top) / (vh * .62)));
+      var dir = rtl() ? 1 : -1, nOut = S.outs.length;
+      S.outs.forEach(function (b, i) {
+        var t = Math.min(1, Math.max(0, p * (nOut + 1.2) - (nOut - 1 - i) - .3));   /* the right-most carton leaves first */
+        b.style.transform = 'translate(' + (dir * -1 * t * 160).toFixed(1) + 'px,' + (-Math.sin(t * Math.PI) * 26).toFixed(1) + 'px) rotate(' + (dir * -1 * t * 24).toFixed(1) + 'deg)';
+        b.style.opacity = (1 - t).toFixed(2);
+      });
+      S.out.classList.toggle('empty', p > .92);
+      var nIn = S.ins.length, landed = 0;
+      S.ins.forEach(function (b, i) {
+        var t = Math.min(1, Math.max(0, p * (nIn + 2) - i));
+        var e = t < 1 ? 1 - Math.pow(1 - t, 3) : 1; if (t >= 1) landed++;
+        b.style.transform = 'translateY(' + (-(1 - e) * 120).toFixed(1) + 'px)'; b.style.opacity = Math.min(1, t * 3).toFixed(2);
+      });
+      S.plank.style.transform = 'scaleY(' + (1 + landed / nIn * .5).toFixed(2) + ') translateY(' + (landed / nIn * 2).toFixed(1) + 'px)';
+      S.over.classList.toggle('full', landed === nIn);
+    });
+  }
+
+  if (reduce || !('IntersectionObserver' in window) || !document.documentElement.classList.contains('js-anim')) { return; }
+
+  /* parcels drop onto the provide grid when it comes into view */
+  var grid = document.querySelector('#s-provide .pgrid');
+  if (grid) {
+    grid.querySelectorAll('.pcard').forEach(function (c, i) { c.style.setProperty('--i', i); });
+    new IntersectionObserver(function (es, ob) { es.forEach(function (e) { if (e.isIntersecting) { grid.classList.add('drop'); ob.disconnect(); } }); }, { threshold: .12 }).observe(grid);
+    setTimeout(function () { var r = grid.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) grid.classList.add('drop'); }, 2500);
+  }
+
+  var ticking = false;
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; frameShelves(); }); } }
+  window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll);
+  setTimeout(frameShelves, 100);
 })();
 </script>
 
