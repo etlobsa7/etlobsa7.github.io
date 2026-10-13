@@ -131,6 +131,10 @@ main:focus{outline:none}
 .drawer .tab{display:block;width:100%;text-align:start;padding:12px;font-size:1rem;border-radius:8px}
 .drawer .tab.navlogin{border-top:1px solid var(--line);border-radius:0;margin-top:6px;padding-top:16px}
 @media (max-width:1000px){.tabs{display:none}.menubtn{display:block}}
+/* phones: the demo and trial buttons stay in the header; the language switch lives in the menu */
+.nav-short{display:none !important}
+@media (max-width:600px){#langBtn{display:none}.nav-in{gap:8px}.nav-in .btn-sm{padding:7px 10px;font-size:.84rem}.nav-long{display:none !important}.nav-short{display:inline-flex !important}}
+@media (max-width:360px){.nav-in .brand b{display:none}}
 @media (max-width:600px){
   .nav-in{padding:10px 16px;gap:8px}
   .nav-in > div:last-child{gap:6px !important;flex-shrink:0}
@@ -764,7 +768,10 @@ html[dir="rtl"] .sh-step{inset:0 0 auto auto}
 </div>
 <div style="display:flex;gap:8px;align-items:center">
 <button class="btn btn-ghost btn-sm langbtn" id="langBtn" type="button">العربية</button>
-<a class="btn btn-primary btn-sm" data-go="pricing" data-t="t8" href="#"></a>
+<a class="btn btn-primary btn-sm navdemo nav-long" data-t="t701" href="/demo/"></a>
+<a class="btn btn-primary btn-sm navdemo nav-short" data-t="t536" href="/demo/"></a>
+<a class="btn btn-primary btn-sm nav-long" data-go="pricing" data-t="t8" href="#"></a>
+<a class="btn btn-primary btn-sm nav-short" data-go="pricing" data-t="t702" href="#"></a>
 <button aria-label="Menu" class="menubtn" id="menubtn">
 <svg fill="none" height="18" viewbox="0 0 18 18" width="18"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg>
 </button>
@@ -1363,7 +1370,7 @@ var SITE_EN = {
   t15: 'Built in Cairo for Egyptian brands',
   t16: 'Know exactly what to reorder, and when.',
   t17: 'Many small brands sell well and guess at buying. This removes the guess: how many units to order, from which supplier, on which day, for every product you sell.',
-  t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">Start your free trial</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">See the app in action</a>',
+  t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">Start your free trial</a>\n<a class="btn btn-primary btn-lg" href="/demo/">See the app in action</a>',
   t19: 'Runs in your browser. Arabic and English included. Priced in Egyptian pounds.',
   t20: '<b>99.8%</b><small>Of customers found the product in stock, when a real Walmart store ordered exactly what the app said</small>',
   t21: '<b>14 days</b><small>Free trial on Basic and Pro (5 days on Store). Card required; nothing is charged until the trial ends.</small>',
@@ -1842,6 +1849,8 @@ var SITE_EN = {
   t538: 'A real example',
   t537: 'Top',
   t536: 'Demo',
+  t701: 'See the demo',
+  t702: 'Free trial',
   t535: 'App forecast, a month ahead',
   t534: 'What really sold',
   t533: 'How close the app\'s forecasts came to real sales, month by month, on a real Walmart store in 2015',
@@ -2066,7 +2075,7 @@ var SITE_EN = {
   t15: 'اتصنع في القاهرة',
   t16: 'اعرف بالظبط تطلب إيه، وإمتى.',
   t17: 'محلات صغيرة كتير شاطرة في البيع وبتخمن في الشراء. الأداة دي بتشيل التخمين: تطلب كام قطعة، من أي مورد، في أنهي يوم، لكل منتج بتبيعه.',
-  t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>\n<a class="btn btn-ghost btn-lg" href="/demo/">اتفرج على الأداة</a>',
+  t18: '<a class="btn btn-primary btn-lg" data-go="pricing" href="#">ابدأ تجربتك المجانية</a>\n<a class="btn btn-primary btn-lg" href="/demo/">اتفرج على الأداة</a>',
   t19: 'بيشتغل في المتصفح. عربي وإنجليزي مع بعض. بالجنيه المصري.',
   t20: '<b>99.8%</b><small>من الزباين لقوا المنتج موجود، لما فرع وول مارت حقيقي طلب بالظبط اللي الأداة قالته</small>',
   t21: '<b>14 يوم</b><small>تجربة مجانية على الأساسية وPro (5 أيام على Store). محتاج كارت، ومفيش خصم لحد ما التجربة تخلص.</small>',
@@ -2545,6 +2554,8 @@ var SITE_EN = {
   t538: 'مثال حقيقي',
   t537: 'الأول',
   t536: 'العرض',
+  t701: 'اتفرج على العرض',
+  t702: 'جرب مجانًا',
   t535: 'توقع الأداة، قبلها بشهر',
   t534: 'اللي اتباع فعلا',
   t533: 'قد إيه توقعات الأداة قربت من المبيعات الحقيقية، شهر بشهر، في فرع وول مارت حقيقي في 2015',
