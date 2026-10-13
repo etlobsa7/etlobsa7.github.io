@@ -824,8 +824,14 @@ html[data-theme="light"]{--bar-bg:#0F172A;--bar-line:rgba(255,255,255,.14);--bar
   html.pin-in .main{padding-top:calc(var(--outh,50px) + var(--inh,50px))}
   html.pin-out .bg-star,html[dir="rtl"].pin-out .bg-star{translate:none}
 }
+@media (min-width:1381px) and (max-width:1600px){ .side .nav-row.out .nav-items > button{padding:6px 4px} }
 @media (min-width:901px) and (max-width:1380px){ .side .nav-row.out{padding-inline:16px 12px;gap:6px 8px} .side .nav-row.out .nav-items > button{padding:5px 5px;font-size:12.5px} }
 @media (max-width:900px){ .side .nav-row.out{order:-1} }
+/* bar titles: the app's heading lettering (Oswald capitals), larger than the menu items beside them */
+.side .nav-row .nav-label,.side .nav-row .bar-tab{font-family:var(--serif);font-weight:500;font-size:15px;letter-spacing:.05em;text-transform:uppercase;line-height:1.2}
+.side .nav-row .nav-label svg,.side .nav-row .bar-tab svg{width:16px;height:16px}
+html[lang="ar"] .side .nav-row .nav-label,html[lang="ar"] .side .nav-row .bar-tab{font-weight:700;font-size:15px;letter-spacing:0;text-transform:none}
+@media (max-width:900px){.side .nav-row .bar-tab{font-size:13.5px}html[lang="ar"] .side .nav-row .bar-tab{font-size:13.5px}}
 .topbar .ghost{white-space:nowrap}
 @media (max-width:480px){ .topbar{gap:8px;padding:10px 12px} .topbar .status{display:none} .topbar .mark b{font-size:20px} .topbar .lang,.topbar .ghost{padding:5px 8px;font-size:12px} .topbar .themebtn{width:32px;height:32px} }
 
