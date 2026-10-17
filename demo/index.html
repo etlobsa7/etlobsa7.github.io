@@ -770,6 +770,20 @@ html[dir="rtl"] .app-bg::after{-webkit-mask-image:radial-gradient(ellipse at 22%
 .alert.good,.msg.ok{background:linear-gradient(var(--ok-bg),var(--ok-bg)),var(--bg)}
 .alert.info,.msg.info{background:linear-gradient(var(--accent-bg),var(--accent-bg)),var(--bg)}
 @media (max-width:900px){.bg-pile,.bg-star{display:none}}
+/* the backdrop moves like the website hero: the star turns once every 90 s, the glow drifts, the cartons bob and
+   lean toward the pointer. Transform only, on its own layer; off on phones and for reduced motion */
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  .bg-star{animation:bgStarTurn 90s linear infinite}
+  .app-bg::before{animation:bgGlowDrift 14s ease-in-out infinite alternate}
+  .bg-pile .pb{transition:transform .5s cubic-bezier(.2,.7,.2,1);transform:rotateY(calc(var(--tx,0) * 9deg)) rotateX(calc(var(--ty,0) * -6deg))}
+  .bg-pile .kbox{animation:bgBob 6s ease-in-out infinite}
+  .bg-pile .pb:nth-child(2) .kbox{animation-delay:-1.3s}.bg-pile .pb:nth-child(3) .kbox{animation-delay:-2.6s}
+  .bg-pile .pb:nth-child(4) .kbox{animation-delay:-3.9s}.bg-pile .pb:nth-child(5) .kbox{animation-delay:-5.2s}
+}
+.app-bg.still::before,.app-bg.still .bg-star,.app-bg.still .kbox{animation-play-state:paused}
+@keyframes bgStarTurn{to{transform:rotate(1turn)}}
+@keyframes bgGlowDrift{from{transform:translate(0,0) scale(1)}to{transform:translate(-6%,8%) scale(1.12)}}
+@keyframes bgBob{0%,100%{transform:rotateX(-18deg) rotateY(var(--ry,-24deg)) translateY(0)}50%{transform:rotateX(-18deg) rotateY(calc(var(--ry,-24deg) + 6deg)) translateY(-7px)}}
 @media (prefers-reduced-motion:reduce){.bg-star{transition:none}}
 @media print{.app-bg{display:none}}
 /* the two bars stand apart from the page: near-black on the light theme, slate on the dark theme */
@@ -1364,6 +1378,19 @@ html[lang="ar"] h1,html[lang="ar"] .login-brand h2{-webkit-text-stroke:0}
   window.navbarsSync = sync;
   sync();
   requestAnimationFrame(function () { requestAnimationFrame(function () { H.classList.add('nb-ready'); }); });
+})();
+</script>
+<script data-bgmotion>
+/* the backdrop cartons lean toward the pointer (wide screens with a mouse, motion allowed); one update per frame */
+(function () {
+  var mm = window.matchMedia; if (!mm || mm('(prefers-reduced-motion: reduce)').matches || !mm('(hover: hover) and (pointer: fine)').matches) return;
+  var pile = document.querySelector('.bg-pile'), x = 0, y = 0, queued = false; if (!pile) return;
+  function put() { queued = false; pile.style.setProperty('--tx', x.toFixed(3)); pile.style.setProperty('--ty', y.toFixed(3)); }
+  document.addEventListener('pointermove', function (e) { x = e.clientX / innerWidth - .5; y = e.clientY / innerHeight - .5; if (!queued) { queued = true; requestAnimationFrame(put); } }, { passive: true });
+  document.addEventListener('pointerleave', function () { x = 0; y = 0; if (!queued) { queued = true; requestAnimationFrame(put); } });
+  /* while anything scrolls, the backdrop holds still so every frame goes to the page (the class sits on the backdrop only) */
+  var bg = document.querySelector('.app-bg'), still = 0;
+  document.addEventListener('scroll', function () { if (!still) bg.classList.add('still'); clearTimeout(still); still = setTimeout(function () { still = 0; bg.classList.remove('still'); }, 200); }, { capture: true, passive: true });
 })();
 </script>
 </body>
