@@ -773,7 +773,7 @@ html[dir="rtl"] .app-bg::after{-webkit-mask-image:radial-gradient(ellipse at 22%
 @media (max-width:900px){.bg-pile,.bg-star{display:none}}
 @media (prefers-reduced-motion:reduce){.bg-star{transition:none}}
 @media print{.app-bg{display:none}}
-/* the two bars stand apart from the page: near-black on the light theme, dark grey on the dark theme */
+/* the two bars stand apart from the page: near-black on the light theme, slate on the dark theme */
 :root{--bar-bg:#1E3A8A;--bar-line:rgba(255,255,255,.14);--bar-hover:rgba(255,255,255,.1);--bar-current:rgba(255,255,255,.16);--bar-chip:rgba(255,255,255,.14)}
 html[data-theme="light"]{--bar-bg:#0F172A;--bar-line:rgba(255,255,255,.14);--bar-hover:rgba(255,255,255,.1);--bar-current:rgba(255,255,255,.16);--bar-chip:rgba(255,255,255,.12)}
 .side .nav-row{color:#FFFFFF;scrollbar-color:rgba(255,255,255,.45) transparent}
@@ -808,7 +808,11 @@ html[data-theme="light"]{--bar-bg:#0F172A;--bar-line:rgba(255,255,255,.14);--bar
   .side .nav-row.out .bar-tab{color:var(--bar-bg);background:#FFFFFF;border-color:#FFFFFF}
 }
 /* results bar across the top, always shown; the inputs bar sits under it and slides away until you point at it (or pin it) */
-:root{--bar-bg:#2A2F38}
+:root{--bar-bg:#334155;--bar-edge:rgba(255,255,255,.12)}
+html[data-theme="light"]{--bar-edge:rgba(15,23,42,.35)}
+/* a thin edge so the bars read as their own surface against the page */
+.side .nav-row{box-shadow:inset 0 -1px 0 var(--bar-edge)}
+@media (max-width:900px){.side .nav{box-shadow:inset 0 0 0 1px var(--bar-edge)}}
 @media (min-width:901px){
   html{scroll-padding-top:calc(var(--toph,61px) + var(--outh,50px) + var(--peek) + 16px)}
   html.pin-in{scroll-padding-top:calc(var(--toph,61px) + var(--outh,50px) + var(--inh,50px) + 16px)}
