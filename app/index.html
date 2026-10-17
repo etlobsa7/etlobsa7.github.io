@@ -736,6 +736,19 @@ body{line-height:1.6}
 .t tbody tr{isolation:isolate}
 /* a hovered row keeps its pinned first cell solid, so columns scrolled underneath never show through the product name */
 @media (hover:hover) and (pointer:fine){.t tbody tr:hover td.stick{background:linear-gradient(color-mix(in srgb,var(--ink) 3%,transparent),color-mix(in srgb,var(--ink) 3%,transparent)),var(--paper)}}
+/* polish: an 8px rhythm in page headers and cards, a 1px lift on hover, tabular figures, clear focus on the bars */
+.page-head{margin-bottom:24px;row-gap:16px}
+.page-head p{margin-top:8px}
+.section{margin-top:32px}
+.section > h2{margin-bottom:16px}
+.panel{padding:24px}
+.kpi{padding:16px}
+.kpi,.today,.st-card,.split,.po-total,.panel b,.badge{font-variant-numeric:tabular-nums}   /* table figures already use .num and .grid input */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .panel,.today,.st-card{transition:transform .15s cubic-bezier(.2,.7,.2,1),box-shadow .15s}
+  .panel:hover,.today:hover,.st-card:hover{transform:translateY(-1px);box-shadow:0 6px 20px color-mix(in srgb,var(--ink) 8%,transparent)}
+}
+.side .nav-row button:focus-visible,.side .nav-row a:focus-visible{outline:2px solid #FFFFFF;outline-offset:-2px;box-shadow:0 0 0 4px color-mix(in srgb,#FFFFFF 25%,transparent)}
 /* long pages: charts far below the screen are drawn only when you scroll near them (their size is remembered, so nothing jumps) */
 .gpanel{content-visibility:auto;contain-intrinsic-size:auto 400px}
 /* the website's backdrop behind the app: a soft blue glow, a faint grid, the big dashed star and a few cartons.
