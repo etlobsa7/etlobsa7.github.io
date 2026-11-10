@@ -2,6 +2,7 @@
 // The engine file is the exact one the server runs; this wrapper only feeds it a shop
 // and plays the real daily sales against the orders it asks for.
 import fs from 'fs';
+if (process.env.FX) globalThis.__FX = JSON.parse(process.env.FX); // test-only switches for A/B runs
 
 export const LIMITS = { products: 200, suppliers: 100, customProfiles: true, altSuppliers: true };
 export const mulberry = a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
@@ -13,20 +14,28 @@ const sum = a => a.reduce((x, y) => x + y, 0);
 export function loadStore(dir, store) {
   const d = JSON.parse(fs.readFileSync(`${dir}/${store}.json`));
   const t0 = Date.parse(d.start + 'T00:00:00Z');
-  d.t0 = t0;
+  d.t0 = t0; d.y0 = +d.start.slice(0, 4);
   d.idx = date => Math.round((Date.parse(date + 'T00:00:00Z') - t0) / DAY);
   d.month = [];
-  for (let k = 0; k < d.days; k++) { const t = new Date(t0 + k * DAY); d.month.push((t.getUTCFullYear() - 2012) * 12 + t.getUTCMonth()); }
+  for (let k = 0; k < d.days; k++) { const t = new Date(t0 + k * DAY); d.month.push((t.getUTCFullYear() - d.y0) * 12 + t.getUTCMonth()); }
   const nm = d.month[d.days - 1] + 1;
   for (const it of d.items) { it.m = new Array(nm).fill(0); it.daily.forEach((v, k) => { it.m[d.month[k]] += v; }); }
   return d;
 }
 
 // 40 products picked at random (fixed seed) from those that sold in every month of the two learning years.
-export function pickProducts(d, year, n = 40, seed = 2015) {
-  const m0 = (year - 2 - 2012) * 12;
-  const ok = d.items.filter(it => it.m.slice(m0, m0 + 24).every(v => v > 0) && (it.price[year - 1] || it.price[year - 2]));
-  const r = mulberry(hash(d.store + ':' + year + ':' + seed)), a = ok.slice();
+const priceOf = (it, year) => it.price.all || it.price[year - 1] || it.price[year - 2] || it.price[year];
+// kind: 'steady' (sold every learning month), 'slow' (sold in most months, a handful of units a month),
+//       'gappy' (3 to 8 learning months with no sales at all, as after stockouts or delisting)
+export function pickProducts(d, year, n = 40, seed = 2015, kind = 'steady') {
+  const m0 = (year - 2 - d.y0) * 12, med = a => { const b = a.slice().sort((x, y) => x - y); return b[b.length >> 1]; };
+  const test = {
+    steady: h => h.every(v => v > 0),
+    slow: h => h.filter(v => v > 0).length >= 18 && med(h) >= 1 && med(h) <= 8,
+    gappy: h => { const z = h.filter(v => v === 0).length; return z >= 3 && z <= 8 && h.slice(12).some(v => v > 0) && med(h.filter(v => v > 0)) >= 5; },
+  }[kind];
+  const ok = d.items.filter(it => test(it.m.slice(m0, m0 + 24)) && priceOf(it, year));
+  const r = mulberry(hash(d.store + ':' + year + ':' + seed + (kind === 'steady' ? '' : ':' + kind))), a = ok.slice();
   for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
   return { picked: a.slice(0, n), eligible: ok.length };
 }
@@ -46,15 +55,20 @@ const drawLead = (s, r) => Math.max(1, Math.round(trueLead(s) + s.ltv * gauss(r)
  */
 export function replay(Engine, d, opts) {
   const year = opts.year, items = opts.products, rr = mulberry(hash(`${d.store}:${year}:run${opts.run || 1}`)), rh = mulberry(hash(`${d.store}:${year}:hind${opts.run || 1}`));
-  const m0 = (year - 2 - 2012) * 12, mT = (year - 2012) * 12;
-  const dStart = d.idx(`${year}-01-01`), dEnd = d.idx(`${year}-12-31`);
+  const start = opts.start || `${year}-01-01`, learn = opts.learn || 24, sm = +start.slice(5, 7);
+  const mT = (+start.slice(0, 4) - d.y0) * 12 + sm - 1, m0 = mT - learn;
+  const dStart = d.idx(start), dEnd = d.idx(`${+start.slice(0, 4) + 1}-${start.slice(5)}`) - 1;
   const ws = Engine.blankWorkspace();
-  Object.assign(ws.settings, { orderCost: 20, holdRate: 25, lastMonth: 12, overstockDays: 120, budget: 0 }, opts.settings || {});
+  Object.assign(ws.settings, { orderCost: 20, holdRate: 25, lastMonth: (sm + 10) % 12 + 1, overstockDays: 120, budget: 0 }, opts.settings || {});
   ws.suppliers = SUPPLIERS.map(s => ({ ...s }));
   const sup = Object.fromEntries(SUPPLIERS.map(s => [s.id, s]));
   ws.products = items.map((it, i) => {
-    const price = it.price[year - 1] || it.price[year - 2];
-    return { id: 'p' + i, name: it.id, supplierId: SUPPLIERS[i % 3].id, profileId: 'flat', sales: it.m.slice(m0 + 12, m0 + 24), older: new Array(12).fill(null).concat(it.m.slice(m0, m0 + 12)), cost: Math.round(price * 55) / 100, price, onHand: 0, onOrder: 0, sl: 95, altSuppliers: [], fcHist: [] };
+    const price = priceOf(it, year);
+    let h = new Array(36 - learn).fill(null).concat(it.m.slice(m0, mT)); // 36 months back, oldest first
+    const kp = typeof opts.keep === 'function' ? opts.keep(i) : opts.keep;
+    if (kp) h = h.map((v, k) => (k < 36 - kp ? null : v));  // a young product: only its last months exist
+    if (opts.stockout && i % opts.stockout.every === 0) h = h.map((v, k) => (k >= 36 - opts.stockout.months ? 0 : v)); // the shelf was empty in the last months, so nothing sold
+    return { id: 'p' + i, name: it.id, supplierId: SUPPLIERS[i % 3].id, profileId: opts.profile || 'flat', sales: h.slice(24), older: h.slice(0, 24), cost: Math.round(price * 55) / 100, price, onHand: 0, onOrder: 0, sl: 95, altSuppliers: [], fcHist: [] };
   });
   const N = items.length, st = items.map(() => ({ onHand: 0, pipe: [], served: 0, lost: 0, mServed: 0, stockDays: 0, cycles: 0, badCycles: 0, lostSinceArrival: 0 }));
   const compute = () => { ws.products.forEach((p, i) => { p.onHand = st[i].onHand; p.onOrder = sum(st[i].pipe.map(x => x.qty)); }); const c = Engine.sanitize(ws, LIMITS); return Engine.compute(c.ws); };
@@ -65,6 +79,7 @@ export function replay(Engine, d, opts) {
   // Starting stock: the reorder point plus half an order, a neutral place in the cycle.
   let res = compute();
   st.forEach((s, i) => { const r = row(res, i); s.onHand = Math.max(0, r.rop + Math.ceil(r.oq / 2)); });
+  if (opts.stockout) st.forEach((s, i) => { if (i % opts.stockout.every === 0) s.onHand = 0; });
   res = compute();
 
   const out = {
@@ -94,7 +109,7 @@ export function replay(Engine, d, opts) {
   const lastsDays = (i, from) => { let h = st[i].onHand; for (let k = from; k < d.days; k++) { const dm = realDay(i, k); if (dm >= h) return dm > 0 ? (k - from) + h / dm : k - from; h -= dm; } return null; };
 
   for (let k = dStart; k <= dEnd; k++) {
-    const date = new Date(d.t0 + k * DAY), mIdx = date.getUTCMonth(), dom = date.getUTCDate(), dow = date.getUTCDay();
+    const date = new Date(d.t0 + k * DAY), mIdx = d.month[k] - mT, dom = date.getUTCDate(), dow = date.getUTCDay();
     // 1. deliveries land
     st.forEach((s, i) => { const arr = s.pipe.filter(x => x.arrive === k); if (arr.length) { arr.forEach(x => { s.onHand += x.qty; const o = ws.orders.find(o => o.id === x.oid); if (o && o.status !== 'received') { o.status = 'received'; o.receivedAt = iso(d.t0 + k * DAY); } }); s.pipe = s.pipe.filter(x => x.arrive !== k); s.cycles++; if (s.lostSinceArrival > 0) s.badCycles++; s.lostSinceArrival = 0; } });
     // 2. first of the month: the owner starts a new month and types what last month sold
@@ -106,7 +121,7 @@ export function replay(Engine, d, opts) {
     // 3. first of the month (January included): score the month-ahead forecasts, days of cover and dead stock
     if (dom === 1) {
       res = compute(); lastRes = res;
-      out.monthStore.push({ f: res.dash.fcPath[0], fsum: sum(res.rows.map(r => r.fc[0])), a: sum(items.map((_, i) => real(i, mIdx))), ly: sum(items.map(it => it.m[mT - 12 + mIdx])) });
+      out.monthStore.push({ f: res.dash.fcPath[0], fsum: sum(res.rows.map(r => r.fc[0])), a: sum(items.map((_, i) => real(i, mIdx))), ly: sum(items.map(it => it.m[mT - 12 + mIdx])), nv: sum(items.map(it => it.m[mT + mIdx - 1])) });
       res.rows.forEach((r, i) => {
         out.monthProd.push({ f: r.fc[0], a: real(i, mIdx), avg3: (items[i].m[mT + mIdx - 1] + items[i].m[mT + mIdx - 2] + items[i].m[mT + mIdx - 3]) / 3 });
         if (r.cover != null && r.onHand > 0) { const a = lastsDays(i, k); if (a != null && a <= 365) { out.cover.e += Math.abs(Math.min(r.cover, 365) - a); out.cover.a += a; out.cover.n++; } }
@@ -188,8 +203,8 @@ export function replay(Engine, d, opts) {
   out.cycles = sum(st.map(s => s.cycles)); out.badCycles = sum(st.map(s => s.badCycles));
   out.leads = (lastRes.dash.learn.leads || []).map(l => ({ id: l.id, learned: l.learned, typed: l.typed, real: trueLead(sup[l.id]), n: l.n }));
   // classes on the real year: the same engine, given the real year as its last twelve months
-  const ws2 = Engine.blankWorkspace(); Object.assign(ws2.settings, ws.settings, { lastMonth: 12 }); ws2.suppliers = SUPPLIERS.map(s => ({ ...s }));
-  ws2.products = items.map((it, i) => ({ ...P[i], sales: it.m.slice(mT, mT + 12), older: it.m.slice(m0, m0 + 24), fcHist: [] }));
+  const ws2 = Engine.blankWorkspace(); Object.assign(ws2.settings, ws.settings, { lastMonth: (sm + 10) % 12 + 1 }); ws2.suppliers = SUPPLIERS.map(s => ({ ...s }));
+  ws2.products = items.map((it, i) => ({ ...P[i], sales: it.m.slice(mT, mT + 12), older: new Array(Math.max(0, 24 - learn)).fill(null).concat(it.m.slice(Math.max(m0, mT - 24), mT)), fcHist: [] }));
   const realRes = Engine.compute(Engine.sanitize(ws2, LIMITS).ws);
   const revReal = items.map((it, i) => sum(it.m.slice(mT, mT + 12)) * P[i].price), totRev = sum(revReal);
   const abcReal = revReal.map(v => { const above = sum(revReal.filter(x => x > v)); const n = above / totRev; return n < 0.8 - 1e-9 ? 'A' : n < 0.95 - 1e-9 ? 'B' : 'C'; });

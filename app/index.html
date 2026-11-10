@@ -1467,6 +1467,7 @@ en: {
   'set.mail': 'Emails',
   'set.digest': 'Sunday summary',
   'set.digestH': 'Every Sunday morning: what to order this week, what is coming up, and what the app has learned. Made from your saved data.',
+  'set.digestLock': 'Included in Pro and Store.',
   'set.digestOn': 'The Sunday summary is on.',
   'set.digestOff': 'The Sunday summary is off.',
   'unsub.done': 'Done: no more Sunday summaries. You can turn them back on in Settings.',
@@ -1543,7 +1544,9 @@ en: {
   'why.CRITICAL': 'You have {ip} in stock and on order. That is at or below the {ss} safety buffer, so you are already exposed. At {rate} a day, {lt} days of supplier waiting plus a week until your next check needs {rop} on the shelf.',
   'why.ORDER': 'You have {ip} in stock and on order, and the reorder point is {rop}. At {rate} a day, stock takes {lt} days to arrive and your next check is a week away, so ordering now means it lands before the {ss} safety buffer is touched.',
   'why.OK': 'You have {ip}, comfortably above the {rop} reorder point. Selling about {rate} a day now, and allowing for your season ahead, you have about {days} days before this needs ordering.',
-  'why.OVER': 'You have {cover} days of cover, past your {limit} day overstock limit. About {excess} units and {value} of cash are sitting still here.',
+  'why.OVER': 'You have {cover} days of cover, past the {limit} days this product should ever need. About {excess} units and {value} of cash are sitting still here.',
+  'why.stockout1': 'Last month sold almost nothing while your stock was at zero, so the app treats it as an empty shelf, not as lost demand, and forecasts from the months before.',
+  'why.stockoutN': 'The last {n} months sold almost nothing while your stock was at zero, so the app treats them as an empty shelf, not as lost demand, and forecasts from the months before.',
   'why.NOHIST': 'No sales typed in yet, so there is nothing to forecast from.',
   'why.NODEMAND': 'The forecast for next month is zero, so no order is suggested.',
   'why.risk': 'If you skip this order, you will likely lose about {v} of gross profit to empty shelves before a later order could arrive (the next {d} days).',
@@ -2333,6 +2336,7 @@ ar: {
   'set.mail': 'الإيميلات',
   'set.digest': 'ملخص يوم الأحد',
   'set.digestH': 'كل يوم أحد الصبح: تطلب إيه الأسبوع ده، وإيه اللي جاي، والأداة اتعلمت إيه. معمول من بياناتك المحفوظة.',
+  'set.digestLock': 'موجود في باقة Pro وStore.',
   'set.digestOn': 'ملخص يوم الأحد شغال.',
   'set.digestOff': 'ملخص يوم الأحد متوقف.',
   'unsub.done': 'تمام: مش هيوصلك ملخص يوم الأحد تاني. تقدر ترجعه من الإعدادات.',
@@ -2409,7 +2413,9 @@ ar: {
   'why.CRITICAL': 'عندك {ip} موجود وفي الطريق. ده عند حد الأمان {ss} أو تحته، يعني انت فعلا مكشوف. بمعدل {rate} في اليوم، انتظار المورد {lt} يوم وأسبوع لحد مراجعتك الجاية محتاجين {rop} على الرف.',
   'why.ORDER': 'عندك {ip} موجود وفي الطريق، ونقطة إعادة الطلب {rop}. بمعدل {rate} في اليوم، البضاعة بتاخد {lt} يوم توصل ومراجعتك الجاية بعد أسبوع، فالطلب دلوقتي معناه إنها هتوصل قبل ما تلمس حد الأمان {ss}.',
   'why.OK': 'عندك {ip}، أعلى من نقطة إعادة الطلب {rop} براحة. بتبيع حوالي {rate} في اليوم دلوقتي، ومع حساب موسمك الجاي فاضلك حوالي {days} يوم قبل ما ده يحتاج طلب.',
-  'why.OVER': 'عندك تغطية {cover} يوم، فوق حد المخزون الزيادة {limit} يوم. يعني حوالي {excess} قطعة و{value} فلوس واقفة هنا.',
+  'why.OVER': 'عندك تغطية {cover} يوم، أكتر من الـ {limit} يوم اللي المنتج ده ممكن يحتاجهم. يعني حوالي {excess} قطعة و{value} فلوس واقفة هنا.',
+  'why.stockout1': 'الشهر اللي فات مابعش تقريبا حاجة ومخزونك كان صفر، فالأداة بتعتبره رف فاضي مش طلب قل، وبتتوقع من الشهور اللي قبله.',
+  'why.stockoutN': 'آخر {n} شهور مابعوش تقريبا حاجة ومخزونك كان صفر، فالأداة بتعتبرهم رف فاضي مش طلب قل، وبتتوقع من الشهور اللي قبلهم.',
   'why.NOHIST': 'لسه مفيش مبيعات مكتوبة، فمفيش حاجة نتوقع منها.',
   'why.NODEMAND': 'توقع الشهر الجاي صفر، فمفيش طلبية مقترحة.',
   'why.risk': 'لو ماطلبتش، غالبا هتخسر حوالي {v} مجمل ربح بسبب نقص البضاعة قبل ما أي طلبية بعدها تلحق توصل (الـ {d} يوم الجايين).',
@@ -3468,9 +3474,11 @@ function billingSection() {
 // Settings, Emails: the Sunday summary, on unless the shop turns it off.
 function prefsSection() {
   if (!S.me || !S.me.prefs) return '';
-  const on = S.me.prefs.digest !== false;
-  return '<div class="section" id="emails"><h2>' + esc(t('set.mail')) + '</h2><div class="field"><label class="switch"><input type="checkbox" data-act="digestToggle"' + (on ? ' checked' : '') + '>' +
-    '<span>' + esc(t('set.digest')) + '</span></label><div class="help">' + esc(t('set.digestH')) + '</div></div></div>';
+  const locked = S.me.limits && S.me.limits.digest === false;
+  const on = !locked && S.me.prefs.digest !== false;
+  return '<div class="section" id="emails"><h2>' + esc(t('set.mail')) + '</h2><div class="field"><label class="switch"><input type="checkbox" data-act="digestToggle"' + (on ? ' checked' : '') + (locked ? ' disabled' : '') + '>' +
+    '<span>' + esc(t('set.digest')) + (locked ? ' <span class="plantag">' + esc(t('plan.pro')) + '</span>' : '') + '</span></label><div class="help">' + esc(t('set.digestH')) +
+    (locked ? ' ' + esc(t('set.digestLock')) + upgradeLink() : '') + '</div></div></div>';
 }
 // Stopping renewal: say what happens (the app pauses, data stays), offer a cheaper plan that fits, ask why (optional).
 function cancelDialog(b) {
@@ -3811,7 +3819,7 @@ VIEWS.ordered = () => {
     const a = arrival(o);
     return '<tr><td class="name">' + bdi(o.supplierName || t('unnamed')) + '</td><td data-l="' + esc(t('os.sentOn')) + '">' + esc(o.sentAt) + '</td><td data-l="' + esc(t('ord.expected')) + '">' + esc(a.exp) + ' <span class="pill ' + a.cls + '">' + esc(a.label) + '</span></td>' +
       '<td class="wrap c-items" data-l="' + esc(t('ord.items')) + '">' + itemsText(o) + ' <span class="small muted">(' + n0(orderUnits(o)) + ')</span></td>' +
-      '<td class="c-acts" style="white-space:nowrap"><input type="date" class="recdate" data-id="' + o.id + '" value="' + isoToday() + '" max="' + isoToday() + '" min="' + o.sentAt + '"> ' +
+      '<td class="c-acts" style="white-space:nowrap"><input type="date" class="recdate" aria-label="' + esc(t('ord.arrived')) + '" data-id="' + o.id + '" value="' + isoToday() + '" max="' + isoToday() + '" min="' + o.sentAt + '"> ' +
       btn(t('ord.receive'), 'receiveOrder', ' data-id="' + o.id + '"', 'small primary') + ' ' + btn(t('ord.cancelOrder'), 'cancelOrder', ' data-id="' + o.id + '"', 'small') + '</td></tr>';
   }).join('');
   return head(t('os.title'), t('os.lede'), D ? '' : add) + form +
@@ -4669,14 +4677,16 @@ function whyText(r) {
   if (r.decision === 'NOHIST') return t('why.NOHIST');
   if (r.decision === 'NODEMAND') return t('why.NODEMAND');
   if (r.decision === 'OVER') {
-    const excess = dDay > 0 ? Math.max(0, r.onHand - S.ws.settings.overstockDays * dDay) : 0;
-    return t('why.OVER', { cover: n0(r.cover), limit: n0(S.ws.settings.overstockDays),
+    const lim = Math.max(S.ws.settings.overstockDays, r.overLimit || 0);
+    const excess = r.cost > 0 ? r.overstockValue / r.cost : (dDay > 0 ? Math.max(0, r.onHand - lim * dDay) : 0);
+    return t('why.OVER', { cover: n0(r.cover), limit: n0(lim),
                            excess: n0(excess), value: money(r.overstockValue) });
   }
   if (r.decision === 'OK') {
     return t('why.OK', { ip: n0(r.ip), rop: n0(r.rop), rate: rate, days: n0(r.daysToReorder) });
   }
-  const base = t('why.' + r.decision, { ip: n0(r.ip), ss: n0(r.ss), rop: n0(r.rop), rate: rate, lt: n0(r.lt) });
+  const base = t('why.' + r.decision, { ip: n0(r.ip), ss: n0(r.ss), rop: n0(r.rop), rate: rate, lt: n0(r.lt) }) +
+    (r.stockoutMonths > 0 ? ' ' + t(r.stockoutMonths > 1 ? 'why.stockoutN' : 'why.stockout1', { n: r.stockoutMonths }) : '');
   const risk = (S.me.limits.stockoutCost && r.risk && r.risk.profit > 0)
     ? ' ' + t('why.risk', { v: money(r.risk.profit), d: n0((r.lt || 0) + 7) }) : '';
   return base + risk;
