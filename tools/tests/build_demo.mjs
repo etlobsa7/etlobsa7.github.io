@@ -21,7 +21,7 @@ for (const lang of ['en', 'ar']) {
     const got = await page.evaluate(([old, title, extra]) => {
       const v = document.querySelector('#view').cloneNode(true), prev = document.createElement('div'); prev.innerHTML = old;
       if (extra) v.insertAdjacentHTML('beforeend', extra);
-      v.querySelectorAll('#billing,#emails,.gchips-hint').forEach(e => e.remove());
+      v.querySelectorAll('#billing,#emails,#yourdata,.gchips-hint').forEach(e => e.remove());
       v.querySelectorAll('.ani').forEach(e => e.classList.remove('ani'));
       v.querySelectorAll('[style]').forEach(e => { e.style.removeProperty('--r'); e.style.removeProperty('--i'); e.style.removeProperty('content-visibility'); if (!e.getAttribute('style')) e.removeAttribute('style'); });
       v.querySelectorAll('button,a,input,select,textarea').forEach(e => { e.setAttribute('tabindex', '-1'); ['data-act', 'data-tab', 'data-plan'].forEach(a => e.removeAttribute(a)); if (e.tagName === 'A') e.removeAttribute('href'); });

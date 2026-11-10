@@ -32,5 +32,26 @@ for (const plan of ['basic', 'pro']) {
   else { ok(await sw.isChecked(), 'pro Sunday switch on'); await sw.uncheck(); await page.waitForTimeout(300); ok(state.digestOff === true, 'pro Sunday switch turns off on the server'); }
   await ctx.close();
 }
+// Your data: spreadsheet, backup, and putting a backup back
+{
+  const { page, state, ctx } = await openApp(b, s.url, Engine, { plan: 'pro', lang: 'ar' });
+  await goTab(page, 'settings');
+  const grab = async act => { const [d] = await Promise.all([page.waitForEvent('download'), page.click(`#yourdata [data-act="${act}"]`)]); const f = await d.path(); return { name: d.suggestedFilename(), text: (await import('fs')).readFileSync(f, 'utf8') }; };
+  const csv = await grab('dataCsv'), rows = csv.text.replace(/^﻿/, '').split('\r\n');
+  ok(/^etlob-sa7-products-\d{4}-\d\d-\d\d\.csv$/.test(csv.name), 'csv file name'); ok(csv.text.charCodeAt(0) === 0xfeff, 'csv opens in Excel with Arabic (BOM)');
+  ok(rows.length === state.ws.products.length + 1, 'csv has one row per product'); ok(rows[0].split(',').length === 22 && rows.every(r => r.split(',').length >= 22), 'csv has 22 columns'); ok(rows[1].includes('Wool scarf'), 'csv has product names');
+  const bk = await grab('dataBackup'), j = JSON.parse(bk.text);
+  ok(j.app === 'etlob-sa7' && j.ws.products.length === state.ws.products.length, 'backup holds the whole shop');
+  const before = state.ws.products.length;
+  state.ws.products = state.ws.products.slice(0, 2); state.rev++; await page.reload(); await page.waitForTimeout(900); await goTab(page, 'settings');
+  ok(state.ws.products.length === 2, 'shop changed after the backup');
+  const fs = await import('fs'), tmp = (await import('os')).tmpdir() + '/es7-backup.json'; fs.writeFileSync(tmp, bk.text);
+  const [chooser] = await Promise.all([page.waitForEvent('filechooser'), page.click('#yourdata [data-act="dataRestore"]')]); await chooser.setFiles(tmp);
+  await page.waitForTimeout(400); await page.locator('.dialog [data-r="1"]').click(); await page.waitForTimeout(1500);
+  ok(state.ws.products.length === before, 'restore puts every product back (' + state.ws.products.length + ' of ' + before + ')');
+  fs.writeFileSync(tmp, '{"hello":1}'); const [c2] = await Promise.all([page.waitForEvent('filechooser'), page.click('#yourdata [data-act="dataRestore"]')]); await c2.setFiles(tmp); await page.waitForTimeout(500);
+  ok(state.ws.products.length === before, 'a wrong file changes nothing');
+  await ctx.close();
+}
 console.log(`app smoke: ${pass} passed, ${fail} failed`); bad.slice(0, 25).forEach(x => console.log('  FAIL', x));
 await b.close(); s.close(); process.exit(fail ? 1 : 0);
