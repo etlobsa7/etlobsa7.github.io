@@ -1468,6 +1468,14 @@ en: {
   'set.digest': 'Sunday summary',
   'set.digestH': 'Every Sunday morning: what to order this week, what is coming up, and what the app has learned. Made from your saved data.',
   'set.digestLock': 'Included in Pro and Store.',
+  'data.title': 'Your data',
+  'data.lede': 'Your numbers are yours. Download them as a spreadsheet, or keep a full backup you can put back later.',
+  'data.csv': 'Download products (CSV)', 'data.backup': 'Download a backup', 'data.restore': 'Restore from a backup',
+  'data.supplier': 'Supplier', 'data.season': 'Season', 'data.onOrder': 'On order', 'data.verdict': 'Verdict', 'data.orderNow': 'Order now', 'data.next': 'Forecast next month',
+  'data.done': 'Downloaded. Check your downloads folder.',
+  'data.badFile': 'That file is not a backup made by this app.',
+  'data.restoreConfirm': 'This replaces everything in your shop with the backup ({n} products, saved {d}). Continue?',
+  'data.restored': 'Backup restored.',
   'set.digestOn': 'The Sunday summary is on.',
   'set.digestOff': 'The Sunday summary is off.',
   'unsub.done': 'Done: no more Sunday summaries. You can turn them back on in Settings.',
@@ -1886,7 +1894,7 @@ en: {
   'sea.newName': 'My season',
   'sea.delConfirm': 'Delete "{name}"? Products using it will need a new shape.',
   'sea.ramadan': 'Ramadan moves about 11 days earlier each year. Review this shape yearly.',
-  'sea.holy': 'Coming up: Ramadan starts about {r}, Eid al-Fitr about {f}, Eid al-Adha about {a}. Moon sighting can shift each by a day. Ramadan moves about 11 days earlier every year, so check that this shape\'s busy months match.',
+  'sea.holy': 'Coming up: Ramadan starts about {r}, Eid al-Fitr about {f}, Eid al-Adha about {a}. Moon sighting can shift each by a day. Ramadan moves about 11 days earlier every year, and this shape moves with it on its own each year, unless you edit it.',
 
   /* suppliers */
   'sup.title': 'Suppliers',
@@ -2337,6 +2345,14 @@ ar: {
   'set.digest': 'ملخص يوم الأحد',
   'set.digestH': 'كل يوم أحد الصبح: تطلب إيه الأسبوع ده، وإيه اللي جاي، والأداة اتعلمت إيه. معمول من بياناتك المحفوظة.',
   'set.digestLock': 'موجود في باقة Pro وStore.',
+  'data.title': 'بياناتك',
+  'data.lede': 'أرقامك ملكك. نزلها كجدول، أو احتفظ بنسخة كاملة تقدر ترجعها بعدين.',
+  'data.csv': 'نزل المنتجات (CSV)', 'data.backup': 'نزل نسخة احتياطية', 'data.restore': 'رجع من نسخة احتياطية',
+  'data.supplier': 'المورد', 'data.season': 'الموسم', 'data.onOrder': 'في الطريق', 'data.verdict': 'القرار', 'data.orderNow': 'اطلب دلوقتي', 'data.next': 'توقع الشهر الجاي',
+  'data.done': 'اتنزل. بص في فولدر التنزيلات.',
+  'data.badFile': 'الملف ده مش نسخة احتياطية من البرنامج.',
+  'data.restoreConfirm': 'ده هيبدل كل اللي في محلك بالنسخة الاحتياطية ({n} منتج، محفوظة {d}). تكمل؟',
+  'data.restored': 'النسخة الاحتياطية رجعت.',
   'set.digestOn': 'ملخص يوم الأحد شغال.',
   'set.digestOff': 'ملخص يوم الأحد متوقف.',
   'unsub.done': 'تمام: مش هيوصلك ملخص يوم الأحد تاني. تقدر ترجعه من الإعدادات.',
@@ -2751,7 +2767,7 @@ ar: {
   'sea.newName': 'موسمي',
   'sea.delConfirm': 'تمسح "{name}"؟ المنتجات اللي عليه هتحتاج شكل جديد.',
   'sea.ramadan': 'رمضان بييجي بدري حوالي 11 يوم كل سنة. راجع الشكل ده سنويا.',
-  'sea.holy': 'الجاي: رمضان بيبدأ حوالي {r}، وعيد الفطر حوالي {f}، وعيد الأضحى حوالي {a}. رؤية الهلال ممكن تغير كل تاريخ يوم. رمضان بييجي بدري حوالي 11 يوم كل سنة، فاتأكد إن الشهور المزدحمة في الشكل ده ماشية معاه.',
+  'sea.holy': 'الجاي: رمضان بيبدأ حوالي {r}، وعيد الفطر حوالي {f}، وعيد الأضحى حوالي {a}. رؤية الهلال ممكن تغير كل تاريخ يوم. رمضان بييجي بدري حوالي 11 يوم كل سنة، والشكل ده بيتحرك معاه لوحده كل سنة، إلا لو عدلته.',
 
   'sup.title': 'الموردين',
   'sup.lede': 'صف لكل مورد. المنتجات بتختار موردها من القائمة دي.',
@@ -3471,6 +3487,30 @@ function billingSection() {
     (b.pending && b.pending.failed ? '<div class="alert bad"><span>' + esc(t('bill.lastFailed')) + '</span></div>' : '') +
     (open ? '<div class="panel bill-choose">' + chooserHtml(b) + '</div>' : '') + '</div>' + prefsSection();
 }
+// Settings, Your data: take the shop's numbers out as a spreadsheet or a full backup, and put a backup back.
+function dataSection() {
+  return '<div class="section" id="yourdata"><h2>' + esc(t('data.title')) + '</h2><p class="muted">' + esc(t('data.lede')) + '</p><div class="actions" style="margin-top:12px">' +
+    btn(t('data.csv'), 'dataCsv') + btn(t('data.backup'), 'dataBackup') + btn(t('data.restore'), 'dataRestore') + '</div></div>';
+}
+function downloadFile(name, text, type) {
+  const a = document.createElement('a'), url = URL.createObjectURL(new Blob([text], { type: type }));
+  a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+// One row per product: what was typed in, plus what the app says about it today.
+function productsCsv() {
+  const s = S.ws.settings, supName = {}, profMap = {};
+  S.ws.suppliers.forEach(x => { supName[x.id] = x.name; }); S.ws.profiles.forEach(x => { profMap[x.id] = x; });
+  const cell = v => { v = v == null ? '' : String(v); return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+  const months = []; for (let c = 1; c <= 12; c++) months.push(monthName(calMonth(c, s.lastMonth), true));
+  const rows = [[t('pro.name'), t('data.supplier'), t('data.season')].concat(months, [t('pro.cost'), t('pro.price'), t('pro.onhand'), t('data.onOrder'), t('data.verdict'), t('data.orderNow'), t('data.next')])];
+  S.ws.products.forEach(p => {
+    const r = S.res.rows.find(x => x.id === p.id) || {};
+    rows.push([p.name, supName[p.supplierId] || '', profName(profMap[p.profileId])].concat(p.sales.map(v => v == null ? '' : v),
+      [p.cost, p.price, p.onHand, p.onOrder, r.decision ? t('v.' + r.decision) : '', r.qty || 0, r.fc ? Math.round(r.fc[0]) : '']));
+  });
+  return '\ufeff' + rows.map(r => r.map(cell).join(',')).join('\r\n');
+}
 // Settings, Emails: the Sunday summary, on unless the shop turns it off.
 function prefsSection() {
   if (!S.me || !S.me.prefs) return '';
@@ -4145,7 +4185,7 @@ VIEWS.settings = () => {
     '</div>' +
     '<div class="section routine"><div><h2>' + esc(t('set.newMonth')) + '</h2><p>' + esc(t('set.newMonthP', { m: monthName(next, true) })) + '</p></div>' +
       btn(t('set.newMonthBtn', { m: monthName(next, true) }), 'rollMonth', '', 'primary') + '</div>' +
-    billingSection();
+    dataSection() + billingSection();
 };
 
 /* ---------- Seasons ---------- */
@@ -5012,6 +5052,28 @@ const ACTIONS = {
     saveForm();
     if (!$('#paywall').hidden) renderBilling(); else if (S.tab === 'settings') renderTab();
     const r = document.querySelector('input[name="billInt"][value="' + S.billInt + '"]'); if (r) r.focus();
+  },
+  dataCsv: () => { downloadFile('etlob-sa7-products-' + isoToday() + '.csv', productsCsv(), 'text/csv;charset=utf-8'); toast(t('data.done')); },
+  dataBackup: () => {
+    downloadFile('etlob-sa7-backup-' + isoToday() + '.json', JSON.stringify({ app: 'etlob-sa7', savedAt: new Date().toISOString(), ws: S.ws }), 'application/json');
+    toast(t('data.done'));
+  },
+  dataRestore: () => {
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept = '.json,application/json';
+    inp.onchange = async () => {
+      const f = inp.files[0]; if (!f) return;
+      let ws = null;
+      try { const j = JSON.parse(await f.text()); ws = j && j.app === 'etlob-sa7' && j.ws && Array.isArray(j.ws.products) ? j.ws : null; } catch (e) { ws = null; }
+      if (!ws) { toast(t('data.badFile')); return; }
+      if (!(await dialog({ title: t('data.restore'), body: t('data.restoreConfirm', { n: ws.products.length, d: String(ws.savedAt || '').slice(0, 10) || '?' }), ok: t('confirm'), danger: true }))) return;
+      clearTimeout(S.timer);
+      S.ws = Object.assign({}, ws, { rev: S.rev }); S.dirty = true;
+      await save();
+      await boot();
+      toast(t('data.restored'));
+    };
+    inp.click();
   },
   digestToggle: async el => {
     const want = !!el.checked;
