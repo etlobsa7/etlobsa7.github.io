@@ -21,7 +21,20 @@ ENGINE=/full/path/engine.js node run_tests.mjs data results.json 40 10 3
 ```
 
 `run_tests.mjs` writes one JSON with: the two stores shown on the website (40 runs each), all 20
-store-years (10 runs each), and the cash-short test.
+store-years (10 runs each), and the cash-short test. `node show.mjs old.json new.json` prints them side by side.
+
+Other scripts:
+
+| Script | What it does |
+|---|---|
+| `prep_uci.py`, `run_hard.mjs`, `show_hard.mjs` | Hard cases: a UK online gift retailer with one year of history (UCI "Online Retail II"), slow sellers, products with gaps, new products, a stockout before the test year |
+| `fuzz.mjs` | Crash test: 5,000 random messy shops through the engine, every number checked |
+| `ramadan_test.mjs` | Synthetic check that the Ramadan season follows the calendar |
+| `rig.mjs`, `app_smoke.mjs` | Opens the real app in Chromium against the engine file (no live server) and checks every page, plan, language and width |
+| `a11y.mjs` | axe scan (WCAG 2.1 A and AA) of website, demo and app; needs `npm i axe-core` in this folder |
+| `build_demo.mjs` | Rebuilds the demo's pages from the app with the sample shop |
+
+`results/` holds the last full runs for the engine that was live before (v31) and the one live now (v35).
 
 ## Method
 

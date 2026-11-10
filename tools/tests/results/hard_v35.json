@@ -1,0 +1,542 @@
+{
+ "engine": "v35",
+ "sets": {
+  "UK one year of history": {
+   "jobs": 4,
+   "avg": {
+    "yearForecast": 0.67407,
+    "yearF": 294225.32276,
+    "units": 225750.5,
+    "monthStore": 0.75412,
+    "monthStoreLastYear": 0.63578,
+    "monthProd": 0.32038,
+    "monthProdAvg3": 0.25511,
+    "fill": 0.94778,
+    "healthy": 0.98494,
+    "reorderNear": 0.78265,
+    "reorderFar": 0.3846,
+    "reorderNear2": 0.85218,
+    "cost": 0.87225,
+    "costF": 11832.12062,
+    "costReal": 11596.54302,
+    "risk": 0.60458,
+    "riskF": 3641.1576,
+    "riskReal": 4710.16321,
+    "lostProfit": 2250.9651,
+    "leads": 0.95775,
+    "deadFlags": 0.75,
+    "deadRight": 0.5,
+    "revenue": 0.66543,
+    "revenueF": 401537.62603,
+    "revenueReal": 315229.26358,
+    "cycles": 0.86619,
+    "carton": 1,
+    "abc": 0.6625,
+    "xyzExact": 0.64375,
+    "xyzNear": 0.96875,
+    "cover": 0.52436,
+    "direction": 0.51875,
+    "inside": 10,
+    "overRight": 0.94914,
+    "overN": 63.33333,
+    "avgStockValue": 37232.83873,
+    "orders": 67.66667,
+    "lines": 114.41667,
+    "totalCost": 13847.50812
+   },
+   "dead": {
+    "flags": 9,
+    "right": 6
+   },
+   "verdict": {
+    "OK": {
+     "n": 21927,
+     "empty": 356
+    },
+    "ORDER": {
+     "n": 1211,
+     "empty": 130
+    },
+    "OVER": {
+     "n": 1660,
+     "empty": 0
+    },
+    "CRITICAL": {
+     "n": 162,
+     "empty": 88
+    }
+   }
+  },
+  "Walmart slow sellers": {
+   "jobs": 10,
+   "avg": {
+    "yearForecast": 0.90033,
+    "yearF": 2536.02078,
+    "units": 2785.1,
+    "monthStore": 0.90799,
+    "monthStoreLastYear": 0.84705,
+    "monthProd": 0.54954,
+    "monthProdAvg3": 0.52267,
+    "fill": 0.99884,
+    "healthy": 0.99848,
+    "reorderNear": 0.83979,
+    "reorderFar": 0.54411,
+    "reorderNear2": 0.89851,
+    "cost": 0.90959,
+    "costF": 1831.10679,
+    "costReal": 2003.29748,
+    "risk": 0.48296,
+    "riskF": 14.60244,
+    "riskReal": 26.94287,
+    "lostProfit": 9.54912,
+    "leads": 0.96335,
+    "deadFlags": 1.1,
+    "deadRight": 0.4,
+    "revenue": 0.90679,
+    "revenueF": 14747.01948,
+    "revenueReal": 16302.09627,
+    "cycles": 0.9786,
+    "carton": 1,
+    "abc": 0.72,
+    "xyzExact": 0.5725,
+    "xyzNear": 0.9825,
+    "cover": 0.60456,
+    "direction": 0.555,
+    "inside": 10.4,
+    "overRight": 0.99084,
+    "overN": 90.73333,
+    "avgStockValue": 4666.52324,
+    "orders": 35.7,
+    "lines": 41.83333,
+    "totalCost": 2012.84659
+   },
+   "dead": {
+    "flags": 33,
+    "right": 12
+   },
+   "verdict": {
+    "OK": {
+     "n": 58372,
+     "empty": 93
+    },
+    "ORDER": {
+     "n": 1202,
+     "empty": 58
+    },
+    "OVER": {
+     "n": 2722,
+     "empty": 0
+    },
+    "CRITICAL": {
+     "n": 53,
+     "empty": 23
+    },
+    "NOHIST": {
+     "n": 51,
+     "empty": 0
+    }
+   }
+  },
+  "Walmart products with gaps": {
+   "jobs": 10,
+   "avg": {
+    "yearForecast": 0.75639,
+    "yearF": 8254.65333,
+    "units": 10934.2,
+    "monthStore": 0.87452,
+    "monthStoreLastYear": 0.7949,
+    "monthProd": 0.62008,
+    "monthProdAvg3": 0.62109,
+    "fill": 0.99538,
+    "healthy": 0.99513,
+    "reorderNear": 0.86045,
+    "reorderFar": 0.60119,
+    "reorderNear2": 0.90795,
+    "cost": 0.88616,
+    "costF": 2796.22945,
+    "costReal": 3153.33331,
+    "risk": 0.42289,
+    "riskF": 112.63093,
+    "riskReal": 258.5604,
+    "lostProfit": 97.08662,
+    "leads": 0.95898,
+    "deadFlags": 4.3,
+    "deadRight": 1.3,
+    "revenue": 0.84321,
+    "revenueF": 35278.11003,
+    "revenueReal": 42071.99233,
+    "cycles": 0.95502,
+    "carton": 1,
+    "abc": 0.64,
+    "xyzExact": 0.5125,
+    "xyzNear": 0.9775,
+    "cover": 0.55075,
+    "direction": 0.4925,
+    "inside": 7.3,
+    "overRight": 0.91308,
+    "overN": 156.93333,
+    "avgStockValue": 7578.66659,
+    "orders": 50.73333,
+    "lines": 62.93333,
+    "totalCost": 3250.41993
+   },
+   "dead": {
+    "flags": 129,
+    "right": 39
+   },
+   "verdict": {
+    "OK": {
+     "n": 55789,
+     "empty": 294
+    },
+    "OVER": {
+     "n": 4708,
+     "empty": 0
+    },
+    "ORDER": {
+     "n": 1808,
+     "empty": 211
+    },
+    "CRITICAL": {
+     "n": 80,
+     "empty": 47
+    },
+    "NOHIST": {
+     "n": 15,
+     "empty": 0
+    }
+   }
+  },
+  "Walmart new products, 6 months": {
+   "jobs": 10,
+   "avg": {
+    "yearForecast": 0.93204,
+    "yearF": 15522.64721,
+    "units": 15120.8,
+    "monthStore": 0.92924,
+    "monthStoreLastYear": 0.87872,
+    "monthProd": 0.72857,
+    "monthProdAvg3": 0.71166,
+    "fill": 0.99747,
+    "healthy": 0.99657,
+    "reorderNear": 0.91317,
+    "reorderFar": 0.71095,
+    "reorderNear2": 0.94757,
+    "cost": 0.96511,
+    "costF": 3541.62271,
+    "costReal": 3459.9181,
+    "risk": 0.51635,
+    "riskF": 152.12312,
+    "riskReal": 333.84133,
+    "lostProfit": 59.43125,
+    "leads": 0.95976,
+    "deadFlags": 1.3,
+    "deadRight": 0.6,
+    "revenue": 0.91922,
+    "revenueF": 56162.75854,
+    "revenueReal": 52698.19153,
+    "cycles": 0.97554,
+    "carton": 1,
+    "abc": 0.8,
+    "xyzExact": 0.5375,
+    "xyzNear": 0.955,
+    "cover": 0.73615,
+    "direction": 0.57,
+    "inside": 10.7,
+    "overRight": 0.88477,
+    "overN": 22.3,
+    "avgStockValue": 8341.00572,
+    "orders": 53.66667,
+    "lines": 68.73333,
+    "totalCost": 3519.34934
+   },
+   "dead": {
+    "flags": 39,
+    "right": 18
+   },
+   "verdict": {
+    "OK": {
+     "n": 59669,
+     "empty": 207
+    },
+    "ORDER": {
+     "n": 2032,
+     "empty": 218
+    },
+    "OVER": {
+     "n": 669,
+     "empty": 0
+    },
+    "CRITICAL": {
+     "n": 30,
+     "empty": 23
+    }
+   }
+  },
+  "Walmart new products, 9 months": {
+   "jobs": 10,
+   "avg": {
+    "yearForecast": 0.93428,
+    "yearF": 15684.08119,
+    "units": 15120.8,
+    "monthStore": 0.92914,
+    "monthStoreLastYear": 0.87872,
+    "monthProd": 0.72837,
+    "monthProdAvg3": 0.71166,
+    "fill": 0.99691,
+    "healthy": 0.99632,
+    "reorderNear": 0.92682,
+    "reorderFar": 0.70605,
+    "reorderNear2": 0.96176,
+    "cost": 0.96064,
+    "costF": 3568.58217,
+    "costReal": 3468.01073,
+    "risk": 0.48135,
+    "riskF": 163.48811,
+    "riskReal": 314.34386,
+    "lostProfit": 114.50375,
+    "leads": 0.96039,
+    "deadFlags": 1.5,
+    "deadRight": 0.8,
+    "revenue": 0.91711,
+    "revenueF": 56940.62285,
+    "revenueReal": 52698.19153,
+    "cycles": 0.97124,
+    "carton": 1,
+    "abc": 0.805,
+    "xyzExact": 0.5825,
+    "xyzNear": 0.9525,
+    "cover": 0.74183,
+    "direction": 0.57,
+    "inside": 10,
+    "overRight": 0.8957,
+    "overN": 27.9,
+    "avgStockValue": 8378.7096,
+    "orders": 55.26667,
+    "lines": 68.66667,
+    "totalCost": 3582.51449
+   },
+   "dead": {
+    "flags": 45,
+    "right": 24
+   },
+   "verdict": {
+    "OK": {
+     "n": 59503,
+     "empty": 222
+    },
+    "ORDER": {
+     "n": 2033,
+     "empty": 237
+    },
+    "OVER": {
+     "n": 837,
+     "empty": 0
+    },
+    "CRITICAL": {
+     "n": 27,
+     "empty": 19
+    }
+   }
+  },
+  "Walmart half the products are 8 months old": {
+   "jobs": 10,
+   "avg": {
+    "yearForecast": 0.94179,
+    "yearF": 15419.71931,
+    "units": 15120.8,
+    "monthStore": 0.9242,
+    "monthStoreLastYear": 0.87872,
+    "monthProd": 0.72916,
+    "monthProdAvg3": 0.71166,
+    "fill": 0.99683,
+    "healthy": 0.99613,
+    "reorderNear": 0.8986,
+    "reorderFar": 0.71471,
+    "reorderNear2": 0.94178,
+    "cost": 0.96511,
+    "costF": 3520.91982,
+    "costReal": 3458.88446,
+    "risk": 0.51999,
+    "riskF": 142.83251,
+    "riskReal": 360.56927,
+    "lostProfit": 96.73765,
+    "leads": 0.95745,
+    "deadFlags": 1.5,
+    "deadRight": 0.8,
+    "revenue": 0.92412,
+    "revenueF": 56018.34487,
+    "revenueReal": 52698.19153,
+    "cycles": 0.96961,
+    "carton": 1,
+    "abc": 0.785,
+    "xyzExact": 0.5525,
+    "xyzNear": 0.95,
+    "cover": 0.71875,
+    "direction": 0.5775,
+    "inside": 10.7,
+    "overRight": 0.91831,
+    "overN": 55.73333,
+    "avgStockValue": 8334.20452,
+    "orders": 53.3,
+    "lines": 68.76667,
+    "totalCost": 3555.62211
+   },
+   "dead": {
+    "flags": 45,
+    "right": 24
+   },
+   "verdict": {
+    "OK": {
+     "n": 58665,
+     "empty": 232
+    },
+    "ORDER": {
+     "n": 2026,
+     "empty": 235
+    },
+    "OVER": {
+     "n": 1672,
+     "empty": 1
+    },
+    "CRITICAL": {
+     "n": 37,
+     "empty": 23
+    }
+   }
+  },
+  "Walmart a quarter of products out of stock for 2 months": {
+   "jobs": 10,
+   "avg": {
+    "yearForecast": 0.94453,
+    "yearF": 15330.36799,
+    "units": 15120.8,
+    "monthStore": 0.91288,
+    "monthStoreLastYear": 0.87872,
+    "monthProd": 0.71394,
+    "monthProdAvg3": 0.71166,
+    "fill": 0.98523,
+    "healthy": 0.98961,
+    "reorderNear": 0.90798,
+    "reorderFar": 0.70015,
+    "reorderNear2": 0.96191,
+    "cost": 0.95928,
+    "costF": 3505.52919,
+    "costReal": 3619.43223,
+    "risk": 0.78394,
+    "riskF": 516.38993,
+    "riskReal": 630.32538,
+    "lostProfit": 353.16705,
+    "leads": 0.96303,
+    "deadFlags": 1.5,
+    "deadRight": 0.8,
+    "revenue": 0.92345,
+    "revenueF": 56162.33103,
+    "revenueReal": 52698.19153,
+    "cycles": 0.83257,
+    "carton": 1,
+    "abc": 0.7675,
+    "xyzExact": 0.5675,
+    "xyzNear": 0.96,
+    "cover": 0.67562,
+    "direction": 0.5775,
+    "inside": 10.6,
+    "overRight": 0.92922,
+    "overN": 141.3,
+    "avgStockValue": 8571.06224,
+    "orders": 54.26667,
+    "lines": 73.83333,
+    "totalCost": 3972.59927
+   },
+   "dead": {
+    "flags": 45,
+    "right": 24
+   },
+   "verdict": {
+    "CRITICAL": {
+     "n": 341,
+     "empty": 317
+    },
+    "OK": {
+     "n": 55946,
+     "empty": 623
+    },
+    "OVER": {
+     "n": 4239,
+     "empty": 2
+    },
+    "ORDER": {
+     "n": 1874,
+     "empty": 219
+    }
+   }
+  },
+  "Walmart one year of history": {
+   "jobs": 10,
+   "avg": {
+    "yearForecast": 0.92933,
+    "yearF": 15900.52219,
+    "units": 15120.8,
+    "monthStore": 0.92832,
+    "monthStoreLastYear": 0.87872,
+    "monthProd": 0.72916,
+    "monthProdAvg3": 0.71166,
+    "fill": 0.99772,
+    "healthy": 0.99711,
+    "reorderNear": 0.92337,
+    "reorderFar": 0.72,
+    "reorderNear2": 0.96206,
+    "cost": 0.95543,
+    "costF": 3596.55065,
+    "costReal": 3471.81637,
+    "risk": 0.44578,
+    "riskF": 127.17713,
+    "riskReal": 319.39469,
+    "lostProfit": 77.94324,
+    "leads": 0.95712,
+    "deadFlags": 1.6,
+    "deadRight": 0.8,
+    "revenue": 0.9141,
+    "revenueF": 57600.9951,
+    "revenueReal": 52698.19153,
+    "cycles": 0.97873,
+    "carton": 1,
+    "abc": 0.8,
+    "xyzExact": 0.58,
+    "xyzNear": 0.9625,
+    "cover": 0.73966,
+    "direction": 0.5925,
+    "inside": 11.1,
+    "overRight": 0.89814,
+    "overN": 48.96667,
+    "avgStockValue": 8417.93215,
+    "orders": 55.1,
+    "lines": 68.36667,
+    "totalCost": 3549.75961
+   },
+   "dead": {
+    "flags": 48,
+    "right": 24
+   },
+   "verdict": {
+    "OK": {
+     "n": 58880,
+     "empty": 173
+    },
+    "ORDER": {
+     "n": 2042,
+     "empty": 228
+    },
+    "OVER": {
+     "n": 1469,
+     "empty": 1
+    },
+    "CRITICAL": {
+     "n": 9,
+     "empty": 8
+    }
+   }
+  }
+ },
+ "ukEligible": 1505
+}
