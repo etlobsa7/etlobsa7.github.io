@@ -10,7 +10,7 @@
 import fs from 'fs';
 import { serve, launch, openApp, goTab } from './rig.mjs';
 import { demoWorkspace } from './demo_shop.mjs';
-import { plansPage } from './demo_copy.mjs';
+import { plansPage, whyBlocks } from './demo_copy.mjs';
 const { Engine } = await import(process.env.ENGINE);
 const root = process.argv[2], check = process.argv.includes('--check'), file = root + '/demo/index.html';
 const NOW = process.env.DEMO_DATE ? new Date(process.env.DEMO_DATE + 'T09:00:00Z') : new Date();
@@ -127,6 +127,10 @@ for (const lang of ['en', 'ar']) {
   if (errors.length) console.log('script errors', errors.slice(0, 3));
   await ctx.close();
 }
+// the explainer under the "Run this on your own shop" box, one per page and language (demo_copy.mjs)
+const why = '<div class="demo-why" aria-live="polite">\n' + whyBlocks() + '\n    </div><!-- /demo-why -->';
+if (/<div class="demo-why"[\s\S]*?<\/div><!-- \/demo-why -->/.test(html)) html = html.replace(/<div class="demo-why"[\s\S]*?<\/div><!-- \/demo-why -->/, () => why);
+else html = html.replace(/(<div class="demo-end">[\s\S]*?<\/ul>\n    <\/div>)/, (m) => m + '\n    ' + why);
 if (!check) fs.writeFileSync(file, html);
 console.log(`${n} demo pages, ${changed} with different text or labels` + (check ? '' : ' (written)'));
 await b.close(); s.close();
