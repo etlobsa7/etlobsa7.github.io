@@ -68,6 +68,11 @@ setk('t558', "<strong>Where it falls short.</strong> Five results stay under 80%
 # ---------- test 3: cash short ----------
 swap('t689', [('75% to 82%', '95% to 97%')], [('<bdi>75%</bdi>', '<bdi>95%</bdi>'), ('<bdi>82%</bdi>', '<bdi>97%</bdi>')])
 swap('t691', [('88% to 92%', '86% to 88%')], [('<bdi>88%</bdi>', '<bdi>86%</bdi>'), ('<bdi>92%</bdi>', '<bdi>88%</bdi>')])
+# added 20 November 2026: these two were missed on 10 November (results file: cash['0.8'].site and site[store].cash.m1)
+swap('t690', [('95.0% / 95.9%', '99.3% / 99.1%'), ('on 80% of the cash,', 'on 80% of the cash (California / Wisconsin),'), ('90.6% / 78.0%', '90.8% / 85.7%')],
+     [('95.0% / 95.9%', '99.3% / 99.1%'), ('من الكاش،', 'من الكاش (كاليفورنيا / ويسكونسن)،'), ('90.6% / 78.0%', '90.8% / 85.7%')])
+swap('t692', [('85.1% / 79.0%', '87.4% / 81.6%')])
+swap('t696', [('75% and 82%', '95% and 97%')], [('75% و82%', '95% و97%')])
 setk('t693', "<strong>Plainly:</strong> with cash short, cutting every order by the same share also does far better than buying the most urgent first. Against that, the budget plan lost 59% less profit in California and about the same in Wisconsin. Across all 20 store-years it lost 96% less profit than most urgent first and 56% less than cutting evenly. It is not magic: with 80% of the cash some sales are still lost (with full cash the app served 99.8% in both stores). The cash plan is strongest for the 3-month total and next month (82% right in Wisconsin, 87% in California); months 2 and 3 on their own were 70% and 66% right in Wisconsin, 67% and 68% in California.",
      '<strong>بصراحة:</strong> لما الكاش يقل، تقليل كل طلب بنفس النسبة كمان أحسن بكتير من شراء الأكثر استعجالا الأول. وقصاد التقليل بالتساوي، خطة الميزانية ضيعت ربح أقل بـ 59% في كاليفورنيا، وتقريبا نفس النتيجة في ويسكونسن. وعلى الـ 20 سنة فرع كلها، ضيعت ربح أقل بـ 96% من الأكثر استعجالا الأول، وأقل بـ 56% من التقليل بالتساوي. ده مش سحر: بـ 80% من الكاش لسه في مبيعات بتضيع (بالكاش كامل الأداة لبت 99.8% في الفرعين). خطة الكاش أقوى في إجمالي الـ 3 شهور والشهر الجاي (صح بنسبة 82% في ويسكونسن و87% في كاليفورنيا)؛ الشهر التاني والتالت لوحدهم طلعوا صح بنسبة 70% و66% في ويسكونسن، و67% و68% في كاليفورنيا.')
 s = '\n'.join(lines)
