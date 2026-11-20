@@ -32,7 +32,9 @@ Other scripts:
 | `ramadan_test.mjs` | Synthetic check that the Ramadan season follows the calendar |
 | `rig.mjs`, `app_smoke.mjs` | Opens the real app in Chromium against the engine file (no live server) and checks every page, plan, language and width |
 | `a11y.mjs` | axe scan (WCAG 2.1 A and AA) of website, demo and app; needs `npm i axe-core` in this folder |
-| `build_demo.mjs` | Rebuilds the demo's pages from the app with the sample shop |
+| `build_demo.mjs` | Rebuilds the demo's pages from the app with the demo shop (`DEMO_DATE=YYYY-MM-DD` fixes the date) |
+| `demo_shop.mjs` | The demo shop: 11 products and 4 suppliers chosen so every feature on every plan has something to show; its forecast history is what the engine really forecast over the last 6 months |
+| `demo_copy.mjs` | The demo's own words: the page of every feature by plan |
 
 `results/` holds the last full runs for the engine that was live before (v31) and the one live now (v35).
 
