@@ -34,7 +34,7 @@ Other scripts:
 | `a11y.mjs` | axe scan (WCAG 2.1 A and AA) of website, demo and app; needs `npm i axe-core` in this folder |
 | `build_demo.mjs` | Rebuilds the demo's pages from the app with the demo shop (`DEMO_DATE=YYYY-MM-DD` fixes the date) |
 | `demo_shop.mjs` | The demo shop: 11 products and 4 suppliers chosen so every feature on every plan has something to show; its forecast history is what the engine really forecast over the last 6 months |
-| `demo_copy.mjs` | The demo's own words: the page of every feature by plan |
+| `demo_copy.mjs` | The demo's own words: the page of every feature by plan, and the explainer under the trial box on every page (English and Egyptian Arabic; every claim must stay true) |
 
 `results/` holds the last full runs for the engine that was live before (v31) and the one live now (v35).
 
